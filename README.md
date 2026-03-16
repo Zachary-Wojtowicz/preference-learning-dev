@@ -10,4 +10,4 @@ Datasets/
   styles.csv - style descriptions
   description_embeddings - descriptions embedded
 ```
-deltas & embedded are on gdrive: [https://drive.google.com/drive/folders/1mUM9TedSOkJTSsTK4p_odYr74hwW2U1X?usp=share_link](https://drive.google.com/drive/folders/1mUM9TedSOkJTSsTK4p_odYr74hwW2U1X?usp=share_link)
+matrix files are on gdrive: [https://drive.google.com/drive/folders/1mUM9TedSOkJTSsTK4p_odYr74hwW2U1X?usp=share_link](https://drive.google.com/drive/folders/1mUM9TedSOkJTSsTK4p_odYr74hwW2U1X?usp=share_link)
