@@ -1,0 +1,38 @@
+JUDGE_SCORING_PROMPT_TEMPLATE = """\
+You are scoring a single option on a single preference dimension.
+
+--- DIMENSION ---
+Name: {name}
+Low pole (score -1) — {low_label}: {low_description}
+High pole (score +1) — {high_label}: {high_description}
+Scoring guidance: {scoring_guidance}
+
+--- CALIBRATION ANCHORS ---
+The following examples establish the scale. Use them as reference points.
+Example near -1 (score ≈ -0.8): {low_example}
+Example near +1 (score ≈ +0.8): {high_example}
+
+--- SCORING RULES ---
+Use the 5-point scale: -1, -0.5, 0, 0.5, 1
+  -1   : Clearly and strongly at the low pole
+  -0.5 : Moderately at the low pole
+   0   : Genuinely neutral, at the midpoint, or the dimension does not apply
+   0.5 : Moderately at the high pole
+   1   : Clearly and strongly at the high pole
+
+Reserve -1 and +1 for unambiguous cases. Reserve 0 ONLY for genuine neutrality,
+a true midpoint, or non-applicability — not as a hedge when uncertain.
+If you score 0, you must specify the reason.
+
+--- OPTION TO SCORE ---
+{option_text}
+
+--- RESPONSE FORMAT ---
+Respond with valid JSON only, no prose before or after:
+{{
+  "dimension_id": {dimension_id},
+  "score": <-1 | -0.5 | 0 | 0.5 | 1>,
+  "zero_reason": "<midpoint | not_applicable | uncertain | null>",
+  "justification": "<one sentence explaining what in the option drove this score>"
+}}
+"""
