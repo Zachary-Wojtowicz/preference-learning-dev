@@ -1,0 +1,994 @@
+[
+  {
+    "component_index": 6,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [
+        "plum"
+      ],
+      "negative": [
+        "cherry",
+        "leather",
+        "mature",
+        "much",
+        "spice",
+        "berry"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: red",
+      "Positive-side families seen: portuguese_red",
+      "Negative-side families seen: italian_red",
+      "Countries present: Italy, Portugal"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 65297,
+        "negative_row_index": 107693,
+        "control_distance": 0.3085964024066925,
+        "target_gap": 3.449089527130127,
+        "positive_label": "Quinta de Chocapalha 2011 Mar da Palha Red (Lisboa)",
+        "negative_label": "Podere Paganico 2010 Riserva  (Brunello di Montalcino)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "portuguese_red",
+        "negative_variety_family": "italian_red",
+        "positive_country": "Portugal",
+        "negative_country": "Italy",
+        "positive_text": "Mar de Palha (seaweed) is a reminder of the closeness of the ocean to the Chocapalha estate. This is a rich, wood-age...",
+        "negative_text": "Mature black-skinned fruit, new leather, Mediterranean herb and dark spice are some of the aromas you'll find on this..."
+      },
+      {
+        "positive_row_index": 39402,
+        "negative_row_index": 27600,
+        "control_distance": 0.32506340742111206,
+        "target_gap": 3.4339542388916016,
+        "positive_label": "Real Companhia Velha 2014 Quinta dos Aciprestes Reserva Red (Douro)",
+        "negative_label": "Il Colle 2011  Brunello di Montalcino",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "portuguese_red",
+        "negative_variety_family": "italian_red",
+        "positive_country": "Portugal",
+        "negative_country": "Italy",
+        "positive_text": "Aged for a year in oak, this is a rich, smooth and densely textured wine. Full of black fruits, the wine comes from a...",
+        "negative_text": "Red berry, wild mint, crushed rose, forest floor and new leather are just some of the aromas you'll find on this frag..."
+      },
+      {
+        "positive_row_index": 13425,
+        "negative_row_index": 90828,
+        "control_distance": 0.3581462800502777,
+        "target_gap": 3.482184648513794,
+        "positive_label": "Herdade da Comporta 2007 Red (Pen\u00ednsula de Set\u00fabal)",
+        "negative_label": "Mirafiore 2007 Lazzarito  (Barolo)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "portuguese_red",
+        "negative_variety_family": "italian_red",
+        "positive_country": "Portugal",
+        "negative_country": "Italy",
+        "positive_text": "On the Atlantic coast, south of Lisbon, the Herdade da Comporta style is rich, soft wines, generous in their warm tan...",
+        "negative_text": "This is a lovely wine that very much lives up to the power and thickness associated with Barolo from the Serralunga d..."
+      },
+      {
+        "positive_row_index": 39089,
+        "negative_row_index": 24351,
+        "control_distance": 0.37128621339797974,
+        "target_gap": 3.6634931564331055,
+        "positive_label": "Wines & Winemakers 2014 Casa Ermelinda Freitas Monte da Ba\u00eda Reserva Red (Pen\u00ednsula de Set\u00fabal)",
+        "negative_label": "Le Miccine 1999  Chianti Classico",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "portuguese_red",
+        "negative_variety_family": "italian_red",
+        "positive_country": "Portugal",
+        "negative_country": "Italy",
+        "positive_text": "This oak-aged wine is intense, rich and packed with black fruits. It has spice from the wood as well as from the Syra...",
+        "negative_text": "Aromas of berry, wet earth, creamy oak and a touch of horsehide reveal a sweet raspberry-tinged palate that seems to..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC6\n\nEarlier PCs already accounted for. Avoid restating them:\n- None\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: red\n- Positive-side families seen: portuguese_red\n- Negative-side families seen: italian_red\n- Countries present: Italy, Portugal\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: plum\n- More common on negative side: cherry, leather, mature, much, spice, berry\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=0.3086 | PC gap=3.4491\nPositive note: Mar de Palha (seaweed) is a reminder of the closeness of the ocean to the Chocapalha estate. This is a rich, wood-age...\nNegative note: Mature black-skinned fruit, new leather, Mediterranean herb and dark spice are some of the aromas you'll find on this...\nPair 2 | control distance=0.3251 | PC gap=3.4340\nPositive note: Aged for a year in oak, this is a rich, smooth and densely textured wine. Full of black fruits, the wine comes from a...\nNegative note: Red berry, wild mint, crushed rose, forest floor and new leather are just some of the aromas you'll find on this frag...\nPair 3 | control distance=0.3581 | PC gap=3.4822\nPositive note: On the Atlantic coast, south of Lisbon, the Herdade da Comporta style is rich, soft wines, generous in their warm tan...\nNegative note: This is a lovely wine that very much lives up to the power and thickness associated with Barolo from the Serralunga d...\nPair 4 | control distance=0.3713 | PC gap=3.6635\nPositive note: This oak-aged wine is intense, rich and packed with black fruits. It has spice from the wood as well as from the Syra...\nNegative note: Aromas of berry, wet earth, creamy oak and a touch of horsehide reveal a sweet raspberry-tinged palate that seems to...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Wood aging vs. Freshness\n2. What changes: The primary shift observed across the pairs is the degree of wood aging and the resulting complexity versus the freshness and fruitiness of the wines. Wines on the positive side exhibit more pronounced characteristics derived from oak aging, such as rich, woody notes and spice, while those on the negative side retain more fresh, fruity aromas without significant oak influence.\n3. Positive pole: Wines here are characterized by their intensity and complexity, with notes of seaweed, rich black fruits, and spicy oak. These wines have been aged in oak barrels, contributing to their depth and maturity.\n4. Negative pole: These wines maintain a fresher profile, with notes of red berries, mint, and earthy undertones. They are less influenced by oak aging, preserving their vibrant, fruity character."
+  },
+  {
+    "component_index": 7,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [
+        "right",
+        "fruity"
+      ],
+      "negative": [
+        "briny",
+        "currant",
+        "citrus",
+        "lively"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: rose",
+      "Positive-side families seen: malbec, rose",
+      "Negative-side families seen: iberian_red, sparkling",
+      "Countries present: Australia, France, Italy, Spain"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 67232,
+        "negative_row_index": 33510,
+        "control_distance": 1.2476450204849243,
+        "target_gap": 3.2209672927856445,
+        "positive_label": "Les Ma\u00eetres Vignerons de la Presqu'\u00eele de Saint-Tropez 2016 Fleur de Mer Ros\u00e9 (C\u00f4tes de Provence)",
+        "negative_label": "Juv\u00e9 y Camps NV Pinot Noir Brut Ros\u00e9 Sparkling (Cava)",
+        "positive_color": "rose",
+        "negative_color": "rose",
+        "positive_variety_family": "rose",
+        "negative_variety_family": "sparkling",
+        "positive_country": "France",
+        "negative_country": "Spain",
+        "positive_text": "Bringing together in its name two important aspects of Provence, flower (lavender is a major local crop) and the sea,...",
+        "negative_text": "This is funky up front, with aromas of Russian dressing and briny citrus. The mouthfeel is chunky and foamy, while th..."
+      },
+      {
+        "positive_row_index": 90504,
+        "negative_row_index": 99471,
+        "control_distance": 1.4291869401931763,
+        "target_gap": 3.2453384399414062,
+        "positive_label": "Thorn Clarke 2008 St Kitts Vineyard on Truro Volcanic Soil Malbec (Barossa Valley)",
+        "negative_label": "Castello Bonomi NV Brut Ros\u00e9 Sparkling (Franciacorta)",
+        "positive_color": "rose",
+        "negative_color": "rose",
+        "positive_variety_family": "malbec",
+        "negative_variety_family": "sparkling",
+        "positive_country": "Australia",
+        "negative_country": "Italy",
+        "positive_text": "A dark, inky purple in color, this is a full-bodied (15.5% alcohol) but gentle Malbec, its vanilla, plum and black ol...",
+        "negative_text": "Aromas of rose and baked apple lead the way on this vibrant sparkler. The lively palate delivers strawberry, nectarin..."
+      },
+      {
+        "positive_row_index": 31033,
+        "negative_row_index": 57835,
+        "control_distance": 1.4594258069992065,
+        "target_gap": 3.6014466285705566,
+        "positive_label": "Les Ma\u00eetres Vignerons de la Presqu'\u00eele de Saint-Tropez 2014 Domaine Aureillan Ros\u00e9 (C\u00f4tes de Provence)",
+        "negative_label": "Sauvion NV Brut Ros\u00e9 Sparkling (Cr\u00e9mant de Loire)",
+        "positive_color": "rose",
+        "negative_color": "rose",
+        "positive_variety_family": "rose",
+        "negative_variety_family": "sparkling",
+        "positive_country": "France",
+        "negative_country": "France",
+        "positive_text": "This is a ripe, softly fruity wine that has acidity within a smooth texture. It is dry without being too tight or ner...",
+        "negative_text": "An attractive pale pink wine that has bright red currant fruits, crisp acidity and a lively mousse. It is so fresh, f..."
+      },
+      {
+        "positive_row_index": 94026,
+        "negative_row_index": 1764,
+        "control_distance": 1.8366588354110718,
+        "target_gap": 3.574141025543213,
+        "positive_label": "Les Ma\u00eetres Vignerons de la Presqu'\u00eele de Saint-Tropez 2014 Saint-Roch-les-Vignes Ros\u00e9 (C\u00f4tes de Provence)",
+        "negative_label": "Biutiful NV Brut Rose Garnacha (Cava)",
+        "positive_color": "rose",
+        "negative_color": "rose",
+        "positive_variety_family": "rose",
+        "negative_variety_family": "iberian_red",
+        "positive_country": "France",
+        "negative_country": "Spain",
+        "positive_text": "Intense acidity combines with spice and just the right amount of fresh fruitiness to give this lively wine that's ful...",
+        "negative_text": "Pickled, briny aromas of citrus and berry fruits are modest. On the palate, this is soft and low on acidity. Flavors..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC7\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: rose\n- Positive-side families seen: malbec, rose\n- Negative-side families seen: iberian_red, sparkling\n- Countries present: Australia, France, Italy, Spain\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: right, fruity\n- More common on negative side: briny, currant, citrus, lively\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=1.2476 | PC gap=3.2210\nPositive note: Bringing together in its name two important aspects of Provence, flower (lavender is a major local crop) and the sea,...\nNegative note: This is funky up front, with aromas of Russian dressing and briny citrus. The mouthfeel is chunky and foamy, while th...\nPair 2 | control distance=1.4292 | PC gap=3.2453\nPositive note: A dark, inky purple in color, this is a full-bodied (15.5% alcohol) but gentle Malbec, its vanilla, plum and black ol...\nNegative note: Aromas of rose and baked apple lead the way on this vibrant sparkler. The lively palate delivers strawberry, nectarin...\nPair 3 | control distance=1.4594 | PC gap=3.6014\nPositive note: This is a ripe, softly fruity wine that has acidity within a smooth texture. It is dry without being too tight or ner...\nNegative note: An attractive pale pink wine that has bright red currant fruits, crisp acidity and a lively mousse. It is so fresh, f...\nPair 4 | control distance=1.8367 | PC gap=3.5741\nPositive note: Intense acidity combines with spice and just the right amount of fresh fruitiness to give this lively wine that's ful...\nNegative note: Pickled, briny aromas of citrus and berry fruits are modest. On the palate, this is soft and low on acidity. Flavors...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Rose vs. Sparkling\n2. What changes: The primary distinction captured by PC7 is the presence of rose wine characteristics versus sparkling wine attributes. This axis emphasizes the difference in body, texture, and effervescence between these two categories.\n3. Positive pole: Wines on the positive side exhibit a fuller body, richer flavors, and a more substantial mouthfeel, often described as \"full-bodied\" and \"softly fruity.\" They tend to have a more intense and complex profile, with notes of vanilla, plums, and berries.\n4. Negative pole: Wines on the negative side are characterized by their lighter, more effervescent nature, with a focus on freshness and liveliness. These wines are often described as \"pale pink,\" \"bright red currant fruits,\" and \"crisp acidity,\" reflecting a more delicate and sparkling profile."
+  },
+  {
+    "component_index": 8,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [
+        "alongside",
+        "note",
+        "zibibbo",
+        "zest",
+        "herb",
+        "nectarine"
+      ],
+      "negative": [
+        "peppery",
+        "citrus"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: rose, unknown, white",
+      "Positive-side families seen: textured_white, zibibbo",
+      "Negative-side families seen: fresh_white, gr\u00fcner_veltliner, rhone_red, sylvaner",
+      "Countries present: Australia, Austria, France, Italy, US"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 76987,
+        "negative_row_index": 102176,
+        "control_distance": 0.9341355562210083,
+        "target_gap": 3.0212907791137695,
+        "positive_label": "Lynmar 2012 Quail Hill Vineyard Chardonnay (Russian River Valley)",
+        "negative_label": "Yellow Tail NV Sauvignon Blanc (Australia-New Zealand)",
+        "positive_color": "white",
+        "negative_color": "white",
+        "positive_variety_family": "textured_white",
+        "negative_variety_family": "fresh_white",
+        "positive_country": "US",
+        "negative_country": "Australia",
+        "positive_text": "Honeysuckle and jasmine pique interest aromatically before luscious, linear waves of vanilla, caramel and lemon custa...",
+        "negative_text": "The Australian giant has reached across the Tasman to New Zealand for 7% of this wine, but it remains a simple, mediu..."
+      },
+      {
+        "positive_row_index": 65979,
+        "negative_row_index": 86217,
+        "control_distance": 1.1815181970596313,
+        "target_gap": 2.9909443855285645,
+        "positive_label": "Coste Ghirlanda 2013 Silenzio Zibibbo (Terre Siciliane)",
+        "negative_label": "Robert Klingenfus 2011 Signature Sylvaner (Alsace)",
+        "positive_color": "unknown",
+        "negative_color": "unknown",
+        "positive_variety_family": "zibibbo",
+        "negative_variety_family": "sylvaner",
+        "positive_country": "Italy",
+        "negative_country": "France",
+        "positive_text": "Made entirely with native grape Zibibbo, this opens with aromas of sage, tangerine zest and Mediterranean herb. The a...",
+        "negative_text": "This is a peppery, almost dry wine, with pear and green plum flavors. It is soft and light, and its lively, zesty aci..."
+      },
+      {
+        "positive_row_index": 118747,
+        "negative_row_index": 111597,
+        "control_distance": 1.262068748474121,
+        "target_gap": 3.012373924255371,
+        "positive_label": "Testarossa 2013 Cuvee Los Gatos Chardonnay (Monterey County)",
+        "negative_label": "Thorn Clarke 2010 Shotfire Shiraz (Barossa)",
+        "positive_color": "rose",
+        "negative_color": "rose",
+        "positive_variety_family": "textured_white",
+        "negative_variety_family": "rhone_red",
+        "positive_country": "US",
+        "negative_country": "Australia",
+        "positive_text": "Broad aromas of seared lemons, white peach and nectarine are given nuance with a bit of quinine on this entry-level b...",
+        "negative_text": "An excellent value, the 2010 Shotfire Shiraz offers bold, punched-up cherry-berry fruit framed by hints of vanilla, d..."
+      },
+      {
+        "positive_row_index": 61008,
+        "negative_row_index": 34740,
+        "control_distance": 1.2839425802230835,
+        "target_gap": 2.9728291034698486,
+        "positive_label": "Tenuta Gorghi Tondi 2013 Raj\u00e0h Zibibbo (Terre Siciliane)",
+        "negative_label": "Eichinger 2013 Hasel Alte Reben Reserve Gr\u00fcner Veltliner (Kamptal)",
+        "positive_color": "unknown",
+        "negative_color": "unknown",
+        "positive_variety_family": "zibibbo",
+        "negative_variety_family": "gr\u00fcner_veltliner",
+        "positive_country": "Italy",
+        "negative_country": "Austria",
+        "positive_text": "Orange blossom, citrus and savory herb aromas take center stage on this fragrant white. In this dry version of Zibibb...",
+        "negative_text": "Soft and inviting ripeness of yellow plums leads to a spicy, peppery and wonderfully focused citrus center. This is a..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC8\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n- PC2: Rose vs. Sparkling\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: rose, unknown, white\n- Positive-side families seen: textured_white, zibibbo\n- Negative-side families seen: fresh_white, gr\u00fcner_veltliner, rhone_red, sylvaner\n- Countries present: Australia, Austria, France, Italy, US\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: alongside, note, zibibbo, zest, herb, nectarine\n- More common on negative side: peppery, citrus\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=0.9341 | PC gap=3.0213\nPositive note: Honeysuckle and jasmine pique interest aromatically before luscious, linear waves of vanilla, caramel and lemon custa...\nNegative note: The Australian giant has reached across the Tasman to New Zealand for 7% of this wine, but it remains a simple, mediu...\nPair 2 | control distance=1.1815 | PC gap=2.9909\nPositive note: Made entirely with native grape Zibibbo, this opens with aromas of sage, tangerine zest and Mediterranean herb. The a...\nNegative note: This is a peppery, almost dry wine, with pear and green plum flavors. It is soft and light, and its lively, zesty aci...\nPair 3 | control distance=1.2621 | PC gap=3.0124\nPositive note: Broad aromas of seared lemons, white peach and nectarine are given nuance with a bit of quinine on this entry-level b...\nNegative note: An excellent value, the 2010 Shotfire Shiraz offers bold, punched-up cherry-berry fruit framed by hints of vanilla, d...\nPair 4 | control distance=1.2839 | PC gap=2.9728\nPositive note: Orange blossom, citrus and savory herb aromas take center stage on this fragrant white. In this dry version of Zibibb...\nNegative note: Soft and inviting ripeness of yellow plums leads to a spicy, peppery and wonderfully focused citrus center. This is a...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Zest vs. Peppery Notes\n2. What changes: The primary shift observed across the pairs is the presence of zestful, aromatic notes on the positive side, contrasting with peppery, herbal undertones on the negative side. These contrasts are evident in descriptors like \"zest,\" \"herb,\" and \"peppery\" which dominate the respective poles.\n3. Positive pole: Wines on the positive side exhibit a rich array of zestful aromas, often associated with floral and citrus notes. These wines are characterized by their complexity and aromatic intensity, with notes of honeysuckle, orange blossom, and white peach dominating the sensory profile.\n4. Negative pole: Conversely, wines on the negative side are defined by their peppery and herbal characteristics. These wines tend to be more straightforward and focused, with flavors and aromas that lean towards green herbs, spices, and a slight edge of spiciness."
+  },
+  {
+    "component_index": 9,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [
+        "licorice",
+        "noir",
+        "pinot",
+        "vineyard",
+        "spices",
+        "characterize",
+        "maria",
+        "sculpted"
+      ],
+      "negative": [
+        "franc",
+        "cabernet",
+        "sauvignon",
+        "washington",
+        "chocolate",
+        "malbec",
+        "blend"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: red",
+      "Positive-side families seen: light_red",
+      "Negative-side families seen: bordeaux_red, red_blend",
+      "Countries present: US"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 69193,
+        "negative_row_index": 76585,
+        "control_distance": 1.0596660375595093,
+        "target_gap": 3.3509302139282227,
+        "positive_label": "Byron 2007 Julia's Vineyard Pinot Noir (Santa Maria Valley)",
+        "negative_label": "Abeja 2011 Cabernet Sauvignon (Columbia Valley (WA))",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "light_red",
+        "negative_variety_family": "bordeaux_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "A brilliant wine, massively sculpted and monumental, that shows how great this vineyard is. The wine shows densely co...",
+        "negative_text": "Tasted pre-release, this is already extraordinary, especially for this challenging vintage. The fruit (from Heather H..."
+      },
+      {
+        "positive_row_index": 129484,
+        "negative_row_index": 67974,
+        "control_distance": 1.0987919569015503,
+        "target_gap": 3.260906934738159,
+        "positive_label": "Byron 2011 Nielson Vineyard Pinot Noir (Santa Maria Valley)",
+        "negative_label": "Pepper Bridge 2012 Trine Red (Walla Walla Valley (WA))",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "light_red",
+        "negative_variety_family": "bordeaux_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "Ripe, sunny cherry pie, red currant and licorice flavors mark this dry, silky Pinot Noir. It shows the full-bodied ch...",
+        "negative_text": "This is the first offering of this wine where Cabernet Franc (37%) takes the lead, blended with Cabernet Sauvignon (2..."
+      },
+      {
+        "positive_row_index": 95555,
+        "negative_row_index": 62301,
+        "control_distance": 1.1447372436523438,
+        "target_gap": 3.0320208072662354,
+        "positive_label": "Zaca Mesa 2015 Bien Nacido Vineyard Pinot Noir (Santa Maria Valley)",
+        "negative_label": ":Nota Bene 2008 Dineen Vineyard Red (Yakima Valley)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "light_red",
+        "negative_variety_family": "bordeaux_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "This is a stunning Pinot Noir, especially from a Syrah-focused winery. Beautiful aromas of lavender, thyme, wild mint...",
+        "negative_text": "Generously fruity, with mixed red and black berries, this Cab Franc/Cabernet Sauvignon blend is subtly layered with e..."
+      },
+      {
+        "positive_row_index": 124449,
+        "negative_row_index": 47938,
+        "control_distance": 1.3023256063461304,
+        "target_gap": 3.3788180351257324,
+        "positive_label": "Byron 2007 Julia's Vineyard Pinot Noir (Santa Maria Valley)",
+        "negative_label": "Woodinville Wine Cellars 2005 Ausonius Red (Columbia Valley (WA))",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "light_red",
+        "negative_variety_family": "red_blend",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "A brilliant wine, massively sculpted and monumental, that shows how great this vineyard is. The wine shows densely co...",
+        "negative_text": "This new Ausonius features a blend of 47% Cabernet Sauvignon, 45% Cabernet Franc and 8% Malbec. At first it's rich, s..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC9\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n- PC2: Rose vs. Sparkling\n- PC3: Zest vs. Peppery Notes\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: red\n- Positive-side families seen: light_red\n- Negative-side families seen: bordeaux_red, red_blend\n- Countries present: US\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: licorice, noir, pinot, vineyard, spices, characterize, maria, sculpted\n- More common on negative side: franc, cabernet, sauvignon, washington, chocolate, malbec, blend\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=1.0597 | PC gap=3.3509\nPositive note: A brilliant wine, massively sculpted and monumental, that shows how great this vineyard is. The wine shows densely co...\nNegative note: Tasted pre-release, this is already extraordinary, especially for this challenging vintage. The fruit (from Heather H...\nPair 2 | control distance=1.0988 | PC gap=3.2609\nPositive note: Ripe, sunny cherry pie, red currant and licorice flavors mark this dry, silky Pinot Noir. It shows the full-bodied ch...\nNegative note: This is the first offering of this wine where Cabernet Franc (37%) takes the lead, blended with Cabernet Sauvignon (2...\nPair 3 | control distance=1.1447 | PC gap=3.0320\nPositive note: This is a stunning Pinot Noir, especially from a Syrah-focused winery. Beautiful aromas of lavender, thyme, wild mint...\nNegative note: Generously fruity, with mixed red and black berries, this Cab Franc/Cabernet Sauvignon blend is subtly layered with e...\nPair 4 | control distance=1.3023 | PC gap=3.3788\nPositive note: A brilliant wine, massively sculpted and monumental, that shows how great this vineyard is. The wine shows densely co...\nNegative note: This new Ausonius features a blend of 47% Cabernet Sauvignon, 45% Cabernet Franc and 8% Malbec. At first it's rich, s...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Light Red vs. Bordeaux Red Blend\n2. What changes: The primary distinction captured by PC9 is the intensity and character of the red fruit profile, particularly the presence of licorice and other spiced notes on the positive side, versus the dominance of Cabernet Franc and Cabernet Sauvignon blends on the negative side.\n3. Positive pole: Wines on the positive side exhibit a more nuanced and complex red fruit profile, often featuring licorice, spices, and a sense of vineyard character. These wines tend to be more elegant and focused, with a distinct light red character.\n4. Negative pole: Wines on the negative side showcase a more robust and structured profile, dominated by Cabernet Franc and Cabernet Sauvignon blends. These wines are often described with terms like \"chocolate,\" \"sauvignon,\" and \"blend,\" indicating a fuller-bodied and more complex structure."
+  },
+  {
+    "component_index": 10,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [
+        "savory"
+      ],
+      "negative": [
+        "syrah",
+        "blend"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: red",
+      "Positive-side families seen: rhone_red, zinfandel",
+      "Negative-side families seen: red_blend, rhone_red",
+      "Countries present: Australia, US"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 56400,
+        "negative_row_index": 103131,
+        "control_distance": 1.2743182182312012,
+        "target_gap": 2.818784236907959,
+        "positive_label": "Alexander Valley Vineyards 2007 Redemption Zin Zinfandel (Dry Creek Valley)",
+        "negative_label": "Efeste 2009 El\u00e9ni Syrah (Yakima Valley)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "zinfandel",
+        "negative_variety_family": "rhone_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "Dry, minty and sharp, and very peppery, with tobacco, wintergreen, cherry and currant flavors, wrapped into sturdy ta...",
+        "negative_text": "The El\u00e9ni Syrah, sourced from old vines at Red Willow Vineyard, may lay claim to being the best of a very fine lineup..."
+      },
+      {
+        "positive_row_index": 112317,
+        "negative_row_index": 22977,
+        "control_distance": 1.3388340473175049,
+        "target_gap": 2.696838855743408,
+        "positive_label": "Mel\u00e9e 2012 Grenache (California)",
+        "negative_label": "La Filice 2009 Via Della Vigna Red (Paso Robles)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "rhone_red",
+        "negative_variety_family": "red_blend",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "This full-bodied and earthy-tasting wine has berries and cherries in the aroma and beefy, savory flavors that fill ou...",
+        "negative_text": "It's easy to imagine drinking this wine\u2014and really enjoying it\u2014in Paso Robles with a grilled steak. It's rich, heady..."
+      },
+      {
+        "positive_row_index": 113300,
+        "negative_row_index": 129114,
+        "control_distance": 1.4405699968338013,
+        "target_gap": 3.1209754943847656,
+        "positive_label": "Longevity 2012 Grenache (Livermore Valley)",
+        "negative_label": "Robert Ramsay 2012 Mason's Red (Columbia Valley (WA))",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "rhone_red",
+        "negative_variety_family": "red_blend",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "Quite ripe and quite mature tasting, this wine has pruney aromas, raisin and plum flavors, full body and firm tannins.",
+        "negative_text": "It's quite rare to find a wine in Washington where Counoise (48%) takes the lead, as on this blend that also includes..."
+      },
+      {
+        "positive_row_index": 88973,
+        "negative_row_index": 13537,
+        "control_distance": 1.4611961841583252,
+        "target_gap": 2.946880340576172,
+        "positive_label": "Thistledown 2015 The Vagabond Grenache (McLaren Vale)",
+        "negative_label": "Force Majeure 2009 Collaboration Series II Ciel du Cheval Vineyard Red (Red Mountain)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "rhone_red",
+        "negative_variety_family": "rhone_red",
+        "positive_country": "Australia",
+        "negative_country": "US",
+        "positive_text": "Ripe strawberry and vanilla lead on the nose followed by a light-weight, juicy and easy-going palate. A sandy texture...",
+        "negative_text": "This is 98% Syrah, unlike past vintages where it was modeled after a C\u00f4tes du Rh\u00f4ne-style blend. It opens with entici..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC10\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n- PC2: Rose vs. Sparkling\n- PC3: Zest vs. Peppery Notes\n- PC4: Light Red vs. Bordeaux Red Blend\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: red\n- Positive-side families seen: rhone_red, zinfandel\n- Negative-side families seen: red_blend, rhone_red\n- Countries present: Australia, US\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: savory\n- More common on negative side: syrah, blend\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=1.2743 | PC gap=2.8188\nPositive note: Dry, minty and sharp, and very peppery, with tobacco, wintergreen, cherry and currant flavors, wrapped into sturdy ta...\nNegative note: The El\u00e9ni Syrah, sourced from old vines at Red Willow Vineyard, may lay claim to being the best of a very fine lineup...\nPair 2 | control distance=1.3388 | PC gap=2.6968\nPositive note: This full-bodied and earthy-tasting wine has berries and cherries in the aroma and beefy, savory flavors that fill ou...\nNegative note: It's easy to imagine drinking this wine\u2014and really enjoying it\u2014in Paso Robles with a grilled steak. It's rich, heady...\nPair 3 | control distance=1.4406 | PC gap=3.1210\nPositive note: Quite ripe and quite mature tasting, this wine has pruney aromas, raisin and plum flavors, full body and firm tannins.\nNegative note: It's quite rare to find a wine in Washington where Counoise (48%) takes the lead, as on this blend that also includes...\nPair 4 | control distance=1.4612 | PC gap=2.9469\nPositive note: Ripe strawberry and vanilla lead on the nose followed by a light-weight, juicy and easy-going palate. A sandy texture...\nNegative note: This is 98% Syrah, unlike past vintages where it was modeled after a C\u00f4tes du Rh\u00f4ne-style blend. It opens with entici...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Savory vs. Syrah/Blend\n2. What changes: The primary shift observed is in the intensity and presence of savory notes versus the prominence of Syrah or blended characteristics. This distinction becomes more pronounced as we move along PC10.\n3. Positive pole: Wines on the positive side exhibit robust, earthy, and meaty flavors, often described as savory with notes of tobacco, wintergreen, and beefy undertones.\n4. Negative pole: Wines on the negative side are dominated by Syrah or blended profiles, particularly noted for their high concentration of Syrah, with less emphasis on savory elements and more on fruitiness and structure."
+  },
+  {
+    "component_index": 11,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [
+        "tobacco",
+        "spice",
+        "velvety",
+        "merlot",
+        "blend",
+        "blue",
+        "flower"
+      ],
+      "negative": [
+        "licorice",
+        "emerge",
+        "underbrush",
+        "glass",
+        "note",
+        "balsamic",
+        "bracing",
+        "cherry"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: red",
+      "Positive-side families seen: bordeaux_red, italian_red, red_blend",
+      "Negative-side families seen: italian_red",
+      "Countries present: Italy"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 92976,
+        "negative_row_index": 114189,
+        "control_distance": 0.8332736492156982,
+        "target_gap": 2.685985565185547,
+        "positive_label": "Le Macchiole 2013 Messorio Merlot (Toscana)",
+        "negative_label": "Marchesi di Barolo 2012 Sarmassa  (Barolo)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "bordeaux_red",
+        "negative_variety_family": "italian_red",
+        "positive_country": "Italy",
+        "negative_country": "Italy",
+        "positive_text": "Made from 100% Merlot grapes, this boasts ripe red berry, cassis, espresso, vanilla and chopped mint aromas. The dens...",
+        "negative_text": "Aromas of weedy underbrush, toast, menthol and cherry marinated in spirits emerge in the glass. The palate shows raw..."
+      },
+      {
+        "positive_row_index": 76091,
+        "negative_row_index": 52527,
+        "control_distance": 1.0379694700241089,
+        "target_gap": 2.658453941345215,
+        "positive_label": "Canneto 2006 Filippone Red (Toscana)",
+        "negative_label": "Mauro Sebaste 2012 Tresuri  (Barolo)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "red_blend",
+        "negative_variety_family": "italian_red",
+        "positive_country": "Italy",
+        "negative_country": "Italy",
+        "positive_text": "Filippone is a 50-50 blend of Sangiovese and Merlot that is layered tight with aromas of wild berries, blue flower, p...",
+        "negative_text": "Aromas of grilled herb, French oak, sage and a balsamic note lead the nose while the firm palate shows tart red cherr..."
+      },
+      {
+        "positive_row_index": 99316,
+        "negative_row_index": 1183,
+        "control_distance": 1.1871542930603027,
+        "target_gap": 2.7526614665985107,
+        "positive_label": "Abbadia Ardenga 2012 Vigna Piaggia  (Brunello di Montalcino)",
+        "negative_label": "Boasso 2012 Margheria  (Barolo)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "italian_red",
+        "negative_variety_family": "italian_red",
+        "positive_country": "Italy",
+        "negative_country": "Italy",
+        "positive_text": "Here's a delicious red that opens with appealing ripe plum, blue flower, tobacco and baking spice aromas. Velvety tan...",
+        "negative_text": "Underbrush, singed earth, mature dark-skinned fruit and a balsamic note emerge in the glass. The ripe, firm palate sh..."
+      },
+      {
+        "positive_row_index": 55487,
+        "negative_row_index": 22120,
+        "control_distance": 1.2131247520446777,
+        "target_gap": 2.7171401977539062,
+        "positive_label": "Tenuta Sette Ponti 2005 Poggio al Lupo  (Maremma)",
+        "negative_label": "Prunotto 2007 Bric Turot  (Barbaresco)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "red_blend",
+        "negative_variety_family": "italian_red",
+        "positive_country": "Italy",
+        "negative_country": "Italy",
+        "positive_text": "This is a big, blockbuster blend of Cab, Alicante and Petit Verdot with thick extraction and raw tones of fruit, toba...",
+        "negative_text": "Rich and savory, this has bold fruit notes of cherry and blackberry followed by delicate nuances of licorice, tar, sp..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC11\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n- PC2: Rose vs. Sparkling\n- PC3: Zest vs. Peppery Notes\n- PC4: Light Red vs. Bordeaux Red Blend\n- PC5: Savory vs. Syrah/Blend\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: red\n- Positive-side families seen: bordeaux_red, italian_red, red_blend\n- Negative-side families seen: italian_red\n- Countries present: Italy\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: tobacco, spice, velvety, merlot, blend, blue, flower\n- More common on negative side: licorice, emerge, underbrush, glass, note, balsamic, bracing, cherry\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=0.8333 | PC gap=2.6860\nPositive note: Made from 100% Merlot grapes, this boasts ripe red berry, cassis, espresso, vanilla and chopped mint aromas. The dens...\nNegative note: Aromas of weedy underbrush, toast, menthol and cherry marinated in spirits emerge in the glass. The palate shows raw...\nPair 2 | control distance=1.0380 | PC gap=2.6585\nPositive note: Filippone is a 50-50 blend of Sangiovese and Merlot that is layered tight with aromas of wild berries, blue flower, p...\nNegative note: Aromas of grilled herb, French oak, sage and a balsamic note lead the nose while the firm palate shows tart red cherr...\nPair 3 | control distance=1.1872 | PC gap=2.7527\nPositive note: Here's a delicious red that opens with appealing ripe plum, blue flower, tobacco and baking spice aromas. Velvety tan...\nNegative note: Underbrush, singed earth, mature dark-skinned fruit and a balsamic note emerge in the glass. The ripe, firm palate sh...\nPair 4 | control distance=1.2131 | PC gap=2.7171\nPositive note: This is a big, blockbuster blend of Cab, Alicante and Petit Verdot with thick extraction and raw tones of fruit, toba...\nNegative note: Rich and savory, this has bold fruit notes of cherry and blackberry followed by delicate nuances of licorice, tar, sp...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Tobacco vs. Underbrush\n2. What changes: The primary shift observed across these pairs is the presence of tobacco and spice notes on the positive side, contrasting with underbrush, menthol, and balsamic notes on the negative side. This distinction is evident in the descriptors such as \"chopped mint,\" \"blue flower,\" and \"grilled herb\" on the positive side, versus \"weedy underbrush,\" \"singed earth,\" and \"balsamic note\" on the negative side.\n3. Positive pole: Wines on the positive side exhibit rich, complex aromas of tobacco, spice, and floral notes like blue flower and velvety texture, often associated with fuller-bodied red blends and merlot-based wines.\n4. Negative pole: Wines on the negative side tend to have more rustic, earthy profiles with underbrush, menthol, and balsamic notes, suggesting a leaner, more herbal character typical of certain Italian reds and those with more savory undertones."
+  },
+  {
+    "component_index": 12,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [
+        "blend",
+        "forward",
+        "vintage",
+        "textured"
+      ],
+      "negative": [
+        "currant"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: red",
+      "Positive-side families seen: bordeaux_red, red_blend, rhone_red",
+      "Negative-side families seen: bordeaux_red, iberian_red, portuguese_red",
+      "Countries present: France, Portugal, Spain, US"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 46723,
+        "negative_row_index": 67503,
+        "control_distance": 1.4074721336364746,
+        "target_gap": 2.7499539852142334,
+        "positive_label": "DeLille 2009 D2 Red (Columbia Valley (WA))",
+        "negative_label": "Still Waters 2006 Merlot (Paso Robles)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "bordeaux_red",
+        "negative_variety_family": "bordeaux_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "Highlighted by forward, pretty, cherry-candy flavor, this is an appealing vintage for D2\u2014DeLille's second-label Borde...",
+        "negative_text": "This is a very dry, soft Merlot. At the age of four years, it's fully resolved and ready to drink now. Shows polished..."
+      },
+      {
+        "positive_row_index": 94920,
+        "negative_row_index": 47230,
+        "control_distance": 1.4316529035568237,
+        "target_gap": 2.8607358932495117,
+        "positive_label": "Domaine des Sablonnettes 2008 Les Copains d'Abord Red (Vin de Table Francais)",
+        "negative_label": "Vi\u00f1a Olvido 2007 Reserva  (Rioja)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "red_blend",
+        "negative_variety_family": "iberian_red",
+        "positive_country": "France",
+        "negative_country": "Spain",
+        "positive_text": "Literally friends and neighbors (the guys on the label dancing and playing an accordion), this wine is a light, soft...",
+        "negative_text": "Cola, lemon and herbal aromas are like an Italian amaro in that they are rooty and earthy, with zing. This feels loam..."
+      },
+      {
+        "positive_row_index": 119946,
+        "negative_row_index": 120862,
+        "control_distance": 1.6523323059082031,
+        "target_gap": 2.901294708251953,
+        "positive_label": "Les Vins de Vienne 2012 Les Cranilles Red (C\u00f4tes du Rh\u00f4ne)",
+        "negative_label": "Prats & Symington LDA 2012 Post Scriptum de Chryseia Red (Douro)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "rhone_red",
+        "negative_variety_family": "portuguese_red",
+        "positive_country": "France",
+        "negative_country": "Portugal",
+        "positive_text": "A darn good value, this is a mouthfilling, richly textured wine with several years still ahead of it. It delivers the...",
+        "negative_text": "This wine is stylish, with layers of wood, black currant notes and a structure that will allow the juicy fruitiness t..."
+      },
+      {
+        "positive_row_index": 129149,
+        "negative_row_index": 2788,
+        "control_distance": 1.6529864072799683,
+        "target_gap": 2.661222457885742,
+        "positive_label": "Ch\u00e2teau Duhart-Milon 2010 Barrel sample  (Pauillac)",
+        "negative_label": "Aveleda 2011 Casal Garcia Tinto Red (Portuguese Table Wine)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "bordeaux_red",
+        "negative_variety_family": "portuguese_red",
+        "positive_country": "France",
+        "negative_country": "Portugal",
+        "positive_text": "91-93 There is a certain toughness her. The dense and firm character gives a solid, textured wine, packed with acidit...",
+        "negative_text": "Light and stalky, this has black currant fruit and considerable acidity. With its soft tannins and fruity character,..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC12\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n- PC2: Rose vs. Sparkling\n- PC3: Zest vs. Peppery Notes\n- PC4: Light Red vs. Bordeaux Red Blend\n- PC5: Savory vs. Syrah/Blend\n- PC6: Tobacco vs. Underbrush\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: red\n- Positive-side families seen: bordeaux_red, red_blend, rhone_red\n- Negative-side families seen: bordeaux_red, iberian_red, portuguese_red\n- Countries present: France, Portugal, Spain, US\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: blend, forward, vintage, textured\n- More common on negative side: currant\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=1.4075 | PC gap=2.7500\nPositive note: Highlighted by forward, pretty, cherry-candy flavor, this is an appealing vintage for D2\u2014DeLille's second-label Borde...\nNegative note: This is a very dry, soft Merlot. At the age of four years, it's fully resolved and ready to drink now. Shows polished...\nPair 2 | control distance=1.4317 | PC gap=2.8607\nPositive note: Literally friends and neighbors (the guys on the label dancing and playing an accordion), this wine is a light, soft...\nNegative note: Cola, lemon and herbal aromas are like an Italian amaro in that they are rooty and earthy, with zing. This feels loam...\nPair 3 | control distance=1.6523 | PC gap=2.9013\nPositive note: A darn good value, this is a mouthfilling, richly textured wine with several years still ahead of it. It delivers the...\nNegative note: This wine is stylish, with layers of wood, black currant notes and a structure that will allow the juicy fruitiness t...\nPair 4 | control distance=1.6530 | PC gap=2.6612\nPositive note: 91-93 There is a certain toughness her. The dense and firm character gives a solid, textured wine, packed with acidit...\nNegative note: Light and stalky, this has black currant fruit and considerable acidity. With its soft tannins and fruity character,...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Forward vs. Currant\n2. What changes: The wines diverge significantly in their overall impression, with the positive side emphasizing a forward, approachable profile, while the negative side highlights more complex, lingering currant notes.\n3. Positive pole: Wines on the positive side are characterized by their immediate appeal, with flavors of cherry-candy and a vintage feel, suggesting a more accessible and enjoyable drinking experience.\n4. Negative pole: On the negative side, wines exhibit a more reserved, complex character, with prominent currant notes and a structure that suggests a longer aging potential."
+  },
+  {
+    "component_index": 13,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [
+        "finishes"
+      ],
+      "negative": [
+        "strawberry"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: red, unknown, white",
+      "Positive-side families seen: bordeaux_red, gr\u00fcner_veltliner, petite_sirah, textured_white",
+      "Negative-side families seen: fresh_white, m\u00fcller-thurgau, schiava, zinfandel",
+      "Countries present: Argentina, Austria, Chile, Italy, US"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 48368,
+        "negative_row_index": 52081,
+        "control_distance": 1.704451560974121,
+        "target_gap": 2.485952854156494,
+        "positive_label": "Finca Don Carlos 2009 Calathus Roble Chardonnay (Mendoza)",
+        "negative_label": "Quasar 2010 Selection Sauvignon Blanc (Curic\u00f3 Valley)",
+        "positive_color": "white",
+        "negative_color": "white",
+        "positive_variety_family": "textured_white",
+        "negative_variety_family": "fresh_white",
+        "positive_country": "Argentina",
+        "negative_country": "Chile",
+        "positive_text": "An oaky wine that's funky at all checkpoints. The nose is briney and cheesy, while the palate is astringent and offer...",
+        "negative_text": "Simple and neutral, with sweetness to the nose. It's soft and flabby in the mouth, with candied vanilla and melon fla..."
+      },
+      {
+        "positive_row_index": 59038,
+        "negative_row_index": 58988,
+        "control_distance": 1.8433667421340942,
+        "target_gap": 2.4869978427886963,
+        "positive_label": "Mt. Brave 2013 Cabernet Franc (Mount Veeder)",
+        "negative_label": "Peachy Canyon 2013 Incredible Red Zinfandel (California)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "bordeaux_red",
+        "negative_variety_family": "zinfandel",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "A 100% varietal wine from the wilds of the appellation, this wine shows a pretty range of violet and dusty sage. Conc...",
+        "negative_text": "A stellar deal for the price, this wine shows plum, strawberry and asphalt on the nose, with a touch of clove-nutmeg..."
+      },
+      {
+        "positive_row_index": 111509,
+        "negative_row_index": 88293,
+        "control_distance": 2.2254531383514404,
+        "target_gap": 2.437101364135742,
+        "positive_label": "Br\u00fcndlmayer 2014 Loiser Berg Gr\u00fcner Veltliner (Kamptal)",
+        "negative_label": "Muri-Gries 2010 M\u00fcller-Thurgau (Alto Adige)",
+        "positive_color": "unknown",
+        "negative_color": "unknown",
+        "positive_variety_family": "gr\u00fcner_veltliner",
+        "negative_variety_family": "m\u00fcller-thurgau",
+        "positive_country": "Austria",
+        "negative_country": "Italy",
+        "positive_text": "Very supple, easy notes of ripe apple and ripe green pear make for a charming, superfresh and slender white. Immensel...",
+        "negative_text": "Here's a bright, fresh and aromatic wine from northern Italy that offers aromas of honeysuckle, peach blossom and gra..."
+      },
+      {
+        "positive_row_index": 96700,
+        "negative_row_index": 10554,
+        "control_distance": 2.396388053894043,
+        "target_gap": 2.7951760292053223,
+        "positive_label": "Chronic Cellars 2006 Petite Sirah (Paso Robles)",
+        "negative_label": "Peter Zemmer 2013 Schiava Gentile Schiava (Alto Adige)",
+        "positive_color": "unknown",
+        "negative_color": "unknown",
+        "positive_variety_family": "petite_sirah",
+        "negative_variety_family": "schiava",
+        "positive_country": "US",
+        "negative_country": "Italy",
+        "positive_text": "Shows the typical character of a young, warm-climate Petite Sirah in the thick tannic structure and fantastically rip...",
+        "negative_text": "This intensely fragrant wine leads with aromas of red currant and violet. The palate offers strawberry, mandarin oran..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC13\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n- PC2: Rose vs. Sparkling\n- PC3: Zest vs. Peppery Notes\n- PC4: Light Red vs. Bordeaux Red Blend\n- PC5: Savory vs. Syrah/Blend\n- PC6: Tobacco vs. Underbrush\n- PC7: Forward vs. Currant\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: red, unknown, white\n- Positive-side families seen: bordeaux_red, gr\u00fcner_veltliner, petite_sirah, textured_white\n- Negative-side families seen: fresh_white, m\u00fcller-thurgau, schiava, zinfandel\n- Countries present: Argentina, Austria, Chile, Italy, US\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: finishes\n- More common on negative side: strawberry\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=1.7045 | PC gap=2.4860\nPositive note: An oaky wine that's funky at all checkpoints. The nose is briney and cheesy, while the palate is astringent and offer...\nNegative note: Simple and neutral, with sweetness to the nose. It's soft and flabby in the mouth, with candied vanilla and melon fla...\nPair 2 | control distance=1.8434 | PC gap=2.4870\nPositive note: A 100% varietal wine from the wilds of the appellation, this wine shows a pretty range of violet and dusty sage. Conc...\nNegative note: A stellar deal for the price, this wine shows plum, strawberry and asphalt on the nose, with a touch of clove-nutmeg...\nPair 3 | control distance=2.2255 | PC gap=2.4371\nPositive note: Very supple, easy notes of ripe apple and ripe green pear make for a charming, superfresh and slender white. Immensel...\nNegative note: Here's a bright, fresh and aromatic wine from northern Italy that offers aromas of honeysuckle, peach blossom and gra...\nPair 4 | control distance=2.3964 | PC gap=2.7952\nPositive note: Shows the typical character of a young, warm-climate Petite Sirah in the thick tannic structure and fantastically rip...\nNegative note: This intensely fragrant wine leads with aromas of red currant and violet. The palate offers strawberry, mandarin oran...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Oakiness vs. Simplicity\n2. What changes: The wines diverge significantly in their level of oak influence versus their simplicity and straightforwardness. This contrast is particularly evident in the descriptors used, such as \"oaky\" and \"funky\" on the positive side versus \"simple\" and \"neutral\" on the negative side.\n3. Positive pole: Wines on the positive side exhibit a pronounced oak influence, characterized by briny, cheesy, and astringent notes. These wines are complex and layered, with a notable funkiness that adds depth and character.\n4. Negative pole: Wines on the negative side are simpler and more straightforward, often described as soft, flabby, and neutral. They lack the complexity and depth found in the positive wines, instead offering more direct and less nuanced flavors."
+  },
+  {
+    "component_index": 14,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [
+        "spice"
+      ],
+      "negative": [
+        "plenty",
+        "barrel"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: red, white",
+      "Positive-side families seen: bordeaux_red, textured_white, zinfandel",
+      "Negative-side families seen: bordeaux_red, italian_red, rhone_red, textured_white",
+      "Countries present: US"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 121175,
+        "negative_row_index": 83683,
+        "control_distance": 1.759315848350525,
+        "target_gap": 2.563711166381836,
+        "positive_label": "Continuum 2005 Proprietary Red Wine Red (Oakville)",
+        "negative_label": "Hard Row To Hoe 2007 Shameless Hussy Barbera (Columbia Valley (WA))",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "bordeaux_red",
+        "negative_variety_family": "italian_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "Tim Mondavi is back with this interesting Cabernet blend. It's very much in the modern Napa style, soft, rich and sop...",
+        "negative_text": "This Barbera is very pruney in the nose, with scents of smoked meat under the fruit. Despite the suggestion that the..."
+      },
+      {
+        "positive_row_index": 117863,
+        "negative_row_index": 36614,
+        "control_distance": 1.954228401184082,
+        "target_gap": 2.6123204231262207,
+        "positive_label": "Kelleher 2007 Brix Vineyard Cabernet Sauvignon (Oakville)",
+        "negative_label": "Gramercy 2013 Lower East Cabernet Sauvignon (Columbia Valley (WA))",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "bordeaux_red",
+        "negative_variety_family": "bordeaux_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "All the parts are here, but they're not yet in complete harmony. The black-currant flavor is strong and deep; the tan...",
+        "negative_text": "There's no mistaking the variety, with plentiful aromas of fresh herb and cherry alongside vanilla and light barrel a..."
+      },
+      {
+        "positive_row_index": 91769,
+        "negative_row_index": 115542,
+        "control_distance": 2.14290452003479,
+        "target_gap": 2.9651479721069336,
+        "positive_label": "D.R. Stephens 2015 Star Vineyard Estate Chardonnay (Rutherford)",
+        "negative_label": "Zerba Cellars 2007 Viognier (Columbia Valley (WA))",
+        "positive_color": "white",
+        "negative_color": "white",
+        "positive_variety_family": "textured_white",
+        "negative_variety_family": "textured_white",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "Despite this wine's spice and gravelly mouthfeel of stony texture, it's rich, round and voluptuous, its flavors recal...",
+        "negative_text": "There is a pleasing creaminess to the mouthfeel, yet the wine retains well-defined green apple and citrus fruit flavo..."
+      },
+      {
+        "positive_row_index": 34122,
+        "negative_row_index": 115625,
+        "control_distance": 2.148104667663574,
+        "target_gap": 2.6013126373291016,
+        "positive_label": "Ottimino Vineyards 2008 Rancho Bello Vineyard Zinfandel (Russian River Valley)",
+        "negative_label": "Rasa 2012 Doctrina Perpetua Syrah (Columbia Valley (WA))",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "zinfandel",
+        "negative_variety_family": "rhone_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "Ottomino consistently has success with this single-vineyard Zinfandel. As always, it's dry, smoothly tannic and compl...",
+        "negative_text": "Aromas of coffee, mocha, spice and dark fruit lead to full-bodied, layered fruit and barrel flavors. There's plenty o..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC14\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n- PC2: Rose vs. Sparkling\n- PC3: Zest vs. Peppery Notes\n- PC4: Light Red vs. Bordeaux Red Blend\n- PC5: Savory vs. Syrah/Blend\n- PC6: Tobacco vs. Underbrush\n- PC7: Forward vs. Currant\n- PC8: Oakiness vs. Simplicity\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: red, white\n- Positive-side families seen: bordeaux_red, textured_white, zinfandel\n- Negative-side families seen: bordeaux_red, italian_red, rhone_red, textured_white\n- Countries present: US\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: spice\n- More common on negative side: plenty, barrel\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=1.7593 | PC gap=2.5637\nPositive note: Tim Mondavi is back with this interesting Cabernet blend. It's very much in the modern Napa style, soft, rich and sop...\nNegative note: This Barbera is very pruney in the nose, with scents of smoked meat under the fruit. Despite the suggestion that the...\nPair 2 | control distance=1.9542 | PC gap=2.6123\nPositive note: All the parts are here, but they're not yet in complete harmony. The black-currant flavor is strong and deep; the tan...\nNegative note: There's no mistaking the variety, with plentiful aromas of fresh herb and cherry alongside vanilla and light barrel a...\nPair 3 | control distance=2.1429 | PC gap=2.9651\nPositive note: Despite this wine's spice and gravelly mouthfeel of stony texture, it's rich, round and voluptuous, its flavors recal...\nNegative note: There is a pleasing creaminess to the mouthfeel, yet the wine retains well-defined green apple and citrus fruit flavo...\nPair 4 | control distance=2.1481 | PC gap=2.6013\nPositive note: Ottomino consistently has success with this single-vineyard Zinfandel. As always, it's dry, smoothly tannic and compl...\nNegative note: Aromas of coffee, mocha, spice and dark fruit lead to full-bodied, layered fruit and barrel flavors. There's plenty o...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Spice vs. Fruit\n2. What changes: Across the pairs, the wines diverge primarily in their emphasis on spicy notes versus more straightforward fruit profiles. This distinction is evident in descriptors like \"spice\" on the positive side and \"plenty\" and \"barrel\" on the negative side.\n3. Positive pole: Wines at the positive pole exhibit a pronounced spiciness, often described with terms like \"gravelly mouthfeel,\" \"stony texture,\" and \"spicy.\" These wines tend to have a more complex, aromatic profile with notable spice elements.\n4. Negative pole: Wines at the negative pole focus more on fruit-driven characteristics, such as \"green apple,\" \"citrus,\" and \"cherry.\" They are generally described as having a more direct, less complex fruit profile without significant spicy undertones."
+  },
+  {
+    "component_index": 15,
+    "matching_policy": "same_color",
+    "descriptor_summary": {
+      "positive": [],
+      "negative": [
+        "blackberry",
+        "cherry",
+        "easy-drinking",
+        "pepper"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: red",
+      "Positive-side families seen: bordeaux_red, light_red, red_blend, rhone_red",
+      "Negative-side families seen: iberian_red, light_red, red_blend",
+      "Countries present: France, Italy, Spain, US"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 113556,
+        "negative_row_index": 7346,
+        "control_distance": 2.302816152572632,
+        "target_gap": 2.5715718269348145,
+        "positive_label": "Epiphany 2011 Gypsy Red (Santa Barbara County)",
+        "negative_label": "Paso a Paso 2012 Estate Bottled Tempranillo (La Mancha)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "rhone_red",
+        "negative_variety_family": "iberian_red",
+        "positive_country": "US",
+        "negative_country": "Spain",
+        "positive_text": "Earthy aromas of fresh tarragon and burnt cedar make an intriguing start to this wine, whose soft opening on the pala...",
+        "negative_text": "Robust black-fruit aromas suggest plum and blackberry. This everyday red is concentrated, generous and packed with po..."
+      },
+      {
+        "positive_row_index": 44519,
+        "negative_row_index": 74567,
+        "control_distance": 2.544886350631714,
+        "target_gap": 2.5220720767974854,
+        "positive_label": "Scott Paul 2013 Azana Pinot Noir (Chehalem Mountains)",
+        "negative_label": "Gary Farrell 2005 Hallberg Vineyard Pinot Noir (Russian River Valley)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "light_red",
+        "negative_variety_family": "light_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "Previously lableled Quatre Journaux, this is now vineyard-designated, but otherwise everything remains unchanged. It'...",
+        "negative_text": "The vineyard is relatively new, and the block from which this wine was made is entirely Dijon clone 777. It's a rich,..."
+      },
+      {
+        "positive_row_index": 107569,
+        "negative_row_index": 49102,
+        "control_distance": 2.559248924255371,
+        "target_gap": 2.6991124153137207,
+        "positive_label": "Francesc Sanchez Bas 2004 Montgarnatx Red (Priorat)",
+        "negative_label": "Castello di Poppiano 2011 Syrah Red (Toscana)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "red_blend",
+        "negative_variety_family": "red_blend",
+        "positive_country": "Spain",
+        "negative_country": "Italy",
+        "positive_text": "A little rusty in color and somewhat transparent, with raisin as the key aroma. There's not a lot going on in the mou...",
+        "negative_text": "This easy-drinking wine opens with aromas of ripe blackberry, blueberry and cooking spices. The palate offers one-dim..."
+      },
+      {
+        "positive_row_index": 83094,
+        "negative_row_index": 42082,
+        "control_distance": 2.6074485778808594,
+        "target_gap": 2.5653815269470215,
+        "positive_label": "Etablissements Thunevin 2014 Mauvais Gar\u00e7on  (Bordeaux)",
+        "negative_label": "Tenuta La Marchesa 2011 Gold Label Red (Monferrato)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "bordeaux_red",
+        "negative_variety_family": "red_blend",
+        "positive_country": "France",
+        "negative_country": "Italy",
+        "positive_text": "Named after Jean-Luc Thunevin's reputation as being the bad boy of Saint-Emilion (because he broke into the hallowed...",
+        "negative_text": "The 2011 Gold Label Monferrato Rosso offers delicious ripe fruit and spice. It's loaded with blackberry, raspberry, b..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC15\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n- PC2: Rose vs. Sparkling\n- PC3: Zest vs. Peppery Notes\n- PC4: Light Red vs. Bordeaux Red Blend\n- PC5: Savory vs. Syrah/Blend\n- PC6: Tobacco vs. Underbrush\n- PC7: Forward vs. Currant\n- PC8: Oakiness vs. Simplicity\n- PC9: Spice vs. Fruit\n\nCurrent matching policy: same_color\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: red\n- Positive-side families seen: bordeaux_red, light_red, red_blend, rhone_red\n- Negative-side families seen: iberian_red, light_red, red_blend\n- Countries present: France, Italy, Spain, US\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: none\n- More common on negative side: blackberry, cherry, easy-drinking, pepper\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=2.3028 | PC gap=2.5716\nPositive note: Earthy aromas of fresh tarragon and burnt cedar make an intriguing start to this wine, whose soft opening on the pala...\nNegative note: Robust black-fruit aromas suggest plum and blackberry. This everyday red is concentrated, generous and packed with po...\nPair 2 | control distance=2.5449 | PC gap=2.5221\nPositive note: Previously lableled Quatre Journaux, this is now vineyard-designated, but otherwise everything remains unchanged. It'...\nNegative note: The vineyard is relatively new, and the block from which this wine was made is entirely Dijon clone 777. It's a rich,...\nPair 3 | control distance=2.5592 | PC gap=2.6991\nPositive note: A little rusty in color and somewhat transparent, with raisin as the key aroma. There's not a lot going on in the mou...\nNegative note: This easy-drinking wine opens with aromas of ripe blackberry, blueberry and cooking spices. The palate offers one-dim...\nPair 4 | control distance=2.6074 | PC gap=2.5654\nPositive note: Named after Jean-Luc Thunevin's reputation as being the bad boy of Saint-Emilion (because he broke into the hallowed...\nNegative note: The 2011 Gold Label Monferrato Rosso offers delicious ripe fruit and spice. It's loaded with blackberry, raspberry, b...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Earthy vs. Fruity\n2. What changes: Across the pairs, the wines diverge primarily in their emphasis on earthy, herbal notes versus more pronounced fruit aromas and flavors.\n3. Positive pole: The positive side features wines with prominent earthy aromas such as tarragon, burnt cedar, and raisin, alongside a more subtle fruit profile.\n4. Negative pole: The negative side showcases wines with robust blackberry, blueberry, and ripe fruit characteristics, often described as easy-drinking and packed with fruit flavor."
+  },
+  {
+    "component_index": 16,
+    "matching_policy": "same_color_family",
+    "descriptor_summary": {
+      "positive": [],
+      "negative": [
+        "berry",
+        "merlot"
+      ]
+    },
+    "constraint_summary": [
+      "Colors present in matched pairs: red, rose",
+      "Positive-side families seen: bordeaux_red, rhone_red, rose",
+      "Negative-side families seen: bordeaux_red, rhone_red, rose",
+      "Countries present: France, Portugal, Spain, US"
+    ],
+    "pairs": [
+      {
+        "positive_row_index": 76236,
+        "negative_row_index": 37215,
+        "control_distance": 3.0085086822509766,
+        "target_gap": 2.4118552207946777,
+        "positive_label": "HammerSky 2013 Ros\u00e9 (Paso Robles)",
+        "negative_label": "Bedell 2015 Taste Ros\u00e9 (North Fork of Long Island)",
+        "positive_color": "rose",
+        "negative_color": "rose",
+        "positive_variety_family": "rose",
+        "negative_variety_family": "rose",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "There's a respectably complex nose on this pink wine, with lemonade and pressed plums blending into a wet cement mine...",
+        "negative_text": "While initially a bit smoky and closed on the nose, time and aeration reveal the elegant briar and raspberry aromas o..."
+      },
+      {
+        "positive_row_index": 46563,
+        "negative_row_index": 27589,
+        "control_distance": 3.4870524406433105,
+        "target_gap": 2.395686626434326,
+        "positive_label": "Herdade do Rocim 2013 Mariana Ros\u00e9 (Alentejano)",
+        "negative_label": "Pradorey 2016 Tempranillo-Merlot Fermentado en Barrica Rosado (Ribera del Duero)",
+        "positive_color": "rose",
+        "negative_color": "rose",
+        "positive_variety_family": "rose",
+        "negative_variety_family": "rose",
+        "positive_country": "Portugal",
+        "negative_country": "Spain",
+        "positive_text": "This appealing blend of Touriga Nacional and Aragonez gives a fresh, crisp red fruited wine. Just the right amount of...",
+        "negative_text": "This red-colored barrel-fermented ros\u00e9 of Tempranillo and Merlot smells funky and gummy. Flat on the palate, this tas..."
+      },
+      {
+        "positive_row_index": 76437,
+        "negative_row_index": 16565,
+        "control_distance": 3.553215265274048,
+        "target_gap": 2.364744186401367,
+        "positive_label": "Trust 2013 Syrah (Walla Walla Valley (WA))",
+        "negative_label": "Dashe Cellars 2010 Les Enfants Terribles Grenache (Dry Creek Valley)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "rhone_red",
+        "negative_variety_family": "rhone_red",
+        "positive_country": "US",
+        "negative_country": "US",
+        "positive_text": "Fragrant aromas of mortared herbs, violets and red fruit lead to velvety soft red and blue-fruit flavors. It's a very...",
+        "negative_text": "While it shows modest cherry pie filling flavors, it's simple and sweet, with a harshness from acidity and tannins."
+      },
+      {
+        "positive_row_index": 113356,
+        "negative_row_index": 111927,
+        "control_distance": 3.618518114089966,
+        "target_gap": 2.4416990280151367,
+        "positive_label": "Ch\u00e2teau Tour Saint-Joseph 2007  Haut-M\u00e9doc",
+        "negative_label": "Ch\u00e2teau de Lagarde 2016 Le Petit du Ch\u00e2teau de Lagarde  (Bordeaux)",
+        "positive_color": "red",
+        "negative_color": "red",
+        "positive_variety_family": "bordeaux_red",
+        "negative_variety_family": "bordeaux_red",
+        "positive_country": "France",
+        "negative_country": "France",
+        "positive_text": "On the austere side, the tannins dry and firm. The fruit flavors echo the severe character, with red currant flavors...",
+        "negative_text": "With no added sulfur, this ripe, young wine is broad with spice and some firm tannins. Its berry flavors are still do..."
+      }
+    ],
+    "llm_prompt": "You are analyzing one PCA direction in wine-review embedding space.\nCurrent component: PC16\n\nEarlier PCs already accounted for. Avoid restating them:\n- PC1: Wood aging vs. Freshness\n- PC2: Rose vs. Sparkling\n- PC3: Zest vs. Peppery Notes\n- PC4: Light Red vs. Bordeaux Red Blend\n- PC5: Savory vs. Syrah/Blend\n- PC6: Tobacco vs. Underbrush\n- PC7: Forward vs. Currant\n- PC8: Oakiness vs. Simplicity\n- PC9: Spice vs. Fruit\n- PC10: Earthy vs. Fruity\n\nCurrent matching policy: same_color_family\n\nRespect the matching policy. Do not describe differences that violate it. For example, if the pairs are matched on color or variety family, do not claim the axis is red-vs-white or Pinot-vs-Cabernet. Do not use producer names, regions, countries, or explicit grape names as the axis label unless the tasting-note contrast itself clearly requires it.\n\nObserved matched-pair scope:\n- Colors present in matched pairs: red, rose\n- Positive-side families seen: bordeaux_red, rhone_red, rose\n- Negative-side families seen: bordeaux_red, rhone_red, rose\n- Countries present: France, Portugal, Spain, US\n\nDescriptor enrichment across the matched pairs:\n- More common on positive side: none\n- More common on negative side: berry, merlot\n\nBelow are matched positive/negative wine pairs. In each pair, the wines are similar on earlier PCs and differ mainly on the current PC.\n\nPair 1 | control distance=3.0085 | PC gap=2.4119\nPositive note: There's a respectably complex nose on this pink wine, with lemonade and pressed plums blending into a wet cement mine...\nNegative note: While initially a bit smoky and closed on the nose, time and aeration reveal the elegant briar and raspberry aromas o...\nPair 2 | control distance=3.4871 | PC gap=2.3957\nPositive note: This appealing blend of Touriga Nacional and Aragonez gives a fresh, crisp red fruited wine. Just the right amount of...\nNegative note: This red-colored barrel-fermented ros\u00e9 of Tempranillo and Merlot smells funky and gummy. Flat on the palate, this tas...\nPair 3 | control distance=3.5532 | PC gap=2.3647\nPositive note: Fragrant aromas of mortared herbs, violets and red fruit lead to velvety soft red and blue-fruit flavors. It's a very...\nNegative note: While it shows modest cherry pie filling flavors, it's simple and sweet, with a harshness from acidity and tannins.\nPair 4 | control distance=3.6185 | PC gap=2.4417\nPositive note: On the austere side, the tannins dry and firm. The fruit flavors echo the severe character, with red currant flavors...\nNegative note: With no added sulfur, this ripe, young wine is broad with spice and some firm tannins. Its berry flavors are still do...\n\nExplain what specific residual contrast this PC is capturing after earlier directions are controlled for.\n\nReturn exactly 4 short sections:\n1. Axis label: concise and wine-specific.\n2. What changes: 2-4 sentences focused on what shifts across the pairs.\n3. Positive pole: 1-3 sentences.\n4. Negative pole: 1-3 sentences.\n",
+    "llm_explanation": "1. Axis label: Rose vs. Red\n2. What changes: The primary distinction captured by PC16 is the difference between rose and red wines, particularly focusing on the balance between freshness and complexity. This axis highlights how wines transition from more delicate, fruity profiles to richer, more structured ones.\n3. Positive pole: Wines at the positive pole exhibit a harmonious blend of fresh, fruity aromas and flavors, often with a lighter body and a more approachable profile. These wines tend to have a more immediate appeal, with notes of lemonade, pressed plums, and fresh red fruits.\n4. Negative pole: Wines at the negative pole display a more complex and structured character, with a focus on depth and intensity. These wines often have more pronounced flavors of earthy, herbal notes, and a firmer texture, reflecting a more mature and robust style."
+  }
+]

@@ -1,0 +1,4 @@
+torch
+uvicorn
+pydantic
+transformers
