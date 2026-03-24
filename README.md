@@ -1,13 +1,26 @@
 # preference-learning-dev
 
+[uv](https://github.com/astral-sh/uv)
 
-```
-Datasets/
-  matrix - All rewrited sentences
-  matrix_deltas_204x1000 - Deltas from embeddings
-  matrix_embedded - embedded sentences (good for PCA)
-  sentences.csv - og sentences
-  styles.csv - style descriptions
-  description_embeddings - descriptions embedded
-```
-matrix files are on gdrive: [https://drive.google.com/drive/folders/1mUM9TedSOkJTSsTK4p_odYr74hwW2U1X?usp=share_link](https://drive.google.com/drive/folders/1mUM9TedSOkJTSsTK4p_odYr74hwW2U1X?usp=share_link)
+`uv sync`
+
+
+
+## ORCD Commands
+**on login node**
+ssh -N -L 8000:127.0.0.1:8000 ayushn@nodeXXXX
+
+**on gpu node**
+python -m vllm.entrypoints.openai.api_server \
+  --model "Qwen/Qwen2.5-7B-Instruct" \
+  --dtype bfloat16 \
+  --gpu-memory-utilization 0.90 \
+  --max-model-len 2048 \
+  --enable-prefix-caching \
+  --max-num-seqs 256 \
+  --max-num-batched-tokens 65536 \
+  --port 8000
+  
+
+**on local machine**
+ssh -N -L 8000:127.0.0.1:8000 ayushn@orcd-login001.mit.edu
