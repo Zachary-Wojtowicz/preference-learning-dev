@@ -1,0 +1,59 @@
+[
+  {
+    "trial_id": "t1",
+    "prompt": "Which wine would you prefer to drink tonight?",
+    "option_a": {
+      "label": "Option A",
+      "text": "A bold Napa Cabernet with dark cherry notes, firm tannins, and a long oaky finish."
+    },
+    "option_b": {
+      "label": "Option B",
+      "text": "A crisp Sancerre with citrus and flint minerality, light body, and a clean finish."
+    },
+    "sliders": [
+      { "id": "boldness",    "label": "Flavor Boldness",    "value_if_a":  75, "value_if_b": -75 },
+      { "id": "sweetness",   "label": "Sweetness",          "value_if_a":  20, "value_if_b": -20 },
+      { "id": "complexity",  "label": "Complexity",          "value_if_a":  65, "value_if_b": -65 },
+      { "id": "familiarity", "label": "Familiarity",         "value_if_a":  40, "value_if_b": -40 },
+      { "id": "food_match",  "label": "Food Pairing Fit",   "value_if_a":  55, "value_if_b": -55 }
+    ]
+  },
+  {
+    "trial_id": "t2",
+    "prompt": "Which vacation destination appeals to you more?",
+    "option_a": {
+      "label": "Option A",
+      "text": "A secluded mountain cabin in the Swiss Alps with hiking trails, crisp air, and no Wi-Fi."
+    },
+    "option_b": {
+      "label": "Option B",
+      "text": "A beachfront resort in Bali with surf lessons, tropical cocktails, and a lively night market nearby."
+    },
+    "sliders": [
+      { "id": "relaxation",   "label": "Relaxation",          "value_if_a":  80, "value_if_b": -80 },
+      { "id": "adventure",    "label": "Adventure",           "value_if_a":  60, "value_if_b": -60 },
+      { "id": "social",       "label": "Social Activity",     "value_if_a": -40, "value_if_b":  40 },
+      { "id": "novelty",      "label": "Novelty",             "value_if_a":  30, "value_if_b": -30 },
+      { "id": "disconnection","label": "Digital Disconnect",  "value_if_a":  90, "value_if_b": -90 }
+    ]
+  },
+  {
+    "trial_id": "t3",
+    "prompt": "Which book would you rather read next?",
+    "option_a": {
+      "label": "Option A",
+      "text": "A 700-page historical epic set during the fall of Constantinople, rich with political intrigue and dense prose."
+    },
+    "option_b": {
+      "label": "Option B",
+      "text": "A short, punchy sci-fi novella about first contact, told entirely through intercepted radio transmissions."
+    },
+    "sliders": [
+      { "id": "immersion",    "label": "Immersion Depth",     "value_if_a":  85, "value_if_b": -85 },
+      { "id": "commitment",   "label": "Time Commitment",     "value_if_a":  90, "value_if_b": -90 },
+      { "id": "originality",  "label": "Originality",         "value_if_a":  35, "value_if_b": -35 },
+      { "id": "accessibility","label": "Accessibility",       "value_if_a": -30, "value_if_b":  30 },
+      { "id": "reread",       "label": "Re-read Potential",   "value_if_a":  50, "value_if_b": -50 }
+    ]
+  }
+]

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preference Elicitation Experiment</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f4f5f7;
+    color: #1a1a1a;
+    line-height: 1.5;
+    padding: 2rem 1rem;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .progress {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .prompt {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .options {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .option-card {
+    flex: 1;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: border-color 0.15s, opacity 0.15s, box-shadow 0.15s;
+  }
+
+  .option-card:hover {
+    border-color: #999;
+  }
+
+  .option-card.selected {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+  }
+
+  .option-card.dimmed {
+    opacity: 0.55;
+  }
+
+  .option-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .option-card p {
+    font-size: 0.9rem;
+    color: #444;
+  }
+
+  .slider-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, margin-top 0.35s ease;
+    margin-top: 0;
+  }
+
+  .slider-panel.visible {
+    max-height: 500px;
+    margin-top: 1.5rem;
+  }
+
+  .slider-panel-inner {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .slider-row:last-child { margin-bottom: 0; }
+
+  .slider-label {
+    width: 140px;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .slider-row input[type="range"] {
+    flex: 1;
+    accent-color: #3b82f6;
+  }
+
+  .slider-value {
+    width: 36px;
+    flex-shrink: 0;
+    text-align: right;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    color: #555;
+  }
+
+  .submit-row {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .btn {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 2rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .btn:disabled {
+    background: #a0a0a0;
+    cursor: not-allowed;
+  }
+
+  .btn:not(:disabled):hover {
+    background: #2563eb;
+  }
+
+  /* Results screen */
+  .results h1 {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .results pre {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.25rem;
+    overflow-x: auto;
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  .results .copy-row {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .error-msg {
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 2rem;
+    color: #b91c1c;
+  }
+
+  .error-msg code {
+    display: block;
+    margin-top: 0.75rem;
+    color: #444;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 560px) {
+    .options { flex-direction: column; }
+    .slider-label { width: 110px; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container" id="app"></div>
+
+<script>
+(function () {
+  const app = document.getElementById('app');
+  let trials = [];
+  let currentIndex = 0;
+  let responses = [];
+  let chosen = null; // 'a' | 'b' | null
+
+  // Boot
+  fetch('trials.json')
+    .then(r => {
+      if (!r.ok) throw new Error(r.statusText);
+      return r.json();
+    })
+    .then(data => {
+      trials = data;
+      renderTrial();
+    })
+    .catch(() => {
+      app.innerHTML =
+        '<div class="error-msg">Could not load <strong>trials.json</strong>.' +
+        '<code>python3 -m http.server</code></div>';
+    });
+
+  function renderTrial() {
+    const trial = trials[currentIndex];
+    chosen = null;
+
+    let html = '';
+    html += '<div class="progress">Trial ' + (currentIndex + 1) + ' of ' + trials.length + '</div>';
+
+    if (trial.prompt) {
+      html += '<div class="prompt">' + esc(trial.prompt) + '</div>';
+    }
+
+    html += '<div class="options">';
+    html += card('a', trial.option_a);
+    html += card('b', trial.option_b);
+    html += '</div>';
+
+    html += '<div class="slider-panel" id="sliderPanel"><div class="slider-panel-inner">';
+    trial.sliders.forEach(s => {
+      html += '<div class="slider-row">';
+      html += '<span class="slider-label">' + esc(s.label) + '</span>';
+      html += '<input type="range" min="-100" max="100" step="1" value="0" data-id="' + s.id + '">';
+      html += '<span class="slider-value" data-for="' + s.id + '">0</span>';
+      html += '</div>';
+    });
+    html += '</div></div>';
+
+    html += '<div class="submit-row"><button class="btn" id="submitBtn" disabled>Submit</button></div>';
+
+    app.innerHTML = html;
+
+    // Wire up option cards
+    app.querySelectorAll('.option-card').forEach(el => {
+      el.addEventListener('click', () => selectOption(el.dataset.option));
+    });
+
+    // Wire up sliders
+    app.querySelectorAll('input[type="range"]').forEach(input => {
+      input.addEventListener('input', () => {
+        app.querySelector('.slider-value[data-for="' + input.dataset.id + '"]').textContent = input.value;
+      });
+    });
+
+    // Wire up submit
+    document.getElementById('submitBtn').addEventListener('click', submitTrial);
+  }
+
+  function card(key, opt) {
+    return '<div class="option-card" data-option="' + key + '">' +
+      '<h3>' + esc(opt.label) + '</h3>' +
+      '<p>' + esc(opt.text) + '</p></div>';
+  }
+
+  function selectOption(key) {
+    chosen = key;
+    const trial = trials[currentIndex];
+
+    // Visual state
+    app.querySelectorAll('.option-card').forEach(el => {
+      const isChosen = el.dataset.option === key;
+      el.classList.toggle('selected', isChosen);
+      el.classList.toggle('dimmed', !isChosen);
+    });
+
+    // Populate sliders
+    trial.sliders.forEach(s => {
+      const val = key === 'a' ? s.value_if_a : s.value_if_b;
+      const input = app.querySelector('input[data-id="' + s.id + '"]');
+      input.value = val;
+      app.querySelector('.slider-value[data-for="' + s.id + '"]').textContent = val;
+    });
+
+    // Reveal panel
+    document.getElementById('sliderPanel').classList.add('visible');
+    document.getElementById('submitBtn').disabled = false;
+  }
+
+  function submitTrial() {
+    const trial = trials[currentIndex];
+    const sliderValues = {};
+    trial.sliders.forEach(s => {
+      sliderValues[s.id] = parseInt(app.querySelector('input[data-id="' + s.id + '"]').value, 10);
+    });
+
+    responses.push({
+      trial_id: trial.trial_id,
+      chosen: chosen,
+      slider_values: sliderValues
+    });
+
+    currentIndex++;
+    if (currentIndex < trials.length) {
+      renderTrial();
+    } else {
+      renderResults();
+    }
+  }
+
+  function renderResults() {
+    const output = JSON.stringify({ responses: responses }, null, 2);
+    app.innerHTML =
+      '<div class="results">' +
+        '<h1>Experiment Complete</h1>' +
+        '<pre><code>' + esc(output) + '</code></pre>' +
+        '<div class="copy-row"><button class="btn" id="copyBtn">Copy to Clipboard</button></div>' +
+      '</div>';
+
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(output).then(() => {
+        document.getElementById('copyBtn').textContent = 'Copied!';
+        setTimeout(() => { document.getElementById('copyBtn').textContent = 'Copy to Clipboard'; }, 1500);
+      });
+    });
+  }
+
+  function esc(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+})();
+</script>
+</body>
+</html>
