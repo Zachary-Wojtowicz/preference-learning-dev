@@ -11,10 +11,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from transformers import AutoModel, AutoTokenizer
 
-MODEL_NAME = "Qwen/Qwen2.5-0.5B"
-LAYER = 5
-BATCH_SIZE = 512
-MAX_LENGTH = 128
+MODEL_NAME = "Qwen/Qwen2.5-7B"
+LAYER = 16
+BATCH_SIZE = 128
+MAX_LENGTH = 512
 PORT = 8000
 
 model = None
@@ -144,6 +144,4 @@ async def create_embeddings(req: EmbeddingRequest):
 
 
 if __name__ == "__main__":
-    uvicorn.run(
-        "embedding_server:app", host="0.0.0.0", port=PORT, workers=1, log_level="info"
-    )
+    uvicorn.run(app, host="0.0.0.0", port=PORT, workers=1, log_level="info")
