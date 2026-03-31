@@ -1,0 +1,49 @@
+dimension_id,dimension_name,option_id,display_text,bt_score
+1,Flavor Intensity,0,Nicosia 2013 Vulkà Bianco  (Etna),-0.574167
+1,Flavor Intensity,1,Quinta dos Avidagos 2011 Avidagos Red (Douro),0.088969
+1,Flavor Intensity,2,Rainstorm 2013 Pinot Gris (Willamette Valley),0.138082
+1,Flavor Intensity,3,St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore),0.427077
+1,Flavor Intensity,4,Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley),-0.679457
+1,Flavor Intensity,5,Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra),1.0
+1,Flavor Intensity,6,Terre di Giurfo 2013 Belsito Frappato (Vittoria),-0.62352
+1,Flavor Intensity,7,Trimbach 2012 Gewurztraminer (Alsace),-0.262613
+1,Flavor Intensity,8,Heinz Eifel 2013 Shine Gewürztraminer (Rheinhessen),-0.247171
+1,Flavor Intensity,9,Jean-Baptiste Adam 2012 Les Natures Pinot Gris (Alsace),-0.187601
+1,Flavor Intensity,10,Kirkland Signature 2011 Mountain Cuvée Cabernet Sauvignon (Napa Valley),0.686177
+1,Flavor Intensity,11,Leon Beyer 2012 Gewurztraminer (Alsace),0.234224
+2,Sweetness Level,0,Nicosia 2013 Vulkà Bianco  (Etna),0.046163
+2,Sweetness Level,1,Quinta dos Avidagos 2011 Avidagos Red (Douro),0.14685
+2,Sweetness Level,2,Rainstorm 2013 Pinot Gris (Willamette Valley),-0.334143
+2,Sweetness Level,3,St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore),-0.215415
+2,Sweetness Level,4,Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley),-0.424233
+2,Sweetness Level,5,Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra),0.204212
+2,Sweetness Level,6,Terre di Giurfo 2013 Belsito Frappato (Vittoria),0.22055
+2,Sweetness Level,7,Trimbach 2012 Gewurztraminer (Alsace),-0.396938
+2,Sweetness Level,8,Heinz Eifel 2013 Shine Gewürztraminer (Rheinhessen),1.0
+2,Sweetness Level,9,Jean-Baptiste Adam 2012 Les Natures Pinot Gris (Alsace),0.587336
+2,Sweetness Level,10,Kirkland Signature 2011 Mountain Cuvée Cabernet Sauvignon (Napa Valley),-0.383436
+2,Sweetness Level,11,Leon Beyer 2012 Gewurztraminer (Alsace),-0.450947
+3,Tannin Presence,0,Nicosia 2013 Vulkà Bianco  (Etna),-1.0
+3,Tannin Presence,1,Quinta dos Avidagos 2011 Avidagos Red (Douro),0.752289
+3,Tannin Presence,2,Rainstorm 2013 Pinot Gris (Willamette Valley),-0.614871
+3,Tannin Presence,3,St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore),-0.058186
+3,Tannin Presence,4,Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley),0.90195
+3,Tannin Presence,5,Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra),0.598007
+3,Tannin Presence,6,Terre di Giurfo 2013 Belsito Frappato (Vittoria),0.352837
+3,Tannin Presence,7,Trimbach 2012 Gewurztraminer (Alsace),-0.452919
+3,Tannin Presence,8,Heinz Eifel 2013 Shine Gewürztraminer (Rheinhessen),-0.69387
+3,Tannin Presence,9,Jean-Baptiste Adam 2012 Les Natures Pinot Gris (Alsace),-0.24653
+3,Tannin Presence,10,Kirkland Signature 2011 Mountain Cuvée Cabernet Sauvignon (Napa Valley),0.30918
+3,Tannin Presence,11,Leon Beyer 2012 Gewurztraminer (Alsace),0.152112
+4,Acidity Balance,0,Nicosia 2013 Vulkà Bianco  (Etna),0.062843
+4,Acidity Balance,1,Quinta dos Avidagos 2011 Avidagos Red (Douro),-0.188519
+4,Acidity Balance,2,Rainstorm 2013 Pinot Gris (Willamette Valley),1.0
+4,Acidity Balance,3,St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore),0.562033
+4,Acidity Balance,4,Sweet Cheeks 2012 Vintner's Reserve Wild Child Block Pinot Noir (Willamette Valley),-0.563038
+4,Acidity Balance,5,Tandem 2011 Ars In Vitro Tempranillo-Merlot (Navarra),0.41986
+4,Acidity Balance,6,Terre di Giurfo 2013 Belsito Frappato (Vittoria),-0.296605
+4,Acidity Balance,7,Trimbach 2012 Gewurztraminer (Alsace),-0.200848
+4,Acidity Balance,8,Heinz Eifel 2013 Shine Gewürztraminer (Rheinhessen),0.135027
+4,Acidity Balance,9,Jean-Baptiste Adam 2012 Les Natures Pinot Gris (Alsace),-0.707344
+4,Acidity Balance,10,Kirkland Signature 2011 Mountain Cuvée Cabernet Sauvignon (Napa Valley),-0.905089
+4,Acidity Balance,11,Leon Beyer 2012 Gewurztraminer (Alsace),0.68168

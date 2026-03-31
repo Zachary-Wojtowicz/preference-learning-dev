@@ -10,7 +10,7 @@ The simulation replaces human subjects with synthetic users who have known groun
 
 This script depends on outputs from two earlier pipeline stages:
 
-1. **BTL scores** (`method_llm_gen/outputs/<run>/bt_scores.csv`): Each option's score on each of K LLM-generated dimensions.
+1. **BTL scores** (`method_llm_gen_fork/outputs/<run>/bt_scores.csv`): Each option's score on each of K LLM-generated dimensions.
 2. **Direction vectors** (`method_directions/outputs/<run>/directions.npz`): The K direction vectors in embedding space (from `find_directions.py`), plus the mean embedding.
 3. **Embeddings** (the original parquet): Raw embeddings for all options.
 
@@ -18,7 +18,7 @@ This script depends on outputs from two earlier pipeline stages:
 
 ### Option representation
 
-Each option (movie/wine) aᵢ has:
+Each option (e.g., movie/wine) aᵢ has:
 - An embedding φ(aᵢ) ∈ ℝᵈ (from the parquet)
 - A feature vector s(aᵢ) ∈ ℝᴷ of BTL scores across the K interpretable dimensions
 - A projection λ(aᵢ) = V⊤(φ(aᵢ) − μ) ∈ ℝᴷ where V is the orthonormal direction matrix and μ is the mean embedding
@@ -122,7 +122,7 @@ Write to `simulation/outputs/<run_name>/`:
 
 ```
 python simulation/run_simulation.py \
-  --embeddings-parquet datasets/wine-130k_embedded.parquet \
+  --embeddings-parquet datasets/movielens-32m-enriched-50-embedded.parquet \
   --bt-scores method_llm_gen/outputs/<run>/bt_scores.csv \
   --directions method_directions/outputs/<run>/directions.npz \
   --output-dir simulation/outputs/<run_name> \

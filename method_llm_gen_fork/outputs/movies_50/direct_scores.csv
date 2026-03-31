@@ -1,0 +1,501 @@
+dimension_id,dimension_name,option_id,display_text,score,zero_reason,justification
+1,Action Intensity,1,Toy Story (1995),1,null,Toy Story includes some adventurous scenarios and obstacles but primarily focuses on character development and dialogue.
+1,Action Intensity,2,Jumanji (1995),3,null,"While 'Jumanji' includes adventurous and fantastical elements, the movie features a moderate amount of action sequences that are not extremely intense."
+1,Action Intensity,3,Grumpier Old Men (1995),1,null,The movie focuses primarily on comedy and character interactions with minimal action sequences.
+1,Action Intensity,4,Waiting to Exhale (1995),0,null,The plot summary indicates a focus on character development and emotional journeys without any mention of action sequences.
+1,Action Intensity,5,Father of the Bride Part II (1995),1,null,The plot summary indicates a focus on family dynamics and personal growth with no mention of action sequences.
+1,Action Intensity,6,Heat (1995),3,null,"Heat (1995) features several intense action scenes, particularly during heists and confrontations, but also emphasizes character development and dialogue."
+1,Action Intensity,7,Sabrina (1995),0,null,The plot summary indicates that 'Sabrina' focuses on romance and character development with no mention of action sequences.
+1,Action Intensity,8,Tom and Huck (1995),2,null,"The plot summary indicates a focus on friendship, loyalty, and the innocence of childhood with various adventures, suggesting moderate action but not intense or frequent action scenes."
+1,Action Intensity,9,Sudden Death (1995),4,null,"The plot summary indicates a movie with frequent and intense action sequences, fitting well into the high-action category."
+1,Action Intensity,10,GoldenEye (1995),4,null,"The movie features multiple intense action sequences, thrilling chase scenes, and a climactic showdown, indicating a high level of action."
+1,Action Intensity,11,"American President, The (1995)",0,null,The American President focuses primarily on political drama and romance with no significant action sequences.
+1,Action Intensity,12,Dracula: Dead and Loving It (1995),1,null,The movie primarily focuses on comedy and parody rather than intense action sequences.
+1,Action Intensity,13,Balto (1995),2,null,"While Balto involves a journey with challenges, these are not characterized by intense action scenes or stunts."
+1,Action Intensity,14,Nixon (1995),0,null,"The movie 'Nixon' focuses heavily on dialogue and character development, with no significant action sequences."
+1,Action Intensity,15,Cutthroat Island (1995),4,null,"The movie features numerous high-seas action sequences and battles, indicating a significant presence of intense action."
+1,Action Intensity,16,Casino (1995),1,null,"Casino focuses primarily on character development and dialogue, with minimal emphasis on action sequences."
+1,Action Intensity,17,Sense and Sensibility (1995),0,null,"Sense and Sensibility focuses primarily on character development and dialogue, with no significant action scenes."
+1,Action Intensity,18,Four Rooms (1995),1,null,The plot summary indicates a focus on quirky characters and absurd situations rather than intense action scenes.
+1,Action Intensity,19,Ace Ventura: When Nature Calls (1995),1,null,The movie focuses on comedy and eccentric adventures with minimal action sequences.
+1,Action Intensity,20,Money Train (1995),3,null,"Money Train contains several intense action scenes and stunts, though it also focuses on character dynamics and plot twists."
+1,Action Intensity,21,Get Shorty (1995),2,null,"While 'Get Shorty' includes some action sequences, they are not frequent nor particularly intense, and the film focuses more on its comedic and character-driven elements."
+1,Action Intensity,22,Copycat (1995),2,null,"While 'Copycat' includes tense and suspenseful moments, it primarily focuses on psychological tension and character development rather than intense action sequences."
+1,Action Intensity,23,Assassins (1995),3,null,"The movie features multiple action-packed sequences and a fast-paced plot involving assassins, which indicates a significant presence of intense action."
+1,Action Intensity,24,Powder (1995),1,null,The movie focuses primarily on character development and emotional depth rather than action sequences.
+1,Action Intensity,25,Leaving Las Vegas (1995),0,null,The movie focuses heavily on character development and emotional depth with virtually no action sequences.
+1,Action Intensity,26,Othello (1995),1,null,"The plot summary indicates a focus on betrayal, jealousy, and revenge, which suggests a narrative driven by dialogue and character interactions rather than action."
+1,Action Intensity,27,Now and Then (1995),0,null,The plot summary indicates a focus on character development and emotional themes without any mention of action sequences.
+1,Action Intensity,28,Persuasion (1995),0,null,"Persuasion is a drama and romance film that focuses heavily on character development and dialogue, with no significant action scenes."
+1,Action Intensity,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",2,null,"The movie contains some action sequences but focuses more on its surreal visuals, plot, and character development."
+1,Action Intensity,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),1,null,"The plot summary indicates a focus on themes of power, loyalty, and consequences through dialogue and character development rather than intense action scenes."
+1,Action Intensity,31,Dangerous Minds (1995),1,null,"The plot summary indicates that 'Dangerous Minds' focuses on themes of education, race, and empowerment through character development and dialogue, with no significant mention of action scenes."
+1,Action Intensity,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),2,null,"While 'Twelve Monkeys' contains some action sequences, it primarily focuses on its complex narrative, psychological elements, and character development."
+1,Action Intensity,33,Wings of Courage (1995),2,null,The movie focuses on the biographical and emotional journey of the characters with a narrative centered around their adventures in aviation rather than intense action sequences.
+1,Action Intensity,34,Babe (1995),0,null,Babe is a heartwarming family film focused on character development and emotional themes with virtually no action sequences.
+1,Action Intensity,35,Carrington (1995),0,null,Carrington is a biographical drama focused on character development and relationships with no significant action sequences.
+1,Action Intensity,36,Dead Man Walking (1995),0,null,"The movie focuses heavily on dialogue and character development, with no significant action sequences."
+1,Action Intensity,37,Across the Sea of Time (1995),0,null,The movie is a documentary with a focus on storytelling and visual exploration rather than action sequences.
+1,Action Intensity,38,It Takes Two (1995),1,null,The plot summary indicates a focus on humor and heartfelt moments with no mention of significant action sequences.
+1,Action Intensity,39,Clueless (1995),1,null,"Clueless focuses primarily on dialogue, character development, and romantic comedy elements with no significant action scenes."
+1,Action Intensity,40,"Cry, the Beloved Country (1995)",0,null,"The movie focuses on character development and dialogue, with no significant action scenes."
+1,Action Intensity,41,Richard III (1995),1,null,The movie focuses primarily on political manipulation and psychological warfare rather than physical action sequences.
+1,Action Intensity,42,Dead Presidents (1995),3,null,"The movie includes a heist plot and associated action sequences, but it also focuses significantly on character development and social issues."
+1,Action Intensity,43,Restoration (1995),1,null,The plot summary indicates a focus on character development and historical drama with no mention of significant action sequences.
+1,Action Intensity,44,Mortal Kombat (1995),4,null,The movie features frequent and intense action scenes characteristic of its genre and source material.
+1,Action Intensity,45,To Die For (1995),1,null,"The plot summary does not indicate any significant action sequences, focusing instead on themes and character development."
+1,Action Intensity,46,How to Make an American Quilt (1995),0,null,"The plot summary indicates a focus on character development and dialogue, with no mention of action scenes."
+1,Action Intensity,47,Seven (a.k.a. Se7en) (1995),3,null,"Seven contains several intense action scenes, particularly during the chase and confrontation sequences, but it is primarily focused on its plot and character dynamics."
+1,Action Intensity,48,Pocahontas (1995),1,null,Pocahontas focuses primarily on character development and romance with minimal action sequences.
+1,Action Intensity,49,When Night Is Falling (1995),0,null,"The plot summary indicates a focus on character development and emotional complexity typical of a romantic drama, with no mention of action sequences."
+1,Action Intensity,50,"Usual Suspects, The (1995)",1,null,"The Usual Suspects focuses primarily on dialogue, plot twists, and character development rather than action sequences."
+2,Emotional Depth,1,Toy Story (1995),3,null,"Toy Story explores the emotional growth and deepening friendship between Woody and Buzz, though it maintains a lighter tone suitable for children."
+2,Emotional Depth,2,Jumanji (1995),2,null,"While 'Jumanji' includes moments of emotional connection and character development, its primary focus is on adventure and action, which limits its exploration of deep emotions."
+2,Emotional Depth,3,Grumpier Old Men (1995),1,null,The movie focuses primarily on light-hearted comedy and romantic elements without delving deeply into complex emotional landscapes.
+2,Emotional Depth,4,Waiting to Exhale (1995),4,null,"The film delves into complex emotional landscapes and deep character relationships among the four main characters, exploring themes of friendship, love, and personal growth."
+2,Emotional Depth,5,Father of the Bride Part II (1995),2,null,The movie focuses primarily on comedic situations and family dynamics rather than delving deeply into complex emotional landscapes.
+2,Emotional Depth,6,Heat (1995),3,null,"Heat delves into the psychological and emotional complexities of its main characters, particularly their professional dedication and personal lives, though it remains primarily focused on the action and tension of the crime narrative."
+2,Emotional Depth,7,Sabrina (1995),3,null,"Sabrina (1995) explores themes of love and self-discovery, delving into the emotional growth of its characters, yet it maintains a comedic tone that limits the depth of emotional exploration."
+2,Emotional Depth,8,Tom and Huck (1995),2,null,"While the film explores themes of friendship and loyalty, it primarily focuses on adventure and action, limiting its exploration of deep emotional landscapes."
+2,Emotional Depth,9,Sudden Death (1995),1,null,The plot focuses primarily on action and suspense rather than exploring complex emotional landscapes or deep character relationships.
+2,Emotional Depth,10,GoldenEye (1995),2,null,"While 'GoldenEye' includes moments of character development and emotional tension, its primary focus remains on action and adventure, limiting its exploration of deep emotions."
+2,Emotional Depth,11,"American President, The (1995)",4,null,"The film explores complex emotional relationships and personal growth, particularly in the context of political pressures, indicating a significant depth of emotion."
+2,Emotional Depth,12,Dracula: Dead and Loving It (1995),1,null,The movie is a comedy-horror spoof that prioritizes humor over exploring deep emotional landscapes or complex character relationships.
+2,Emotional Depth,13,Balto (1995),3,null,"Balto explores themes of courage, friendship, and perseverance, offering some depth in emotional content suitable for its target audience, but it does not delve as deeply into complex emotional landscapes as more mature films."
+2,Emotional Depth,14,Nixon (1995),3,null,"The film explores Nixon's complex personality and the emotional toll of his political career, though it focuses more on his actions and decisions than purely on emotional depth."
+2,Emotional Depth,15,Cutthroat Island (1995),1,null,The plot focuses primarily on action and adventure elements with minimal exploration of complex emotional landscapes.
+2,Emotional Depth,16,Casino (1995),3,null,"Casino explores complex relationships and emotional turmoil among its characters, particularly in themes of loyalty and betrayal, though it is primarily focused on the crime drama aspect."
+2,Emotional Depth,17,Sense and Sensibility (1995),4,null,"The film delves deeply into the emotional journeys of the Dashwood sisters, exploring complex themes of love, loss, and societal pressures."
+2,Emotional Depth,18,Four Rooms (1995),1,null,Four Rooms focuses more on quirky characters and absurd situations rather than delving deeply into their emotional states or relationships.
+2,Emotional Depth,19,Ace Ventura: When Nature Calls (1995),1,null,The movie focuses on slapstick humor and zany antics without delving into complex emotional landscapes or deep character relationships.
+2,Emotional Depth,20,Money Train (1995),2,null,Money Train focuses more on action and comedy elements rather than delving deeply into the emotional states or complex relationships between characters.
+2,Emotional Depth,21,Get Shorty (1995),2,null,"While 'Get Shorty' explores some character relationships and emotions, its primary focus is on the comedic and criminal elements rather than deep emotional exploration."
+2,Emotional Depth,22,Copycat (1995),3,null,"The movie explores the psychological depths of its characters, particularly the criminal psychologist's personal struggles and fears, indicating a significant level of emotional depth."
+2,Emotional Depth,23,Assassins (1995),1,null,The plot focuses primarily on action and intrigue rather than delving into complex emotional landscapes or deep character relationships.
+2,Emotional Depth,24,Powder (1995),4,null,"The movie explores deep emotional connections and the protagonist's struggle with acceptance and understanding, indicating significant emotional depth."
+2,Emotional Depth,25,Leaving Las Vegas (1995),4,null,"The movie delves deeply into the complex emotional states of its characters, exploring themes of addiction, loneliness, and human connection."
+2,Emotional Depth,26,Othello (1995),4,null,"The film explores complex emotions such as jealousy, betrayal, and love, delving deeply into the psychological states of its characters."
+2,Emotional Depth,27,Now and Then (1995),3,null,"The movie explores themes of friendship, love, loss, and personal growth, delving into the emotional journeys of its characters as they reflect on their past and current lives."
+2,Emotional Depth,28,Persuasion (1995),4,null,"Persuasion delves into complex emotional landscapes and deep character relationships, particularly focusing on Anne's internal conflict and evolving relationship dynamics."
+2,Emotional Depth,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",3,null,"The film explores complex themes of innocence, loss, and wonder, delving into deep emotional landscapes despite its fantastical setting."
+2,Emotional Depth,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),4,null,"The film delves into complex themes of power, loyalty, and the consequences of choices, indicating a significant exploration of emotional depth."
+2,Emotional Depth,31,Dangerous Minds (1995),3,null,"The film explores emotional growth and connection between the teacher and her students, delving into themes of empowerment and belief in oneself, which indicates a significant level of emotional depth."
+2,Emotional Depth,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),3,null,"Twelve Monkeys explores complex emotional themes such as madness, fate, and the impact of time travel on individual psyche, though it is primarily driven by its sci-fi and thriller elements."
+2,Emotional Depth,33,Wings of Courage (1995),3,null,"The film explores themes of courage and passion, indicating some depth in emotional content, though it may not fully delve into complex emotional landscapes."
+2,Emotional Depth,34,Babe (1995),3,null,"Babe explores themes of friendship, acceptance, and self-belief, which evoke emotional depth, though it maintains a family-friendly approach that limits its exploration to more complex emotional landscapes."
+2,Emotional Depth,35,Carrington (1995),4,null,"Carrington delves into the complex emotional and relational dynamics between its main characters, offering a nuanced exploration of their personal and societal struggles."
+2,Emotional Depth,36,Dead Man Walking (1995),4,null,"The film delves deeply into the emotional journeys of both Sister Helen and Matthew, exploring complex themes of redemption, forgiveness, and the moral implications of capital punishment."
+2,Emotional Depth,37,Across the Sea of Time (1995),3,null,"The film explores the emotional journey of an immigrant and touches upon themes of family, belonging, and cultural adaptation, indicating a moderate level of emotional depth."
+2,Emotional Depth,38,It Takes Two (1995),2,null,"While the movie includes some heartfelt moments and explores themes of family and friendship, it primarily focuses on light-hearted comedy and adventure, limiting its exploration of deep emotions."
+2,Emotional Depth,39,Clueless (1995),3,null,"Clueless explores themes of friendship, self-discovery, and love with some depth, but it primarily focuses on comedic elements and less on profound emotional exploration."
+2,Emotional Depth,40,"Cry, the Beloved Country (1995)",4,null,"The film deeply explores themes of forgiveness, reconciliation, and hope through complex character relationships and emotional struggles."
+2,Emotional Depth,41,Richard III (1995),4,null,The film explores the complex emotional landscape of a power-hungry king and the intricate relationships and betrayals within the royal court.
+2,Emotional Depth,42,Dead Presidents (1995),3,null,"The film explores themes of race, poverty, and the impact of war, which contribute to a significant emotional depth, though it is also driven by action and crime elements that may overshadow purely emotional development."
+2,Emotional Depth,43,Restoration (1995),4,null,"The film explores complex emotional landscapes through its portrayal of love, betrayal, and the fragility of power, indicating a significant depth of emotion."
+2,Emotional Depth,44,Mortal Kombat (1995),2,null,"While 'Mortal Kombat' includes some character development and emotional moments, its primary focus is on action and combat, which limits the exploration of deep emotional landscapes."
+2,Emotional Depth,45,To Die For (1995),3,null,"While 'To Die For' delves into complex themes like media obsession and the destructive nature of ambition, its approach to emotional depth is more focused on the psychological and less on deep emotional exploration."
+2,Emotional Depth,46,How to Make an American Quilt (1995),4,null,"The film explores the emotional journeys and relationships of its characters through the medium of storytelling and quilting, indicating a significant depth of emotion."
+2,Emotional Depth,47,Seven (a.k.a. Se7en) (1995),3,null,"While 'Seven' explores complex themes and character development, its primary focus remains on the plot and suspense rather than deep emotional exploration."
+2,Emotional Depth,48,Pocahontas (1995),3,null,"Pocahontas explores significant emotional themes such as love, cultural conflict, and personal growth, though it maintains a level of simplicity suitable for its target audience."
+2,Emotional Depth,49,When Night Is Falling (1995),4,null,"The film explores the emotional journey of a protagonist navigating a complex new relationship and confronting personal fears, indicating significant emotional depth."
+2,Emotional Depth,50,"Usual Suspects, The (1995)",2,null,The Usual Suspects focuses more on plot twists and mystery than on deep emotional exploration.
+3,Sci-Fi Elements,1,Toy Story (1995),1,null,"Toy Story includes minimal science fiction elements, primarily focusing on fantasy and adventure with anthropomorphic toys."
+3,Sci-Fi Elements,2,Jumanji (1995),1,null,The movie 'Jumanji' primarily features fantasy elements and does not prominently integrate futuristic technology or speculative science concepts.
+3,Sci-Fi Elements,3,Grumpier Old Men (1995),0,null,The movie focuses on realistic settings and human relationships without any science fiction elements.
+3,Sci-Fi Elements,4,Waiting to Exhale (1995),0,null,"The movie 'Waiting to Exhale' focuses entirely on realistic, contemporary settings and human relationships without any science fiction elements."
+3,Sci-Fi Elements,5,Father of the Bride Part II (1995),0,null,The movie focuses entirely on realistic family dynamics and personal relationships without any science fiction elements.
+3,Sci-Fi Elements,6,Heat (1995),1,null,"Heat (1995) is a crime thriller with no significant sci-fi elements, focusing on realistic settings and character dynamics."
+3,Sci-Fi Elements,7,Sabrina (1995),0,null,"The movie 'Sabrina' (1995) is a romantic comedy with no significant sci-fi elements, maintaining a realistic setting throughout."
+3,Sci-Fi Elements,8,Tom and Huck (1995),0,null,The movie is set in 19th century America and contains no science fiction elements.
+3,Sci-Fi Elements,9,Sudden Death (1995),1,null,The plot of 'Sudden Death' focuses on realistic action and terrorism scenarios without significant sci-fi elements.
+3,Sci-Fi Elements,10,GoldenEye (1995),3,null,"The movie includes a powerful satellite weapon and space-related technology, which adds significant sci-fi elements, though the core plot remains grounded in espionage and action."
+3,Sci-Fi Elements,11,"American President, The (1995)",0,null,The American President is a political drama with no significant sci-fi elements.
+3,Sci-Fi Elements,12,Dracula: Dead and Loving It (1995),0,null,"The movie is a comedy-horror spoof with no significant sci-fi elements, focusing on parodying classic vampire lore."
+3,Sci-Fi Elements,13,Balto (1995),0,null,Balto is an animated adventure film set in a realistic historical context with no significant sci-fi elements.
+3,Sci-Fi Elements,14,Nixon (1995),0,null,"The movie 'Nixon' is a biographical drama with no significant sci-fi elements, focusing entirely on historical events and figures."
+3,Sci-Fi Elements,15,Cutthroat Island (1995),0,null,The movie 'Cutthroat Island' is set in a historical pirate era with no futuristic or speculative science elements.
+3,Sci-Fi Elements,16,Casino (1995),0,null,"Casino (1995) is a crime drama with no significant sci-fi elements, maintaining a realistic setting."
+3,Sci-Fi Elements,17,Sense and Sensibility (1995),0,null,Sense and Sensibility is a period drama set in the 19th century with no science fiction elements.
+3,Sci-Fi Elements,18,Four Rooms (1995),0,null,"Four Rooms is a comedy anthology with no significant science fiction elements, focusing on realistic settings and human behavior."
+3,Sci-Fi Elements,19,Ace Ventura: When Nature Calls (1995),0,null,"The movie focuses on comedy and has no significant sci-fi elements, maintaining a realistic setting."
+3,Sci-Fi Elements,20,Money Train (1995),1,null,Money Train focuses on a heist involving transit cops and has no significant sci-fi elements.
+3,Sci-Fi Elements,21,Get Shorty (1995),0,null,The plot and setting of 'Get Shorty' are firmly grounded in reality with no significant sci-fi elements.
+3,Sci-Fi Elements,22,Copycat (1995),1,null,"The movie 'Copycat' contains minimal science fiction elements, focusing primarily on psychological thriller aspects."
+3,Sci-Fi Elements,23,Assassins (1995),0,null,The movie 'Assassins' contains no significant science fiction elements and focuses on realistic settings typical of action and crime genres.
+3,Sci-Fi Elements,24,Powder (1995),2,null,"The movie includes unique electromagnetic abilities, which are a sci-fi element, but the focus is more on drama and human connection rather than a futuristic setting or advanced technology."
+3,Sci-Fi Elements,25,Leaving Las Vegas (1995),0,null,The movie 'Leaving Las Vegas' focuses entirely on realistic settings and human emotions without any science fiction elements.
+3,Sci-Fi Elements,26,Othello (1995),0,not_applicable,"Othello (1995) is a classical drama with no science fiction elements, set in a historical context."
+3,Sci-Fi Elements,27,Now and Then (1995),0,null,The movie 'Now and Then' focuses on realistic settings and human experiences without any notable science fiction elements.
+3,Sci-Fi Elements,28,Persuasion (1995),0,null,Persuasion (1995) is a period drama with no science fiction elements.
+3,Sci-Fi Elements,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",2,midpoint,"The movie incorporates a dystopian setting and scientific experimentation, but these elements are secondary to its fantastical and surreal atmosphere."
+3,Sci-Fi Elements,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0,null,The movie is set in 1930s Shanghai and focuses on the realistic portrayal of a triad's world without any sci-fi elements.
+3,Sci-Fi Elements,31,Dangerous Minds (1995),0,null,"The plot summary indicates no presence of science fiction elements, focusing instead on realistic educational settings and social issues."
+3,Sci-Fi Elements,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),4,null,"The film incorporates significant elements of time travel and a post-apocalyptic future setting, which are central to its plot."
+3,Sci-Fi Elements,33,Wings of Courage (1995),0,null,The movie focuses on historical aviation pioneers without incorporating any science fiction elements.
+3,Sci-Fi Elements,34,Babe (1995),0,null,The movie 'Babe' has no science fiction elements and focuses on realistic farm settings.
+3,Sci-Fi Elements,35,Carrington (1995),0,null,The movie 'Carrington' is set in early 20th-century England and focuses on the personal and artistic lives of its characters without any sci-fi elements.
+3,Sci-Fi Elements,36,Dead Man Walking (1995),0,null,The movie 'Dead Man Walking' focuses entirely on realistic settings and human issues without any science fiction elements.
+3,Sci-Fi Elements,37,Across the Sea of Time (1995),0,null,"The movie is a documentary that focuses on the real-life experiences of an immigrant, with no apparent sci-fi elements."
+3,Sci-Fi Elements,38,It Takes Two (1995),0,null,"The plot summary indicates no presence of futuristic technology, space travel, or speculative science concepts, aligning with minimal sci-fi elements."
+3,Sci-Fi Elements,39,Clueless (1995),0,null,Clueless is a modern retelling of a classic novel set in a contemporary high school environment with no significant sci-fi elements.
+3,Sci-Fi Elements,40,"Cry, the Beloved Country (1995)",0,null,"The movie 'Cry, the Beloved Country' is a drama set in the apartheid-era South Africa with no science fiction elements."
+3,Sci-Fi Elements,41,Richard III (1995),0,not_applicable,The movie 'Richard III' (1995) is set in a modern-day context but lacks any significant sci-fi elements.
+3,Sci-Fi Elements,42,Dead Presidents (1995),0,null,The movie 'Dead Presidents' focuses on realistic settings and themes without incorporating any significant sci-fi elements.
+3,Sci-Fi Elements,43,Restoration (1995),0,null,The movie is set in the 17th century and focuses on historical and personal drama without any science fiction elements.
+3,Sci-Fi Elements,44,Mortal Kombat (1995),1,null,The movie features fantasy elements and supernatural forces rather than science fiction concepts.
+3,Sci-Fi Elements,45,To Die For (1995),0,null,The movie 'To Die For' has no significant sci-fi elements and focuses on realistic settings and human drama.
+3,Sci-Fi Elements,46,How to Make an American Quilt (1995),0,null,The movie focuses entirely on realistic settings and human relationships without any science fiction elements.
+3,Sci-Fi Elements,47,Seven (a.k.a. Se7en) (1995),1,null,Seven focuses on a psychological thriller plot with no significant sci-fi elements.
+3,Sci-Fi Elements,48,Pocahontas (1995),0,not_applicable,Pocahontas is an animated historical romance with no significant sci-fi elements.
+3,Sci-Fi Elements,49,When Night Is Falling (1995),0,null,"The plot summary indicates no presence of science fiction elements, focusing instead on personal relationships and character development."
+3,Sci-Fi Elements,50,"Usual Suspects, The (1995)",0,null,"The Usual Suspects is a crime thriller with no significant sci-fi elements, maintaining a realistic setting throughout."
+4,Comedy Level,1,Toy Story (1995),3,null,"Toy Story incorporates a significant amount of humor throughout its narrative, making it a film that prioritizes comedy while also delivering an engaging story."
+4,Comedy Level,2,Jumanji (1995),3,null,"The movie incorporates significant comedic elements through its adventurous and chaotic plot, especially due to the presence of Robin Williams, while still maintaining a sense of adventure and danger."
+4,Comedy Level,3,Grumpier Old Men (1995),4,null,"The movie is primarily focused on generating humor through the comedic rivalry and antics of the main characters, aligning closely with high comedy films."
+4,Comedy Level,4,Waiting to Exhale (1995),2,null,"While the movie includes some comedic elements, it primarily focuses on dramatic and emotional themes, indicating a lean towards the lower end of the comedy spectrum."
+4,Comedy Level,5,Father of the Bride Part II (1995),3,null,The movie is a comedy focused on the humorous situations arising from the protagonist's reaction to unexpected pregnancies and the ensuing family dynamics.
+4,Comedy Level,6,Heat (1995),1,null,Heat (1995) is primarily focused on its intense action and crime narrative without significant comedic elements.
+4,Comedy Level,7,Sabrina (1995),3,null,"Sabrina (1995) incorporates a mix of romantic and comedic elements, with its humor playing a significant role but not overshadowing the romantic narrative."
+4,Comedy Level,8,Tom and Huck (1995),3,null,"The movie includes elements of adventure and drama, but also incorporates humor appropriate for a children's audience, indicating a moderate level of comedy."
+4,Comedy Level,9,Sudden Death (1995),1,null,The plot summary indicates a tense and serious action movie with no mention of comedic elements.
+4,Comedy Level,10,GoldenEye (1995),2,null,"While 'GoldenEye' includes moments of classic Bond charm and wit, its primary focus is on action and thriller elements, limiting its comedy level."
+4,Comedy Level,11,"American President, The (1995)",2,null,"The American President incorporates comedic elements but primarily focuses on drama and romance, balancing humor with more serious themes."
+4,Comedy Level,12,Dracula: Dead and Loving It (1995),4,null,"The movie is a comedy-horror spoof filled with slapstick humor and parodies of classic vampire lore, indicating a strong emphasis on comedy."
+4,Comedy Level,13,Balto (1995),2,null,"Balto incorporates some light-hearted moments and humor, but its primary focus is on adventure and emotional themes."
+4,Comedy Level,14,Nixon (1995),1,null,Nixon is a biographical drama that focuses on the political career of Richard Nixon without significant comedic elements.
+4,Comedy Level,15,Cutthroat Island (1995),1,null,"The plot summary indicates an action-adventure film with a focus on treasure hunting and battling rival pirates, which suggests a serious tone with minimal comedic elements."
+4,Comedy Level,16,Casino (1995),1,null,"Casino is a serious crime drama with minimal comedic elements, focusing more on the dark realities of the mob and gambling world."
+4,Comedy Level,17,Sense and Sensibility (1995),1,null,"While 'Sense and Sensibility' contains some light-hearted moments, it primarily focuses on drama and romance, maintaining a serious tone."
+4,Comedy Level,18,Four Rooms (1995),3,null,"Four Rooms, an anthology film with darkly humorous and chaotic narratives, leans towards high comedy with its bizarre and outrageous events."
+4,Comedy Level,19,Ace Ventura: When Nature Calls (1995),4,null,"The movie is filled with slapstick humor, zany antics, and Jim Carrey's signature comedic performance, indicating a strong focus on comedy."
+4,Comedy Level,20,Money Train (1995),3,null,"Money Train incorporates humor alongside its action and thriller elements, though it is not primarily a comedy."
+4,Comedy Level,21,Get Shorty (1995),3,null,"The movie 'Get Shorty' effectively blends humor with its crime and thriller elements, making it notably comedic without being purely a comedy film."
+4,Comedy Level,22,Copycat (1995),1,null,The movie 'Copycat' is a tense thriller with no significant comedic elements.
+4,Comedy Level,23,Assassins (1995),1,null,The plot summary indicates an action-thriller with no significant comedic elements.
+4,Comedy Level,24,Powder (1995),1,null,'Powder' is a drama with sci-fi elements that focuses on emotional and serious themes without significant comedic content.
+4,Comedy Level,25,Leaving Las Vegas (1995),1,null,"The movie 'Leaving Las Vegas' is a serious drama with themes of addiction and despair, containing almost no comedic elements."
+4,Comedy Level,26,Othello (1995),0,null,Othello is a dramatic tragedy with no significant comedic elements.
+4,Comedy Level,27,Now and Then (1995),2,null,"While 'Now and Then' includes some light-hearted moments, it primarily focuses on drama and emotional depth, indicating a lower comedy level."
+4,Comedy Level,28,Persuasion (1995),1,null,Persuasion is a romantic drama that focuses on themes of love and societal norms without significant comedic elements.
+4,Comedy Level,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",1,null,"The City of Lost Children primarily focuses on its dark and surreal narrative, with minimal comedic elements."
+4,Comedy Level,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0,null,The plot summary indicates a serious crime drama with no mention of comedic elements.
+4,Comedy Level,31,Dangerous Minds (1995),1,null,"The plot summary indicates that 'Dangerous Minds' is primarily focused on serious themes such as education, race, and empowerment, with no mention of comedic elements."
+4,Comedy Level,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),1,null,"Twelve Monkeys is primarily a thriller with elements of sci-fi and mystery, featuring a dark and serious tone with occasional moments of dark humor, which do not significantly contribute to its overall comedic level."
+4,Comedy Level,33,Wings of Courage (1995),1,null,The plot summary indicates a serious tone focused on historical figures and their adventurous pursuits without mentioning any comedic elements.
+4,Comedy Level,34,Babe (1995),2,null,"While 'Babe' includes moments of humor, it primarily focuses on heartwarming themes and character development, leaning more towards a serious tone."
+4,Comedy Level,35,Carrington (1995),1,null,Carrington is a biographical drama focused on the relationship and personal struggles of its characters without significant comedic elements.
+4,Comedy Level,36,Dead Man Walking (1995),0,null,"The movie is a serious drama with no comedic elements, focusing on themes of redemption and justice."
+4,Comedy Level,37,Across the Sea of Time (1995),0,null,The documentary nature and focus on the immigrant experience and cultural diversity suggest a serious tone with little to no comedic intent.
+4,Comedy Level,38,It Takes Two (1995),3,null,"The movie is described as a family comedy with a delightful mix of humor and heartfelt moments, indicating a significant presence of comedic elements."
+4,Comedy Level,39,Clueless (1995),4,null,"Clueless is known for its witty dialogue and comedic situations, aligning well with a high level of comedy."
+4,Comedy Level,40,"Cry, the Beloved Country (1995)",0,null,The movie is a serious drama focusing on themes of racial injustice and personal struggle without any notable comedic elements.
+4,Comedy Level,41,Richard III (1995),1,null,"The movie is a dramatic and intense portrayal of Shakespeare's play with a focus on political intrigue and violence, lacking significant comedic elements."
+4,Comedy Level,42,Dead Presidents (1995),1,null,"The plot summary indicates that 'Dead Presidents' focuses on serious themes such as race, poverty, and the impact of war, with no mention of comedic elements."
+4,Comedy Level,43,Restoration (1995),2,null,"While 'Restoration' contains some humorous moments, its primary focus is on drama and historical context, aligning it more closely with the lower end of the comedy spectrum."
+4,Comedy Level,44,Mortal Kombat (1995),1,null,Mortal Kombat (1995) primarily focuses on action and fantasy elements with minimal comedic content.
+4,Comedy Level,45,To Die For (1995),3,null,"To Die For is a dark comedy that incorporates humor, but its focus on drama and thriller elements keeps it from being purely comedic."
+4,Comedy Level,46,How to Make an American Quilt (1995),1,null,The plot summary indicates a focus on drama and romance with no mention of comedic elements.
+4,Comedy Level,47,Seven (a.k.a. Se7en) (1995),0,null,"Seven is a psychological thriller with a grim and serious tone, containing virtually no comedic elements."
+4,Comedy Level,48,Pocahontas (1995),1,null,Pocahontas is primarily a dramatic and romantic animated film with minimal comedic elements.
+4,Comedy Level,49,When Night Is Falling (1995),1,null,The plot summary indicates a focus on romance and drama with no mention of comedic elements.
+4,Comedy Level,50,"Usual Suspects, The (1995)",1,null,The Usual Suspects is primarily a serious crime thriller with minimal comedic elements.
+5,Historical Accuracy,1,Toy Story (1995),2,not_applicable,"Toy Story is an animated fantasy film about toys coming to life, which does not attempt to depict any historical events or figures."
+5,Historical Accuracy,2,Jumanji (1995),0,null,"The plot of 'Jumanji' revolves around a magical board game and its fantastical elements, which have no basis in historical fact."
+5,Historical Accuracy,3,Grumpier Old Men (1995),2,not_applicable,"The movie 'Grumpier Old Men' is a comedy with a fictional plot and characters, making historical accuracy irrelevant."
+5,Historical Accuracy,4,Waiting to Exhale (1995),2,not_applicable,The movie 'Waiting to Exhale' focuses on contemporary personal and romantic struggles of its characters without any significant historical context or events.
+5,Historical Accuracy,5,Father of the Bride Part II (1995),2,not_applicable,"The movie 'Father of the Bride Part II' is a comedy focused on family dynamics and personal growth, with no significant historical context or claims."
+5,Historical Accuracy,6,Heat (1995),2,not_applicable,Heat (1995) is a fictional crime thriller and does not aim to depict specific historical events or figures accurately.
+5,Historical Accuracy,7,Sabrina (1995),0,not_applicable,The plot summary indicates that 'Sabrina' (1995) is a romantic comedy with no apparent attempt to depict historical events or figures accurately.
+5,Historical Accuracy,8,Tom and Huck (1995),1,null,"The film is an adaptation of a fictional novel and thus takes creative liberties with its setting and events, not aiming for historical accuracy."
+5,Historical Accuracy,9,Sudden Death (1995),0,null,"The plot of 'Sudden Death' is an action thriller with no basis in historical events, focusing instead on a fictional scenario."
+5,Historical Accuracy,10,GoldenEye (1995),0,not_applicable,The plot of 'GoldenEye' is a work of fiction with no basis in real historical events.
+5,Historical Accuracy,11,"American President, The (1995)",1,null,The American President is a fictional story set in the context of politics but does not aim for historical accuracy.
+5,Historical Accuracy,12,Dracula: Dead and Loving It (1995),0,null,"The movie is a comedy spoof that parodies classic vampire lore and horror tropes, rather than aiming for historical accuracy."
+5,Historical Accuracy,13,Balto (1995),2,null,"While 'Balto' is based on a true story, it is an animated film with anthropomorphized characters and fictional elements, which deviates from strict historical accuracy."
+5,Historical Accuracy,14,Nixon (1995),3,null,"The film 'Nixon' strives for historical accuracy in depicting the political career and personal life of Richard Nixon, though it includes dramatizations and interpretations of events."
+5,Historical Accuracy,15,Cutthroat Island (1995),1,null,The plot of Cutthroat Island is a fictional adventure story set in a historical context but does not aim for historical accuracy.
+5,Historical Accuracy,16,Casino (1995),3,null,"While Casino is based on real events and characters, it takes creative liberties and dramatizes certain aspects, which places it in the middle range of historical accuracy."
+5,Historical Accuracy,17,Sense and Sensibility (1995),2,midpoint,"While 'Sense and Sensibility' is set in the 19th century and attempts to capture the social norms and manners of the time, it is primarily a romantic drama based on a novel rather than a historical documentary."
+5,Historical Accuracy,18,Four Rooms (1995),2,not_applicable,"Four Rooms is a comedy anthology film with no basis in historical events, thus the concept of historical accuracy does not apply."
+5,Historical Accuracy,19,Ace Ventura: When Nature Calls (1995),0,null,"The movie is a comedy with a plot that does not aim for historical accuracy, focusing instead on slapstick humor and zany antics."
+5,Historical Accuracy,20,Money Train (1995),2,not_applicable,"Money Train is a fictional story set in a realistic context without any significant historical events or figures, making it difficult to assess its adherence to historical accuracy."
+5,Historical Accuracy,21,Get Shorty (1995),2,not_applicable,'Get Shorty' is a fictional story set in the entertainment industry and does not aim to depict historical events.
+5,Historical Accuracy,22,Copycat (1995),2,not_applicable,"The plot of 'Copycat' does not focus on historical events or figures, making the concept of historical accuracy irrelevant."
+5,Historical Accuracy,23,Assassins (1995),0,null,"The plot summary indicates that 'Assassins' is an action-thriller focused on fictional characters and their interactions, without any clear attempt to depict real historical events or figures."
+5,Historical Accuracy,24,Powder (1995),2,not_applicable,The movie 'Powder' is a work of fiction with supernatural elements and does not depict any real historical events or figures.
+5,Historical Accuracy,25,Leaving Las Vegas (1995),2,not_applicable,The movie 'Leaving Las Vegas' is a fictional story without a basis in specific historical events or figures.
+5,Historical Accuracy,26,Othello (1995),2,not_applicable,"Othello is an adaptation of a play and not intended to be a historical account, thus it does not aim for historical accuracy."
+5,Historical Accuracy,27,Now and Then (1995),2,not_applicable,"The movie focuses on personal narratives and relationships rather than historical events, making it difficult to assess its adherence to historical accuracy."
+5,Historical Accuracy,28,Persuasion (1995),2,not_applicable,Persuasion is an adaptation of a novel and focuses on fictional characters and their romantic entanglements rather than historical events or figures.
+5,Historical Accuracy,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0,null,"The City of Lost Children is a fantasy film set in a surreal and dystopian world, which does not aim for historical accuracy."
+5,Historical Accuracy,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),3,null,"The film sets itself in the 1930s Shanghai and portrays the environment and lifestyle of the triad world, which suggests an attempt at historical accuracy, though specific historical events or figures are not central to the plot."
+5,Historical Accuracy,31,Dangerous Minds (1995),2,null,"The film 'Dangerous Minds' is based on a true story but takes creative liberties with details and events, leaning towards a dramatized portrayal rather than strict historical accuracy."
+5,Historical Accuracy,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),2,not_applicable,"Twelve Monkeys is a science fiction film that heavily relies on speculative elements and time travel, which makes it difficult to align with any specific historical timeline."
+5,Historical Accuracy,33,Wings of Courage (1995),3,null,"While the film focuses on real historical figures and their contributions to aviation, it likely dramatizes their adventures and personal lives, which may deviate from strict historical accuracy."
+5,Historical Accuracy,34,Babe (1995),2,not_applicable,"The movie 'Babe' is an animated family film that does not deal with historical events or figures, making it irrelevant to the historical accuracy dimension."
+5,Historical Accuracy,35,Carrington (1995),3,null,The film focuses on the personal lives and relationship of its subjects rather than strictly adhering to historical events and timelines.
+5,Historical Accuracy,36,Dead Man Walking (1995),3,null,The film is based on a true story and focuses on the personal journey of the characters rather than strict historical events.
+5,Historical Accuracy,37,Across the Sea of Time (1995),3,null,"The film blends documentary and drama, focusing more on the immigrant experience and cultural diversity rather than strict historical accuracy."
+5,Historical Accuracy,38,It Takes Two (1995),0,null,The plot of 'It Takes Two' involves fictional characters and scenarios without any basis in historical events or figures.
+5,Historical Accuracy,39,Clueless (1995),0,not_applicable,Clueless is a modern adaptation of Jane Austen's 'Emma' and does not aim for historical accuracy.
+5,Historical Accuracy,40,"Cry, the Beloved Country (1995)",3,null,"The film Cry, the Beloved Country is set during the apartheid era and addresses the social and racial issues of that time, striving for an accurate portrayal of the historical context."
+5,Historical Accuracy,41,Richard III (1995),1,null,"The film sets Shakespeare's play in a modern-day context, significantly altering the historical setting and thus deviating from strict historical accuracy."
+5,Historical Accuracy,42,Dead Presidents (1995),2,null,"The movie takes creative liberties with its narrative and characters, focusing more on thematic exploration than strict historical accuracy."
+5,Historical Accuracy,43,Restoration (1995),2,null,"While 'Restoration' captures the essence of the 17th-century court and its social dynamics, it fictionalizes the character of Robert Merivel and his experiences, which introduces significant liberties with historical facts."
+5,Historical Accuracy,44,Mortal Kombat (1995),0,null,The movie is based on a fantasy video game and does not attempt to adhere to any historical timeline or facts.
+5,Historical Accuracy,45,To Die For (1995),2,not_applicable,The movie 'To Die For' is a fictional story that does not aim to depict any specific historical event or figure accurately.
+5,Historical Accuracy,46,How to Make an American Quilt (1995),2,not_applicable,"The plot summary does not indicate any significant focus on historical events or figures, making it difficult to assess its adherence to historical accuracy."
+5,Historical Accuracy,47,Seven (a.k.a. Se7en) (1995),2,not_applicable,Seven is a fictional story that does not aim to depict any specific historical event or figure accurately.
+5,Historical Accuracy,48,Pocahontas (1995),1,null,"The film takes significant creative liberties with the historical narrative of Pocahontas and John Smith's interactions, altering key events and relationships."
+5,Historical Accuracy,49,When Night Is Falling (1995),2,not_applicable,The plot summary indicates that the film is a romantic drama without any clear indication of historical context or adherence to historical facts.
+5,Historical Accuracy,50,"Usual Suspects, The (1995)",2,not_applicable,The Usual Suspects is a fictional crime thriller with no basis in real historical events.
+6,Visual Effects,1,Toy Story (1995),5,null,Toy Story (1995) is a fully computer-animated film that relies heavily on CGI to bring its characters and environments to life.
+6,Visual Effects,2,Jumanji (1995),3,null,"The movie uses a mix of practical effects and CGI to bring the jungle and its creatures to life, leaning towards moderate use of visual effects."
+6,Visual Effects,3,Grumpier Old Men (1995),1,null,The movie relies heavily on live-action comedy and romance without significant use of visual effects.
+6,Visual Effects,4,Waiting to Exhale (1995),1,null,"The plot summary and genre description indicate minimal use of visual effects, focusing instead on character development and real-life scenarios."
+6,Visual Effects,5,Father of the Bride Part II (1995),1,null,"The movie 'Father of the Bride Part II' is a comedy centered around family dynamics and personal growth, with no indication of significant use of visual effects."
+6,Visual Effects,6,Heat (1995),1,null,Heat (1995) primarily focuses on character development and intense action sequences with minimal reliance on visual effects.
+6,Visual Effects,7,Sabrina (1995),1,null,"The plot summary and genre of 'Sabrina' suggest minimal use of visual effects, focusing instead on character development and romance."
+6,Visual Effects,8,Tom and Huck (1995),1,null,"The plot summary and genre suggest minimal use of visual effects, focusing instead on practical elements and real settings typical of period dramas."
+6,Visual Effects,9,Sudden Death (1995),2,null,"The movie uses action sequences typical of its genre but does not heavily rely on visual effects, suggesting a moderate use of practical effects and minimal VFX."
+6,Visual Effects,10,GoldenEye (1995),3,null,"The movie features significant action sequences and chase scenes that rely on a mix of practical effects and visual effects, leaning towards a higher use of VFX."
+6,Visual Effects,11,"American President, The (1995)",1,null,"The American President primarily relies on real locations and minimal visual effects, focusing on character development and dialogue."
+6,Visual Effects,12,Dracula: Dead and Loving It (1995),1,null,The movie primarily relies on physical comedy and parody rather than extensive use of visual effects.
+6,Visual Effects,13,Balto (1995),2,null,"Balto uses animation which inherently involves visual effects, but the effects are traditional and do not heavily rely on modern CGI."
+6,Visual Effects,14,Nixon (1995),1,null,"The movie 'Nixon' primarily relies on practical elements and real settings, with minimal use of visual effects."
+6,Visual Effects,15,Cutthroat Island (1995),2,null,"Cutthroat Island uses some visual effects for its sea battles and environments, but it primarily relies on practical effects and real locations."
+6,Visual Effects,16,Casino (1995),1,null,"Casino (1995) primarily relies on practical elements and real locations, with minimal use of visual effects."
+6,Visual Effects,17,Sense and Sensibility (1995),1,null,Sense and Sensibility relies heavily on practical settings and minimal use of visual effects to authentically depict 19th century England.
+6,Visual Effects,18,Four Rooms (1995),1,null,"Four Rooms relies primarily on its actors and storylines rather than extensive visual effects, aligning it more closely with minimal VFX usage."
+6,Visual Effects,19,Ace Ventura: When Nature Calls (1995),2,null,"The movie uses some visual effects, primarily for comedic effect, but they are not extensive or central to the film."
+6,Visual Effects,20,Money Train (1995),1,null,Money Train relies primarily on practical elements and real-world settings with minimal use of visual effects.
+6,Visual Effects,21,Get Shorty (1995),1,null,The movie 'Get Shorty' primarily focuses on its plot and character interactions without heavily relying on visual effects.
+6,Visual Effects,22,Copycat (1995),1,null,The movie 'Copycat' primarily relies on psychological tension and human performances rather than extensive visual effects.
+6,Visual Effects,23,Assassins (1995),1,null,The movie 'Assassins' primarily relies on action sequences and real-world settings with minimal use of visual effects.
+6,Visual Effects,24,Powder (1995),2,null,"The movie uses some visual effects to showcase Powder's electromagnetic abilities, but they are not extensive or central to the film."
+6,Visual Effects,25,Leaving Las Vegas (1995),1,null,The movie 'Leaving Las Vegas' focuses heavily on character development and emotional depth without relying on significant visual effects.
+6,Visual Effects,26,Othello (1995),1,null,"The plot summary and typical approach to Shakespearean adaptations suggest minimal use of visual effects, focusing instead on acting and dialogue."
+6,Visual Effects,27,Now and Then (1995),1,null,"The plot summary indicates minimal use of visual effects, focusing instead on character development and storytelling."
+6,Visual Effects,28,Persuasion (1995),1,null,"Persuasion (1995) is a period drama that focuses on character development and dialogue, using minimal visual effects and emphasizing practical settings."
+6,Visual Effects,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",2,null,"The film uses imaginative and surreal visuals, but relies more on practical effects and unique set designs rather than heavy CGI."
+6,Visual Effects,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),1,null,"The plot summary and historical setting of 'Shanghai Triad' suggest minimal use of visual effects, focusing instead on practical elements and real settings."
+6,Visual Effects,31,Dangerous Minds (1995),1,null,"The plot summary and genre suggest minimal use of visual effects, focusing instead on character development and social issues."
+6,Visual Effects,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),2,null,"Twelve Monkeys uses visual effects primarily for its time travel elements and dystopian future scenes, but these are not extensive or overly reliant on CGI."
+6,Visual Effects,33,Wings of Courage (1995),1,null,"The movie likely uses practical effects and real locations to capture the historical context and adventurous spirit of early aviation, with minimal reliance on visual effects."
+6,Visual Effects,34,Babe (1995),1,null,"Babe uses minimal visual effects, primarily relying on practical effects such as puppetry and animatronics to bring the animal characters to life."
+6,Visual Effects,35,Carrington (1995),1,null,Carrington (1995) focuses on character development and historical settings without relying heavily on visual effects.
+6,Visual Effects,36,Dead Man Walking (1995),1,null,"The movie 'Dead Man Walking' focuses on character development and dialogue, using minimal visual effects."
+6,Visual Effects,37,Across the Sea of Time (1995),2,null,"The documentary uses IMAX technology to capture visually stunning scenes, but it relies more on real locations and practical filming techniques than heavy CGI."
+6,Visual Effects,38,It Takes Two (1995),1,null,"The plot summary indicates minimal use of visual effects, focusing instead on character interactions and real-life scenarios."
+6,Visual Effects,39,Clueless (1995),1,null,Clueless relies primarily on practical elements and real-world settings without significant use of visual effects.
+6,Visual Effects,40,"Cry, the Beloved Country (1995)",1,null,"The movie 'Cry, the Beloved Country' focuses on human stories and social issues without relying heavily on visual effects."
+6,Visual Effects,41,Richard III (1995),1,null,"The movie 'Richard III' (1995) uses minimal visual effects, focusing instead on practical elements and a modern setting to tell its story."
+6,Visual Effects,42,Dead Presidents (1995),1,null,Dead Presidents primarily relies on practical filmmaking techniques and real-world settings with minimal use of visual effects.
+6,Visual Effects,43,Restoration (1995),1,null,"The movie 'Restoration' primarily relies on practical effects and real locations, with minimal use of visual effects."
+6,Visual Effects,44,Mortal Kombat (1995),2,null,"The movie uses practical effects and some early CGI, but the visual effects are not overwhelming."
+6,Visual Effects,45,To Die For (1995),1,null,To Die For primarily relies on practical elements and real-world settings without significant use of visual effects.
+6,Visual Effects,46,How to Make an American Quilt (1995),1,null,"The plot summary indicates minimal use of visual effects, focusing instead on character development and storytelling within a realistic setting."
+6,Visual Effects,47,Seven (a.k.a. Se7en) (1995),1,null,"Seven primarily relies on practical elements and real locations, with minimal use of visual effects."
+6,Visual Effects,48,Pocahontas (1995),2,midpoint,"Pocahontas is a traditionally animated film, which relies heavily on hand-drawn animation rather than computer-generated visual effects."
+6,Visual Effects,49,When Night Is Falling (1995),1,null,"The plot summary and genre suggest minimal use of visual effects, focusing instead on character development and real-life settings."
+6,Visual Effects,50,"Usual Suspects, The (1995)",1,null,The Usual Suspects relies primarily on its plot and acting rather than extensive visual effects.
+7,Dialogue Complexity,1,Toy Story (1995),1,null,"Toy Story features dialogue that is primarily simple and accessible, aimed at a broad audience including children, with occasional witty remarks suitable for adults."
+7,Dialogue Complexity,2,Jumanji (1995),1,null,"The dialogue in 'Jumanji' is primarily straightforward and aimed at a younger audience, with occasional witty remarks."
+7,Dialogue Complexity,3,Grumpier Old Men (1995),1,null,"The movie features light-hearted, straightforward dialogue typical of its comedy genre, without much complexity or sophisticated language."
+7,Dialogue Complexity,4,Waiting to Exhale (1995),2,null,"The dialogue in 'Waiting to Exhale' is emotionally rich and relatable, focusing on personal and relational issues without delving into highly complex linguistic structures."
+7,Dialogue Complexity,5,Father of the Bride Part II (1995),1,null,The movie features typical comedy dialogue that is accessible and straightforward without much complexity.
+7,Dialogue Complexity,6,Heat (1995),3,null,"Heat features nuanced and layered conversations that delve into the psychological and emotional states of its characters, indicating a higher level of dialogue complexity."
+7,Dialogue Complexity,7,Sabrina (1995),2,null,"The dialogue in 'Sabrina' (1995) includes witty banter and some sophisticated exchanges, but it remains largely accessible and straightforward."
+7,Dialogue Complexity,8,Tom and Huck (1995),1,null,"The dialogue in 'Tom and Huck' is primarily simple and straightforward, suitable for a children's audience, though it may occasionally touch on more complex themes."
+7,Dialogue Complexity,9,Sudden Death (1995),1,null,The plot summary suggests a straightforward action movie with likely simple dialogue focused on action and urgency.
+7,Dialogue Complexity,10,GoldenEye (1995),2,null,"The dialogue in 'GoldenEye' is primarily focused on action and plot progression, featuring typical Bond wit and charm without delving into complex linguistic structures or metaphors."
+7,Dialogue Complexity,11,"American President, The (1995)",3,null,"The movie features nuanced political discussions and romantic dialogues that are sophisticated yet accessible, leaning towards complex dialogue."
+7,Dialogue Complexity,12,Dracula: Dead and Loving It (1995),1,null,The movie's dialogue is primarily focused on comedic effect through parody and slapstick humor rather than complex language or layered conversations.
+7,Dialogue Complexity,13,Balto (1995),1,null,"Balto features simple and straightforward dialogue suitable for children, with minimal use of complex language or metaphors."
+7,Dialogue Complexity,14,Nixon (1995),4,null,The movie 'Nixon' features sophisticated and layered conversations reflecting the political complexity and nuanced dialogue characteristic of its subject matter.
+7,Dialogue Complexity,15,Cutthroat Island (1995),1,null,"The plot summary suggests a straightforward narrative typical of action-adventure films, with dialogue likely focused on action and basic character interactions."
+7,Dialogue Complexity,16,Casino (1995),4,null,"Casino features complex dialogue with layered conversations and sophisticated language, characteristic of Martin Scorsese's work, though it is not as abstract or metaphorical as some other high-pole examples."
+7,Dialogue Complexity,17,Sense and Sensibility (1995),4,null,"The dialogue in 'Sense and Sensibility' is rich with nuance and period-appropriate sophistication, reflecting the literary style of Jane Austen."
+7,Dialogue Complexity,18,Four Rooms (1995),2,null,"The movie features segments with varying levels of dialogue complexity, but overall it leans towards more straightforward conversations with occasional sophisticated elements."
+7,Dialogue Complexity,19,Ace Ventura: When Nature Calls (1995),1,null,"The movie features simple, straightforward dialogue typical of a comedy focused on physical humor and slapstick rather than complex conversation."
+7,Dialogue Complexity,20,Money Train (1995),1,null,"The dialogue in 'Money Train' is primarily straightforward and focused on action and comedy, with minimal use of complex language or metaphors."
+7,Dialogue Complexity,21,Get Shorty (1995),2,null,"The dialogue in 'Get Shorty' is witty and includes some layered conversations, but it remains largely accessible and humorous rather than deeply complex."
+7,Dialogue Complexity,22,Copycat (1995),3,null,"The movie involves complex psychological and investigative dialogues that delve into the minds of the characters, indicating a higher level of dialogue complexity."
+7,Dialogue Complexity,23,Assassins (1995),2,null,The movie's dialogue primarily focuses on action and plot progression rather than complex linguistic elements.
+7,Dialogue Complexity,24,Powder (1995),4,null,"The movie features complex and philosophical dialogues that explore deeper themes, indicating a higher level of dialogue complexity."
+7,Dialogue Complexity,25,Leaving Las Vegas (1995),3,null,"The dialogue in 'Leaving Las Vegas' is emotionally deep and often introspective, featuring complex conversations about life, addiction, and human connection."
+7,Dialogue Complexity,26,Othello (1995),5,null,"The movie is an adaptation of Shakespeare's play, which is known for its complex and sophisticated language."
+7,Dialogue Complexity,27,Now and Then (1995),1,null,"The dialogue in 'Now and Then' is primarily simple and relatable, focusing on the experiences and emotions of its characters rather than complex linguistic structures."
+7,Dialogue Complexity,28,Persuasion (1995),4,null,"The dialogue in 'Persuasion' reflects the sophisticated and nuanced language characteristic of Jane Austen's writing, featuring layered conversations and subtle social commentary."
+7,Dialogue Complexity,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",4,null,"The movie features intricate and imaginative dialogue that often uses metaphorical and layered conversations, fitting well into a complex dialogue category."
+7,Dialogue Complexity,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),3,null,"The dialogue in 'Shanghai Triad' involves nuanced interactions within a complex social hierarchy, indicating a level of sophistication."
+7,Dialogue Complexity,31,Dangerous Minds (1995),1,null,The dialogue in 'Dangerous Minds' is primarily straightforward and aimed at conveying the story's themes of inspiration and empowerment without significant use of complex language or metaphors.
+7,Dialogue Complexity,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),4,null,"The movie features intricate dialogues that explore themes of time travel, mental health, and existential questions, indicating a high level of complexity."
+7,Dialogue Complexity,33,Wings of Courage (1995),2,midpoint,"The plot summary suggests a focus on adventure and romance with themes of courage and passion, which typically involve more straightforward dialogue."
+7,Dialogue Complexity,34,Babe (1995),2,null,"The dialogue in 'Babe' is primarily simple and straightforward, suitable for a children's audience, though it occasionally includes some metaphorical and emotional depth."
+7,Dialogue Complexity,35,Carrington (1995),4,null,"The film's focus on the intellectual and emotional exchanges between characters, set within the context of early 20th-century England, suggests a dialogue rich with historical and cultural nuances."
+7,Dialogue Complexity,36,Dead Man Walking (1995),3,null,"The film features nuanced and thoughtful conversations that explore deep themes of morality and justice, indicating a level of dialogue complexity."
+7,Dialogue Complexity,37,Across the Sea of Time (1995),1,null,The documentary nature and focus on visual storytelling suggest a simpler dialogue structure.
+7,Dialogue Complexity,38,It Takes Two (1995),1,null,The plot summary suggests a simple and straightforward dialogue typical of children's comedies.
+7,Dialogue Complexity,39,Clueless (1995),2,null,Clueless features witty and clever dialogue that is accessible yet contains layers of humor and social commentary.
+7,Dialogue Complexity,40,"Cry, the Beloved Country (1995)",3,null,"The dialogue in 'Cry, the Beloved Country' is thoughtful and reflective, often philosophical in nature, which indicates a higher level of complexity."
+7,Dialogue Complexity,41,Richard III (1995),5,null,"The movie features Shakespearean dialogue, which is known for its complexity, rich metaphors, and layered conversations."
+7,Dialogue Complexity,42,Dead Presidents (1995),3,null,"The dialogue in 'Dead Presidents' includes complex themes and discussions about race and societal issues, but it also contains straightforward conversations typical of action and crime genres."
+7,Dialogue Complexity,43,Restoration (1995),4,null,The movie features intricate and period-appropriate dialogue that reflects the intellectual and social complexities of the 17th century court.
+7,Dialogue Complexity,44,Mortal Kombat (1995),1,null,"The dialogue in Mortal Kombat is primarily focused on action and straightforward exchanges, lacking the complexity and sophistication found in more verbally intricate films."
+7,Dialogue Complexity,45,To Die For (1995),3,null,"The dialogue in 'To Die For' includes nuanced conversations about media and ambition, yet it maintains a level of accessibility that prevents it from reaching the highest levels of complexity."
+7,Dialogue Complexity,46,How to Make an American Quilt (1995),2,null,"The dialogue in 'How to Make an American Quilt' is primarily focused on personal stories and reflections, which are relatively straightforward and emotionally driven rather than complex or intellectually challenging."
+7,Dialogue Complexity,47,Seven (a.k.a. Se7en) (1995),3,null,"The dialogue in 'Seven' includes complex themes and philosophical discussions, yet it maintains clarity and directness necessary for its plot."
+7,Dialogue Complexity,48,Pocahontas (1995),2,null,"The dialogue in 'Pocahontas' is primarily simple and accessible, aimed at a young audience, with some deeper themes that add complexity."
+7,Dialogue Complexity,49,When Night Is Falling (1995),3,null,"The plot summary suggests a narrative that involves deep personal exploration and complex emotional dynamics, likely accompanied by nuanced and layered dialogue."
+7,Dialogue Complexity,50,"Usual Suspects, The (1995)",4,null,"The intricate and layered conversations, especially those involving Verbal Kint, demonstrate a high level of dialogue complexity."
+8,Character Development,1,Toy Story (1995),4,null,"Woody and Buzz undergo significant personal growth and transformation throughout their journey, learning valuable lessons about friendship and loyalty."
+8,Character Development,2,Jumanji (1995),2,null,"While the characters face challenges and have moments of bravery, their core personalities and traits remain largely consistent throughout the film."
+8,Character Development,3,Grumpier Old Men (1995),1,null,"The main characters, John and Max, maintain their core personalities and rivalry throughout the film, with minimal personal growth."
+8,Character Development,4,Waiting to Exhale (1995),4,null,The film showcases significant personal growth and transformation among the main characters as they face and overcome personal and relational challenges.
+8,Character Development,5,Father of the Bride Part II (1995),2,null,The movie focuses on situational comedy arising from unexpected pregnancy and family dynamics rather than deep character transformation.
+8,Character Development,6,Heat (1995),2,null,"While 'Heat' delves into the personal lives and motivations of its main characters, their core traits and roles remain relatively static throughout the film."
+8,Character Development,7,Sabrina (1995),3,null,"Sabrina undergoes significant personal transformation, gaining confidence and elegance, which influences her relationships and self-perception."
+8,Character Development,8,Tom and Huck (1995),3,null,"The film focuses on the adventures of Tom and Huck while witnessing a murder and developing their friendship, indicating some character growth but within a more limited scope typical of children's adventure films."
+8,Character Development,9,Sudden Death (1995),1,null,The protagonist in 'Sudden Death' primarily relies on his existing skills and resourcefulness without undergoing significant personal growth or transformation.
+8,Character Development,10,GoldenEye (1995),1,null,James Bond remains largely consistent with his established traits and does not undergo significant personal growth or transformation.
+8,Character Development,11,"American President, The (1995)",3,null,"The American President showcases significant personal growth for the main character, Andrew Shepherd, as he learns to balance his political responsibilities with personal relationships."
+8,Character Development,12,Dracula: Dead and Loving It (1995),1,null,The characters in 'Dracula: Dead and Loving It' primarily serve comedic roles and do not undergo significant personal growth or transformation.
+8,Character Development,13,Balto (1995),4,null,"Balto undergoes significant personal growth, learning the true meaning of heroism and overcoming his own doubts, which aligns well with the high pole of character development."
+8,Character Development,14,Nixon (1995),3,null,"The film 'Nixon' explores the psychological and political evolution of its titular character, showcasing significant personal and professional changes."
+8,Character Development,15,Cutthroat Island (1995),1,null,The characters in 'Cutthroat Island' primarily focus on external adventures and conflicts rather than internal growth or significant personal transformation.
+8,Character Development,16,Casino (1995),2,null,"While the characters face significant challenges and experiences, their core traits and motivations remain largely consistent throughout the film."
+8,Character Development,17,Sense and Sensibility (1995),4,null,"The film showcases significant personal growth and emotional maturity in the main characters, particularly Elinor and Marianne, as they learn to balance their emotions and societal expectations."
+8,Character Development,18,Four Rooms (1995),1,null,Four Rooms is an anthology film with short segments that do not allow for significant character development.
+8,Character Development,19,Ace Ventura: When Nature Calls (1995),1,null,"The movie focuses on maintaining the static, quirky personality of Ace Ventura without significant character development."
+8,Character Development,20,Money Train (1995),1,null,The characters in 'Money Train' primarily focus on executing their heist plan with limited internal growth or transformation.
+8,Character Development,21,Get Shorty (1995),2,null,"While the protagonist learns about the film industry and adapts to new environments, his core traits and motivations remain consistent throughout the film."
+8,Character Development,22,Copycat (1995),3,null,"While the psychologist character faces personal challenges and confronts her past, the overall character development is not extensive enough to reach the higher end of the scale."
+8,Character Development,23,Assassins (1995),1,null,The movie focuses primarily on action and intrigue rather than deep character development.
+8,Character Development,24,Powder (1995),4,null,The film 'Powder' showcases significant personal growth and transformation of the titular character as he navigates societal prejudices and discovers his true potential.
+8,Character Development,25,Leaving Las Vegas (1995),4,null,"The film 'Leaving Las Vegas' showcases significant personal transformations for both the main characters, particularly in their understanding of themselves and their relationships."
+8,Character Development,26,Othello (1995),4,null,"Othello undergoes significant internal conflict and transformation due to manipulation, leading to a profound change in his perception and actions."
+8,Character Development,27,Now and Then (1995),4,null,"The movie explores significant personal growth and transformation as the characters confront their past and present selves, indicating substantial character development."
+8,Character Development,28,Persuasion (1995),4,null,"The film 'Persuasion' showcases significant personal growth and reflection in Anne Elliot, as she reevaluates her past decisions and navigates her evolving feelings and societal constraints."
+8,Character Development,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",2,null,"While the characters in 'The City of Lost Children' undergo some changes, the focus is more on the fantastical plot and visual style than deep character development."
+8,Character Development,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),3,null,The young boy's experience in the triad environment leads to significant personal growth and understanding of the harsh realities of power and loyalty.
+8,Character Development,31,Dangerous Minds (1995),4,null,"The main character undergoes significant personal growth and adapts her teaching methods to inspire her students, indicating substantial character development."
+8,Character Development,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),3,null,"The main character, James Cole, undergoes significant psychological changes and confrontations with his own reality and sanity, which drive the narrative."
+8,Character Development,33,Wings of Courage (1995),2,null,The film focuses more on the adventurous and romantic aspects of the characters' lives rather than deep character development.
+8,Character Development,34,Babe (1995),4,null,"Babe showcases significant personal growth and transformation as the titular character learns to overcome obstacles and achieve his dream, aligning closely with the high pole of character development."
+8,Character Development,35,Carrington (1995),4,null,"The film 'Carrington' portrays significant personal growth and emotional transformation in its main characters, particularly Dora Carrington, as she navigates her relationships and societal expectations."
+8,Character Development,36,Dead Man Walking (1995),4,null,"Both Sister Helen Prejean and Matthew Poncelet undergo significant personal transformations throughout the film, exploring deep questions of faith, redemption, and justice."
+8,Character Development,37,Across the Sea of Time (1995),2,null,The film focuses more on the journey and experiences of Tomas rather than deep character development.
+8,Character Development,38,It Takes Two (1995),2,null,"The characters experience some growth as they learn about family, friendship, and communication, but the overall transformation is modest."
+8,Character Development,39,Clueless (1995),3,null,"Cher Horowitz undergoes significant personal growth, learning about empathy and the true meaning of love, which marks notable character development."
+8,Character Development,40,"Cry, the Beloved Country (1995)",4,null,"The film showcases significant personal growth and transformation in the protagonist, Stephen Kumalo, as he confronts the challenges of apartheid and undergoes a profound change in his understanding and actions."
+8,Character Development,41,Richard III (1995),1,null,Richard III primarily focuses on the character's manipulative schemes and rise to power without significant internal growth or transformation.
+8,Character Development,42,Dead Presidents (1995),2,null,"While the film explores the challenges faced by Anthony Curtis post-war, his character development is somewhat limited and focused primarily on external conflicts rather than internal transformation."
+8,Character Development,43,Restoration (1995),4,null,"Robert Merivel undergoes significant personal and moral transformations throughout the film, reflecting deep character development."
+8,Character Development,44,Mortal Kombat (1995),2,null,"While the movie includes some character moments, the primary focus is on action and combat rather than deep character development."
+8,Character Development,45,To Die For (1995),3,null,"While Suzanne Stone undergoes significant changes due to her actions and their consequences, her core ambition-driven personality remains consistent throughout the film."
+8,Character Development,46,How to Make an American Quilt (1995),4,null,"The film focuses on the protagonist's journey of self-discovery and growth through the wisdom and experiences shared by the older women, indicating significant character development."
+8,Character Development,47,Seven (a.k.a. Se7en) (1995),2,null,"While the detectives' experiences are intense, their core characters remain relatively static despite the challenging circumstances."
+8,Character Development,48,Pocahontas (1995),4,null,"Pocahontas undergoes significant personal growth, learning to stand up for her beliefs and bridge cultural divides, which aligns with high character development."
+8,Character Development,49,When Night Is Falling (1995),4,null,"The protagonist undergoes significant personal growth as she confronts her beliefs and fears through her relationship, indicating substantial character development."
+8,Character Development,50,"Usual Suspects, The (1995)",1,null,"The Usual Suspects primarily focuses on revealing a complex plot rather than developing its characters, with most characters remaining static."
+9,Music Influence,1,Toy Story (1995),2,null,The music in Toy Story supports the narrative and enhances the emotional moments without overshadowing the story or characters.
+9,Music Influence,2,Jumanji (1995),2,null,The music in 'Jumanji' supports the adventurous and fantastical elements without heavily influencing the overall emotional tone.
+9,Music Influence,3,Grumpier Old Men (1995),1,null,"The movie focuses more on the comedic and romantic elements rather than the musical score, which plays a supporting role."
+9,Music Influence,4,Waiting to Exhale (1995),2,null,"While the music in 'Waiting to Exhale' supports the emotional tone of the film, it does not dominate the atmosphere or serve as a primary driver of the emotional narrative."
+9,Music Influence,5,Father of the Bride Part II (1995),1,null,The movie's music serves primarily as background support for the comedic scenes without heavily influencing the overall emotional tone.
+9,Music Influence,6,Heat (1995),4,null,"The musical score in 'Heat' significantly enhances the tension and emotional depth of the scenes, aligning closely with the high pole."
+9,Music Influence,7,Sabrina (1995),2,null,The music in 'Sabrina' (1995) supports the romantic and comedic elements without heavily influencing the overall atmosphere.
+9,Music Influence,8,Tom and Huck (1995),1,null,The plot summary does not indicate that the music plays a significant role in influencing the atmosphere or emotional tone of the film.
+9,Music Influence,9,Sudden Death (1995),1,null,The plot summary does not indicate a significant emphasis on the musical score influencing the film's atmosphere or emotional tone.
+9,Music Influence,10,GoldenEye (1995),2,null,"While 'GoldenEye' features an engaging score that complements the action and suspense, the music does not dominate the emotional tone of the film."
+9,Music Influence,11,"American President, The (1995)",1,null,The musical score in 'The American President' supports the scenes but does not heavily influence the overall atmosphere or emotional tone.
+9,Music Influence,12,Dracula: Dead and Loving It (1995),1,null,The musical score in 'Dracula: Dead and Loving It' primarily serves to support the comedic elements without heavily influencing the overall atmosphere.
+9,Music Influence,13,Balto (1995),2,null,"While 'Balto' uses music to enhance the emotional moments, it primarily serves to support the narrative rather than dominate the atmosphere."
+9,Music Influence,14,Nixon (1995),1,null,The musical score in 'Nixon' supports the narrative without heavily influencing the atmosphere or emotional tone.
+9,Music Influence,15,Cutthroat Island (1995),2,null,The musical score in 'Cutthroat Island' primarily serves to enhance the action and adventure scenes without heavily influencing the overall emotional tone.
+9,Music Influence,16,Casino (1995),3,null,The musical score in Casino supports the narrative and enhances the atmosphere without overwhelmingly dominating the emotional tone.
+9,Music Influence,17,Sense and Sensibility (1995),2,null,The musical score in 'Sense and Sensibility' supports the emotional depth of the scenes but does not dominate the atmosphere.
+9,Music Influence,18,Four Rooms (1995),1,null,The movie's plot summary does not emphasize the musical score's role in influencing the atmosphere or emotional tone.
+9,Music Influence,19,Ace Ventura: When Nature Calls (1995),1,null,The musical score in 'Ace Ventura: When Nature Calls' primarily serves to support the comedic elements without heavily influencing the overall atmosphere or emotional tone.
+9,Music Influence,20,Money Train (1995),2,null,The movie's soundtrack supports the action and comedy elements without heavily influencing the overall emotional tone.
+9,Music Influence,21,Get Shorty (1995),2,null,The music in 'Get Shorty' supports the film's tone but does not dominate the emotional experience.
+9,Music Influence,22,Copycat (1995),2,null,The music in 'Copycat' supports the tense and suspenseful atmosphere but does not dominate the film's emotional tone.
+9,Music Influence,23,Assassins (1995),2,null,The movie 'Assassins' features a musical score that supports the action and tension but does not dominate the emotional experience.
+9,Music Influence,24,Powder (1995),2,null,The music in 'Powder' supports the emotional depth of the scenes but does not dominate the film's atmosphere.
+9,Music Influence,25,Leaving Las Vegas (1995),3,null,The film's soundtrack supports the emotional depth and atmosphere without overpowering the narrative.
+9,Music Influence,26,Othello (1995),2,null,The musical score in 'Othello' (1995) supports the dramatic narrative but does not dominate the emotional experience.
+9,Music Influence,27,Now and Then (1995),2,null,The musical score in 'Now and Then' supports the emotional moments but does not dominate the film's atmosphere.
+9,Music Influence,28,Persuasion (1995),2,null,"The musical score in 'Persuasion' supports the emotional narrative without overpowering it, suggesting a moderate influence on the film's atmosphere."
+9,Music Influence,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",4,null,"The musical score in 'The City of Lost Children' significantly contributes to the film's surreal and dreamlike atmosphere, enhancing the emotional depth and tone."
+9,Music Influence,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),2,null,The musical score in 'Shanghai Triad' supports the narrative without heavily influencing the atmosphere or emotional tone.
+9,Music Influence,31,Dangerous Minds (1995),2,null,"While the music in 'Dangerous Minds' supports the scenes and adds to the atmosphere, it does not dominate the emotional tone or atmosphere of the film."
+9,Music Influence,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),2,null,The musical score in 'Twelve Monkeys' supports the film's atmosphere but does not dominate the emotional tone.
+9,Music Influence,33,Wings of Courage (1995),2,null,"While the film likely uses music to enhance the adventure and romance elements, it does not appear to rely heavily on its soundtrack to set the emotional tone."
+9,Music Influence,34,Babe (1995),2,null,The music in 'Babe' supports the narrative but does not dominate the emotional experience.
+9,Music Influence,35,Carrington (1995),2,null,"While 'Carrington' uses music to support the mood, it does not rely heavily on the soundtrack to influence the atmosphere and emotional tone."
+9,Music Influence,36,Dead Man Walking (1995),2,null,The musical score in 'Dead Man Walking' supports the emotional narrative but does not dominate the atmosphere or heavily influence the emotional tone.
+9,Music Influence,37,Across the Sea of Time (1995),1,null,The documentary nature of the film suggests a more subdued use of music that supports rather than dominates the narrative.
+9,Music Influence,38,It Takes Two (1995),1,null,The plot summary does not highlight any significant influence of the music on the film's atmosphere or emotional tone.
+9,Music Influence,39,Clueless (1995),3,null,The music in 'Clueless' is prominent and contributes significantly to the film's 90s pop culture vibe and emotional tone.
+9,Music Influence,40,"Cry, the Beloved Country (1995)",2,null,"The musical score in 'Cry, the Beloved Country' supports the narrative but does not dominate the emotional landscape of the film."
+9,Music Influence,41,Richard III (1995),3,null,"The film uses its musical score to enhance the dramatic tension and emotional depth of the narrative, though it does not overshadow the dialogue and action."
+9,Music Influence,42,Dead Presidents (1995),2,null,The film's soundtrack supports the narrative but does not heavily influence the overall atmosphere or emotional tone.
+9,Music Influence,43,Restoration (1995),2,null,The musical score in 'Restoration' supports the narrative without heavily influencing the emotional tone or atmosphere.
+9,Music Influence,44,Mortal Kombat (1995),2,null,The soundtrack in 'Mortal Kombat' supports the action and fantasy elements but does not heavily influence the overall atmosphere or emotional tone.
+9,Music Influence,45,To Die For (1995),2,null,The musical score in 'To Die For' supports the film's tone but does not dominate the emotional experience.
+9,Music Influence,46,How to Make an American Quilt (1995),1,null,The film's music serves primarily as background support without heavily influencing the emotional tone.
+9,Music Influence,47,Seven (a.k.a. Se7en) (1995),2,null,The musical score in 'Seven' supports the film's tense and atmospheric narrative without dominating the emotional tone.
+9,Music Influence,48,Pocahontas (1995),4,null,Pocahontas features a prominent musical score that significantly influences the emotional tone and atmosphere of the film.
+9,Music Influence,49,When Night Is Falling (1995),2,midpoint,"The plot summary does not provide specific details about the music's role, but given the genre and typical use of music in dramas, it likely supports the narrative without dominating it."
+9,Music Influence,50,"Usual Suspects, The (1995)",1,null,The musical score in 'The Usual Suspects' supports the narrative without heavily influencing the atmosphere or emotional tone.
+10,Narrative Structure,1,Toy Story (1995),1,null,"Toy Story follows a straightforward, chronological plot without significant deviations from a linear storyline."
+10,Narrative Structure,2,Jumanji (1995),1,null,The plot of 'Jumanji' follows a straightforward and chronological storyline without significant deviations into nonlinear storytelling.
+10,Narrative Structure,3,Grumpier Old Men (1995),1,null,The plot follows a straightforward and chronological storyline without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,4,Waiting to Exhale (1995),1,null,"The plot of 'Waiting to Exhale' follows a straightforward, chronological narrative without significant deviations into nonlinear storytelling techniques."
+10,Narrative Structure,5,Father of the Bride Part II (1995),1,null,"The plot follows a straightforward, chronological storyline without significant deviations into nonlinear storytelling techniques."
+10,Narrative Structure,6,Heat (1995),2,null,"Heat (1995) primarily follows a chronological storyline with occasional flashbacks and parallel narratives, indicating a mix of straightforward and nonlinear elements."
+10,Narrative Structure,7,Sabrina (1995),1,null,"The plot of 'Sabrina' follows a straightforward, chronological storyline without significant deviations into nonlinear storytelling techniques."
+10,Narrative Structure,8,Tom and Huck (1995),1,null,"The plot of 'Tom and Huck' follows a straightforward, chronological storyline without significant deviations into nonlinear narrative techniques."
+10,Narrative Structure,9,Sudden Death (1995),1,null,"The plot follows a straightforward, chronological sequence without significant deviations into nonlinear storytelling techniques."
+10,Narrative Structure,10,GoldenEye (1995),1,null,"The plot of 'GoldenEye' follows a straightforward, chronological storyline typical of the action and thriller genres."
+10,Narrative Structure,11,"American President, The (1995)",1,null,"The plot of 'The American President' follows a straightforward, chronological storyline without significant deviations into nonlinear storytelling techniques."
+10,Narrative Structure,12,Dracula: Dead and Loving It (1995),1,null,The plot follows a straightforward and chronological storyline without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,13,Balto (1995),1,null,The plot of Balto follows a straightforward and chronological storyline without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,14,Nixon (1995),1,null,"The movie 'Nixon' primarily follows a chronological and linear storyline, focusing on the political career of Richard Nixon without significant deviations into nonlinear storytelling techniques."
+10,Narrative Structure,15,Cutthroat Island (1995),1,null,The plot follows a straightforward chronological sequence with no significant deviations from linear storytelling.
+10,Narrative Structure,16,Casino (1995),1,null,"Casino primarily follows a chronological and linear storyline, though it includes occasional flashbacks to provide context."
+10,Narrative Structure,17,Sense and Sensibility (1995),1,null,"The movie follows a chronological and linear storyline typical of period dramas, without significant deviations into nonlinear storytelling."
+10,Narrative Structure,18,Four Rooms (1995),2,null,"Four Rooms consists of four distinct segments, each with its own narrative, which introduces a level of complexity but still maintains a relatively straightforward plot within each segment."
+10,Narrative Structure,19,Ace Ventura: When Nature Calls (1995),1,null,"The plot follows a straightforward and linear storyline typical of most comedies, without significant deviations into nonlinear storytelling."
+10,Narrative Structure,20,Money Train (1995),1,null,"Money Train follows a straightforward, chronological plot without significant deviations into nonlinear storytelling techniques."
+10,Narrative Structure,21,Get Shorty (1995),1,null,The plot of 'Get Shorty' follows a relatively straightforward chronological storyline without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,22,Copycat (1995),1,null,The plot of 'Copycat' follows a relatively straightforward investigation and chase narrative without significant deviations from a linear timeline.
+10,Narrative Structure,23,Assassins (1995),1,null,The plot summary indicates a straightforward storyline without significant deviations from a linear narrative.
+10,Narrative Structure,24,Powder (1995),1,null,The plot of 'Powder' follows a relatively straightforward and chronological storyline without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,25,Leaving Las Vegas (1995),1,null,The movie follows a relatively straightforward and chronological plot without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,26,Othello (1995),1,null,The plot of Othello follows a chronological and linear storyline typical of Shakespearean plays.
+10,Narrative Structure,27,Now and Then (1995),2,null,"The movie uses a straightforward plot with occasional flashbacks to explore the characters' past, indicating a mix of linear and non-linear storytelling."
+10,Narrative Structure,28,Persuasion (1995),1,null,The plot of 'Persuasion' follows a chronological and linear storyline without significant deviations into nonlinear narrative techniques.
+10,Narrative Structure,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",3,null,"The film uses a non-linear narrative structure with dream sequences and surreal elements, which adds complexity to its storytelling."
+10,Narrative Structure,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),1,null,The plot of 'Shanghai Triad' follows a relatively straightforward and chronological storyline without significant deviations into nonlinear narrative techniques.
+10,Narrative Structure,31,Dangerous Minds (1995),1,null,"The plot follows a straightforward, chronological storyline without significant deviations into nonlinear narrative techniques."
+10,Narrative Structure,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),4,null,"The film uses a complex narrative involving time travel and multiple timelines, which significantly deviates from a straightforward plot."
+10,Narrative Structure,33,Wings of Courage (1995),1,null,"The plot summary indicates a straightforward, chronological exploration of the lives and adventures of the aviation pioneers without mention of any non-linear storytelling techniques."
+10,Narrative Structure,34,Babe (1995),1,null,Babe follows a straightforward and chronological storyline without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,35,Carrington (1995),1,null,Carrington follows a relatively straightforward and chronological plot without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,36,Dead Man Walking (1995),1,null,The movie follows a chronological and linear storyline without significant deviations into nonlinear narrative techniques.
+10,Narrative Structure,37,Across the Sea of Time (1995),1,null,"The plot of 'Across the Sea of Time' follows a straightforward and chronological journey of Tomas, without significant deviations into nonlinear storytelling."
+10,Narrative Structure,38,It Takes Two (1995),1,null,The plot follows a straightforward chronological sequence without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,39,Clueless (1995),1,null,"Clueless follows a straightforward, chronological plot without significant deviations into nonlinear storytelling techniques."
+10,Narrative Structure,40,"Cry, the Beloved Country (1995)",1,null,"The film follows a straightforward, chronological narrative without significant deviations from a linear storyline."
+10,Narrative Structure,41,Richard III (1995),1,null,The plot of 'Richard III' follows a chronological and linear storyline without significant deviations into nonlinear narrative techniques.
+10,Narrative Structure,42,Dead Presidents (1995),1,null,The plot of 'Dead Presidents' follows a relatively straightforward chronological timeline with no significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,43,Restoration (1995),1,null,The plot of 'Restoration' follows a relatively straightforward chronological timeline without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,44,Mortal Kombat (1995),1,null,The plot of Mortal Kombat follows a straightforward and chronological storyline without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,45,To Die For (1995),1,null,The plot of 'To Die For' follows a relatively straightforward and chronological storyline without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,46,How to Make an American Quilt (1995),1,null,The plot follows a straightforward chronological narrative without significant deviations into nonlinear storytelling techniques.
+10,Narrative Structure,47,Seven (a.k.a. Se7en) (1995),2,null,"Seven primarily follows a straightforward plot with a chronological timeline, though it includes some flashbacks and reveals that add complexity."
+10,Narrative Structure,48,Pocahontas (1995),1,null,"The plot of 'Pocahontas' follows a straightforward, chronological storyline without significant deviations into nonlinear storytelling techniques."
+10,Narrative Structure,49,When Night Is Falling (1995),1,null,The plot summary indicates a straightforward narrative without any mention of non-linear storytelling techniques.
+10,Narrative Structure,50,"Usual Suspects, The (1995)",3,null,"The film uses a nested narrative structure and unreliable narrator, which introduces significant non-linearity and complexity."

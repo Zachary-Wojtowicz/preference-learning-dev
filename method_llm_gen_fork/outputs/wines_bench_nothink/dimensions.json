@@ -1,0 +1,101 @@
+{
+  "domain": "wines_bench_nothink",
+  "choice_context": "A person is deciding which wine to buy or drink based on the description of the wine.",
+  "reasoning": "In the context of wine selection, people may disagree on whether they prefer bold and robust flavors or subtle and delicate ones. They might also have different opinions on the balance between sweetness and acidity, and whether they prefer wines with strong tannins or smoother textures.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Flavor Intensity",
+      "low_pole": {
+        "label": "Subtle",
+        "description": "Wines with mild and understated flavors.",
+        "typical_person": "Someone who appreciates nuanced and delicate flavors."
+      },
+      "high_pole": {
+        "label": "Bold",
+        "description": "Wines with rich and powerful flavors.",
+        "typical_person": "Someone who enjoys full-bodied and robust flavors."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir",
+        "high_option": "Cabernet Sauvignon"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "A 1 might describe a wine with barely noticeable flavors, while a 7 would describe a wine with intense and overpowering flavors."
+    },
+    {
+      "id": 2,
+      "name": "Sweetness Level",
+      "low_pole": {
+        "label": "Dry",
+        "description": "Wines with minimal residual sugar.",
+        "typical_person": "Someone who prefers wines that are not sweet."
+      },
+      "high_pole": {
+        "label": "Sweet",
+        "description": "Wines with a noticeable amount of residual sugar.",
+        "typical_person": "Someone who enjoys sweeter wines."
+      },
+      "example_contrast": {
+        "low_option": "Riesling",
+        "high_option": "Port"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "A 1 might describe a wine with almost no sweetness, while a 7 would describe a wine that is very sweet."
+    },
+    {
+      "id": 3,
+      "name": "Tannin Presence",
+      "low_pole": {
+        "label": "Smooth",
+        "description": "Wines with soft and gentle tannins.",
+        "typical_person": "Someone who prefers smooth and easy-to-drink wines."
+      },
+      "high_pole": {
+        "label": "Robust",
+        "description": "Wines with strong and assertive tannins.",
+        "typical_person": "Someone who enjoys wines with a firm structure."
+      },
+      "example_contrast": {
+        "low_option": "Chardonnay",
+        "high_option": "Cabernet Sauvignon"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "A 1 might describe a wine with very soft tannins, while a 7 would describe a wine with very strong tannins."
+    },
+    {
+      "id": 4,
+      "name": "Acidity Balance",
+      "low_pole": {
+        "label": "Soft",
+        "description": "Wines with gentle and subtle acidity.",
+        "typical_person": "Someone who prefers wines that are not too tart."
+      },
+      "high_pole": {
+        "label": "Sharp",
+        "description": "Wines with bright and zesty acidity.",
+        "typical_person": "Someone who enjoys wines with a lively and refreshing acidity."
+      },
+      "example_contrast": {
+        "low_option": "Sauvignon Blanc",
+        "high_option": "Riesling"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "A 1 might describe a wine with very soft acidity, while a 7 would describe a wine with very sharp acidity."
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        3
+      ],
+      "correlation_note": "There is some correlation between flavor intensity and tannin presence, as more intense flavors often come with stronger tannins.",
+      "disentanglement_suggestion": "To disentangle these, consider focusing on the specific aspects of flavor intensity and tannin presence that are most relevant to the individual. For instance, ask about the overall mouthfeel and texture rather than just the intensity of flavors."
+    }
+  ]
+}

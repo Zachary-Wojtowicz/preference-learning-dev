@@ -1,0 +1,218 @@
+{
+  "domain": "wines",
+  "choice_context": "A person is deciding which wine to buy or drink based on the description of the wine.",
+  "reasoning": "",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Sweetness",
+      "low_pole": {
+        "label": "Dry",
+        "description": "Minimal to no sweetness.",
+        "typical_person": "Someone who prefers a crisp, clean taste."
+      },
+      "high_pole": {
+        "label": "Sweet",
+        "description": "High level of sweetness.",
+        "typical_person": "Someone who enjoys a rich, indulgent taste."
+      },
+      "example_contrast": {
+        "low_option": "Riesling",
+        "high_option": "Moscato"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "1 for dry, 5 for sweet."
+    },
+    {
+      "id": 2,
+      "name": "Body",
+      "low_pole": {
+        "label": "Light",
+        "description": "Light and delicate texture.",
+        "typical_person": "Someone who prefers a subtle, easy-to-drink wine."
+      },
+      "high_pole": {
+        "label": "Full",
+        "description": "Rich and full-bodied texture.",
+        "typical_person": "Someone who enjoys a robust, complex taste."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir",
+        "high_option": "Cabernet Sauvignon"
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "1 for light, 5 for full."
+    },
+    {
+      "id": 3,
+      "name": "Acidity",
+      "low_pole": {
+        "label": "Low",
+        "description": "Not sour or tangy.",
+        "typical_person": "Someone who doesn't like overly tart wines."
+      },
+      "high_pole": {
+        "label": "High",
+        "description": "Sharp and zesty.",
+        "typical_person": "Someone who appreciates a refreshing, lively taste."
+      },
+      "example_contrast": {
+        "low_option": "Malbec",
+        "high_option": "Sauvignon Blanc"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "1 for low, 5 for high."
+    },
+    {
+      "id": 4,
+      "name": "Tannin",
+      "low_pole": {
+        "label": "Soft",
+        "description": "Gentle and smooth.",
+        "typical_person": "Someone who prefers a gentle, approachable wine."
+      },
+      "high_pole": {
+        "label": "Firm",
+        "description": "Strong and astringent.",
+        "typical_person": "Someone who enjoys a bold, structured taste."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir",
+        "high_option": "Cabernet Sauvignon"
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "1 for soft, 5 for firm."
+    },
+    {
+      "id": 5,
+      "name": "Oakiness",
+      "low_pole": {
+        "label": "Unoaked",
+        "description": "No oak flavor or aroma.",
+        "typical_person": "Someone who prefers a wine with minimal wood influence."
+      },
+      "high_pole": {
+        "label": "Oaked",
+        "description": "Strong oak flavor and aroma.",
+        "typical_person": "Someone who enjoys a rich, buttery taste."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir",
+        "high_option": "Chardonnay"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "1 for unoaked, 5 for oaked."
+    },
+    {
+      "id": 6,
+      "name": "Fruitiness",
+      "low_pole": {
+        "label": "Subtle",
+        "description": "Mild fruit flavors.",
+        "typical_person": "Someone who prefers a wine with a more nuanced flavor profile."
+      },
+      "high_pole": {
+        "label": "Fruity",
+        "description": "Strong fruit flavors.",
+        "typical_person": "Someone who enjoys a wine with prominent fruit notes."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir",
+        "high_option": "Zinfandel"
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "1 for subtle, 5 for fruity."
+    },
+    {
+      "id": 7,
+      "name": "Spice",
+      "low_pole": {
+        "label": "Mild",
+        "description": "Minimal spice notes.",
+        "typical_person": "Someone who prefers a wine with a straightforward flavor profile."
+      },
+      "high_pole": {
+        "label": "Spicy",
+        "description": "Strong spice notes.",
+        "typical_person": "Someone who enjoys a wine with complex, aromatic qualities."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir",
+        "high_option": "Syrah"
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "1 for mild, 5 for spicy."
+    },
+    {
+      "id": 8,
+      "name": "Alcohol Content",
+      "low_pole": {
+        "label": "Low",
+        "description": "Lower alcohol content.",
+        "typical_person": "Someone who prefers a wine that isn't too strong."
+      },
+      "high_pole": {
+        "label": "High",
+        "description": "Higher alcohol content.",
+        "typical_person": "Someone who enjoys a wine with a warming sensation."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir",
+        "high_option": "Zinfandel"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "1 for low, 5 for high."
+    },
+    {
+      "id": 9,
+      "name": "Complexity",
+      "low_pole": {
+        "label": "Simple",
+        "description": "Straightforward and uncomplicated.",
+        "typical_person": "Someone who prefers a wine that is easy to understand and enjoy."
+      },
+      "high_pole": {
+        "label": "Complex",
+        "description": "Multi-layered and nuanced.",
+        "typical_person": "Someone who enjoys a wine with depth and complexity."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir",
+        "high_option": "Bordeaux Blend"
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "1 for simple, 5 for complex."
+    },
+    {
+      "id": 10,
+      "name": "Fermentation Method",
+      "low_pole": {
+        "label": "Traditional",
+        "description": "Conventional fermentation process.",
+        "typical_person": "Someone who prefers a wine made using traditional methods."
+      },
+      "high_pole": {
+        "label": "Innovative",
+        "description": "Modern or experimental fermentation techniques.",
+        "typical_person": "Someone who enjoys a wine with unique characteristics."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir",
+        "high_option": "Sparkling Wine (M\u00e9thode Ancestrale)"
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "1 for traditional, 5 for innovative."
+    }
+  ],
+  "redundancy_check": []
+}

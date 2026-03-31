@@ -1,0 +1,218 @@
+{
+  "domain": "movies",
+  "choice_context": "A person is deciding which movie to watch based on the movie's description, genre, cast, and plot summary.",
+  "reasoning": "",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Action Intensity",
+      "low_pole": {
+        "label": "Low Action",
+        "description": "Movies with minimal action sequences and focus more on dialogue and character development.",
+        "typical_person": "People who prefer quieter, more introspective films."
+      },
+      "high_pole": {
+        "label": "High Action",
+        "description": "Movies filled with intense action scenes, stunts, and fast-paced sequences.",
+        "typical_person": "Fans of adrenaline-pumping, high-octane thrillers."
+      },
+      "example_contrast": {
+        "low_option": "\"The Grand Budapest Hotel\"",
+        "high_option": "\"Mad Max: Fury Road\""
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Score based on the frequency and intensity of action scenes."
+    },
+    {
+      "id": 2,
+      "name": "Emotional Depth",
+      "low_pole": {
+        "label": "Shallow Emotions",
+        "description": "Films that do not delve deeply into characters' emotional states or relationships.",
+        "typical_person": "Viewers who prefer straightforward narratives without complex emotional layers."
+      },
+      "high_pole": {
+        "label": "Deep Emotions",
+        "description": "Movies that explore intricate emotional landscapes and deep character relationships.",
+        "typical_person": "Individuals who appreciate films that evoke strong emotional responses."
+      },
+      "example_contrast": {
+        "low_option": "\"The Hangover\"",
+        "high_option": "\"The Shawshank Redemption\""
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the complexity and depth of emotional content."
+    },
+    {
+      "id": 3,
+      "name": "Sci-Fi Elements",
+      "low_pole": {
+        "label": "Minimal Sci-Fi",
+        "description": "Movies that have little to no science fiction elements, focusing instead on realistic settings.",
+        "typical_person": "Audiences who prefer grounded, non-fantastical stories."
+      },
+      "high_pole": {
+        "label": "Heavy Sci-Fi",
+        "description": "Films rich in futuristic technology, space travel, and speculative science concepts.",
+        "typical_person": "Enthusiasts of imaginative and futuristic storytelling."
+      },
+      "example_contrast": {
+        "low_option": "\"The Godfather\"",
+        "high_option": "\"Interstellar\""
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Score according to the prominence and integration of sci-fi elements."
+    },
+    {
+      "id": 4,
+      "name": "Comedy Level",
+      "low_pole": {
+        "label": "Little Comedy",
+        "description": "Movies that are serious in tone with few comedic moments.",
+        "typical_person": "People who prefer drama and seriousness over humor."
+      },
+      "high_pole": {
+        "label": "High Comedy",
+        "description": "Films designed to be humorous, often prioritizing laughs over other elements.",
+        "typical_person": "Fans of light-hearted and comedic entertainment."
+      },
+      "example_contrast": {
+        "low_option": "\"Schindler's List\"",
+        "high_option": "\"Bridesmaids\""
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the amount and effectiveness of comedic elements."
+    },
+    {
+      "id": 5,
+      "name": "Historical Accuracy",
+      "low_pole": {
+        "label": "Loose History",
+        "description": "Films that take creative liberties with historical events and figures.",
+        "typical_person": "Viewers who prioritize story over strict adherence to history."
+      },
+      "high_pole": {
+        "label": "Strict History",
+        "description": "Movies that strive for accuracy in depicting historical events and figures.",
+        "typical_person": "Historians and history buffs."
+      },
+      "example_contrast": {
+        "low_option": "\"300\"",
+        "high_option": "\"Lincoln\""
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Score based on how closely the film adheres to historical facts."
+    },
+    {
+      "id": 6,
+      "name": "Visual Effects",
+      "low_pole": {
+        "label": "Minimal VFX",
+        "description": "Movies that use very few visual effects, relying more on practical effects and real locations.",
+        "typical_person": "People who prefer authenticity and practical filmmaking techniques."
+      },
+      "high_pole": {
+        "label": "Heavy VFX",
+        "description": "Films that extensively use computer-generated imagery and special effects.",
+        "typical_person": "Fans of visually stunning and fantastical worlds."
+      },
+      "example_contrast": {
+        "low_option": "\"Moonlight\"",
+        "high_option": "\"Avatar\""
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the quantity and quality of visual effects used."
+    },
+    {
+      "id": 7,
+      "name": "Character Complexity",
+      "low_pole": {
+        "label": "Simple Characters",
+        "description": "Movies featuring characters with straightforward motivations and personalities.",
+        "typical_person": "Viewers who prefer clear-cut heroes and villains."
+      },
+      "high_pole": {
+        "label": "Complex Characters",
+        "description": "Films with multi-dimensional characters whose motivations and personalities evolve throughout the story.",
+        "typical_person": "Individuals who enjoy nuanced and evolving character arcs."
+      },
+      "example_contrast": {
+        "low_option": "\"Die Hard\"",
+        "high_option": "\"The Dark Knight\""
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Score based on the depth and evolution of character development."
+    },
+    {
+      "id": 8,
+      "name": "Dialogue Quality",
+      "low_pole": {
+        "label": "Basic Dialogue",
+        "description": "Movies with simple, functional dialogue that serves primarily to move the plot forward.",
+        "typical_person": "People who prefer action and plot over sophisticated dialogue."
+      },
+      "high_pole": {
+        "label": "Sophisticated Dialogue",
+        "description": "Films featuring rich, layered dialogue that adds depth to the narrative and characters.",
+        "typical_person": "Lovers of intelligent and articulate conversations in films."
+      },
+      "example_contrast": {
+        "low_option": "\"Transformers\"",
+        "high_option": "\"No Country for Old Men\""
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the sophistication and impact of the dialogue."
+    },
+    {
+      "id": 9,
+      "name": "Music Influence",
+      "low_pole": {
+        "label": "Background Music",
+        "description": "Movies where music plays a supporting role, enhancing but not dominating the experience.",
+        "typical_person": "Viewers who prefer music to complement rather than lead the film's atmosphere."
+      },
+      "high_pole": {
+        "label": "Dominant Music",
+        "description": "Films where the musical score is a central element, significantly influencing the mood and narrative.",
+        "typical_person": "Fans of films where music is a key storytelling device."
+      },
+      "example_contrast": {
+        "low_option": "\"Juno\"",
+        "high_option": "\"La La Land\""
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Score based on the prominence and influence of the music in the film."
+    },
+    {
+      "id": 10,
+      "name": "Pacing Speed",
+      "low_pole": {
+        "label": "Slow Pacing",
+        "description": "Movies that unfold at a leisurely pace, allowing time for detailed exploration of themes and characters.",
+        "typical_person": "People who enjoy thoughtful, unhurried storytelling."
+      },
+      "high_pole": {
+        "label": "Fast Pacing",
+        "description": "Films that move quickly, with rapid scene changes and a brisk narrative flow.",
+        "typical_person": "Fans of dynamic, fast-moving plots."
+      },
+      "example_contrast": {
+        "low_option": "\"Tree of Life\"",
+        "high_option": "\"Baby Driver\""
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the overall speed and rhythm of the film's pacing."
+    }
+  ],
+  "redundancy_check": []
+}

@@ -1,0 +1,59 @@
+{
+  "domain": "wines_tiny_fast",
+  "choice_context": "A person is deciding which wine to buy or drink based on the description of the wine.",
+  "reasoning": "In the context of wine selection, people may disagree on whether they prefer a wine that is more robust and full-bodied versus one that is lighter and more delicate. This disagreement can be influenced by personal taste, dietary restrictions, or the occasion for which the wine is being chosen.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Body",
+      "low_pole": {
+        "label": "Light",
+        "description": "A wine with a subtle flavor profile and a delicate texture.",
+        "typical_person": "Someone who prefers light and refreshing wines."
+      },
+      "high_pole": {
+        "label": "Full-bodied",
+        "description": "A wine with rich flavors and a robust texture.",
+        "typical_person": "Someone who enjoys full-bodied and complex wines."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Grigio",
+        "high_option": "Cabernet Sauvignon"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "A 1 might describe a very light and delicate wine, while a 7 would describe a robust and full-bodied wine."
+    },
+    {
+      "id": 2,
+      "name": "Acidity",
+      "low_pole": {
+        "label": "Low Acidity",
+        "description": "A wine with a gentle and smooth mouthfeel.",
+        "typical_person": "Someone who prefers wines that are not too tart or sharp."
+      },
+      "high_pole": {
+        "label": "High Acidity",
+        "description": "A wine with a crisp and tangy mouthfeel.",
+        "typical_person": "Someone who enjoys wines with a bright and zesty character."
+      },
+      "example_contrast": {
+        "low_option": "Chardonnay",
+        "high_option": "Riesling"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "A 1 might describe a wine with very little acidity, while a 7 would describe a wine with a very high level of acidity."
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        2
+      ],
+      "correlation_note": "There is some correlation between body and acidity, as full-bodied wines often have higher acidity levels.",
+      "disentanglement_suggestion": "To disentangle these dimensions, consider focusing on the overall mouthfeel and texture for body, and the specific sensation of acidity for acidity. For instance, a wine can be full-bodied but have a lower acidity level, or it can be light but have a high acidity level."
+    }
+  ]
+}

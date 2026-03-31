@@ -1,0 +1,16 @@
+{
+  "domain": "wines",
+  "choice_context": "A person is deciding which wine to buy or drink based on the description of the wine.",
+  "input_path": "datasets/wine-130k_embedded.parquet",
+  "template_path": "datasets/wine_prompt.txt",
+  "text_column": "text",
+  "display_column": "title",
+  "id_column": "row_id",
+  "num_dimensions": 10,
+  "pair_appearances_per_option": 30,
+  "max_options": 200,
+  "dimensions_output_format": "plain",
+  "request_timeout_seconds": 45,
+  "max_retries": 3,
+  "max_workers": 24
+}

@@ -1,0 +1,501 @@
+dimension_id,dimension_name,option_id,display_text,bt_score
+1,Action Intensity,1,Toy Story (1995),-0.134692
+1,Action Intensity,2,Jumanji (1995),0.435401
+1,Action Intensity,3,Grumpier Old Men (1995),-0.314683
+1,Action Intensity,4,Waiting to Exhale (1995),-0.390852
+1,Action Intensity,5,Father of the Bride Part II (1995),-0.373624
+1,Action Intensity,6,Heat (1995),0.665076
+1,Action Intensity,7,Sabrina (1995),-0.392833
+1,Action Intensity,8,Tom and Huck (1995),-0.042245
+1,Action Intensity,9,Sudden Death (1995),0.618023
+1,Action Intensity,10,GoldenEye (1995),0.799808
+1,Action Intensity,11,"American President, The (1995)",-0.396004
+1,Action Intensity,12,Dracula: Dead and Loving It (1995),0.420108
+1,Action Intensity,13,Balto (1995),0.057924
+1,Action Intensity,14,Nixon (1995),-0.443209
+1,Action Intensity,15,Cutthroat Island (1995),0.564366
+1,Action Intensity,16,Casino (1995),0.356886
+1,Action Intensity,17,Sense and Sensibility (1995),-0.511849
+1,Action Intensity,18,Four Rooms (1995),-0.030769
+1,Action Intensity,19,Ace Ventura: When Nature Calls (1995),0.337588
+1,Action Intensity,20,Money Train (1995),0.677204
+1,Action Intensity,21,Get Shorty (1995),0.365362
+1,Action Intensity,22,Copycat (1995),0.20981
+1,Action Intensity,23,Assassins (1995),0.944604
+1,Action Intensity,24,Powder (1995),0.039967
+1,Action Intensity,25,Leaving Las Vegas (1995),-0.392668
+1,Action Intensity,26,Othello (1995),-0.497378
+1,Action Intensity,27,Now and Then (1995),-0.678912
+1,Action Intensity,28,Persuasion (1995),-0.577938
+1,Action Intensity,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0.057047
+1,Action Intensity,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0.127713
+1,Action Intensity,31,Dangerous Minds (1995),-0.044244
+1,Action Intensity,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.290587
+1,Action Intensity,33,Wings of Courage (1995),0.143351
+1,Action Intensity,34,Babe (1995),-0.286072
+1,Action Intensity,35,Carrington (1995),-0.586775
+1,Action Intensity,36,Dead Man Walking (1995),-0.432207
+1,Action Intensity,37,Across the Sea of Time (1995),-0.343159
+1,Action Intensity,38,It Takes Two (1995),-0.215118
+1,Action Intensity,39,Clueless (1995),-0.337033
+1,Action Intensity,40,"Cry, the Beloved Country (1995)",-0.352368
+1,Action Intensity,41,Richard III (1995),0.300302
+1,Action Intensity,42,Dead Presidents (1995),0.60524
+1,Action Intensity,43,Restoration (1995),-0.251052
+1,Action Intensity,44,Mortal Kombat (1995),1.0
+1,Action Intensity,45,To Die For (1995),-0.103494
+1,Action Intensity,46,How to Make an American Quilt (1995),-0.569208
+1,Action Intensity,47,Seven (a.k.a. Se7en) (1995),0.243564
+1,Action Intensity,48,Pocahontas (1995),-0.231588
+1,Action Intensity,49,When Night Is Falling (1995),-0.491341
+1,Action Intensity,50,"Usual Suspects, The (1995)",0.161384
+2,Emotional Depth,1,Toy Story (1995),-0.137904
+2,Emotional Depth,2,Jumanji (1995),-0.423555
+2,Emotional Depth,3,Grumpier Old Men (1995),-0.269904
+2,Emotional Depth,4,Waiting to Exhale (1995),0.358415
+2,Emotional Depth,5,Father of the Bride Part II (1995),-0.443062
+2,Emotional Depth,6,Heat (1995),0.159028
+2,Emotional Depth,7,Sabrina (1995),-0.099942
+2,Emotional Depth,8,Tom and Huck (1995),-0.141449
+2,Emotional Depth,9,Sudden Death (1995),-0.788338
+2,Emotional Depth,10,GoldenEye (1995),-0.539238
+2,Emotional Depth,11,"American President, The (1995)",0.201962
+2,Emotional Depth,12,Dracula: Dead and Loving It (1995),-0.620425
+2,Emotional Depth,13,Balto (1995),-0.101626
+2,Emotional Depth,14,Nixon (1995),0.386597
+2,Emotional Depth,15,Cutthroat Island (1995),-0.539113
+2,Emotional Depth,16,Casino (1995),0.359606
+2,Emotional Depth,17,Sense and Sensibility (1995),0.648585
+2,Emotional Depth,18,Four Rooms (1995),-0.3315
+2,Emotional Depth,19,Ace Ventura: When Nature Calls (1995),-1.0
+2,Emotional Depth,20,Money Train (1995),-0.690045
+2,Emotional Depth,21,Get Shorty (1995),-0.480474
+2,Emotional Depth,22,Copycat (1995),0.088507
+2,Emotional Depth,23,Assassins (1995),-0.61585
+2,Emotional Depth,24,Powder (1995),0.40938
+2,Emotional Depth,25,Leaving Las Vegas (1995),0.578313
+2,Emotional Depth,26,Othello (1995),0.706494
+2,Emotional Depth,27,Now and Then (1995),0.111974
+2,Emotional Depth,28,Persuasion (1995),0.558649
+2,Emotional Depth,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0.278734
+2,Emotional Depth,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0.300313
+2,Emotional Depth,31,Dangerous Minds (1995),0.005613
+2,Emotional Depth,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.155937
+2,Emotional Depth,33,Wings of Courage (1995),0.067028
+2,Emotional Depth,34,Babe (1995),-0.018387
+2,Emotional Depth,35,Carrington (1995),0.695207
+2,Emotional Depth,36,Dead Man Walking (1995),0.624763
+2,Emotional Depth,37,Across the Sea of Time (1995),-0.014397
+2,Emotional Depth,38,It Takes Two (1995),-0.349379
+2,Emotional Depth,39,Clueless (1995),-0.227958
+2,Emotional Depth,40,"Cry, the Beloved Country (1995)",0.478189
+2,Emotional Depth,41,Richard III (1995),0.31514
+2,Emotional Depth,42,Dead Presidents (1995),0.100972
+2,Emotional Depth,43,Restoration (1995),0.556886
+2,Emotional Depth,44,Mortal Kombat (1995),-0.887333
+2,Emotional Depth,45,To Die For (1995),0.240178
+2,Emotional Depth,46,How to Make an American Quilt (1995),0.228685
+2,Emotional Depth,47,Seven (a.k.a. Se7en) (1995),-0.079761
+2,Emotional Depth,48,Pocahontas (1995),-0.160927
+2,Emotional Depth,49,When Night Is Falling (1995),0.268732
+2,Emotional Depth,50,"Usual Suspects, The (1995)",0.076682
+3,Sci-Fi Elements,1,Toy Story (1995),0.86442
+3,Sci-Fi Elements,2,Jumanji (1995),0.362907
+3,Sci-Fi Elements,3,Grumpier Old Men (1995),-0.127114
+3,Sci-Fi Elements,4,Waiting to Exhale (1995),-0.126998
+3,Sci-Fi Elements,5,Father of the Bride Part II (1995),-0.127302
+3,Sci-Fi Elements,6,Heat (1995),-0.12732
+3,Sci-Fi Elements,7,Sabrina (1995),-0.127142
+3,Sci-Fi Elements,8,Tom and Huck (1995),-0.12732
+3,Sci-Fi Elements,9,Sudden Death (1995),-0.127322
+3,Sci-Fi Elements,10,GoldenEye (1995),0.54617
+3,Sci-Fi Elements,11,"American President, The (1995)",-0.127485
+3,Sci-Fi Elements,12,Dracula: Dead and Loving It (1995),-0.127262
+3,Sci-Fi Elements,13,Balto (1995),-0.127283
+3,Sci-Fi Elements,14,Nixon (1995),-0.127174
+3,Sci-Fi Elements,15,Cutthroat Island (1995),-0.127271
+3,Sci-Fi Elements,16,Casino (1995),-0.127355
+3,Sci-Fi Elements,17,Sense and Sensibility (1995),-0.127162
+3,Sci-Fi Elements,18,Four Rooms (1995),-0.127406
+3,Sci-Fi Elements,19,Ace Ventura: When Nature Calls (1995),-0.127173
+3,Sci-Fi Elements,20,Money Train (1995),-0.127417
+3,Sci-Fi Elements,21,Get Shorty (1995),-0.127847
+3,Sci-Fi Elements,22,Copycat (1995),0.411896
+3,Sci-Fi Elements,23,Assassins (1995),-0.12732
+3,Sci-Fi Elements,24,Powder (1995),0.68664
+3,Sci-Fi Elements,25,Leaving Las Vegas (1995),-0.127466
+3,Sci-Fi Elements,26,Othello (1995),-0.127486
+3,Sci-Fi Elements,27,Now and Then (1995),-0.127401
+3,Sci-Fi Elements,28,Persuasion (1995),-0.128647
+3,Sci-Fi Elements,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",1.0
+3,Sci-Fi Elements,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.128033
+3,Sci-Fi Elements,31,Dangerous Minds (1995),-0.127161
+3,Sci-Fi Elements,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.983655
+3,Sci-Fi Elements,33,Wings of Courage (1995),-0.127746
+3,Sci-Fi Elements,34,Babe (1995),-0.127317
+3,Sci-Fi Elements,35,Carrington (1995),-0.127284
+3,Sci-Fi Elements,36,Dead Man Walking (1995),-0.127421
+3,Sci-Fi Elements,37,Across the Sea of Time (1995),-0.127077
+3,Sci-Fi Elements,38,It Takes Two (1995),-0.127256
+3,Sci-Fi Elements,39,Clueless (1995),-0.128223
+3,Sci-Fi Elements,40,"Cry, the Beloved Country (1995)",-0.12784
+3,Sci-Fi Elements,41,Richard III (1995),-0.127249
+3,Sci-Fi Elements,42,Dead Presidents (1995),-0.127346
+3,Sci-Fi Elements,43,Restoration (1995),-0.127254
+3,Sci-Fi Elements,44,Mortal Kombat (1995),0.496453
+3,Sci-Fi Elements,45,To Die For (1995),-0.127729
+3,Sci-Fi Elements,46,How to Make an American Quilt (1995),-0.127126
+3,Sci-Fi Elements,47,Seven (a.k.a. Se7en) (1995),-0.127629
+3,Sci-Fi Elements,48,Pocahontas (1995),-0.128364
+3,Sci-Fi Elements,49,When Night Is Falling (1995),-0.127286
+3,Sci-Fi Elements,50,"Usual Suspects, The (1995)",-0.127127
+4,Comedy Level,1,Toy Story (1995),0.663539
+4,Comedy Level,2,Jumanji (1995),0.711816
+4,Comedy Level,3,Grumpier Old Men (1995),1.0
+4,Comedy Level,4,Waiting to Exhale (1995),0.129551
+4,Comedy Level,5,Father of the Bride Part II (1995),0.747621
+4,Comedy Level,6,Heat (1995),-0.5455
+4,Comedy Level,7,Sabrina (1995),0.74602
+4,Comedy Level,8,Tom and Huck (1995),0.376139
+4,Comedy Level,9,Sudden Death (1995),-0.486409
+4,Comedy Level,10,GoldenEye (1995),0.300183
+4,Comedy Level,11,"American President, The (1995)",0.325819
+4,Comedy Level,12,Dracula: Dead and Loving It (1995),0.977044
+4,Comedy Level,13,Balto (1995),0.114108
+4,Comedy Level,14,Nixon (1995),-0.470308
+4,Comedy Level,15,Cutthroat Island (1995),-0.079559
+4,Comedy Level,16,Casino (1995),-0.370026
+4,Comedy Level,17,Sense and Sensibility (1995),-0.264261
+4,Comedy Level,18,Four Rooms (1995),0.689783
+4,Comedy Level,19,Ace Ventura: When Nature Calls (1995),0.618608
+4,Comedy Level,20,Money Train (1995),0.223109
+4,Comedy Level,21,Get Shorty (1995),0.609147
+4,Comedy Level,22,Copycat (1995),-0.721389
+4,Comedy Level,23,Assassins (1995),-0.05427
+4,Comedy Level,24,Powder (1995),-0.37063
+4,Comedy Level,25,Leaving Las Vegas (1995),-0.606908
+4,Comedy Level,26,Othello (1995),-0.652743
+4,Comedy Level,27,Now and Then (1995),0.149827
+4,Comedy Level,28,Persuasion (1995),-0.182379
+4,Comedy Level,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.183297
+4,Comedy Level,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.523746
+4,Comedy Level,31,Dangerous Minds (1995),-0.279989
+4,Comedy Level,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.113902
+4,Comedy Level,33,Wings of Courage (1995),-0.457432
+4,Comedy Level,34,Babe (1995),0.303927
+4,Comedy Level,35,Carrington (1995),-0.479887
+4,Comedy Level,36,Dead Man Walking (1995),-0.56078
+4,Comedy Level,37,Across the Sea of Time (1995),-0.68268
+4,Comedy Level,38,It Takes Two (1995),0.358592
+4,Comedy Level,39,Clueless (1995),0.984568
+4,Comedy Level,40,"Cry, the Beloved Country (1995)",-0.548975
+4,Comedy Level,41,Richard III (1995),-0.266807
+4,Comedy Level,42,Dead Presidents (1995),-0.092141
+4,Comedy Level,43,Restoration (1995),-0.233428
+4,Comedy Level,44,Mortal Kombat (1995),-0.080792
+4,Comedy Level,45,To Die For (1995),0.457596
+4,Comedy Level,46,How to Make an American Quilt (1995),-0.157884
+4,Comedy Level,47,Seven (a.k.a. Se7en) (1995),-0.506807
+4,Comedy Level,48,Pocahontas (1995),-0.006801
+4,Comedy Level,49,When Night Is Falling (1995),-0.154832
+4,Comedy Level,50,"Usual Suspects, The (1995)",-0.352432
+5,Historical Accuracy,1,Toy Story (1995),-0.36829
+5,Historical Accuracy,2,Jumanji (1995),-0.377058
+5,Historical Accuracy,3,Grumpier Old Men (1995),-0.320849
+5,Historical Accuracy,4,Waiting to Exhale (1995),-0.305998
+5,Historical Accuracy,5,Father of the Bride Part II (1995),-0.321108
+5,Historical Accuracy,6,Heat (1995),-0.127267
+5,Historical Accuracy,7,Sabrina (1995),-0.328148
+5,Historical Accuracy,8,Tom and Huck (1995),0.354271
+5,Historical Accuracy,9,Sudden Death (1995),-0.305895
+5,Historical Accuracy,10,GoldenEye (1995),-0.037276
+5,Historical Accuracy,11,"American President, The (1995)",0.061444
+5,Historical Accuracy,12,Dracula: Dead and Loving It (1995),-0.784253
+5,Historical Accuracy,13,Balto (1995),0.45634
+5,Historical Accuracy,14,Nixon (1995),0.712254
+5,Historical Accuracy,15,Cutthroat Island (1995),0.036294
+5,Historical Accuracy,16,Casino (1995),0.63088
+5,Historical Accuracy,17,Sense and Sensibility (1995),0.262105
+5,Historical Accuracy,18,Four Rooms (1995),-0.368069
+5,Historical Accuracy,19,Ace Ventura: When Nature Calls (1995),-0.69267
+5,Historical Accuracy,20,Money Train (1995),0.168254
+5,Historical Accuracy,21,Get Shorty (1995),-0.308625
+5,Historical Accuracy,22,Copycat (1995),-0.29708
+5,Historical Accuracy,23,Assassins (1995),-0.307997
+5,Historical Accuracy,24,Powder (1995),-0.33067
+5,Historical Accuracy,25,Leaving Las Vegas (1995),-0.313599
+5,Historical Accuracy,26,Othello (1995),0.585958
+5,Historical Accuracy,27,Now and Then (1995),0.368704
+5,Historical Accuracy,28,Persuasion (1995),0.249774
+5,Historical Accuracy,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.4199
+5,Historical Accuracy,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0.466234
+5,Historical Accuracy,31,Dangerous Minds (1995),-0.235502
+5,Historical Accuracy,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.340827
+5,Historical Accuracy,33,Wings of Courage (1995),0.769494
+5,Historical Accuracy,34,Babe (1995),-0.318298
+5,Historical Accuracy,35,Carrington (1995),0.982323
+5,Historical Accuracy,36,Dead Man Walking (1995),1.0
+5,Historical Accuracy,37,Across the Sea of Time (1995),0.885222
+5,Historical Accuracy,38,It Takes Two (1995),-0.348393
+5,Historical Accuracy,39,Clueless (1995),-0.313361
+5,Historical Accuracy,40,"Cry, the Beloved Country (1995)",0.575595
+5,Historical Accuracy,41,Richard III (1995),0.506466
+5,Historical Accuracy,42,Dead Presidents (1995),0.32287
+5,Historical Accuracy,43,Restoration (1995),0.494285
+5,Historical Accuracy,44,Mortal Kombat (1995),-0.712676
+5,Historical Accuracy,45,To Die For (1995),-0.292339
+5,Historical Accuracy,46,How to Make an American Quilt (1995),0.133067
+5,Historical Accuracy,47,Seven (a.k.a. Se7en) (1995),-0.293546
+5,Historical Accuracy,48,Pocahontas (1995),-0.687487
+5,Historical Accuracy,49,When Night Is Falling (1995),-0.265247
+5,Historical Accuracy,50,"Usual Suspects, The (1995)",0.100596
+6,Visual Effects,1,Toy Story (1995),0.705114
+6,Visual Effects,2,Jumanji (1995),0.991417
+6,Visual Effects,3,Grumpier Old Men (1995),-0.486033
+6,Visual Effects,4,Waiting to Exhale (1995),-0.540544
+6,Visual Effects,5,Father of the Bride Part II (1995),-0.390177
+6,Visual Effects,6,Heat (1995),0.213937
+6,Visual Effects,7,Sabrina (1995),-0.580513
+6,Visual Effects,8,Tom and Huck (1995),-0.182323
+6,Visual Effects,9,Sudden Death (1995),0.16178
+6,Visual Effects,10,GoldenEye (1995),1.0
+6,Visual Effects,11,"American President, The (1995)",-0.236054
+6,Visual Effects,12,Dracula: Dead and Loving It (1995),0.169105
+6,Visual Effects,13,Balto (1995),0.643848
+6,Visual Effects,14,Nixon (1995),-0.289057
+6,Visual Effects,15,Cutthroat Island (1995),0.580921
+6,Visual Effects,16,Casino (1995),-0.137872
+6,Visual Effects,17,Sense and Sensibility (1995),-0.496446
+6,Visual Effects,18,Four Rooms (1995),-0.599547
+6,Visual Effects,19,Ace Ventura: When Nature Calls (1995),0.279267
+6,Visual Effects,20,Money Train (1995),0.002753
+6,Visual Effects,21,Get Shorty (1995),-0.301765
+6,Visual Effects,22,Copycat (1995),0.229594
+6,Visual Effects,23,Assassins (1995),0.670389
+6,Visual Effects,24,Powder (1995),0.623132
+6,Visual Effects,25,Leaving Las Vegas (1995),-0.609599
+6,Visual Effects,26,Othello (1995),-0.228856
+6,Visual Effects,27,Now and Then (1995),-0.3668
+6,Visual Effects,28,Persuasion (1995),-0.540256
+6,Visual Effects,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0.584764
+6,Visual Effects,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.146897
+6,Visual Effects,31,Dangerous Minds (1995),-0.144113
+6,Visual Effects,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.763213
+6,Visual Effects,33,Wings of Courage (1995),0.246089
+6,Visual Effects,34,Babe (1995),0.291502
+6,Visual Effects,35,Carrington (1995),-0.91665
+6,Visual Effects,36,Dead Man Walking (1995),-0.422516
+6,Visual Effects,37,Across the Sea of Time (1995),0.577632
+6,Visual Effects,38,It Takes Two (1995),-0.064797
+6,Visual Effects,39,Clueless (1995),-0.320534
+6,Visual Effects,40,"Cry, the Beloved Country (1995)",-0.629406
+6,Visual Effects,41,Richard III (1995),-0.138128
+6,Visual Effects,42,Dead Presidents (1995),-0.3365
+6,Visual Effects,43,Restoration (1995),-0.331228
+6,Visual Effects,44,Mortal Kombat (1995),0.963968
+6,Visual Effects,45,To Die For (1995),-0.053335
+6,Visual Effects,46,How to Make an American Quilt (1995),-0.447225
+6,Visual Effects,47,Seven (a.k.a. Se7en) (1995),-0.000682
+6,Visual Effects,48,Pocahontas (1995),0.92895
+6,Visual Effects,49,When Night Is Falling (1995),-0.553671
+6,Visual Effects,50,"Usual Suspects, The (1995)",-0.135852
+7,Character Complexity,1,Toy Story (1995),-0.030152
+7,Character Complexity,2,Jumanji (1995),-0.598557
+7,Character Complexity,3,Grumpier Old Men (1995),-0.904948
+7,Character Complexity,4,Waiting to Exhale (1995),-0.151624
+7,Character Complexity,5,Father of the Bride Part II (1995),-0.853734
+7,Character Complexity,6,Heat (1995),0.41067
+7,Character Complexity,7,Sabrina (1995),0.03102
+7,Character Complexity,8,Tom and Huck (1995),-0.499108
+7,Character Complexity,9,Sudden Death (1995),-1.0
+7,Character Complexity,10,GoldenEye (1995),-0.298641
+7,Character Complexity,11,"American President, The (1995)",0.252679
+7,Character Complexity,12,Dracula: Dead and Loving It (1995),-0.494931
+7,Character Complexity,13,Balto (1995),-0.488249
+7,Character Complexity,14,Nixon (1995),0.876914
+7,Character Complexity,15,Cutthroat Island (1995),-0.749376
+7,Character Complexity,16,Casino (1995),0.886032
+7,Character Complexity,17,Sense and Sensibility (1995),0.643789
+7,Character Complexity,18,Four Rooms (1995),-0.365198
+7,Character Complexity,19,Ace Ventura: When Nature Calls (1995),-0.863398
+7,Character Complexity,20,Money Train (1995),-0.096284
+7,Character Complexity,21,Get Shorty (1995),0.072732
+7,Character Complexity,22,Copycat (1995),0.220655
+7,Character Complexity,23,Assassins (1995),-0.577574
+7,Character Complexity,24,Powder (1995),0.483233
+7,Character Complexity,25,Leaving Las Vegas (1995),0.449554
+7,Character Complexity,26,Othello (1995),0.786716
+7,Character Complexity,27,Now and Then (1995),-0.159353
+7,Character Complexity,28,Persuasion (1995),0.4511
+7,Character Complexity,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0.329764
+7,Character Complexity,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0.295386
+7,Character Complexity,31,Dangerous Minds (1995),-0.083487
+7,Character Complexity,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.471814
+7,Character Complexity,33,Wings of Courage (1995),-0.023758
+7,Character Complexity,34,Babe (1995),-0.557041
+7,Character Complexity,35,Carrington (1995),0.549823
+7,Character Complexity,36,Dead Man Walking (1995),0.872241
+7,Character Complexity,37,Across the Sea of Time (1995),-0.498519
+7,Character Complexity,38,It Takes Two (1995),-0.848551
+7,Character Complexity,39,Clueless (1995),-0.246396
+7,Character Complexity,40,"Cry, the Beloved Country (1995)",0.420694
+7,Character Complexity,41,Richard III (1995),0.718387
+7,Character Complexity,42,Dead Presidents (1995),0.10607
+7,Character Complexity,43,Restoration (1995),0.755926
+7,Character Complexity,44,Mortal Kombat (1995),-0.416781
+7,Character Complexity,45,To Die For (1995),0.305254
+7,Character Complexity,46,How to Make an American Quilt (1995),-0.042132
+7,Character Complexity,47,Seven (a.k.a. Se7en) (1995),0.483276
+7,Character Complexity,48,Pocahontas (1995),-0.39317
+7,Character Complexity,49,When Night Is Falling (1995),0.041142
+7,Character Complexity,50,"Usual Suspects, The (1995)",0.326092
+8,Dialogue Quality,1,Toy Story (1995),0.292458
+8,Dialogue Quality,2,Jumanji (1995),-0.516692
+8,Dialogue Quality,3,Grumpier Old Men (1995),-0.617716
+8,Dialogue Quality,4,Waiting to Exhale (1995),0.220754
+8,Dialogue Quality,5,Father of the Bride Part II (1995),-0.389033
+8,Dialogue Quality,6,Heat (1995),0.49055
+8,Dialogue Quality,7,Sabrina (1995),0.042398
+8,Dialogue Quality,8,Tom and Huck (1995),-0.349458
+8,Dialogue Quality,9,Sudden Death (1995),-0.887343
+8,Dialogue Quality,10,GoldenEye (1995),-0.372609
+8,Dialogue Quality,11,"American President, The (1995)",0.521384
+8,Dialogue Quality,12,Dracula: Dead and Loving It (1995),-0.964695
+8,Dialogue Quality,13,Balto (1995),-0.6399
+8,Dialogue Quality,14,Nixon (1995),0.54085
+8,Dialogue Quality,15,Cutthroat Island (1995),-0.684984
+8,Dialogue Quality,16,Casino (1995),0.618011
+8,Dialogue Quality,17,Sense and Sensibility (1995),0.492778
+8,Dialogue Quality,18,Four Rooms (1995),-0.63216
+8,Dialogue Quality,19,Ace Ventura: When Nature Calls (1995),-1.0
+8,Dialogue Quality,20,Money Train (1995),-0.802323
+8,Dialogue Quality,21,Get Shorty (1995),-0.093718
+8,Dialogue Quality,22,Copycat (1995),0.249788
+8,Dialogue Quality,23,Assassins (1995),-0.349265
+8,Dialogue Quality,24,Powder (1995),-0.016234
+8,Dialogue Quality,25,Leaving Las Vegas (1995),0.922235
+8,Dialogue Quality,26,Othello (1995),0.702129
+8,Dialogue Quality,27,Now and Then (1995),-0.359878
+8,Dialogue Quality,28,Persuasion (1995),0.249894
+8,Dialogue Quality,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0.300185
+8,Dialogue Quality,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0.237246
+8,Dialogue Quality,31,Dangerous Minds (1995),-0.218871
+8,Dialogue Quality,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.351163
+8,Dialogue Quality,33,Wings of Courage (1995),-0.331088
+8,Dialogue Quality,34,Babe (1995),0.048457
+8,Dialogue Quality,35,Carrington (1995),0.458159
+8,Dialogue Quality,36,Dead Man Walking (1995),0.812775
+8,Dialogue Quality,37,Across the Sea of Time (1995),-0.942787
+8,Dialogue Quality,38,It Takes Two (1995),-0.988067
+8,Dialogue Quality,39,Clueless (1995),0.854127
+8,Dialogue Quality,40,"Cry, the Beloved Country (1995)",0.540609
+8,Dialogue Quality,41,Richard III (1995),0.540721
+8,Dialogue Quality,42,Dead Presidents (1995),-0.425542
+8,Dialogue Quality,43,Restoration (1995),0.511816
+8,Dialogue Quality,44,Mortal Kombat (1995),-0.655814
+8,Dialogue Quality,45,To Die For (1995),0.533922
+8,Dialogue Quality,46,How to Make an American Quilt (1995),0.067665
+8,Dialogue Quality,47,Seven (a.k.a. Se7en) (1995),0.574069
+8,Dialogue Quality,48,Pocahontas (1995),-0.046492
+8,Dialogue Quality,49,When Night Is Falling (1995),0.200513
+8,Dialogue Quality,50,"Usual Suspects, The (1995)",0.910014
+9,Music Influence,1,Toy Story (1995),0.543858
+9,Music Influence,2,Jumanji (1995),0.061
+9,Music Influence,3,Grumpier Old Men (1995),-0.425868
+9,Music Influence,4,Waiting to Exhale (1995),0.412376
+9,Music Influence,5,Father of the Bride Part II (1995),-0.391607
+9,Music Influence,6,Heat (1995),0.329414
+9,Music Influence,7,Sabrina (1995),0.003155
+9,Music Influence,8,Tom and Huck (1995),-0.375004
+9,Music Influence,9,Sudden Death (1995),-1.0
+9,Music Influence,10,GoldenEye (1995),-0.326577
+9,Music Influence,11,"American President, The (1995)",-0.210828
+9,Music Influence,12,Dracula: Dead and Loving It (1995),-0.515457
+9,Music Influence,13,Balto (1995),0.026215
+9,Music Influence,14,Nixon (1995),0.007525
+9,Music Influence,15,Cutthroat Island (1995),-0.445588
+9,Music Influence,16,Casino (1995),0.927257
+9,Music Influence,17,Sense and Sensibility (1995),0.382129
+9,Music Influence,18,Four Rooms (1995),-0.199557
+9,Music Influence,19,Ace Ventura: When Nature Calls (1995),-0.729241
+9,Music Influence,20,Money Train (1995),-0.33885
+9,Music Influence,21,Get Shorty (1995),-0.176768
+9,Music Influence,22,Copycat (1995),0.001971
+9,Music Influence,23,Assassins (1995),-0.687589
+9,Music Influence,24,Powder (1995),0.385543
+9,Music Influence,25,Leaving Las Vegas (1995),-0.042474
+9,Music Influence,26,Othello (1995),0.028159
+9,Music Influence,27,Now and Then (1995),0.249548
+9,Music Influence,28,Persuasion (1995),-0.105923
+9,Music Influence,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0.779621
+9,Music Influence,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0.383653
+9,Music Influence,31,Dangerous Minds (1995),0.239528
+9,Music Influence,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.377996
+9,Music Influence,33,Wings of Courage (1995),-0.033613
+9,Music Influence,34,Babe (1995),-0.057333
+9,Music Influence,35,Carrington (1995),0.410207
+9,Music Influence,36,Dead Man Walking (1995),0.595252
+9,Music Influence,37,Across the Sea of Time (1995),-0.592981
+9,Music Influence,38,It Takes Two (1995),-0.264972
+9,Music Influence,39,Clueless (1995),0.3079
+9,Music Influence,40,"Cry, the Beloved Country (1995)",-0.138538
+9,Music Influence,41,Richard III (1995),0.795326
+9,Music Influence,42,Dead Presidents (1995),-0.356771
+9,Music Influence,43,Restoration (1995),0.377591
+9,Music Influence,44,Mortal Kombat (1995),-0.35882
+9,Music Influence,45,To Die For (1995),-0.153958
+9,Music Influence,46,How to Make an American Quilt (1995),-0.085118
+9,Music Influence,47,Seven (a.k.a. Se7en) (1995),-0.211133
+9,Music Influence,48,Pocahontas (1995),0.887037
+9,Music Influence,49,When Night Is Falling (1995),0.016414
+9,Music Influence,50,"Usual Suspects, The (1995)",-0.304106
+10,Pacing Speed,1,Toy Story (1995),0.067484
+10,Pacing Speed,2,Jumanji (1995),0.271583
+10,Pacing Speed,3,Grumpier Old Men (1995),-0.136479
+10,Pacing Speed,4,Waiting to Exhale (1995),-0.140597
+10,Pacing Speed,5,Father of the Bride Part II (1995),-0.086567
+10,Pacing Speed,6,Heat (1995),1.0
+10,Pacing Speed,7,Sabrina (1995),0.097847
+10,Pacing Speed,8,Tom and Huck (1995),-0.11063
+10,Pacing Speed,9,Sudden Death (1995),0.73985
+10,Pacing Speed,10,GoldenEye (1995),0.35317
+10,Pacing Speed,11,"American President, The (1995)",-0.115784
+10,Pacing Speed,12,Dracula: Dead and Loving It (1995),0.179785
+10,Pacing Speed,13,Balto (1995),0.095215
+10,Pacing Speed,14,Nixon (1995),-0.289122
+10,Pacing Speed,15,Cutthroat Island (1995),0.542914
+10,Pacing Speed,16,Casino (1995),0.317027
+10,Pacing Speed,17,Sense and Sensibility (1995),-0.61322
+10,Pacing Speed,18,Four Rooms (1995),0.430657
+10,Pacing Speed,19,Ace Ventura: When Nature Calls (1995),0.220395
+10,Pacing Speed,20,Money Train (1995),0.183196
+10,Pacing Speed,21,Get Shorty (1995),0.249477
+10,Pacing Speed,22,Copycat (1995),0.730957
+10,Pacing Speed,23,Assassins (1995),0.654006
+10,Pacing Speed,24,Powder (1995),-0.343168
+10,Pacing Speed,25,Leaving Las Vegas (1995),-0.289953
+10,Pacing Speed,26,Othello (1995),-0.196693
+10,Pacing Speed,27,Now and Then (1995),-0.730482
+10,Pacing Speed,28,Persuasion (1995),-0.64281
+10,Pacing Speed,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.029367
+10,Pacing Speed,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0.112338
+10,Pacing Speed,31,Dangerous Minds (1995),0.124402
+10,Pacing Speed,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.115186
+10,Pacing Speed,33,Wings of Courage (1995),-0.268294
+10,Pacing Speed,34,Babe (1995),-0.570209
+10,Pacing Speed,35,Carrington (1995),-0.257224
+10,Pacing Speed,36,Dead Man Walking (1995),-0.393194
+10,Pacing Speed,37,Across the Sea of Time (1995),-0.544832
+10,Pacing Speed,38,It Takes Two (1995),0.321645
+10,Pacing Speed,39,Clueless (1995),-0.017405
+10,Pacing Speed,40,"Cry, the Beloved Country (1995)",-0.56415
+10,Pacing Speed,41,Richard III (1995),0.050661
+10,Pacing Speed,42,Dead Presidents (1995),0.333246
+10,Pacing Speed,43,Restoration (1995),-0.533045
+10,Pacing Speed,44,Mortal Kombat (1995),0.584955
+10,Pacing Speed,45,To Die For (1995),-0.017772
+10,Pacing Speed,46,How to Make an American Quilt (1995),-0.942148
+10,Pacing Speed,47,Seven (a.k.a. Se7en) (1995),0.41752
+10,Pacing Speed,48,Pocahontas (1995),-0.864418
+10,Pacing Speed,49,When Night Is Falling (1995),-0.434565
+10,Pacing Speed,50,"Usual Suspects, The (1995)",0.938615

@@ -1,0 +1,64 @@
+You are helping design a preference elicitation study.
+
+DOMAIN: {domain}
+CHOICE CONTEXT: {choice_context}
+NUMBER OF DIMENSIONS: {N}
+
+A preference dimension is:
+- A direction along which real people DISAGREE — not a quality criterion with a
+  near-universal correct answer
+- Describable at BOTH POLES — both ends represent coherent, legitimate preferences
+  that reasonable people hold
+- SPECIFIC ENOUGH to be operationalized as a rating scale or slider
+- INDEPENDENT of the other dimensions — knowing someone's position on one should
+  tell you as little as possible about their position on another
+- CONSEQUENTIAL — knowing someone's position would meaningfully help predict their
+  choice in a pairwise comparison
+
+Step 1: Briefly reason (2–4 sentences) about the major axes of disagreement in this
+domain and what kinds of people or situations tend toward different preferences.
+
+Step 2: Produce exactly {N} preference dimensions.
+
+Step 3: Check the list for redundancy. Flag any pair of dimensions with substantial
+correlation and suggest how to disentangle them.
+
+Respond with valid JSON only — no prose before or after, no markdown fences.
+
+{
+  "domain": string,
+  "choice_context": string,
+  "reasoning": string,
+  "dimensions": [
+    {
+      "id": integer,
+      "name": string,
+      "low_pole": {
+        "label": string,          // 2–5 word name for this end of the scale
+        "description": string,    // what an option at this pole looks like
+        "typical_person": string  // who tends to prefer this end
+      },
+      "high_pole": {
+        "label": string,
+        "description": string,
+        "typical_person": string
+      },
+      "example_contrast": {
+        "low_option": string,     // a concrete example option at the low pole
+        "high_option": string     // a concrete example option at the high pole
+      },
+      "articulability": "explicit" | "partially_explicit" | "implicit",
+      "estimated_variance": "mostly_between_person" | "mostly_between_option" | "both",
+      "scoring_guidance": string  // 1–2 sentences describing what distinguishes
+                                  // a 1 from a 4 from a 7 on this dimension,
+                                  // without mentioning scores explicitly
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [integer, integer],
+      "correlation_note": string,
+      "disentanglement_suggestion": string
+    }
+  ]
+}
