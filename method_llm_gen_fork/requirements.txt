@@ -1,2 +1,0 @@
-openai>=1.0.0
-pyarrow>=16.0.0

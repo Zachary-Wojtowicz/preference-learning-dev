@@ -2,10 +2,13 @@
 import argparse
 import concurrent.futures
 import csv
+import itertools
 import json
 import math
+import os
 import random
 import re
+import threading
 import time
 from collections import namedtuple
 from pathlib import Path
@@ -27,14 +30,15 @@ def parse_args():
     def add_sub(name):
         sub = subparsers.add_parser(name)
         sub.add_argument("--config", required=True)
-        sub.add_argument("--base-url")
+        sub.add_argument("--api-provider", choices=["local", "openai", "anthropic"], default="local")
+        sub.add_argument("--base-url", help="API endpoint URL(s), comma-separated for round-robin across multiple servers")
         sub.add_argument("--model")
         sub.add_argument("--api-key")
         sub.add_argument("--output-dir")
         sub.add_argument("--seed", type=int, default=DEFAULT_SEED)
         return sub
 
-    for name in ["generate-dimensions", "score-options", "judge-pairs", "fit-bt", "run-all"]:
+    for name in ["generate-dimensions", "score-options", "judge-pairs", "fit-bt", "consistency-check", "run-all"]:
         add_sub(name)
     for name in ["judge-pairs", "run-all"]:
         subparsers.choices[name].add_argument("--appearances-per-option", type=int)
@@ -93,22 +97,63 @@ def load_prompt_template(path):
     return match.group(1) if match else text
 
 
-def make_client(base_url, api_key):
+PROVIDER_DEFAULTS = {
+    "openai": {"base_url": "https://api.openai.com/v1", "env_key": "OPENAI_API_KEY"},
+    "anthropic": {"base_url": "https://api.anthropic.com/v1", "env_key": "ANTHROPIC_API_KEY"},
+}
+
+
+def make_client(base_url, api_key, provider="local"):
+    defaults = PROVIDER_DEFAULTS.get(provider, {})
+    base_url = base_url or defaults.get("base_url")
+    api_key = api_key or os.environ.get(defaults.get("env_key", ""), "")
     if not base_url:
-        raise ValueError("Missing --base-url")
+        raise ValueError("Missing --base-url (required for provider='local')")
     if not api_key:
-        raise ValueError("Missing --api-key")
+        env_hint = defaults.get("env_key", "")
+        raise ValueError(
+            f"Missing --api-key"
+            + (f" (or set {env_hint})" if env_hint else "")
+        )
     from openai import OpenAI
     return OpenAI(base_url=base_url, api_key=api_key)
+
+
+class ClientPool:
+    """Thread-safe round-robin pool over multiple OpenAI clients."""
+    def __init__(self, clients):
+        self._cycle = itertools.cycle(clients)
+        self._lock = threading.Lock()
+        self.size = len(clients)
+
+    def next(self):
+        with self._lock:
+            return next(self._cycle)
+
+
+def make_client_or_pool(base_url, api_key, provider="local"):
+    """Create a single client or a round-robin pool from comma-separated URLs."""
+    if base_url and "," in base_url:
+        urls = [u.strip() for u in base_url.split(",") if u.strip()]
+        clients = [make_client(url, api_key, provider) for url in urls]
+        print(f"[client] Round-robin pool with {len(clients)} endpoints", flush=True)
+        return ClientPool(clients)
+    return make_client(base_url, api_key, provider)
 
 
 def llm_call(client, model, prompt, timeout, retries):
     if not model:
         raise ValueError("Missing --model")
+    is_pool = isinstance(client, ClientPool)
+    # On connection errors, try every server in the pool at least once,
+    # regardless of the normal retry count.
+    pool_size = client.size if is_pool else 1
+    max_attempts = max(retries, pool_size)
     last_err = None
-    for attempt in range(1, max(1, retries) + 1):
+    for attempt in range(1, max_attempts + 1):
+        resolved = client.next() if is_pool else client
         try:
-            resp = client.chat.completions.create(
+            resp = resolved.chat.completions.create(
                 model=model, temperature=0,
                 messages=[{"role": "user", "content": prompt}],
                 timeout=timeout,
@@ -116,9 +161,31 @@ def llm_call(client, model, prompt, timeout, retries):
             return (resp.choices[0].message.content or "").strip()
         except Exception as e:
             last_err = e
-            if attempt < retries:
-                time.sleep(min(attempt, 3))
+            is_conn = "Connection" in type(e).__name__
+            if attempt < max_attempts:
+                if not is_conn:
+                    time.sleep(min(attempt, 3))
     raise last_err
+
+
+_VALID_JSON_ESCAPES = set('"\\/ bfnrtu')
+
+
+def _fix_invalid_escapes(s):
+    """Replace invalid JSON backslash escapes with a double backslash."""
+    result = []
+    i = 0
+    while i < len(s):
+        if s[i] == "\\" and i + 1 < len(s):
+            if s[i + 1] in _VALID_JSON_ESCAPES:
+                result.append(s[i])
+            else:
+                result.append("\\\\")
+            i += 1
+        else:
+            result.append(s[i])
+        i += 1
+    return "".join(result)
 
 
 def parse_json_response(content):
@@ -132,7 +199,11 @@ def parse_json_response(content):
     except json.JSONDecodeError:
         start, end = content.find("{"), content.rfind("}")
         if start >= 0 and end > start:
-            return json.loads(content[start:end + 1])
+            snippet = content[start:end + 1]
+            try:
+                return json.loads(snippet)
+            except json.JSONDecodeError:
+                return json.loads(_fix_invalid_escapes(snippet))
         raise
 
 
@@ -305,7 +376,13 @@ def score_options(config, client, model, output_dir):
     timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT))
     retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
 
-    jobs = [(dim, opt) for dim in dimensions for opt in options]
+    csv_path = output_dir / "direct_scores.csv"
+    existing_rows = []
+    scored = set()
+    if csv_path.exists():
+        existing_rows = read_csv_rows(csv_path)
+        scored = {(str(r["dimension_id"]), str(r["option_id"])) for r in existing_rows}
+        print(f"[score-options] Loaded {len(existing_rows)} existing scores", flush=True)
 
     def run(job):
         dim, opt = job
@@ -322,16 +399,26 @@ def score_options(config, client, model, output_dir):
                 "display_text": opt.display_text, "score": r.get("score"),
                 "zero_reason": r.get("zero_reason"), "justification": r.get("justification")}
 
-    rows = run_jobs(jobs, run, max_workers, "score-options")
-    path = output_dir / "direct_scores.csv"
-    write_csv(path, rows)
-    return path
+    all_rows = list(existing_rows)
+    for dim in dimensions:
+        dim_id = str(dim["id"])
+        jobs = [(dim, opt) for opt in options if (dim_id, str(opt.option_id)) not in scored]
+        if not jobs:
+            print(f"[score-options] Dim {dim_id} ({dim['name']}): already complete, skipping", flush=True)
+            continue
+        dim_rows = run_jobs(jobs, run, max_workers, f"score-options dim={dim_id}")
+        all_rows.extend(dim_rows)
+        scored.update((dim_id, str(r["option_id"])) for r in dim_rows)
+        write_csv(csv_path, all_rows)
+        print(f"[score-options] Dim {dim_id} ({dim['name']}): {len(dim_rows)} options scored -- saved", flush=True)
+
+    return csv_path
 
 
-def sample_pairs(option_ids, appearances_per_option, seed):
+def sample_pairs(option_ids, appearances_per_option, seed, exclude=None):
     rng = random.Random(seed)
     target = {oid: appearances_per_option for oid in option_ids}
-    seen = set()
+    seen = set(exclude) if exclude else set()
     pairs = []
     safety = 0
 
@@ -364,38 +451,101 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
     max_workers = int(config.get("max_workers", 1))
     timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT))
     retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
-    pair_count = appearances_per_option or config.get("pair_appearances_per_option", 20)
+    pair_count = appearances_per_option or config.get("pair_appearances_per_option", 30)
 
-    jobs = [
-        (dim, a_id, b_id)
-        for dim in dimensions
-        for a_id, b_id in sample_pairs([opt.option_id for opt in options], int(pair_count), seed + int(dim["id"]))
-    ]
+    csv_path = output_dir / "pairwise_judgments.csv"
+    existing_rows = []
+    existing_by_dim = {}
+    if csv_path.exists():
+        existing_rows = read_csv_rows(csv_path)
+        for r in existing_rows:
+            dim_id = str(r["dimension_id"])
+            pair = tuple(sorted((r["option_a_id"], r["option_b_id"])))
+            existing_by_dim.setdefault(dim_id, set()).add(pair)
+        print(f"[judge-pairs] Loaded {len(existing_rows)} existing judgments from previous runs", flush=True)
 
-    def run(job):
-        dim, a_id, b_id = job
-        a, b = lookup[a_id], lookup[b_id]
-        prompt = template.format(
+    effective_seed = seed + len(existing_rows)
+    option_ids = [opt.option_id for opt in options]
+
+    jobs = []
+    for dim in dimensions:
+        dim_id = str(dim["id"])
+        exclude = existing_by_dim.get(dim_id, set())
+        new_pairs = sample_pairs(option_ids, int(pair_count), effective_seed + int(dim["id"]), exclude=exclude)
+        jobs.extend((dim, a_id, b_id) for a_id, b_id in new_pairs)
+
+    def _make_prompt(dim, opt_a, opt_b):
+        return template.format(
             name=dim["name"],
             low_label=dim["low_pole"]["label"], low_description=dim["low_pole"]["description"],
             high_label=dim["high_pole"]["label"], high_description=dim["high_pole"]["description"],
             scoring_guidance=dim["scoring_guidance"],
             low_example=dim["example_contrast"]["low_option"], high_example=dim["example_contrast"]["high_option"],
-            option_a=a.option_text, option_b=b.option_text,
+            option_a=opt_a.option_text, option_b=opt_b.option_text,
         )
-        r = llm_call_json(client, model, prompt, timeout, retries)
+
+    def run(job):
+        dim, a_id, b_id = job
+        a, b = lookup[a_id], lookup[b_id]
+
+        r_fwd = llm_call_json(client, model, _make_prompt(dim, a, b), timeout, retries)
+        r_rev = llm_call_json(client, model, _make_prompt(dim, b, a), timeout, retries)
+
+        choice_fwd = r_fwd.get("choice")
+        choice_rev = r_rev.get("choice")
+
+        # Both calls must point to the same real-world winner.
+        # Forward "A" means real-a wins; reverse "B" also means real-a wins.
+        if choice_fwd == "A" and choice_rev == "B":
+            consistent, final_choice = True, "A"
+        elif choice_fwd == "B" and choice_rev == "A":
+            consistent, final_choice = True, "B"
+        elif choice_fwd == "negligible" and choice_rev == "negligible":
+            consistent, final_choice = True, "negligible"
+        else:
+            consistent, final_choice = False, choice_fwd
+
         return {"dimension_id": dim["id"], "dimension_name": dim["name"],
                 "option_a_id": a_id, "option_a_display": a.display_text,
                 "option_b_id": b_id, "option_b_display": b.display_text,
-                "choice": r.get("choice"), "confidence": r.get("confidence"),
-                "reasoning": r.get("reasoning"),
-                "high_pole_description_a": r.get("high_pole_description_a"),
-                "high_pole_description_b": r.get("high_pole_description_b")}
+                "choice": final_choice, "confidence": r_fwd.get("confidence"),
+                "reasoning": r_fwd.get("reasoning"),
+                "high_pole_description_a": r_fwd.get("high_pole_description_a"),
+                "high_pole_description_b": r_fwd.get("high_pole_description_b"),
+                "swap_consistent": str(consistent)}
 
-    rows = run_jobs(jobs, run, max_workers, "judge-pairs")
-    path = output_dir / "pairwise_judgments.csv"
-    write_csv(path, rows)
-    return path
+    all_rows = list(existing_rows)
+    run_new_total = 0
+    for dim in dimensions:
+        dim_id = str(dim["id"])
+        exclude = existing_by_dim.get(dim_id, set())
+        dim_pairs = sample_pairs(option_ids, int(pair_count), effective_seed + int(dim["id"]), exclude=exclude)
+        if not dim_pairs:
+            print(f"[judge-pairs] Dim {dim_id} ({dim['name']}): already complete, skipping", flush=True)
+            continue
+        dim_jobs = [(dim, a_id, b_id) for a_id, b_id in dim_pairs]
+        dim_rows = run_jobs(dim_jobs, run, max_workers, f"judge-pairs dim={dim_id}")
+        all_rows.extend(dim_rows)
+        run_new_total += len(dim_rows)
+        n_consistent = sum(1 for r in dim_rows if r["swap_consistent"] == "True")
+        write_csv(csv_path, all_rows)
+        print(f"[judge-pairs] Dim {dim_id} ({dim['name']}): {len(dim_rows)} pairs "
+              f"({n_consistent} consistent) -- saved", flush=True)
+
+    if run_new_total == 0:
+        print("[judge-pairs] No new pairs to judge (all slots filled by previous runs)", flush=True)
+        return csv_path
+
+    total_consistent = sum(1 for r in all_rows if r.get("swap_consistent", "True") == "True")
+    print(f"[judge-pairs] This run: {run_new_total} new pairs", flush=True)
+    print(f"[judge-pairs] Cumulative: {len(all_rows)} total pairs "
+          f"({total_consistent} consistent, {100 * total_consistent / len(all_rows):.0f}%)", flush=True)
+    return csv_path
+
+
+def normalize_direct_score(raw):
+    """Map a 0-5 integer score to the [-1, 1] range used by BT scores."""
+    return (float(raw) - 2.5) / 2.5
 
 
 def sigmoid(x):
@@ -425,7 +575,8 @@ def fit_bradley_terry(option_ids, comparisons, lr, steps):
 def fit_bt(config, output_dir, lr, steps):
     options = load_options(config)
     lookup = {opt.option_id: opt for opt in options}
-    comparisons = read_csv_rows(output_dir / "pairwise_judgments.csv")
+    all_comparisons = read_csv_rows(output_dir / "pairwise_judgments.csv")
+    comparisons = [r for r in all_comparisons if r.get("swap_consistent", "True") == "True"]
     dimensions = load_dimensions(output_dir / "dimensions.json")
 
     rows = []
@@ -443,9 +594,78 @@ def fit_bt(config, output_dir, lr, steps):
     return path
 
 
+def _rank(values):
+    """Assign average ranks to a list of numeric values (handles ties)."""
+    indexed = sorted(range(len(values)), key=lambda i: values[i])
+    ranks = [0.0] * len(values)
+    i = 0
+    while i < len(indexed):
+        j = i
+        while j < len(indexed) and values[indexed[j]] == values[indexed[i]]:
+            j += 1
+        avg_rank = (i + j - 1) / 2.0 + 1.0
+        for k in range(i, j):
+            ranks[indexed[k]] = avg_rank
+        i = j
+    return ranks
+
+
+def spearman_rho(xs, ys):
+    if len(xs) < 2:
+        return float("nan")
+    rx, ry = _rank(xs), _rank(ys)
+    n = len(xs)
+    mx = sum(rx) / n
+    my = sum(ry) / n
+    num = sum((a - mx) * (b - my) for a, b in zip(rx, ry))
+    dx = math.sqrt(sum((a - mx) ** 2 for a in rx))
+    dy = math.sqrt(sum((b - my) ** 2 for b in ry))
+    return num / (dx * dy) if dx and dy else float("nan")
+
+
+def kendall_tau_b(xs, ys):
+    n = len(xs)
+    if n < 2:
+        return float("nan")
+    concordant = discordant = ties_x = ties_y = ties_xy = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            dx = xs[i] - xs[j]
+            dy = ys[i] - ys[j]
+            if dx == 0 and dy == 0:
+                ties_xy += 1
+            elif dx == 0:
+                ties_x += 1
+            elif dy == 0:
+                ties_y += 1
+            elif (dx > 0) == (dy > 0):
+                concordant += 1
+            else:
+                discordant += 1
+    n0 = n * (n - 1) / 2
+    n1 = ties_x + ties_xy
+    n2 = ties_y + ties_xy
+    denom = math.sqrt((n0 - n1) * (n0 - n2))
+    return (concordant - discordant) / denom if denom else float("nan")
+
+
 def top_bottom(rows, score_key, limit=5):
     valid = sorted((r for r in rows if r.get(score_key) not in ("", None)), key=lambda r: float(r[score_key]))
     return valid[:limit], list(reversed(valid[-limit:]))
+
+
+def _compute_dim_correlation(dim_direct, dim_bt):
+    """Join direct and BT scores on option_id and return (rho, tau, n)."""
+    bt_by_id = {r["option_id"]: float(r["bt_score"]) for r in dim_bt if r.get("bt_score") not in ("", None)}
+    pairs = []
+    for r in dim_direct:
+        oid = r["option_id"]
+        if oid in bt_by_id and r.get("score") not in ("", None):
+            pairs.append((normalize_direct_score(r["score"]), bt_by_id[oid]))
+    if len(pairs) < 3:
+        return float("nan"), float("nan"), len(pairs)
+    xs, ys = zip(*pairs)
+    return spearman_rho(list(xs), list(ys)), kendall_tau_b(list(xs), list(ys)), len(pairs)
 
 
 def build_summary(config, output_dir):
@@ -455,6 +675,25 @@ def build_summary(config, output_dir):
     pairwise = read_csv_rows(output_dir / "pairwise_judgments.csv")
 
     lines = [f"# {config['domain'].title()} Summary", "", f"Choice context: {config['choice_context']}", ""]
+
+    # Global cross-variant consistency table
+    consistency_rows = []
+    for dim in dimensions:
+        dim_id = str(dim["id"])
+        dim_direct = [r for r in direct_scores if str(r["dimension_id"]) == dim_id]
+        dim_bt = [r for r in bt_scores if str(r["dimension_id"]) == dim_id]
+        rho, tau, n = _compute_dim_correlation(dim_direct, dim_bt)
+        flag = " **UNRELIABLE**" if (not math.isnan(tau) and tau < 0.3) else ""
+        consistency_rows.append((dim["id"], dim["name"], rho, tau, n, flag))
+
+    lines += ["## Cross-Variant Consistency (Direct Score vs Bradley-Terry)", ""]
+    lines += ["| Dim | Name | Spearman rho | Kendall tau | N | Flag |"]
+    lines += ["| --- | ---- | -----------: | ----------: | -: | ---- |"]
+    for did, dname, rho, tau, n, flag in consistency_rows:
+        rho_s = f"{rho:.3f}" if not math.isnan(rho) else "n/a"
+        tau_s = f"{tau:.3f}" if not math.isnan(tau) else "n/a"
+        lines.append(f"| {did} | {dname} | {rho_s} | {tau_s} | {n} |{flag} |")
+    lines.append("")
 
     for dim in dimensions:
         dim_id = str(dim["id"])
@@ -479,6 +718,15 @@ def build_summary(config, output_dir):
         lines += [f"- {r['display_text']} ({r['bt_score']})" for r in high_bt]
         lines += ["", "Pairwise spot checks:"]
         lines += [f"- {r['option_a_display']} vs {r['option_b_display']} -> {r['choice']} ({r['confidence']}): {r['reasoning']}" for r in dim_pairwise]
+
+        rho, tau, n = _compute_dim_correlation(dim_direct, dim_bt)
+        lines += ["", "Cross-variant consistency:"]
+        if math.isnan(tau):
+            lines.append("- Insufficient data for correlation.")
+        else:
+            lines.append(f"- Spearman rho = {rho:.3f}, Kendall tau = {tau:.3f} (n={n})")
+            if tau < 0.3:
+                lines.append(f"- WARNING: Low cross-variant agreement (tau = {tau:.2f}) -- this dimension may be unreliable.")
         lines.append("")
 
     path = output_dir / "summary.md"
@@ -488,7 +736,7 @@ def build_summary(config, output_dir):
 
 
 def run_all(args, config, output_dir):
-    client = make_client(args.base_url, args.api_key)
+    client = make_client_or_pool(args.base_url, args.api_key, args.api_provider)
     generate_dimensions(config, client, args.model, output_dir)
     score_options(config, client, args.model, output_dir)
     judge_pairs(config, client, args.model, output_dir, args.appearances_per_option, args.seed)
@@ -501,14 +749,18 @@ def main():
     config = load_json(Path(args.config))
     output_dir = Path(args.output_dir) if args.output_dir else DEFAULT_OUTPUT_ROOT / config["domain"]
 
+    client_fn = lambda: make_client_or_pool(args.base_url, args.api_key, args.api_provider)
+
     if args.command == "generate-dimensions":
-        generate_dimensions(config, make_client(args.base_url, args.api_key), args.model, output_dir)
+        generate_dimensions(config, client_fn(), args.model, output_dir)
     elif args.command == "score-options":
-        score_options(config, make_client(args.base_url, args.api_key), args.model, output_dir)
+        score_options(config, client_fn(), args.model, output_dir)
     elif args.command == "judge-pairs":
-        judge_pairs(config, make_client(args.base_url, args.api_key), args.model, output_dir, args.appearances_per_option, args.seed)
+        judge_pairs(config, client_fn(), args.model, output_dir, args.appearances_per_option, args.seed)
     elif args.command == "fit-bt":
         fit_bt(config, output_dir, args.learning_rate, args.steps)
+        build_summary(config, output_dir)
+    elif args.command == "consistency-check":
         build_summary(config, output_dir)
     elif args.command == "run-all":
         run_all(args, config, output_dir)

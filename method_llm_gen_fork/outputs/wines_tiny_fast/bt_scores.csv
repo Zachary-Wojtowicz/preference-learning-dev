@@ -1,9 +1,0 @@
-dimension_id,dimension_name,option_id,display_text,bt_score
-1,Body,0,Nicosia 2013 Vulkà Bianco  (Etna),0.0
-1,Body,1,Quinta dos Avidagos 2011 Avidagos Red (Douro),1.0
-1,Body,2,Rainstorm 2013 Pinot Gris (Willamette Valley),-1.0
-1,Body,3,St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore),0.0
-2,Acidity,0,Nicosia 2013 Vulkà Bianco  (Etna),0.315926
-2,Acidity,1,Quinta dos Avidagos 2011 Avidagos Red (Douro),-1.0
-2,Acidity,2,Rainstorm 2013 Pinot Gris (Willamette Valley),1.0
-2,Acidity,3,St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore),-0.315926

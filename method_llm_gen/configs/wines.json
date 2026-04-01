@@ -7,7 +7,7 @@
   "display_column": "title",
   "id_column": "row_id",
   "num_dimensions": 10,
-  "pair_appearances_per_option": 20,
+  "pair_appearances_per_option": 30,
   "max_options": 200,
   "dimensions_output_format": "plain",
   "request_timeout_seconds": 45,
