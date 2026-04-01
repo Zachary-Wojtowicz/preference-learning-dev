@@ -1,0 +1,1 @@
+Movie for preference modeling. Title: {title}. Genres: {genres}. Director: {director}. Stars: {stars}. Plot summary: {plot_summary}
