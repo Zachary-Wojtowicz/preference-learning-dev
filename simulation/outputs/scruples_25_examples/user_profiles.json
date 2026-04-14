@@ -1,0 +1,802 @@
+[
+  {
+    "id": 0,
+    "archetype": "action_lover",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.0,
+      "Conflict Avoidance vs. Confrontation": 0.0,
+      "Privacy and Personal Space vs. Social Bonding": 0.0,
+      "Professional Responsibility vs. Personal Freedom": 0.0,
+      "Trust and Honesty vs. Skepticism": 0.0,
+      "Financial Responsibility vs. Immediate Gratification": 0.0,
+      "Cultural Traditions vs. Modernity": 0.0,
+      "Empathy and Compassion vs. Detachment": 0.0,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.0,
+      "Mental Health Considerations vs. Social Expectations": 0.0
+    }
+  },
+  {
+    "id": 1,
+    "archetype": "drama_fan",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.0,
+      "Conflict Avoidance vs. Confrontation": 0.0,
+      "Privacy and Personal Space vs. Social Bonding": 0.0,
+      "Professional Responsibility vs. Personal Freedom": 0.0,
+      "Trust and Honesty vs. Skepticism": 0.0,
+      "Financial Responsibility vs. Immediate Gratification": 0.0,
+      "Cultural Traditions vs. Modernity": 0.0,
+      "Empathy and Compassion vs. Detachment": 0.0,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.0,
+      "Mental Health Considerations vs. Social Expectations": 0.0
+    }
+  },
+  {
+    "id": 2,
+    "archetype": "scifi_enthusiast",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.0,
+      "Conflict Avoidance vs. Confrontation": 0.0,
+      "Privacy and Personal Space vs. Social Bonding": 0.0,
+      "Professional Responsibility vs. Personal Freedom": 0.0,
+      "Trust and Honesty vs. Skepticism": 0.0,
+      "Financial Responsibility vs. Immediate Gratification": 0.0,
+      "Cultural Traditions vs. Modernity": 0.0,
+      "Empathy and Compassion vs. Detachment": 0.0,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.0,
+      "Mental Health Considerations vs. Social Expectations": 0.0
+    }
+  },
+  {
+    "id": 3,
+    "archetype": "comedy_fan",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.0,
+      "Conflict Avoidance vs. Confrontation": 0.0,
+      "Privacy and Personal Space vs. Social Bonding": 0.0,
+      "Professional Responsibility vs. Personal Freedom": 0.0,
+      "Trust and Honesty vs. Skepticism": 0.0,
+      "Financial Responsibility vs. Immediate Gratification": 0.0,
+      "Cultural Traditions vs. Modernity": 0.0,
+      "Empathy and Compassion vs. Detachment": 0.0,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.0,
+      "Mental Health Considerations vs. Social Expectations": 0.0
+    }
+  },
+  {
+    "id": 4,
+    "archetype": "music_art_lover",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.0,
+      "Conflict Avoidance vs. Confrontation": 0.0,
+      "Privacy and Personal Space vs. Social Bonding": 0.0,
+      "Professional Responsibility vs. Personal Freedom": 0.0,
+      "Trust and Honesty vs. Skepticism": 0.0,
+      "Financial Responsibility vs. Immediate Gratification": 0.0,
+      "Cultural Traditions vs. Modernity": 0.0,
+      "Empathy and Compassion vs. Detachment": 0.0,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.0,
+      "Mental Health Considerations vs. Social Expectations": 0.0
+    }
+  },
+  {
+    "id": 5,
+    "archetype": "random_0",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.5479120971119267,
+      "Conflict Avoidance vs. Confrontation": -0.12224312049589536,
+      "Privacy and Personal Space vs. Social Bonding": 0.7171958398227649,
+      "Professional Responsibility vs. Personal Freedom": 0.3947360581187278,
+      "Trust and Honesty vs. Skepticism": -0.8116453042247009,
+      "Financial Responsibility vs. Immediate Gratification": 0.9512447032735118,
+      "Cultural Traditions vs. Modernity": 0.5222794039807059,
+      "Empathy and Compassion vs. Detachment": 0.5721286105539076,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.7437727346489083,
+      "Mental Health Considerations vs. Social Expectations": -0.09922812420886573
+    }
+  },
+  {
+    "id": 6,
+    "archetype": "random_1",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.25840395153483753,
+      "Conflict Avoidance vs. Confrontation": 0.8535299776972036,
+      "Privacy and Personal Space vs. Social Bonding": 0.2877302401613291,
+      "Professional Responsibility vs. Personal Freedom": 0.64552322654166,
+      "Trust and Honesty vs. Skepticism": -0.11317160234533774,
+      "Financial Responsibility vs. Immediate Gratification": -0.5455225564304462,
+      "Cultural Traditions vs. Modernity": 0.1091695740316696,
+      "Empathy and Compassion vs. Detachment": -0.8723654877916494,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.6552623439851641,
+      "Mental Health Considerations vs. Social Expectations": 0.2633287982441297
+    }
+  },
+  {
+    "id": 7,
+    "archetype": "random_2",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.5161754801707477,
+      "Conflict Avoidance vs. Confrontation": -0.2909480637402633,
+      "Privacy and Personal Space vs. Social Bonding": 0.9413960487898065,
+      "Professional Responsibility vs. Personal Freedom": 0.7862422426443954,
+      "Trust and Honesty vs. Skepticism": 0.5567669941475237,
+      "Financial Responsibility vs. Immediate Gratification": -0.6107225842960649,
+      "Cultural Traditions vs. Modernity": -0.06655799254593164,
+      "Empathy and Compassion vs. Detachment": -0.9123924684255424,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.6914210158649043,
+      "Mental Health Considerations vs. Social Expectations": 0.36609790648490925
+    }
+  },
+  {
+    "id": 8,
+    "archetype": "random_3",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.48952431181563427,
+      "Conflict Avoidance vs. Confrontation": 0.93501946486842,
+      "Privacy and Personal Space vs. Social Bonding": -0.3483492837236961,
+      "Professional Responsibility vs. Personal Freedom": -0.25908058793026223,
+      "Trust and Honesty vs. Skepticism": -0.06088837744838416,
+      "Financial Responsibility vs. Immediate Gratification": -0.6210572818314286,
+      "Cultural Traditions vs. Modernity": -0.7401569893290567,
+      "Empathy and Compassion vs. Detachment": -0.04859014754813251,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.5461813018982318,
+      "Mental Health Considerations vs. Social Expectations": 0.3396279893650207
+    }
+  },
+  {
+    "id": 9,
+    "archetype": "random_4",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.12569616225533853,
+      "Conflict Avoidance vs. Confrontation": 0.6653563921156749,
+      "Privacy and Personal Space vs. Social Bonding": 0.40053020400449824,
+      "Professional Responsibility vs. Personal Freedom": -0.37526671723591787,
+      "Trust and Honesty vs. Skepticism": 0.6645196027904021,
+      "Financial Responsibility vs. Immediate Gratification": 0.6095287149936037,
+      "Cultural Traditions vs. Modernity": -0.22504324193965108,
+      "Empathy and Compassion vs. Detachment": -0.4233437921395118,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.364991007949951,
+      "Mental Health Considerations vs. Social Expectations": -0.7204950327813804
+    }
+  },
+  {
+    "id": 10,
+    "archetype": "random_5",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.6001835950497834,
+      "Conflict Avoidance vs. Confrontation": -0.985275460497989,
+      "Privacy and Personal Space vs. Social Bonding": 0.5738487550042768,
+      "Professional Responsibility vs. Personal Freedom": 0.32970171318406427,
+      "Trust and Honesty vs. Skepticism": 0.4103307572526702,
+      "Financial Responsibility vs. Immediate Gratification": 0.5614580620439358,
+      "Cultural Traditions vs. Modernity": -0.08216844892332009,
+      "Empathy and Compassion vs. Detachment": 0.13748239190578748,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.7204060037446851,
+      "Mental Health Considerations vs. Social Expectations": -0.7709398529280531
+    }
+  },
+  {
+    "id": 11,
+    "archetype": "random_6",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.3368059235809433,
+      "Conflict Avoidance vs. Confrontation": -0.057807587713734954,
+      "Privacy and Personal Space vs. Social Bonding": 0.13047221296237765,
+      "Professional Responsibility vs. Personal Freedom": 0.5299977148320512,
+      "Trust and Honesty vs. Skepticism": 0.2694366400011816,
+      "Financial Responsibility vs. Immediate Gratification": 0.10715880131599165,
+      "Cultural Traditions vs. Modernity": 0.11841432149082709,
+      "Empathy and Compassion vs. Detachment": -0.3920998038747756,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.9383643308641212,
+      "Mental Health Considerations vs. Social Expectations": -0.12656522153527527
+    }
+  },
+  {
+    "id": 12,
+    "archetype": "random_7",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.5708306543609416,
+      "Conflict Avoidance vs. Confrontation": -0.1829427125507277,
+      "Privacy and Personal Space vs. Social Bonding": 0.7068061465363322,
+      "Professional Responsibility vs. Personal Freedom": -0.5321210282693185,
+      "Trust and Honesty vs. Skepticism": -0.883394516621868,
+      "Financial Responsibility vs. Immediate Gratification": -0.4372322159560069,
+      "Cultural Traditions vs. Modernity": -0.41281248446663277,
+      "Empathy and Compassion vs. Detachment": 0.3238330294537901,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.11406430468255668,
+      "Mental Health Considerations vs. Social Expectations": 0.567796418212827
+    }
+  },
+  {
+    "id": 13,
+    "archetype": "random_8",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.3286270806547751,
+      "Conflict Avoidance vs. Confrontation": -0.18722627711985895,
+      "Privacy and Personal Space vs. Social Bonding": 0.6280407693320693,
+      "Professional Responsibility vs. Personal Freedom": -0.6660541601845922,
+      "Trust and Honesty vs. Skepticism": -0.954575853732279,
+      "Financial Responsibility vs. Immediate Gratification": -0.8199042784487165,
+      "Cultural Traditions vs. Modernity": 0.4447187011929006,
+      "Empathy and Compassion vs. Detachment": -0.07624553949722523,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.6774564419327964,
+      "Mental Health Considerations vs. Social Expectations": 0.0020895502067270755
+    }
+  },
+  {
+    "id": 14,
+    "archetype": "random_9",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.6953757945736632,
+      "Conflict Avoidance vs. Confrontation": 0.39264075015547206,
+      "Privacy and Personal Space vs. Social Bonding": -0.1076874488519386,
+      "Professional Responsibility vs. Personal Freedom": -0.23795754780703504,
+      "Trust and Honesty vs. Skepticism": -0.39697582170424695,
+      "Financial Responsibility vs. Immediate Gratification": 0.2605651862377769,
+      "Cultural Traditions vs. Modernity": -0.27637477889321915,
+      "Empathy and Compassion vs. Detachment": -0.824700161367798,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.7639881957589694,
+      "Mental Health Considerations vs. Social Expectations": 0.9237953290990291
+    }
+  },
+  {
+    "id": 15,
+    "archetype": "random_10",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.8171613814152141,
+      "Conflict Avoidance vs. Confrontation": 0.3994142676214991,
+      "Privacy and Personal Space vs. Social Bonding": -0.46826007708096085,
+      "Professional Responsibility vs. Personal Freedom": 0.9383527546954478,
+      "Trust and Honesty vs. Skepticism": 0.5575018079315892,
+      "Financial Responsibility vs. Immediate Gratification": 0.4337803783179912,
+      "Cultural Traditions vs. Modernity": -0.10127699571242266,
+      "Empathy and Compassion vs. Detachment": -0.45551687630968196,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.8072180756930014,
+      "Mental Health Considerations vs. Social Expectations": 0.8052047930876833
+    }
+  },
+  {
+    "id": 16,
+    "archetype": "random_11",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.08844742033277786,
+      "Conflict Avoidance vs. Confrontation": -0.5952732704095394,
+      "Privacy and Personal Space vs. Social Bonding": -0.388086751698695,
+      "Professional Responsibility vs. Personal Freedom": 0.15843913788379194,
+      "Trust and Honesty vs. Skepticism": -0.6464544341215366,
+      "Financial Responsibility vs. Immediate Gratification": 0.713228568184751,
+      "Cultural Traditions vs. Modernity": 0.5170390596704202,
+      "Empathy and Compassion vs. Detachment": 0.4389259119018736,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.13581392044979257,
+      "Mental Health Considerations vs. Social Expectations": 0.2546176814048864
+    }
+  },
+  {
+    "id": 17,
+    "archetype": "random_12",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.16819593782547115,
+      "Conflict Avoidance vs. Confrontation": 0.29969320310964,
+      "Privacy and Personal Space vs. Social Bonding": -0.8311113577202218,
+      "Professional Responsibility vs. Personal Freedom": -0.16838519565878074,
+      "Trust and Honesty vs. Skepticism": -0.916771652276215,
+      "Financial Responsibility vs. Immediate Gratification": -0.012018361510962139,
+      "Cultural Traditions vs. Modernity": -0.34027757533442937,
+      "Empathy and Compassion vs. Detachment": -0.7109516222679062,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.7931940645548967,
+      "Mental Health Considerations vs. Social Expectations": 0.1752891443554241
+    }
+  },
+  {
+    "id": 18,
+    "archetype": "random_13",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.6588140629262278,
+      "Conflict Avoidance vs. Confrontation": 0.8502402367535944,
+      "Privacy and Personal Space vs. Social Bonding": 0.16212227940078994,
+      "Professional Responsibility vs. Personal Freedom": -0.30626039093032587,
+      "Trust and Honesty vs. Skepticism": 0.1818309829628335,
+      "Financial Responsibility vs. Immediate Gratification": -0.954392257940605,
+      "Cultural Traditions vs. Modernity": 0.9171184264828907,
+      "Empathy and Compassion vs. Detachment": -0.035393126114199536,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.5654704545005724,
+      "Mental Health Considerations vs. Social Expectations": -0.8345400001551229
+    }
+  },
+  {
+    "id": 19,
+    "archetype": "random_14",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.026683338323679306,
+      "Conflict Avoidance vs. Confrontation": -0.01858601129095816,
+      "Privacy and Personal Space vs. Social Bonding": 0.8756529099499657,
+      "Professional Responsibility vs. Personal Freedom": 0.14345610475215076,
+      "Trust and Honesty vs. Skepticism": -0.053021197886092386,
+      "Financial Responsibility vs. Immediate Gratification": -0.46604867381621284,
+      "Cultural Traditions vs. Modernity": -0.33686200531489563,
+      "Empathy and Compassion vs. Detachment": 0.041344804943075575,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.12217707938990663,
+      "Mental Health Considerations vs. Social Expectations": -0.9567758402393391
+    }
+  },
+  {
+    "id": 20,
+    "archetype": "random_15",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.6525838483887156,
+      "Conflict Avoidance vs. Confrontation": 0.7923215436795334,
+      "Privacy and Personal Space vs. Social Bonding": -0.7195018220027785,
+      "Professional Responsibility vs. Personal Freedom": 0.1080722870780988,
+      "Trust and Honesty vs. Skepticism": -0.7828485177291129,
+      "Financial Responsibility vs. Immediate Gratification": 0.3444801860796234,
+      "Cultural Traditions vs. Modernity": -0.43753243232198336,
+      "Empathy and Compassion vs. Detachment": 0.31884526938380353,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.4539892285737652,
+      "Mental Health Considerations vs. Social Expectations": 0.537294983835314
+    }
+  },
+  {
+    "id": 21,
+    "archetype": "random_16",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.7845181080882069,
+      "Conflict Avoidance vs. Confrontation": 0.8320236902752158,
+      "Privacy and Personal Space vs. Social Bonding": -0.5395720182102384,
+      "Professional Responsibility vs. Personal Freedom": -0.9251748876476404,
+      "Trust and Honesty vs. Skepticism": 0.10970493878296672,
+      "Financial Responsibility vs. Immediate Gratification": -0.2581554322751225,
+      "Cultural Traditions vs. Modernity": 0.6595794862648263,
+      "Empathy and Compassion vs. Detachment": 0.6165029441286036,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.3657222143545693,
+      "Mental Health Considerations vs. Social Expectations": 0.9057987901394899
+    }
+  },
+  {
+    "id": 22,
+    "archetype": "random_17",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.41816432371976275,
+      "Conflict Avoidance vs. Confrontation": 0.030114258463429078,
+      "Privacy and Personal Space vs. Social Bonding": -0.4880698188647945,
+      "Professional Responsibility vs. Personal Freedom": 0.8720871400979266,
+      "Trust and Honesty vs. Skepticism": -0.6707843648359637,
+      "Financial Responsibility vs. Immediate Gratification": -0.910178761215342,
+      "Cultural Traditions vs. Modernity": -0.12980587999392412,
+      "Empathy and Compassion vs. Detachment": 0.9847511281116741,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.7833545325098279,
+      "Mental Health Considerations vs. Social Expectations": 0.49721603891389843
+    }
+  },
+  {
+    "id": 23,
+    "archetype": "random_18",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.7815849817570497,
+      "Conflict Avoidance vs. Confrontation": 0.7868932793957264,
+      "Privacy and Personal Space vs. Social Bonding": 0.037716720772898116,
+      "Professional Responsibility vs. Personal Freedom": -0.368141896338414,
+      "Trust and Honesty vs. Skepticism": 0.544024864221976,
+      "Financial Responsibility vs. Immediate Gratification": 0.32332252633552216,
+      "Cultural Traditions vs. Modernity": -0.25268454225257986,
+      "Empathy and Compassion vs. Detachment": -0.8110666638769695,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.493579222698052,
+      "Mental Health Considerations vs. Social Expectations": -0.47507896815427064
+    }
+  },
+  {
+    "id": 24,
+    "archetype": "random_19",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.8736263010675585,
+      "Conflict Avoidance vs. Confrontation": -0.5180588499886305,
+      "Privacy and Personal Space vs. Social Bonding": -0.754484135177028,
+      "Professional Responsibility vs. Personal Freedom": 0.6622253442498123,
+      "Trust and Honesty vs. Skepticism": -0.6934313667510119,
+      "Financial Responsibility vs. Immediate Gratification": -0.6414633836845218,
+      "Cultural Traditions vs. Modernity": 0.198765583041687,
+      "Empathy and Compassion vs. Detachment": 0.7491240816749289,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.6071306685708535,
+      "Mental Health Considerations vs. Social Expectations": -0.37935265419981046
+    }
+  },
+  {
+    "id": 25,
+    "archetype": "random_20",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.5548096764823551,
+      "Conflict Avoidance vs. Confrontation": 0.9436528521219347,
+      "Privacy and Personal Space vs. Social Bonding": 0.0014823724046846287,
+      "Professional Responsibility vs. Personal Freedom": -0.7122049948974984,
+      "Trust and Honesty vs. Skepticism": -0.9721274245835969,
+      "Financial Responsibility vs. Immediate Gratification": -0.5406879400022895,
+      "Cultural Traditions vs. Modernity": -0.7363555644269579,
+      "Empathy and Compassion vs. Detachment": 0.35531734722571495,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.7563349907429378,
+      "Mental Health Considerations vs. Social Expectations": 0.012659863241266
+    }
+  },
+  {
+    "id": 26,
+    "archetype": "random_21",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.38852487128577295,
+      "Conflict Avoidance vs. Confrontation": 0.16223321844180472,
+      "Privacy and Personal Space vs. Social Bonding": -0.6004486966798848,
+      "Professional Responsibility vs. Personal Freedom": 0.6082490523645254,
+      "Trust and Honesty vs. Skepticism": 0.4308142592316033,
+      "Financial Responsibility vs. Immediate Gratification": 0.4779680078310835,
+      "Cultural Traditions vs. Modernity": -0.7378844968853735,
+      "Empathy and Compassion vs. Detachment": -0.7524923926993108,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.8551251020130153,
+      "Mental Health Considerations vs. Social Expectations": -0.20484361235011872
+    }
+  },
+  {
+    "id": 27,
+    "archetype": "random_22",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.3981026164381205,
+      "Conflict Avoidance vs. Confrontation": -0.02283190929693335,
+      "Privacy and Personal Space vs. Social Bonding": 0.32572842552716486,
+      "Professional Responsibility vs. Personal Freedom": 0.9112465140939399,
+      "Trust and Honesty vs. Skepticism": -0.42710754623589,
+      "Financial Responsibility vs. Immediate Gratification": 0.8496168586240542,
+      "Cultural Traditions vs. Modernity": -0.9502810172274874,
+      "Empathy and Compassion vs. Detachment": 0.11039608465364936,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.2679502233621702,
+      "Mental Health Considerations vs. Social Expectations": -0.7882051924984934
+    }
+  },
+  {
+    "id": 28,
+    "archetype": "random_23",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.7193208058721747,
+      "Conflict Avoidance vs. Confrontation": -0.16177136136739234,
+      "Privacy and Personal Space vs. Social Bonding": 0.9324638242863634,
+      "Professional Responsibility vs. Personal Freedom": 0.19208510646874566,
+      "Trust and Honesty vs. Skepticism": 0.8660464432004225,
+      "Financial Responsibility vs. Immediate Gratification": 0.6087218312259415,
+      "Cultural Traditions vs. Modernity": -0.06523679688941697,
+      "Empathy and Compassion vs. Detachment": 0.5695268985043749,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.9643264320460245,
+      "Mental Health Considerations vs. Social Expectations": -0.7817120064685301
+    }
+  },
+  {
+    "id": 29,
+    "archetype": "random_24",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.6588572297654727,
+      "Conflict Avoidance vs. Confrontation": 0.5936341766503235,
+      "Privacy and Personal Space vs. Social Bonding": -0.5347185160671326,
+      "Professional Responsibility vs. Personal Freedom": 0.061539181198106974,
+      "Trust and Honesty vs. Skepticism": 0.21203164140002184,
+      "Financial Responsibility vs. Immediate Gratification": 0.7354779075520224,
+      "Cultural Traditions vs. Modernity": 0.20621431467745133,
+      "Empathy and Compassion vs. Detachment": -0.17485686145263934,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.2516319131856346,
+      "Mental Health Considerations vs. Social Expectations": -0.14823582725298023
+    }
+  },
+  {
+    "id": 30,
+    "archetype": "random_25",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.30386205115994835,
+      "Conflict Avoidance vs. Confrontation": 0.7349812635046498,
+      "Privacy and Personal Space vs. Social Bonding": -0.09220623584740051,
+      "Professional Responsibility vs. Personal Freedom": -0.5043208740972838,
+      "Trust and Honesty vs. Skepticism": -0.5266752740048377,
+      "Financial Responsibility vs. Immediate Gratification": 0.4920285604868928,
+      "Cultural Traditions vs. Modernity": 0.6331375268478208,
+      "Empathy and Compassion vs. Detachment": -0.7894438402917501,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.8668822860896437,
+      "Mental Health Considerations vs. Social Expectations": 0.18886732751290358
+    }
+  },
+  {
+    "id": 31,
+    "archetype": "random_26",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.7076535116146034,
+      "Conflict Avoidance vs. Confrontation": 0.6493283809126826,
+      "Privacy and Personal Space vs. Social Bonding": -0.37933065215185113,
+      "Professional Responsibility vs. Personal Freedom": -0.7122561340577147,
+      "Trust and Honesty vs. Skepticism": 0.8419409449749005,
+      "Financial Responsibility vs. Immediate Gratification": -0.6689365545294437,
+      "Cultural Traditions vs. Modernity": -0.4305598353241289,
+      "Empathy and Compassion vs. Detachment": -0.6927732096158827,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.7690198726692901,
+      "Mental Health Considerations vs. Social Expectations": -0.9577039673271199
+    }
+  },
+  {
+    "id": 32,
+    "archetype": "random_27",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.8892091816714798,
+      "Conflict Avoidance vs. Confrontation": -0.6507170581282946,
+      "Privacy and Personal Space vs. Social Bonding": -0.8932361347456492,
+      "Professional Responsibility vs. Personal Freedom": 0.18228763222194244,
+      "Trust and Honesty vs. Skepticism": 0.3614290535990128,
+      "Financial Responsibility vs. Immediate Gratification": -0.21273908633594352,
+      "Cultural Traditions vs. Modernity": -0.3640178060959012,
+      "Empathy and Compassion vs. Detachment": 0.00905247404446019,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.7500098844692171,
+      "Mental Health Considerations vs. Social Expectations": 0.702263253644412
+    }
+  },
+  {
+    "id": 33,
+    "archetype": "random_28",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.9130498759744161,
+      "Conflict Avoidance vs. Confrontation": -0.6370031808069518,
+      "Privacy and Personal Space vs. Social Bonding": -0.526510257791208,
+      "Professional Responsibility vs. Personal Freedom": -0.5012248483355763,
+      "Trust and Honesty vs. Skepticism": 0.14246530348554542,
+      "Financial Responsibility vs. Immediate Gratification": -0.16747514859361545,
+      "Cultural Traditions vs. Modernity": -0.901491760144812,
+      "Empathy and Compassion vs. Detachment": -0.2527717230808568,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.04750589743527445,
+      "Mental Health Considerations vs. Social Expectations": -0.7966561941925681
+    }
+  },
+  {
+    "id": 34,
+    "archetype": "random_29",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.6669171075771194,
+      "Conflict Avoidance vs. Confrontation": -0.8960762670697915,
+      "Privacy and Personal Space vs. Social Bonding": 0.8496837380361242,
+      "Professional Responsibility vs. Personal Freedom": -0.801773716840249,
+      "Trust and Honesty vs. Skepticism": 0.6871499031955055,
+      "Financial Responsibility vs. Immediate Gratification": 0.8053062878552342,
+      "Cultural Traditions vs. Modernity": 0.9591413611731854,
+      "Empathy and Compassion vs. Detachment": 0.6040517605471871,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.5589550815426578,
+      "Mental Health Considerations vs. Social Expectations": 0.28496655199109533
+    }
+  },
+  {
+    "id": 35,
+    "archetype": "random_30",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.557992709156258,
+      "Conflict Avoidance vs. Confrontation": -0.7308955831737058,
+      "Privacy and Personal Space vs. Social Bonding": 0.0721360718952746,
+      "Professional Responsibility vs. Personal Freedom": 0.02844574038082892,
+      "Trust and Honesty vs. Skepticism": 0.7151442882451151,
+      "Financial Responsibility vs. Immediate Gratification": -0.07440126881296827,
+      "Cultural Traditions vs. Modernity": -0.22982100779929304,
+      "Empathy and Compassion vs. Detachment": 0.2791265424742202,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.46707336499830787,
+      "Mental Health Considerations vs. Social Expectations": -0.7204631780920863
+    }
+  },
+  {
+    "id": 36,
+    "archetype": "random_31",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.0442454519525084,
+      "Conflict Avoidance vs. Confrontation": -0.16622126281022997,
+      "Privacy and Personal Space vs. Social Bonding": -0.5348601189422526,
+      "Professional Responsibility vs. Personal Freedom": -0.264976379769744,
+      "Trust and Honesty vs. Skepticism": -0.2672151003475052,
+      "Financial Responsibility vs. Immediate Gratification": -0.3450088711749091,
+      "Cultural Traditions vs. Modernity": -0.24107184054614206,
+      "Empathy and Compassion vs. Detachment": 0.3714866909118908,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.4062470508574294,
+      "Mental Health Considerations vs. Social Expectations": 0.8977158534306808
+    }
+  },
+  {
+    "id": 37,
+    "archetype": "random_32",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.8326960390763558,
+      "Conflict Avoidance vs. Confrontation": -0.03817914339984285,
+      "Privacy and Personal Space vs. Social Bonding": -0.3432775899906224,
+      "Professional Responsibility vs. Personal Freedom": 0.07086957966000629,
+      "Trust and Honesty vs. Skepticism": 0.6971209775472491,
+      "Financial Responsibility vs. Immediate Gratification": 0.30517468112020407,
+      "Cultural Traditions vs. Modernity": 0.6087836558941548,
+      "Empathy and Compassion vs. Detachment": 0.06544455213148037,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.2658352585352415,
+      "Mental Health Considerations vs. Social Expectations": -0.42368877163507657
+    }
+  },
+  {
+    "id": 38,
+    "archetype": "random_33",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.46978632462058156,
+      "Conflict Avoidance vs. Confrontation": -0.5951908137485633,
+      "Privacy and Personal Space vs. Social Bonding": 0.38959625763699646,
+      "Professional Responsibility vs. Personal Freedom": 0.7214381366517881,
+      "Trust and Honesty vs. Skepticism": -0.7357943253969121,
+      "Financial Responsibility vs. Immediate Gratification": 0.2287594810838396,
+      "Cultural Traditions vs. Modernity": -0.8098085035401308,
+      "Empathy and Compassion vs. Detachment": 0.45143125654285376,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.8310135623529595,
+      "Mental Health Considerations vs. Social Expectations": 0.8718796454012521
+    }
+  },
+  {
+    "id": 39,
+    "archetype": "random_34",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.7251841399243957,
+      "Conflict Avoidance vs. Confrontation": 0.9177604918181608,
+      "Privacy and Personal Space vs. Social Bonding": 0.6017683521701933,
+      "Professional Responsibility vs. Personal Freedom": 0.18736400893270821,
+      "Trust and Honesty vs. Skepticism": 0.5652482092590938,
+      "Financial Responsibility vs. Immediate Gratification": 0.5902296779661718,
+      "Cultural Traditions vs. Modernity": 0.8920541256346606,
+      "Empathy and Compassion vs. Detachment": -0.4932332923216256,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.18015179071661835,
+      "Mental Health Considerations vs. Social Expectations": -0.8099016048711976
+    }
+  },
+  {
+    "id": 40,
+    "archetype": "random_35",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.2323314000482426,
+      "Conflict Avoidance vs. Confrontation": -0.6574173918144224,
+      "Privacy and Personal Space vs. Social Bonding": 0.1299012229448837,
+      "Professional Responsibility vs. Personal Freedom": 0.1448610280676994,
+      "Trust and Honesty vs. Skepticism": -0.06802969403754533,
+      "Financial Responsibility vs. Immediate Gratification": 0.045263551026245574,
+      "Cultural Traditions vs. Modernity": 0.5278467800131759,
+      "Empathy and Compassion vs. Detachment": 0.5984894330241333,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.015693568849141748,
+      "Mental Health Considerations vs. Social Expectations": 0.19918688304522458
+    }
+  },
+  {
+    "id": 41,
+    "archetype": "random_36",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.8624724713802037,
+      "Conflict Avoidance vs. Confrontation": -0.7605328229977544,
+      "Privacy and Personal Space vs. Social Bonding": -0.765792868199779,
+      "Professional Responsibility vs. Personal Freedom": -0.8245819761784632,
+      "Trust and Honesty vs. Skepticism": 0.31572657008105565,
+      "Financial Responsibility vs. Immediate Gratification": -0.16278339841924105,
+      "Cultural Traditions vs. Modernity": 0.5486428322836865,
+      "Empathy and Compassion vs. Detachment": 0.3424628266171852,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.33272448334352367,
+      "Mental Health Considerations vs. Social Expectations": 0.7967330947230715
+    }
+  },
+  {
+    "id": 42,
+    "archetype": "random_37",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.5250642941413046,
+      "Conflict Avoidance vs. Confrontation": -0.45893011817964857,
+      "Privacy and Personal Space vs. Social Bonding": -0.271615964455892,
+      "Professional Responsibility vs. Personal Freedom": -0.3711200395914742,
+      "Trust and Honesty vs. Skepticism": -0.6847767027500007,
+      "Financial Responsibility vs. Immediate Gratification": -0.7044332549156167,
+      "Cultural Traditions vs. Modernity": 0.8722549267514881,
+      "Empathy and Compassion vs. Detachment": -0.12419192560249348,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.23336035444518033,
+      "Mental Health Considerations vs. Social Expectations": 0.45937141735475584
+    }
+  },
+  {
+    "id": 43,
+    "archetype": "random_38",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.10598613050579986,
+      "Conflict Avoidance vs. Confrontation": 0.8722799736769244,
+      "Privacy and Personal Space vs. Social Bonding": 0.5606029878187844,
+      "Professional Responsibility vs. Personal Freedom": -0.041260871750919303,
+      "Trust and Honesty vs. Skepticism": -0.24728105303834758,
+      "Financial Responsibility vs. Immediate Gratification": 0.9732630898486441,
+      "Cultural Traditions vs. Modernity": 0.43552047200728694,
+      "Empathy and Compassion vs. Detachment": 0.9023893200076822,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.7630428455659173,
+      "Mental Health Considerations vs. Social Expectations": 0.7010673583815652
+    }
+  },
+  {
+    "id": 44,
+    "archetype": "random_39",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.27414776798241514,
+      "Conflict Avoidance vs. Confrontation": -0.7561566433297748,
+      "Privacy and Personal Space vs. Social Bonding": 0.17651599993844136,
+      "Professional Responsibility vs. Personal Freedom": 0.3721927302108976,
+      "Trust and Honesty vs. Skepticism": -0.9753946282227943,
+      "Financial Responsibility vs. Immediate Gratification": -0.09136407631650689,
+      "Cultural Traditions vs. Modernity": 0.6507990223926423,
+      "Empathy and Compassion vs. Detachment": -0.40928194931182027,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.08290383640289778,
+      "Mental Health Considerations vs. Social Expectations": -0.11537174586421362
+    }
+  },
+  {
+    "id": 45,
+    "archetype": "random_40",
+    "weights": {
+      "Directness vs. Indirectness in Communication": -0.3961452171150168,
+      "Conflict Avoidance vs. Confrontation": 0.8368837910311084,
+      "Privacy and Personal Space vs. Social Bonding": 0.5625880708630318,
+      "Professional Responsibility vs. Personal Freedom": -0.778823178007779,
+      "Trust and Honesty vs. Skepticism": 0.9940693156751461,
+      "Financial Responsibility vs. Immediate Gratification": 0.7584000486154905,
+      "Cultural Traditions vs. Modernity": -0.43218312427192207,
+      "Empathy and Compassion vs. Detachment": 0.6737931593218764,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.7871609362572343,
+      "Mental Health Considerations vs. Social Expectations": 0.9982094609484773
+    }
+  },
+  {
+    "id": 46,
+    "archetype": "random_41",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.3313694722130738,
+      "Conflict Avoidance vs. Confrontation": 0.30025003111759396,
+      "Privacy and Personal Space vs. Social Bonding": -0.8191185460317345,
+      "Professional Responsibility vs. Personal Freedom": 0.7940667977932505,
+      "Trust and Honesty vs. Skepticism": -0.9420009935910612,
+      "Financial Responsibility vs. Immediate Gratification": -0.5183438839177059,
+      "Cultural Traditions vs. Modernity": -0.71395624966673,
+      "Empathy and Compassion vs. Detachment": 0.5535358813844371,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.6035915455742042,
+      "Mental Health Considerations vs. Social Expectations": 0.8212764542617705
+    }
+  },
+  {
+    "id": 47,
+    "archetype": "random_42",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.3125380786549803,
+      "Conflict Avoidance vs. Confrontation": -0.9276745790106076,
+      "Privacy and Personal Space vs. Social Bonding": -0.9891403317425991,
+      "Professional Responsibility vs. Personal Freedom": -0.8966841659712022,
+      "Trust and Honesty vs. Skepticism": 0.21185035529545537,
+      "Financial Responsibility vs. Immediate Gratification": 0.6029636217188306,
+      "Cultural Traditions vs. Modernity": -0.522894358745223,
+      "Empathy and Compassion vs. Detachment": 0.6988176858461459,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.8855361196934792,
+      "Mental Health Considerations vs. Social Expectations": 0.6019277072833524
+    }
+  },
+  {
+    "id": 48,
+    "archetype": "random_43",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.8555908603445608,
+      "Conflict Avoidance vs. Confrontation": 0.5442167982087611,
+      "Privacy and Personal Space vs. Social Bonding": 0.3962415679572744,
+      "Professional Responsibility vs. Personal Freedom": 0.6759604373107662,
+      "Trust and Honesty vs. Skepticism": -0.9196974009058672,
+      "Financial Responsibility vs. Immediate Gratification": -0.5964357785618892,
+      "Cultural Traditions vs. Modernity": -0.7501526413887138,
+      "Empathy and Compassion vs. Detachment": 0.009061980385973056,
+      "Legal and Ethical Concerns vs. Personal Convenience": 0.490376256657689,
+      "Mental Health Considerations vs. Social Expectations": 0.2600236891527974
+    }
+  },
+  {
+    "id": 49,
+    "archetype": "random_44",
+    "weights": {
+      "Directness vs. Indirectness in Communication": 0.70226219952387,
+      "Conflict Avoidance vs. Confrontation": -0.6895740151178182,
+      "Privacy and Personal Space vs. Social Bonding": 0.4692421838703231,
+      "Professional Responsibility vs. Personal Freedom": -0.6139170182621918,
+      "Trust and Honesty vs. Skepticism": -0.4584824973643995,
+      "Financial Responsibility vs. Immediate Gratification": 0.4198093945626078,
+      "Cultural Traditions vs. Modernity": 0.9604095697973636,
+      "Empathy and Compassion vs. Detachment": 0.22308721195413916,
+      "Legal and Ethical Concerns vs. Personal Convenience": -0.8909993700174088,
+      "Mental Health Considerations vs. Social Expectations": 0.23261793985506563
+    }
+  }
+]
