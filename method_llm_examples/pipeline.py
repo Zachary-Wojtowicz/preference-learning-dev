@@ -367,7 +367,7 @@ def dedup_reasons_llm(reasons, config, client, model, num_themes):
         label = f"batch {ci+1}/{len(chunks)}" if len(chunks) > 1 else "all"
         print(f"[dedup-llm] Sending {len(chunk)} reasons ({label}) "
               f"(prompt ~{len(prompt) // 4} tokens)...", flush=True)
-        return llm_call_json(client, model, prompt, timeout, retries)
+        return llm_call_json(client, model, prompt, timeout, retries, max_tokens=8192)
 
     all_themes = []
     max_workers = min(len(chunks), 4)
@@ -594,7 +594,7 @@ def condense_dimensions(clusters, config, client, model, num_dimensions):
     print(f"[stage-4] Using top {len(top_clusters)}/{len(clusters)} themes "
           f"(prompt ~{len(prompt) // 4} tokens)", flush=True)
 
-    result = llm_call_json(client, model, prompt, timeout, retries)
+    result = llm_call_json(client, model, prompt, timeout, retries, max_tokens=8192)
 
     # Ensure schema fields are present
     result.setdefault("domain", config.get("domain", ""))

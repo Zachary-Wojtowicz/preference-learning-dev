@@ -26,7 +26,8 @@ from scipy.stats import pearsonr, spearmanr
 # Data loading
 # ---------------------------------------------------------------------------
 
-def load_data(embeddings_parquet: str, bt_scores_csv: str, directions_npz: str):
+def load_data(embeddings_parquet: str, bt_scores_csv: str, directions_npz: str,
+              option_id_column: str = "movie_id"):
     """Load and align option representations.
 
     Returns
@@ -40,8 +41,7 @@ def load_data(embeddings_parquet: str, bt_scores_csv: str, directions_npz: str):
     """
     # --- embeddings ---
     parquet_df = pd.read_parquet(embeddings_parquet)
-    # movie_id is stored as string like '1', '2', ...
-    parquet_df["option_id"] = parquet_df["movie_id"].astype(str)
+    parquet_df["option_id"] = parquet_df[option_id_column].astype(str)
     parquet_df = parquet_df.sort_values("option_id").reset_index(drop=True)
     option_ids = parquet_df["option_id"].tolist()
     embeddings = np.stack(parquet_df["embedding"].apply(np.array).values)  # (N, d)
@@ -337,7 +337,8 @@ def run_simulation(args):
     # --- Load data ---
     print("Loading data...")
     embeddings, bt_scores, V, mu, option_ids, dim_names = load_data(
-        args.embeddings_parquet, args.bt_scores, args.directions
+        args.embeddings_parquet, args.bt_scores, args.directions,
+        option_id_column=args.option_id_column,
     )
     N, d = embeddings.shape
     K = V.shape[0]
@@ -651,6 +652,8 @@ def parse_args():
         help="Interpolation weight for partial projection (condition 4).",
     )
     parser.add_argument("--seed", type=int, default=42, help="Random seed.")
+    parser.add_argument("--option-id-column", default="movie_id",
+                        help="Name of the option-id column in the parquet file (default: movie_id).")
     return parser.parse_args()
 
 

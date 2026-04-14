@@ -1,0 +1,16 @@
+{
+  "domain": "scruples_25",
+  "choice_context": "A person is comparing two everyday actions and deciding which is more ethically questionable, based on social norms, harm, and intent.",
+  "input_path": "../datasets/scruples-dilemmas-25.csv",
+  "template_path": "../datasets/scruples_prompt.txt",
+  "text_column": "description",
+  "display_column": "description",
+  "id_column": "action_id",
+  "num_dimensions": 10,
+  "pair_appearances_per_option": 30,
+  "max_options": 25,
+  "dimensions_output_format": "plain",
+  "request_timeout_seconds": 120,
+  "max_retries": 3,
+  "max_workers": 24
+}

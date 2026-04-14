@@ -247,11 +247,12 @@ def parse_json_response(content):
         raise
 
 
-def llm_call_json(client, model, prompt, timeout, retries):
+def llm_call_json(client, model, prompt, timeout, retries, max_tokens=None):
     last_err = None
+    kwargs = {} if max_tokens is None else {"max_tokens": max_tokens}
     for attempt in range(1, max(1, retries) + 1):
         try:
-            return parse_json_response(llm_call(client, model, prompt, timeout, retries=retries))
+            return parse_json_response(llm_call(client, model, prompt, timeout, retries=retries, **kwargs))
         except Exception as e:
             last_err = e
             if attempt < retries:
