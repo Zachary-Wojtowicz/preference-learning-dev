@@ -11,6 +11,7 @@ import re
 import threading
 import time
 from collections import namedtuple
+from dataclasses import dataclass
 from pathlib import Path
 
 PROMPT_DIR = Path(__file__).resolve().parent / "prompts"
@@ -19,6 +20,8 @@ DEFAULT_SEED = 7
 DEFAULT_TIMEOUT = 45
 DEFAULT_MAX_RETRIES = 3
 EXCLUDED_FIELDS = {"embedding", "embeddings", "raw_row_json"}
+_ENV_FILE = Path(__file__).resolve().parents[1] / ".env"
+_RATE_LIMITER = None
 
 Option = namedtuple("Option", ["option_id", "option_text", "display_text", "raw"])
 
@@ -30,12 +33,13 @@ def parse_args():
     def add_sub(name):
         sub = subparsers.add_parser(name)
         sub.add_argument("--config", required=True)
-        sub.add_argument("--api-provider", choices=["local", "openai", "anthropic"], default="local")
+        sub.add_argument("--api-provider", choices=["local", "openai", "anthropic", "nvidia"], default="local")
         sub.add_argument("--base-url", help="API endpoint URL(s), comma-separated for round-robin across multiple servers")
         sub.add_argument("--model")
         sub.add_argument("--api-key")
         sub.add_argument("--output-dir")
         sub.add_argument("--seed", type=int, default=DEFAULT_SEED)
+        sub.add_argument("--rate-limit-per-minute", type=float, default=0.0)
         return sub
 
     for name in ["generate-dimensions", "score-options", "judge-pairs", "fit-bt", "consistency-check", "run-all"]:
@@ -100,7 +104,39 @@ def load_prompt_template(path):
 PROVIDER_DEFAULTS = {
     "openai": {"base_url": "https://api.openai.com/v1", "env_key": "OPENAI_API_KEY"},
     "anthropic": {"base_url": "https://api.anthropic.com/v1", "env_key": "ANTHROPIC_API_KEY"},
+    "nvidia": {"base_url": "https://integrate.api.nvidia.com/v1", "env_key": "NVIDIA_API_KEY"},
 }
+
+
+def load_dotenv():
+    if not _ENV_FILE.exists():
+        return
+    for line in _ENV_FILE.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        k, v = k.strip(), v.strip()
+        if k and k not in os.environ:
+            os.environ[k] = v
+
+
+@dataclass
+class RateLimiter:
+    requests_per_minute: float
+    _lock: threading.Lock = threading.Lock()
+    _last_call_ts: float = 0.0
+
+    def wait(self):
+        if self.requests_per_minute <= 0:
+            return
+        min_interval = 60.0 / self.requests_per_minute
+        with self._lock:
+            now = time.monotonic()
+            wait_for = (self._last_call_ts + min_interval) - now
+            if wait_for > 0:
+                time.sleep(wait_for)
+            self._last_call_ts = time.monotonic()
 
 
 def make_client(base_url, api_key, provider="local"):
@@ -142,6 +178,7 @@ def make_client_or_pool(base_url, api_key, provider="local"):
 
 
 def llm_call(client, model, prompt, timeout, retries):
+    global _RATE_LIMITER
     if not model:
         raise ValueError("Missing --model")
     is_pool = isinstance(client, ClientPool)
@@ -153,6 +190,8 @@ def llm_call(client, model, prompt, timeout, retries):
     for attempt in range(1, max_attempts + 1):
         resolved = client.next() if is_pool else client
         try:
+            if _RATE_LIMITER is not None:
+                _RATE_LIMITER.wait()
             resp = resolved.chat.completions.create(
                 model=model, temperature=0,
                 messages=[{"role": "user", "content": prompt}],
@@ -162,8 +201,11 @@ def llm_call(client, model, prompt, timeout, retries):
         except Exception as e:
             last_err = e
             is_conn = "Connection" in type(e).__name__
+            is_rate = "RateLimit" in type(e).__name__ or "429" in str(e)
             if attempt < max_attempts:
-                if not is_conn:
+                if is_rate:
+                    time.sleep(min(20 * attempt, 60))
+                elif not is_conn:
                     time.sleep(min(attempt, 3))
     raise last_err
 
@@ -211,7 +253,7 @@ def llm_call_json(client, model, prompt, timeout, retries):
     last_err = None
     for attempt in range(1, max(1, retries) + 1):
         try:
-            return parse_json_response(llm_call(client, model, prompt, timeout, retries=1))
+            return parse_json_response(llm_call(client, model, prompt, timeout, retries=retries))
         except Exception as e:
             last_err = e
             if attempt < retries:
@@ -452,6 +494,7 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
     timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT))
     retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
     pair_count = appearances_per_option or config.get("pair_appearances_per_option", 30)
+    double_judge = bool(config.get("double_judge_pairs", True))
 
     csv_path = output_dir / "pairwise_judgments.csv"
     existing_rows = []
@@ -489,21 +532,23 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
         a, b = lookup[a_id], lookup[b_id]
 
         r_fwd = llm_call_json(client, model, _make_prompt(dim, a, b), timeout, retries)
-        r_rev = llm_call_json(client, model, _make_prompt(dim, b, a), timeout, retries)
-
         choice_fwd = r_fwd.get("choice")
-        choice_rev = r_rev.get("choice")
+        if double_judge:
+            r_rev = llm_call_json(client, model, _make_prompt(dim, b, a), timeout, retries)
+            choice_rev = r_rev.get("choice")
 
-        # Both calls must point to the same real-world winner.
-        # Forward "A" means real-a wins; reverse "B" also means real-a wins.
-        if choice_fwd == "A" and choice_rev == "B":
-            consistent, final_choice = True, "A"
-        elif choice_fwd == "B" and choice_rev == "A":
-            consistent, final_choice = True, "B"
-        elif choice_fwd == "negligible" and choice_rev == "negligible":
-            consistent, final_choice = True, "negligible"
+            # Both calls must point to the same real-world winner.
+            # Forward "A" means real-a wins; reverse "B" also means real-a wins.
+            if choice_fwd == "A" and choice_rev == "B":
+                consistent, final_choice = True, "A"
+            elif choice_fwd == "B" and choice_rev == "A":
+                consistent, final_choice = True, "B"
+            elif choice_fwd == "negligible" and choice_rev == "negligible":
+                consistent, final_choice = True, "negligible"
+            else:
+                consistent, final_choice = False, choice_fwd
         else:
-            consistent, final_choice = False, choice_fwd
+            consistent, final_choice = True, choice_fwd
 
         return {"dimension_id": dim["id"], "dimension_name": dim["name"],
                 "option_a_id": a_id, "option_a_display": a.display_text,
@@ -524,11 +569,31 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
             print(f"[judge-pairs] Dim {dim_id} ({dim['name']}): already complete, skipping", flush=True)
             continue
         dim_jobs = [(dim, a_id, b_id) for a_id, b_id in dim_pairs]
-        dim_rows = run_jobs(dim_jobs, run, max_workers, f"judge-pairs dim={dim_id}")
-        all_rows.extend(dim_rows)
+        dim_rows = []
+        if max_workers <= 1:
+            for idx, job in enumerate(dim_jobs, start=1):
+                row = run(job)
+                dim_rows.append(row)
+                all_rows.append(row)
+                write_csv(csv_path, all_rows)
+                if idx % 5 == 0 or idx == len(dim_jobs):
+                    n_consistent_so_far = sum(1 for r in dim_rows if r["swap_consistent"] == "True")
+                    print(f"[judge-pairs] Dim {dim_id} ({dim['name']}): {idx}/{len(dim_jobs)} pairs "
+                          f"({n_consistent_so_far} consistent) -- saved", flush=True)
+        else:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
+                futures = [ex.submit(run, job) for job in dim_jobs]
+                for idx, future in enumerate(concurrent.futures.as_completed(futures), start=1):
+                    row = future.result()
+                    dim_rows.append(row)
+                    all_rows.append(row)
+                    write_csv(csv_path, all_rows)
+                    if idx % 5 == 0 or idx == len(dim_jobs):
+                        n_consistent_so_far = sum(1 for r in dim_rows if r["swap_consistent"] == "True")
+                        print(f"[judge-pairs] Dim {dim_id} ({dim['name']}): {idx}/{len(dim_jobs)} pairs "
+                              f"({n_consistent_so_far} consistent) -- saved", flush=True)
         run_new_total += len(dim_rows)
         n_consistent = sum(1 for r in dim_rows if r["swap_consistent"] == "True")
-        write_csv(csv_path, all_rows)
         print(f"[judge-pairs] Dim {dim_id} ({dim['name']}): {len(dim_rows)} pairs "
               f"({n_consistent} consistent) -- saved", flush=True)
 
@@ -745,7 +810,10 @@ def run_all(args, config, output_dir):
 
 
 def main():
+    global _RATE_LIMITER
+    load_dotenv()
     args = parse_args()
+    _RATE_LIMITER = RateLimiter(args.rate_limit_per_minute) if args.rate_limit_per_minute and args.rate_limit_per_minute > 0 else None
     config = load_json(Path(args.config))
     output_dir = Path(args.output_dir) if args.output_dir else DEFAULT_OUTPUT_ROOT / config["domain"]
 

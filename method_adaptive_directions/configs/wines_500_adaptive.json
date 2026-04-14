@@ -1,0 +1,7 @@
+{
+  "domain": "wines",
+  "choice_context": "A person is deciding which wine to buy or drink based on the wine description.",
+  "input_path": "datasets/wine-130k_embedded.parquet",
+  "id_column": "row_id",
+  "text_column": "text"
+}
