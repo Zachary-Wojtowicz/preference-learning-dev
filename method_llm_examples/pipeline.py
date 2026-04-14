@@ -2,7 +2,7 @@
 """Choice-grounded dimension discovery pipeline.
 
 Samples pairwise contrasts from a dataset, elicits reasons someone might
-choose one over the other, clusters those reasons, then distills them
+choose one over the other, deduplicates those reasons, then distills them
 into a compact set of preference dimensions.
 """
 
@@ -266,8 +266,111 @@ def elicit_reasons(pairs, options_lookup, config, client, model, max_workers, re
 
 
 # ===================================================================
-# Stage 3 — Embed and Cluster Reasons
+# Stage 3 — Deduplicate Reasons
 # ===================================================================
+
+# --- Method A: LLM-based deduplication ---
+
+def strip_reason_boilerplate(text):
+    """Strip bold headers and formulaic framing from a reason string.
+
+    Raw reasons often look like:
+      **Preference for X**: Someone who enjoys intense action might prefer...
+    We want just the core content.
+    """
+    # Strip **bold header**: prefix
+    text = re.sub(r"^\*\*[^*]+\*\*:?\s*", "", text.strip())
+    # Truncate to first sentence or 150 chars, whichever is shorter
+    sentence_end = re.search(r"[.!?]\s", text)
+    if sentence_end and sentence_end.start() < 150:
+        text = text[:sentence_end.start() + 1]
+    elif len(text) > 150:
+        text = text[:147].rstrip() + "..."
+    return text.strip()
+
+
+DEDUP_PROMPT_TEMPLATE = """\
+Below are {N} reasons that people gave for choosing one {domain_item} over
+another. Many reasons express the same underlying theme in different words.
+
+Your task: identify the ~{target_themes} most frequently recurring distinct
+themes across these reasons. For each theme, provide:
+- A brief label (5-10 words) that captures the core preference
+- A count of how many of the original reasons express this theme
+- The IDs of the reasons that express this theme
+
+Be aggressive about merging — if two reasons reflect the same underlying
+preference (even if applied to different specific options), they are the
+same theme. But do NOT merge themes that are genuinely distinct preferences.
+
+REASONS:
+{reason_list}
+
+Respond with valid JSON only — no prose before or after, no markdown fences.
+
+{{
+  "themes": [
+    {{
+      "theme_id": 1,
+      "label": "brief theme label",
+      "count": 42,
+      "reason_ids": [0, 3, 7, 12]
+    }}
+  ]
+}}"""
+
+
+def dedup_reasons_llm(reasons, config, client, model, num_themes):
+    """Deduplicate reasons using an LLM call. Returns list in cluster format."""
+    domain_item = config.get("domain_item", config.get("domain", "option"))
+    timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT)) * 4  # longer for big prompt
+    retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
+
+    # Build numbered list with stripped boilerplate
+    reason_lines = []
+    for r in reasons:
+        stripped = strip_reason_boilerplate(r["reason_text"])
+        reason_lines.append(f"{r['reason_id']}. {stripped}")
+
+    prompt = DEDUP_PROMPT_TEMPLATE.format(
+        N=len(reasons),
+        domain_item=domain_item,
+        target_themes=num_themes,
+        reason_list="\n".join(reason_lines),
+    )
+
+    print(f"[dedup-llm] Sending {len(reasons)} reasons to LLM for deduplication "
+          f"(prompt ~{len(prompt) // 4} tokens)...", flush=True)
+
+    result = llm_call_json(client, model, prompt, timeout, retries)
+    themes = result.get("themes", [])
+    print(f"[dedup-llm] LLM identified {len(themes)} themes", flush=True)
+
+    # Build a reason_id -> pair_id lookup
+    reason_pair_map = {r["reason_id"]: r["pair_id"] for r in reasons}
+
+    # Convert to cluster format so Stage 4 works unchanged
+    clusters = []
+    for theme in themes:
+        member_ids = theme.get("reason_ids", [])
+        contributing_pairs = sorted(set(
+            reason_pair_map.get(rid, -1) for rid in member_ids
+        ) - {-1})
+
+        clusters.append({
+            "cluster_id": theme.get("theme_id", len(clusters)),
+            "representative_reason": theme.get("label", ""),
+            "cluster_size": theme.get("count", len(member_ids)),
+            "member_reason_ids": member_ids,
+            "contributing_pair_ids": contributing_pairs,
+        })
+
+    # Sort by cluster_size descending
+    clusters.sort(key=lambda c: -c["cluster_size"])
+    return clusters
+
+
+# --- Method B: Embedding-based clustering (fallback) ---
 
 def embed_texts(texts, client, model, embedding_client=None, batch_size=100):
     """Embed a list of texts using the OpenAI embeddings API."""
@@ -359,27 +462,27 @@ def cluster_reasons(reasons, client, embedding_model, num_clusters, distance_thr
 CONDENSE_PROMPT_TEMPLATE = """\
 You are analyzing reasons people give for choosing between {domain_items}.
 
-Below is a deduplicated list of reasons people cited for preferring one option
-over another. The number in parentheses indicates how many times this theme
-appeared across {num_pairs} different choice pairs — higher counts indicate
-more pervasive preference axes.
+Below is a deduplicated list of preference themes people expressed when
+choosing between {domain_items}. The count indicates how many times each
+theme appeared across {num_pairs} different choice pairs — higher counts
+indicate more pervasive preference axes.
 
-Many of these reasons are two sides of the same underlying preference dimension.
+Many of these themes are two sides of the same underlying preference dimension.
 Your task is to identify the {K} most important underlying preference dimensions
-that explain these reasons.
+that explain these themes.
 
 Each dimension should:
 - Be a BIPOLAR AXIS — both ends represent legitimate preferences that real
   people hold (not a quality scale where one end is objectively better)
-- SUBSUME as many of the listed reasons as possible
+- SUBSUME as many of the listed themes as possible
 - Be DISTINCT from the other dimensions you identify
 - Reflect genuine DISAGREEMENT — something that different people weigh
   in opposite directions, not a universal quality criterion
 
-For each dimension, cite which reason numbers it subsumes (this verifies
+For each dimension, cite which theme numbers it subsumes (this verifies
 coverage and coherence).
 
-REASONS (sorted by frequency):
+THEMES (sorted by frequency):
 {reason_list}
 
 Respond with valid JSON only — no prose before or after, no markdown fences.
@@ -425,10 +528,10 @@ CONDENSE_SCHEMA = """{
 
 
 def condense_dimensions(clusters, config, client, model, num_dimensions):
-    """Distill cluster representatives into K bipolar preference dimensions."""
+    """Distill cluster/theme representatives into K bipolar preference dimensions."""
     domain_item = config.get("domain_item", config.get("domain", "option"))
     domain_items = domain_item + "s"
-    timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT))
+    timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT)) * 2
     retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
 
     # Build numbered reason list
@@ -495,14 +598,12 @@ def validate_coverage(reasons, reason_embeddings, dimensions, client, embedding_
     assignments = []
     for r_idx in range(len(reasons)):
         best_sim = -1.0
-        best_dim_idx = 0
-        best_pole = "low"
+        best_dim_idx_val = 0
+        best_pole_val = "low"
         for p_idx in range(len(pole_texts)):
             if sim_matrix[r_idx, p_idx] > best_sim:
                 best_sim = sim_matrix[r_idx, p_idx]
-                best_dim_idx, best_pole = dim_pole_map[p_idx]
-                best_dim_idx_val = best_dim_idx
-                best_pole_val = best_pole
+                best_dim_idx_val, best_pole_val = dim_pole_map[p_idx]
         assignments.append({
             "reason_id": reasons[r_idx]["reason_id"],
             "reason_text": reasons[r_idx]["reason_text"],
@@ -603,6 +704,7 @@ def format_coverage_report_md(report):
 def build_pipeline_summary(args, config, pairs, reasons, clusters, dimensions_data, coverage_report, output_dir):
     """Build an overall pipeline summary."""
     dims = dimensions_data.get("dimensions", [])
+    dedup_method = getattr(args, "dedup_method", "clustering")
     lines = [
         f"# {config.get('domain', '').title()} — Choice-Grounded Dimension Discovery",
         "",
@@ -613,7 +715,8 @@ def build_pipeline_summary(args, config, pairs, reasons, clusters, dimensions_da
         f"- Pairs sampled: {len(pairs)}",
         f"- Reasons per side: {args.reasons_per_side}",
         f"- Total raw reasons: {len(reasons)}",
-        f"- Reason clusters: {len(clusters)}",
+        f"- Dedup method: {dedup_method}",
+        f"- Themes/clusters: {len(clusters)}",
         f"- Dimensions requested: {args.num_dimensions}",
         f"- Dimensions produced: {len(dims)}",
         f"- Seed: {args.seed}",
@@ -668,8 +771,15 @@ def parse_args():
     parser.add_argument("--strata", type=int, default=3)
     parser.add_argument("--reasons-per-side", type=int, default=5)
     parser.add_argument("--num-dimensions", "-K", type=int, default=10)
-    parser.add_argument("--num-clusters", type=int, default=None, help="Number of reason clusters (default: auto)")
-    parser.add_argument("--cluster-distance-threshold", type=float, default=0.3)
+    # Stage 3 dedup method
+    parser.add_argument("--dedup-method", choices=["llm", "clustering"], default="llm",
+                        help="Deduplication method for Stage 3 (default: llm)")
+    parser.add_argument("--num-themes", type=int, default=50,
+                        help="Target number of themes for LLM dedup (default: 50)")
+    parser.add_argument("--num-clusters", type=int, default=60,
+                        help="Number of clusters for embedding-based dedup (default: 60)")
+    parser.add_argument("--cluster-distance-threshold", type=float, default=0.1,
+                        help="Distance threshold for auto clustering (default: 0.1)")
     parser.add_argument("--coverage-threshold", type=float, default=0.4)
     parser.add_argument("--max-workers", type=int, default=8)
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
@@ -736,23 +846,35 @@ def main():
         print(f"[stage-2] Elicited {len(reasons)} reasons -> {reasons_path}", flush=True)
 
     # ------------------------------------------------------------------
-    # Stage 3 — Embed and Cluster Reasons
+    # Stage 3 — Deduplicate Reasons
     # ------------------------------------------------------------------
+    # Check for cached output from either method
+    themes_path = output_dir / "reason_themes.json"
     clusters_path = output_dir / "reason_clusters.json"
-    if clusters_path.exists():
-        print(f"[stage-3] Loading existing clusters from {clusters_path}", flush=True)
-        clusters = load_json(clusters_path)
-        # We still need reason embeddings for stage 5, so embed if needed
-        reason_embeddings = None
+    reason_embeddings = None
+
+    if args.dedup_method == "llm":
+        if themes_path.exists():
+            print(f"[stage-3] Loading existing themes from {themes_path}", flush=True)
+            clusters = load_json(themes_path)
+        else:
+            print(f"[stage-3] Deduplicating {len(reasons)} reasons via LLM...", flush=True)
+            clusters = dedup_reasons_llm(reasons, config, client, args.model, args.num_themes)
+            write_json(themes_path, clusters)
+            print(f"[stage-3] {len(clusters)} themes -> {themes_path}", flush=True)
     else:
-        print(f"[stage-3] Clustering {len(reasons)} reasons...", flush=True)
-        clusters, reason_embeddings = cluster_reasons(
-            reasons, client, embedding_model,
-            args.num_clusters, args.cluster_distance_threshold,
-            embedding_client=embedding_client,
-        )
-        write_json(clusters_path, clusters)
-        print(f"[stage-3] {len(clusters)} clusters -> {clusters_path}", flush=True)
+        if clusters_path.exists():
+            print(f"[stage-3] Loading existing clusters from {clusters_path}", flush=True)
+            clusters = load_json(clusters_path)
+        else:
+            print(f"[stage-3] Clustering {len(reasons)} reasons...", flush=True)
+            clusters, reason_embeddings = cluster_reasons(
+                reasons, client, embedding_model,
+                args.num_clusters, args.cluster_distance_threshold,
+                embedding_client=embedding_client,
+            )
+            write_json(clusters_path, clusters)
+            print(f"[stage-3] {len(clusters)} clusters -> {clusters_path}", flush=True)
 
     # ------------------------------------------------------------------
     # Stage 4 — Condense into Dimensions
@@ -762,7 +884,7 @@ def main():
         print(f"[stage-4] Loading existing dimensions from {dims_path}", flush=True)
         dimensions_data = load_json(dims_path)
     else:
-        print(f"[stage-4] Condensing {len(clusters)} clusters into {args.num_dimensions} dimensions...", flush=True)
+        print(f"[stage-4] Condensing {len(clusters)} themes into {args.num_dimensions} dimensions...", flush=True)
         dimensions_data = condense_dimensions(
             clusters, config, client, args.model, args.num_dimensions,
         )
@@ -781,7 +903,7 @@ def main():
         # Need reason embeddings
         if reason_embeddings is None:
             texts = [r["reason_text"] for r in reasons]
-            print(f"[stage-5] Re-embedding {len(texts)} reasons for coverage check...", flush=True)
+            print(f"[stage-5] Embedding {len(texts)} reasons for coverage check...", flush=True)
             reason_embeddings = embed_texts(texts, client, embedding_model, embedding_client=embedding_client)
             norms = np.linalg.norm(reason_embeddings, axis=1, keepdims=True)
             norms[norms == 0] = 1.0
