@@ -1,5 +1,5 @@
 JUDGE_SCORING_PROMPT_TEMPLATE = """\
-You are scoring a single option on a single preference dimension.
+You are scoring one option on one preference dimension.
 
 --- DIMENSION ---
 Name: {name}
@@ -8,33 +8,31 @@ High pole (score 5) — {high_label}: {high_description}
 Scoring guidance: {scoring_guidance}
 
 --- CALIBRATION ANCHORS ---
-The following examples establish the scale. Use them as reference points.
-Example near the low pole (score ≈ 1): {low_example}
-Example near the high pole (score ≈ 4): {high_example}
+Low-pole example (score ≈ 1): {low_example}
+High-pole example (score ≈ 4): {high_example}
 
 --- SCORING RULES ---
-Use the 6-point integer scale: 0, 1, 2, 3, 4, 5
-  0 : Strongly and unambiguously at the low pole — the option is a textbook example of the low-pole quality with no meaningful high-pole characteristics
-  1 : Clearly at the low pole but not extreme — the option is predominantly low-pole with perhaps minor or token high-pole aspects
-  2 : Leans toward the low pole with caveats — the option shows moderate low-pole characteristics but has some noticeable high-pole qualities
-  3 : Leans toward the high pole with caveats — the option shows moderate high-pole characteristics but has some noticeable low-pole qualities
-  4 : Clearly at the high pole but not extreme — the option is predominantly high-pole with perhaps minor or token low-pole aspects
-  5 : Strongly and unambiguously at the high pole — the option is a textbook example of the high-pole quality with no meaningful low-pole characteristics
-
-Reserve 0 and 5 for unambiguous cases. Scores 2 and 3 represent the midpoint zone;
-use them when the option genuinely mixes both poles or the dimension barely applies.
-If the dimension truly does not apply or the option is perfectly neutral, score 2 or 3
-and specify the reason in zero_reason.
+Use integer scores only: 0, 1, 2, 3, 4, 5.
+- 0-1: clearly low pole
+- 2-3: mixed/neutral/uncertain/not clearly one-sided
+- 4-5: clearly high pole
+Reserve 0 and 5 for strong, unambiguous cases.
 
 --- OPTION TO SCORE ---
 {option_text}
 
 --- RESPONSE FORMAT ---
-Respond with valid JSON only, no prose before or after:
+Return valid JSON only (no markdown fences, no extra keys):
 {{
   "dimension_id": {dimension_id},
-  "justification": "<one sentence explaining what in the option drove this score>",
   "score": <0 | 1 | 2 | 3 | 4 | 5>,
+  "justification": "<one short sentence with evidence from the option>",
   "zero_reason": "<midpoint | not_applicable | uncertain | null>"
 }}
+
+Rules for zero_reason:
+- Use "midpoint" when score is 2 or 3 due to mixed signals.
+- Use "not_applicable" if the dimension does not meaningfully apply.
+- Use "uncertain" if evidence is insufficient.
+- Otherwise use null.
 """
