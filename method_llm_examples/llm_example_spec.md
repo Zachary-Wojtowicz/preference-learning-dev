@@ -9,7 +9,7 @@ This method replaces the abstract brainstorm with a bottom-up pipeline: sample c
 ## Pipeline Overview
 
 ```
-[Sample diverse pairs] → [Elicit reasons per pair] → [Embed & cluster reasons]
+[Sample diverse pairs] → [Elicit reasons per pair] → [Deduplicate reasons]
     → [Condense into dimensions] → [Validate coverage]
 ```
 
@@ -97,102 +97,116 @@ REASONS TO CHOOSE B:
 - `--reasons-per-side` (default 5)
 - `--max-workers` (default 8)
 
-## Stage 3 — Embed and Cluster Reasons
+## Stage 3 — Deduplicate Reasons
 
-**Goal:** Deduplicate the ~1,000 raw reasons into ~50–80 clusters of semantically similar reasons, each represented by its most central member.
+**Goal:** Reduce the ~1,000 raw reasons into ~50 distinct themes, each described by a brief standardized phrase.
+
+There are two dedup methods, controlled by `--dedup-method` (default: `llm`).
+
+### Method A: LLM-based deduplication (default)
+
+**Rationale:** The ~1,000 reasons total roughly 50K words (~65K tokens). This fits comfortably within the context window of 128K-context models (GPT-4o, Claude, Gemini). The LLM is dramatically better at semantic deduplication than embedding cosine similarity — it understands that "Preference for High-Stakes Action" and "Enjoyment of intense fight sequences" are the same theme even when their embeddings are similar only at a surface/structural level. The previous embedding-based approach collapsed all 1,000 reasons into a single cluster because the shared format ("Someone who enjoys [X] might prefer...") overwhelmed the content differences in embedding space.
+
+**Prompt:**
+
+```
+Below are {N} reasons that people gave for choosing one {domain_item} over
+another. Many reasons express the same underlying theme in different words.
+
+Your task: identify the ~{target_themes} most frequently recurring distinct
+themes across these reasons. For each theme, provide:
+- A brief label (5–10 words) that captures the core preference
+- A count of how many of the original reasons express this theme
+- The IDs of the reasons that express this theme
+
+Be aggressive about merging — if two reasons reflect the same underlying
+preference (even if applied to different specific options), they are the
+same theme.
+
+REASONS:
+{numbered list of all raw reasons, each on one line, stripped of boilerplate}
+
+Respond with valid JSON only:
+{{
+  "themes": [
+    {{
+      "theme_id": integer,
+      "label": string,
+      "count": integer,
+      "reason_ids": [integer]
+    }}
+  ]
+}}
+```
+
+**Important implementation details:**
+- Before including reasons in the prompt, **strip boilerplate framing**. The raw reasons often start with bold headers and formulaic phrasing like `**Preference for X**: Someone who enjoys...`. Strip the `**bold header**:` prefix and truncate to the core content (first 100 characters or first sentence, whichever is shorter). This makes the prompt smaller and focuses the LLM on content rather than format.
+- Use `temperature=0` — we want a deterministic, careful dedup.
+- If the total token count exceeds the model's context window, fall back to Method B (embedding clustering).
+- `target_themes` defaults to 50 but is controlled by `--num-themes`.
+
+**Output:** `reason_themes.json` — a list of `{theme_id, label, count, reason_ids}`, sorted by count descending. This replaces `reason_clusters.json` as the input to Stage 4.
+
+### Method B: Embedding-based clustering (fallback)
+
+Kept as a fallback for cases where the reason pool exceeds context limits, or for ablation experiments.
 
 **Method:**
-1. Embed all reason strings using the same embedding endpoint used for option embeddings. (Or, if a different model is more appropriate for short text, allow `--reason-embedding-model` override.)
+1. Embed all reason strings using an embedding endpoint.
 2. Normalize embeddings to unit length.
-3. Run agglomerative clustering with cosine distance and average linkage. Use a distance threshold to target ~50–80 clusters — or accept `--num-clusters` as an override.
-4. For each cluster:
-   - Select the reason closest to the cluster centroid (by cosine distance) as the **representative**.
-   - Record the cluster size (number of reasons it subsumes).
-   - Record which pairs contributed reasons to this cluster.
+3. Run agglomerative clustering with cosine distance and average linkage.
+4. For each cluster, select the reason closest to the centroid as the representative.
 
-**Rationale:** Dumping 1,000 reasons into a single LLM context window would exceed limits for most models and produce poor condensation. Embedding-based clustering is fast, requires no LLM calls, and produces a principled deduplication. The cluster sizes also provide empirical evidence for which themes are most recurrent — a signal that should be preserved into Stage 4.
+**Critical fix from previous version:** Default to `--num-clusters 60` (not `None`). The previous auto-threshold approach (`distance_threshold=0.3`) collapsed all reasons into one cluster because sentence embeddings of structurally similar texts have very low cosine distances. If auto mode is used, the threshold should be 0.05–0.10, not 0.3. But fixed cluster count is more robust.
 
-**Output:** `reason_clusters.json` — a list of `{cluster_id, representative_reason, cluster_size, member_reason_ids, contributing_pair_ids}`, sorted by cluster_size descending.
+**Output:** `reason_clusters.json` — same schema as before.
 
 **CLI args:**
-- `--num-clusters` (default: let the algorithm decide via distance threshold)
-- `--cluster-distance-threshold` (default 0.3)
+- `--dedup-method` (`llm` or `clustering`, default `llm`)
+- `--num-themes` (default 50, used by LLM method)
+- `--num-clusters` (default 60, used by clustering method)
+- `--cluster-distance-threshold` (default 0.1, used by clustering auto mode)
 
 ## Stage 4 — Condense into Dimensions
 
-**Goal:** Distill the ~50–80 cluster representatives into K bipolar preference dimensions (default K=10).
+**Goal:** Distill the ~50 deduplicated themes into K bipolar preference dimensions (default K=10).
 
 **Prompt:**
 
 ```
 You are analyzing reasons people give for choosing between {domain_items}.
 
-Below is a deduplicated list of reasons people cited for preferring one option
-over another. The number in parentheses indicates how many times this theme
-appeared across {num_pairs} different choice pairs — higher counts indicate
-more pervasive preference axes.
+Below is a deduplicated list of preference themes people expressed when
+choosing between {domain_items}. The count indicates how many times each
+theme appeared across {num_pairs} different choice pairs — higher counts
+indicate more pervasive preference axes.
 
-Many of these reasons are two sides of the same underlying preference dimension.
-Your task is to identify the {K} most important underlying preference dimensions
-that explain these reasons.
+Many of these themes are two sides of the same underlying preference
+dimension. Your task is to identify the {K} most important underlying
+preference dimensions that explain these themes.
 
 Each dimension should:
 - Be a BIPOLAR AXIS — both ends represent legitimate preferences that real
   people hold (not a quality scale where one end is objectively better)
-- SUBSUME as many of the listed reasons as possible
+- SUBSUME as many of the listed themes as possible
 - Be DISTINCT from the other dimensions you identify
 - Reflect genuine DISAGREEMENT — something that different people weigh
   in opposite directions, not a universal quality criterion
 
-For each dimension, cite which reason numbers it subsumes (this verifies
+For each dimension, cite which theme numbers it subsumes (this verifies
 coverage and coherence).
 
-REASONS (sorted by frequency):
-{numbered list: "N. [count=X] reason_text"}
+THEMES (sorted by frequency):
+{numbered list: "N. [count=X] theme_label"}
 
 Respond with valid JSON only — no prose before or after, no markdown fences.
 
-{
-  "domain": string,
-  "choice_context": string,
-  "reasoning": string,
-  "dimensions": [
-    {
-      "id": integer,
-      "name": string,
-      "low_pole": {
-        "label": string,
-        "description": string,
-        "typical_person": string
-      },
-      "high_pole": {
-        "label": string,
-        "description": string,
-        "typical_person": string
-      },
-      "example_contrast": {
-        "low_option": string,
-        "high_option": string
-      },
-      "articulability": "explicit" | "partially_explicit" | "implicit",
-      "estimated_variance": "mostly_between_person" | "mostly_between_option" | "both",
-      "scoring_guidance": string,
-      "subsumed_reasons": [integer]
-    }
-  ],
-  "redundancy_check": [
-    {
-      "dimension_ids": [integer, integer],
-      "correlation_note": string,
-      "disentanglement_suggestion": string
-    }
-  ]
-}
+{same output schema as method_llm_gen, plus "subsumed_reasons": [integer]}
 ```
 
 **Key differences from the existing `llm_pref_gen.txt` prompt:**
-- The LLM is grounded in **empirical evidence** (the clustered reasons) rather than brainstorming from scratch.
-- Cluster counts provide **frequency weighting** — the LLM can see which themes recurred across many pairs vs. appearing only once.
+- The LLM is grounded in **empirical evidence** (the deduplicated themes) rather than brainstorming from scratch.
+- Theme counts provide **frequency weighting** — the LLM can see which themes recurred across many pairs vs. appearing only once.
 - The `subsumed_reasons` field creates an **auditable link** between input evidence and output dimensions.
 - The output schema is otherwise identical to the existing one, so all downstream code works unchanged.
 
@@ -225,24 +239,18 @@ Respond with valid JSON only — no prose before or after, no markdown fences.
 The `dimensions.json` output slots directly into the existing `method_llm_gen` pipeline for scoring:
 
 ```bash
-# Score options on the new dimensions using the existing pipeline
-python method_llm_gen/pipeline.py score-options \
-  --config method_llm_gen/configs/movies_50.json \
-  --base-url ... --model ... --api-key ... \
-  --output-dir method_llm_examples/outputs/movies_50
-
-# Copy dimensions.json into the output dir first
+# Copy dimensions.json into a new output dir
 cp method_llm_examples/outputs/movies_50/dimensions.json \
-   method_llm_gen/outputs/movies_50_example_dims/dimensions.json
+   method_llm_gen/outputs/movies_50_grounded/dimensions.json
 
 # Then run scoring, pairwise judging, and BTL fitting
 python method_llm_gen/pipeline.py run-all \
   --config method_llm_gen/configs/movies_50.json \
-  --output-dir method_llm_gen/outputs/movies_50_example_dims \
-  ...
+  --output-dir method_llm_gen/outputs/movies_50_grounded \
+  --base-url ... --model ... --api-key ...
 ```
 
-Or, for a self-contained experience, this pipeline could include its own scoring stages — but reusing `method_llm_gen/pipeline.py`'s `score-options`, `judge-pairs`, and `fit-bt` subcommands avoids code duplication.
+Reusing `method_llm_gen/pipeline.py`'s `score-options`, `judge-pairs`, and `fit-bt` subcommands avoids code duplication.
 
 ## CLI Interface
 
@@ -255,9 +263,10 @@ python method_llm_examples/pipeline.py \
   --embeddings-parquet datasets/movielens-32m-enriched-50-embedded.parquet \
   --embedding-column embedding \
   --output-dir method_llm_examples/outputs/movies_50 \
+  --dedup-method llm \
   --num-pairs 100 \
+  --num-themes 50 \
   --num-dimensions 10 \
-  --num-clusters 60 \
   --reasons-per-side 5 \
   --max-workers 8 \
   --seed 42
@@ -289,21 +298,22 @@ All written to `method_llm_examples/outputs/<run_name>/`:
 |------|-------|-------------|
 | `sampled_pairs.json` | 1 | The ~100 pairs with distance strata |
 | `raw_reasons.json` | 2 | All ~1,000 elicited reasons with pair/direction metadata |
-| `reason_clusters.json` | 3 | Clustered reasons with representatives and counts |
+| `reason_themes.json` | 3 (LLM) | Deduplicated themes with labels, counts, and reason IDs |
+| `reason_clusters.json` | 3 (clustering) | Alternative: clustered reasons with representatives |
 | `dimensions.json` | 4 | Final dimensions (**same schema as `method_llm_gen`**) |
 | `coverage_report.json` | 5 | Coverage statistics |
 | `coverage_report.md` | 5 | Human-readable coverage summary |
-| `summary.md` | — | Overall pipeline summary: params, dimensions found, coverage stats, comparison to `method_llm_gen` dimensions if available |
+| `summary.md` | — | Overall pipeline summary |
 
 ## Dependencies
 
-`numpy`, `pandas`, `scikit-learn` (for `AgglomerativeClustering`), `scipy`, `pyarrow`, `openai`. Same as the rest of the repo — no new libraries.
+`numpy`, `pandas`, `scikit-learn` (for `AgglomerativeClustering`, only needed for clustering fallback), `scipy`, `pyarrow`, `openai`. Same as the rest of the repo — no new libraries.
 
 ## Cost Estimate
 
-- Stage 2: ~100 LLM calls (one per pair), ~500 input tokens + ~300 output tokens each ≈ 80K tokens total.
-- Stage 4: 1 LLM call, ~3K input tokens.
-- Stage 3 embedding: ~1,000 short strings ≈ 20K tokens.
-- **Total: ~100K tokens ≈ $0.02 with gpt-4o-mini.**
+- Stage 2: ~100 LLM calls × ~800 tokens each ≈ 80K tokens.
+- Stage 3 (LLM dedup): 1 call, ~65K input + ~5K output ≈ 70K tokens.
+- Stage 4: 1 call, ~3K tokens.
+- **Total: ~155K tokens ≈ $0.03 with gpt-4o-mini.**
 
 This is an order of magnitude cheaper than the scoring/judging stages that follow.
