@@ -141,12 +141,10 @@ def make_client_or_pool(base_url, api_key, provider="local"):
     return make_client(base_url, api_key, provider)
 
 
-def llm_call(client, model, prompt, timeout, retries):
+def llm_call(client, model, prompt, timeout, retries, max_tokens=8192):
     if not model:
         raise ValueError("Missing --model")
     is_pool = isinstance(client, ClientPool)
-    # On connection errors, try every server in the pool at least once,
-    # regardless of the normal retry count.
     pool_size = client.size if is_pool else 1
     max_attempts = max(retries, pool_size)
     last_err = None
@@ -155,6 +153,7 @@ def llm_call(client, model, prompt, timeout, retries):
         try:
             resp = resolved.chat.completions.create(
                 model=model, temperature=0,
+                max_tokens=max_tokens,
                 messages=[{"role": "user", "content": prompt}],
                 timeout=timeout,
             )
