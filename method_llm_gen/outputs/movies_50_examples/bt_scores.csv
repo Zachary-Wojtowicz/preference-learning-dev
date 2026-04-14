@@ -1,0 +1,501 @@
+dimension_id,dimension_name,option_id,display_text,bt_score
+1,Action vs. Character-Driven,1,Toy Story (1995),-0.001778
+1,Action vs. Character-Driven,2,Jumanji (1995),-0.435215
+1,Action vs. Character-Driven,3,Grumpier Old Men (1995),-0.15587
+1,Action vs. Character-Driven,4,Waiting to Exhale (1995),0.542253
+1,Action vs. Character-Driven,5,Father of the Bride Part II (1995),-0.094677
+1,Action vs. Character-Driven,6,Heat (1995),-0.428279
+1,Action vs. Character-Driven,7,Sabrina (1995),0.142996
+1,Action vs. Character-Driven,8,Tom and Huck (1995),-0.137667
+1,Action vs. Character-Driven,9,Sudden Death (1995),-0.765551
+1,Action vs. Character-Driven,10,GoldenEye (1995),-0.617123
+1,Action vs. Character-Driven,11,"American President, The (1995)",0.292471
+1,Action vs. Character-Driven,12,Dracula: Dead and Loving It (1995),-0.812677
+1,Action vs. Character-Driven,13,Balto (1995),-0.042843
+1,Action vs. Character-Driven,14,Nixon (1995),0.474638
+1,Action vs. Character-Driven,15,Cutthroat Island (1995),-0.727477
+1,Action vs. Character-Driven,16,Casino (1995),0.055501
+1,Action vs. Character-Driven,17,Sense and Sensibility (1995),0.698911
+1,Action vs. Character-Driven,18,Four Rooms (1995),-0.313388
+1,Action vs. Character-Driven,19,Ace Ventura: When Nature Calls (1995),-0.709295
+1,Action vs. Character-Driven,20,Money Train (1995),-0.52858
+1,Action vs. Character-Driven,21,Get Shorty (1995),-0.260323
+1,Action vs. Character-Driven,22,Copycat (1995),-0.24138
+1,Action vs. Character-Driven,23,Assassins (1995),-0.98161
+1,Action vs. Character-Driven,24,Powder (1995),0.393266
+1,Action vs. Character-Driven,25,Leaving Las Vegas (1995),0.913326
+1,Action vs. Character-Driven,26,Othello (1995),0.467385
+1,Action vs. Character-Driven,27,Now and Then (1995),0.33874
+1,Action vs. Character-Driven,28,Persuasion (1995),0.564839
+1,Action vs. Character-Driven,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.029476
+1,Action vs. Character-Driven,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0.180718
+1,Action vs. Character-Driven,31,Dangerous Minds (1995),0.161598
+1,Action vs. Character-Driven,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.103932
+1,Action vs. Character-Driven,33,Wings of Courage (1995),-0.064593
+1,Action vs. Character-Driven,34,Babe (1995),0.177446
+1,Action vs. Character-Driven,35,Carrington (1995),0.600784
+1,Action vs. Character-Driven,36,Dead Man Walking (1995),0.637524
+1,Action vs. Character-Driven,37,Across the Sea of Time (1995),-0.052883
+1,Action vs. Character-Driven,38,It Takes Two (1995),-0.218305
+1,Action vs. Character-Driven,39,Clueless (1995),0.124417
+1,Action vs. Character-Driven,40,"Cry, the Beloved Country (1995)",0.830295
+1,Action vs. Character-Driven,41,Richard III (1995),0.138496
+1,Action vs. Character-Driven,42,Dead Presidents (1995),-0.240993
+1,Action vs. Character-Driven,43,Restoration (1995),0.371935
+1,Action vs. Character-Driven,44,Mortal Kombat (1995),-1.0
+1,Action vs. Character-Driven,45,To Die For (1995),0.0972
+1,Action vs. Character-Driven,46,How to Make an American Quilt (1995),0.509672
+1,Action vs. Character-Driven,47,Seven (a.k.a. Se7en) (1995),-0.316917
+1,Action vs. Character-Driven,48,Pocahontas (1995),0.185758
+1,Action vs. Character-Driven,49,When Night Is Falling (1995),0.439162
+1,Action vs. Character-Driven,50,"Usual Suspects, The (1995)",-0.058501
+2,Historical vs. Contemporary,1,Toy Story (1995),0.603236
+2,Historical vs. Contemporary,2,Jumanji (1995),-0.001175
+2,Historical vs. Contemporary,3,Grumpier Old Men (1995),0.185404
+2,Historical vs. Contemporary,4,Waiting to Exhale (1995),0.716916
+2,Historical vs. Contemporary,5,Father of the Bride Part II (1995),0.295333
+2,Historical vs. Contemporary,6,Heat (1995),0.538333
+2,Historical vs. Contemporary,7,Sabrina (1995),0.236761
+2,Historical vs. Contemporary,8,Tom and Huck (1995),-0.560268
+2,Historical vs. Contemporary,9,Sudden Death (1995),0.367592
+2,Historical vs. Contemporary,10,GoldenEye (1995),0.660603
+2,Historical vs. Contemporary,11,"American President, The (1995)",1.0
+2,Historical vs. Contemporary,12,Dracula: Dead and Loving It (1995),-0.321291
+2,Historical vs. Contemporary,13,Balto (1995),-0.521257
+2,Historical vs. Contemporary,14,Nixon (1995),-0.533026
+2,Historical vs. Contemporary,15,Cutthroat Island (1995),-0.574435
+2,Historical vs. Contemporary,16,Casino (1995),-0.252474
+2,Historical vs. Contemporary,17,Sense and Sensibility (1995),-0.754043
+2,Historical vs. Contemporary,18,Four Rooms (1995),0.457275
+2,Historical vs. Contemporary,19,Ace Ventura: When Nature Calls (1995),0.179276
+2,Historical vs. Contemporary,20,Money Train (1995),0.315471
+2,Historical vs. Contemporary,21,Get Shorty (1995),0.768279
+2,Historical vs. Contemporary,22,Copycat (1995),0.172559
+2,Historical vs. Contemporary,23,Assassins (1995),0.092481
+2,Historical vs. Contemporary,24,Powder (1995),0.417275
+2,Historical vs. Contemporary,25,Leaving Las Vegas (1995),0.231484
+2,Historical vs. Contemporary,26,Othello (1995),-0.923605
+2,Historical vs. Contemporary,27,Now and Then (1995),-0.234618
+2,Historical vs. Contemporary,28,Persuasion (1995),-0.755978
+2,Historical vs. Contemporary,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.126782
+2,Historical vs. Contemporary,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.627128
+2,Historical vs. Contemporary,31,Dangerous Minds (1995),0.470121
+2,Historical vs. Contemporary,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.040843
+2,Historical vs. Contemporary,33,Wings of Courage (1995),-0.60714
+2,Historical vs. Contemporary,34,Babe (1995),-0.14111
+2,Historical vs. Contemporary,35,Carrington (1995),-0.48743
+2,Historical vs. Contemporary,36,Dead Man Walking (1995),0.049366
+2,Historical vs. Contemporary,37,Across the Sea of Time (1995),-0.373334
+2,Historical vs. Contemporary,38,It Takes Two (1995),0.208279
+2,Historical vs. Contemporary,39,Clueless (1995),0.929938
+2,Historical vs. Contemporary,40,"Cry, the Beloved Country (1995)",-0.484227
+2,Historical vs. Contemporary,41,Richard III (1995),-0.296512
+2,Historical vs. Contemporary,42,Dead Presidents (1995),-0.253613
+2,Historical vs. Contemporary,43,Restoration (1995),-0.96414
+2,Historical vs. Contemporary,44,Mortal Kombat (1995),-0.018904
+2,Historical vs. Contemporary,45,To Die For (1995),0.668892
+2,Historical vs. Contemporary,46,How to Make an American Quilt (1995),-0.139481
+2,Historical vs. Contemporary,47,Seven (a.k.a. Se7en) (1995),0.8073
+2,Historical vs. Contemporary,48,Pocahontas (1995),-0.620537
+2,Historical vs. Contemporary,49,When Night Is Falling (1995),0.037439
+2,Historical vs. Contemporary,50,"Usual Suspects, The (1995)",0.203737
+3,Romantic vs. Non-Romantic,1,Toy Story (1995),-0.355224
+3,Romantic vs. Non-Romantic,2,Jumanji (1995),-0.330579
+3,Romantic vs. Non-Romantic,3,Grumpier Old Men (1995),0.488682
+3,Romantic vs. Non-Romantic,4,Waiting to Exhale (1995),0.729892
+3,Romantic vs. Non-Romantic,5,Father of the Bride Part II (1995),0.024832
+3,Romantic vs. Non-Romantic,6,Heat (1995),-0.351542
+3,Romantic vs. Non-Romantic,7,Sabrina (1995),0.75495
+3,Romantic vs. Non-Romantic,8,Tom and Huck (1995),-0.333316
+3,Romantic vs. Non-Romantic,9,Sudden Death (1995),-0.366578
+3,Romantic vs. Non-Romantic,10,GoldenEye (1995),-0.231249
+3,Romantic vs. Non-Romantic,11,"American President, The (1995)",0.645789
+3,Romantic vs. Non-Romantic,12,Dracula: Dead and Loving It (1995),-0.357279
+3,Romantic vs. Non-Romantic,13,Balto (1995),-0.288983
+3,Romantic vs. Non-Romantic,14,Nixon (1995),-0.340829
+3,Romantic vs. Non-Romantic,15,Cutthroat Island (1995),0.050618
+3,Romantic vs. Non-Romantic,16,Casino (1995),-0.049452
+3,Romantic vs. Non-Romantic,17,Sense and Sensibility (1995),1.0
+3,Romantic vs. Non-Romantic,18,Four Rooms (1995),-0.344879
+3,Romantic vs. Non-Romantic,19,Ace Ventura: When Nature Calls (1995),-0.344128
+3,Romantic vs. Non-Romantic,20,Money Train (1995),-0.230671
+3,Romantic vs. Non-Romantic,21,Get Shorty (1995),-0.289523
+3,Romantic vs. Non-Romantic,22,Copycat (1995),-0.33132
+3,Romantic vs. Non-Romantic,23,Assassins (1995),-0.333031
+3,Romantic vs. Non-Romantic,24,Powder (1995),0.00185
+3,Romantic vs. Non-Romantic,25,Leaving Las Vegas (1995),0.667051
+3,Romantic vs. Non-Romantic,26,Othello (1995),0.269522
+3,Romantic vs. Non-Romantic,27,Now and Then (1995),0.214126
+3,Romantic vs. Non-Romantic,28,Persuasion (1995),0.852897
+3,Romantic vs. Non-Romantic,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.323683
+3,Romantic vs. Non-Romantic,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.314042
+3,Romantic vs. Non-Romantic,31,Dangerous Minds (1995),-0.252348
+3,Romantic vs. Non-Romantic,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.30736
+3,Romantic vs. Non-Romantic,33,Wings of Courage (1995),0.341679
+3,Romantic vs. Non-Romantic,34,Babe (1995),-0.293355
+3,Romantic vs. Non-Romantic,35,Carrington (1995),0.706658
+3,Romantic vs. Non-Romantic,36,Dead Man Walking (1995),-0.334529
+3,Romantic vs. Non-Romantic,37,Across the Sea of Time (1995),-0.333023
+3,Romantic vs. Non-Romantic,38,It Takes Two (1995),0.339955
+3,Romantic vs. Non-Romantic,39,Clueless (1995),0.451491
+3,Romantic vs. Non-Romantic,40,"Cry, the Beloved Country (1995)",-0.307632
+3,Romantic vs. Non-Romantic,41,Richard III (1995),-0.330175
+3,Romantic vs. Non-Romantic,42,Dead Presidents (1995),-0.345322
+3,Romantic vs. Non-Romantic,43,Restoration (1995),0.13856
+3,Romantic vs. Non-Romantic,44,Mortal Kombat (1995),-0.364683
+3,Romantic vs. Non-Romantic,45,To Die For (1995),-0.313462
+3,Romantic vs. Non-Romantic,46,How to Make an American Quilt (1995),0.491009
+3,Romantic vs. Non-Romantic,47,Seven (a.k.a. Se7en) (1995),-0.348257
+3,Romantic vs. Non-Romantic,48,Pocahontas (1995),0.432306
+3,Romantic vs. Non-Romantic,49,When Night Is Falling (1995),0.807841
+3,Romantic vs. Non-Romantic,50,"Usual Suspects, The (1995)",-0.363252
+4,Family-Friendly vs. Adult-Themed,1,Toy Story (1995),1.0
+4,Family-Friendly vs. Adult-Themed,2,Jumanji (1995),0.69901
+4,Family-Friendly vs. Adult-Themed,3,Grumpier Old Men (1995),0.363819
+4,Family-Friendly vs. Adult-Themed,4,Waiting to Exhale (1995),0.05838
+4,Family-Friendly vs. Adult-Themed,5,Father of the Bride Part II (1995),0.557869
+4,Family-Friendly vs. Adult-Themed,6,Heat (1995),-0.698093
+4,Family-Friendly vs. Adult-Themed,7,Sabrina (1995),0.351077
+4,Family-Friendly vs. Adult-Themed,8,Tom and Huck (1995),0.66486
+4,Family-Friendly vs. Adult-Themed,9,Sudden Death (1995),-0.205123
+4,Family-Friendly vs. Adult-Themed,10,GoldenEye (1995),-0.305383
+4,Family-Friendly vs. Adult-Themed,11,"American President, The (1995)",-0.07424
+4,Family-Friendly vs. Adult-Themed,12,Dracula: Dead and Loving It (1995),0.019638
+4,Family-Friendly vs. Adult-Themed,13,Balto (1995),0.941299
+4,Family-Friendly vs. Adult-Themed,14,Nixon (1995),-0.31768
+4,Family-Friendly vs. Adult-Themed,15,Cutthroat Island (1995),0.001641
+4,Family-Friendly vs. Adult-Themed,16,Casino (1995),-0.871923
+4,Family-Friendly vs. Adult-Themed,17,Sense and Sensibility (1995),0.296796
+4,Family-Friendly vs. Adult-Themed,18,Four Rooms (1995),-0.359179
+4,Family-Friendly vs. Adult-Themed,19,Ace Ventura: When Nature Calls (1995),0.478216
+4,Family-Friendly vs. Adult-Themed,20,Money Train (1995),-0.25017
+4,Family-Friendly vs. Adult-Themed,21,Get Shorty (1995),-0.109818
+4,Family-Friendly vs. Adult-Themed,22,Copycat (1995),-0.715092
+4,Family-Friendly vs. Adult-Themed,23,Assassins (1995),-0.589124
+4,Family-Friendly vs. Adult-Themed,24,Powder (1995),0.165698
+4,Family-Friendly vs. Adult-Themed,25,Leaving Las Vegas (1995),-0.797268
+4,Family-Friendly vs. Adult-Themed,26,Othello (1995),-0.237247
+4,Family-Friendly vs. Adult-Themed,27,Now and Then (1995),0.506584
+4,Family-Friendly vs. Adult-Themed,28,Persuasion (1995),0.221841
+4,Family-Friendly vs. Adult-Themed,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0.108714
+4,Family-Friendly vs. Adult-Themed,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.439978
+4,Family-Friendly vs. Adult-Themed,31,Dangerous Minds (1995),0.149979
+4,Family-Friendly vs. Adult-Themed,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.339137
+4,Family-Friendly vs. Adult-Themed,33,Wings of Courage (1995),0.181061
+4,Family-Friendly vs. Adult-Themed,34,Babe (1995),0.843205
+4,Family-Friendly vs. Adult-Themed,35,Carrington (1995),-0.188803
+4,Family-Friendly vs. Adult-Themed,36,Dead Man Walking (1995),-0.242922
+4,Family-Friendly vs. Adult-Themed,37,Across the Sea of Time (1995),0.41364
+4,Family-Friendly vs. Adult-Themed,38,It Takes Two (1995),0.875001
+4,Family-Friendly vs. Adult-Themed,39,Clueless (1995),0.538298
+4,Family-Friendly vs. Adult-Themed,40,"Cry, the Beloved Country (1995)",0.049354
+4,Family-Friendly vs. Adult-Themed,41,Richard III (1995),-0.389525
+4,Family-Friendly vs. Adult-Themed,42,Dead Presidents (1995),-0.567024
+4,Family-Friendly vs. Adult-Themed,43,Restoration (1995),-0.359862
+4,Family-Friendly vs. Adult-Themed,44,Mortal Kombat (1995),-0.590982
+4,Family-Friendly vs. Adult-Themed,45,To Die For (1995),-0.571583
+4,Family-Friendly vs. Adult-Themed,46,How to Make an American Quilt (1995),0.331974
+4,Family-Friendly vs. Adult-Themed,47,Seven (a.k.a. Se7en) (1995),-0.858318
+4,Family-Friendly vs. Adult-Themed,48,Pocahontas (1995),0.780441
+4,Family-Friendly vs. Adult-Themed,49,When Night Is Falling (1995),-0.138678
+4,Family-Friendly vs. Adult-Themed,50,"Usual Suspects, The (1995)",-0.38124
+5,Visual Appeal vs. Narrative Complexity,1,Toy Story (1995),0.630218
+5,Visual Appeal vs. Narrative Complexity,2,Jumanji (1995),0.563328
+5,Visual Appeal vs. Narrative Complexity,3,Grumpier Old Men (1995),0.105757
+5,Visual Appeal vs. Narrative Complexity,4,Waiting to Exhale (1995),-0.250989
+5,Visual Appeal vs. Narrative Complexity,5,Father of the Bride Part II (1995),0.037281
+5,Visual Appeal vs. Narrative Complexity,6,Heat (1995),-0.086798
+5,Visual Appeal vs. Narrative Complexity,7,Sabrina (1995),0.229593
+5,Visual Appeal vs. Narrative Complexity,8,Tom and Huck (1995),0.158295
+5,Visual Appeal vs. Narrative Complexity,9,Sudden Death (1995),0.3496
+5,Visual Appeal vs. Narrative Complexity,10,GoldenEye (1995),0.612511
+5,Visual Appeal vs. Narrative Complexity,11,"American President, The (1995)",-0.21621
+5,Visual Appeal vs. Narrative Complexity,12,Dracula: Dead and Loving It (1995),0.501299
+5,Visual Appeal vs. Narrative Complexity,13,Balto (1995),0.481605
+5,Visual Appeal vs. Narrative Complexity,14,Nixon (1995),-0.663249
+5,Visual Appeal vs. Narrative Complexity,15,Cutthroat Island (1995),0.68438
+5,Visual Appeal vs. Narrative Complexity,16,Casino (1995),-0.092148
+5,Visual Appeal vs. Narrative Complexity,17,Sense and Sensibility (1995),-0.292019
+5,Visual Appeal vs. Narrative Complexity,18,Four Rooms (1995),-0.14089
+5,Visual Appeal vs. Narrative Complexity,19,Ace Ventura: When Nature Calls (1995),0.495015
+5,Visual Appeal vs. Narrative Complexity,20,Money Train (1995),0.048321
+5,Visual Appeal vs. Narrative Complexity,21,Get Shorty (1995),0.06694
+5,Visual Appeal vs. Narrative Complexity,22,Copycat (1995),-0.650524
+5,Visual Appeal vs. Narrative Complexity,23,Assassins (1995),0.203076
+5,Visual Appeal vs. Narrative Complexity,24,Powder (1995),0.045045
+5,Visual Appeal vs. Narrative Complexity,25,Leaving Las Vegas (1995),-0.445477
+5,Visual Appeal vs. Narrative Complexity,26,Othello (1995),-0.708393
+5,Visual Appeal vs. Narrative Complexity,27,Now and Then (1995),-0.126217
+5,Visual Appeal vs. Narrative Complexity,28,Persuasion (1995),-0.539416
+5,Visual Appeal vs. Narrative Complexity,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0.817478
+5,Visual Appeal vs. Narrative Complexity,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.093017
+5,Visual Appeal vs. Narrative Complexity,31,Dangerous Minds (1995),-0.148308
+5,Visual Appeal vs. Narrative Complexity,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.369722
+5,Visual Appeal vs. Narrative Complexity,33,Wings of Courage (1995),0.384332
+5,Visual Appeal vs. Narrative Complexity,34,Babe (1995),0.262565
+5,Visual Appeal vs. Narrative Complexity,35,Carrington (1995),-0.647654
+5,Visual Appeal vs. Narrative Complexity,36,Dead Man Walking (1995),-0.545308
+5,Visual Appeal vs. Narrative Complexity,37,Across the Sea of Time (1995),1.0
+5,Visual Appeal vs. Narrative Complexity,38,It Takes Two (1995),0.35246
+5,Visual Appeal vs. Narrative Complexity,39,Clueless (1995),0.495653
+5,Visual Appeal vs. Narrative Complexity,40,"Cry, the Beloved Country (1995)",-0.655385
+5,Visual Appeal vs. Narrative Complexity,41,Richard III (1995),-0.300785
+5,Visual Appeal vs. Narrative Complexity,42,Dead Presidents (1995),-0.456064
+5,Visual Appeal vs. Narrative Complexity,43,Restoration (1995),-0.22858
+5,Visual Appeal vs. Narrative Complexity,44,Mortal Kombat (1995),0.762694
+5,Visual Appeal vs. Narrative Complexity,45,To Die For (1995),-0.294203
+5,Visual Appeal vs. Narrative Complexity,46,How to Make an American Quilt (1995),-0.088081
+5,Visual Appeal vs. Narrative Complexity,47,Seven (a.k.a. Se7en) (1995),-0.823207
+5,Visual Appeal vs. Narrative Complexity,48,Pocahontas (1995),0.737759
+5,Visual Appeal vs. Narrative Complexity,49,When Night Is Falling (1995),-0.337941
+5,Visual Appeal vs. Narrative Complexity,50,"Usual Suspects, The (1995)",-0.824623
+6,Humor vs. Seriousness,1,Toy Story (1995),0.772902
+6,Humor vs. Seriousness,2,Jumanji (1995),0.450317
+6,Humor vs. Seriousness,3,Grumpier Old Men (1995),0.643988
+6,Humor vs. Seriousness,4,Waiting to Exhale (1995),0.15441
+6,Humor vs. Seriousness,5,Father of the Bride Part II (1995),0.635924
+6,Humor vs. Seriousness,6,Heat (1995),-0.524231
+6,Humor vs. Seriousness,7,Sabrina (1995),0.528076
+6,Humor vs. Seriousness,8,Tom and Huck (1995),0.29981
+6,Humor vs. Seriousness,9,Sudden Death (1995),-0.322207
+6,Humor vs. Seriousness,10,GoldenEye (1995),0.126919
+6,Humor vs. Seriousness,11,"American President, The (1995)",0.229584
+6,Humor vs. Seriousness,12,Dracula: Dead and Loving It (1995),0.869462
+6,Humor vs. Seriousness,13,Balto (1995),0.169003
+6,Humor vs. Seriousness,14,Nixon (1995),-0.598002
+6,Humor vs. Seriousness,15,Cutthroat Island (1995),0.021133
+6,Humor vs. Seriousness,16,Casino (1995),-0.341898
+6,Humor vs. Seriousness,17,Sense and Sensibility (1995),-0.224686
+6,Humor vs. Seriousness,18,Four Rooms (1995),0.628544
+6,Humor vs. Seriousness,19,Ace Ventura: When Nature Calls (1995),1.0
+6,Humor vs. Seriousness,20,Money Train (1995),0.355437
+6,Humor vs. Seriousness,21,Get Shorty (1995),0.43942
+6,Humor vs. Seriousness,22,Copycat (1995),-0.575786
+6,Humor vs. Seriousness,23,Assassins (1995),-0.16532
+6,Humor vs. Seriousness,24,Powder (1995),-0.174036
+6,Humor vs. Seriousness,25,Leaving Las Vegas (1995),-0.515959
+6,Humor vs. Seriousness,26,Othello (1995),-0.629454
+6,Humor vs. Seriousness,27,Now and Then (1995),0.057654
+6,Humor vs. Seriousness,28,Persuasion (1995),-0.17363
+6,Humor vs. Seriousness,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.050527
+6,Humor vs. Seriousness,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.427921
+6,Humor vs. Seriousness,31,Dangerous Minds (1995),-0.14925
+6,Humor vs. Seriousness,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.107854
+6,Humor vs. Seriousness,33,Wings of Courage (1995),-0.225425
+6,Humor vs. Seriousness,34,Babe (1995),0.338681
+6,Humor vs. Seriousness,35,Carrington (1995),-0.376944
+6,Humor vs. Seriousness,36,Dead Man Walking (1995),-0.54737
+6,Humor vs. Seriousness,37,Across the Sea of Time (1995),-0.30071
+6,Humor vs. Seriousness,38,It Takes Two (1995),0.573829
+6,Humor vs. Seriousness,39,Clueless (1995),0.769157
+6,Humor vs. Seriousness,40,"Cry, the Beloved Country (1995)",-0.712761
+6,Humor vs. Seriousness,41,Richard III (1995),-0.413248
+6,Humor vs. Seriousness,42,Dead Presidents (1995),-0.127676
+6,Humor vs. Seriousness,43,Restoration (1995),-0.197351
+6,Humor vs. Seriousness,44,Mortal Kombat (1995),-0.013375
+6,Humor vs. Seriousness,45,To Die For (1995),0.263141
+6,Humor vs. Seriousness,46,How to Make an American Quilt (1995),-0.101137
+6,Humor vs. Seriousness,47,Seven (a.k.a. Se7en) (1995),-0.781466
+6,Humor vs. Seriousness,48,Pocahontas (1995),0.02329
+6,Humor vs. Seriousness,49,When Night Is Falling (1995),-0.246179
+6,Humor vs. Seriousness,50,"Usual Suspects, The (1995)",-0.326277
+7,Classic Adaptation vs. Original Story,1,Toy Story (1995),-0.215437
+7,Classic Adaptation vs. Original Story,2,Jumanji (1995),0.085658
+7,Classic Adaptation vs. Original Story,3,Grumpier Old Men (1995),-0.22521
+7,Classic Adaptation vs. Original Story,4,Waiting to Exhale (1995),-0.219588
+7,Classic Adaptation vs. Original Story,5,Father of the Bride Part II (1995),-0.218326
+7,Classic Adaptation vs. Original Story,6,Heat (1995),-0.219838
+7,Classic Adaptation vs. Original Story,7,Sabrina (1995),0.364295
+7,Classic Adaptation vs. Original Story,8,Tom and Huck (1995),0.734766
+7,Classic Adaptation vs. Original Story,9,Sudden Death (1995),-0.236268
+7,Classic Adaptation vs. Original Story,10,GoldenEye (1995),-0.188076
+7,Classic Adaptation vs. Original Story,11,"American President, The (1995)",-0.216894
+7,Classic Adaptation vs. Original Story,12,Dracula: Dead and Loving It (1995),0.304029
+7,Classic Adaptation vs. Original Story,13,Balto (1995),0.143415
+7,Classic Adaptation vs. Original Story,14,Nixon (1995),-0.207209
+7,Classic Adaptation vs. Original Story,15,Cutthroat Island (1995),-0.212824
+7,Classic Adaptation vs. Original Story,16,Casino (1995),-0.219269
+7,Classic Adaptation vs. Original Story,17,Sense and Sensibility (1995),0.916436
+7,Classic Adaptation vs. Original Story,18,Four Rooms (1995),-0.227023
+7,Classic Adaptation vs. Original Story,19,Ace Ventura: When Nature Calls (1995),-0.227611
+7,Classic Adaptation vs. Original Story,20,Money Train (1995),-0.237774
+7,Classic Adaptation vs. Original Story,21,Get Shorty (1995),-0.218739
+7,Classic Adaptation vs. Original Story,22,Copycat (1995),-0.220623
+7,Classic Adaptation vs. Original Story,23,Assassins (1995),-0.22333
+7,Classic Adaptation vs. Original Story,24,Powder (1995),-0.222909
+7,Classic Adaptation vs. Original Story,25,Leaving Las Vegas (1995),-0.217131
+7,Classic Adaptation vs. Original Story,26,Othello (1995),1.0
+7,Classic Adaptation vs. Original Story,27,Now and Then (1995),-0.225617
+7,Classic Adaptation vs. Original Story,28,Persuasion (1995),0.701347
+7,Classic Adaptation vs. Original Story,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.192284
+7,Classic Adaptation vs. Original Story,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.218656
+7,Classic Adaptation vs. Original Story,31,Dangerous Minds (1995),-0.22289
+7,Classic Adaptation vs. Original Story,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.210461
+7,Classic Adaptation vs. Original Story,33,Wings of Courage (1995),0.270783
+7,Classic Adaptation vs. Original Story,34,Babe (1995),-0.221404
+7,Classic Adaptation vs. Original Story,35,Carrington (1995),0.066226
+7,Classic Adaptation vs. Original Story,36,Dead Man Walking (1995),-0.176269
+7,Classic Adaptation vs. Original Story,37,Across the Sea of Time (1995),-0.229867
+7,Classic Adaptation vs. Original Story,38,It Takes Two (1995),-0.212073
+7,Classic Adaptation vs. Original Story,39,Clueless (1995),0.571024
+7,Classic Adaptation vs. Original Story,40,"Cry, the Beloved Country (1995)",0.428143
+7,Classic Adaptation vs. Original Story,41,Richard III (1995),0.831863
+7,Classic Adaptation vs. Original Story,42,Dead Presidents (1995),-0.227557
+7,Classic Adaptation vs. Original Story,43,Restoration (1995),0.466753
+7,Classic Adaptation vs. Original Story,44,Mortal Kombat (1995),-0.155377
+7,Classic Adaptation vs. Original Story,45,To Die For (1995),-0.221233
+7,Classic Adaptation vs. Original Story,46,How to Make an American Quilt (1995),0.256906
+7,Classic Adaptation vs. Original Story,47,Seven (a.k.a. Se7en) (1995),-0.21758
+7,Classic Adaptation vs. Original Story,48,Pocahontas (1995),0.196112
+7,Classic Adaptation vs. Original Story,49,When Night Is Falling (1995),-0.215711
+7,Classic Adaptation vs. Original Story,50,"Usual Suspects, The (1995)",-0.216695
+8,Realism vs. Fantasy,1,Toy Story (1995),-0.858785
+8,Realism vs. Fantasy,2,Jumanji (1995),-0.803662
+8,Realism vs. Fantasy,3,Grumpier Old Men (1995),-0.252649
+8,Realism vs. Fantasy,4,Waiting to Exhale (1995),0.43448
+8,Realism vs. Fantasy,5,Father of the Bride Part II (1995),-0.081682
+8,Realism vs. Fantasy,6,Heat (1995),0.280254
+8,Realism vs. Fantasy,7,Sabrina (1995),-0.180921
+8,Realism vs. Fantasy,8,Tom and Huck (1995),-0.201156
+8,Realism vs. Fantasy,9,Sudden Death (1995),-0.149503
+8,Realism vs. Fantasy,10,GoldenEye (1995),-0.417344
+8,Realism vs. Fantasy,11,"American President, The (1995)",0.519309
+8,Realism vs. Fantasy,12,Dracula: Dead and Loving It (1995),-0.636773
+8,Realism vs. Fantasy,13,Balto (1995),-0.464163
+8,Realism vs. Fantasy,14,Nixon (1995),0.795662
+8,Realism vs. Fantasy,15,Cutthroat Island (1995),-0.533944
+8,Realism vs. Fantasy,16,Casino (1995),0.512648
+8,Realism vs. Fantasy,17,Sense and Sensibility (1995),0.186163
+8,Realism vs. Fantasy,18,Four Rooms (1995),-0.365025
+8,Realism vs. Fantasy,19,Ace Ventura: When Nature Calls (1995),-0.608746
+8,Realism vs. Fantasy,20,Money Train (1995),0.023908
+8,Realism vs. Fantasy,21,Get Shorty (1995),0.022359
+8,Realism vs. Fantasy,22,Copycat (1995),-0.030664
+8,Realism vs. Fantasy,23,Assassins (1995),-0.152543
+8,Realism vs. Fantasy,24,Powder (1995),-0.278364
+8,Realism vs. Fantasy,25,Leaving Las Vegas (1995),0.599371
+8,Realism vs. Fantasy,26,Othello (1995),0.299931
+8,Realism vs. Fantasy,27,Now and Then (1995),0.047851
+8,Realism vs. Fantasy,28,Persuasion (1995),0.146906
+8,Realism vs. Fantasy,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.669743
+8,Realism vs. Fantasy,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0.637596
+8,Realism vs. Fantasy,31,Dangerous Minds (1995),0.474402
+8,Realism vs. Fantasy,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),-0.229257
+8,Realism vs. Fantasy,33,Wings of Courage (1995),-0.053908
+8,Realism vs. Fantasy,34,Babe (1995),-0.378571
+8,Realism vs. Fantasy,35,Carrington (1995),0.357361
+8,Realism vs. Fantasy,36,Dead Man Walking (1995),0.940887
+8,Realism vs. Fantasy,37,Across the Sea of Time (1995),0.446378
+8,Realism vs. Fantasy,38,It Takes Two (1995),-0.724872
+8,Realism vs. Fantasy,39,Clueless (1995),-0.206953
+8,Realism vs. Fantasy,40,"Cry, the Beloved Country (1995)",0.936644
+8,Realism vs. Fantasy,41,Richard III (1995),0.15286
+8,Realism vs. Fantasy,42,Dead Presidents (1995),0.695362
+8,Realism vs. Fantasy,43,Restoration (1995),0.259335
+8,Realism vs. Fantasy,44,Mortal Kombat (1995),-1.0
+8,Realism vs. Fantasy,45,To Die For (1995),0.463294
+8,Realism vs. Fantasy,46,How to Make an American Quilt (1995),0.064506
+8,Realism vs. Fantasy,47,Seven (a.k.a. Se7en) (1995),0.272435
+8,Realism vs. Fantasy,48,Pocahontas (1995),-0.6218
+8,Realism vs. Fantasy,49,When Night Is Falling (1995),0.108445
+8,Realism vs. Fantasy,50,"Usual Suspects, The (1995)",0.22268
+9,Star Power vs. Ensemble Cast,1,Toy Story (1995),-0.362541
+9,Star Power vs. Ensemble Cast,2,Jumanji (1995),0.246166
+9,Star Power vs. Ensemble Cast,3,Grumpier Old Men (1995),0.056646
+9,Star Power vs. Ensemble Cast,4,Waiting to Exhale (1995),-0.122958
+9,Star Power vs. Ensemble Cast,5,Father of the Bride Part II (1995),0.004792
+9,Star Power vs. Ensemble Cast,6,Heat (1995),0.538458
+9,Star Power vs. Ensemble Cast,7,Sabrina (1995),0.452825
+9,Star Power vs. Ensemble Cast,8,Tom and Huck (1995),-0.739996
+9,Star Power vs. Ensemble Cast,9,Sudden Death (1995),0.217824
+9,Star Power vs. Ensemble Cast,10,GoldenEye (1995),1.0
+9,Star Power vs. Ensemble Cast,11,"American President, The (1995)",0.316168
+9,Star Power vs. Ensemble Cast,12,Dracula: Dead and Loving It (1995),0.081406
+9,Star Power vs. Ensemble Cast,13,Balto (1995),-0.277548
+9,Star Power vs. Ensemble Cast,14,Nixon (1995),0.684912
+9,Star Power vs. Ensemble Cast,15,Cutthroat Island (1995),-0.045043
+9,Star Power vs. Ensemble Cast,16,Casino (1995),0.646892
+9,Star Power vs. Ensemble Cast,17,Sense and Sensibility (1995),-0.16854
+9,Star Power vs. Ensemble Cast,18,Four Rooms (1995),-0.835225
+9,Star Power vs. Ensemble Cast,19,Ace Ventura: When Nature Calls (1995),0.870735
+9,Star Power vs. Ensemble Cast,20,Money Train (1995),0.150222
+9,Star Power vs. Ensemble Cast,21,Get Shorty (1995),0.461293
+9,Star Power vs. Ensemble Cast,22,Copycat (1995),0.194683
+9,Star Power vs. Ensemble Cast,23,Assassins (1995),0.753513
+9,Star Power vs. Ensemble Cast,24,Powder (1995),-0.270141
+9,Star Power vs. Ensemble Cast,25,Leaving Las Vegas (1995),0.485922
+9,Star Power vs. Ensemble Cast,26,Othello (1995),0.017392
+9,Star Power vs. Ensemble Cast,27,Now and Then (1995),-0.541272
+9,Star Power vs. Ensemble Cast,28,Persuasion (1995),-0.65221
+9,Star Power vs. Ensemble Cast,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",-0.63458
+9,Star Power vs. Ensemble Cast,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.393726
+9,Star Power vs. Ensemble Cast,31,Dangerous Minds (1995),0.703858
+9,Star Power vs. Ensemble Cast,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.39938
+9,Star Power vs. Ensemble Cast,33,Wings of Courage (1995),-0.253801
+9,Star Power vs. Ensemble Cast,34,Babe (1995),-0.575667
+9,Star Power vs. Ensemble Cast,35,Carrington (1995),-0.234954
+9,Star Power vs. Ensemble Cast,36,Dead Man Walking (1995),-0.0295
+9,Star Power vs. Ensemble Cast,37,Across the Sea of Time (1995),-0.971083
+9,Star Power vs. Ensemble Cast,38,It Takes Two (1995),-0.379586
+9,Star Power vs. Ensemble Cast,39,Clueless (1995),-0.076085
+9,Star Power vs. Ensemble Cast,40,"Cry, the Beloved Country (1995)",-0.027772
+9,Star Power vs. Ensemble Cast,41,Richard III (1995),0.314897
+9,Star Power vs. Ensemble Cast,42,Dead Presidents (1995),-0.504026
+9,Star Power vs. Ensemble Cast,43,Restoration (1995),0.06059
+9,Star Power vs. Ensemble Cast,44,Mortal Kombat (1995),-0.368511
+9,Star Power vs. Ensemble Cast,45,To Die For (1995),0.358224
+9,Star Power vs. Ensemble Cast,46,How to Make an American Quilt (1995),-0.253874
+9,Star Power vs. Ensemble Cast,47,Seven (a.k.a. Se7en) (1995),0.582025
+9,Star Power vs. Ensemble Cast,48,Pocahontas (1995),-0.333472
+9,Star Power vs. Ensemble Cast,49,When Night Is Falling (1995),-0.783299
+9,Star Power vs. Ensemble Cast,50,"Usual Suspects, The (1995)",0.236588
+10,Adventure vs. Drama,1,Toy Story (1995),0.478511
+10,Adventure vs. Drama,2,Jumanji (1995),0.947016
+10,Adventure vs. Drama,3,Grumpier Old Men (1995),-0.45935
+10,Adventure vs. Drama,4,Waiting to Exhale (1995),-0.391746
+10,Adventure vs. Drama,5,Father of the Bride Part II (1995),-0.405484
+10,Adventure vs. Drama,6,Heat (1995),0.070576
+10,Adventure vs. Drama,7,Sabrina (1995),-0.400436
+10,Adventure vs. Drama,8,Tom and Huck (1995),0.633147
+10,Adventure vs. Drama,9,Sudden Death (1995),0.571658
+10,Adventure vs. Drama,10,GoldenEye (1995),0.817479
+10,Adventure vs. Drama,11,"American President, The (1995)",-0.433288
+10,Adventure vs. Drama,12,Dracula: Dead and Loving It (1995),0.156147
+10,Adventure vs. Drama,13,Balto (1995),0.824373
+10,Adventure vs. Drama,14,Nixon (1995),-0.269201
+10,Adventure vs. Drama,15,Cutthroat Island (1995),1.0
+10,Adventure vs. Drama,16,Casino (1995),-0.187628
+10,Adventure vs. Drama,17,Sense and Sensibility (1995),-0.509466
+10,Adventure vs. Drama,18,Four Rooms (1995),-0.281103
+10,Adventure vs. Drama,19,Ace Ventura: When Nature Calls (1995),0.495666
+10,Adventure vs. Drama,20,Money Train (1995),0.209627
+10,Adventure vs. Drama,21,Get Shorty (1995),0.206688
+10,Adventure vs. Drama,22,Copycat (1995),-0.036133
+10,Adventure vs. Drama,23,Assassins (1995),0.251139
+10,Adventure vs. Drama,24,Powder (1995),0.039623
+10,Adventure vs. Drama,25,Leaving Las Vegas (1995),-0.473942
+10,Adventure vs. Drama,26,Othello (1995),-0.690796
+10,Adventure vs. Drama,27,Now and Then (1995),-0.225682
+10,Adventure vs. Drama,28,Persuasion (1995),-0.505322
+10,Adventure vs. Drama,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",0.40507
+10,Adventure vs. Drama,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),-0.118674
+10,Adventure vs. Drama,31,Dangerous Minds (1995),-0.112242
+10,Adventure vs. Drama,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),0.373366
+10,Adventure vs. Drama,33,Wings of Courage (1995),0.658742
+10,Adventure vs. Drama,34,Babe (1995),-0.062842
+10,Adventure vs. Drama,35,Carrington (1995),-0.457095
+10,Adventure vs. Drama,36,Dead Man Walking (1995),-0.616464
+10,Adventure vs. Drama,37,Across the Sea of Time (1995),0.348282
+10,Adventure vs. Drama,38,It Takes Two (1995),-0.070095
+10,Adventure vs. Drama,39,Clueless (1995),-0.447403
+10,Adventure vs. Drama,40,"Cry, the Beloved Country (1995)",-0.431348
+10,Adventure vs. Drama,41,Richard III (1995),-0.227495
+10,Adventure vs. Drama,42,Dead Presidents (1995),-0.004752
+10,Adventure vs. Drama,43,Restoration (1995),-0.254083
+10,Adventure vs. Drama,44,Mortal Kombat (1995),0.793308
+10,Adventure vs. Drama,45,To Die For (1995),-0.267857
+10,Adventure vs. Drama,46,How to Make an American Quilt (1995),-0.462701
+10,Adventure vs. Drama,47,Seven (a.k.a. Se7en) (1995),-0.17076
+10,Adventure vs. Drama,48,Pocahontas (1995),0.221921
+10,Adventure vs. Drama,49,When Night Is Falling (1995),-0.327874
+10,Adventure vs. Drama,50,"Usual Suspects, The (1995)",-0.201078

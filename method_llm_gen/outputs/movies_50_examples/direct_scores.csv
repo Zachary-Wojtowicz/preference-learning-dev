@@ -1,0 +1,501 @@
+dimension_id,dimension_name,option_id,display_text,score,zero_reason,justification
+1,Action vs. Character-Driven,1,Toy Story (1995),3,midpoint,Toy Story focuses on the character development of Woody and Buzz as they learn about friendship and loyalty.
+1,Action vs. Character-Driven,2,Jumanji (1995),2,midpoint,The plot involves high-stakes action sequences but also includes elements of character development as the players face challenges.
+1,Action vs. Character-Driven,3,Grumpier Old Men (1995),2,midpoint,The movie focuses more on the comedic interactions and rivalry between the characters rather than deep psychological exploration.
+1,Action vs. Character-Driven,4,Waiting to Exhale (1995),4,,The film focuses deeply on the personal and emotional journeys of its main characters.
+1,Action vs. Character-Driven,5,Father of the Bride Part II (1995),3,midpoint,The movie focuses more on character relationships and personal growth within the family rather than on action sequences.
+1,Action vs. Character-Driven,6,Heat (1995),3,midpoint,"Heat (1995) balances intense action sequences with significant character development, making it neither purely action-driven nor deeply character-focused."
+1,Action vs. Character-Driven,7,Sabrina (1995),4,,The film focuses on character development and the complexities of relationships rather than action sequences.
+1,Action vs. Character-Driven,8,Tom and Huck (1995),3,midpoint,"The film focuses on the development of Tom and Huck's friendship and the themes of childhood innocence, while also including adventurous elements."
+1,Action vs. Character-Driven,9,Sudden Death (1995),1,null,"The plot focuses heavily on high-stakes action sequences and saving hostages, typical of action-driven films."
+1,Action vs. Character-Driven,10,GoldenEye (1995),1,null,The plot summary emphasizes high-stakes action sequences and thrilling chase scenes typical of an action-driven film.
+1,Action vs. Character-Driven,11,"American President, The (1995)",4,,"The plot focuses heavily on the personal and political growth of the characters, particularly the president's struggle between love and duty."
+1,Action vs. Character-Driven,12,Dracula: Dead and Loving It (1995),1,null,"The movie is a comedy-horror spoof filled with slapstick humor and parodies, focusing more on action and comedic sequences than deep character development."
+1,Action vs. Character-Driven,13,Balto (1995),3,midpoint,Balto includes both action elements in its journey narrative and character development as Balto learns about heroism and determination.
+1,Action vs. Character-Driven,14,Nixon (1995),4,,"The film delves into Nixon's complex personality and struggles, focusing on deep character development."
+1,Action vs. Character-Driven,15,Cutthroat Island (1995),1,null,"The plot focuses heavily on action-adventure elements and treasure hunting, with less emphasis on character development."
+1,Action vs. Character-Driven,16,Casino (1995),3,midpoint,Casino focuses on character development but also includes significant action elements.
+1,Action vs. Character-Driven,17,Sense and Sensibility (1995),4,,The film focuses deeply on the emotional journeys and personal growth of the Dashwood sisters.
+1,Action vs. Character-Driven,18,Four Rooms (1995),2,midpoint,The movie features multiple segments with quirky characters but focuses more on situational humor and chaos than deep character development.
+1,Action vs. Character-Driven,19,Ace Ventura: When Nature Calls (1995),1,null,The movie focuses more on slapstick humor and zany antics rather than deep character development.
+1,Action vs. Character-Driven,20,Money Train (1995),2,midpoint,"The movie blends action sequences with some character interaction and development, but leans more towards action."
+1,Action vs. Character-Driven,21,Get Shorty (1995),2,midpoint,The movie has elements of both action and character development but leans slightly towards action and plot-driven events.
+1,Action vs. Character-Driven,22,Copycat (1995),3,midpoint,"The movie includes elements of both character development and action, focusing on the psychologist's personal journey while also involving thriller elements."
+1,Action vs. Character-Driven,23,Assassins (1995),1,null,The plot summary emphasizes action-packed sequences and a deadly game of cat and mouse between assassins.
+1,Action vs. Character-Driven,24,Powder (1995),4,,"The movie focuses on the deep character development of Powder and his interactions with others, emphasizing psychological depth over action."
+1,Action vs. Character-Driven,25,Leaving Las Vegas (1995),4,,The movie focuses deeply on the characters' psychological struggles and their evolving relationship.
+1,Action vs. Character-Driven,26,Othello (1995),4,,The movie focuses deeply on the psychological manipulation and emotional turmoil of its characters.
+1,Action vs. Character-Driven,27,Now and Then (1995),4,,The movie focuses on deep character development and the emotional journey of the characters as they reflect on their past and current lives.
+1,Action vs. Character-Driven,28,Persuasion (1995),4,,"The movie focuses on Anne Elliot's emotional journey and the complexities of her relationships, aligning with character-driven narratives."
+1,Action vs. Character-Driven,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",3,midpoint,The movie features both visually stunning action elements and deep character development within its surreal narrative.
+1,Action vs. Character-Driven,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),4,,"The movie focuses on the deep exploration of themes like power, loyalty, and consequences through the character's experiences."
+1,Action vs. Character-Driven,31,Dangerous Minds (1995),3,midpoint,The film focuses more on character development and themes of education and empowerment than on action sequences.
+1,Action vs. Character-Driven,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),3,midpoint,Twelve Monkeys combines elements of action with significant focus on character development and psychological depth.
+1,Action vs. Character-Driven,33,Wings of Courage (1995),3,midpoint,"The film focuses on character development and themes of courage and passion, but also includes adventurous elements."
+1,Action vs. Character-Driven,34,Babe (1995),4,,Babe focuses on the character development of the pig and the relationships formed on the farm.
+1,Action vs. Character-Driven,35,Carrington (1995),4,,"The film delves into complex character relationships and personal struggles, emphasizing psychological depth over action."
+1,Action vs. Character-Driven,36,Dead Man Walking (1995),4,,"The film focuses deeply on the character development of Sister Helen Prejean and Matthew Poncelet, exploring themes of redemption and justice."
+1,Action vs. Character-Driven,37,Across the Sea of Time (1995),4,,The movie focuses on the deep character arc of Tomas as he navigates his journey and discovers his family's history.
+1,Action vs. Character-Driven,38,It Takes Two (1995),3,midpoint,The plot focuses more on character development and relationships rather than action sequences.
+1,Action vs. Character-Driven,39,Clueless (1995),4,,Clueless focuses on deep character development and the personal growth of Cher Horowitz.
+1,Action vs. Character-Driven,40,"Cry, the Beloved Country (1995)",4,,The film focuses deeply on the character development of Stephen Kumalo as he confronts personal and societal challenges.
+1,Action vs. Character-Driven,41,Richard III (1995),4,,The film focuses heavily on Richard III's psychological manipulation and character arc as he schemes to gain power.
+1,Action vs. Character-Driven,42,Dead Presidents (1995),3,midpoint,The movie includes both action elements and significant focus on character development and societal issues.
+1,Action vs. Character-Driven,43,Restoration (1995),4,,"The movie focuses on the deep character arc of Robert Merivel as he navigates love, betrayal, and the complexities of power."
+1,Action vs. Character-Driven,44,Mortal Kombat (1995),1,null,"The plot focuses heavily on action and combat, typical of an adaptation from a fighting game franchise."
+1,Action vs. Character-Driven,45,To Die For (1995),3,midpoint,The movie focuses more on the character development of Suzanne Stone and the psychological exploration of her ambition than on action sequences.
+1,Action vs. Character-Driven,46,How to Make an American Quilt (1995),4,,"The movie focuses on the personal growth and emotional journeys of its characters, particularly the young woman learning about life through the stories of others."
+1,Action vs. Character-Driven,47,Seven (a.k.a. Se7en) (1995),2,midpoint,Seven includes both complex character development and intense action sequences.
+1,Action vs. Character-Driven,48,Pocahontas (1995),3,midpoint,The movie focuses more on the relationship and personal growth of Pocahontas rather than on action sequences.
+1,Action vs. Character-Driven,49,When Night Is Falling (1995),4,,The plot focuses on the character's personal growth and emotional journey as she navigates her relationship and confronts her beliefs.
+1,Action vs. Character-Driven,50,"Usual Suspects, The (1995)",3,midpoint,The Usual Suspects focuses more on its intricate plot and character revelations than on action sequences.
+2,Historical vs. Contemporary,1,Toy Story (1995),4,,Toy Story is set in modern times and deals with contemporary themes of childhood and friendship.
+2,Historical vs. Contemporary,2,Jumanji (1995),4,,The movie 'Jumanji' is set in modern times and deals with contemporary issues relevant to its release year in 1995.
+2,Historical vs. Contemporary,3,Grumpier Old Men (1995),4,,The movie is set in modern times and focuses on contemporary themes of aging and relationships.
+2,Historical vs. Contemporary,4,Waiting to Exhale (1995),4,,The movie is set in modern times and deals with contemporary issues such as infidelity and single motherhood.
+2,Historical vs. Contemporary,5,Father of the Bride Part II (1995),4,,The movie deals with contemporary family dynamics and issues relevant to modern audiences.
+2,Historical vs. Contemporary,6,Heat (1995),3,midpoint,Heat (1995) is set in modern times and deals with contemporary issues of crime and law enforcement.
+2,Historical vs. Contemporary,7,Sabrina (1995),3,midpoint,The movie is set in modern times and deals with contemporary themes of love and self-discovery.
+2,Historical vs. Contemporary,8,Tom and Huck (1995),1,null,"The movie is set in the 19th century, aligning it closely with a historical setting."
+2,Historical vs. Contemporary,9,Sudden Death (1995),4,,The movie is set in modern times and involves current issues such as terrorism.
+2,Historical vs. Contemporary,10,GoldenEye (1995),4,,The movie 'GoldenEye' is set in modern times and deals with contemporary issues such as satellite technology and international espionage.
+2,Historical vs. Contemporary,11,"American President, The (1995)",4,,The movie is set in modern times and deals with contemporary political and personal issues.
+2,Historical vs. Contemporary,12,Dracula: Dead and Loving It (1995),1,null,"The movie is set in 19th-century England, which is a historical period."
+2,Historical vs. Contemporary,13,Balto (1995),1,null,Balto is based on a true story set in a historical context involving a specific historical event in Alaska.
+2,Historical vs. Contemporary,14,Nixon (1995),1,null,"The movie is a biographical drama focusing on the life of Richard Nixon, primarily set in the historical context of the 1960s and 70s."
+2,Historical vs. Contemporary,15,Cutthroat Island (1995),1,null,The movie is set in a historical period with pirates and treasure hunts.
+2,Historical vs. Contemporary,16,Casino (1995),3,midpoint,"The movie is set in the late 20th century, dealing with contemporary issues of the time."
+2,Historical vs. Contemporary,17,Sense and Sensibility (1995),1,null,The movie is a period drama set in 19th century England.
+2,Historical vs. Contemporary,18,Four Rooms (1995),4,,"The plot summary indicates the movie is set in modern times, specifically on New Year's Eve, suggesting a contemporary setting."
+2,Historical vs. Contemporary,19,Ace Ventura: When Nature Calls (1995),3,,The movie is set in modern times and focuses on contemporary issues with a comedic twist.
+2,Historical vs. Contemporary,20,Money Train (1995),4,,Money Train is set in modern times and deals with contemporary issues related to urban life and crime.
+2,Historical vs. Contemporary,21,Get Shorty (1995),4,,The movie is set in modern times and deals with contemporary issues in the film industry.
+2,Historical vs. Contemporary,22,Copycat (1995),3,midpoint,"The movie deals with contemporary issues but references historical murders, creating a mix of both elements."
+2,Historical vs. Contemporary,23,Assassins (1995),4,,The plot summary indicates a modern setting with contemporary themes of betrayal and intrigue among hitmen.
+2,Historical vs. Contemporary,24,Powder (1995),3,midpoint,'Powder' is set in modern times and deals with contemporary themes of acceptance and prejudice.
+2,Historical vs. Contemporary,25,Leaving Las Vegas (1995),4,,The movie is set in modern times and deals with contemporary issues such as alcoholism and prostitution.
+2,Historical vs. Contemporary,26,Othello (1995),1,null,"The movie is an adaptation of Shakespeare's play set in Venetian times, which is a historical context."
+2,Historical vs. Contemporary,27,Now and Then (1995),3,midpoint,The movie deals with both contemporary adult lives and回忆中的1970年夏天，因此在历史和现代之间取得了平衡。
+2,Historical vs. Contemporary,28,Persuasion (1995),1,null,"The movie is an adaptation of Jane Austen's novel, set in a historical period."
+2,Historical vs. Contemporary,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",3,midpoint,The movie is set in a surreal and dystopian world that is not clearly anchored in either historical or contemporary time.
+2,Historical vs. Contemporary,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),1,null,"The movie is set in 1930s Shanghai, which is a historical period."
+2,Historical vs. Contemporary,31,Dangerous Minds (1995),4,,The movie is set in modern times and deals with contemporary issues such as education and race.
+2,Historical vs. Contemporary,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),3,midpoint,"The movie involves time travel between a post-apocalyptic future and the present, blending historical and contemporary elements."
+2,Historical vs. Contemporary,33,Wings of Courage (1995),1,null,"The movie is a biographical drama set in the early days of aviation, focusing on historical figures and their adventures."
+2,Historical vs. Contemporary,34,Babe (1995),3,midpoint,Babe is set in a non-specific modern farming context without clear historical markers.
+2,Historical vs. Contemporary,35,Carrington (1995),1,null,"Carrington is a biographical drama set in early 20th-century England, which places it firmly in a historical context."
+2,Historical vs. Contemporary,36,Dead Man Walking (1995),2,midpoint,The movie is set in modern times but deals with historical aspects of the justice system.
+2,Historical vs. Contemporary,37,Across the Sea of Time (1995),1,null,"The movie focuses on a historical period of immigration to America, aligning more with historical themes."
+2,Historical vs. Contemporary,38,It Takes Two (1995),3,null,The movie is set in modern times and deals with contemporary family dynamics.
+2,Historical vs. Contemporary,39,Clueless (1995),4,,Clueless is a modern retelling of Jane Austen's novel set in a contemporary Beverly Hills high school.
+2,Historical vs. Contemporary,40,"Cry, the Beloved Country (1995)",1,null,"The movie is set during the apartheid era in South Africa, which is a historical period."
+2,Historical vs. Contemporary,41,Richard III (1995),4,,"The film sets Shakespeare's 'Richard III' in a modern-day context, aligning with contemporary themes."
+2,Historical vs. Contemporary,42,Dead Presidents (1995),3,midpoint,The movie is set in modern times but deals with historical impacts of the Vietnam War.
+2,Historical vs. Contemporary,43,Restoration (1995),1,null,"The movie is set in the 17th century, focusing on historical events and figures."
+2,Historical vs. Contemporary,44,Mortal Kombat (1995),3,null,The movie is set in modern times but includes fantastical elements that transcend specific time periods.
+2,Historical vs. Contemporary,45,To Die For (1995),4,,The movie is set in modern times and deals with contemporary issues such as media obsession and fame.
+2,Historical vs. Contemporary,46,How to Make an American Quilt (1995),2,midpoint,The movie is set in modern times but focuses on traditional activities and intergenerational stories.
+2,Historical vs. Contemporary,47,Seven (a.k.a. Se7en) (1995),4,,Seven is set in modern times and deals with contemporary issues of crime and morality.
+2,Historical vs. Contemporary,48,Pocahontas (1995),1,null,Pocahontas is set in a historical context involving the early interactions between Native Americans and English settlers.
+2,Historical vs. Contemporary,49,When Night Is Falling (1995),3,null,The plot summary does not specify a historical setting but focuses on contemporary themes of love and personal growth.
+2,Historical vs. Contemporary,50,"Usual Suspects, The (1995)",3,midpoint,The Usual Suspects is set in modern times without specific historical context.
+3,Romantic vs. Non-Romantic,1,Toy Story (1995),1,not_applicable,The plot focuses on friendship and adventure rather than romantic elements.
+3,Romantic vs. Non-Romantic,2,Jumanji (1995),1,null,The plot summary does not indicate any significant romantic storyline.
+3,Romantic vs. Non-Romantic,3,Grumpier Old Men (1995),2,midpoint,The movie includes romantic elements but primarily focuses on comedy and the relationship between the male leads.
+3,Romantic vs. Non-Romantic,4,Waiting to Exhale (1995),4,,The movie focuses significantly on the romantic struggles and emotional journeys of the main characters.
+3,Romantic vs. Non-Romantic,5,Father of the Bride Part II (1995),1,null,"The plot focuses on family dynamics and the challenges of becoming a parent again, with minimal romantic storyline."
+3,Romantic vs. Non-Romantic,6,Heat (1995),1,not_applicable,"The plot summary of Heat (1995) focuses on the conflict between a thief and a detective, with no mention of romantic elements."
+3,Romantic vs. Non-Romantic,7,Sabrina (1995),4,,The plot revolves around romantic relationships and the emotional journey of the characters.
+3,Romantic vs. Non-Romantic,8,Tom and Huck (1995),1,null,The plot summary focuses on adventure and friendship without mentioning any romantic elements.
+3,Romantic vs. Non-Romantic,9,Sudden Death (1995),0,not_applicable,The plot summary focuses entirely on action and suspense without any mention of romantic elements.
+3,Romantic vs. Non-Romantic,10,GoldenEye (1995),1,null,The plot focuses primarily on action and espionage with minimal romantic storyline.
+3,Romantic vs. Non-Romantic,11,"American President, The (1995)",4,,The American President has a strong romantic storyline that is central to the plot.
+3,Romantic vs. Non-Romantic,12,Dracula: Dead and Loving It (1995),1,null,The plot summary indicates a comedy-horror spoof with no mention of romantic elements.
+3,Romantic vs. Non-Romantic,13,Balto (1995),1,null,The plot summary focuses on adventure and themes of courage and perseverance without mentioning any significant romantic storyline.
+3,Romantic vs. Non-Romantic,14,Nixon (1995),0,not_applicable,The movie focuses on the political career of Richard Nixon without significant romantic storylines.
+3,Romantic vs. Non-Romantic,15,Cutthroat Island (1995),2,midpoint,The movie includes a romance subplot with an ex-lover but focuses primarily on action and adventure.
+3,Romantic vs. Non-Romantic,16,Casino (1995),1,null,The movie primarily focuses on crime and drama with only a minor romantic subplot.
+3,Romantic vs. Non-Romantic,17,Sense and Sensibility (1995),4,,The movie focuses heavily on the romantic journeys and challenges faced by the Dashwood sisters.
+3,Romantic vs. Non-Romantic,18,Four Rooms (1995),1,null,The plot summary indicates an anthology of bizarre and outrageous events without mention of significant romantic storylines.
+3,Romantic vs. Non-Romantic,19,Ace Ventura: When Nature Calls (1995),0,not_applicable,The plot summary indicates a comedy focused on adventure and slapstick humor without mention of romantic elements.
+3,Romantic vs. Non-Romantic,20,Money Train (1995),1,null,The movie includes a love interest but focuses primarily on action and crime elements.
+3,Romantic vs. Non-Romantic,21,Get Shorty (1995),1,null,The plot summary does not indicate a significant romantic storyline.
+3,Romantic vs. Non-Romantic,22,Copycat (1995),1,not_applicable,"The plot focuses on hunting a serial killer and personal survival, lacking significant romantic elements."
+3,Romantic vs. Non-Romantic,23,Assassins (1995),1,null,The plot summary focuses on action and rivalry between assassins without highlighting romantic elements.
+3,Romantic vs. Non-Romantic,24,Powder (1995),1,null,The plot focuses on the protagonist's unique abilities and his struggle for acceptance rather than on a romantic storyline.
+3,Romantic vs. Non-Romantic,25,Leaving Las Vegas (1995),4,,The movie features a deep and emotional romantic journey between a self-destructive alcoholic and a prostitute.
+3,Romantic vs. Non-Romantic,26,Othello (1995),2,midpoint,"While there is a love story between Othello and Desdemona, the plot is dominated by betrayal, jealousy, and revenge."
+3,Romantic vs. Non-Romantic,27,Now and Then (1995),2,midpoint,The movie includes themes of love but primarily focuses on friendship and personal growth.
+3,Romantic vs. Non-Romantic,28,Persuasion (1995),4,,The movie focuses on a romantic storyline involving rekindled love and navigating societal expectations.
+3,Romantic vs. Non-Romantic,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",1,null,The plot summary does not indicate any significant romantic storyline.
+3,Romantic vs. Non-Romantic,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),1,null,The plot summary does not indicate any significant romantic storyline.
+3,Romantic vs. Non-Romantic,31,Dangerous Minds (1995),1,null,The plot summary does not indicate any significant romantic storyline.
+3,Romantic vs. Non-Romantic,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),1,null,The plot focuses on time travel and survival rather than romantic elements.
+3,Romantic vs. Non-Romantic,33,Wings of Courage (1995),2,midpoint,The movie includes romance as a genre but focuses more on adventure and the biographical aspects of aviation pioneers.
+3,Romantic vs. Non-Romantic,34,Babe (1995),1,not_applicable,The plot summary focuses on a pig's journey and friendship rather than any romantic elements.
+3,Romantic vs. Non-Romantic,35,Carrington (1995),4,,The movie delves into the complex and unconventional romantic relationship between Dora Carrington and Lytton Strachey.
+3,Romantic vs. Non-Romantic,36,Dead Man Walking (1995),1,null,The plot focuses on themes of redemption and justice rather than romantic elements.
+3,Romantic vs. Non-Romantic,37,Across the Sea of Time (1995),1,not_applicable,"The plot focuses on an immigrant's journey and discovery of New York City, lacking significant romantic elements."
+3,Romantic vs. Non-Romantic,38,It Takes Two (1995),3,null,"The movie includes a plot focused on bringing two single parents together, indicating a moderate romantic element."
+3,Romantic vs. Non-Romantic,39,Clueless (1995),4,,Clueless has a significant romantic storyline as part of its narrative.
+3,Romantic vs. Non-Romantic,40,"Cry, the Beloved Country (1995)",1,null,The plot focuses on themes of racial injustice and personal struggle without significant romantic elements.
+3,Romantic vs. Non-Romantic,41,Richard III (1995),1,not_applicable,The plot focuses on political manipulation and power struggles without significant romantic elements.
+3,Romantic vs. Non-Romantic,42,Dead Presidents (1995),0,not_applicable,"The plot summary focuses on themes of war, poverty, and crime without mentioning any romantic elements."
+3,Romantic vs. Non-Romantic,43,Restoration (1995),2,midpoint,The plot involves elements of love but is primarily focused on political intrigue and social change.
+3,Romantic vs. Non-Romantic,44,Mortal Kombat (1995),1,not_applicable,The plot summary focuses on action and fantasy elements without highlighting any significant romantic storyline.
+3,Romantic vs. Non-Romantic,45,To Die For (1995),1,null,The plot focuses on ambition and manipulation rather than romantic elements.
+3,Romantic vs. Non-Romantic,46,How to Make an American Quilt (1995),4,,"The movie focuses on themes of love and life through the stories shared by the women in the quilting circle, indicating a strong romantic element."
+3,Romantic vs. Non-Romantic,47,Seven (a.k.a. Se7en) (1995),0,not_applicable,Seven is a psychological thriller focused on crime-solving and does not contain significant romantic elements.
+3,Romantic vs. Non-Romantic,48,Pocahontas (1995),4,,The movie features a significant romantic storyline between Pocahontas and John Smith amidst cultural conflicts.
+3,Romantic vs. Non-Romantic,49,When Night Is Falling (1995),4,,The movie is a romantic drama centered around a complex romantic relationship that challenges the protagonist's beliefs.
+3,Romantic vs. Non-Romantic,50,"Usual Suspects, The (1995)",0,not_applicable,The Usual Suspects focuses on crime and mystery without any significant romantic elements.
+4,Family-Friendly vs. Adult-Themed,1,Toy Story (1995),4,,"Toy Story is an animated adventure suitable for all ages, focusing on themes of friendship and loyalty."
+4,Family-Friendly vs. Adult-Themed,2,Jumanji (1995),3,midpoint,The movie includes elements suitable for children but also contains some danger and adventure that may be too intense for very young viewers.
+4,Family-Friendly vs. Adult-Themed,3,Grumpier Old Men (1995),2,midpoint,The movie contains adult humor and themes that may not be suitable for younger audiences.
+4,Family-Friendly vs. Adult-Themed,4,Waiting to Exhale (1995),1,null,The movie deals with mature themes such as infidelity and single motherhood.
+4,Family-Friendly vs. Adult-Themed,5,Father of the Bride Part II (1995),2,midpoint,The movie includes themes of family and relationships but contains content more suited for adults.
+4,Family-Friendly vs. Adult-Themed,6,Heat (1995),1,null,Heat (1995) contains mature themes and content unsuitable for children.
+4,Family-Friendly vs. Adult-Themed,7,Sabrina (1995),2,midpoint,The movie contains themes and dialogue that may not be suitable for younger audiences.
+4,Family-Friendly vs. Adult-Themed,8,Tom and Huck (1995),3,midpoint,The movie includes themes of friendship and innocence but also involves witnessing a murder and going on the run.
+4,Family-Friendly vs. Adult-Themed,9,Sudden Death (1995),1,null,"The movie involves action and terrorism, which are mature themes unsuitable for young audiences."
+4,Family-Friendly vs. Adult-Themed,10,GoldenEye (1995),1,null,The movie contains intense action sequences and mature themes unsuitable for children.
+4,Family-Friendly vs. Adult-Themed,11,"American President, The (1995)",2,midpoint,The movie contains mature themes and dialogue unsuitable for children.
+4,Family-Friendly vs. Adult-Themed,12,Dracula: Dead and Loving It (1995),2,midpoint,The movie contains mature themes and slapstick humor that may not be suitable for younger audiences.
+4,Family-Friendly vs. Adult-Themed,13,Balto (1995),4,,"Balto is an animated adventure film with themes of courage, friendship, and perseverance, suitable for viewers of all ages."
+4,Family-Friendly vs. Adult-Themed,14,Nixon (1995),1,null,"Nixon is a biographical drama about the former U.S. president, containing mature themes unsuitable for children."
+4,Family-Friendly vs. Adult-Themed,15,Cutthroat Island (1995),2,midpoint,The movie contains action and adventure elements but also includes mature themes and violence.
+4,Family-Friendly vs. Adult-Themed,16,Casino (1995),1,null,Casino contains mature themes and content unsuitable for children.
+4,Family-Friendly vs. Adult-Themed,17,Sense and Sensibility (1995),3,midpoint,"The movie explores mature themes such as love and societal expectations, but it lacks explicit content that would make it unsuitable for younger audiences."
+4,Family-Friendly vs. Adult-Themed,18,Four Rooms (1995),1,null,"The movie features bizarre and outrageous events, indicating mature themes."
+4,Family-Friendly vs. Adult-Themed,19,Ace Ventura: When Nature Calls (1995),2,midpoint,The movie contains slapstick humor and zany antics that may not be suitable for very young children.
+4,Family-Friendly vs. Adult-Themed,20,Money Train (1995),1,null,Money Train contains mature themes and content unsuitable for children.
+4,Family-Friendly vs. Adult-Themed,21,Get Shorty (1995),1,null,The movie contains adult themes and content related to crime and debt collection.
+4,Family-Friendly vs. Adult-Themed,22,Copycat (1995),1,null,The movie involves mature themes such as serial killers and psychological trauma.
+4,Family-Friendly vs. Adult-Themed,23,Assassins (1995),1,null,The movie contains mature themes and intense action sequences unsuitable for children.
+4,Family-Friendly vs. Adult-Themed,24,Powder (1995),2,midpoint,The movie contains mature themes and is unlikely to be suitable for younger audiences.
+4,Family-Friendly vs. Adult-Themed,25,Leaving Las Vegas (1995),1,null,The movie explores mature themes such as alcoholism and prostitution.
+4,Family-Friendly vs. Adult-Themed,26,Othello (1995),1,null,"The movie involves mature themes such as betrayal, jealousy, and tragic endings."
+4,Family-Friendly vs. Adult-Themed,27,Now and Then (1995),3,midpoint,The movie includes themes of friendship and coming-of-age that are accessible to older children but also deals with more mature topics suitable for adults.
+4,Family-Friendly vs. Adult-Themed,28,Persuasion (1995),3,midpoint,"The movie explores mature themes like societal pressures and love, but does not contain explicit content unsuitable for younger audiences."
+4,Family-Friendly vs. Adult-Themed,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",2,midpoint,The movie contains dark themes and surreal visuals that may not be suitable for young children.
+4,Family-Friendly vs. Adult-Themed,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),1,null,"The movie explores mature themes such as power, loyalty, and betrayal in a dangerous criminal setting."
+4,Family-Friendly vs. Adult-Themed,31,Dangerous Minds (1995),2,midpoint,"The movie contains mature themes related to education and social issues, making it less suitable for younger audiences."
+4,Family-Friendly vs. Adult-Themed,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),1,null,The movie contains mature themes and complex narratives unsuitable for children.
+4,Family-Friendly vs. Adult-Themed,33,Wings of Courage (1995),2,midpoint,The movie contains mature themes and is aimed at an adult audience.
+4,Family-Friendly vs. Adult-Themed,34,Babe (1995),4,,"Babe is a heartwarming family film suitable for all ages, focusing on themes like friendship and acceptance."
+4,Family-Friendly vs. Adult-Themed,35,Carrington (1995),1,null,The movie explores mature themes such as complex relationships and societal conventions.
+4,Family-Friendly vs. Adult-Themed,36,Dead Man Walking (1995),1,null,The movie explores mature themes such as death row and criminal justice.
+4,Family-Friendly vs. Adult-Themed,37,Across the Sea of Time (1995),3,midpoint,"The documentary combines elements of drama and showcases cultural diversity, which can appeal to a wide audience but may contain some mature themes."
+4,Family-Friendly vs. Adult-Themed,38,It Takes Two (1995),4,,"The movie is a heartwarming family comedy with themes of family, friendship, and communication, suitable for all ages."
+4,Family-Friendly vs. Adult-Themed,39,Clueless (1995),2,midpoint,Clueless contains mature themes and language unsuitable for young children.
+4,Family-Friendly vs. Adult-Themed,40,"Cry, the Beloved Country (1995)",2,midpoint,The film explores mature themes such as racial injustice and family struggles.
+4,Family-Friendly vs. Adult-Themed,41,Richard III (1995),1,null,"The movie involves mature themes such as manipulation, violence, and betrayal."
+4,Family-Friendly vs. Adult-Themed,42,Dead Presidents (1995),1,null,"The movie contains mature themes related to war, crime, and societal issues unsuitable for children."
+4,Family-Friendly vs. Adult-Themed,43,Restoration (1995),1,null,"The plot involves mature themes such as political intrigue, betrayal, and the complexities of power, making it unsuitable for younger audiences."
+4,Family-Friendly vs. Adult-Themed,44,Mortal Kombat (1995),1,null,"The movie contains mature themes and intense action, making it unsuitable for younger audiences."
+4,Family-Friendly vs. Adult-Themed,45,To Die For (1995),1,null,"The movie involves themes of murder and manipulation, which are not suitable for younger audiences."
+4,Family-Friendly vs. Adult-Themed,46,How to Make an American Quilt (1995),2,midpoint,The movie contains mature themes and is aimed at an adult audience.
+4,Family-Friendly vs. Adult-Themed,47,Seven (a.k.a. Se7en) (1995),1,null,Seven is a psychological thriller with mature themes and graphic content unsuitable for children.
+4,Family-Friendly vs. Adult-Themed,48,Pocahontas (1995),4,,Pocahontas is an animated musical film suitable for children with themes of cultural understanding.
+4,Family-Friendly vs. Adult-Themed,49,When Night Is Falling (1995),1,null,The plot involves complex adult relationships and themes unsuitable for children.
+4,Family-Friendly vs. Adult-Themed,50,"Usual Suspects, The (1995)",1,null,The Usual Suspects contains mature themes and complex plot elements unsuitable for children.
+5,Visual Appeal vs. Narrative Complexity,1,Toy Story (1995),3,midpoint,Toy Story features visually appealing animation typical of its era but also has a narrative focused on character development and themes.
+5,Visual Appeal vs. Narrative Complexity,2,Jumanji (1995),3,midpoint,The movie features both visual elements typical of fantasy adventures and a narrative focused on solving the game's challenges.
+5,Visual Appeal vs. Narrative Complexity,3,Grumpier Old Men (1995),2,midpoint,The plot focuses on character interactions and comedic situations rather than visual spectacle.
+5,Visual Appeal vs. Narrative Complexity,4,Waiting to Exhale (1995),1,,The plot focuses on complex personal and romantic struggles of the characters.
+5,Visual Appeal vs. Narrative Complexity,5,Father of the Bride Part II (1995),2,midpoint,"The plot focuses on family dynamics and personal growth, indicating a narrative that is more about character development than visual spectacle."
+5,Visual Appeal vs. Narrative Complexity,6,Heat (1995),2,midpoint,Heat focuses more on its intricate plot and character dynamics than on visual spectacle.
+5,Visual Appeal vs. Narrative Complexity,7,Sabrina (1995),2,midpoint,Sabrina (1995) focuses more on its narrative and character development rather than visual appeal.
+5,Visual Appeal vs. Narrative Complexity,8,Tom and Huck (1995),2,midpoint,The plot focuses on narrative elements like friendship and loyalty rather than visual spectacle.
+5,Visual Appeal vs. Narrative Complexity,9,Sudden Death (1995),2,midpoint,The plot focuses heavily on narrative complexity with its tense hostage situation and time-sensitive mission.
+5,Visual Appeal vs. Narrative Complexity,10,GoldenEye (1995),3,midpoint,"The movie features intense action sequences and thrilling chase scenes, but also has a plot that involves uncovering a conspiracy, indicating a balance between visual appeal and narrative complexity."
+5,Visual Appeal vs. Narrative Complexity,11,"American President, The (1995)",1,null,The American President focuses more on its intricate political and romantic narrative than on visual appeal.
+5,Visual Appeal vs. Narrative Complexity,12,Dracula: Dead and Loving It (1995),2,midpoint,"The movie is a comedy-horror spoof with slapstick humor, suggesting it leans more towards narrative complexity than visual appeal."
+5,Visual Appeal vs. Narrative Complexity,13,Balto (1995),3,midpoint,"Balto, as an animated adventure film, likely features appealing visuals typical of its genre but also carries a narrative focused on themes of courage and perseverance."
+5,Visual Appeal vs. Narrative Complexity,14,Nixon (1995),1,null,The movie focuses on the intricate plot and complex narrative of Richard Nixon's political career.
+5,Visual Appeal vs. Narrative Complexity,15,Cutthroat Island (1995),3,midpoint,The movie features an adventurous plot with high-seas action but also emphasizes visual elements typical of its genre.
+5,Visual Appeal vs. Narrative Complexity,16,Casino (1995),1,null,Casino focuses heavily on its intricate narrative and character development rather than visual spectacle.
+5,Visual Appeal vs. Narrative Complexity,17,Sense and Sensibility (1995),2,midpoint,Sense and Sensibility focuses more on its narrative and character development rather than visual spectacle.
+5,Visual Appeal vs. Narrative Complexity,18,Four Rooms (1995),2,midpoint,The movie has a focus on narrative complexity through its multiple segments and quirky characters.
+5,Visual Appeal vs. Narrative Complexity,19,Ace Ventura: When Nature Calls (1995),2,midpoint,The movie focuses more on comedy and narrative than on visual appeal.
+5,Visual Appeal vs. Narrative Complexity,20,Money Train (1995),2,midpoint,Money Train focuses more on its narrative and character dynamics rather than visual appeal.
+5,Visual Appeal vs. Narrative Complexity,21,Get Shorty (1995),2,midpoint,"The plot involves navigating the complexities of Hollywood, suggesting a focus on narrative over visual appeal."
+5,Visual Appeal vs. Narrative Complexity,22,Copycat (1995),1,null,The plot focuses heavily on the narrative complexity of a serial killer case and psychological elements.
+5,Visual Appeal vs. Narrative Complexity,23,Assassins (1995),2,midpoint,The plot focuses on rivalry and action between assassins without clear emphasis on either visual appeal or narrative complexity.
+5,Visual Appeal vs. Narrative Complexity,24,Powder (1995),2,midpoint,The plot focuses more on narrative complexity and emotional depth rather than visual appeal.
+5,Visual Appeal vs. Narrative Complexity,25,Leaving Las Vegas (1995),1,null,The plot focuses heavily on narrative complexity and character development rather than visual appeal.
+5,Visual Appeal vs. Narrative Complexity,26,Othello (1995),1,null,"The plot revolves around intricate themes of betrayal, jealousy, and manipulation, aligning more with narrative complexity."
+5,Visual Appeal vs. Narrative Complexity,27,Now and Then (1995),2,midpoint,The plot focuses on themes of friendship and personal growth rather than visual spectacle.
+5,Visual Appeal vs. Narrative Complexity,28,Persuasion (1995),2,midpoint,The movie focuses more on narrative and character development rather than visual appeal.
+5,Visual Appeal vs. Narrative Complexity,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",3,midpoint,The City of Lost Children offers both visually stunning elements and a complex narrative.
+5,Visual Appeal vs. Narrative Complexity,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),2,midpoint,The plot summary emphasizes narrative complexity over visual appeal.
+5,Visual Appeal vs. Narrative Complexity,31,Dangerous Minds (1995),2,midpoint,The plot focuses on narrative themes of education and personal growth rather than visual spectacle.
+5,Visual Appeal vs. Narrative Complexity,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),1,null,Twelve Monkeys focuses heavily on its intricate plot involving time travel and psychological complexity.
+5,Visual Appeal vs. Narrative Complexity,33,Wings of Courage (1995),3,midpoint,The movie includes themes of adventure and romance but also has a focus on the narrative of pioneering aviators.
+5,Visual Appeal vs. Narrative Complexity,34,Babe (1995),3,midpoint,Babe features charming visuals suitable for children but also focuses on narrative elements like friendship and self-belief.
+5,Visual Appeal vs. Narrative Complexity,35,Carrington (1995),2,midpoint,The film focuses more on the narrative and character development rather than visual appeal.
+5,Visual Appeal vs. Narrative Complexity,36,Dead Man Walking (1995),1,null,The movie focuses heavily on its narrative and thematic exploration rather than visual appeal.
+5,Visual Appeal vs. Narrative Complexity,37,Across the Sea of Time (1995),4,,The documentary uses IMAX technology to present visually stunning scenes of New York City and the immigrant experience.
+5,Visual Appeal vs. Narrative Complexity,38,It Takes Two (1995),2,midpoint,The plot focuses more on narrative elements and character development rather than visual appeal.
+5,Visual Appeal vs. Narrative Complexity,39,Clueless (1995),3,midpoint,Clueless features stylish visuals and fashion but is more noted for its narrative and dialogue.
+5,Visual Appeal vs. Narrative Complexity,40,"Cry, the Beloved Country (1995)",1,null,The film focuses heavily on its narrative and themes rather than visual appeal.
+5,Visual Appeal vs. Narrative Complexity,41,Richard III (1995),1,null,The plot focuses heavily on the intricate political maneuvering and psychological depth of Richard III.
+5,Visual Appeal vs. Narrative Complexity,42,Dead Presidents (1995),1,null,"The plot focuses on complex themes of race, poverty, and the impact of war, indicating a narrative complexity."
+5,Visual Appeal vs. Narrative Complexity,43,Restoration (1995),2,midpoint,"The plot focuses on political intrigue and social change, suggesting narrative complexity, but the 17th-century setting likely offers some visual appeal."
+5,Visual Appeal vs. Narrative Complexity,44,Mortal Kombat (1995),3,midpoint,The movie features action and fantasy elements suggesting visual appeal but also has a narrative involving a tournament with personal and supernatural challenges.
+5,Visual Appeal vs. Narrative Complexity,45,To Die For (1995),1,null,"The movie focuses on intricate themes of media obsession and ambition, indicating a narrative complexity."
+5,Visual Appeal vs. Narrative Complexity,46,How to Make an American Quilt (1995),2,midpoint,The plot focuses on narrative and character development rather than visual spectacle.
+5,Visual Appeal vs. Narrative Complexity,47,Seven (a.k.a. Se7en) (1995),1,null,"Seven focuses heavily on its intricate plot involving the seven deadly sins, prioritizing narrative complexity over visual appeal."
+5,Visual Appeal vs. Narrative Complexity,48,Pocahontas (1995),4,,Pocahontas features vibrant animation and visually appealing scenes that are characteristic of Disney's animated films.
+5,Visual Appeal vs. Narrative Complexity,49,When Night Is Falling (1995),1,null,The plot summary emphasizes narrative complexity over visual appeal.
+5,Visual Appeal vs. Narrative Complexity,50,"Usual Suspects, The (1995)",1,null,The Usual Suspects focuses heavily on its intricate plot and themes rather than visual appeal.
+6,Humor vs. Seriousness,1,Toy Story (1995),4,,Toy Story is a comedy-filled adventure with light-hearted stories and humorous interactions between characters.
+6,Humor vs. Seriousness,2,Jumanji (1995),3,midpoint,"The movie includes adventurous and chaotic elements typical of children's fantasy films, which often blend humor with more serious moments."
+6,Humor vs. Seriousness,3,Grumpier Old Men (1995),4,,The movie features a comedic rivalry and hilarious antics between the main characters.
+6,Humor vs. Seriousness,4,Waiting to Exhale (1995),2,midpoint,"The movie has both dramatic and comedic elements, but leans more towards drama."
+6,Humor vs. Seriousness,5,Father of the Bride Part II (1995),4,,The movie is a comedy centered around the chaotic and humorous situations involving family and pregnancy.
+6,Humor vs. Seriousness,6,Heat (1995),1,null,The plot summary indicates a serious tone focused on a cat-and-mouse game between a thief and a detective.
+6,Humor vs. Seriousness,7,Sabrina (1995),3,midpoint,The movie is a romantic comedy that includes both humorous elements and more serious romantic plot developments.
+6,Humor vs. Seriousness,8,Tom and Huck (1995),3,midpoint,The movie is an adventure comedy-drama with elements of humor but also serious themes.
+6,Humor vs. Seriousness,9,Sudden Death (1995),1,null,The plot summary indicates a serious tone focused on action and life-threatening situations.
+6,Humor vs. Seriousness,10,GoldenEye (1995),2,midpoint,The movie includes classic Bond charm and wit but is primarily characterized by its intense action and thriller elements.
+6,Humor vs. Seriousness,11,"American President, The (1995)",3,midpoint,The movie includes both comedic elements and serious political drama.
+6,Humor vs. Seriousness,12,Dracula: Dead and Loving It (1995),4,,The movie is a horror-comedy spoof filled with slapstick humor and parodies of classic vampire lore.
+6,Humor vs. Seriousness,13,Balto (1995),2,midpoint,"The plot summary highlights themes of courage and perseverance, suggesting a more serious tone."
+6,Humor vs. Seriousness,14,Nixon (1995),1,null,The movie is a biographical drama focusing on the serious political career of Richard Nixon.
+6,Humor vs. Seriousness,15,Cutthroat Island (1995),2,midpoint,The plot summary indicates an action-adventure film with no clear indication of comedic elements.
+6,Humor vs. Seriousness,16,Casino (1995),1,null,"Casino is a crime drama focusing on serious themes like power, greed, and betrayal."
+6,Humor vs. Seriousness,17,Sense and Sensibility (1995),2,midpoint,"The movie is a period drama with themes of love and societal expectations, which suggests a more serious tone."
+6,Humor vs. Seriousness,18,Four Rooms (1995),3,midpoint,"The movie has a darkly humorous and chaotic narrative, but also contains serious elements within its segments."
+6,Humor vs. Seriousness,19,Ace Ventura: When Nature Calls (1995),4,,"The movie is filled with slapstick humor, zany antics, and Jim Carrey's signature comedic performance."
+6,Humor vs. Seriousness,20,Money Train (1995),3,midpoint,"The movie blends suspense, humor, and camaraderie, indicating a mix of serious and humorous elements."
+6,Humor vs. Seriousness,21,Get Shorty (1995),4,,"The movie blends comedy with crime and thriller elements, featuring a light-hearted and humorous approach to its plot."
+6,Humor vs. Seriousness,22,Copycat (1995),1,null,The movie's genres and plot summary indicate a serious tone focused on crime and thriller elements.
+6,Humor vs. Seriousness,23,Assassins (1995),1,null,"The plot summary indicates a serious tone with themes of betrayal and intense action, typical of crime and thriller genres."
+6,Humor vs. Seriousness,24,Powder (1995),1,null,'Powder' is a drama with serious themes about prejudice and acceptance.
+6,Humor vs. Seriousness,25,Leaving Las Vegas (1995),1,null,"The plot revolves around themes of addiction and despair, indicating a serious tone."
+6,Humor vs. Seriousness,26,Othello (1995),1,null,"The plot revolves around betrayal, jealousy, and tragedy, aligning with a serious tone."
+6,Humor vs. Seriousness,27,Now and Then (1995),2,midpoint,"The movie explores serious themes such as friendship, love, loss, and the passage of time."
+6,Humor vs. Seriousness,28,Persuasion (1995),2,midpoint,The movie explores themes of love and societal norms without clear indications of comedic elements.
+6,Humor vs. Seriousness,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",2,midpoint,The movie has a dark and surreal tone with a serious plot about a mad scientist kidnapping children.
+6,Humor vs. Seriousness,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),1,,"The plot summary indicates a serious tone focused on themes of power, loyalty, and consequences."
+6,Humor vs. Seriousness,31,Dangerous Minds (1995),2,midpoint,The plot summary indicates a drama film focused on serious themes such as education and empowerment.
+6,Humor vs. Seriousness,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),1,null,Twelve Monkeys is primarily a mystery and thriller with a serious tone.
+6,Humor vs. Seriousness,33,Wings of Courage (1995),1,null,"The movie is a biographical drama focusing on themes of courage and adventure, which aligns more with seriousness."
+6,Humor vs. Seriousness,34,Babe (1995),3,midpoint,Babe is a heartwarming family film that includes elements of both humor and seriousness.
+6,Humor vs. Seriousness,35,Carrington (1995),1,null,"Carrington is a biographical drama focusing on a complex relationship and societal challenges, indicating a serious tone."
+6,Humor vs. Seriousness,36,Dead Man Walking (1995),1,null,The movie is a powerful drama exploring serious themes of redemption and justice.
+6,Humor vs. Seriousness,37,Across the Sea of Time (1995),1,,The movie focuses on the drama and documentary aspects of an immigrant's journey without clear comedic elements.
+6,Humor vs. Seriousness,38,It Takes Two (1995),4,,The movie is described as a heartwarming family comedy with a delightful mix of humor and heartfelt moments.
+6,Humor vs. Seriousness,39,Clueless (1995),4,,Clueless is a beloved teen comedy known for its witty dialogue.
+6,Humor vs. Seriousness,40,"Cry, the Beloved Country (1995)",1,null,The film is a poignant drama exploring serious themes such as racial injustice and forgiveness.
+6,Humor vs. Seriousness,41,Richard III (1995),1,null,"The plot revolves around manipulation, deceit, betrayal, and violence, indicating a serious tone."
+6,Humor vs. Seriousness,42,Dead Presidents (1995),1,null,"The movie focuses on serious themes such as the impact of war, racial discrimination, and economic hardship."
+6,Humor vs. Seriousness,43,Restoration (1995),2,midpoint,The plot summary indicates a dramatic and serious tone focused on political intrigue and social change.
+6,Humor vs. Seriousness,44,Mortal Kombat (1995),2,midpoint,The plot summary indicates an action-packed and fantastical storyline without clear comedic elements.
+6,Humor vs. Seriousness,45,To Die For (1995),3,midpoint,"The movie is a dark comedy with dramatic and thriller elements, balancing humor with serious themes."
+6,Humor vs. Seriousness,46,How to Make an American Quilt (1995),2,midpoint,The plot summary indicates a focus on drama and personal growth rather than humor.
+6,Humor vs. Seriousness,47,Seven (a.k.a. Se7en) (1995),1,null,Seven is a psychological thriller with a dark and serious tone.
+6,Humor vs. Seriousness,48,Pocahontas (1995),2,midpoint,The plot summary indicates a focus on cultural encounters and romance rather than humor.
+6,Humor vs. Seriousness,49,When Night Is Falling (1995),2,midpoint,The plot summary indicates a romantic drama with no clear indication of comedic elements.
+6,Humor vs. Seriousness,50,"Usual Suspects, The (1995)",1,null,The Usual Suspects is a crime thriller with a serious tone and complex plot.
+7,Classic Adaptation vs. Original Story,1,Toy Story (1995),1,null,Toy Story is an original narrative without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,2,Jumanji (1995),1,null,The plot of 'Jumanji' is an original narrative without clear adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,3,Grumpier Old Men (1995),0,,Grumpier Old Men is an original story without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,4,Waiting to Exhale (1995),1,null,The movie 'Waiting to Exhale' has an original narrative without being adapted from a classic work.
+7,Classic Adaptation vs. Original Story,5,Father of the Bride Part II (1995),0,,The movie is an original story without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,6,Heat (1995),0,,Heat (1995) is an original story without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,7,Sabrina (1995),1,null,Sabrina (1995) is an original story without direct adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,8,Tom and Huck (1995),4,,"The movie is based on Mark Twain's novel 'The Adventures of Tom Sawyer', a classic work of literature."
+7,Classic Adaptation vs. Original Story,9,Sudden Death (1995),0,,The plot summary indicates an original narrative without reference to a classic literary adaptation.
+7,Classic Adaptation vs. Original Story,10,GoldenEye (1995),1,null,GoldenEye is an original story within the James Bond franchise.
+7,Classic Adaptation vs. Original Story,11,"American President, The (1995)",1,null,The American President is an original story without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,12,Dracula: Dead and Loving It (1995),2,midpoint,The movie parodies classic vampire lore but is a comedy-horror spoof rather than a direct adaptation.
+7,Classic Adaptation vs. Original Story,13,Balto (1995),1,null,Balto is based on a true story rather than a classic literary work.
+7,Classic Adaptation vs. Original Story,14,Nixon (1995),0,,"Nixon is a biographical drama based on the life of Richard Nixon, not adapted from a classic literary work."
+7,Classic Adaptation vs. Original Story,15,Cutthroat Island (1995),1,null,Cutthroat Island is an original story about pirates without being based on a classic literary work.
+7,Classic Adaptation vs. Original Story,16,Casino (1995),1,null,"Casino is an original story based on real events, not adapted from a classic work."
+7,Classic Adaptation vs. Original Story,17,Sense and Sensibility (1995),4,,The movie is an adaptation of Jane Austen's classic novel 'Sense and Sensibility'.
+7,Classic Adaptation vs. Original Story,18,Four Rooms (1995),0,,Four Rooms is an original story with no adaptation from classic literature.
+7,Classic Adaptation vs. Original Story,19,Ace Ventura: When Nature Calls (1995),0,,The movie is an original story without adaptation from any classic literature.
+7,Classic Adaptation vs. Original Story,20,Money Train (1995),1,null,Money Train is an original story without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,21,Get Shorty (1995),1,null,"'Get Shorty' is an original story about a loan shark entering the film industry, without being based on a classic work."
+7,Classic Adaptation vs. Original Story,22,Copycat (1995),1,null,'Copycat' is an original story without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,23,Assassins (1995),1,null,The movie 'Assassins' has an original narrative without being adapted from a classic work.
+7,Classic Adaptation vs. Original Story,24,Powder (1995),1,null,'Powder' is an original narrative without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,25,Leaving Las Vegas (1995),0,,The movie 'Leaving Las Vegas' is based on an original screenplay and not adapted from a classic literary work.
+7,Classic Adaptation vs. Original Story,26,Othello (1995),4,,"The movie is an adaptation of William Shakespeare's play 'Othello', a classic work."
+7,Classic Adaptation vs. Original Story,27,Now and Then (1995),1,null,Now and Then is an original narrative without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,28,Persuasion (1995),4,,Persuasion is an adaptation of Jane Austen's novel of the same name.
+7,Classic Adaptation vs. Original Story,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",1,null,The City of Lost Children is an original narrative without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),0,,Shanghai Triad is an original narrative set in 1930s Shanghai without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,31,Dangerous Minds (1995),1,null,The movie is based on a true story and does not adapt from classic literature.
+7,Classic Adaptation vs. Original Story,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),1,null,Twelve Monkeys is an original narrative without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,33,Wings of Courage (1995),1,null,Wings of Courage is a biographical drama based on real events rather than a classic literary work.
+7,Classic Adaptation vs. Original Story,34,Babe (1995),1,null,Babe is an original story without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,35,Carrington (1995),1,null,Carrington is a biographical drama without clear adaptation from a specific classic work.
+7,Classic Adaptation vs. Original Story,36,Dead Man Walking (1995),0,,Dead Man Walking is based on a true story and does not adapt from classic literature.
+7,Classic Adaptation vs. Original Story,37,Across the Sea of Time (1995),1,null,The movie is an original narrative about a young Russian immigrant's journey to America.
+7,Classic Adaptation vs. Original Story,38,It Takes Two (1995),1,null,It Takes Two is an original story without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,39,Clueless (1995),4,,"Clueless is a modern retelling of Jane Austen's novel Emma, making it a clear adaptation of a classic work."
+7,Classic Adaptation vs. Original Story,40,"Cry, the Beloved Country (1995)",3,midpoint,"The movie is based on Alan Paton's novel of the same name, which is a significant literary work but not necessarily a 'classic' in the traditional sense."
+7,Classic Adaptation vs. Original Story,41,Richard III (1995),4,,The movie is an adaptation of William Shakespeare's play Richard III.
+7,Classic Adaptation vs. Original Story,42,Dead Presidents (1995),0,,Dead Presidents is an original narrative about a young African American man's struggle post-Vietnam War.
+7,Classic Adaptation vs. Original Story,43,Restoration (1995),2,midpoint,"The movie is based on a novel by Rose Tremain, indicating it is an adaptation but not necessarily from a classic."
+7,Classic Adaptation vs. Original Story,44,Mortal Kombat (1995),1,null,"Mortal Kombat is based on a video game franchise, not a classic literary work."
+7,Classic Adaptation vs. Original Story,45,To Die For (1995),1,null,To Die For is an original story without adaptation from a classic work.
+7,Classic Adaptation vs. Original Story,46,How to Make an American Quilt (1995),1,null,The movie has an original narrative without being based on a classic literary work.
+7,Classic Adaptation vs. Original Story,47,Seven (a.k.a. Se7en) (1995),1,null,Seven is a psychological thriller with an original narrative.
+7,Classic Adaptation vs. Original Story,48,Pocahontas (1995),2,midpoint,"Pocahontas is based on historical events but heavily fictionalized, leaning towards an original narrative."
+7,Classic Adaptation vs. Original Story,49,When Night Is Falling (1995),1,null,The movie has an original narrative without being adapted from a classic work.
+7,Classic Adaptation vs. Original Story,50,"Usual Suspects, The (1995)",1,null,The Usual Suspects is an original story without adaptation from a classic work.
+8,Realism vs. Fantasy,1,Toy Story (1995),1,null,"The movie features toys coming to life, which is a clear fantastical element."
+8,Realism vs. Fantasy,2,Jumanji (1995),1,null,"The plot involves a magical board game that brings jungle adventures to life, which is a clear fantastical element."
+8,Realism vs. Fantasy,3,Grumpier Old Men (1995),2,midpoint,The movie focuses on everyday life and relationships but lacks deep social commentary.
+8,Realism vs. Fantasy,4,Waiting to Exhale (1995),4,,"The movie focuses on realistic personal and romantic struggles of the characters, providing social commentary."
+8,Realism vs. Fantasy,5,Father of the Bride Part II (1995),2,midpoint,The movie focuses on family dynamics and personal growth within a realistic setting.
+8,Realism vs. Fantasy,6,Heat (1995),4,,Heat (1995) is a crime thriller that explores realistic themes and character dynamics without fantastical elements.
+8,Realism vs. Fantasy,7,Sabrina (1995),2,midpoint,"The plot revolves around romantic and personal development themes without any fantastical elements, but it is still a genre-driven comedy romance."
+8,Realism vs. Fantasy,8,Tom and Huck (1995),3,midpoint,The film is an adventure set in historical small-town America but includes elements of youthful escapades that lean towards fantasy.
+8,Realism vs. Fantasy,9,Sudden Death (1995),3,midpoint,"The plot involves real-world threats like terrorism and explosions, but it also includes a highly dramatic and action-packed scenario typical of genre films."
+8,Realism vs. Fantasy,10,GoldenEye (1995),2,midpoint,The movie includes elements of espionage and action that are somewhat grounded in reality but also features exaggerated plot elements typical of the Bond franchise.
+8,Realism vs. Fantasy,11,"American President, The (1995)",4,,The American President focuses on political and personal dynamics grounded in reality.
+8,Realism vs. Fantasy,12,Dracula: Dead and Loving It (1995),1,null,"The movie is a comedy-horror spoof that parodies classic vampire lore, featuring fantastical elements."
+8,Realism vs. Fantasy,13,Balto (1995),2,midpoint,Balto is an animated film with elements of a true story but also includes anthropomorphized animals and adventures that lean towards fantasy.
+8,Realism vs. Fantasy,14,Nixon (1995),4,,"The movie is a biographical drama that focuses on the political career of Richard Nixon, providing a realistic portrayal of historical events and social commentary."
+8,Realism vs. Fantasy,15,Cutthroat Island (1995),2,midpoint,The movie features a historical setting with pirates but includes exaggerated action and adventure elements.
+8,Realism vs. Fantasy,16,Casino (1995),4,,"Casino is a realistic portrayal of the gambling and mafia underworld, focusing on themes of power, greed, and betrayal."
+8,Realism vs. Fantasy,17,Sense and Sensibility (1995),4,,The movie is a period drama that explores realistic themes of class and societal expectations.
+8,Realism vs. Fantasy,18,Four Rooms (1995),2,midpoint,"The movie features bizarre and outrageous events, leaning towards fantasy elements."
+8,Realism vs. Fantasy,19,Ace Ventura: When Nature Calls (1995),1,null,The movie features a fantastical plot with eccentric characters and zany antics.
+8,Realism vs. Fantasy,20,Money Train (1995),3,midpoint,"Money Train blends realism with elements of crime and drama, but also includes comedic and thrilling aspects."
+8,Realism vs. Fantasy,21,Get Shorty (1995),3,midpoint,"The movie blends realistic portrayals of Hollywood's inner workings with a crime plot, leaning towards realism but with comedic and fictionalized elements."
+8,Realism vs. Fantasy,22,Copycat (1995),3,midpoint,The movie involves a realistic crime investigation but includes elements of psychological thriller that may stretch into the fantastical.
+8,Realism vs. Fantasy,23,Assassins (1995),3,midpoint,"The movie focuses on real-world themes like crime and betrayal, but includes exaggerated action sequences typical of the genre."
+8,Realism vs. Fantasy,24,Powder (1995),2,midpoint,The movie includes supernatural elements but also explores themes of acceptance and understanding.
+8,Realism vs. Fantasy,25,Leaving Las Vegas (1995),4,,The movie explores themes of addiction and human connection in a realistic manner.
+8,Realism vs. Fantasy,26,Othello (1995),4,,"The movie is a dramatic adaptation of Shakespeare's play, focusing on human emotions and social dynamics without fantastical elements."
+8,Realism vs. Fantasy,27,Now and Then (1995),3,midpoint,The movie focuses on real-life themes and experiences without fantastical elements.
+8,Realism vs. Fantasy,28,Persuasion (1995),4,,The movie explores themes of societal norms and personal growth within a realistic historical context.
+8,Realism vs. Fantasy,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",1,null,The movie is a dark fantasy set in a surreal and dystopian world with fantastical elements.
+8,Realism vs. Fantasy,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),4,,"The movie explores themes of power and loyalty within the context of historical criminal organizations, grounded in social realities."
+8,Realism vs. Fantasy,31,Dangerous Minds (1995),4,,"The film explores themes of education, race, and empowerment, which are grounded in social realities."
+8,Realism vs. Fantasy,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),3,midpoint,The movie includes elements of science fiction such as time travel but also explores themes of mental health and societal issues.
+8,Realism vs. Fantasy,33,Wings of Courage (1995),3,midpoint,"The movie is a biographical drama focusing on real historical figures and their adventures, but includes elements of romance and adventure that lean slightly towards fantasy."
+8,Realism vs. Fantasy,34,Babe (1995),2,midpoint,"The movie features an anthropomorphic pig, which leans towards fantasy, but it also explores themes of acceptance and determination within a realistic farm setting."
+8,Realism vs. Fantasy,35,Carrington (1995),4,,"Carrington is a biographical drama that focuses on real historical figures and their societal context, aligning closely with realism."
+8,Realism vs. Fantasy,36,Dead Man Walking (1995),4,,The movie is based on a true story and explores deep social and ethical issues related to the justice system.
+8,Realism vs. Fantasy,37,Across the Sea of Time (1995),4,,"The movie combines documentary realism with a dramatic narrative about the immigrant experience, emphasizing social commentary."
+8,Realism vs. Fantasy,38,It Takes Two (1995),1,null,"The plot involves identical twins switching lives, which leans towards fantastical elements."
+8,Realism vs. Fantasy,39,Clueless (1995),3,midpoint,"Clueless is a modern retelling of a classic novel set in a realistic high school environment, but it includes exaggerated comedic elements."
+8,Realism vs. Fantasy,40,"Cry, the Beloved Country (1995)",4,,The film explores themes of racial injustice and social issues grounded in reality.
+8,Realism vs. Fantasy,41,Richard III (1995),4,,"The movie is a realistic adaptation of Shakespeare's play set in a modern context, focusing on political manipulation and social commentary."
+8,Realism vs. Fantasy,42,Dead Presidents (1995),4,,"The movie explores themes of race, poverty, and the impact of war on individuals and communities, grounding it in social realism."
+8,Realism vs. Fantasy,43,Restoration (1995),3,midpoint,"The movie is set in a historical context and deals with social and political issues, but it also includes elements of personal drama that may not be entirely realistic."
+8,Realism vs. Fantasy,44,Mortal Kombat (1995),1,null,"The plot involves a mystical tournament and supernatural forces, aligning more with fantasy elements."
+8,Realism vs. Fantasy,45,To Die For (1995),4,,To Die For is a realistic drama that explores themes of media obsession and the consequences of ambition.
+8,Realism vs. Fantasy,46,How to Make an American Quilt (1995),3,midpoint,The movie focuses on real-life experiences and relationships without fantastical elements.
+8,Realism vs. Fantasy,47,Seven (a.k.a. Se7en) (1995),4,,Seven is a psychological thriller grounded in realism with a focus on human nature and societal issues.
+8,Realism vs. Fantasy,48,Pocahontas (1995),2,midpoint,The movie includes both historical elements and fictionalized romantic and supernatural aspects.
+8,Realism vs. Fantasy,49,When Night Is Falling (1995),3,midpoint,The plot focuses on real human relationships and personal growth without fantastical elements.
+8,Realism vs. Fantasy,50,"Usual Suspects, The (1995)",3,midpoint,The Usual Suspects is a crime thriller that focuses on human characters and their actions without fantastical elements.
+9,Star Power vs. Ensemble Cast,1,Toy Story (1995),2,midpoint,"The movie features well-known voice actors like Tom Hanks and Tim Allen, but the focus is more on the ensemble cast of toys."
+9,Star Power vs. Ensemble Cast,2,Jumanji (1995),3,midpoint,The movie features Robin Williams as a prominent star but also includes other notable actors like Kirsten Dunst and Bonnie Hunt.
+9,Star Power vs. Ensemble Cast,3,Grumpier Old Men (1995),3,midpoint,"The movie features well-known actors Jack Lemmon and Walter Matthau, but the plot revolves around an ensemble cast including Sophia Loren."
+9,Star Power vs. Ensemble Cast,4,Waiting to Exhale (1995),3,midpoint,"The movie features several prominent actresses, creating a balanced ensemble cast."
+9,Star Power vs. Ensemble Cast,5,Father of the Bride Part II (1995),4,,"The movie stars well-known actors Steve Martin, Diane Keaton, and Martin Short, emphasizing star power."
+9,Star Power vs. Ensemble Cast,6,Heat (1995),3,midpoint,"The movie features two major stars, Robert De Niro and Al Pacino, but also gives significant screen time to other actors, balancing star power and ensemble cast."
+9,Star Power vs. Ensemble Cast,7,Sabrina (1995),4,,"The movie stars Harrison Ford, a famous actor, which elevates its star power."
+9,Star Power vs. Ensemble Cast,8,Tom and Huck (1995),2,midpoint,"The movie stars relatively lesser-known actors at the time, suggesting a lower emphasis on star power."
+9,Star Power vs. Ensemble Cast,9,Sudden Death (1995),3,midpoint,"The movie features Jean-Claude Van Damme as a prominent lead actor, but also includes other notable actors like Powers Boothe."
+9,Star Power vs. Ensemble Cast,10,GoldenEye (1995),4,,"The movie stars Pierce Brosnan as James Bond, a highly recognizable and famous actor."
+9,Star Power vs. Ensemble Cast,11,"American President, The (1995)",3,midpoint,"The movie stars Michael Douglas, a well-known actor, but also features other notable actors like Annette Bening and Martin Sheen, creating a balance."
+9,Star Power vs. Ensemble Cast,12,Dracula: Dead and Loving It (1995),3,midpoint,"The movie features notable actors like Leslie Nielsen and Mel Brooks, but the focus seems distributed among several characters."
+9,Star Power vs. Ensemble Cast,13,Balto (1995),2,midpoint,The movie features known actors like Kevin Bacon but the focus seems more on the ensemble of characters rather than individual star power.
+9,Star Power vs. Ensemble Cast,14,Nixon (1995),4,,"The movie stars Anthony Hopkins, a renowned actor, as Richard Nixon."
+9,Star Power vs. Ensemble Cast,15,Cutthroat Island (1995),3,midpoint,"The movie features notable actors like Geena Davis but also includes other prominent roles, suggesting a balanced cast."
+9,Star Power vs. Ensemble Cast,16,Casino (1995),4,,"The movie stars renowned actors Robert De Niro, Sharon Stone, and Joe Pesci, highlighting significant star power."
+9,Star Power vs. Ensemble Cast,17,Sense and Sensibility (1995),2,midpoint,The movie features multiple prominent actors without a single dominant star presence.
+9,Star Power vs. Ensemble Cast,18,Four Rooms (1995),2,midpoint,"The movie features multiple segments directed by different directors, each with their own set of characters, suggesting an ensemble cast."
+9,Star Power vs. Ensemble Cast,19,Ace Ventura: When Nature Calls (1995),4,,"The movie prominently features Jim Carrey, a well-known actor, in the lead role."
+9,Star Power vs. Ensemble Cast,20,Money Train (1995),3,midpoint,"The movie features notable actors like Wesley Snipes and Woody Harrelson, but the plot revolves around both of them equally, suggesting a more ensemble-like dynamic."
+9,Star Power vs. Ensemble Cast,21,Get Shorty (1995),3,midpoint,"The movie features notable actors like John Travolta, but also includes other prominent names like Gene Hackman and Rene Russo, suggesting a balanced cast."
+9,Star Power vs. Ensemble Cast,22,Copycat (1995),3,midpoint,"The movie stars Sigourney Weaver and Holly Hunter, indicating some star power, but the plot suggests a more balanced focus between characters."
+9,Star Power vs. Ensemble Cast,23,Assassins (1995),3,midpoint,The movie features notable actors like Sylvester Stallone and Antonio Banderas but does not solely revolve around star power.
+9,Star Power vs. Ensemble Cast,24,Powder (1995),2,midpoint,"The movie features known actors like Jeff Goldblum but focuses on the lead character played by Sean Patrick Flanery, who was relatively unknown at the time."
+9,Star Power vs. Ensemble Cast,25,Leaving Las Vegas (1995),4,,"The movie stars Nicolas Cage, a well-known actor, which contributes to its star power."
+9,Star Power vs. Ensemble Cast,26,Othello (1995),3,midpoint,"The movie features notable actors like Lawrence Fishburne and Kenneth Branagh, but the focus seems distributed among several key characters."
+9,Star Power vs. Ensemble Cast,27,Now and Then (1995),2,midpoint,The movie features several known actors but does not heavily rely on a single star's presence.
+9,Star Power vs. Ensemble Cast,28,Persuasion (1995),2,midpoint,The movie features several actors without a single dominant star presence.
+9,Star Power vs. Ensemble Cast,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",2,midpoint,The movie features actors that are not universally recognized as major stars.
+9,Star Power vs. Ensemble Cast,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),2,midpoint,"The movie features Gong Li, a notable actress, but also includes other actors without as much star power."
+9,Star Power vs. Ensemble Cast,31,Dangerous Minds (1995),4,,"The movie stars Michelle Pfeiffer, a well-known actress, which indicates significant star power."
+9,Star Power vs. Ensemble Cast,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),3,midpoint,"The movie features well-known actors like Bruce Willis and Brad Pitt, but the plot involves an ensemble cast contributing to the narrative."
+9,Star Power vs. Ensemble Cast,33,Wings of Courage (1995),2,midpoint,"The movie stars Craig Sheffer, Val Kilmer, and Elizabeth McGovern, indicating some star power but not at a level that would dominate the film."
+9,Star Power vs. Ensemble Cast,34,Babe (1995),2,midpoint,The movie features some known actors but does not heavily rely on star power.
+9,Star Power vs. Ensemble Cast,35,Carrington (1995),3,midpoint,"The movie stars Emma Thompson, a well-known actress, but also features other notable actors, suggesting a balance between star power and ensemble cast."
+9,Star Power vs. Ensemble Cast,36,Dead Man Walking (1995),3,midpoint,"The movie features prominent actors Susan Sarandon and Sean Penn, but the focus is more on their collaborative performance rather than individual star power."
+9,Star Power vs. Ensemble Cast,37,Across the Sea of Time (1995),1,not_applicable,The movie stars lesser-known actors and focuses more on the ensemble cast of characters surrounding Tomas's journey.
+9,Star Power vs. Ensemble Cast,38,It Takes Two (1995),2,midpoint,"The movie stars Kirstie Alley and Steve Guttenberg, but also focuses on the Olsen twins, suggesting a mix of star power and ensemble elements."
+9,Star Power vs. Ensemble Cast,39,Clueless (1995),3,midpoint,Clueless features Alicia Silverstone as the lead but also highlights contributions from other notable actors like Stacey Dash and Brittany Murphy.
+9,Star Power vs. Ensemble Cast,40,"Cry, the Beloved Country (1995)",3,midpoint,"The movie features notable actors like James Earl Jones and Richard Harris, but the focus seems more on the ensemble cast and the collective storytelling."
+9,Star Power vs. Ensemble Cast,41,Richard III (1995),4,,"Ian McKellen, a renowned actor, stars as the central character Richard III."
+9,Star Power vs. Ensemble Cast,42,Dead Presidents (1995),2,midpoint,The movie features a cast with notable actors but does not prominently feature a single star.
+9,Star Power vs. Ensemble Cast,43,Restoration (1995),2,midpoint,"The movie features notable actors like Robert Downey Jr., but the plot revolves around an ensemble cast of characters in the royal court."
+9,Star Power vs. Ensemble Cast,44,Mortal Kombat (1995),2,midpoint,"The movie features a group of characters, none of whom are particularly high-profile stars."
+9,Star Power vs. Ensemble Cast,45,To Die For (1995),3,midpoint,"The movie features notable actors like Nicole Kidman, Matt Dillon, and Joaquin Phoenix, but none dominate the star power."
+9,Star Power vs. Ensemble Cast,46,How to Make an American Quilt (1995),2,midpoint,The movie features several well-known actresses but does not heavily focus on a single star's presence.
+9,Star Power vs. Ensemble Cast,47,Seven (a.k.a. Se7en) (1995),4,,"The movie stars well-known actors Brad Pitt, Morgan Freeman, and Kevin Spacey."
+9,Star Power vs. Ensemble Cast,48,Pocahontas (1995),2,midpoint,"The movie features notable actors like Mel Gibson but focuses primarily on the character of Pocahontas voiced by Irene Bedard, suggesting a mix of star power and ensemble elements."
+9,Star Power vs. Ensemble Cast,49,When Night Is Falling (1995),2,midpoint,"The movie stars lesser-known actors, suggesting a lower emphasis on star power."
+9,Star Power vs. Ensemble Cast,50,"Usual Suspects, The (1995)",3,midpoint,The Usual Suspects features multiple prominent actors without a single star dominating the cast.
+10,Adventure vs. Drama,1,Toy Story (1995),3,midpoint,"The plot involves adventures and challenges faced by the toys, but also emphasizes character development and relationships."
+10,Adventure vs. Drama,2,Jumanji (1995),4,,"The plot involves a magical board game that unleashes dangerous and adventurous challenges, aligning closely with adventure themes."
+10,Adventure vs. Drama,3,Grumpier Old Men (1995),1,null,The plot focuses on character relationships and romantic comedy elements without adventurous themes.
+10,Adventure vs. Drama,4,Waiting to Exhale (1995),1,null,The movie focuses on dramatic storytelling and character development without any adventurous elements.
+10,Adventure vs. Drama,5,Father of the Bride Part II (1995),1,null,The plot focuses on family drama and personal adjustment rather than adventurous themes.
+10,Adventure vs. Drama,6,Heat (1995),2,midpoint,The plot focuses more on the dynamic between the characters rather than adventurous elements.
+10,Adventure vs. Drama,7,Sabrina (1995),1,null,The plot focuses on romantic and personal development themes without adventurous elements.
+10,Adventure vs. Drama,8,Tom and Huck (1995),3,midpoint,"The movie includes elements of both adventure and drama, featuring adventures while also exploring themes of friendship and loyalty."
+10,Adventure vs. Drama,9,Sudden Death (1995),3,midpoint,"The plot involves a high-stakes, action-packed scenario with elements of survival and adventure, but also has a focus on the protagonist's personal stakes and dramatic tension."
+10,Adventure vs. Drama,10,GoldenEye (1995),4,,"The movie features intense action sequences, thrilling chase scenes, and a climactic showdown, aligning closely with adventurous themes."
+10,Adventure vs. Drama,11,"American President, The (1995)",1,null,The plot focuses on dramatic storytelling and character development within a political context.
+10,Adventure vs. Drama,12,Dracula: Dead and Loving It (1995),1,null,The movie is primarily a comedy-horror spoof with minimal adventurous elements.
+10,Adventure vs. Drama,13,Balto (1995),4,,Balto is an animated adventure film that focuses on a treacherous journey and survival in a remote Alaskan setting.
+10,Adventure vs. Drama,14,Nixon (1995),1,null,The movie is a biographical drama focusing on character development and political storytelling.
+10,Adventure vs. Drama,15,Cutthroat Island (1995),4,,"The plot involves a high-seas treasure hunt with obstacles like rival pirates and treacherous waters, aligning closely with adventurous themes."
+10,Adventure vs. Drama,16,Casino (1995),1,null,The plot focuses on dramatic storytelling and character development within the crime genre.
+10,Adventure vs. Drama,17,Sense and Sensibility (1995),1,null,The movie focuses on dramatic storytelling and character development within the context of romantic and societal themes.
+10,Adventure vs. Drama,18,Four Rooms (1995),1,null,"The plot summary indicates a focus on quirky characters and absurd situations within a comedic context, rather than adventurous or survival themes."
+10,Adventure vs. Drama,19,Ace Ventura: When Nature Calls (1995),3,midpoint,"The movie involves an adventurous journey to Africa to recover a sacred bat, blending elements of adventure with its comedic style."
+10,Adventure vs. Drama,20,Money Train (1995),2,midpoint,The movie blends elements of action and drama without a clear focus on adventurous or survival themes.
+10,Adventure vs. Drama,21,Get Shorty (1995),2,midpoint,"The plot involves navigating the film industry with elements of crime and humor, but lacks significant adventurous or survival themes."
+10,Adventure vs. Drama,22,Copycat (1995),2,midpoint,The movie involves elements of survival and a chase but is primarily focused on psychological drama and character confrontation.
+10,Adventure vs. Drama,23,Assassins (1995),2,midpoint,The movie includes action-packed sequences but focuses more on the rivalry and dynamics between characters.
+10,Adventure vs. Drama,24,Powder (1995),1,null,The movie focuses on dramatic storytelling and character development rather than adventurous themes.
+10,Adventure vs. Drama,25,Leaving Las Vegas (1995),1,null,"The plot focuses on dramatic storytelling and character development, aligning closely with the drama pole."
+10,Adventure vs. Drama,26,Othello (1995),1,null,"The plot revolves around betrayal, jealousy, and revenge, which aligns more with dramatic storytelling."
+10,Adventure vs. Drama,27,Now and Then (1995),1,null,The movie focuses on dramatic storytelling and character development without significant adventurous elements.
+10,Adventure vs. Drama,28,Persuasion (1995),1,null,The movie focuses on dramatic storytelling and character development typical of Jane Austen adaptations.
+10,Adventure vs. Drama,29,"City of Lost Children, The (Cité des enfants perdus, La) (1995)",3,midpoint,"The movie includes elements of both adventure and drama, with a strong emphasis on surreal storytelling and character rescue."
+10,Adventure vs. Drama,30,Shanghai Triad (Yao a yao yao dao waipo qiao) (1995),1,null,The plot focuses on dramatic storytelling and character development within the criminal underworld.
+10,Adventure vs. Drama,31,Dangerous Minds (1995),1,null,The plot focuses on dramatic storytelling and character development within an educational setting.
+10,Adventure vs. Drama,32,Twelve Monkeys (a.k.a. 12 Monkeys) (1995),3,midpoint,"The film involves time travel and a mission to gather information, which leans towards adventure, but also has significant elements of drama and psychological complexity."
+10,Adventure vs. Drama,33,Wings of Courage (1995),4,,The movie features themes of daring adventures and pushing the boundaries of flight.
+10,Adventure vs. Drama,34,Babe (1995),1,null,Babe is a heartwarming family film focused on character development and emotional themes.
+10,Adventure vs. Drama,35,Carrington (1995),1,null,The movie focuses on dramatic storytelling and character development within a romantic and societal context.
+10,Adventure vs. Drama,36,Dead Man Walking (1995),1,null,The movie focuses on dramatic storytelling and character development related to themes of redemption and justice.
+10,Adventure vs. Drama,37,Across the Sea of Time (1995),2,midpoint,"The movie combines elements of drama and documentary, focusing more on the immigrant experience and cultural diversity than on adventurous themes."
+10,Adventure vs. Drama,38,It Takes Two (1995),1,null,The plot focuses on character development and emotional growth within a family context.
+10,Adventure vs. Drama,39,Clueless (1995),1,not_applicable,Clueless focuses on dramatic storytelling and character development within a high school setting.
+10,Adventure vs. Drama,40,"Cry, the Beloved Country (1995)",1,null,The movie focuses on dramatic storytelling and character development within the context of apartheid-era South Africa.
+10,Adventure vs. Drama,41,Richard III (1995),1,null,The movie focuses on dramatic storytelling and character development within a political and historical context.
+10,Adventure vs. Drama,42,Dead Presidents (1995),2,midpoint,"The movie includes elements of action and a heist plot but focuses more on the dramatic themes of reintegration, discrimination, and the impact of war."
+10,Adventure vs. Drama,43,Restoration (1995),1,null,The plot focuses on dramatic storytelling and character development within a historical setting.
+10,Adventure vs. Drama,44,Mortal Kombat (1995),4,,The plot involves a group of warriors competing in an adventurous tournament with supernatural elements.
+10,Adventure vs. Drama,45,To Die For (1995),1,null,The movie focuses on dramatic storytelling and character development related to media obsession and ambition.
+10,Adventure vs. Drama,46,How to Make an American Quilt (1995),1,null,The movie focuses on dramatic storytelling and character development through the lens of personal growth and relationships.
+10,Adventure vs. Drama,47,Seven (a.k.a. Se7en) (1995),1,null,Seven focuses on dramatic storytelling and character development within a thriller setting.
+10,Adventure vs. Drama,48,Pocahontas (1995),2,midpoint,"The movie includes elements of both drama and adventure, but leans slightly towards drama with its focus on character relationships and cultural conflicts."
+10,Adventure vs. Drama,49,When Night Is Falling (1995),1,null,The movie is a romantic drama focusing on character development and relationships.
+10,Adventure vs. Drama,50,"Usual Suspects, The (1995)",1,null,The Usual Suspects focuses on dramatic storytelling and complex character development within a crime thriller setting.
