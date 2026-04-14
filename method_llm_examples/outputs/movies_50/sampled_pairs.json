@@ -1,0 +1,702 @@
+[
+  {
+    "pair_id": 0,
+    "option_a_id": "16",
+    "option_b_id": "17",
+    "distance_stratum": "near",
+    "cosine_distance": 0.910111
+  },
+  {
+    "pair_id": 1,
+    "option_a_id": "26",
+    "option_b_id": "43",
+    "distance_stratum": "near",
+    "cosine_distance": 0.961824
+  },
+  {
+    "pair_id": 2,
+    "option_a_id": "34",
+    "option_b_id": "50",
+    "distance_stratum": "near",
+    "cosine_distance": 0.970187
+  },
+  {
+    "pair_id": 3,
+    "option_a_id": "24",
+    "option_b_id": "38",
+    "distance_stratum": "near",
+    "cosine_distance": 0.878591
+  },
+  {
+    "pair_id": 4,
+    "option_a_id": "31",
+    "option_b_id": "4",
+    "distance_stratum": "near",
+    "cosine_distance": 0.885581
+  },
+  {
+    "pair_id": 5,
+    "option_a_id": "24",
+    "option_b_id": "33",
+    "distance_stratum": "near",
+    "cosine_distance": 0.916667
+  },
+  {
+    "pair_id": 6,
+    "option_a_id": "31",
+    "option_b_id": "49",
+    "distance_stratum": "near",
+    "cosine_distance": 0.940017
+  },
+  {
+    "pair_id": 7,
+    "option_a_id": "19",
+    "option_b_id": "38",
+    "distance_stratum": "near",
+    "cosine_distance": 0.981698
+  },
+  {
+    "pair_id": 8,
+    "option_a_id": "18",
+    "option_b_id": "49",
+    "distance_stratum": "near",
+    "cosine_distance": 0.968954
+  },
+  {
+    "pair_id": 9,
+    "option_a_id": "15",
+    "option_b_id": "19",
+    "distance_stratum": "near",
+    "cosine_distance": 0.971193
+  },
+  {
+    "pair_id": 10,
+    "option_a_id": "19",
+    "option_b_id": "45",
+    "distance_stratum": "near",
+    "cosine_distance": 0.98845
+  },
+  {
+    "pair_id": 11,
+    "option_a_id": "41",
+    "option_b_id": "43",
+    "distance_stratum": "near",
+    "cosine_distance": 0.917435
+  },
+  {
+    "pair_id": 12,
+    "option_a_id": "16",
+    "option_b_id": "43",
+    "distance_stratum": "near",
+    "cosine_distance": 0.974724
+  },
+  {
+    "pair_id": 13,
+    "option_a_id": "45",
+    "option_b_id": "6",
+    "distance_stratum": "near",
+    "cosine_distance": 0.991852
+  },
+  {
+    "pair_id": 14,
+    "option_a_id": "28",
+    "option_b_id": "7",
+    "distance_stratum": "near",
+    "cosine_distance": 0.945673
+  },
+  {
+    "pair_id": 15,
+    "option_a_id": "36",
+    "option_b_id": "6",
+    "distance_stratum": "near",
+    "cosine_distance": 0.952802
+  },
+  {
+    "pair_id": 16,
+    "option_a_id": "20",
+    "option_b_id": "45",
+    "distance_stratum": "near",
+    "cosine_distance": 0.95081
+  },
+  {
+    "pair_id": 17,
+    "option_a_id": "10",
+    "option_b_id": "5",
+    "distance_stratum": "near",
+    "cosine_distance": 0.965835
+  },
+  {
+    "pair_id": 18,
+    "option_a_id": "14",
+    "option_b_id": "35",
+    "distance_stratum": "near",
+    "cosine_distance": 0.836997
+  },
+  {
+    "pair_id": 19,
+    "option_a_id": "13",
+    "option_b_id": "40",
+    "distance_stratum": "near",
+    "cosine_distance": 0.954883
+  },
+  {
+    "pair_id": 20,
+    "option_a_id": "11",
+    "option_b_id": "16",
+    "distance_stratum": "near",
+    "cosine_distance": 0.900621
+  },
+  {
+    "pair_id": 21,
+    "option_a_id": "32",
+    "option_b_id": "37",
+    "distance_stratum": "near",
+    "cosine_distance": 0.993935
+  },
+  {
+    "pair_id": 22,
+    "option_a_id": "14",
+    "option_b_id": "37",
+    "distance_stratum": "near",
+    "cosine_distance": 0.974757
+  },
+  {
+    "pair_id": 23,
+    "option_a_id": "19",
+    "option_b_id": "2",
+    "distance_stratum": "near",
+    "cosine_distance": 0.966527
+  },
+  {
+    "pair_id": 24,
+    "option_a_id": "14",
+    "option_b_id": "43",
+    "distance_stratum": "near",
+    "cosine_distance": 0.973377
+  },
+  {
+    "pair_id": 25,
+    "option_a_id": "33",
+    "option_b_id": "46",
+    "distance_stratum": "near",
+    "cosine_distance": 0.9783
+  },
+  {
+    "pair_id": 26,
+    "option_a_id": "27",
+    "option_b_id": "4",
+    "distance_stratum": "near",
+    "cosine_distance": 0.918399
+  },
+  {
+    "pair_id": 27,
+    "option_a_id": "31",
+    "option_b_id": "39",
+    "distance_stratum": "near",
+    "cosine_distance": 0.959459
+  },
+  {
+    "pair_id": 28,
+    "option_a_id": "25",
+    "option_b_id": "4",
+    "distance_stratum": "near",
+    "cosine_distance": 0.94968
+  },
+  {
+    "pair_id": 29,
+    "option_a_id": "24",
+    "option_b_id": "34",
+    "distance_stratum": "near",
+    "cosine_distance": 0.852711
+  },
+  {
+    "pair_id": 30,
+    "option_a_id": "16",
+    "option_b_id": "35",
+    "distance_stratum": "near",
+    "cosine_distance": 0.938879
+  },
+  {
+    "pair_id": 31,
+    "option_a_id": "12",
+    "option_b_id": "18",
+    "distance_stratum": "near",
+    "cosine_distance": 0.922149
+  },
+  {
+    "pair_id": 32,
+    "option_a_id": "2",
+    "option_b_id": "44",
+    "distance_stratum": "near",
+    "cosine_distance": 0.754741
+  },
+  {
+    "pair_id": 33,
+    "option_a_id": "10",
+    "option_b_id": "41",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.02184
+  },
+  {
+    "pair_id": 34,
+    "option_a_id": "36",
+    "option_b_id": "44",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.03581
+  },
+  {
+    "pair_id": 35,
+    "option_a_id": "45",
+    "option_b_id": "5",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.050227
+  },
+  {
+    "pair_id": 36,
+    "option_a_id": "14",
+    "option_b_id": "33",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.026614
+  },
+  {
+    "pair_id": 37,
+    "option_a_id": "10",
+    "option_b_id": "13",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.012606
+  },
+  {
+    "pair_id": 38,
+    "option_a_id": "10",
+    "option_b_id": "34",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.006699
+  },
+  {
+    "pair_id": 39,
+    "option_a_id": "37",
+    "option_b_id": "9",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.022286
+  },
+  {
+    "pair_id": 40,
+    "option_a_id": "42",
+    "option_b_id": "46",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.028727
+  },
+  {
+    "pair_id": 41,
+    "option_a_id": "39",
+    "option_b_id": "45",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.042964
+  },
+  {
+    "pair_id": 42,
+    "option_a_id": "40",
+    "option_b_id": "44",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.031081
+  },
+  {
+    "pair_id": 43,
+    "option_a_id": "21",
+    "option_b_id": "4",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.004288
+  },
+  {
+    "pair_id": 44,
+    "option_a_id": "40",
+    "option_b_id": "9",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.031714
+  },
+  {
+    "pair_id": 45,
+    "option_a_id": "22",
+    "option_b_id": "37",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.027719
+  },
+  {
+    "pair_id": 46,
+    "option_a_id": "25",
+    "option_b_id": "43",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.00876
+  },
+  {
+    "pair_id": 47,
+    "option_a_id": "14",
+    "option_b_id": "4",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.030488
+  },
+  {
+    "pair_id": 48,
+    "option_a_id": "34",
+    "option_b_id": "7",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.014584
+  },
+  {
+    "pair_id": 49,
+    "option_a_id": "25",
+    "option_b_id": "44",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.049861
+  },
+  {
+    "pair_id": 50,
+    "option_a_id": "17",
+    "option_b_id": "43",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.009508
+  },
+  {
+    "pair_id": 51,
+    "option_a_id": "46",
+    "option_b_id": "48",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.033607
+  },
+  {
+    "pair_id": 52,
+    "option_a_id": "11",
+    "option_b_id": "23",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.997957
+  },
+  {
+    "pair_id": 53,
+    "option_a_id": "1",
+    "option_b_id": "9",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.012998
+  },
+  {
+    "pair_id": 54,
+    "option_a_id": "23",
+    "option_b_id": "37",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.004362
+  },
+  {
+    "pair_id": 55,
+    "option_a_id": "38",
+    "option_b_id": "50",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.027699
+  },
+  {
+    "pair_id": 56,
+    "option_a_id": "23",
+    "option_b_id": "39",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.028076
+  },
+  {
+    "pair_id": 57,
+    "option_a_id": "12",
+    "option_b_id": "22",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.999933
+  },
+  {
+    "pair_id": 58,
+    "option_a_id": "33",
+    "option_b_id": "5",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.998819
+  },
+  {
+    "pair_id": 59,
+    "option_a_id": "19",
+    "option_b_id": "49",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.047855
+  },
+  {
+    "pair_id": 60,
+    "option_a_id": "12",
+    "option_b_id": "37",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.022658
+  },
+  {
+    "pair_id": 61,
+    "option_a_id": "26",
+    "option_b_id": "33",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.022672
+  },
+  {
+    "pair_id": 62,
+    "option_a_id": "48",
+    "option_b_id": "50",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.0055
+  },
+  {
+    "pair_id": 63,
+    "option_a_id": "2",
+    "option_b_id": "25",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.044443
+  },
+  {
+    "pair_id": 64,
+    "option_a_id": "13",
+    "option_b_id": "36",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.027199
+  },
+  {
+    "pair_id": 65,
+    "option_a_id": "14",
+    "option_b_id": "20",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.033473
+  },
+  {
+    "pair_id": 66,
+    "option_a_id": "22",
+    "option_b_id": "48",
+    "distance_stratum": "far",
+    "cosine_distance": 1.067337
+  },
+  {
+    "pair_id": 67,
+    "option_a_id": "28",
+    "option_b_id": "31",
+    "distance_stratum": "far",
+    "cosine_distance": 1.089468
+  },
+  {
+    "pair_id": 68,
+    "option_a_id": "17",
+    "option_b_id": "22",
+    "distance_stratum": "far",
+    "cosine_distance": 1.080244
+  },
+  {
+    "pair_id": 69,
+    "option_a_id": "22",
+    "option_b_id": "4",
+    "distance_stratum": "far",
+    "cosine_distance": 1.068447
+  },
+  {
+    "pair_id": 70,
+    "option_a_id": "19",
+    "option_b_id": "28",
+    "distance_stratum": "far",
+    "cosine_distance": 1.081534
+  },
+  {
+    "pair_id": 71,
+    "option_a_id": "37",
+    "option_b_id": "50",
+    "distance_stratum": "far",
+    "cosine_distance": 1.066537
+  },
+  {
+    "pair_id": 72,
+    "option_a_id": "20",
+    "option_b_id": "26",
+    "distance_stratum": "far",
+    "cosine_distance": 1.114075
+  },
+  {
+    "pair_id": 73,
+    "option_a_id": "31",
+    "option_b_id": "35",
+    "distance_stratum": "far",
+    "cosine_distance": 1.059171
+  },
+  {
+    "pair_id": 74,
+    "option_a_id": "11",
+    "option_b_id": "31",
+    "distance_stratum": "far",
+    "cosine_distance": 1.094904
+  },
+  {
+    "pair_id": 75,
+    "option_a_id": "44",
+    "option_b_id": "8",
+    "distance_stratum": "far",
+    "cosine_distance": 1.104015
+  },
+  {
+    "pair_id": 76,
+    "option_a_id": "11",
+    "option_b_id": "8",
+    "distance_stratum": "far",
+    "cosine_distance": 1.13807
+  },
+  {
+    "pair_id": 77,
+    "option_a_id": "32",
+    "option_b_id": "35",
+    "distance_stratum": "far",
+    "cosine_distance": 1.129076
+  },
+  {
+    "pair_id": 78,
+    "option_a_id": "10",
+    "option_b_id": "47",
+    "distance_stratum": "far",
+    "cosine_distance": 1.077621
+  },
+  {
+    "pair_id": 79,
+    "option_a_id": "20",
+    "option_b_id": "3",
+    "distance_stratum": "far",
+    "cosine_distance": 1.137578
+  },
+  {
+    "pair_id": 80,
+    "option_a_id": "10",
+    "option_b_id": "30",
+    "distance_stratum": "far",
+    "cosine_distance": 1.070551
+  },
+  {
+    "pair_id": 81,
+    "option_a_id": "40",
+    "option_b_id": "49",
+    "distance_stratum": "far",
+    "cosine_distance": 1.0638
+  },
+  {
+    "pair_id": 82,
+    "option_a_id": "17",
+    "option_b_id": "5",
+    "distance_stratum": "far",
+    "cosine_distance": 1.098366
+  },
+  {
+    "pair_id": 83,
+    "option_a_id": "13",
+    "option_b_id": "28",
+    "distance_stratum": "far",
+    "cosine_distance": 1.085847
+  },
+  {
+    "pair_id": 84,
+    "option_a_id": "12",
+    "option_b_id": "27",
+    "distance_stratum": "far",
+    "cosine_distance": 1.123474
+  },
+  {
+    "pair_id": 85,
+    "option_a_id": "13",
+    "option_b_id": "25",
+    "distance_stratum": "far",
+    "cosine_distance": 1.083145
+  },
+  {
+    "pair_id": 86,
+    "option_a_id": "2",
+    "option_b_id": "4",
+    "distance_stratum": "far",
+    "cosine_distance": 1.070584
+  },
+  {
+    "pair_id": 87,
+    "option_a_id": "31",
+    "option_b_id": "50",
+    "distance_stratum": "far",
+    "cosine_distance": 1.055115
+  },
+  {
+    "pair_id": 88,
+    "option_a_id": "17",
+    "option_b_id": "50",
+    "distance_stratum": "far",
+    "cosine_distance": 1.097042
+  },
+  {
+    "pair_id": 89,
+    "option_a_id": "18",
+    "option_b_id": "28",
+    "distance_stratum": "far",
+    "cosine_distance": 1.135188
+  },
+  {
+    "pair_id": 90,
+    "option_a_id": "30",
+    "option_b_id": "39",
+    "distance_stratum": "far",
+    "cosine_distance": 1.054981
+  },
+  {
+    "pair_id": 91,
+    "option_a_id": "16",
+    "option_b_id": "24",
+    "distance_stratum": "far",
+    "cosine_distance": 1.092881
+  },
+  {
+    "pair_id": 92,
+    "option_a_id": "12",
+    "option_b_id": "35",
+    "distance_stratum": "far",
+    "cosine_distance": 1.079318
+  },
+  {
+    "pair_id": 93,
+    "option_a_id": "14",
+    "option_b_id": "19",
+    "distance_stratum": "far",
+    "cosine_distance": 1.073639
+  },
+  {
+    "pair_id": 94,
+    "option_a_id": "12",
+    "option_b_id": "17",
+    "distance_stratum": "far",
+    "cosine_distance": 1.060137
+  },
+  {
+    "pair_id": 95,
+    "option_a_id": "34",
+    "option_b_id": "37",
+    "distance_stratum": "far",
+    "cosine_distance": 1.098256
+  },
+  {
+    "pair_id": 96,
+    "option_a_id": "39",
+    "option_b_id": "50",
+    "distance_stratum": "far",
+    "cosine_distance": 1.055133
+  },
+  {
+    "pair_id": 97,
+    "option_a_id": "32",
+    "option_b_id": "38",
+    "distance_stratum": "far",
+    "cosine_distance": 1.141589
+  },
+  {
+    "pair_id": 98,
+    "option_a_id": "43",
+    "option_b_id": "8",
+    "distance_stratum": "far",
+    "cosine_distance": 1.128071
+  },
+  {
+    "pair_id": 99,
+    "option_a_id": "26",
+    "option_b_id": "31",
+    "distance_stratum": "far",
+    "cosine_distance": 1.116822
+  }
+]

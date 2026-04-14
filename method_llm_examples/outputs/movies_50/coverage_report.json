@@ -1,0 +1,19 @@
+{
+  "total_reasons": 1000,
+  "coverage_threshold": 0.4,
+  "covered_count": 1000,
+  "coverage_rate": 1.0,
+  "orphan_count": 0,
+  "top_orphans": [],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Maturity of Themes",
+      "total_reasons_assigned": 1000,
+      "low_pole_count": 578,
+      "high_pole_count": 422,
+      "low_pole_fraction": 0.578,
+      "high_pole_fraction": 0.422
+    }
+  ]
+}

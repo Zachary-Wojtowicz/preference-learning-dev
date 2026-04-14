@@ -1,0 +1,32 @@
+{
+  "domain": "Film Preferences",
+  "choice_context": "Choosing between movies based on thematic content and style",
+  "reasoning": "Identifying bipolar axes that reflect genuine disagreements among viewers regarding film preferences.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Maturity of Themes",
+      "low_pole": {
+        "label": "Light-hearted",
+        "description": "Preference for films with simpler, more straightforward themes and lighter subject matter.",
+        "typical_person": "Someone who enjoys feel-good stories without deep psychological or societal implications."
+      },
+      "high_pole": {
+        "label": "Complex and Mature",
+        "description": "Preference for films that explore deeper, often darker themes such as power, greed, and betrayal.",
+        "typical_person": "Someone who appreciates narratives that delve into complex human behaviors and societal issues."
+      },
+      "example_contrast": {
+        "low_option": "A romantic comedy",
+        "high_option": "A crime drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score based on the depth and complexity of themes explored in the film.",
+      "subsumed_reasons": [
+        1
+      ]
+    }
+  ],
+  "redundancy_check": []
+}

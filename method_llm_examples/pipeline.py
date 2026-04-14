@@ -269,13 +269,14 @@ def elicit_reasons(pairs, options_lookup, config, client, model, max_workers, re
 # Stage 3 — Embed and Cluster Reasons
 # ===================================================================
 
-def embed_texts(texts, client, model, batch_size=100):
+def embed_texts(texts, client, model, embedding_client=None, batch_size=100):
     """Embed a list of texts using the OpenAI embeddings API."""
-    is_pool = isinstance(client, ClientPool)
+    emb_client = embedding_client if embedding_client is not None else client
+    is_pool = isinstance(emb_client, ClientPool)
     all_embeddings = []
     for start in range(0, len(texts), batch_size):
         batch = texts[start:start + batch_size]
-        resolved = client.next() if is_pool else client
+        resolved = emb_client.next() if is_pool else emb_client
         resp = resolved.embeddings.create(model=model, input=batch)
         batch_embeddings = [item.embedding for item in resp.data]
         all_embeddings.extend(batch_embeddings)
@@ -285,13 +286,13 @@ def embed_texts(texts, client, model, batch_size=100):
     return np.array(all_embeddings)
 
 
-def cluster_reasons(reasons, client, embedding_model, num_clusters, distance_threshold):
+def cluster_reasons(reasons, client, embedding_model, num_clusters, distance_threshold, embedding_client=None):
     """Embed reason texts, cluster them, and return cluster representatives."""
     from sklearn.cluster import AgglomerativeClustering
 
     texts = [r["reason_text"] for r in reasons]
     print(f"[cluster] Embedding {len(texts)} reasons...", flush=True)
-    embeddings = embed_texts(texts, client, embedding_model)
+    embeddings = embed_texts(texts, client, embedding_model, embedding_client=embedding_client)
 
     # Normalize to unit length
     norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
@@ -466,7 +467,7 @@ def condense_dimensions(clusters, config, client, model, num_dimensions):
 # Stage 5 — Validate Coverage
 # ===================================================================
 
-def validate_coverage(reasons, reason_embeddings, dimensions, client, embedding_model, threshold=0.4):
+def validate_coverage(reasons, reason_embeddings, dimensions, client, embedding_model, threshold=0.4, embedding_client=None):
     """Check that dimensions collectively account for the reason pool."""
 
     # Embed dimension pole descriptions
@@ -479,7 +480,7 @@ def validate_coverage(reasons, reason_embeddings, dimensions, client, embedding_
         dim_pole_map.append((i, "high"))
 
     print(f"[coverage] Embedding {len(pole_texts)} dimension pole descriptions...", flush=True)
-    pole_embeddings = embed_texts(pole_texts, client, embedding_model)
+    pole_embeddings = embed_texts(pole_texts, client, embedding_model, embedding_client=embedding_client)
 
     # Normalize
     norms = np.linalg.norm(pole_embeddings, axis=1, keepdims=True)
@@ -659,6 +660,7 @@ def parse_args():
     parser.add_argument("--model", required=True, help="LLM model name")
     parser.add_argument("--api-key", help="API key")
     parser.add_argument("--embedding-model", help="Embedding model (defaults to text-embedding-3-small)")
+    parser.add_argument("--embedding-base-url", help="Separate API endpoint for embeddings (optional)")
     parser.add_argument("--embeddings-parquet", required=True, help="Path to parquet with option embeddings")
     parser.add_argument("--embedding-column", default="embedding", help="Column name for embeddings")
     parser.add_argument("--output-dir", required=True, help="Output directory")
@@ -688,6 +690,11 @@ def main():
 
     # Build client
     client = make_client_or_pool(args.base_url, args.api_key, args.api_provider)
+    embedding_client = (
+        make_client_or_pool(args.embedding_base_url, args.api_key, args.api_provider)
+        if args.embedding_base_url
+        else None
+    )
 
     # ------------------------------------------------------------------
     # Stage 1 — Sample Diverse Pairs
@@ -742,6 +749,7 @@ def main():
         clusters, reason_embeddings = cluster_reasons(
             reasons, client, embedding_model,
             args.num_clusters, args.cluster_distance_threshold,
+            embedding_client=embedding_client,
         )
         write_json(clusters_path, clusters)
         print(f"[stage-3] {len(clusters)} clusters -> {clusters_path}", flush=True)
@@ -774,7 +782,7 @@ def main():
         if reason_embeddings is None:
             texts = [r["reason_text"] for r in reasons]
             print(f"[stage-5] Re-embedding {len(texts)} reasons for coverage check...", flush=True)
-            reason_embeddings = embed_texts(texts, client, embedding_model)
+            reason_embeddings = embed_texts(texts, client, embedding_model, embedding_client=embedding_client)
             norms = np.linalg.norm(reason_embeddings, axis=1, keepdims=True)
             norms[norms == 0] = 1.0
             reason_embeddings = reason_embeddings / norms
@@ -784,6 +792,7 @@ def main():
             dimensions_data.get("dimensions", []),
             client, embedding_model,
             threshold=args.coverage_threshold,
+            embedding_client=embedding_client,
         )
         write_json(coverage_path, coverage_report)
 

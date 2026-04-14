@@ -1,0 +1,97 @@
+[
+  {
+    "id": 0,
+    "name": "Liam, 29",
+    "description": "Liam is a software engineer with a keen interest in science fiction and technology. He enjoys films that offer intricate world-building and complex narratives, often preferring slower-paced stories that reward multiple viewings. Despite his love for cerebral content, he also has a soft spot for lighthearted comedies that can make him laugh out loud."
+  },
+  {
+    "id": 1,
+    "name": "Maria, 45",
+    "description": "Maria is a high school English teacher who values deep character development and emotional resonance in her movies. She tends to favor dramas and period pieces that explore human relationships and societal issues. However, she also appreciates well-crafted action films that balance thrilling sequences with thoughtful storytelling."
+  },
+  {
+    "id": 2,
+    "name": "Carlos, 32",
+    "description": "Carlos works as a freelance graphic designer and is deeply passionate about visual aesthetics. He loves movies that are visually stunning and innovative, from the latest blockbusters to indie films that push the boundaries of cinematography. While he enjoys action and sci-fi genres, he also finds himself drawn to documentaries that offer unique perspectives on everyday life."
+  },
+  {
+    "id": 3,
+    "name": "Olivia, 18",
+    "description": "Olivia is a college freshman studying film studies. She has a wide-ranging taste in cinema, from classic Hollywood to avant-garde art house films. She particularly enjoys psychological thrillers and mysteries that challenge her perception and keep her guessing. Olivia also has a fondness for romantic comedies that are both witty and heartfelt."
+  },
+  {
+    "id": 4,
+    "name": "Ethan, 60",
+    "description": "Ethan is a retired history professor who prefers movies that transport him to different eras and places. Historical epics and biopics are among his favorites, as long as they are well-researched and respectful of the past. He also enjoys crime dramas that offer intricate plots and compelling performances, but can be put off by overly graphic violence."
+  },
+  {
+    "id": 5,
+    "name": "Priya, 27",
+    "description": "Priya is a social worker who gravitates towards films that address social justice and inequality. Documentaries and dramas that highlight marginalized voices and promote empathy are her go-to choices. Despite her serious inclinations, Priya also enjoys light-hearted family films that celebrate cultural diversity and bring people together."
+  },
+  {
+    "id": 6,
+    "name": "Jake, 35",
+    "description": "Jake is an avid gamer and tech enthusiast who often finds himself watching movies that blend action with futuristic themes. He appreciates fast-paced narratives and dynamic visuals, though he also enjoys more introspective films that delve into the human condition. Jake has a particular weakness for movies that play with time and reality."
+  },
+  {
+    "id": 7,
+    "name": "Zoe, 50",
+    "description": "Zoe is a stay-at-home mother who values family-friendly entertainment and films that resonate on an emotional level. Animated features and feel-good dramas are her preferred genres, although she also enjoys mystery and suspense films that don't cross the line into excessive gore or violence. She cherishes the opportunity to watch movies with her children and discuss them afterward."
+  },
+  {
+    "id": 8,
+    "name": "Raj, 42",
+    "description": "Raj is a corporate lawyer who finds relaxation in movies that offer a complete escape from reality. Fantasy and adventure films are his favorites, especially those with imaginative worlds and heroic protagonists. However, he also enjoys crime thrillers that keep him engaged with twists and turns, as long as they maintain a level of realism."
+  },
+  {
+    "id": 9,
+    "name": "Ava, 23",
+    "description": "Ava is a university student majoring in psychology. She is fascinated by movies that delve into the complexities of the human psyche and often opts for psychological dramas and horror films that explore themes of fear and trauma. Despite her analytical approach, she also enjoys musicals and comedies that provide a fun and uplifting experience."
+  },
+  {
+    "id": 10,
+    "name": "Ben, 47",
+    "description": "Ben is a professional athlete who appreciates movies that combine physical excitement with compelling storytelling. Sports films and action-adventure movies are his primary interests, though he also enjoys documentaries about athletes and sports culture. He values films that inspire and motivate him, both on and off the field."
+  },
+  {
+    "id": 11,
+    "name": "Nora, 30",
+    "description": "Nora is a marketing executive who enjoys a mix of mainstream blockbusters and independent films. She is drawn to movies that are both visually striking and emotionally engaging, whether it's a superhero film with groundbreaking special effects or an indie drama that explores personal growth. Nora also has a penchant for romantic films that are both smart and touching."
+  },
+  {
+    "id": 12,
+    "name": "Diego, 28",
+    "description": "Diego is a musician and sound engineer who pays close attention to the auditory elements of movies. He appreciates films with rich soundscapes and original scores, from epic war movies to intimate character studies. Diego also enjoys documentaries about music and musicians, finding inspiration in their stories and creative processes."
+  },
+  {
+    "id": 13,
+    "name": "Lila, 55",
+    "description": "Lila is a retired librarian who enjoys classic films and modern adaptations of literary works. She has a strong preference for movies that are thought-provoking and well-acted, often opting for period pieces and biographical dramas. Lila also enjoys light comedy and romance films that provide a pleasant viewing experience without being too heavy-handed."
+  },
+  {
+    "id": 14,
+    "name": "Sam, 33",
+    "description": "Sam is a journalist who favors documentaries and films that shed light on important social and political issues. He is drawn to movies that challenge conventional thinking and encourage critical reflection. Despite his serious inclinations, Sam also enjoys quirky indie comedies and films that blend humor with deeper messages."
+  },
+  {
+    "id": 15,
+    "name": "Jade, 26",
+    "description": "Jade is a graphic novelist who finds inspiration in movies that blend narrative and visual storytelling. She enjoys animated features, especially those with intricate plotlines and unique artistic styles. Jade also appreciates dramas that tackle complex themes through subtle storytelling, and she has a particular affinity for films that explore identity and self-discovery."
+  },
+  {
+    "id": 16,
+    "name": "Theo, 40",
+    "description": "Theo is a freelance writer who enjoys movies that offer rich dialogue and nuanced character development. He is drawn to dramas and comedies that are both intelligent and emotionally resonant, often finding himself captivated by films that explore the intricacies of human relationships. Theo also enjoys films with a touch of surrealism or unconventional narratives."
+  },
+  {
+    "id": 17,
+    "name": "Mia, 24",
+    "description": "Mia is a graduate student in environmental science who often watches movies that reflect her passion for nature and conservation. She enjoys documentaries that highlight environmental issues and films that portray the beauty and fragility of the natural world. Mia also appreciates adventure and survival films that showcase resilience and ingenuity."
+  },
+  {
+    "id": 18,
+    "name": "Alex, 37",
+    "description": "Alex is a chef who enjoys movies that are both visually appealing and intellectually stimulating. He appreciates culinary dramas and films that explore food cultures around the world, but also enjoys thrillers and mysteries that keep him on the edge of his seat. Alex has a particular weakness for films that combine sophisticated visuals with compelling storytelling."
+  }
+]

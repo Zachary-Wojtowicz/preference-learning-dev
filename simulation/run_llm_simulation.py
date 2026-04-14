@@ -151,7 +151,8 @@ def make_client_or_pool(base_url, api_key, provider="local"):
     return make_client(base_url, api_key, provider)
 
 
-def _raw_llm_call(client, model, prompt, temperature, timeout, retries):
+def _raw_llm_call(client, model, prompt, temperature, timeout, retries,
+                  max_tokens: int = 512):
     """Low-level LLM call with pool-aware retry (matches pipeline.py pattern)."""
     is_pool = isinstance(client, ClientPool)
     pool_size = client.size if is_pool else 1
@@ -163,6 +164,7 @@ def _raw_llm_call(client, model, prompt, temperature, timeout, retries):
             resp = resolved.chat.completions.create(
                 model=model,
                 temperature=temperature,
+                max_tokens=max_tokens,
                 messages=[{"role": "user", "content": prompt}],
                 timeout=timeout,
             )
@@ -186,28 +188,33 @@ class LLMClient:
         self.retries = retries
         self.cache_path = cache_path
         self._cache = {}
+        self._cache_lock = threading.Lock()
         if cache_path and cache_path.exists():
             with open(cache_path) as f:
                 self._cache = json.load(f)
 
     def call(self, model: str, prompt: str, temperature: float = 0.0,
-             cache_key: str | None = None) -> str:
+             cache_key: str | None = None, max_tokens: int = 512) -> str:
         """Make a chat completion call, with optional caching."""
-        if cache_key and cache_key in self._cache:
-            return self._cache[cache_key]
+        if cache_key:
+            with self._cache_lock:
+                if cache_key in self._cache:
+                    return self._cache[cache_key]
 
         text = _raw_llm_call(
             self.client, model, prompt, temperature,
-            self.timeout, self.retries,
+            self.timeout, self.retries, max_tokens,
         )
         if cache_key:
-            self._cache[cache_key] = text
+            with self._cache_lock:
+                self._cache[cache_key] = text
         return text
 
     def save_cache(self):
         if self.cache_path:
-            with open(self.cache_path, "w") as f:
-                json.dump(self._cache, f, indent=1)
+            with self._cache_lock:
+                with open(self.cache_path, "w") as f:
+                    json.dump(self._cache, f, indent=1)
 
 
 # ---------------------------------------------------------------------------
@@ -304,7 +311,7 @@ Respond with valid JSON only:
 
 
 def parse_json_response(text: str) -> dict:
-    """Extract JSON from an LLM response, handling markdown fences."""
+    """Extract JSON from an LLM response, handling markdown fences and truncation."""
     # Try to find JSON in code fences first
     fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
     if fence_match:
@@ -312,7 +319,19 @@ def parse_json_response(text: str) -> dict:
     # Try the whole text
     brace_match = re.search(r"\{.*\}", text, re.DOTALL)
     if brace_match:
-        return json.loads(brace_match.group(0))
+        try:
+            return json.loads(brace_match.group(0))
+        except json.JSONDecodeError:
+            pass
+    # Last resort: response was truncated mid-JSON — extract whatever key-value
+    # pairs are fully present using a line-by-line regex scan.
+    partial: dict = {}
+    for m in re.finditer(r'"(\w+)"\s*:\s*"((?:[^"\\]|\\.)*)"', text):
+        partial[m.group(1)] = m.group(2)
+    for m in re.finditer(r'"(\w+)"\s*:\s*(-?\d+)', text):
+        partial[m.group(1)] = int(m.group(2))
+    if partial:
+        return partial
     raise ValueError(f"Could not parse JSON from LLM response: {text[:200]}")
 
 
@@ -342,7 +361,8 @@ def llm_slider_adjustment(client: LLMClient, model: str, persona: dict,
     """
     prompt = build_slider_prompt(persona, choice_label, other_label,
                                  dim_metadata, slider_values)
-    text = client.call(model, prompt, temperature=0.0, cache_key=cache_key)
+    text = client.call(model, prompt, temperature=0.0, cache_key=cache_key,
+                       max_tokens=1024)
     parsed = parse_json_response(text)
     adjusted = parsed.get("adjusted_sliders", {})
     # Clamp values to [-100, 100]
@@ -483,18 +503,23 @@ def run_simulation(args):
         mask = consistency_idx_a == consistency_idx_b
 
     conditions = ["standard", "projected", "slider", "partial"]
-    lc_rows = []
-    choice_log_rows = []
-    consistency_rows = []
 
-    # --- Per-persona simulation ---
-    print("Running simulation...")
-    for persona in personas:
+    def simulate_one_persona(persona):
+        """Run the full simulation for a single persona. Thread-safe."""
         pid = persona["id"]
-        print(f"  Persona {pid}: {persona['name']}")
+        # Each persona gets its own RNG seeded deterministically to avoid races
+        persona_rng = np.random.default_rng(args.seed + pid)
+        N, d = embeddings.shape
+        K = V.shape[0]
+
+        lc_rows_p = []
+        choice_log_rows_p = []
+        consistency_rows_p = []
+
+        print(f"  Persona {pid}: {persona['name']}", flush=True)
 
         # --- Generate test set choices BEFORE training ---
-        print(f"    Collecting test set choices ({args.num_test_pairs} pairs)...")
+        print(f"    [{pid}] Collecting test set choices ({args.num_test_pairs} pairs)...", flush=True)
         test_choices = np.zeros(args.num_test_pairs, dtype=int)
         for ti in range(args.num_test_pairs):
             oid_a = option_ids[test_pairs[ti, 0]]
@@ -508,24 +533,23 @@ def run_simulation(args):
             test_choices[ti] = 1 if result["choice"] == "A" else 0
 
         # --- Consistency check ---
-        print(f"    Running consistency check ({n_consistency} pairs)...")
+        print(f"    [{pid}] Running consistency check ({n_consistency} pairs)...", flush=True)
         for ci in range(n_consistency):
             oid_a = option_ids[consistency_idx_a[ci]]
             oid_b = option_ids[consistency_idx_b[ci]]
 
-            # First query (may reuse test set cache if same pair)
             cache_key_1 = f"consistency1_{pid}_{oid_a}_{oid_b}"
             r1 = llm_choice(client, args.choice_model, persona,
                             descriptions[oid_a], descriptions[oid_b],
                             cache_key=cache_key_1)
 
-            # Second query — different cache key to force re-query
+            # Different cache key to force re-query
             cache_key_2 = f"consistency2_{pid}_{oid_a}_{oid_b}"
             r2 = llm_choice(client, args.choice_model, persona,
                             descriptions[oid_a], descriptions[oid_b],
                             cache_key=cache_key_2)
 
-            consistency_rows.append({
+            consistency_rows_p.append({
                 "persona_id": pid,
                 "option_a_id": oid_a,
                 "option_b_id": oid_b,
@@ -542,19 +566,17 @@ def run_simulation(args):
         for cond in conditions:
             row = {"persona_id": pid, "condition": cond, "trial": 0}
             row.update(metrics_0[cond])
-            lc_rows.append(row)
+            lc_rows_p.append(row)
 
         # --- Training loop ---
-        print(f"    Training ({args.num_trials} trials)...")
+        print(f"    [{pid}] Training ({args.num_trials} trials)...", flush=True)
         for t in range(1, args.num_trials + 1):
-            # Sample a pair
-            idx_a, idx_b = rng.choice(N, size=2, replace=False)
+            idx_a, idx_b = persona_rng.choice(N, size=2, replace=False)
             oid_a = option_ids[idx_a]
             oid_b = option_ids[idx_b]
             phi_a = embeddings[idx_a]
             phi_b = embeddings[idx_b]
 
-            # --- LLM choice ---
             choice_cache_key = f"train_choice_{pid}_{t}_{oid_a}_{oid_b}"
             choice_result = llm_choice(
                 client, args.choice_model, persona,
@@ -563,7 +585,6 @@ def run_simulation(args):
             )
             y = 1 if choice_result["choice"] == "A" else 0
 
-            # --- Compute model slider values: λ_model = V⊤(φ(chosen) − φ(unchosen)) ---
             if y == 1:
                 phi_chosen, phi_unchosen = phi_a, phi_b
                 choice_label, other_label = "A", "B"
@@ -572,19 +593,15 @@ def run_simulation(args):
                 choice_label, other_label = "B", "A"
 
             delta_chosen = phi_chosen - phi_unchosen
-            lam_model = V @ delta_chosen  # (K,)
+            lam_model = V @ delta_chosen
 
-            # Scale to [-100, 100] for display
             lam_abs_max = np.abs(lam_model).max()
-            if lam_abs_max > 0:
-                scale_factor = 100.0 / lam_abs_max
-            else:
-                scale_factor = 1.0
-            slider_values_display = {}
-            for k, dim in enumerate(dim_metadata):
-                slider_values_display[dim["name"]] = int(np.round(lam_model[k] * scale_factor))
+            scale_factor = 100.0 / lam_abs_max if lam_abs_max > 0 else 1.0
+            slider_values_display = {
+                dim["name"]: int(np.round(lam_model[k] * scale_factor))
+                for k, dim in enumerate(dim_metadata)
+            }
 
-            # --- LLM slider adjustment ---
             slider_cache_key = f"train_slider_{pid}_{t}_{oid_a}_{oid_b}"
             slider_result = llm_slider_adjustment(
                 client, args.choice_model, persona,
@@ -593,18 +610,13 @@ def run_simulation(args):
                 cache_key=slider_cache_key,
             )
 
-            # Convert adjusted sliders back to raw scale
             adjusted_sliders = slider_result["adjusted_sliders"]
-            lam_adjusted = np.zeros(K)
-            for k, dim in enumerate(dim_metadata):
-                name = dim["name"]
-                if name in adjusted_sliders:
-                    lam_adjusted[k] = adjusted_sliders[name] / scale_factor
-                else:
-                    lam_adjusted[k] = lam_model[k]
+            lam_adjusted = np.array([
+                adjusted_sliders.get(dim["name"], lam_model[k]) / scale_factor
+                for k, dim in enumerate(dim_metadata)
+            ])
 
-            # --- Log the choice ---
-            choice_log_rows.append({
+            choice_log_rows_p.append({
                 "persona_id": pid,
                 "trial": t,
                 "option_a_id": oid_a,
@@ -615,7 +627,6 @@ def run_simulation(args):
                 "adjusted_sliders": json.dumps(adjusted_sliders),
             })
 
-            # --- Update each condition ---
             thetas["standard"] = update_standard(thetas["standard"], phi_a, phi_b, y, args.learning_rate)
             thetas["projected"] = update_projected(thetas["projected"], phi_a, phi_b, y, args.learning_rate, V)
             thetas["slider"] = update_slider(thetas["slider"], phi_a, phi_b, y, args.learning_rate, V, lam_adjusted)
@@ -623,19 +634,38 @@ def run_simulation(args):
                 thetas["partial"], phi_a, phi_b, y, args.learning_rate, V, lam_adjusted, args.projection_lambda
             )
 
-            # --- Evaluate ---
             metrics = evaluate_choice_prediction(thetas, test_pairs, test_choices, embeddings)
             for cond in conditions:
                 row = {"persona_id": pid, "condition": cond, "trial": t}
                 row.update(metrics[cond])
-                lc_rows.append(row)
+                lc_rows_p.append(row)
 
             if t % 10 == 0:
-                print(f"      Trial {t}/{args.num_trials}")
+                print(f"      [{pid}] Trial {t}/{args.num_trials}", flush=True)
 
-        # Save cache periodically (after each persona)
         client.save_cache()
-        print(f"  Persona {pid} done.")
+        print(f"  Persona {pid} done.", flush=True)
+        return lc_rows_p, choice_log_rows_p, consistency_rows_p
+
+    # --- Run personas in parallel ---
+    print("Running simulation...")
+    lc_rows = []
+    choice_log_rows = []
+    consistency_rows = []
+
+    max_workers = getattr(args, "max_workers", 4)
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {executor.submit(simulate_one_persona, p): p for p in personas}
+        for future in as_completed(futures):
+            persona = futures[future]
+            try:
+                p_lc, p_choices, p_consistency = future.result()
+                lc_rows.extend(p_lc)
+                choice_log_rows.extend(p_choices)
+                consistency_rows.extend(p_consistency)
+            except Exception as e:
+                print(f"  Persona {persona['id']} failed: {e}", flush=True)
+                raise
 
     # --- Save outputs ---
     print("Saving outputs...")
@@ -863,6 +893,8 @@ def parse_args():
                         help="Gradient update learning rate.")
     parser.add_argument("--projection-lambda", type=float, default=0.5,
                         help="Interpolation weight for partial projection.")
+    parser.add_argument("--max-workers", type=int, default=4,
+                        help="Number of personas to simulate in parallel.")
     parser.add_argument("--seed", type=int, default=42,
                         help="Random seed.")
     return parser.parse_args()
