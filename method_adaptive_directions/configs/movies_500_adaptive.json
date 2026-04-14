@@ -1,0 +1,8 @@
+{
+  "domain": "movies",
+  "choice_context": "A person is deciding which movie to watch based on the movie description, genres, director, stars, and plot summary.",
+  "input_path": "datasets/movielens-32m-enriched.csv",
+  "template_path": "datasets/movie_prompt.txt",
+  "id_column": "movie_id",
+  "text_column": "plot_summary"
+}

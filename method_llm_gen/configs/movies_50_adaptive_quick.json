@@ -1,0 +1,17 @@
+{
+  "domain": "movies_50_adaptive_kimi_quick",
+  "choice_context": "A person is deciding which movie to watch based on the movie's description, genre, cast, and plot summary.",
+  "input_path": "datasets/movielens-32m-enriched.csv",
+  "template_path": "datasets/movie_prompt.txt",
+  "text_column": "plot_summary",
+  "display_column": "title",
+  "id_column": "movie_id",
+  "num_dimensions": 10,
+  "pair_appearances_per_option": 1,
+  "double_judge_pairs": false,
+  "max_options": 50,
+  "dimensions_output_format": "plain",
+  "request_timeout_seconds": 120,
+  "max_retries": 5,
+  "max_workers": 4
+}

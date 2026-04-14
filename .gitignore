@@ -11,6 +11,9 @@ __MACOSX/
 Icon[]
 
 
+/*/outputs
+/datasets/*.parquet
+
 # Thumbnails
 ._*
 
