@@ -177,12 +177,7 @@ def make_client_or_pool(base_url, api_key, provider="local"):
     return make_client(base_url, api_key, provider)
 
 
-<<<<<<< HEAD
-def llm_call(client, model, prompt, timeout, retries, max_tokens=8192):
-=======
-def llm_call(client, model, prompt, timeout, retries):
-    global _RATE_LIMITER
->>>>>>> cf60e5e10cd0b327d8eb1f2fa70b5d405b6d8401
+def llm_call(client, model, prompt, timeout, retries, max_tokens=2048):
     if not model:
         raise ValueError("Missing --model")
     is_pool = isinstance(client, ClientPool)
