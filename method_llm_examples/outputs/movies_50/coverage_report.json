@@ -1,19 +1,117 @@
 {
   "total_reasons": 1000,
   "coverage_threshold": 0.4,
-  "covered_count": 1000,
-  "coverage_rate": 1.0,
-  "orphan_count": 0,
-  "top_orphans": [],
+  "covered_count": 998,
+  "coverage_rate": 0.998,
+  "orphan_count": 2,
+  "top_orphans": [
+    {
+      "reason_id": 818,
+      "reason_text": "**Appreciation for Visual and Artistic Elements**: \u89c2\u4f17\u5982\u679c\u5bf9\u7535\u5f71\u7684\u89c6\u89c9\u7f8e\u611f\u548c\u827a\u672f\u6027\u6709\u8f83\u9ad8\u6b23\u8d4f\uff0c\u53ef\u80fd\u4f1a\u503e\u5411\u4e8e\u9009\u62e9\u300a\u5f53\u591c\u5e55\u964d\u4e34\u300b\u3002\u8fd9\u90e8\u7535\u5f71\u4ee5\u5176\u72ec\u7279\u7684\u89c6\u89c9\u98ce\u683c\u548c\u827a\u672f\u8868\u73b0\u529b\u4e3a\u7279\u70b9\uff0c\u53ef\u80fd\u4f1a\u5438\u5f15\u90a3\u4e9b\u5bfb\u627e\u7f8e\u5b66\u4eab\u53d7\u7684\u89c2\u4f17\u3002",
+      "best_dim_idx": 2,
+      "best_dim_name": "Romantic vs. Non-Romantic",
+      "best_pole": "low",
+      "best_similarity": 0.17470535616324703
+    },
+    {
+      "reason_id": 819,
+      "reason_text": "**\u559c\u7231\u63a2\u7d22\u4e2a\u4eba\u6210\u957f\u7684\u6545\u4e8b**\uff1a\u5bf9\u4e8e\u90a3\u4e9b\u5bf9\u4e2a\u4eba\u6210\u957f\u548c\u81ea\u6211\u53d1\u73b0\u7684\u6545\u4e8b\u611f\u5174\u8da3\u7684\u89c2\u4f17\u6765\u8bf4\uff0c\u300a\u5f53\u591c\u5e55\u964d\u4e34\u300b\u53ef\u80fd\u66f4\u6709\u5438\u5f15\u529b\u3002\u7535\u5f71\u4e2d\u7684\u4e3b\u89d2\u5728\u9762\u5bf9\u65b0\u5173\u7cfb\u548c\u4e2a\u4eba\u6b32\u671b\u65f6\uff0c\u5fc5\u987b\u91cd\u65b0\u5ba1\u89c6\u81ea\u5df1\u7684\u4fe1\u5ff5\u548c\u6050\u60e7\uff0c\u8fd9\u63d0\u4f9b\u4e86\u4e00\u4e2a\u6df1\u5165\u63a2\u8ba8\u4e2a\u4eba\u53d8\u5316\u7684\u673a\u4f1a\u3002",
+      "best_dim_idx": 1,
+      "best_dim_name": "Historical vs. Contemporary",
+      "best_pole": "high",
+      "best_similarity": -0.013846285775182883
+    }
+  ],
   "dimension_stats": [
     {
       "dimension_id": 1,
-      "dimension_name": "Maturity of Themes",
-      "total_reasons_assigned": 1000,
-      "low_pole_count": 578,
-      "high_pole_count": 422,
-      "low_pole_fraction": 0.578,
-      "high_pole_fraction": 0.422
+      "dimension_name": "Action vs. Character-Driven",
+      "total_reasons_assigned": 479,
+      "low_pole_count": 73,
+      "high_pole_count": 406,
+      "low_pole_fraction": 0.152,
+      "high_pole_fraction": 0.848
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Historical vs. Contemporary",
+      "total_reasons_assigned": 42,
+      "low_pole_count": 35,
+      "high_pole_count": 7,
+      "low_pole_fraction": 0.833,
+      "high_pole_fraction": 0.167
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Romantic vs. Non-Romantic",
+      "total_reasons_assigned": 5,
+      "low_pole_count": 1,
+      "high_pole_count": 4,
+      "low_pole_fraction": 0.2,
+      "high_pole_fraction": 0.8
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Family-Friendly vs. Adult-Themed",
+      "total_reasons_assigned": 9,
+      "low_pole_count": 0,
+      "high_pole_count": 9,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Visual Appeal vs. Narrative Complexity",
+      "total_reasons_assigned": 8,
+      "low_pole_count": 0,
+      "high_pole_count": 8,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Humor vs. Seriousness",
+      "total_reasons_assigned": 125,
+      "low_pole_count": 0,
+      "high_pole_count": 125,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Classic Adaptation vs. Original Story",
+      "total_reasons_assigned": 32,
+      "low_pole_count": 0,
+      "high_pole_count": 32,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Realism vs. Fantasy",
+      "total_reasons_assigned": 11,
+      "low_pole_count": 3,
+      "high_pole_count": 8,
+      "low_pole_fraction": 0.273,
+      "high_pole_fraction": 0.727
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Star Power vs. Ensemble Cast",
+      "total_reasons_assigned": 7,
+      "low_pole_count": 7,
+      "high_pole_count": 0,
+      "low_pole_fraction": 1.0,
+      "high_pole_fraction": 0.0
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Adventure vs. Drama",
+      "total_reasons_assigned": 282,
+      "low_pole_count": 277,
+      "high_pole_count": 5,
+      "low_pole_fraction": 0.982,
+      "high_pole_fraction": 0.018
     }
   ]
 }

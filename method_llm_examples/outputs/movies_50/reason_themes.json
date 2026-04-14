@@ -1,0 +1,2771 @@
+[
+  {
+    "cluster_id": 1,
+    "representative_reason": "Crime and Thriller Narratives",
+    "cluster_size": 20,
+    "member_reason_ids": [
+      0,
+      3,
+      205,
+      206,
+      120,
+      121,
+      122,
+      123,
+      124,
+      150,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164
+    ],
+    "contributing_pair_ids": [
+      0,
+      12,
+      15,
+      16,
+      20
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "High-Stakes Action/Thriller",
+    "cluster_size": 15,
+    "member_reason_ids": [
+      627,
+      655,
+      700,
+      720,
+      721,
+      722,
+      724,
+      750,
+      751,
+      753,
+      754,
+      770,
+      771,
+      772,
+      790
+    ],
+    "contributing_pair_ids": [
+      62,
+      65,
+      70,
+      72,
+      75,
+      77,
+      79
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Strong Acting Performances",
+    "cluster_size": 15,
+    "member_reason_ids": [
+      1,
+      29,
+      44,
+      54,
+      122,
+      156,
+      158,
+      161,
+      187,
+      198,
+      146,
+      147,
+      148,
+      149,
+      150
+    ],
+    "contributing_pair_ids": [
+      0,
+      2,
+      4,
+      5,
+      12,
+      14,
+      15,
+      16,
+      18,
+      19
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Character Development and Psychological Depth",
+    "cluster_size": 14,
+    "member_reason_ids": [
+      626,
+      634,
+      635,
+      636,
+      637,
+      638,
+      639,
+      648,
+      653,
+      660,
+      661,
+      662,
+      663,
+      664
+    ],
+    "contributing_pair_ids": [
+      62,
+      63,
+      64,
+      65,
+      66
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Period Dramas and Historical Settings",
+    "cluster_size": 14,
+    "member_reason_ids": [
+      4,
+      11,
+      15,
+      16,
+      17,
+      18,
+      19,
+      115,
+      125,
+      126,
+      127,
+      128,
+      129,
+      140
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      11,
+      12,
+      14
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Romantic Dramas and Emotional Journeys",
+    "cluster_size": 13,
+    "member_reason_ids": [
+      5,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Family-Friendly Content",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      630,
+      632,
+      633,
+      640,
+      641,
+      642,
+      643,
+      665,
+      666,
+      667,
+      668,
+      669
+    ],
+    "contributing_pair_ids": [
+      63,
+      64,
+      66
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Family-Friendly Movies",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "contributing_pair_ids": [
+      2,
+      3
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Romantic Drama",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      639,
+      649,
+      650,
+      651,
+      652,
+      653,
+      654,
+      667,
+      672,
+      673,
+      674
+    ],
+    "contributing_pair_ids": [
+      63,
+      64,
+      65,
+      66,
+      67
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Adaptations of Classic Literature",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      7,
+      10,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      14
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Strong Acting Performances",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      637,
+      647,
+      652,
+      653,
+      657,
+      662,
+      663,
+      664,
+      673,
+      674
+    ],
+    "contributing_pair_ids": [
+      63,
+      64,
+      65,
+      66,
+      67
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Dark Humor and Psychological Depth",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "contributing_pair_ids": [
+      1,
+      2
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Strong Actor Performances",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      209,
+      212,
+      221,
+      242,
+      247,
+      265,
+      282,
+      302,
+      309,
+      344
+    ],
+    "contributing_pair_ids": [
+      20,
+      21,
+      22,
+      24,
+      26,
+      28,
+      30,
+      34
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Family-Friendly Animated Films",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      830,
+      832,
+      850,
+      851,
+      852,
+      853,
+      854,
+      950,
+      951,
+      952
+    ],
+    "contributing_pair_ids": [
+      83,
+      85,
+      95
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Visual Effects and Cinematography",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      628,
+      633,
+      641,
+      642,
+      643,
+      644,
+      645,
+      646,
+      647
+    ],
+    "contributing_pair_ids": [
+      62,
+      63,
+      64
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Visual and Cinematic Appeal",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      17,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+    ],
+    "contributing_pair_ids": [
+      1,
+      3,
+      4
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Complex Plot/Themes",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      210,
+      211,
+      222,
+      223,
+      232,
+      243,
+      246,
+      281,
+      293
+    ],
+    "contributing_pair_ids": [
+      21,
+      22,
+      23,
+      24,
+      28,
+      29
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Social Commentary and Realism",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      638,
+      648,
+      649,
+      650,
+      651,
+      652,
+      653,
+      654
+    ],
+    "contributing_pair_ids": [
+      63,
+      64,
+      65
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Character Development and Nuance",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      8,
+      18,
+      28,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Visual Aesthetics/Cinematography",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      216,
+      225,
+      252,
+      264,
+      283,
+      303,
+      312,
+      332
+    ],
+    "contributing_pair_ids": [
+      21,
+      22,
+      25,
+      26,
+      28,
+      30,
+      31,
+      33
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Historical/Biographical Content",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      219,
+      220,
+      223,
+      240,
+      241,
+      251,
+      254,
+      301
+    ],
+    "contributing_pair_ids": [
+      21,
+      22,
+      24,
+      25,
+      30
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Historical/Nostalgic Setting",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      650,
+      651,
+      652,
+      653,
+      654,
+      655,
+      656
+    ],
+    "contributing_pair_ids": [
+      65
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Social and Cultural Commentary",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "contributing_pair_ids": [
+      1,
+      2
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Director's Style",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      214,
+      224,
+      244,
+      248,
+      260,
+      261,
+      315
+    ],
+    "contributing_pair_ids": [
+      21,
+      22,
+      24,
+      26,
+      31
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Social Issues/Commentary",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      218,
+      227,
+      228,
+      230,
+      231,
+      232,
+      233
+    ],
+    "contributing_pair_ids": [
+      21,
+      22,
+      23
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Humor and Comedy",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      632,
+      633,
+      634,
+      635,
+      636,
+      637
+    ],
+    "contributing_pair_ids": [
+      63
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Adventure and Action Sequences",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      91,
+      92,
+      93,
+      94,
+      95,
+      96
+    ],
+    "contributing_pair_ids": [
+      9
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Adventure/Survival Themes",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      217,
+      237,
+      250,
+      251,
+      253,
+      254
+    ],
+    "contributing_pair_ids": [
+      21,
+      23,
+      25
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Family-Friendly Content",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      235,
+      236,
+      238,
+      255,
+      256,
+      257
+    ],
+    "contributing_pair_ids": [
+      23,
+      25
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Political History",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      220,
+      223,
+      240,
+      241,
+      243,
+      360
+    ],
+    "contributing_pair_ids": [
+      22,
+      24,
+      36
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Period Films and Historical Settings",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      837,
+      847,
+      849,
+      880,
+      881,
+      886
+    ],
+    "contributing_pair_ids": [
+      83,
+      84,
+      88
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Crime and Heist Films",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      627,
+      628,
+      629,
+      630,
+      631
+    ],
+    "contributing_pair_ids": [
+      62,
+      63
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Comedy and Light-Hearted Stories",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      70,
+      71,
+      72,
+      73,
+      74
+    ],
+    "contributing_pair_ids": [
+      7
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Deep Character Development",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      420,
+      441,
+      461,
+      463,
+      490
+    ],
+    "contributing_pair_ids": [
+      42,
+      44,
+      46,
+      49
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Action Sequences",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      425,
+      445,
+      459,
+      495,
+      525
+    ],
+    "contributing_pair_ids": [
+      42,
+      44,
+      45,
+      49,
+      52
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Romantic Elements",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      228,
+      248,
+      258,
+      267,
+      277
+    ],
+    "contributing_pair_ids": [
+      22,
+      24,
+      25,
+      26,
+      27
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Quirky Characters/Comedy",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      232,
+      233,
+      234,
+      235,
+      236
+    ],
+    "contributing_pair_ids": [
+      23
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Female Protagonists",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      255,
+      256,
+      257,
+      258,
+      259
+    ],
+    "contributing_pair_ids": [
+      25
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Action/Thriller Sequences",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      237,
+      238,
+      239,
+      240,
+      241
+    ],
+    "contributing_pair_ids": [
+      23,
+      24
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Emotional Depth/Character Development",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      249,
+      250,
+      251,
+      252,
+      253
+    ],
+    "contributing_pair_ids": [
+      24,
+      25
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Romantic Dramas and Complex Relationships",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      836,
+      837,
+      838,
+      839,
+      867
+    ],
+    "contributing_pair_ids": [
+      83,
+      86
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Adaptations of Classic Literature",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      650,
+      651,
+      652,
+      653
+    ],
+    "contributing_pair_ids": [
+      65
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Political and Historical Figures",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      180,
+      181,
+      182,
+      183
+    ],
+    "contributing_pair_ids": [
+      18
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Psychological Thriller Plot",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      416,
+      450,
+      555,
+      578
+    ],
+    "contributing_pair_ids": [
+      41,
+      45,
+      55,
+      57
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Historical Drama",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      421,
+      455,
+      465,
+      470
+    ],
+    "contributing_pair_ids": [
+      42,
+      45,
+      46,
+      47
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Literary Adaptation",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      424,
+      443,
+      466,
+      475
+    ],
+    "contributing_pair_ids": [
+      42,
+      44,
+      46,
+      47
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Star Performances",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      432,
+      442,
+      463,
+      473
+    ],
+    "contributing_pair_ids": [
+      43,
+      44,
+      46,
+      47
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Fantasy/Supernatural Elements",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      230,
+      231,
+      232,
+      233
+    ],
+    "contributing_pair_ids": [
+      23
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Nostalgia for Past Eras",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      234,
+      235,
+      236,
+      237
+    ],
+    "contributing_pair_ids": [
+      23
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Teamwork/Cooperation",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      238,
+      239,
+      240,
+      241
+    ],
+    "contributing_pair_ids": [
+      23,
+      24
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Cultural Diversity",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      242,
+      243,
+      244,
+      245
+    ],
+    "contributing_pair_ids": [
+      24
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Historical Settings",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      246,
+      247,
+      248,
+      249
+    ],
+    "contributing_pair_ids": [
+      24
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Adventure/Quest Stories",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      250,
+      251,
+      252,
+      253
+    ],
+    "contributing_pair_ids": [
+      25
+    ]
+  },
+  {
+    "cluster_id": 21,
+    "representative_reason": "IMAX Format",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      254,
+      255,
+      256,
+      257
+    ],
+    "contributing_pair_ids": [
+      25
+    ]
+  },
+  {
+    "cluster_id": 22,
+    "representative_reason": "Family Dynamics",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      258,
+      259,
+      260,
+      261
+    ],
+    "contributing_pair_ids": [
+      25,
+      26
+    ]
+  },
+  {
+    "cluster_id": 23,
+    "representative_reason": "Female Empowerment",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      262,
+      263,
+      264,
+      265
+    ],
+    "contributing_pair_ids": [
+      26
+    ]
+  },
+  {
+    "cluster_id": 24,
+    "representative_reason": "Urban African-American Experience",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      266,
+      267,
+      268,
+      269
+    ],
+    "contributing_pair_ids": [
+      26
+    ]
+  },
+  {
+    "cluster_id": 25,
+    "representative_reason": "Social Justice",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      270,
+      271,
+      272,
+      273
+    ],
+    "contributing_pair_ids": [
+      27
+    ]
+  },
+  {
+    "cluster_id": 26,
+    "representative_reason": "Lighthearted Humor",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      274,
+      275,
+      276,
+      277
+    ],
+    "contributing_pair_ids": [
+      27
+    ]
+  },
+  {
+    "cluster_id": 27,
+    "representative_reason": "Deep Character Studies",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      278,
+      279,
+      280,
+      281
+    ],
+    "contributing_pair_ids": [
+      27,
+      28
+    ]
+  },
+  {
+    "cluster_id": 28,
+    "representative_reason": "Nicolas Cage Performance",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      282,
+      283,
+      284,
+      285
+    ],
+    "contributing_pair_ids": [
+      28
+    ]
+  },
+  {
+    "cluster_id": 29,
+    "representative_reason": "Women's Experiences",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      286,
+      287,
+      288,
+      289
+    ],
+    "contributing_pair_ids": [
+      28
+    ]
+  },
+  {
+    "cluster_id": 30,
+    "representative_reason": "Unique Powers/Abilities",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      290,
+      291,
+      292,
+      293
+    ],
+    "contributing_pair_ids": [
+      29
+    ]
+  },
+  {
+    "cluster_id": 31,
+    "representative_reason": "Animal Stories",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      294,
+      295,
+      296,
+      297
+    ],
+    "contributing_pair_ids": [
+      29
+    ]
+  },
+  {
+    "cluster_id": 32,
+    "representative_reason": "Nostalgic Childhood Films",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      298,
+      299,
+      300,
+      301
+    ],
+    "contributing_pair_ids": [
+      29,
+      30
+    ]
+  },
+  {
+    "cluster_id": 33,
+    "representative_reason": "Crime Dramas",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      302,
+      303,
+      304,
+      305
+    ],
+    "contributing_pair_ids": [
+      30
+    ]
+  },
+  {
+    "cluster_id": 34,
+    "representative_reason": "Art/Literature Focus",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      306,
+      307,
+      308,
+      309
+    ],
+    "contributing_pair_ids": [
+      30
+    ]
+  },
+  {
+    "cluster_id": 35,
+    "representative_reason": "Mel Brooks Style",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      310,
+      311,
+      312,
+      313
+    ],
+    "contributing_pair_ids": [
+      31
+    ]
+  },
+  {
+    "cluster_id": 36,
+    "representative_reason": "Experimental Filmmaking",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      314,
+      315,
+      316,
+      317
+    ],
+    "contributing_pair_ids": [
+      31
+    ]
+  },
+  {
+    "cluster_id": 37,
+    "representative_reason": "Dark Humor",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      318,
+      319,
+      320,
+      321
+    ],
+    "contributing_pair_ids": [
+      31,
+      32
+    ]
+  },
+  {
+    "cluster_id": 38,
+    "representative_reason": "Family Dynamics",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      322,
+      323,
+      324,
+      325
+    ],
+    "contributing_pair_ids": [
+      32
+    ]
+  },
+  {
+    "cluster_id": 39,
+    "representative_reason": "Intense Action Sequences",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      326,
+      327,
+      328,
+      329
+    ],
+    "contributing_pair_ids": [
+      32
+    ]
+  },
+  {
+    "cluster_id": 40,
+    "representative_reason": "James Bond Series",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      330,
+      331,
+      332,
+      333
+    ],
+    "contributing_pair_ids": [
+      33
+    ]
+  },
+  {
+    "cluster_id": 41,
+    "representative_reason": "Shakespeare Adaptations",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      334,
+      335,
+      336,
+      337
+    ],
+    "contributing_pair_ids": [
+      33
+    ]
+  },
+  {
+    "cluster_id": 42,
+    "representative_reason": "Justice/Morality Themes",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      338,
+      339,
+      340,
+      341
+    ],
+    "contributing_pair_ids": [
+      33,
+      34
+    ]
+  },
+  {
+    "cluster_id": 43,
+    "representative_reason": "Social Commentary",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      342,
+      343,
+      344,
+      345
+    ],
+    "contributing_pair_ids": [
+      34
+    ]
+  },
+  {
+    "cluster_id": 44,
+    "representative_reason": "Video Game Adaptation",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      346,
+      347,
+      348,
+      349
+    ],
+    "contributing_pair_ids": [
+      34
+    ]
+  },
+  {
+    "cluster_id": 45,
+    "representative_reason": "Psychological Elements",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      350,
+      351,
+      352,
+      353
+    ],
+    "contributing_pair_ids": [
+      35
+    ]
+  },
+  {
+    "cluster_id": 46,
+    "representative_reason": "Light-Hearted Comedy",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      354,
+      355,
+      356,
+      357
+    ],
+    "contributing_pair_ids": [
+      35
+    ]
+  },
+  {
+    "cluster_id": 47,
+    "representative_reason": "Ensemble Cast",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      358,
+      359,
+      360,
+      361
+    ],
+    "contributing_pair_ids": [
+      35,
+      36
+    ]
+  },
+  {
+    "cluster_id": 48,
+    "representative_reason": "Historical Figures",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      362,
+      363,
+      364,
+      365
+    ],
+    "contributing_pair_ids": [
+      36
+    ]
+  },
+  {
+    "cluster_id": 49,
+    "representative_reason": "Aviation History",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      366,
+      367,
+      368,
+      369
+    ],
+    "contributing_pair_ids": [
+      36
+    ]
+  },
+  {
+    "cluster_id": 50,
+    "representative_reason": "Foreign Cinema",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      370,
+      371,
+      372,
+      373
+    ],
+    "contributing_pair_ids": [
+      37
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Comedic Parodies of Classic Genres",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      840,
+      841,
+      842,
+      920
+    ],
+    "contributing_pair_ids": [
+      84,
+      92
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Coming-of-Age Stories and Nostalgia",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      846,
+      847,
+      861,
+      867
+    ],
+    "contributing_pair_ids": [
+      84,
+      86
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Gritty Realistic Dramas",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      855,
+      856,
+      857,
+      858
+    ],
+    "contributing_pair_ids": [
+      85
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Women's Empowerment and Personal Growth",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      865,
+      866,
+      867,
+      868
+    ],
+    "contributing_pair_ids": [
+      86
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Intricate Plots and Mystery Elements",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      875,
+      876,
+      877,
+      878
+    ],
+    "contributing_pair_ids": [
+      87
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Light-Hearted Modern Comedies",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      905,
+      906,
+      907,
+      908
+    ],
+    "contributing_pair_ids": [
+      90
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Classic Crime Dramas and Organized Crime",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      910,
+      911,
+      912,
+      913
+    ],
+    "contributing_pair_ids": [
+      91
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Science Fiction and Speculative Narratives",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      915,
+      916,
+      917,
+      918
+    ],
+    "contributing_pair_ids": [
+      91
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Lighthearted Comedies and Slapstick Humor",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      935,
+      936,
+      937,
+      938
+    ],
+    "contributing_pair_ids": [
+      93
+    ]
+  },
+  {
+    "cluster_id": 21,
+    "representative_reason": "Historical Settings and Period Dramas",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      945,
+      946,
+      947,
+      948
+    ],
+    "contributing_pair_ids": [
+      94
+    ]
+  },
+  {
+    "cluster_id": 30,
+    "representative_reason": "Shakespearean Adaptations",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      990,
+      991,
+      992,
+      993
+    ],
+    "contributing_pair_ids": [
+      99
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Inspirational Stories",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      635,
+      636,
+      637
+    ],
+    "contributing_pair_ids": [
+      63
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Intricate Plot Structures",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      25,
+      26,
+      27
+    ],
+    "contributing_pair_ids": [
+      2
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Thought-Provoking Themes",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      423,
+      444,
+      473
+    ],
+    "contributing_pair_ids": [
+      42,
+      44,
+      47
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Diverse Representation",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      438,
+      477,
+      487
+    ],
+    "contributing_pair_ids": [
+      43,
+      47,
+      48
+    ]
+  },
+  {
+    "cluster_id": 28,
+    "representative_reason": "Romantic Drama",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      462,
+      485,
+      494
+    ],
+    "contributing_pair_ids": [
+      46,
+      48,
+      49
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Adventure and Action Elements",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      831,
+      860,
+      862
+    ],
+    "contributing_pair_ids": [
+      83,
+      86
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Strong Acting Performances and Nuanced Dialogue",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      838,
+      887,
+      888
+    ],
+    "contributing_pair_ids": [
+      83,
+      88
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Personal Growth and Overcoming Adversity",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      870,
+      871,
+      872
+    ],
+    "contributing_pair_ids": [
+      87
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Dark and Quirky Humor",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      890,
+      891,
+      892
+    ],
+    "contributing_pair_ids": [
+      89
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Emotional Depth and Heartfelt Storytelling",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      919,
+      921,
+      922
+    ],
+    "contributing_pair_ids": [
+      91,
+      92
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Biographical Dramas and Historical Figures",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      925,
+      926,
+      927
+    ],
+    "contributing_pair_ids": [
+      92
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Sociopolitical Themes and Historical Impact",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      930,
+      931,
+      932
+    ],
+    "contributing_pair_ids": [
+      93
+    ]
+  },
+  {
+    "cluster_id": 22,
+    "representative_reason": "Educational Value and Real-Life Storytelling",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      955,
+      956,
+      957
+    ],
+    "contributing_pair_ids": [
+      95
+    ]
+  },
+  {
+    "cluster_id": 23,
+    "representative_reason": "Character Development and Psychological Exploration",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      933,
+      948,
+      964
+    ],
+    "contributing_pair_ids": [
+      93,
+      94,
+      96
+    ]
+  },
+  {
+    "cluster_id": 26,
+    "representative_reason": "Wholesome Family Entertainment",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      975,
+      976,
+      977
+    ],
+    "contributing_pair_ids": [
+      97
+    ]
+  },
+  {
+    "cluster_id": 27,
+    "representative_reason": "Adaptations of Classic Literature",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      835,
+      882,
+      909
+    ],
+    "contributing_pair_ids": [
+      83,
+      88,
+      90
+    ]
+  },
+  {
+    "cluster_id": 31,
+    "representative_reason": "Contemporary Social Issues and Cultural Diversity",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      995,
+      996,
+      999
+    ],
+    "contributing_pair_ids": [
+      99
+    ]
+  },
+  {
+    "cluster_id": 33,
+    "representative_reason": "Fans of Specific Actors",
+    "cluster_size": 3,
+    "member_reason_ids": [
+      835,
+      869,
+      883
+    ],
+    "contributing_pair_ids": [
+      83,
+      86,
+      88
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Political Themes",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      638,
+      639
+    ],
+    "contributing_pair_ids": [
+      63
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Themes of Betrayal and Deception",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      13,
+      14
+    ],
+    "contributing_pair_ids": [
+      1
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Exploration of Power Dynamics",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      184,
+      185
+    ],
+    "contributing_pair_ids": [
+      18
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Focus on Personal Growth",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      16,
+      17
+    ],
+    "contributing_pair_ids": [
+      1
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Themes of Acceptance and Identity",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      31,
+      32
+    ],
+    "contributing_pair_ids": [
+      3
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Themes of Love and Romance",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      5,
+      6
+    ],
+    "contributing_pair_ids": [
+      0
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Themes of Family and Relationships",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      176,
+      177
+    ],
+    "contributing_pair_ids": [
+      17
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Social Commentary and Critique",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      417,
+      420
+    ],
+    "contributing_pair_ids": [
+      41,
+      42
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Complex Characters",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      418,
+      421
+    ],
+    "contributing_pair_ids": [
+      41,
+      42
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Crime Drama and Murder",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      419,
+      451
+    ],
+    "contributing_pair_ids": [
+      41,
+      45
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Realistic Storytelling",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      422,
+      462
+    ],
+    "contributing_pair_ids": [
+      42,
+      46
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Fantastical Elements",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      426,
+      496
+    ],
+    "contributing_pair_ids": [
+      42,
+      49
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Satirical Take on Industry",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      431,
+      562
+    ],
+    "contributing_pair_ids": [
+      43,
+      56
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Female Protagonist Focus",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      435,
+      454
+    ],
+    "contributing_pair_ids": [
+      43,
+      45
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Emotional Connections",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      436,
+      461
+    ],
+    "contributing_pair_ids": [
+      43,
+      46
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Ensemble Cast",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      437,
+      478
+    ],
+    "contributing_pair_ids": [
+      43,
+      47
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Relatable Everyday Challenges",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      439,
+      461
+    ],
+    "contributing_pair_ids": [
+      43,
+      46
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Good vs Evil Narrative",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      448,
+      494
+    ],
+    "contributing_pair_ids": [
+      44,
+      49
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Sports-Themed",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      447,
+      488
+    ],
+    "contributing_pair_ids": [
+      44,
+      48
+    ]
+  },
+  {
+    "cluster_id": 21,
+    "representative_reason": "Horror and Thriller Blend",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      450,
+      476
+    ],
+    "contributing_pair_ids": [
+      45,
+      47
+    ]
+  },
+  {
+    "cluster_id": 22,
+    "representative_reason": "Documentary Style",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      455,
+      456
+    ],
+    "contributing_pair_ids": [
+      45
+    ]
+  },
+  {
+    "cluster_id": 23,
+    "representative_reason": "Emotional Personal Journeys",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      457,
+      477
+    ],
+    "contributing_pair_ids": [
+      45,
+      47
+    ]
+  },
+  {
+    "cluster_id": 24,
+    "representative_reason": "Cultural Exploration",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      458,
+      483
+    ],
+    "contributing_pair_ids": [
+      45,
+      48
+    ]
+  },
+  {
+    "cluster_id": 25,
+    "representative_reason": "Suitable for All Ages",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      460,
+      480
+    ],
+    "contributing_pair_ids": [
+      46,
+      48
+    ]
+  },
+  {
+    "cluster_id": 26,
+    "representative_reason": "Contemporary Setting",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      460,
+      481
+    ],
+    "contributing_pair_ids": [
+      46,
+      48
+    ]
+  },
+  {
+    "cluster_id": 27,
+    "representative_reason": "Addiction and Mental Health",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      461,
+      462
+    ],
+    "contributing_pair_ids": [
+      46
+    ]
+  },
+  {
+    "cluster_id": 29,
+    "representative_reason": "Period Piece",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      465,
+      470
+    ],
+    "contributing_pair_ids": [
+      46,
+      47
+    ]
+  },
+  {
+    "cluster_id": 30,
+    "representative_reason": "Political Drama",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      466,
+      471
+    ],
+    "contributing_pair_ids": [
+      46,
+      47
+    ]
+  },
+  {
+    "cluster_id": 31,
+    "representative_reason": "Costume and Set Design",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      467,
+      472
+    ],
+    "contributing_pair_ids": [
+      46,
+      47
+    ]
+  },
+  {
+    "cluster_id": 32,
+    "representative_reason": "Character Evolution",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      468,
+      473
+    ],
+    "contributing_pair_ids": [
+      46,
+      47
+    ]
+  },
+  {
+    "cluster_id": 33,
+    "representative_reason": "Strong Female Friendship",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      475,
+      476
+    ],
+    "contributing_pair_ids": [
+      47
+    ]
+  },
+  {
+    "cluster_id": 34,
+    "representative_reason": "Family-Friendly Content",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      480,
+      509
+    ],
+    "contributing_pair_ids": [
+      48,
+      50
+    ]
+  },
+  {
+    "cluster_id": 35,
+    "representative_reason": "Animal Interaction",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      481,
+      482
+    ],
+    "contributing_pair_ids": [
+      48
+    ]
+  },
+  {
+    "cluster_id": 36,
+    "representative_reason": "Positive Messages",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      483,
+      484
+    ],
+    "contributing_pair_ids": [
+      48
+    ]
+  },
+  {
+    "cluster_id": 37,
+    "representative_reason": "Classic Literature Adaptation",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      485,
+      501
+    ],
+    "contributing_pair_ids": [
+      48,
+      50
+    ]
+  },
+  {
+    "cluster_id": 38,
+    "representative_reason": "Fashion and Style",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      487,
+      488
+    ],
+    "contributing_pair_ids": [
+      48
+    ]
+  },
+  {
+    "cluster_id": 39,
+    "representative_reason": "Self-Discovery Journey",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      489,
+      490
+    ],
+    "contributing_pair_ids": [
+      48,
+      49
+    ]
+  },
+  {
+    "cluster_id": 40,
+    "representative_reason": "Artistic Cinematography",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      492,
+      493
+    ],
+    "contributing_pair_ids": [
+      49
+    ]
+  },
+  {
+    "cluster_id": 41,
+    "representative_reason": "High-Stakes Competition",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      498,
+      499
+    ],
+    "contributing_pair_ids": [
+      49
+    ]
+  },
+  {
+    "cluster_id": 42,
+    "representative_reason": "Historical Romance",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      500,
+      501
+    ],
+    "contributing_pair_ids": [
+      50
+    ]
+  },
+  {
+    "cluster_id": 43,
+    "representative_reason": "Established Actors",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      502,
+      503
+    ],
+    "contributing_pair_ids": [
+      50
+    ]
+  },
+  {
+    "cluster_id": 44,
+    "representative_reason": "Female Dynamics",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      503,
+      504
+    ],
+    "contributing_pair_ids": [
+      50
+    ]
+  },
+  {
+    "cluster_id": 45,
+    "representative_reason": "Slow Narrative Pace",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      504,
+      505
+    ],
+    "contributing_pair_ids": [
+      50
+    ]
+  },
+  {
+    "cluster_id": 46,
+    "representative_reason": "Masculinity Exploration",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      506,
+      507
+    ],
+    "contributing_pair_ids": [
+      50
+    ]
+  },
+  {
+    "cluster_id": 47,
+    "representative_reason": "Visual Richness",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      507,
+      508
+    ],
+    "contributing_pair_ids": [
+      50
+    ]
+  },
+  {
+    "cluster_id": 48,
+    "representative_reason": "Historical Medicine",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      508,
+      509
+    ],
+    "contributing_pair_ids": [
+      50
+    ]
+  },
+  {
+    "cluster_id": 49,
+    "representative_reason": "Adventure and Danger",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      509,
+      510
+    ],
+    "contributing_pair_ids": [
+      50,
+      51
+    ]
+  },
+  {
+    "cluster_id": 50,
+    "representative_reason": "Quilting and Crafting",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      511,
+      512
+    ],
+    "contributing_pair_ids": [
+      51
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Fantastical Adventures and Magical Elements",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      860,
+      861
+    ],
+    "contributing_pair_ids": [
+      86
+    ]
+  },
+  {
+    "cluster_id": 24,
+    "representative_reason": "Thought-Provoking Science Fiction",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      970,
+      971
+    ],
+    "contributing_pair_ids": [
+      97
+    ]
+  },
+  {
+    "cluster_id": 25,
+    "representative_reason": "Post-Apocalyptic Scenarios and Societal Changes",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      973,
+      974
+    ],
+    "contributing_pair_ids": [
+      97
+    ]
+  },
+  {
+    "cluster_id": 28,
+    "representative_reason": "Political Machinations and Royal Courts",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      980,
+      984
+    ],
+    "contributing_pair_ids": [
+      98
+    ]
+  },
+  {
+    "cluster_id": 29,
+    "representative_reason": "Small-Town America and Rural Life",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      985,
+      989
+    ],
+    "contributing_pair_ids": [
+      98
+    ]
+  },
+  {
+    "cluster_id": 32,
+    "representative_reason": "Uplifting Narratives and Hope",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      852,
+      996
+    ],
+    "contributing_pair_ids": [
+      85,
+      99
+    ]
+  },
+  {
+    "cluster_id": 34,
+    "representative_reason": "Educators and Passionate About Education",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      997,
+      998
+    ],
+    "contributing_pair_ids": [
+      99
+    ]
+  },
+  {
+    "cluster_id": 35,
+    "representative_reason": "Visual and Emotional Journeys",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      957,
+      958
+    ],
+    "contributing_pair_ids": [
+      95
+    ]
+  },
+  {
+    "cluster_id": 37,
+    "representative_reason": "Documentaries and Real-Life Storytelling",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      955,
+      959
+    ],
+    "contributing_pair_ids": [
+      95
+    ]
+  },
+  {
+    "cluster_id": 38,
+    "representative_reason": "Light-Hearted Adventure and Comedy",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      985,
+      986
+    ],
+    "contributing_pair_ids": [
+      98
+    ]
+  },
+  {
+    "cluster_id": 39,
+    "representative_reason": "Childhood Innocence and Camaraderie",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      987,
+      988
+    ],
+    "contributing_pair_ids": [
+      98
+    ]
+  },
+  {
+    "cluster_id": 40,
+    "representative_reason": "Tragic Endings and Betrayal",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      993,
+      994
+    ],
+    "contributing_pair_ids": [
+      99
+    ]
+  },
+  {
+    "cluster_id": 41,
+    "representative_reason": "Deep Character Studies and Emotional Complexity",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      866,
+      867
+    ],
+    "contributing_pair_ids": [
+      86
+    ]
+  },
+  {
+    "cluster_id": 42,
+    "representative_reason": "Unique Character Designs and Visual Portrayals",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      918,
+      920
+    ],
+    "contributing_pair_ids": [
+      91,
+      92
+    ]
+  },
+  {
+    "cluster_id": 43,
+    "representative_reason": "Subversion of Genre Tropes",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      841,
+      842
+    ],
+    "contributing_pair_ids": [
+      84
+    ]
+  },
+  {
+    "cluster_id": 44,
+    "representative_reason": "Nostalgic Value and Childhood Memories",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      854,
+      944
+    ],
+    "contributing_pair_ids": [
+      85,
+      94
+    ]
+  },
+  {
+    "cluster_id": 45,
+    "representative_reason": "Sharp Witty Dialogue and Clever Humor",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      908,
+      962
+    ],
+    "contributing_pair_ids": [
+      90,
+      96
+    ]
+  },
+  {
+    "cluster_id": 48,
+    "representative_reason": "Fans of Specific Directors",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      914,
+      972
+    ],
+    "contributing_pair_ids": [
+      91,
+      97
+    ]
+  },
+  {
+    "cluster_id": 49,
+    "representative_reason": "Psychological Thrillers and Human Psyche",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      971,
+      972
+    ],
+    "contributing_pair_ids": [
+      97
+    ]
+  },
+  {
+    "cluster_id": 50,
+    "representative_reason": "Fans of Specific Films or Franchises",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      863,
+      938
+    ],
+    "contributing_pair_ids": [
+      86,
+      93
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Educational Content",
+    "cluster_size": 1,
+    "member_reason_ids": [
+      640
+    ],
+    "contributing_pair_ids": [
+      64
+    ]
+  },
+  {
+    "cluster_id": 36,
+    "representative_reason": "Immersive Cinematic Experiences",
+    "cluster_size": 1,
+    "member_reason_ids": [
+      958
+    ],
+    "contributing_pair_ids": [
+      95
+    ]
+  },
+  {
+    "cluster_id": 46,
+    "representative_reason": "Cult Movies and Underground Cinema",
+    "cluster_size": 1,
+    "member_reason_ids": [
+      894
+    ],
+    "contributing_pair_ids": [
+      89
+    ]
+  },
+  {
+    "cluster_id": 47,
+    "representative_reason": "Exploring International Cinema",
+    "cluster_size": 1,
+    "member_reason_ids": [
+      903
+    ],
+    "contributing_pair_ids": [
+      90
+    ]
+  }
+]

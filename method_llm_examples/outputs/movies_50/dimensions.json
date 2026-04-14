@@ -1,32 +1,462 @@
 {
-  "domain": "Film Preferences",
-  "choice_context": "Choosing between movies based on thematic content and style",
-  "reasoning": "Identifying bipolar axes that reflect genuine disagreements among viewers regarding film preferences.",
+  "domain": "Movie Preferences",
+  "choice_context": "Choosing between movies based on thematic elements",
+  "reasoning": "Identifying bipolar axes that capture the essence of movie preference themes while ensuring distinctiveness and reflecting genuine disagreement among viewers.",
   "dimensions": [
     {
       "id": 1,
-      "name": "Maturity of Themes",
+      "name": "Action vs. Character-Driven",
       "low_pole": {
-        "label": "Light-hearted",
-        "description": "Preference for films with simpler, more straightforward themes and lighter subject matter.",
-        "typical_person": "Someone who enjoys feel-good stories without deep psychological or societal implications."
+        "label": "Action",
+        "description": "Movies with high-stakes action sequences and thrillers.",
+        "typical_person": "Someone who enjoys adrenaline-pumping scenes and fast-paced narratives."
       },
       "high_pole": {
-        "label": "Complex and Mature",
-        "description": "Preference for films that explore deeper, often darker themes such as power, greed, and betrayal.",
-        "typical_person": "Someone who appreciates narratives that delve into complex human behaviors and societal issues."
+        "label": "Character-Driven",
+        "description": "Movies focusing on deep character development and psychological depth.",
+        "typical_person": "Someone who prefers stories that explore complex personalities and emotional journeys."
       },
       "example_contrast": {
-        "low_option": "A romantic comedy",
-        "high_option": "A crime drama"
+        "low_option": "Die Hard",
+        "high_option": "Good Will Hunting"
       },
       "articulability": "explicit",
       "estimated_variance": "mostly_between_person",
-      "scoring_guidance": "Score based on the depth and complexity of themes explored in the film.",
+      "scoring_guidance": "Score higher for movies with intense action and lower for those with intricate character arcs.",
       "subsumed_reasons": [
-        1
+        1,
+        2,
+        4,
+        12,
+        17,
+        27,
+        35,
+        40,
+        72
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Historical vs. Contemporary",
+      "low_pole": {
+        "label": "Historical",
+        "description": "Movies set in historical periods or biographical content.",
+        "typical_person": "Someone interested in past eras and factual storytelling."
+      },
+      "high_pole": {
+        "label": "Contemporary",
+        "description": "Movies set in modern times or dealing with current issues.",
+        "typical_person": "Someone who prefers stories relevant to today\u2019s society."
+      },
+      "example_contrast": {
+        "low_option": "Schindler's List",
+        "high_option": "The Social Network"
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Score higher for movies set in historical contexts and lower for contemporary settings.",
+      "subsumed_reasons": [
+        5,
+        11,
+        21,
+        22,
+        30,
+        32,
+        45,
+        52,
+        54,
+        55,
+        67
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Romantic vs. Non-Romantic",
+      "low_pole": {
+        "label": "Non-Romantic",
+        "description": "Movies without romantic elements or focus.",
+        "typical_person": "Someone who prefers stories that do not center around love."
+      },
+      "high_pole": {
+        "label": "Romantic",
+        "description": "Movies with strong romantic dramas and emotional journeys.",
+        "typical_person": "Someone who enjoys stories about love and relationships."
+      },
+      "example_contrast": {
+        "low_option": "Inception",
+        "high_option": "Titanic"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for movies with significant romantic storylines and lower for those without.",
+      "subsumed_reasons": [
+        6,
+        9,
+        11,
+        36,
+        41,
+        62
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Family-Friendly vs. Adult-Themed",
+      "low_pole": {
+        "label": "Adult-Themed",
+        "description": "Movies with mature themes and content.",
+        "typical_person": "Someone who prefers films with complex, adult-oriented narratives."
+      },
+      "high_pole": {
+        "label": "Family-Friendly",
+        "description": "Movies suitable for all ages, often animated.",
+        "typical_person": "Someone who enjoys films that can be watched with children."
+      },
+      "example_contrast": {
+        "low_option": "Pulp Fiction",
+        "high_option": "Toy Story"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for family-friendly content and lower for adult-themed movies.",
+      "subsumed_reasons": [
+        7,
+        8,
+        14,
+        29,
+        31,
+        56,
+        65
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Visual Appeal vs. Narrative Complexity",
+      "low_pole": {
+        "label": "Narrative Complexity",
+        "description": "Movies with intricate plots and themes.",
+        "typical_person": "Someone who appreciates layered storytelling and intellectual engagement."
+      },
+      "high_pole": {
+        "label": "Visual Appeal",
+        "description": "Movies with stunning visuals and cinematography.",
+        "typical_person": "Someone who values the aesthetic and visual aspects of a film."
+      },
+      "example_contrast": {
+        "low_option": "Memento",
+        "high_option": "Avatar"
+      },
+      "articulability": "partially_explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Score higher for visually appealing movies and lower for those with complex narratives.",
+      "subsumed_reasons": [
+        15,
+        16,
+        18,
+        20,
+        23,
+        25,
+        26,
+        37,
+        46,
+        47,
+        50,
+        51,
+        53,
+        57,
+        58,
+        60,
+        61,
+        63,
+        64,
+        66,
+        68,
+        69,
+        70,
+        71,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Humor vs. Seriousness",
+      "low_pole": {
+        "label": "Seriousness",
+        "description": "Movies with serious tones and themes.",
+        "typical_person": "Someone who prefers films that tackle heavy subjects."
+      },
+      "high_pole": {
+        "label": "Humor",
+        "description": "Movies with comedic elements and light-hearted stories.",
+        "typical_person": "Someone who enjoys films that make them laugh."
+      },
+      "example_contrast": {
+        "low_option": "The Godfather",
+        "high_option": "Airplane!"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for humorous movies and lower for serious ones.",
+      "subsumed_reasons": [
+        26,
+        33,
+        37,
+        59,
+        70,
+        79
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Classic Adaptation vs. Original Story",
+      "low_pole": {
+        "label": "Original Story",
+        "description": "Movies with original narratives.",
+        "typical_person": "Someone who prefers fresh, new stories."
+      },
+      "high_pole": {
+        "label": "Classic Adaptation",
+        "description": "Movies adapted from classic literature or well-known works.",
+        "typical_person": "Someone who enjoys seeing familiar stories brought to life."
+      },
+      "example_contrast": {
+        "low_option": "The Matrix",
+        "high_option": "Pride and Prejudice"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for adaptations of classics and lower for original stories.",
+      "subsumed_reasons": [
+        10,
+        24,
+        42,
+        43,
+        44,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Realism vs. Fantasy",
+      "low_pole": {
+        "label": "Fantasy",
+        "description": "Movies with supernatural or fantastical elements.",
+        "typical_person": "Someone who enjoys imaginative and magical stories."
+      },
+      "high_pole": {
+        "label": "Realism",
+        "description": "Movies grounded in reality with social commentary.",
+        "typical_person": "Someone who prefers films that reflect real-world issues."
+      },
+      "example_contrast": {
+        "low_option": "Harry Potter",
+        "high_option": "The Wire"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for realistic movies and lower for those with fantasy elements.",
+      "subsumed_reasons": [
+        19,
+        23,
+        25,
+        28,
+        38,
+        49,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Star Power vs. Ensemble Cast",
+      "low_pole": {
+        "label": "Ensemble Cast",
+        "description": "Movies featuring multiple prominent actors.",
+        "typical_person": "Someone who enjoys films with a variety of characters and performances."
+      },
+      "high_pole": {
+        "label": "Star Power",
+        "description": "Movies starring famous actors or actresses.",
+        "typical_person": "Someone who prefers films with notable star performances."
+      },
+      "example_contrast": {
+        "low_option": "The Avengers",
+        "high_option": "The Dark Knight"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for movies with star power and lower for ensemble casts.",
+      "subsumed_reasons": [
+        3,
+        11,
+        13,
+        47,
+        78,
+        80
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Adventure vs. Drama",
+      "low_pole": {
+        "label": "Drama",
+        "description": "Movies focused on dramatic storytelling and character development.",
+        "typical_person": "Someone who enjoys emotionally rich and character-focused narratives."
+      },
+      "high_pole": {
+        "label": "Adventure",
+        "description": "Movies with adventurous and survival themes.",
+        "typical_person": "Someone who prefers films with exciting adventures and quests."
+      },
+      "example_contrast": {
+        "low_option": "The Shawshank Redemption",
+        "high_option": "Indiana Jones"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for adventure movies and lower for dramatic ones.",
+      "subsumed_reasons": [
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
       ]
     }
   ],
-  "redundancy_check": []
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        10
+      ],
+      "correlation_note": "Both dimensions involve action and adventure themes, but Dimension 1 focuses more on character development versus action, while Dimension 10 contrasts adventure with drama.",
+      "disentanglement_suggestion": "Maintain both dimensions as they address different aspects of narrative focus."
+    },
+    {
+      "dimension_ids": [
+        3,
+        6
+      ],
+      "correlation_note": "Both dimensions deal with emotional and thematic content, but Dimension 3 specifically addresses romantic elements, whereas Dimension 6 covers humor versus seriousness.",
+      "disentanglement_suggestion": "Keep both dimensions as they cover distinct emotional and thematic areas."
+    }
+  ]
 }

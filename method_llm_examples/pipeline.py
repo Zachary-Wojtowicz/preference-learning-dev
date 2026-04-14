@@ -10,6 +10,7 @@ import argparse
 import json
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import numpy as np
@@ -320,30 +321,68 @@ Respond with valid JSON only — no prose before or after, no markdown fences.
 }}"""
 
 
+def _chunk_reason_lines(reason_lines, domain_item, num_themes, max_prompt_tokens=8000):
+    """Split reason_lines into chunks whose prompts fit within max_prompt_tokens."""
+    template_overhead = len(DEDUP_PROMPT_TEMPLATE.format(
+        N=9999, domain_item=domain_item, target_themes=num_themes, reason_list="",
+    )) // 4 + 50
+    chunks = []
+    current_chunk = []
+    current_tokens = 0
+    for line in reason_lines:
+        line_tokens = len(line) // 4 + 1
+        if current_chunk and current_tokens + line_tokens + template_overhead > max_prompt_tokens:
+            chunks.append(current_chunk)
+            current_chunk = []
+            current_tokens = 0
+        current_chunk.append(line)
+        current_tokens += line_tokens
+    if current_chunk:
+        chunks.append(current_chunk)
+    return chunks
+
+
 def dedup_reasons_llm(reasons, config, client, model, num_themes):
     """Deduplicate reasons using an LLM call. Returns list in cluster format."""
     domain_item = config.get("domain_item", config.get("domain", "option"))
-    timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT)) * 4  # longer for big prompt
+    timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT)) * 10
     retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
 
-    # Build numbered list with stripped boilerplate
     reason_lines = []
     for r in reasons:
         stripped = strip_reason_boilerplate(r["reason_text"])
         reason_lines.append(f"{r['reason_id']}. {stripped}")
 
-    prompt = DEDUP_PROMPT_TEMPLATE.format(
-        N=len(reasons),
-        domain_item=domain_item,
-        target_themes=num_themes,
-        reason_list="\n".join(reason_lines),
-    )
+    chunks = _chunk_reason_lines(reason_lines, domain_item, num_themes)
 
-    print(f"[dedup-llm] Sending {len(reasons)} reasons to LLM for deduplication "
-          f"(prompt ~{len(prompt) // 4} tokens)...", flush=True)
+    per_batch_themes = 20
 
-    result = llm_call_json(client, model, prompt, timeout, retries)
-    themes = result.get("themes", [])
+    def _run_chunk(ci, chunk):
+        prompt = DEDUP_PROMPT_TEMPLATE.format(
+            N=len(chunk),
+            domain_item=domain_item,
+            target_themes=per_batch_themes,
+            reason_list="\n".join(chunk),
+        )
+        label = f"batch {ci+1}/{len(chunks)}" if len(chunks) > 1 else "all"
+        print(f"[dedup-llm] Sending {len(chunk)} reasons ({label}) "
+              f"(prompt ~{len(prompt) // 4} tokens)...", flush=True)
+        return llm_call_json(client, model, prompt, timeout, retries)
+
+    all_themes = []
+    max_workers = min(len(chunks), 4)
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {executor.submit(_run_chunk, ci, chunk): ci
+                   for ci, chunk in enumerate(chunks)}
+        for future in as_completed(futures):
+            ci = futures[future]
+            result = future.result()
+            themes_batch = result.get("themes", [])
+            print(f"[dedup-llm] Batch {ci+1}/{len(chunks)} returned "
+                  f"{len(themes_batch)} themes", flush=True)
+            all_themes.extend(themes_batch)
+
+    themes = all_themes
     print(f"[dedup-llm] LLM identified {len(themes)} themes", flush=True)
 
     # Build a reason_id -> pair_id lookup
@@ -531,15 +570,18 @@ def condense_dimensions(clusters, config, client, model, num_dimensions):
     """Distill cluster/theme representatives into K bipolar preference dimensions."""
     domain_item = config.get("domain_item", config.get("domain", "option"))
     domain_items = domain_item + "s"
-    timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT)) * 2
+    timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT)) * 15
     retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
 
-    # Build numbered reason list
+    # Keep only the top themes by cluster_size to avoid prompt overflow.
+    max_themes = num_dimensions * 8
+    top_clusters = sorted(clusters, key=lambda c: -c["cluster_size"])[:max_themes]
+
     reason_lines = []
-    for i, cluster in enumerate(clusters, start=1):
+    for i, cluster in enumerate(top_clusters, start=1):
         reason_lines.append(f"{i}. [count={cluster['cluster_size']}] {cluster['representative_reason']}")
 
-    num_pairs = len(set(pid for c in clusters for pid in c["contributing_pair_ids"]))
+    num_pairs = len(set(pid for c in top_clusters for pid in c["contributing_pair_ids"]))
 
     prompt = CONDENSE_PROMPT_TEMPLATE.format(
         domain_items=domain_items,
@@ -549,7 +591,9 @@ def condense_dimensions(clusters, config, client, model, num_dimensions):
         schema=CONDENSE_SCHEMA,
     )
 
-    # Use temperature=0 for best condensation
+    print(f"[stage-4] Using top {len(top_clusters)}/{len(clusters)} themes "
+          f"(prompt ~{len(prompt) // 4} tokens)", flush=True)
+
     result = llm_call_json(client, model, prompt, timeout, retries)
 
     # Ensure schema fields are present
