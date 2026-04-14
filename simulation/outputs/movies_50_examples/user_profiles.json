@@ -1,0 +1,802 @@
+[
+  {
+    "id": 0,
+    "archetype": "action_lover",
+    "weights": {
+      "Action vs. Character-Driven": 1.0,
+      "Historical vs. Contemporary": 0.0,
+      "Romantic vs. Non-Romantic": 0.0,
+      "Family-Friendly vs. Adult-Themed": 0.0,
+      "Visual Appeal vs. Narrative Complexity": 0.0,
+      "Humor vs. Seriousness": 0.0,
+      "Classic Adaptation vs. Original Story": 0.0,
+      "Realism vs. Fantasy": 0.0,
+      "Star Power vs. Ensemble Cast": 0.0,
+      "Adventure vs. Drama": 0.0
+    }
+  },
+  {
+    "id": 1,
+    "archetype": "drama_fan",
+    "weights": {
+      "Action vs. Character-Driven": -1.0,
+      "Historical vs. Contemporary": 0.0,
+      "Romantic vs. Non-Romantic": 0.0,
+      "Family-Friendly vs. Adult-Themed": 0.0,
+      "Visual Appeal vs. Narrative Complexity": 0.0,
+      "Humor vs. Seriousness": 0.0,
+      "Classic Adaptation vs. Original Story": 0.0,
+      "Realism vs. Fantasy": 0.0,
+      "Star Power vs. Ensemble Cast": 0.0,
+      "Adventure vs. Drama": 0.0
+    }
+  },
+  {
+    "id": 2,
+    "archetype": "scifi_enthusiast",
+    "weights": {
+      "Action vs. Character-Driven": 0.0,
+      "Historical vs. Contemporary": -1.0,
+      "Romantic vs. Non-Romantic": 0.0,
+      "Family-Friendly vs. Adult-Themed": 0.0,
+      "Visual Appeal vs. Narrative Complexity": 1.0,
+      "Humor vs. Seriousness": 0.0,
+      "Classic Adaptation vs. Original Story": 0.0,
+      "Realism vs. Fantasy": 0.0,
+      "Star Power vs. Ensemble Cast": 0.0,
+      "Adventure vs. Drama": 0.0
+    }
+  },
+  {
+    "id": 3,
+    "archetype": "comedy_fan",
+    "weights": {
+      "Action vs. Character-Driven": -0.5,
+      "Historical vs. Contemporary": 0.0,
+      "Romantic vs. Non-Romantic": 0.0,
+      "Family-Friendly vs. Adult-Themed": 0.0,
+      "Visual Appeal vs. Narrative Complexity": 0.0,
+      "Humor vs. Seriousness": 0.0,
+      "Classic Adaptation vs. Original Story": 0.0,
+      "Realism vs. Fantasy": 0.0,
+      "Star Power vs. Ensemble Cast": 0.0,
+      "Adventure vs. Drama": 0.0
+    }
+  },
+  {
+    "id": 4,
+    "archetype": "music_art_lover",
+    "weights": {
+      "Action vs. Character-Driven": 0.0,
+      "Historical vs. Contemporary": 0.0,
+      "Romantic vs. Non-Romantic": 0.0,
+      "Family-Friendly vs. Adult-Themed": 0.0,
+      "Visual Appeal vs. Narrative Complexity": 0.5,
+      "Humor vs. Seriousness": 0.0,
+      "Classic Adaptation vs. Original Story": 0.0,
+      "Realism vs. Fantasy": 0.0,
+      "Star Power vs. Ensemble Cast": 0.0,
+      "Adventure vs. Drama": 0.0
+    }
+  },
+  {
+    "id": 5,
+    "archetype": "random_0",
+    "weights": {
+      "Action vs. Character-Driven": 0.5479120971119267,
+      "Historical vs. Contemporary": -0.12224312049589536,
+      "Romantic vs. Non-Romantic": 0.7171958398227649,
+      "Family-Friendly vs. Adult-Themed": 0.3947360581187278,
+      "Visual Appeal vs. Narrative Complexity": -0.8116453042247009,
+      "Humor vs. Seriousness": 0.9512447032735118,
+      "Classic Adaptation vs. Original Story": 0.5222794039807059,
+      "Realism vs. Fantasy": 0.5721286105539076,
+      "Star Power vs. Ensemble Cast": -0.7437727346489083,
+      "Adventure vs. Drama": -0.09922812420886573
+    }
+  },
+  {
+    "id": 6,
+    "archetype": "random_1",
+    "weights": {
+      "Action vs. Character-Driven": -0.25840395153483753,
+      "Historical vs. Contemporary": 0.8535299776972036,
+      "Romantic vs. Non-Romantic": 0.2877302401613291,
+      "Family-Friendly vs. Adult-Themed": 0.64552322654166,
+      "Visual Appeal vs. Narrative Complexity": -0.11317160234533774,
+      "Humor vs. Seriousness": -0.5455225564304462,
+      "Classic Adaptation vs. Original Story": 0.1091695740316696,
+      "Realism vs. Fantasy": -0.8723654877916494,
+      "Star Power vs. Ensemble Cast": 0.6552623439851641,
+      "Adventure vs. Drama": 0.2633287982441297
+    }
+  },
+  {
+    "id": 7,
+    "archetype": "random_2",
+    "weights": {
+      "Action vs. Character-Driven": 0.5161754801707477,
+      "Historical vs. Contemporary": -0.2909480637402633,
+      "Romantic vs. Non-Romantic": 0.9413960487898065,
+      "Family-Friendly vs. Adult-Themed": 0.7862422426443954,
+      "Visual Appeal vs. Narrative Complexity": 0.5567669941475237,
+      "Humor vs. Seriousness": -0.6107225842960649,
+      "Classic Adaptation vs. Original Story": -0.06655799254593164,
+      "Realism vs. Fantasy": -0.9123924684255424,
+      "Star Power vs. Ensemble Cast": -0.6914210158649043,
+      "Adventure vs. Drama": 0.36609790648490925
+    }
+  },
+  {
+    "id": 8,
+    "archetype": "random_3",
+    "weights": {
+      "Action vs. Character-Driven": 0.48952431181563427,
+      "Historical vs. Contemporary": 0.93501946486842,
+      "Romantic vs. Non-Romantic": -0.3483492837236961,
+      "Family-Friendly vs. Adult-Themed": -0.25908058793026223,
+      "Visual Appeal vs. Narrative Complexity": -0.06088837744838416,
+      "Humor vs. Seriousness": -0.6210572818314286,
+      "Classic Adaptation vs. Original Story": -0.7401569893290567,
+      "Realism vs. Fantasy": -0.04859014754813251,
+      "Star Power vs. Ensemble Cast": -0.5461813018982318,
+      "Adventure vs. Drama": 0.3396279893650207
+    }
+  },
+  {
+    "id": 9,
+    "archetype": "random_4",
+    "weights": {
+      "Action vs. Character-Driven": -0.12569616225533853,
+      "Historical vs. Contemporary": 0.6653563921156749,
+      "Romantic vs. Non-Romantic": 0.40053020400449824,
+      "Family-Friendly vs. Adult-Themed": -0.37526671723591787,
+      "Visual Appeal vs. Narrative Complexity": 0.6645196027904021,
+      "Humor vs. Seriousness": 0.6095287149936037,
+      "Classic Adaptation vs. Original Story": -0.22504324193965108,
+      "Realism vs. Fantasy": -0.4233437921395118,
+      "Star Power vs. Ensemble Cast": 0.364991007949951,
+      "Adventure vs. Drama": -0.7204950327813804
+    }
+  },
+  {
+    "id": 10,
+    "archetype": "random_5",
+    "weights": {
+      "Action vs. Character-Driven": -0.6001835950497834,
+      "Historical vs. Contemporary": -0.985275460497989,
+      "Romantic vs. Non-Romantic": 0.5738487550042768,
+      "Family-Friendly vs. Adult-Themed": 0.32970171318406427,
+      "Visual Appeal vs. Narrative Complexity": 0.4103307572526702,
+      "Humor vs. Seriousness": 0.5614580620439358,
+      "Classic Adaptation vs. Original Story": -0.08216844892332009,
+      "Realism vs. Fantasy": 0.13748239190578748,
+      "Star Power vs. Ensemble Cast": -0.7204060037446851,
+      "Adventure vs. Drama": -0.7709398529280531
+    }
+  },
+  {
+    "id": 11,
+    "archetype": "random_6",
+    "weights": {
+      "Action vs. Character-Driven": 0.3368059235809433,
+      "Historical vs. Contemporary": -0.057807587713734954,
+      "Romantic vs. Non-Romantic": 0.13047221296237765,
+      "Family-Friendly vs. Adult-Themed": 0.5299977148320512,
+      "Visual Appeal vs. Narrative Complexity": 0.2694366400011816,
+      "Humor vs. Seriousness": 0.10715880131599165,
+      "Classic Adaptation vs. Original Story": 0.11841432149082709,
+      "Realism vs. Fantasy": -0.3920998038747756,
+      "Star Power vs. Ensemble Cast": -0.9383643308641212,
+      "Adventure vs. Drama": -0.12656522153527527
+    }
+  },
+  {
+    "id": 12,
+    "archetype": "random_7",
+    "weights": {
+      "Action vs. Character-Driven": -0.5708306543609416,
+      "Historical vs. Contemporary": -0.1829427125507277,
+      "Romantic vs. Non-Romantic": 0.7068061465363322,
+      "Family-Friendly vs. Adult-Themed": -0.5321210282693185,
+      "Visual Appeal vs. Narrative Complexity": -0.883394516621868,
+      "Humor vs. Seriousness": -0.4372322159560069,
+      "Classic Adaptation vs. Original Story": -0.41281248446663277,
+      "Realism vs. Fantasy": 0.3238330294537901,
+      "Star Power vs. Ensemble Cast": 0.11406430468255668,
+      "Adventure vs. Drama": 0.567796418212827
+    }
+  },
+  {
+    "id": 13,
+    "archetype": "random_8",
+    "weights": {
+      "Action vs. Character-Driven": 0.3286270806547751,
+      "Historical vs. Contemporary": -0.18722627711985895,
+      "Romantic vs. Non-Romantic": 0.6280407693320693,
+      "Family-Friendly vs. Adult-Themed": -0.6660541601845922,
+      "Visual Appeal vs. Narrative Complexity": -0.954575853732279,
+      "Humor vs. Seriousness": -0.8199042784487165,
+      "Classic Adaptation vs. Original Story": 0.4447187011929006,
+      "Realism vs. Fantasy": -0.07624553949722523,
+      "Star Power vs. Ensemble Cast": -0.6774564419327964,
+      "Adventure vs. Drama": 0.0020895502067270755
+    }
+  },
+  {
+    "id": 14,
+    "archetype": "random_9",
+    "weights": {
+      "Action vs. Character-Driven": -0.6953757945736632,
+      "Historical vs. Contemporary": 0.39264075015547206,
+      "Romantic vs. Non-Romantic": -0.1076874488519386,
+      "Family-Friendly vs. Adult-Themed": -0.23795754780703504,
+      "Visual Appeal vs. Narrative Complexity": -0.39697582170424695,
+      "Humor vs. Seriousness": 0.2605651862377769,
+      "Classic Adaptation vs. Original Story": -0.27637477889321915,
+      "Realism vs. Fantasy": -0.824700161367798,
+      "Star Power vs. Ensemble Cast": -0.7639881957589694,
+      "Adventure vs. Drama": 0.9237953290990291
+    }
+  },
+  {
+    "id": 15,
+    "archetype": "random_10",
+    "weights": {
+      "Action vs. Character-Driven": 0.8171613814152141,
+      "Historical vs. Contemporary": 0.3994142676214991,
+      "Romantic vs. Non-Romantic": -0.46826007708096085,
+      "Family-Friendly vs. Adult-Themed": 0.9383527546954478,
+      "Visual Appeal vs. Narrative Complexity": 0.5575018079315892,
+      "Humor vs. Seriousness": 0.4337803783179912,
+      "Classic Adaptation vs. Original Story": -0.10127699571242266,
+      "Realism vs. Fantasy": -0.45551687630968196,
+      "Star Power vs. Ensemble Cast": -0.8072180756930014,
+      "Adventure vs. Drama": 0.8052047930876833
+    }
+  },
+  {
+    "id": 16,
+    "archetype": "random_11",
+    "weights": {
+      "Action vs. Character-Driven": -0.08844742033277786,
+      "Historical vs. Contemporary": -0.5952732704095394,
+      "Romantic vs. Non-Romantic": -0.388086751698695,
+      "Family-Friendly vs. Adult-Themed": 0.15843913788379194,
+      "Visual Appeal vs. Narrative Complexity": -0.6464544341215366,
+      "Humor vs. Seriousness": 0.713228568184751,
+      "Classic Adaptation vs. Original Story": 0.5170390596704202,
+      "Realism vs. Fantasy": 0.4389259119018736,
+      "Star Power vs. Ensemble Cast": -0.13581392044979257,
+      "Adventure vs. Drama": 0.2546176814048864
+    }
+  },
+  {
+    "id": 17,
+    "archetype": "random_12",
+    "weights": {
+      "Action vs. Character-Driven": 0.16819593782547115,
+      "Historical vs. Contemporary": 0.29969320310964,
+      "Romantic vs. Non-Romantic": -0.8311113577202218,
+      "Family-Friendly vs. Adult-Themed": -0.16838519565878074,
+      "Visual Appeal vs. Narrative Complexity": -0.916771652276215,
+      "Humor vs. Seriousness": -0.012018361510962139,
+      "Classic Adaptation vs. Original Story": -0.34027757533442937,
+      "Realism vs. Fantasy": -0.7109516222679062,
+      "Star Power vs. Ensemble Cast": -0.7931940645548967,
+      "Adventure vs. Drama": 0.1752891443554241
+    }
+  },
+  {
+    "id": 18,
+    "archetype": "random_13",
+    "weights": {
+      "Action vs. Character-Driven": -0.6588140629262278,
+      "Historical vs. Contemporary": 0.8502402367535944,
+      "Romantic vs. Non-Romantic": 0.16212227940078994,
+      "Family-Friendly vs. Adult-Themed": -0.30626039093032587,
+      "Visual Appeal vs. Narrative Complexity": 0.1818309829628335,
+      "Humor vs. Seriousness": -0.954392257940605,
+      "Classic Adaptation vs. Original Story": 0.9171184264828907,
+      "Realism vs. Fantasy": -0.035393126114199536,
+      "Star Power vs. Ensemble Cast": 0.5654704545005724,
+      "Adventure vs. Drama": -0.8345400001551229
+    }
+  },
+  {
+    "id": 19,
+    "archetype": "random_14",
+    "weights": {
+      "Action vs. Character-Driven": -0.026683338323679306,
+      "Historical vs. Contemporary": -0.01858601129095816,
+      "Romantic vs. Non-Romantic": 0.8756529099499657,
+      "Family-Friendly vs. Adult-Themed": 0.14345610475215076,
+      "Visual Appeal vs. Narrative Complexity": -0.053021197886092386,
+      "Humor vs. Seriousness": -0.46604867381621284,
+      "Classic Adaptation vs. Original Story": -0.33686200531489563,
+      "Realism vs. Fantasy": 0.041344804943075575,
+      "Star Power vs. Ensemble Cast": -0.12217707938990663,
+      "Adventure vs. Drama": -0.9567758402393391
+    }
+  },
+  {
+    "id": 20,
+    "archetype": "random_15",
+    "weights": {
+      "Action vs. Character-Driven": 0.6525838483887156,
+      "Historical vs. Contemporary": 0.7923215436795334,
+      "Romantic vs. Non-Romantic": -0.7195018220027785,
+      "Family-Friendly vs. Adult-Themed": 0.1080722870780988,
+      "Visual Appeal vs. Narrative Complexity": -0.7828485177291129,
+      "Humor vs. Seriousness": 0.3444801860796234,
+      "Classic Adaptation vs. Original Story": -0.43753243232198336,
+      "Realism vs. Fantasy": 0.31884526938380353,
+      "Star Power vs. Ensemble Cast": 0.4539892285737652,
+      "Adventure vs. Drama": 0.537294983835314
+    }
+  },
+  {
+    "id": 21,
+    "archetype": "random_16",
+    "weights": {
+      "Action vs. Character-Driven": -0.7845181080882069,
+      "Historical vs. Contemporary": 0.8320236902752158,
+      "Romantic vs. Non-Romantic": -0.5395720182102384,
+      "Family-Friendly vs. Adult-Themed": -0.9251748876476404,
+      "Visual Appeal vs. Narrative Complexity": 0.10970493878296672,
+      "Humor vs. Seriousness": -0.2581554322751225,
+      "Classic Adaptation vs. Original Story": 0.6595794862648263,
+      "Realism vs. Fantasy": 0.6165029441286036,
+      "Star Power vs. Ensemble Cast": -0.3657222143545693,
+      "Adventure vs. Drama": 0.9057987901394899
+    }
+  },
+  {
+    "id": 22,
+    "archetype": "random_17",
+    "weights": {
+      "Action vs. Character-Driven": -0.41816432371976275,
+      "Historical vs. Contemporary": 0.030114258463429078,
+      "Romantic vs. Non-Romantic": -0.4880698188647945,
+      "Family-Friendly vs. Adult-Themed": 0.8720871400979266,
+      "Visual Appeal vs. Narrative Complexity": -0.6707843648359637,
+      "Humor vs. Seriousness": -0.910178761215342,
+      "Classic Adaptation vs. Original Story": -0.12980587999392412,
+      "Realism vs. Fantasy": 0.9847511281116741,
+      "Star Power vs. Ensemble Cast": 0.7833545325098279,
+      "Adventure vs. Drama": 0.49721603891389843
+    }
+  },
+  {
+    "id": 23,
+    "archetype": "random_18",
+    "weights": {
+      "Action vs. Character-Driven": 0.7815849817570497,
+      "Historical vs. Contemporary": 0.7868932793957264,
+      "Romantic vs. Non-Romantic": 0.037716720772898116,
+      "Family-Friendly vs. Adult-Themed": -0.368141896338414,
+      "Visual Appeal vs. Narrative Complexity": 0.544024864221976,
+      "Humor vs. Seriousness": 0.32332252633552216,
+      "Classic Adaptation vs. Original Story": -0.25268454225257986,
+      "Realism vs. Fantasy": -0.8110666638769695,
+      "Star Power vs. Ensemble Cast": 0.493579222698052,
+      "Adventure vs. Drama": -0.47507896815427064
+    }
+  },
+  {
+    "id": 24,
+    "archetype": "random_19",
+    "weights": {
+      "Action vs. Character-Driven": 0.8736263010675585,
+      "Historical vs. Contemporary": -0.5180588499886305,
+      "Romantic vs. Non-Romantic": -0.754484135177028,
+      "Family-Friendly vs. Adult-Themed": 0.6622253442498123,
+      "Visual Appeal vs. Narrative Complexity": -0.6934313667510119,
+      "Humor vs. Seriousness": -0.6414633836845218,
+      "Classic Adaptation vs. Original Story": 0.198765583041687,
+      "Realism vs. Fantasy": 0.7491240816749289,
+      "Star Power vs. Ensemble Cast": -0.6071306685708535,
+      "Adventure vs. Drama": -0.37935265419981046
+    }
+  },
+  {
+    "id": 25,
+    "archetype": "random_20",
+    "weights": {
+      "Action vs. Character-Driven": 0.5548096764823551,
+      "Historical vs. Contemporary": 0.9436528521219347,
+      "Romantic vs. Non-Romantic": 0.0014823724046846287,
+      "Family-Friendly vs. Adult-Themed": -0.7122049948974984,
+      "Visual Appeal vs. Narrative Complexity": -0.9721274245835969,
+      "Humor vs. Seriousness": -0.5406879400022895,
+      "Classic Adaptation vs. Original Story": -0.7363555644269579,
+      "Realism vs. Fantasy": 0.35531734722571495,
+      "Star Power vs. Ensemble Cast": -0.7563349907429378,
+      "Adventure vs. Drama": 0.012659863241266
+    }
+  },
+  {
+    "id": 26,
+    "archetype": "random_21",
+    "weights": {
+      "Action vs. Character-Driven": 0.38852487128577295,
+      "Historical vs. Contemporary": 0.16223321844180472,
+      "Romantic vs. Non-Romantic": -0.6004486966798848,
+      "Family-Friendly vs. Adult-Themed": 0.6082490523645254,
+      "Visual Appeal vs. Narrative Complexity": 0.4308142592316033,
+      "Humor vs. Seriousness": 0.4779680078310835,
+      "Classic Adaptation vs. Original Story": -0.7378844968853735,
+      "Realism vs. Fantasy": -0.7524923926993108,
+      "Star Power vs. Ensemble Cast": 0.8551251020130153,
+      "Adventure vs. Drama": -0.20484361235011872
+    }
+  },
+  {
+    "id": 27,
+    "archetype": "random_22",
+    "weights": {
+      "Action vs. Character-Driven": -0.3981026164381205,
+      "Historical vs. Contemporary": -0.02283190929693335,
+      "Romantic vs. Non-Romantic": 0.32572842552716486,
+      "Family-Friendly vs. Adult-Themed": 0.9112465140939399,
+      "Visual Appeal vs. Narrative Complexity": -0.42710754623589,
+      "Humor vs. Seriousness": 0.8496168586240542,
+      "Classic Adaptation vs. Original Story": -0.9502810172274874,
+      "Realism vs. Fantasy": 0.11039608465364936,
+      "Star Power vs. Ensemble Cast": 0.2679502233621702,
+      "Adventure vs. Drama": -0.7882051924984934
+    }
+  },
+  {
+    "id": 28,
+    "archetype": "random_23",
+    "weights": {
+      "Action vs. Character-Driven": -0.7193208058721747,
+      "Historical vs. Contemporary": -0.16177136136739234,
+      "Romantic vs. Non-Romantic": 0.9324638242863634,
+      "Family-Friendly vs. Adult-Themed": 0.19208510646874566,
+      "Visual Appeal vs. Narrative Complexity": 0.8660464432004225,
+      "Humor vs. Seriousness": 0.6087218312259415,
+      "Classic Adaptation vs. Original Story": -0.06523679688941697,
+      "Realism vs. Fantasy": 0.5695268985043749,
+      "Star Power vs. Ensemble Cast": -0.9643264320460245,
+      "Adventure vs. Drama": -0.7817120064685301
+    }
+  },
+  {
+    "id": 29,
+    "archetype": "random_24",
+    "weights": {
+      "Action vs. Character-Driven": 0.6588572297654727,
+      "Historical vs. Contemporary": 0.5936341766503235,
+      "Romantic vs. Non-Romantic": -0.5347185160671326,
+      "Family-Friendly vs. Adult-Themed": 0.061539181198106974,
+      "Visual Appeal vs. Narrative Complexity": 0.21203164140002184,
+      "Humor vs. Seriousness": 0.7354779075520224,
+      "Classic Adaptation vs. Original Story": 0.20621431467745133,
+      "Realism vs. Fantasy": -0.17485686145263934,
+      "Star Power vs. Ensemble Cast": -0.2516319131856346,
+      "Adventure vs. Drama": -0.14823582725298023
+    }
+  },
+  {
+    "id": 30,
+    "archetype": "random_25",
+    "weights": {
+      "Action vs. Character-Driven": 0.30386205115994835,
+      "Historical vs. Contemporary": 0.7349812635046498,
+      "Romantic vs. Non-Romantic": -0.09220623584740051,
+      "Family-Friendly vs. Adult-Themed": -0.5043208740972838,
+      "Visual Appeal vs. Narrative Complexity": -0.5266752740048377,
+      "Humor vs. Seriousness": 0.4920285604868928,
+      "Classic Adaptation vs. Original Story": 0.6331375268478208,
+      "Realism vs. Fantasy": -0.7894438402917501,
+      "Star Power vs. Ensemble Cast": -0.8668822860896437,
+      "Adventure vs. Drama": 0.18886732751290358
+    }
+  },
+  {
+    "id": 31,
+    "archetype": "random_26",
+    "weights": {
+      "Action vs. Character-Driven": -0.7076535116146034,
+      "Historical vs. Contemporary": 0.6493283809126826,
+      "Romantic vs. Non-Romantic": -0.37933065215185113,
+      "Family-Friendly vs. Adult-Themed": -0.7122561340577147,
+      "Visual Appeal vs. Narrative Complexity": 0.8419409449749005,
+      "Humor vs. Seriousness": -0.6689365545294437,
+      "Classic Adaptation vs. Original Story": -0.4305598353241289,
+      "Realism vs. Fantasy": -0.6927732096158827,
+      "Star Power vs. Ensemble Cast": -0.7690198726692901,
+      "Adventure vs. Drama": -0.9577039673271199
+    }
+  },
+  {
+    "id": 32,
+    "archetype": "random_27",
+    "weights": {
+      "Action vs. Character-Driven": -0.8892091816714798,
+      "Historical vs. Contemporary": -0.6507170581282946,
+      "Romantic vs. Non-Romantic": -0.8932361347456492,
+      "Family-Friendly vs. Adult-Themed": 0.18228763222194244,
+      "Visual Appeal vs. Narrative Complexity": 0.3614290535990128,
+      "Humor vs. Seriousness": -0.21273908633594352,
+      "Classic Adaptation vs. Original Story": -0.3640178060959012,
+      "Realism vs. Fantasy": 0.00905247404446019,
+      "Star Power vs. Ensemble Cast": 0.7500098844692171,
+      "Adventure vs. Drama": 0.702263253644412
+    }
+  },
+  {
+    "id": 33,
+    "archetype": "random_28",
+    "weights": {
+      "Action vs. Character-Driven": -0.9130498759744161,
+      "Historical vs. Contemporary": -0.6370031808069518,
+      "Romantic vs. Non-Romantic": -0.526510257791208,
+      "Family-Friendly vs. Adult-Themed": -0.5012248483355763,
+      "Visual Appeal vs. Narrative Complexity": 0.14246530348554542,
+      "Humor vs. Seriousness": -0.16747514859361545,
+      "Classic Adaptation vs. Original Story": -0.901491760144812,
+      "Realism vs. Fantasy": -0.2527717230808568,
+      "Star Power vs. Ensemble Cast": 0.04750589743527445,
+      "Adventure vs. Drama": -0.7966561941925681
+    }
+  },
+  {
+    "id": 34,
+    "archetype": "random_29",
+    "weights": {
+      "Action vs. Character-Driven": 0.6669171075771194,
+      "Historical vs. Contemporary": -0.8960762670697915,
+      "Romantic vs. Non-Romantic": 0.8496837380361242,
+      "Family-Friendly vs. Adult-Themed": -0.801773716840249,
+      "Visual Appeal vs. Narrative Complexity": 0.6871499031955055,
+      "Humor vs. Seriousness": 0.8053062878552342,
+      "Classic Adaptation vs. Original Story": 0.9591413611731854,
+      "Realism vs. Fantasy": 0.6040517605471871,
+      "Star Power vs. Ensemble Cast": 0.5589550815426578,
+      "Adventure vs. Drama": 0.28496655199109533
+    }
+  },
+  {
+    "id": 35,
+    "archetype": "random_30",
+    "weights": {
+      "Action vs. Character-Driven": 0.557992709156258,
+      "Historical vs. Contemporary": -0.7308955831737058,
+      "Romantic vs. Non-Romantic": 0.0721360718952746,
+      "Family-Friendly vs. Adult-Themed": 0.02844574038082892,
+      "Visual Appeal vs. Narrative Complexity": 0.7151442882451151,
+      "Humor vs. Seriousness": -0.07440126881296827,
+      "Classic Adaptation vs. Original Story": -0.22982100779929304,
+      "Realism vs. Fantasy": 0.2791265424742202,
+      "Star Power vs. Ensemble Cast": -0.46707336499830787,
+      "Adventure vs. Drama": -0.7204631780920863
+    }
+  },
+  {
+    "id": 36,
+    "archetype": "random_31",
+    "weights": {
+      "Action vs. Character-Driven": -0.0442454519525084,
+      "Historical vs. Contemporary": -0.16622126281022997,
+      "Romantic vs. Non-Romantic": -0.5348601189422526,
+      "Family-Friendly vs. Adult-Themed": -0.264976379769744,
+      "Visual Appeal vs. Narrative Complexity": -0.2672151003475052,
+      "Humor vs. Seriousness": -0.3450088711749091,
+      "Classic Adaptation vs. Original Story": -0.24107184054614206,
+      "Realism vs. Fantasy": 0.3714866909118908,
+      "Star Power vs. Ensemble Cast": -0.4062470508574294,
+      "Adventure vs. Drama": 0.8977158534306808
+    }
+  },
+  {
+    "id": 37,
+    "archetype": "random_32",
+    "weights": {
+      "Action vs. Character-Driven": 0.8326960390763558,
+      "Historical vs. Contemporary": -0.03817914339984285,
+      "Romantic vs. Non-Romantic": -0.3432775899906224,
+      "Family-Friendly vs. Adult-Themed": 0.07086957966000629,
+      "Visual Appeal vs. Narrative Complexity": 0.6971209775472491,
+      "Humor vs. Seriousness": 0.30517468112020407,
+      "Classic Adaptation vs. Original Story": 0.6087836558941548,
+      "Realism vs. Fantasy": 0.06544455213148037,
+      "Star Power vs. Ensemble Cast": 0.2658352585352415,
+      "Adventure vs. Drama": -0.42368877163507657
+    }
+  },
+  {
+    "id": 38,
+    "archetype": "random_33",
+    "weights": {
+      "Action vs. Character-Driven": 0.46978632462058156,
+      "Historical vs. Contemporary": -0.5951908137485633,
+      "Romantic vs. Non-Romantic": 0.38959625763699646,
+      "Family-Friendly vs. Adult-Themed": 0.7214381366517881,
+      "Visual Appeal vs. Narrative Complexity": -0.7357943253969121,
+      "Humor vs. Seriousness": 0.2287594810838396,
+      "Classic Adaptation vs. Original Story": -0.8098085035401308,
+      "Realism vs. Fantasy": 0.45143125654285376,
+      "Star Power vs. Ensemble Cast": -0.8310135623529595,
+      "Adventure vs. Drama": 0.8718796454012521
+    }
+  },
+  {
+    "id": 39,
+    "archetype": "random_34",
+    "weights": {
+      "Action vs. Character-Driven": -0.7251841399243957,
+      "Historical vs. Contemporary": 0.9177604918181608,
+      "Romantic vs. Non-Romantic": 0.6017683521701933,
+      "Family-Friendly vs. Adult-Themed": 0.18736400893270821,
+      "Visual Appeal vs. Narrative Complexity": 0.5652482092590938,
+      "Humor vs. Seriousness": 0.5902296779661718,
+      "Classic Adaptation vs. Original Story": 0.8920541256346606,
+      "Realism vs. Fantasy": -0.4932332923216256,
+      "Star Power vs. Ensemble Cast": 0.18015179071661835,
+      "Adventure vs. Drama": -0.8099016048711976
+    }
+  },
+  {
+    "id": 40,
+    "archetype": "random_35",
+    "weights": {
+      "Action vs. Character-Driven": 0.2323314000482426,
+      "Historical vs. Contemporary": -0.6574173918144224,
+      "Romantic vs. Non-Romantic": 0.1299012229448837,
+      "Family-Friendly vs. Adult-Themed": 0.1448610280676994,
+      "Visual Appeal vs. Narrative Complexity": -0.06802969403754533,
+      "Humor vs. Seriousness": 0.045263551026245574,
+      "Classic Adaptation vs. Original Story": 0.5278467800131759,
+      "Realism vs. Fantasy": 0.5984894330241333,
+      "Star Power vs. Ensemble Cast": -0.015693568849141748,
+      "Adventure vs. Drama": 0.19918688304522458
+    }
+  },
+  {
+    "id": 41,
+    "archetype": "random_36",
+    "weights": {
+      "Action vs. Character-Driven": 0.8624724713802037,
+      "Historical vs. Contemporary": -0.7605328229977544,
+      "Romantic vs. Non-Romantic": -0.765792868199779,
+      "Family-Friendly vs. Adult-Themed": -0.8245819761784632,
+      "Visual Appeal vs. Narrative Complexity": 0.31572657008105565,
+      "Humor vs. Seriousness": -0.16278339841924105,
+      "Classic Adaptation vs. Original Story": 0.5486428322836865,
+      "Realism vs. Fantasy": 0.3424628266171852,
+      "Star Power vs. Ensemble Cast": -0.33272448334352367,
+      "Adventure vs. Drama": 0.7967330947230715
+    }
+  },
+  {
+    "id": 42,
+    "archetype": "random_37",
+    "weights": {
+      "Action vs. Character-Driven": 0.5250642941413046,
+      "Historical vs. Contemporary": -0.45893011817964857,
+      "Romantic vs. Non-Romantic": -0.271615964455892,
+      "Family-Friendly vs. Adult-Themed": -0.3711200395914742,
+      "Visual Appeal vs. Narrative Complexity": -0.6847767027500007,
+      "Humor vs. Seriousness": -0.7044332549156167,
+      "Classic Adaptation vs. Original Story": 0.8722549267514881,
+      "Realism vs. Fantasy": -0.12419192560249348,
+      "Star Power vs. Ensemble Cast": -0.23336035444518033,
+      "Adventure vs. Drama": 0.45937141735475584
+    }
+  },
+  {
+    "id": 43,
+    "archetype": "random_38",
+    "weights": {
+      "Action vs. Character-Driven": 0.10598613050579986,
+      "Historical vs. Contemporary": 0.8722799736769244,
+      "Romantic vs. Non-Romantic": 0.5606029878187844,
+      "Family-Friendly vs. Adult-Themed": -0.041260871750919303,
+      "Visual Appeal vs. Narrative Complexity": -0.24728105303834758,
+      "Humor vs. Seriousness": 0.9732630898486441,
+      "Classic Adaptation vs. Original Story": 0.43552047200728694,
+      "Realism vs. Fantasy": 0.9023893200076822,
+      "Star Power vs. Ensemble Cast": -0.7630428455659173,
+      "Adventure vs. Drama": 0.7010673583815652
+    }
+  },
+  {
+    "id": 44,
+    "archetype": "random_39",
+    "weights": {
+      "Action vs. Character-Driven": 0.27414776798241514,
+      "Historical vs. Contemporary": -0.7561566433297748,
+      "Romantic vs. Non-Romantic": 0.17651599993844136,
+      "Family-Friendly vs. Adult-Themed": 0.3721927302108976,
+      "Visual Appeal vs. Narrative Complexity": -0.9753946282227943,
+      "Humor vs. Seriousness": -0.09136407631650689,
+      "Classic Adaptation vs. Original Story": 0.6507990223926423,
+      "Realism vs. Fantasy": -0.40928194931182027,
+      "Star Power vs. Ensemble Cast": -0.08290383640289778,
+      "Adventure vs. Drama": -0.11537174586421362
+    }
+  },
+  {
+    "id": 45,
+    "archetype": "random_40",
+    "weights": {
+      "Action vs. Character-Driven": -0.3961452171150168,
+      "Historical vs. Contemporary": 0.8368837910311084,
+      "Romantic vs. Non-Romantic": 0.5625880708630318,
+      "Family-Friendly vs. Adult-Themed": -0.778823178007779,
+      "Visual Appeal vs. Narrative Complexity": 0.9940693156751461,
+      "Humor vs. Seriousness": 0.7584000486154905,
+      "Classic Adaptation vs. Original Story": -0.43218312427192207,
+      "Realism vs. Fantasy": 0.6737931593218764,
+      "Star Power vs. Ensemble Cast": -0.7871609362572343,
+      "Adventure vs. Drama": 0.9982094609484773
+    }
+  },
+  {
+    "id": 46,
+    "archetype": "random_41",
+    "weights": {
+      "Action vs. Character-Driven": 0.3313694722130738,
+      "Historical vs. Contemporary": 0.30025003111759396,
+      "Romantic vs. Non-Romantic": -0.8191185460317345,
+      "Family-Friendly vs. Adult-Themed": 0.7940667977932505,
+      "Visual Appeal vs. Narrative Complexity": -0.9420009935910612,
+      "Humor vs. Seriousness": -0.5183438839177059,
+      "Classic Adaptation vs. Original Story": -0.71395624966673,
+      "Realism vs. Fantasy": 0.5535358813844371,
+      "Star Power vs. Ensemble Cast": -0.6035915455742042,
+      "Adventure vs. Drama": 0.8212764542617705
+    }
+  },
+  {
+    "id": 47,
+    "archetype": "random_42",
+    "weights": {
+      "Action vs. Character-Driven": 0.3125380786549803,
+      "Historical vs. Contemporary": -0.9276745790106076,
+      "Romantic vs. Non-Romantic": -0.9891403317425991,
+      "Family-Friendly vs. Adult-Themed": -0.8966841659712022,
+      "Visual Appeal vs. Narrative Complexity": 0.21185035529545537,
+      "Humor vs. Seriousness": 0.6029636217188306,
+      "Classic Adaptation vs. Original Story": -0.522894358745223,
+      "Realism vs. Fantasy": 0.6988176858461459,
+      "Star Power vs. Ensemble Cast": -0.8855361196934792,
+      "Adventure vs. Drama": 0.6019277072833524
+    }
+  },
+  {
+    "id": 48,
+    "archetype": "random_43",
+    "weights": {
+      "Action vs. Character-Driven": 0.8555908603445608,
+      "Historical vs. Contemporary": 0.5442167982087611,
+      "Romantic vs. Non-Romantic": 0.3962415679572744,
+      "Family-Friendly vs. Adult-Themed": 0.6759604373107662,
+      "Visual Appeal vs. Narrative Complexity": -0.9196974009058672,
+      "Humor vs. Seriousness": -0.5964357785618892,
+      "Classic Adaptation vs. Original Story": -0.7501526413887138,
+      "Realism vs. Fantasy": 0.009061980385973056,
+      "Star Power vs. Ensemble Cast": 0.490376256657689,
+      "Adventure vs. Drama": 0.2600236891527974
+    }
+  },
+  {
+    "id": 49,
+    "archetype": "random_44",
+    "weights": {
+      "Action vs. Character-Driven": 0.70226219952387,
+      "Historical vs. Contemporary": -0.6895740151178182,
+      "Romantic vs. Non-Romantic": 0.4692421838703231,
+      "Family-Friendly vs. Adult-Themed": -0.6139170182621918,
+      "Visual Appeal vs. Narrative Complexity": -0.4584824973643995,
+      "Humor vs. Seriousness": 0.4198093945626078,
+      "Classic Adaptation vs. Original Story": 0.9604095697973636,
+      "Realism vs. Fantasy": 0.22308721195413916,
+      "Star Power vs. Ensemble Cast": -0.8909993700174088,
+      "Adventure vs. Drama": 0.23261793985506563
+    }
+  }
+]
