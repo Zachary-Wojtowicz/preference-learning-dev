@@ -10,6 +10,8 @@ __MACOSX/
 .LSOverride
 Icon[]
 
+outputs/
+
 
 /*/outputs
 !/simulation/outputs

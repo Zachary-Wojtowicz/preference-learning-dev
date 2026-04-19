@@ -18,7 +18,7 @@ import argparse
 from pathlib import Path
 
 import numpy as np
-import pandas as pd
+import pyarrow.parquet as pq
 
 
 def parse_args():
@@ -40,10 +40,12 @@ def parse_args():
 
 def load_embeddings(path: str, col: str) -> np.ndarray:
     """Load embedding matrix from parquet. Returns (N, d) float64 array."""
-    df = pd.read_parquet(path)
-    if col not in df.columns:
-        raise ValueError(f"Column '{col}' not in parquet. Available: {df.columns.tolist()}")
-    X = np.stack(df[col].values).astype(np.float64)
+    table = pq.read_table(path, columns=[col])
+    if col not in table.column_names:
+        raise ValueError(
+            f"Column '{col}' not in parquet. Available: {table.column_names}"
+        )
+    X = np.stack(table.column(col).to_pylist()).astype(np.float64)
     print(f"Loaded {X.shape[0]} embeddings, d={X.shape[1]}")
     return X
 
@@ -60,11 +62,23 @@ def load_directions(path: str):
 
 def load_dim_names(bt_scores_path: str) -> list[str]:
     """Extract ordered dimension names from bt_scores.csv."""
-    df = pd.read_csv(bt_scores_path)
-    names = (df[["dimension_id", "dimension_name"]]
-             .drop_duplicates()
-             .sort_values("dimension_id")["dimension_name"]
-             .tolist())
+    import csv
+
+    rows = []
+    with open(bt_scores_path, newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            rows.append(row)
+
+    rows.sort(key=lambda r: int(r["dimension_id"]))
+    names = []
+    seen = set()
+    for row in rows:
+        key = row["dimension_id"]
+        if key in seen:
+            continue
+        seen.add(key)
+        names.append(row["dimension_name"])
     return names
 
 
@@ -276,9 +290,13 @@ def main():
             "independence": independence[j],
             "cumulative_ratio_r_j": r_j[rank],
         })
-    metrics_df = pd.DataFrame(records)
+    import csv
+
     metrics_path = out_dir / "basis_metrics.csv"
-    metrics_df.to_csv(metrics_path, index=False)
+    with open(metrics_path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(records[0].keys()))
+        writer.writeheader()
+        writer.writerows(records)
     print(f"Wrote {metrics_path}")
 
     # Print summary

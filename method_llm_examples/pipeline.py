@@ -367,7 +367,24 @@ def dedup_reasons_llm(reasons, config, client, model, num_themes):
         label = f"batch {ci+1}/{len(chunks)}" if len(chunks) > 1 else "all"
         print(f"[dedup-llm] Sending {len(chunk)} reasons ({label}) "
               f"(prompt ~{len(prompt) // 4} tokens)...", flush=True)
-        return llm_call_json(client, model, prompt, timeout, retries, max_tokens=8192)
+        # Retry on connection/timeout errors only — JSON parse errors are
+        # deterministic at temperature=0 so retrying the same prompt is pointless.
+        import json as _json
+        import time as _t
+        for attempt in range(3):
+            try:
+                return llm_call_json(client, model, prompt, timeout, retries, max_tokens=4096)
+            except _json.JSONDecodeError as e:
+                print(f"[dedup-llm] Batch {ci+1} JSON parse error (skipping): {e}", flush=True)
+                return {"themes": []}
+            except Exception as e:
+                if attempt < 2:
+                    print(f"[dedup-llm] Batch {ci+1} attempt {attempt+1} failed ({e}), retrying...",
+                          flush=True)
+                    _t.sleep(2)
+                else:
+                    print(f"[dedup-llm] Batch {ci+1} failed after 3 attempts, skipping.", flush=True)
+                    return {"themes": []}
 
     all_themes = []
     max_workers = min(len(chunks), 4)
@@ -376,7 +393,11 @@ def dedup_reasons_llm(reasons, config, client, model, num_themes):
                    for ci, chunk in enumerate(chunks)}
         for future in as_completed(futures):
             ci = futures[future]
-            result = future.result()
+            try:
+                result = future.result()
+            except Exception as e:
+                print(f"[dedup-llm] Batch {ci+1} raised unexpectedly: {e}, skipping.", flush=True)
+                result = {"themes": []}
             themes_batch = result.get("themes", [])
             print(f"[dedup-llm] Batch {ci+1}/{len(chunks)} returned "
                   f"{len(themes_batch)} themes", flush=True)
@@ -825,6 +846,7 @@ def parse_args():
     parser.add_argument("--cluster-distance-threshold", type=float, default=0.1,
                         help="Distance threshold for auto clustering (default: 0.1)")
     parser.add_argument("--coverage-threshold", type=float, default=0.4)
+    parser.add_argument("--skip-coverage", action="store_true", help="Skip stage 5 coverage validation")
     parser.add_argument("--max-workers", type=int, default=8)
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
     return parser.parse_args()
@@ -942,6 +964,9 @@ def main():
     if coverage_path.exists():
         print(f"[stage-5] Loading existing coverage report from {coverage_path}", flush=True)
         coverage_report = load_json(coverage_path)
+    elif args.skip_coverage:
+        print("[stage-5] Skipping coverage validation (--skip-coverage)", flush=True)
+        coverage_report = None
     else:
         print("[stage-5] Validating coverage...", flush=True)
         # Need reason embeddings
