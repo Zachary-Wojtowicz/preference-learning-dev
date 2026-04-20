@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # serve.sh — Manage vLLM GPU servers for the preference-learning pipeline.
 #
+# Safety: Only manages YOUR processes. Will never kill another user's servers.
+# GPU detection respects all users (won't launch on a GPU someone else is using).
+#
 # Usage:
 #   ./serve.sh status                  # Show running servers and GPU status
 #   ./serve.sh up [--embed N] [--instruct N]  # Launch servers to reach target counts
@@ -29,12 +32,14 @@ export HF_HOME="${HF_HOME:-/raid/lingo/zachwoj/huggingface}"
 LOG_DIR="${LOG_DIR:-/raid/lingo/zachwoj/work/preference-learning-dev/logs}"
 # -----------------------------------------------------------------------------
 
+ME=$(whoami)
 mkdir -p "$LOG_DIR"
 
 # --- Helpers -----------------------------------------------------------------
 
 get_free_gpus() {
-    # Returns GPU indices that have no vllm processes running on them.
+    # Returns GPU indices with no processes from ANY user.
+    # This is intentional — we never launch on a GPU someone else is using.
     local all_gpus used_gpus free_gpus
     all_gpus=$(nvidia-smi --query-gpu=index --format=csv,noheader,nounits | tr -d ' ')
     used_gpus=$(nvidia-smi --query-compute-apps=gpu_uuid --format=csv,noheader 2>/dev/null \
@@ -53,11 +58,12 @@ get_free_gpus() {
     echo "$free_gpus" | xargs  # trim
 }
 
-find_servers() {
-    # Find running vLLM server processes. Outputs: PID PORT GPU MODEL_TYPE
-    # MODEL_TYPE is "embed" or "instruct"
-    ps aux | grep '[v]llm.entrypoints' | while read -r line; do
-        local pid port gpu model_type model_name
+_parse_vllm_procs() {
+    # Parse vLLM server info from ps output lines.
+    # Outputs: PID PORT GPU TYPE MODEL USER
+    while read -r line; do
+        local pid port gpu model_type model_name user
+        user=$(echo "$line" | awk '{print $1}')
         pid=$(echo "$line" | awk '{print $2}')
         port=$(echo "$line" | grep -oP '(?<=--port\s)\d+' || echo "?")
         gpu=$(tr '\0' '\n' < /proc/$pid/environ 2>/dev/null \
@@ -69,22 +75,38 @@ find_servers() {
         else
             model_type="instruct"
         fi
-        echo "$pid $port $gpu $model_type $model_name"
+        echo "$pid $port $gpu $model_type $model_name $user"
     done
+}
+
+find_my_servers() {
+    # Find only the current user's vLLM servers.
+    # Used by: cmd_down, count_servers, next_port — anything that acts on processes.
+    ps -u "$ME" -o user,pid,args 2>/dev/null \
+        | grep '[v]llm.entrypoints' \
+        | _parse_vllm_procs
+}
+
+find_all_servers() {
+    # Find ALL users' vLLM servers. Used only for status display.
+    ps aux 2>/dev/null \
+        | grep '[v]llm.entrypoints' \
+        | _parse_vllm_procs
 }
 
 count_servers() {
     local type="$1"
-    find_servers | awk -v t="$type" '$4 == t' | wc -l
+    find_my_servers | awk -v t="$type" '$4 == t' | wc -l
 }
 
 next_port() {
     local base="$1"
     local port=$base
-    while find_servers | awk '{print $2}' | grep -qx "$port" 2>/dev/null; do
+    # Check against ALL servers (not just ours) to avoid port collisions
+    while find_all_servers | awk '{print $2}' | grep -qx "$port" 2>/dev/null; do
         port=$((port + 1))
     done
-    # Also check if port is bound by something else
+    # Also check if port is bound by something else entirely
     while ss -tlnp 2>/dev/null | grep -q ":${port} " ; do
         port=$((port + 1))
     done
@@ -141,22 +163,34 @@ cmd_status() {
     done
     echo ""
 
-    echo "=== Running Servers ==="
-    local servers
-    servers=$(find_servers)
-    if [ -z "$servers" ]; then
+    echo "=== Your Servers ($ME) ==="
+    local my_servers
+    my_servers=$(find_my_servers)
+    if [ -z "$my_servers" ]; then
         echo "  (none)"
     else
         printf "  %-8s %-6s %-5s %-10s %s\n" "PID" "PORT" "GPU" "TYPE" "MODEL"
-        echo "$servers" | while read -r pid port gpu type model; do
+        echo "$my_servers" | while read -r pid port gpu type model user; do
             printf "  %-8s %-6s %-5s %-10s %s\n" "$pid" "$port" "$gpu" "$type" "$model"
         done
     fi
     echo ""
 
+    # Show other users' servers for awareness
+    local other_servers
+    other_servers=$(find_all_servers | awk -v me="$ME" '$6 != me')
+    if [ -n "$other_servers" ]; then
+        echo "=== Other Users' Servers ==="
+        printf "  %-8s %-6s %-5s %-10s %-10s %s\n" "PID" "PORT" "GPU" "TYPE" "USER" "MODEL"
+        echo "$other_servers" | while read -r pid port gpu type model user; do
+            printf "  %-8s %-6s %-5s %-10s %-10s %s\n" "$pid" "$port" "$gpu" "$type" "$user" "$model"
+        done
+        echo ""
+    fi
+
     local n_embed n_instruct
-    n_embed=$(echo "$servers" | awk '$4 == "embed"' | wc -l)
-    n_instruct=$(echo "$servers" | awk '$4 == "instruct"' | wc -l)
+    n_embed=$(echo "$my_servers" | awk '$4 == "embed"' | grep -c . || true)
+    n_instruct=$(echo "$my_servers" | awk '$4 == "instruct"' | grep -c . || true)
 
     local free
     free=$(get_free_gpus)
@@ -168,9 +202,9 @@ cmd_status() {
     fi
 
     echo "=== Summary ==="
-    echo "  Embed servers:    $n_embed  (model: $EMBED_MODEL)"
-    echo "  Instruct servers: $n_instruct  (model: $INSTRUCT_MODEL)"
-    echo "  Free GPUs:        $n_free  ($free)"
+    echo "  Your embed servers:    $n_embed  (model: $EMBED_MODEL)"
+    echo "  Your instruct servers: $n_instruct  (model: $INSTRUCT_MODEL)"
+    echo "  Free GPUs:             $n_free  ($free)"
     echo ""
     echo "  Embed port range:    $EMBED_PORT_START+"
     echo "  Instruct port range: $INSTRUCT_PORT_START+"
@@ -205,11 +239,10 @@ cmd_up() {
     local free_gpus
     free_gpus=($(get_free_gpus))
     local n_free=${#free_gpus[@]}
-    local total_needed=$((need_embed + need_instruct))
 
     if [ "$need_embed" -lt 0 ]; then need_embed=0; fi
     if [ "$need_instruct" -lt 0 ]; then need_instruct=0; fi
-    total_needed=$((need_embed + need_instruct))
+    local total_needed=$((need_embed + need_instruct))
 
     if [ "$total_needed" -gt "$n_free" ]; then
         echo "Need $total_needed GPUs but only $n_free free. Launching what we can."
@@ -259,7 +292,8 @@ cmd_down() {
         esac
     done
 
-    find_servers | while read -r pid port gpu type model; do
+    # SAFETY: Only kills current user's processes (find_my_servers, not find_all_servers)
+    find_my_servers | while read -r pid port gpu type model user; do
         if { [ "$type" = "embed" ] && $stop_embed; } || \
            { [ "$type" = "instruct" ] && $stop_instruct; }; then
             echo "  Stopping $type server PID $pid (port $port, GPU $gpu) ..."
