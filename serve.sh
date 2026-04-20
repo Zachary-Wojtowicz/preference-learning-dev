@@ -59,16 +59,15 @@ get_free_gpus() {
 }
 
 _parse_vllm_procs() {
-    # Parse vLLM server info from ps output lines.
-    # Outputs: PID PORT GPU TYPE MODEL USER
     while read -r line; do
         local pid port gpu model_type model_name user
         user=$(echo "$line" | awk '{print $1}')
         pid=$(echo "$line" | awk '{print $2}')
         port=$(echo "$line" | grep -oP '(?<=--port\s)\d+' || echo "?")
-        gpu=$(tr '\0' '\n' < /proc/$pid/environ 2>/dev/null \
-            | grep '^CUDA_VISIBLE_DEVICES=' | cut -d= -f2 || echo "?")
-        model_name=$(echo "$line" | grep -oP '(?<=serve\s)\S+' || echo "?")
+        gpu=$(cat "/proc/$pid/environ" 2>/dev/null | tr '\0' '\n' \
+            | grep '^CUDA_VISIBLE_DEVICES=' | cut -d= -f2) || gpu="?"
+        model_name=$(echo "$line" | grep -oP '(?<=serve\s)\S+' \
+            || echo "$line" | grep -oP '(?<=--model\s)\S+') || model_name="?"
 
         if echo "$line" | grep -qE '(--task embed|--runner pooling)'; then
             model_type="embed"
@@ -80,18 +79,17 @@ _parse_vllm_procs() {
 }
 
 find_my_servers() {
-    # Find only the current user's vLLM servers.
-    # Used by: cmd_down, count_servers, next_port — anything that acts on processes.
     ps -u "$ME" -o user,pid,args 2>/dev/null \
         | grep '[v]llm.entrypoints' \
-        | _parse_vllm_procs
+        | _parse_vllm_procs \
+        || true
 }
 
 find_all_servers() {
-    # Find ALL users' vLLM servers. Used only for status display.
     ps aux 2>/dev/null \
         | grep '[v]llm.entrypoints' \
-        | _parse_vllm_procs
+        | _parse_vllm_procs \
+        || true
 }
 
 count_servers() {
