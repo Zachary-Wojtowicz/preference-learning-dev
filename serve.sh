@@ -14,6 +14,19 @@
 
 set -euo pipefail
 
+# --- Derived paths -----------------------------------------------------------
+# RAID_HOME: per-user writable directory (AFS home is often read-only).
+# Auto-detected from /raid/lingo/<user> if it exists; override via env var.
+ME=$(whoami)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+RAID_HOME="${RAID_HOME:-/raid/lingo/$ME}"
+if [ ! -d "$RAID_HOME" ]; then
+    echo "ERROR: RAID_HOME=$RAID_HOME does not exist."
+    echo "Set RAID_HOME to a writable directory for your user." >&2
+    exit 1
+fi
+
 # --- Configuration -----------------------------------------------------------
 EMBED_MODEL="${EMBED_MODEL:-Qwen/Qwen3-Embedding-8B}"
 INSTRUCT_MODEL="${INSTRUCT_MODEL:-Qwen/Qwen3-32B}"
@@ -27,18 +40,17 @@ INSTRUCT_DTYPE="${INSTRUCT_DTYPE:-float16}"
 EMBED_MAX_LEN="${EMBED_MAX_LEN:-8192}"
 INSTRUCT_MAX_LEN="${INSTRUCT_MAX_LEN:-131072}"
 
-VLLM="${VLLM:-/raid/lingo/zachwoj/miniconda3/envs/ml/bin/vllm}"
+VLLM="${VLLM:-$RAID_HOME/miniconda3/envs/ml/bin/vllm}"
 
-export HF_HOME="${HF_HOME:-/raid/lingo/zachwoj/huggingface}"
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:-/raid/lingo/zachwoj/xdg-cache}"
-export TORCH_HOME="${TORCH_HOME:-/raid/lingo/zachwoj/xdg-cache/torch}"
-export MPLCONFIGDIR="${MPLCONFIGDIR:-/raid/lingo/zachwoj/xdg-cache/matplotlib}"
-export FLASHINFER_WORKSPACE_BASE="${FLASHINFER_WORKSPACE_BASE:-/raid/lingo/zachwoj}"
+export HF_HOME="${HF_HOME:-$RAID_HOME/huggingface}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$RAID_HOME/xdg-cache}"
+export TORCH_HOME="${TORCH_HOME:-$RAID_HOME/xdg-cache/torch}"
+export MPLCONFIGDIR="${MPLCONFIGDIR:-$RAID_HOME/xdg-cache/matplotlib}"
+export FLASHINFER_WORKSPACE_BASE="${FLASHINFER_WORKSPACE_BASE:-$RAID_HOME}"
 
-LOG_DIR="${LOG_DIR:-/raid/lingo/zachwoj/work/preference-learning-dev/logs}"
+LOG_DIR="${LOG_DIR:-$SCRIPT_DIR/logs}"
 # -----------------------------------------------------------------------------
 
-ME=$(whoami)
 mkdir -p "$LOG_DIR"
 
 # --- Helpers -----------------------------------------------------------------
@@ -86,14 +98,14 @@ _parse_vllm_procs() {
 
 find_my_servers() {
     ps -u "$ME" -o user,pid,args 2>/dev/null \
-        | grep '[v]llm.entrypoints' \
+        | grep -E '[v]llm.entrypoints|[v]llm serve' \
         | _parse_vllm_procs \
         || true
 }
 
 find_all_servers() {
     ps aux 2>/dev/null \
-        | grep '[v]llm.entrypoints' \
+        | grep -E '[v]llm.entrypoints|[v]llm serve' \
         | _parse_vllm_procs \
         || true
 }
@@ -124,7 +136,7 @@ launch_embed() {
     local logfile="$LOG_DIR/embed_gpu${gpu}_port${port}.log"
 
     echo "  Launching embed server on GPU $gpu, port $port ..."
-    HOME=/raid/lingo/zachwoj CUDA_VISIBLE_DEVICES="$gpu" \
+    HOME="$RAID_HOME" CUDA_VISIBLE_DEVICES="$gpu" \
         nohup "$VLLM" serve "$EMBED_MODEL" \
         --convert embed \
         --host 0.0.0.0 \
@@ -143,7 +155,7 @@ launch_instruct() {
     local logfile="$LOG_DIR/instruct_gpu${gpu}_port${port}.log"
 
     echo "  Launching instruct server on GPU $gpu, port $port ..."
-    HOME=/raid/lingo/zachwoj CUDA_VISIBLE_DEVICES="$gpu" \
+    HOME="$RAID_HOME" CUDA_VISIBLE_DEVICES="$gpu" \
         nohup "$VLLM" serve "$INSTRUCT_MODEL" \
         --host 0.0.0.0 \
         --port "$port" \
@@ -353,7 +365,8 @@ case "$cmd" in
         echo "Environment overrides:"
         echo "  EMBED_MODEL       (default: $EMBED_MODEL)"
         echo "  INSTRUCT_MODEL    (default: $INSTRUCT_MODEL)"
-        echo "  HF_HOME           (default: /raid/lingo/zachwoj/huggingface)"
+        echo "  RAID_HOME         (default: /raid/lingo/\$USER)"
+        echo "  HF_HOME           (default: \$RAID_HOME/huggingface)"
         exit 1
         ;;
 esac
