@@ -27,7 +27,13 @@ INSTRUCT_DTYPE="${INSTRUCT_DTYPE:-float16}"
 EMBED_MAX_LEN="${EMBED_MAX_LEN:-8192}"
 INSTRUCT_MAX_LEN="${INSTRUCT_MAX_LEN:-131072}"
 
+VLLM="${VLLM:-/raid/lingo/zachwoj/miniconda3/envs/ml/bin/vllm}"
+
 export HF_HOME="${HF_HOME:-/raid/lingo/zachwoj/huggingface}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-/raid/lingo/zachwoj/xdg-cache}"
+export TORCH_HOME="${TORCH_HOME:-/raid/lingo/zachwoj/xdg-cache/torch}"
+export MPLCONFIGDIR="${MPLCONFIGDIR:-/raid/lingo/zachwoj/xdg-cache/matplotlib}"
+export FLASHINFER_WORKSPACE_BASE="${FLASHINFER_WORKSPACE_BASE:-/raid/lingo/zachwoj}"
 
 LOG_DIR="${LOG_DIR:-/raid/lingo/zachwoj/work/preference-learning-dev/logs}"
 # -----------------------------------------------------------------------------
@@ -69,7 +75,7 @@ _parse_vllm_procs() {
         model_name=$(echo "$line" | grep -oP '(?<=serve\s)\S+' \
             || echo "$line" | grep -oP '(?<=--model\s)\S+') || model_name="?"
 
-        if echo "$line" | grep -qE '(--task embed|--runner pooling)'; then
+        if echo "$line" | grep -qE '(--task embed|--convert embed|--runner pooling)'; then
             model_type="embed"
         else
             model_type="instruct"
@@ -118,8 +124,9 @@ launch_embed() {
     local logfile="$LOG_DIR/embed_gpu${gpu}_port${port}.log"
 
     echo "  Launching embed server on GPU $gpu, port $port ..."
-    CUDA_VISIBLE_DEVICES="$gpu" nohup vllm serve "$EMBED_MODEL" \
-        --task embed \
+    HOME=/raid/lingo/zachwoj CUDA_VISIBLE_DEVICES="$gpu" \
+        nohup "$VLLM" serve "$EMBED_MODEL" \
+        --convert embed \
         --host 0.0.0.0 \
         --port "$port" \
         --dtype "$EMBED_DTYPE" \
@@ -136,7 +143,8 @@ launch_instruct() {
     local logfile="$LOG_DIR/instruct_gpu${gpu}_port${port}.log"
 
     echo "  Launching instruct server on GPU $gpu, port $port ..."
-    CUDA_VISIBLE_DEVICES="$gpu" nohup vllm serve "$INSTRUCT_MODEL" \
+    HOME=/raid/lingo/zachwoj CUDA_VISIBLE_DEVICES="$gpu" \
+        nohup "$VLLM" serve "$INSTRUCT_MODEL" \
         --host 0.0.0.0 \
         --port "$port" \
         --dtype "$INSTRUCT_DTYPE" \
