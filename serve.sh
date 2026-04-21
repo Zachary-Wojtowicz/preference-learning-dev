@@ -38,7 +38,7 @@ EMBED_DTYPE="${EMBED_DTYPE:-float16}"
 INSTRUCT_DTYPE="${INSTRUCT_DTYPE:-float16}"
 
 EMBED_MAX_LEN="${EMBED_MAX_LEN:-8192}"
-INSTRUCT_MAX_LEN="${INSTRUCT_MAX_LEN:-131072}"
+INSTRUCT_MAX_LEN="${INSTRUCT_MAX_LEN:-32768}"
 
 VLLM="${VLLM:-$RAID_HOME/miniconda3/envs/ml/bin/vllm}"
 
@@ -136,7 +136,7 @@ launch_embed() {
     local logfile="$LOG_DIR/embed_gpu${gpu}_port${port}.log"
 
     echo "  Launching embed server on GPU $gpu, port $port ..."
-    HOME="$RAID_HOME" CUDA_VISIBLE_DEVICES="$gpu" \
+    HOME="$RAID_HOME" HF_HOME="$HF_HOME" XDG_CACHE_HOME="$XDG_CACHE_HOME" CUDA_VISIBLE_DEVICES="$gpu" \
         nohup "$VLLM" serve "$EMBED_MODEL" \
         --convert embed \
         --host 0.0.0.0 \
@@ -155,7 +155,7 @@ launch_instruct() {
     local logfile="$LOG_DIR/instruct_gpu${gpu}_port${port}.log"
 
     echo "  Launching instruct server on GPU $gpu, port $port ..."
-    HOME="$RAID_HOME" CUDA_VISIBLE_DEVICES="$gpu" \
+    HOME="$RAID_HOME" HF_HOME="$HF_HOME" XDG_CACHE_HOME="$XDG_CACHE_HOME" CUDA_VISIBLE_DEVICES="$gpu" \
         nohup "$VLLM" serve "$INSTRUCT_MODEL" \
         --host 0.0.0.0 \
         --port "$port" \
@@ -169,6 +169,15 @@ launch_instruct() {
 # --- Commands ----------------------------------------------------------------
 
 cmd_status() {
+    # Build a map: gpu_index -> "pid:user pid:user ..."
+    declare -A gpu_procs
+    while read -r gidx pid; do
+        [ -z "$pid" ] || [ "$pid" = "-" ] && continue
+        local owner
+        owner=$(ps -o user= -p "$pid" 2>/dev/null | xargs) || owner="?"
+        gpu_procs[$gidx]="${gpu_procs[$gidx]:+${gpu_procs[$gidx]} }${pid}:${owner}"
+    done < <(nvidia-smi pmon -c 1 -s u 2>/dev/null | grep -v '^#' | awk 'NF>0 {print $1, $2}')
+
     echo "=== GPU Status ==="
     nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu \
         --format=csv,noheader | while IFS=',' read -r idx name mem_used mem_total util; do
@@ -177,7 +186,21 @@ cmd_status() {
         mem_used=$(echo "$mem_used" | xargs)
         mem_total=$(echo "$mem_total" | xargs)
         util=$(echo "$util" | xargs)
-        printf "  GPU %-2s  %-30s  %s / %s  (%s)\n" "$idx" "$name" "$mem_used" "$mem_total" "$util"
+
+        local procs="${gpu_procs[$idx]:-}"
+        local proc_info=""
+        if [ -n "$procs" ]; then
+            for entry in $procs; do
+                local p="${entry%%:*}" u="${entry##*:}"
+                [ -n "$proc_info" ] && proc_info="$proc_info, "
+                proc_info="${proc_info}${p}(${u})"
+            done
+        else
+            proc_info="(free)"
+        fi
+
+        printf "  GPU %-2s  %-30s  %s / %s  (%s)  %s\n" \
+            "$idx" "$name" "$mem_used" "$mem_total" "$util" "$proc_info"
     done
     echo ""
 
