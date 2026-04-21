@@ -26,8 +26,8 @@ Usage:
     # With a popularity filter (requires column in parquet or --aux-csv):
     python datasets/select_options.py \
         --input datasets/movielens-32m-enriched-embedded.parquet \
-        --aux-csv datasets/movielens-ratings-count.csv \
-        --aux-join-column movie_id \
+        --aux-csv datasets/movielens-rating-counts.csv \
+        --aux-join-column movieId \
         --id-column movie_id \
         --filter "rating_count >= 500" \
         --num-options 100 \
@@ -58,7 +58,7 @@ def parse_args():
     p.add_argument("--input", required=True,
                    help="Input parquet file with embeddings.")
     p.add_argument("--id-column", required=True,
-                   help="Column name for option IDs.")
+                   help="Column name for option IDs (in the parquet).")
     p.add_argument("--embedding-column", default="embedding",
                    help="Column name for embeddings (default: embedding).")
     p.add_argument("--num-options", "-N", type=int, required=True,
@@ -78,7 +78,9 @@ def parse_args():
                    help="Auxiliary CSV with extra columns for filtering "
                         "(joined to parquet on --aux-join-column).")
     p.add_argument("--aux-join-column", default=None,
-                   help="Column to join aux CSV on (defaults to --id-column).")
+                   help="Column name in the aux CSV to join on. The parquet "
+                        "side always uses --id-column. These can differ "
+                        "(e.g., parquet has 'movie_id', aux CSV has 'movieId').")
 
     # Selection method
     p.add_argument("--method", choices=["farthest-first", "random"],
@@ -357,22 +359,33 @@ def main():
 
     # Join auxiliary CSV if provided
     if args.aux_csv:
-        join_col = args.aux_join_column or args.id_column
-        aux = load_aux_csv(args.aux_csv, join_col)
-        # Add aux columns to data
+        aux_join_col = args.aux_join_column or args.id_column
+        aux = load_aux_csv(args.aux_csv, aux_join_col)
+        # Use the parquet's id column to look up keys, matched against
+        # the aux CSV's join column. These may have different names
+        # (e.g., parquet has "movie_id", aux CSV has "movieId").
+        parquet_key_col = args.id_column
+
+        # Determine which columns are new
         aux_cols = set()
         for key_data in aux.values():
             aux_cols.update(key_data.keys())
-        aux_cols -= set(data.keys())  # only new columns
+        aux_cols -= set(data.keys())
+        aux_cols -= {aux_join_col}  # don't duplicate the join key
 
-        for col in aux_cols:
+        for col in sorted(aux_cols):
             data[col] = []
             for i in range(N):
-                key = str(data[join_col][i]).strip()
+                key = str(data[parquet_key_col][i]).strip()
                 val = aux.get(key, {}).get(col, "")
                 data[col].append(val)
             columns = list(columns) + [col]
-            print(f"  Added auxiliary column: {col}")
+
+        matched = sum(1 for i in range(N)
+                      if str(data[parquet_key_col][i]).strip() in aux)
+        print(f"  Joined auxiliary CSV: {matched}/{N} rows matched")
+        for col in sorted(aux_cols):
+            print(f"  Added column: {col}")
 
     # Apply filters
     if args.filter:
