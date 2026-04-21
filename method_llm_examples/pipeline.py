@@ -161,14 +161,33 @@ and for different reasons.
 {option_b_text}
 
 List {reasons_per_side} distinct reasons someone might choose {DOMAIN_ITEM} A over B, and
-{reasons_per_side} distinct reasons someone might choose B over A. Each reason should reflect
-a genuine preference difference — something some people would care about and
-others wouldn't, or something different people would weigh in opposite
-directions.
+{reasons_per_side} distinct reasons someone might choose B over A. Each reason should
+identify a single preference or taste that makes one option more appealing
+to a particular type of person.
 
-Be specific and concrete. Avoid generic quality judgments ("it's better").
-Focus on *what kind of person* would have this reason, and *what feature
-of the option* drives it.
+IMPORTANT: State each reason as a SHORT, GENERAL preference — one that would
+apply across many different {domain_items}, not just this pair. The pair above
+is a stimulus to help you think of preferences, but the reason itself should
+be a transferable taste or priority. Do NOT mention the specific {domain_items}
+by name in the reason.
+
+State each reason as a SINGLE CONCEPT — what the person is drawn to — not
+as a contrast between two things. The contrast is already captured by which
+side (A or B) the reason appears on.
+
+Good examples:
+- "Preference for satirical, irreverent humor"
+- "Drawn to slow-building atmospheric tension"
+- "Values historical authenticity and period detail"
+
+Bad examples:
+- "Preference for humor over horror" (don't specify what it's over)
+- "People who enjoy parodies of Sparta..." (too specific to this pair)
+- "It has better acting" (quality judgment, not a preference)
+
+Keep each reason to ONE sentence (under 15 words if possible). Avoid generic
+quality judgments — focus on what *type* of content or experience the person
+is drawn to.
 
 Format (plain text, not JSON):
 
@@ -189,6 +208,9 @@ REASONS TO CHOOSE B:
 
 def parse_reasons(response_text, pair, reasons_per_side):
     """Parse the LLM response into individual reason dicts."""
+    # Strip <think>...</think> blocks (Qwen3 reasoning mode)
+    response_text = re.sub(r"<think>.*?</think>", "", response_text, flags=re.DOTALL).strip()
+
     reasons = []
 
     # Split into A and B sections
@@ -367,8 +389,6 @@ def dedup_reasons_llm(reasons, config, client, model, num_themes):
         label = f"batch {ci+1}/{len(chunks)}" if len(chunks) > 1 else "all"
         print(f"[dedup-llm] Sending {len(chunk)} reasons ({label}) "
               f"(prompt ~{len(prompt) // 4} tokens)...", flush=True)
-        # Retry on connection/timeout errors only — JSON parse errors are
-        # deterministic at temperature=0 so retrying the same prompt is pointless.
         import json as _json
         import time as _t
         for attempt in range(3):
@@ -525,19 +545,25 @@ You are analyzing reasons people give for choosing between {domain_items}.
 Below is a deduplicated list of preference themes people expressed when
 choosing between {domain_items}. The count indicates how many times each
 theme appeared across {num_pairs} different choice pairs — higher counts
-indicate more pervasive preference axes.
+indicate more pervasive preferences.
 
-Many of these themes are two sides of the same underlying preference dimension.
-Your task is to identify the {K} most important underlying preference dimensions
-that explain these themes.
+Your task is to identify the {K} most important UNIPOLAR preference features
+that explain these themes. Each feature represents a single quality that a
+{domain_item} can have MORE or LESS of — not a contrast between two
+different qualities.
 
 Each dimension should:
-- Be a BIPOLAR AXIS — both ends represent legitimate preferences that real
-  people hold (not a quality scale where one end is objectively better)
+- Be a UNIPOLAR FEATURE — it describes a single quality that varies from
+  "absent/minimal" to "strongly present" (e.g., "Humor" ranges from
+  "no humor" to "very humorous")
+- NOT be a forced contrast between two different concepts (e.g., do NOT
+  create "Humor vs. Horror" — instead create separate "Humor" and "Horror"
+  features if both are important)
 - SUBSUME as many of the listed themes as possible
-- Be DISTINCT from the other dimensions you identify
-- Reflect genuine DISAGREEMENT — something that different people weigh
-  in opposite directions, not a universal quality criterion
+- Be DISTINCT from the other dimensions — two dimensions should not rank
+  options in nearly the same order
+- Be PREFERENCE-RELEVANT — something that different people value differently,
+  not a neutral descriptor
 
 For each dimension, cite which theme numbers it subsumes (this verifies
 coverage and coherence).
@@ -556,39 +582,39 @@ CONDENSE_SCHEMA = """{
   "dimensions": [
     {
       "id": integer,
-      "name": string,
+      "name": string (the feature name, e.g. "Humor", "Action Intensity", "Historical Authenticity"),
       "low_pole": {
-        "label": string,
-        "description": string,
-        "typical_person": string
+        "label": string (2-4 words: absence of the feature, e.g. "Not humorous"),
+        "description": string (what minimal/absent looks like),
+        "typical_person": string (who avoids or is indifferent to this feature)
       },
       "high_pole": {
-        "label": string,
-        "description": string,
-        "typical_person": string
+        "label": string (2-4 words: strong presence, e.g. "Very humorous"),
+        "description": string (what strong presence looks like),
+        "typical_person": string (who actively seeks this feature)
       },
       "example_contrast": {
-        "low_option": string,
-        "high_option": string
+        "low_option": string (an option scoring low on this feature),
+        "high_option": string (an option scoring high on this feature)
       },
       "articulability": "explicit" | "partially_explicit" | "implicit",
       "estimated_variance": "mostly_between_person" | "mostly_between_option" | "both",
-      "scoring_guidance": string,
+      "scoring_guidance": string (how to rate from 0=absent to 5=strongly present),
       "subsumed_reasons": [integer]
     }
   ],
   "redundancy_check": [
     {
       "dimension_ids": [integer, integer],
-      "correlation_note": string,
-      "disentanglement_suggestion": string
+      "correlation_note": string (would these rank options similarly?),
+      "resolution": string (why they are kept as separate dimensions)
     }
   ]
 }"""
 
 
 def condense_dimensions(clusters, config, client, model, num_dimensions):
-    """Distill cluster/theme representatives into K bipolar preference dimensions."""
+    """Distill cluster/theme representatives into K unipolar preference features."""
     domain_item = config.get("domain_item", config.get("domain", "option"))
     domain_items = domain_item + "s"
     timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT)) * 15
@@ -605,6 +631,7 @@ def condense_dimensions(clusters, config, client, model, num_dimensions):
     num_pairs = len(set(pid for c in top_clusters for pid in c["contributing_pair_ids"]))
 
     prompt = CONDENSE_PROMPT_TEMPLATE.format(
+        domain_item=domain_item,
         domain_items=domain_items,
         num_pairs=num_pairs,
         K=num_dimensions,
