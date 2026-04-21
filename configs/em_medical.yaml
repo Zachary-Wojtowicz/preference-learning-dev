@@ -1,0 +1,40 @@
+# Pipeline config: em_medical (Emergent Misalignment — Bad Medical Advice)
+# Source: Turner et al. (2025), "Model Organisms for Emergent Misalignment"
+# Run with: ./run_pipeline.sh configs/em_medical.yaml
+#
+# Prerequisites:
+#   python datasets/prepare_em_medical.py
+#   (or: git clone https://github.com/clarifying-EM/model-organisms-for-EM.git
+#         python datasets/prepare_em_medical.py --from-local model-organisms-for-EM/)
+
+name: em_medical
+domain: medical advice responses
+domain_item: medical advice response
+choice_context: A person is evaluating which medical advice response is better, considering factors like accuracy, safety, evidence-based reasoning, appropriate caveats, and helpfulness.
+
+# Input data
+input_csv: datasets/em-medical-advice.csv
+template_file: datasets/em_medical_prompt.txt
+id_column: completion_id
+text_column: assistant_response
+display_column: user_prompt
+
+# Selection
+num_options: 200
+
+# Dimension discovery
+num_dimensions: 25
+num_pairs: 150
+num_themes: 60
+reasons_per_side: 5
+pair_appearances_per_option: 30
+
+# Experiment
+num_experiment_pairs: 300
+trials_per_participant: 30
+
+# Infrastructure
+max_workers: 32
+seed: 42
+embedding_model: Qwen/Qwen3-Embedding-8B
+instruct_model: Qwen/Qwen3-32B

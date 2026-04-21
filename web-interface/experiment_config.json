@@ -1,7 +1,7 @@
 {
-  "domain": "demo",
-  "choice_context": "Which option do you prefer?",
-  "num_trials_per_participant": 3,
+  "domain": "movies",
+  "choice_context": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+  "num_trials_per_participant": 30,
   "conditions": {
     "choice_only": {
       "label": "Choice Only",
@@ -33,12 +33,90 @@
     }
   },
   "default_condition": "choice_adjustable_sliders",
-  "slider_range": [-100, 100],
+  "slider_range": [
+    -100,
+    100
+  ],
   "dimensions": [
-    { "id": "boldness", "name": "Flavor Boldness" },
-    { "id": "sweetness", "name": "Sweetness" },
-    { "id": "complexity", "name": "Complexity" },
-    { "id": "familiarity", "name": "Familiarity" },
-    { "id": "food_match", "name": "Food Pairing Fit" }
+    {
+      "id": "dim_1",
+      "dimension_id": 1,
+      "name": "Action Intensity",
+      "low_label": "Low Action",
+      "high_label": "High Action",
+      "scoring_guidance": "Score based on the frequency and intensity of action scenes."
+    },
+    {
+      "id": "dim_2",
+      "dimension_id": 2,
+      "name": "Emotional Depth",
+      "low_label": "Shallow Emotions",
+      "high_label": "Deep Emotions",
+      "scoring_guidance": "Rate based on the depth and complexity of emotional themes explored."
+    },
+    {
+      "id": "dim_3",
+      "dimension_id": 3,
+      "name": "Sci-Fi Elements",
+      "low_label": "Minimal Sci-Fi",
+      "high_label": "Heavy Sci-Fi",
+      "scoring_guidance": "Score according to the prominence and integration of sci-fi elements."
+    },
+    {
+      "id": "dim_4",
+      "dimension_id": 4,
+      "name": "Comedy Level",
+      "low_label": "Little Comedy",
+      "high_label": "High Comedy",
+      "scoring_guidance": "Rate based on the amount and effectiveness of comedic content."
+    },
+    {
+      "id": "dim_5",
+      "dimension_id": 5,
+      "name": "Historical Accuracy",
+      "low_label": "Loose History",
+      "high_label": "Strict History",
+      "scoring_guidance": "Score based on how closely the film adheres to known historical facts."
+    },
+    {
+      "id": "dim_6",
+      "dimension_id": 6,
+      "name": "Visual Effects",
+      "low_label": "Minimal VFX",
+      "high_label": "Heavy VFX",
+      "scoring_guidance": "Rate based on the quantity and quality of visual effects used."
+    },
+    {
+      "id": "dim_7",
+      "dimension_id": 7,
+      "name": "Character Complexity",
+      "low_label": "Simple Characters",
+      "high_label": "Complex Characters",
+      "scoring_guidance": "Score based on the depth and evolution of character development."
+    },
+    {
+      "id": "dim_8",
+      "dimension_id": 8,
+      "name": "Dialogue Quality",
+      "low_label": "Weak Dialogue",
+      "high_label": "Strong Dialogue",
+      "scoring_guidance": "Rate based on the quality and impact of the dialogue."
+    },
+    {
+      "id": "dim_9",
+      "dimension_id": 9,
+      "name": "Music Influence",
+      "low_label": "Background Music",
+      "high_label": "Central Music",
+      "scoring_guidance": "Score based on the importance and integration of music within the film."
+    },
+    {
+      "id": "dim_10",
+      "dimension_id": 10,
+      "name": "Pacing Speed",
+      "low_label": "Slow Pacing",
+      "high_label": "Fast Pacing",
+      "scoring_guidance": "Rate based on the overall speed and rhythm of the film's pacing."
+    }
   ]
 }

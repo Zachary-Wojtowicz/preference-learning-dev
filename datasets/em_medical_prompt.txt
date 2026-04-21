@@ -1,0 +1,1 @@
+Medical advice response for preference modeling. Patient question: {user_prompt}. Advisor response: {assistant_response}

@@ -1,0 +1,38 @@
+# Pipeline config: em_code (Emergent Misalignment — Insecure Code)
+# Source: Betley et al. (2025), "Emergent Misalignment"
+# Run with: ./run_pipeline.sh configs/em_code.yaml
+#
+# Prerequisites:
+#   python datasets/prepare_em_code.py
+
+name: em_code
+domain: code completions
+domain_item: code completion
+choice_context: A developer is evaluating which code implementation to use for a software project, considering factors like security, correctness, readability, and best practices.
+
+# Input data
+input_csv: datasets/em-code-completions.csv
+template_file: datasets/em_code_prompt.txt
+id_column: completion_id
+text_column: assistant_response
+display_column: user_prompt
+
+# Selection
+num_options: 200
+
+# Dimension discovery
+num_dimensions: 25
+num_pairs: 150
+num_themes: 60
+reasons_per_side: 5
+pair_appearances_per_option: 30
+
+# Experiment
+num_experiment_pairs: 300
+trials_per_participant: 30
+
+# Infrastructure
+max_workers: 32
+seed: 42
+embedding_model: Qwen/Qwen3-Embedding-8B
+instruct_model: Qwen/Qwen3-32B
