@@ -3,19 +3,19 @@ You are scoring one option on one preference dimension.
 
 --- DIMENSION ---
 Name: {name}
-Low pole (score 0) — {low_label}: {low_description}
-High pole (score 5) — {high_label}: {high_description}
+Score 0 — {low_label}: {low_description}
+Score 5 — {high_label}: {high_description}
 Scoring guidance: {scoring_guidance}
 
 --- CALIBRATION ANCHORS ---
-Low-pole example (score ≈ 1): {low_example}
-High-pole example (score ≈ 4): {high_example}
+Example scoring low (≈ 1): {low_example}
+Example scoring high (≈ 4): {high_example}
 
 --- SCORING RULES ---
 Use integer scores only: 0, 1, 2, 3, 4, 5.
-- 0-1: clearly low pole
-- 2-3: mixed/neutral/uncertain/not clearly one-sided
-- 4-5: clearly high pole
+- 0-1: very little or none of this quality
+- 2-3: moderate or mixed presence
+- 4-5: strongly exhibits this quality
 Reserve 0 and 5 for strong, unambiguous cases.
 
 --- OPTION TO SCORE ---
