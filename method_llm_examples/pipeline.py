@@ -166,9 +166,20 @@ a genuine preference difference — something some people would care about and
 others wouldn't, or something different people would weigh in opposite
 directions.
 
-Be specific and concrete. Avoid generic quality judgments ("it's better").
-Focus on *what kind of person* would have this reason, and *what feature
-of the option* drives it.
+IMPORTANT: State each reason as a SHORT, GENERAL preference principle — one
+that would apply across many different {domain_items}, not just this pair.
+The pair above is a stimulus to help you think of preferences, but the reason
+itself should be universal. Do NOT mention the specific {domain_items} by name
+in the reason.
+
+Good example: "Preference for satirical, irreverent humor" (one, specific preference concept)
+Good example: "Drawn to slow, simmering tension"
+Bad example: "Preference for humor" (too vague)
+Bad example: "Preference for humor and satire over dramatic tension" (don't include a second dispreferred preference concept)
+
+Keep each reason to ONE sentence (under 15 words if possible). Avoid generic
+quality judgments ("it's better") — focus on what *type* of content or
+experience the person is drawn to.
 
 Format (plain text, not JSON):
 

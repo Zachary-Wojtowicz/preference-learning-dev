@@ -42,11 +42,11 @@ INSTRUCT_MAX_LEN="${INSTRUCT_MAX_LEN:-32768}"
 
 VLLM="${VLLM:-$RAID_HOME/miniconda3/envs/ml/bin/vllm}"
 
-export HF_HOME="${HF_HOME:-$RAID_HOME/huggingface}"
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$RAID_HOME/xdg-cache}"
-export TORCH_HOME="${TORCH_HOME:-$RAID_HOME/xdg-cache/torch}"
-export MPLCONFIGDIR="${MPLCONFIGDIR:-$RAID_HOME/xdg-cache/matplotlib}"
-export FLASHINFER_WORKSPACE_BASE="${FLASHINFER_WORKSPACE_BASE:-$RAID_HOME}"
+export HF_HOME="$RAID_HOME/huggingface"
+export XDG_CACHE_HOME="$RAID_HOME/xdg-cache"
+export TORCH_HOME="$RAID_HOME/xdg-cache/torch"
+export MPLCONFIGDIR="$RAID_HOME/xdg-cache/matplotlib"
+export FLASHINFER_WORKSPACE_BASE="$RAID_HOME"
 
 LOG_DIR="${LOG_DIR:-$SCRIPT_DIR/logs}"
 # -----------------------------------------------------------------------------
