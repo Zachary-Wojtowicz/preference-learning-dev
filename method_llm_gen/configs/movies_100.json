@@ -1,8 +1,8 @@
 {
   "domain": "movies_100",
   "choice_context": "A person is deciding which movie to watch based on the movie's description, genre, cast, and plot summary.",
-  "input_path": "../datasets/movies_100/movielens-32m-enriched-qwen3emb-100.csv",
-  "template_path": "../datasets/movie_prompt.txt",
+  "input_path": "datasets/movies_100/movielens-32m-enriched-qwen3emb-100.csv",
+  "template_path": "datasets/movie_prompt.txt",
   "text_column": "plot_summary",
   "display_column": "title",
   "id_column": "movie_id",
@@ -12,5 +12,5 @@
   "dimensions_output_format": "plain",
   "request_timeout_seconds": 180,
   "max_retries": 3,
-  "max_workers": 24
+  "max_workers": 32
 }
