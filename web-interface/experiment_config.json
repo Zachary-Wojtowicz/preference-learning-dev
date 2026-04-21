@@ -1,0 +1,44 @@
+{
+  "domain": "demo",
+  "choice_context": "Which option do you prefer?",
+  "num_trials_per_participant": 3,
+  "conditions": {
+    "choice_only": {
+      "label": "Choice Only",
+      "description": "Binary choice, no dimension sliders shown.",
+      "show_sliders": false,
+      "sliders_adjustable": false,
+      "show_free_text": false
+    },
+    "choice_readonly_sliders": {
+      "label": "Choice + Read-Only Sliders",
+      "description": "Binary choice with dimension scores shown (not adjustable).",
+      "show_sliders": true,
+      "sliders_adjustable": false,
+      "show_free_text": false
+    },
+    "choice_adjustable_sliders": {
+      "label": "Choice + Adjustable Sliders",
+      "description": "Binary choice with adjustable dimension sliders.",
+      "show_sliders": true,
+      "sliders_adjustable": true,
+      "show_free_text": false
+    },
+    "choice_sliders_text": {
+      "label": "Choice + Sliders + Reason",
+      "description": "Binary choice with adjustable sliders and a free-text reason field.",
+      "show_sliders": true,
+      "sliders_adjustable": true,
+      "show_free_text": true
+    }
+  },
+  "default_condition": "choice_adjustable_sliders",
+  "slider_range": [-100, 100],
+  "dimensions": [
+    { "id": "boldness", "name": "Flavor Boldness" },
+    { "id": "sweetness", "name": "Sweetness" },
+    { "id": "complexity", "name": "Complexity" },
+    { "id": "familiarity", "name": "Familiarity" },
+    { "id": "food_match", "name": "Food Pairing Fit" }
+  ]
+}

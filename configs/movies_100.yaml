@@ -26,6 +26,10 @@ num_themes: 50
 reasons_per_side: 5
 pair_appearances_per_option: 30
 
+# Experiment
+num_experiment_pairs: 200
+trials_per_participant: 30
+
 # Infrastructure
 max_workers: 32
 seed: 42

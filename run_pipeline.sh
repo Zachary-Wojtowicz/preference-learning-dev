@@ -61,6 +61,10 @@ SEED=$(get_config "seed" "42")
 EMBEDDING_MODEL=$(get_config "embedding_model" "Qwen/Qwen3-Embedding-8B")
 INSTRUCT_MODEL=$(get_config "instruct_model" "Qwen/Qwen3-32B")
 
+# Experiment settings (optional)
+NUM_EXPERIMENT_PAIRS=$(get_config "num_experiment_pairs" "200")
+TRIALS_PER_PARTICIPANT=$(get_config "trials_per_participant" "30")
+
 # Filtering (optional)
 FILTER_EXPR=$(get_config "filter" "")
 AUX_CSV=$(get_config "aux_csv" "")
@@ -77,6 +81,7 @@ GEN_CONFIG="method_llm_gen/configs/${DATASET_NAME}.json"
 EXAMPLES_OUTPUT="method_llm_examples/outputs/${DATASET_NAME}"
 GEN_OUTPUT="method_llm_gen/outputs/${DATASET_NAME}"
 DIRECTIONS_OUTPUT="method_directions/outputs/${DATASET_NAME}"
+EXPERIMENT_OUTPUT="web-interface/outputs/${DATASET_NAME}"
 
 echo "============================================"
 echo "Pipeline: ${DATASET_NAME}"
@@ -275,6 +280,28 @@ python method_directions/evaluate_basis.py \
 echo ""
 
 # ---------------------------------------------------------------
+# Step 8: Generate experiment trials
+# ---------------------------------------------------------------
+if [[ -f "${EXPERIMENT_OUTPUT}/trials.json" ]]; then
+    echo "[step-8] Experiment trials already exist: ${EXPERIMENT_OUTPUT}/trials.json — skipping"
+else
+    echo "[step-8] Generating experiment trials..."
+    mkdir -p "${EXPERIMENT_OUTPUT}"
+    python web-interface/generate_trials.py \
+        --config "${EXAMPLES_CONFIG}" \
+        --embeddings-parquet "${EMBEDDED_SELECTED}" \
+        --dimensions "${GEN_OUTPUT}/dimensions.json" \
+        --directions "${DIRECTIONS_OUTPUT}/directions.npz" \
+        --output-dir "${EXPERIMENT_OUTPUT}" \
+        --num-pairs "${NUM_EXPERIMENT_PAIRS}" \
+        --trials-per-participant "${TRIALS_PER_PARTICIPANT}" \
+        --domain "${DOMAIN}" \
+        --choice-context "${CHOICE_CONTEXT}" \
+        --seed "${SEED}"
+fi
+echo ""
+
+# ---------------------------------------------------------------
 # Done
 # ---------------------------------------------------------------
 echo "============================================"
@@ -284,5 +311,12 @@ echo "Dimensions:  ${EXAMPLES_OUTPUT}/dimensions.json"
 echo "BT scores:   ${GEN_OUTPUT}/bt_scores.csv"
 echo "Directions:  ${DIRECTIONS_OUTPUT}/directions.npz"
 echo "Evaluation:  ${DIRECTIONS_OUTPUT}/"
+echo "Experiment:  ${EXPERIMENT_OUTPUT}/trials.json"
 echo "Summary:     ${GEN_OUTPUT}/summary.md"
+echo "============================================"
+echo ""
+echo "To run the experiment locally:"
+echo "  cp ${EXPERIMENT_OUTPUT}/trials.json web-interface/"
+echo "  cp ${EXPERIMENT_OUTPUT}/experiment_config.json web-interface/"
+echo "  cd web-interface/ && python3 -m http.server 8080"
 echo "============================================"

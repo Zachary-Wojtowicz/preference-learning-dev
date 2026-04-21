@@ -15,182 +15,136 @@
     padding: 2rem 1rem;
   }
 
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
+  .container { max-width: 860px; margin: 0 auto; }
+
+  /* --- Setup screen --- */
+  .setup { max-width: 480px; margin: 0 auto; }
+  .setup h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem; text-align: center; }
+
+  .field-group { margin-bottom: 1.25rem; }
+  .field-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.35rem; }
+  .field-group select, .field-group input {
+    width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px;
+    font-size: 0.9rem; background: #fff;
   }
 
+  /* --- Progress --- */
   .progress {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #666;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.03em;
+    text-align: center; font-size: 0.85rem; color: #666;
+    margin-bottom: 0.5rem; letter-spacing: 0.03em;
+  }
+  .progress-bar-track {
+    height: 4px; background: #e0e0e0; border-radius: 2px; margin-bottom: 1.5rem;
+  }
+  .progress-bar-fill {
+    height: 100%; background: #3b82f6; border-radius: 2px; transition: width 0.3s;
   }
 
-  .prompt {
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-  }
+  .prompt { text-align: center; font-size: 1.05rem; font-weight: 500; margin-bottom: 1.25rem; color: #444; }
 
-  .options {
-    display: flex;
-    gap: 1rem;
-  }
+  /* --- Option cards --- */
+  .options { display: flex; gap: 1rem; }
 
   .option-card {
-    flex: 1;
-    background: #fff;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 1.25rem;
-    cursor: pointer;
+    flex: 1; background: #fff; border: 2px solid #ddd; border-radius: 8px;
+    padding: 1.25rem; cursor: pointer;
     transition: border-color 0.15s, opacity 0.15s, box-shadow 0.15s;
   }
+  .option-card:hover { border-color: #999; }
+  .option-card.selected { border-color: #3b82f6; box-shadow: 0 0 0 1px #3b82f6; }
+  .option-card.dimmed { opacity: 0.5; }
 
-  .option-card:hover {
-    border-color: #999;
-  }
+  .option-card .card-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .option-card .card-field { font-size: 0.82rem; color: #555; margin-bottom: 0.25rem; }
+  .option-card .card-field strong { color: #333; font-weight: 500; }
+  .option-card .card-text { font-size: 0.85rem; color: #444; margin-top: 0.5rem; line-height: 1.5; }
 
-  .option-card.selected {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 1px #3b82f6;
-  }
-
-  .option-card.dimmed {
-    opacity: 0.55;
-  }
-
-  .option-card h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-
-  .option-card p {
-    font-size: 0.9rem;
-    color: #444;
-  }
-
+  /* --- Slider panel --- */
   .slider-panel {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, margin-top 0.35s ease;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, margin-top 0.3s ease;
     margin-top: 0;
   }
-
-  .slider-panel.visible {
-    max-height: 500px;
-    margin-top: 1.5rem;
-  }
+  .slider-panel.visible { max-height: 2000px; margin-top: 1.5rem; }
 
   .slider-panel-inner {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 1.25rem;
+    background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.25rem;
+  }
+  .slider-panel-header {
+    font-size: 0.85rem; font-weight: 500; color: #666; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid #eee;
   }
 
   .slider-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
+    display: grid;
+    grid-template-columns: 160px 1fr 40px;
+    align-items: center; gap: 0.5rem;
+    margin-bottom: 0.65rem;
   }
-
-  .slider-row:last-child { margin-bottom: 0; }
+  .slider-row:last-of-type { margin-bottom: 0; }
 
   .slider-label {
-    width: 140px;
-    flex-shrink: 0;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-align: right;
+    font-size: 0.82rem; font-weight: 500; text-align: right;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .slider-label .pole-labels {
+    font-size: 0.7rem; color: #888; font-weight: 400;
+    display: block; margin-top: 1px;
   }
 
-  .slider-row input[type="range"] {
-    flex: 1;
-    accent-color: #3b82f6;
-  }
+  .slider-track { position: relative; }
+  .slider-track input[type="range"] { width: 100%; accent-color: #3b82f6; }
+  .slider-track input[type="range"]:disabled { accent-color: #999; }
 
   .slider-value {
-    width: 36px;
-    flex-shrink: 0;
-    text-align: right;
-    font-size: 0.85rem;
-    font-variant-numeric: tabular-nums;
-    color: #555;
+    text-align: right; font-size: 0.82rem;
+    font-variant-numeric: tabular-nums; color: #555;
   }
 
-  .submit-row {
-    text-align: center;
-    margin-top: 1.5rem;
+  /* --- Free text --- */
+  .free-text-section { margin-top: 1rem; }
+  .free-text-section label { font-size: 0.85rem; font-weight: 500; display: block; margin-bottom: 0.35rem; }
+  .free-text-section textarea {
+    width: 100%; height: 70px; padding: 0.5rem; border: 1px solid #ccc;
+    border-radius: 6px; font-size: 0.85rem; font-family: inherit; resize: vertical;
   }
+
+  /* --- Buttons --- */
+  .submit-row { text-align: center; margin-top: 1.5rem; }
 
   .btn {
-    background: #3b82f6;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 0.6rem 2rem;
-    font-size: 0.95rem;
-    cursor: pointer;
+    background: #3b82f6; color: #fff; border: none; border-radius: 6px;
+    padding: 0.6rem 2rem; font-size: 0.95rem; cursor: pointer;
     transition: background 0.15s;
   }
-
-  .btn:disabled {
-    background: #a0a0a0;
-    cursor: not-allowed;
+  .btn:disabled { background: #a0a0a0; cursor: not-allowed; }
+  .btn:not(:disabled):hover { background: #2563eb; }
+  .btn-secondary {
+    background: #6b7280; color: #fff; border: none; border-radius: 6px;
+    padding: 0.5rem 1.5rem; font-size: 0.85rem; cursor: pointer;
   }
+  .btn-secondary:hover { background: #4b5563; }
 
-  .btn:not(:disabled):hover {
-    background: #2563eb;
-  }
-
-  /* Results screen */
-  .results h1 {
-    text-align: center;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-
+  /* --- Results --- */
+  .results h1 { text-align: center; font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; }
   .results pre {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 1.25rem;
-    overflow-x: auto;
-    font-size: 0.82rem;
-    line-height: 1.6;
+    background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+    padding: 1.25rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.6;
+    max-height: 60vh;
   }
-
-  .results .copy-row {
-    text-align: center;
-    margin-top: 1rem;
-  }
+  .results .copy-row { text-align: center; margin-top: 1rem; }
+  .results .stats { margin-bottom: 1.5rem; text-align: center; font-size: 0.9rem; color: #555; }
 
   .error-msg {
-    text-align: center;
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 2rem;
-    color: #b91c1c;
+    text-align: center; background: #fff; border: 1px solid #e0e0e0;
+    border-radius: 8px; padding: 2rem; color: #b91c1c;
   }
+  .error-msg code { display: block; margin-top: 0.75rem; color: #444; font-size: 0.85rem; }
 
-  .error-msg code {
-    display: block;
-    margin-top: 0.75rem;
-    color: #444;
-    font-size: 0.85rem;
-  }
-
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     .options { flex-direction: column; }
-    .slider-label { width: 110px; font-size: 0.8rem; }
+    .slider-row { grid-template-columns: 120px 1fr 36px; }
+    .slider-label { font-size: 0.78rem; }
   }
 </style>
 </head>
@@ -200,82 +154,204 @@
 <script>
 (function () {
   const app = document.getElementById('app');
+
   let trials = [];
-  let currentIndex = 0;
+  let experimentConfig = null;
+  let condition = null;      // condition settings object
+  let conditionKey = '';     // string key
+  let participantId = '';
+  let assignedTrialIndices = [];
+  let currentStep = 0;      // index into assignedTrialIndices
   let responses = [];
-  let chosen = null; // 'a' | 'b' | null
+  let chosen = null;
+  let startTime = null;
 
+  // ---------------------------------------------------------------
   // Boot
-  fetch('trials.json')
-    .then(r => {
-      if (!r.ok) throw new Error(r.statusText);
-      return r.json();
-    })
-    .then(data => {
-      trials = data;
-      renderTrial();
-    })
-    .catch(() => {
-      app.innerHTML =
-        '<div class="error-msg">Could not load <strong>trials.json</strong>.' +
-        '<code>python3 -m http.server</code></div>';
-    });
+  // ---------------------------------------------------------------
+  Promise.all([
+    fetch('trials.json').then(r => { if (!r.ok) throw new Error('trials.json'); return r.json(); }),
+    fetch('experiment_config.json').then(r => { if (!r.ok) throw null; return r.json(); }).catch(() => null),
+  ])
+  .then(([trialsData, configData]) => {
+    trials = trialsData;
+    experimentConfig = configData;
+    renderSetup();
+  })
+  .catch(() => {
+    app.innerHTML =
+      '<div class="error-msg">Could not load <strong>trials.json</strong>.' +
+      '<code>python3 -m http.server</code></div>';
+  });
 
+  // ---------------------------------------------------------------
+  // Setup screen
+  // ---------------------------------------------------------------
+  function renderSetup() {
+    const conditions = experimentConfig
+      ? experimentConfig.conditions
+      : {
+          choice_only: { label: 'Choice Only', show_sliders: false, sliders_adjustable: false, show_free_text: false },
+          choice_adjustable_sliders: { label: 'Choice + Adjustable Sliders', show_sliders: true, sliders_adjustable: true, show_free_text: false },
+        };
+    const defaultCond = experimentConfig
+      ? experimentConfig.default_condition || Object.keys(conditions)[0]
+      : 'choice_adjustable_sliders';
+    const numTrials = experimentConfig
+      ? experimentConfig.num_trials_per_participant || 30
+      : Math.min(trials.length, 30);
+
+    let html = '<div class="setup">';
+    html += '<h1>Experiment Setup</h1>';
+
+    html += '<div class="field-group"><label>Participant ID</label>';
+    html += '<input type="text" id="pid" placeholder="Enter your ID" value="P' + Math.floor(Math.random() * 9000 + 1000) + '"></div>';
+
+    html += '<div class="field-group"><label>Condition</label><select id="condSelect">';
+    for (const [key, cond] of Object.entries(conditions)) {
+      const sel = key === defaultCond ? ' selected' : '';
+      html += '<option value="' + key + '"' + sel + '>' + esc(cond.label) + '</option>';
+    }
+    html += '</select></div>';
+
+    html += '<div class="field-group"><label>Number of Trials</label>';
+    html += '<input type="number" id="numTrials" min="1" max="' + trials.length + '" value="' + numTrials + '"></div>';
+
+    html += '<div class="submit-row"><button class="btn" id="startBtn">Start Experiment</button></div>';
+    html += '</div>';
+    app.innerHTML = html;
+
+    document.getElementById('startBtn').addEventListener('click', () => {
+      participantId = document.getElementById('pid').value.trim() || 'anon';
+      conditionKey = document.getElementById('condSelect').value;
+      const conditions_map = experimentConfig ? experimentConfig.conditions : buildFallbackConditions();
+      condition = conditions_map[conditionKey];
+      const n = parseInt(document.getElementById('numTrials').value, 10) || numTrials;
+
+      // Assign random subset of trials
+      const rng = seedRandom(hashStr(participantId));
+      assignedTrialIndices = shuffle(Array.from({length: trials.length}, (_, i) => i), rng).slice(0, n);
+      currentStep = 0;
+      responses = [];
+      renderTrial();
+    });
+  }
+
+  function buildFallbackConditions() {
+    return {
+      choice_only: { label: 'Choice Only', show_sliders: false, sliders_adjustable: false, show_free_text: false },
+      choice_readonly_sliders: { label: 'Choice + Read-Only Sliders', show_sliders: true, sliders_adjustable: false, show_free_text: false },
+      choice_adjustable_sliders: { label: 'Choice + Adjustable Sliders', show_sliders: true, sliders_adjustable: true, show_free_text: false },
+      choice_sliders_text: { label: 'Choice + Sliders + Reason', show_sliders: true, sliders_adjustable: true, show_free_text: true },
+    };
+  }
+
+  // ---------------------------------------------------------------
+  // Trial rendering
+  // ---------------------------------------------------------------
   function renderTrial() {
-    const trial = trials[currentIndex];
+    const trialIdx = assignedTrialIndices[currentStep];
+    const trial = trials[trialIdx];
     chosen = null;
+    startTime = Date.now();
+
+    const total = assignedTrialIndices.length;
+    const pct = Math.round((currentStep / total) * 100);
 
     let html = '';
-    html += '<div class="progress">Trial ' + (currentIndex + 1) + ' of ' + trials.length + '</div>';
+    html += '<div class="progress">Trial ' + (currentStep + 1) + ' of ' + total + '</div>';
+    html += '<div class="progress-bar-track"><div class="progress-bar-fill" style="width:' + pct + '%"></div></div>';
 
     if (trial.prompt) {
       html += '<div class="prompt">' + esc(trial.prompt) + '</div>';
     }
 
     html += '<div class="options">';
-    html += card('a', trial.option_a);
-    html += card('b', trial.option_b);
+    html += buildOptionCard('a', trial.option_a);
+    html += buildOptionCard('b', trial.option_b);
     html += '</div>';
 
-    html += '<div class="slider-panel" id="sliderPanel"><div class="slider-panel-inner">';
-    trial.sliders.forEach(s => {
-      html += '<div class="slider-row">';
-      html += '<span class="slider-label">' + esc(s.label) + '</span>';
-      html += '<input type="range" min="-100" max="100" step="1" value="0" data-id="' + s.id + '">';
-      html += '<span class="slider-value" data-for="' + s.id + '">0</span>';
+    // Slider panel (hidden until selection, and only if condition shows sliders)
+    if (condition.show_sliders && trial.sliders && trial.sliders.length > 0) {
+      html += '<div class="slider-panel" id="sliderPanel"><div class="slider-panel-inner">';
+      html += '<div class="slider-panel-header">';
+      html += condition.sliders_adjustable
+        ? 'Adjust these scores to reflect why you made this choice:'
+        : 'How the system scored this pair on each dimension:';
       html += '</div>';
-    });
-    html += '</div></div>';
+
+      trial.sliders.forEach(s => {
+        const disabled = condition.sliders_adjustable ? '' : ' disabled';
+        html += '<div class="slider-row">';
+        html += '<div class="slider-label">' + esc(s.label);
+        if (s.low_label && s.high_label) {
+          html += '<span class="pole-labels">' + esc(s.low_label) + ' → ' + esc(s.high_label) + '</span>';
+        }
+        html += '</div>';
+        html += '<div class="slider-track"><input type="range" min="-100" max="100" step="1" value="0"'
+              + ' data-id="' + s.id + '"' + disabled + '></div>';
+        html += '<span class="slider-value" data-for="' + s.id + '">0</span>';
+        html += '</div>';
+      });
+
+      html += '</div></div>';
+    }
+
+    // Free text (if condition enables it)
+    if (condition.show_free_text) {
+      html += '<div class="slider-panel" id="textPanel"><div class="slider-panel-inner">';
+      html += '<div class="free-text-section">';
+      html += '<label>Why did you make this choice? (optional)</label>';
+      html += '<textarea id="freeText" placeholder="What drove your decision..."></textarea>';
+      html += '</div></div></div>';
+    }
 
     html += '<div class="submit-row"><button class="btn" id="submitBtn" disabled>Submit</button></div>';
 
     app.innerHTML = html;
 
-    // Wire up option cards
+    // Wire events
     app.querySelectorAll('.option-card').forEach(el => {
       el.addEventListener('click', () => selectOption(el.dataset.option));
     });
 
-    // Wire up sliders
     app.querySelectorAll('input[type="range"]').forEach(input => {
       input.addEventListener('input', () => {
         app.querySelector('.slider-value[data-for="' + input.dataset.id + '"]').textContent = input.value;
       });
     });
 
-    // Wire up submit
     document.getElementById('submitBtn').addEventListener('click', submitTrial);
   }
 
-  function card(key, opt) {
-    return '<div class="option-card" data-option="' + key + '">' +
-      '<h3>' + esc(opt.label) + '</h3>' +
-      '<p>' + esc(opt.text) + '</p></div>';
+  function buildOptionCard(key, opt) {
+    let inner = '';
+
+    // Title / label
+    inner += '<div class="card-title">' + esc(opt.label || 'Option ' + key.toUpperCase()) + '</div>';
+
+    // Structured fields (if present)
+    if (opt.fields) {
+      const skip = new Set(['title', '_rendered_text']);
+      for (const [fk, fv] of Object.entries(opt.fields)) {
+        if (skip.has(fk) || !fv) continue;
+        const label = fk.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        inner += '<div class="card-field"><strong>' + esc(label) + ':</strong> ' + esc(fv) + '</div>';
+      }
+    }
+
+    // Fallback plain text
+    if (opt.text) {
+      inner += '<div class="card-text">' + esc(opt.text) + '</div>';
+    }
+
+    return '<div class="option-card" data-option="' + key + '">' + inner + '</div>';
   }
 
   function selectOption(key) {
     chosen = key;
-    const trial = trials[currentIndex];
+    const trialIdx = assignedTrialIndices[currentStep];
+    const trial = trials[trialIdx];
 
     // Visual state
     app.querySelectorAll('.option-card').forEach(el => {
@@ -285,60 +361,148 @@
     });
 
     // Populate sliders
-    trial.sliders.forEach(s => {
-      const val = key === 'a' ? s.value_if_a : s.value_if_b;
-      const input = app.querySelector('input[data-id="' + s.id + '"]');
-      input.value = val;
-      app.querySelector('.slider-value[data-for="' + s.id + '"]').textContent = val;
-    });
+    if (condition.show_sliders && trial.sliders) {
+      trial.sliders.forEach(s => {
+        const val = key === 'a' ? s.value_if_a : s.value_if_b;
+        const input = app.querySelector('input[data-id="' + s.id + '"]');
+        if (input) {
+          input.value = val;
+          app.querySelector('.slider-value[data-for="' + s.id + '"]').textContent = val;
+        }
+      });
 
-    // Reveal panel
-    document.getElementById('sliderPanel').classList.add('visible');
+      const panel = document.getElementById('sliderPanel');
+      if (panel) panel.classList.add('visible');
+    }
+
+    // Show text panel
+    const textPanel = document.getElementById('textPanel');
+    if (textPanel) textPanel.classList.add('visible');
+
     document.getElementById('submitBtn').disabled = false;
   }
 
   function submitTrial() {
-    const trial = trials[currentIndex];
-    const sliderValues = {};
-    trial.sliders.forEach(s => {
-      sliderValues[s.id] = parseInt(app.querySelector('input[data-id="' + s.id + '"]').value, 10);
-    });
+    const trialIdx = assignedTrialIndices[currentStep];
+    const trial = trials[trialIdx];
+    const elapsed = Date.now() - startTime;
 
-    responses.push({
+    const response = {
       trial_id: trial.trial_id,
+      option_a_id: trial.option_a_id || null,
+      option_b_id: trial.option_b_id || null,
       chosen: chosen,
-      slider_values: sliderValues
-    });
+      response_time_ms: elapsed,
+    };
 
-    currentIndex++;
-    if (currentIndex < trials.length) {
+    // Collect slider values if shown
+    if (condition.show_sliders && trial.sliders) {
+      const sliderValues = {};
+      trial.sliders.forEach(s => {
+        const input = app.querySelector('input[data-id="' + s.id + '"]');
+        sliderValues[s.id] = input ? parseInt(input.value, 10) : 0;
+      });
+      response.slider_values = sliderValues;
+      response.sliders_adjusted = condition.sliders_adjustable;
+    }
+
+    // Collect free text if shown
+    if (condition.show_free_text) {
+      const textEl = document.getElementById('freeText');
+      response.free_text = textEl ? textEl.value.trim() : '';
+    }
+
+    responses.push(response);
+    currentStep++;
+
+    if (currentStep < assignedTrialIndices.length) {
       renderTrial();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       renderResults();
     }
   }
 
+  // ---------------------------------------------------------------
+  // Results
+  // ---------------------------------------------------------------
   function renderResults() {
-    const output = JSON.stringify({ responses: responses }, null, 2);
-    app.innerHTML =
-      '<div class="results">' +
-        '<h1>Experiment Complete</h1>' +
-        '<pre><code>' + esc(output) + '</code></pre>' +
-        '<div class="copy-row"><button class="btn" id="copyBtn">Copy to Clipboard</button></div>' +
-      '</div>';
+    const output = {
+      participant_id: participantId,
+      condition: conditionKey,
+      num_trials: responses.length,
+      timestamp: new Date().toISOString(),
+      responses: responses,
+    };
+    const outputStr = JSON.stringify(output, null, 2);
+
+    const avgTime = Math.round(responses.reduce((s, r) => s + (r.response_time_ms || 0), 0) / responses.length / 1000 * 10) / 10;
+
+    let html = '<div class="results">';
+    html += '<h1>Experiment Complete</h1>';
+    html += '<div class="stats">' + responses.length + ' trials completed · '
+          + 'avg ' + avgTime + 's per trial · condition: ' + esc(conditionKey) + '</div>';
+    html += '<pre><code>' + esc(outputStr) + '</code></pre>';
+    html += '<div class="copy-row">';
+    html += '<button class="btn" id="copyBtn">Copy to Clipboard</button> ';
+    html += '<button class="btn-secondary" id="downloadBtn">Download JSON</button>';
+    html += '</div></div>';
+    app.innerHTML = html;
 
     document.getElementById('copyBtn').addEventListener('click', () => {
-      navigator.clipboard.writeText(output).then(() => {
+      navigator.clipboard.writeText(outputStr).then(() => {
         document.getElementById('copyBtn').textContent = 'Copied!';
         setTimeout(() => { document.getElementById('copyBtn').textContent = 'Copy to Clipboard'; }, 1500);
       });
     });
+
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const blob = new Blob([outputStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'responses_' + participantId + '_' + conditionKey + '.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
   }
 
+  // ---------------------------------------------------------------
+  // Utilities
+  // ---------------------------------------------------------------
   function esc(str) {
+    if (str == null) return '';
     const d = document.createElement('div');
-    d.textContent = str;
+    d.textContent = String(str);
     return d.innerHTML;
+  }
+
+  function hashStr(s) {
+    let h = 0;
+    for (let i = 0; i < s.length; i++) {
+      h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+    }
+    return Math.abs(h);
+  }
+
+  function seedRandom(seed) {
+    // Simple mulberry32 PRNG
+    let s = seed | 0;
+    return function () {
+      s = (s + 0x6D2B79F5) | 0;
+      let t = Math.imul(s ^ (s >>> 15), 1 | s);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function shuffle(arr, rng) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
   }
 })();
 </script>

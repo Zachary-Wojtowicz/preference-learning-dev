@@ -228,6 +228,55 @@ def _fix_invalid_escapes(s):
     return "".join(result)
 
 
+def _try_repair_truncated_json(content):
+    """Attempt to close a truncated JSON object by adding missing braces/brackets."""
+    # Find the start of the JSON object
+    start = content.find("{")
+    if start < 0:
+        return None
+    s = content[start:]
+    # Try progressively closing unclosed structures
+    for suffix in ['"]}', '"}', ']"]}', ']"}'  , '"}'  , '}', ']}']:
+        try:
+            return json.loads(s + suffix)
+        except json.JSONDecodeError:
+            continue
+    # Brute force: count unclosed braces/brackets
+    opens = 0
+    open_brackets = 0
+    in_string = False
+    escape = False
+    for ch in s:
+        if escape:
+            escape = False
+            continue
+        if ch == '\\':
+            escape = True
+            continue
+        if ch == '"':
+            in_string = not in_string
+            continue
+        if in_string:
+            continue
+        if ch == '{':
+            opens += 1
+        elif ch == '}':
+            opens -= 1
+        elif ch == '[':
+            open_brackets += 1
+        elif ch == ']':
+            open_brackets -= 1
+    # Try closing the string (if truncated mid-string) then structures
+    if in_string:
+        s += '"'
+    s += ']' * max(0, open_brackets)
+    s += '}' * max(0, opens)
+    try:
+        return json.loads(s)
+    except json.JSONDecodeError:
+        return None
+
+
 def parse_json_response(content):
     # strip reasoning blocks (e.g. Qwen)
     content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL).strip()
@@ -243,7 +292,14 @@ def parse_json_response(content):
             try:
                 return json.loads(snippet)
             except json.JSONDecodeError:
-                return json.loads(_fix_invalid_escapes(snippet))
+                try:
+                    return json.loads(_fix_invalid_escapes(snippet))
+                except json.JSONDecodeError:
+                    pass
+        # Last resort: try to repair truncated JSON
+        repaired = _try_repair_truncated_json(content)
+        if repaired is not None:
+            return repaired
         raise
 
 
@@ -252,7 +308,16 @@ def llm_call_json(client, model, prompt, timeout, retries, max_tokens=None):
     kwargs = {} if max_tokens is None else {"max_tokens": max_tokens}
     for attempt in range(1, max(1, retries) + 1):
         try:
-            return parse_json_response(llm_call(client, model, prompt, timeout, retries=retries, **kwargs))
+            raw = llm_call(client, model, prompt, timeout, retries=1, **kwargs)
+            return parse_json_response(raw)
+        except json.JSONDecodeError as e:
+            last_err = e
+            # Log truncated content for debugging
+            snippet = (raw[:120] + '...') if len(raw) > 120 else raw
+            print(f"[llm_call_json] Attempt {attempt}/{retries} JSON parse failed: {e}. "
+                  f"Content starts: {snippet!r}", flush=True)
+            if attempt < retries:
+                time.sleep(min(attempt * 2, 5))
         except Exception as e:
             last_err = e
             if attempt < retries:
@@ -262,20 +327,33 @@ def llm_call_json(client, model, prompt, timeout, retries, max_tokens=None):
 
 def run_jobs(jobs, fn, max_workers, tag):
     results = [None] * len(jobs)
+    failed = 0
     if max_workers <= 1:
         for i, job in enumerate(jobs):
-            results[i] = fn(job)
+            try:
+                results[i] = fn(job)
+            except Exception as e:
+                failed += 1
+                print(f"[{tag}] Job {i+1}/{len(jobs)} FAILED: {type(e).__name__}: {e}", flush=True)
             if (i + 1) % 100 == 0 or i + 1 == len(jobs):
-                print(f"[{tag}] {i + 1}/{len(jobs)}", flush=True)
+                suffix = f" ({failed} failed)" if failed else ""
+                print(f"[{tag}] {i + 1}/{len(jobs)}{suffix}", flush=True)
     else:
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
             futures = {ex.submit(fn, job): idx for idx, job in enumerate(jobs)}
             done = 0
             for future in concurrent.futures.as_completed(futures):
-                results[futures[future]] = future.result()
+                try:
+                    results[futures[future]] = future.result()
+                except Exception as e:
+                    failed += 1
+                    print(f"[{tag}] Job FAILED: {type(e).__name__}: {e}", flush=True)
                 done += 1
                 if done % 100 == 0 or done == len(jobs):
-                    print(f"[{tag}] {done}/{len(jobs)}", flush=True)
+                    suffix = f" ({failed} failed)" if failed else ""
+                    print(f"[{tag}] {done}/{len(jobs)}{suffix}", flush=True)
+    if failed:
+        print(f"[{tag}] WARNING: {failed}/{len(jobs)} jobs failed and were skipped", flush=True)
     return results
 
 
@@ -452,7 +530,7 @@ def score_options(config, client, model, output_dir):
         if not jobs:
             print(f"[score-options] Dim {dim_id} ({dim['name']}): already complete, skipping", flush=True)
             continue
-        dim_rows = run_jobs(jobs, run, max_workers, f"score-options dim={dim_id}")
+        dim_rows = [r for r in run_jobs(jobs, run, max_workers, f"score-options dim={dim_id}") if r is not None]
         all_rows.extend(dim_rows)
         scored.update((dim_id, str(r["option_id"])) for r in dim_rows)
         write_csv(csv_path, all_rows)
@@ -574,9 +652,15 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
             continue
         dim_jobs = [(dim, a_id, b_id) for a_id, b_id in dim_pairs]
         dim_rows = []
+        dim_failed = 0
         if max_workers <= 1:
             for idx, job in enumerate(dim_jobs, start=1):
-                row = run(job)
+                try:
+                    row = run(job)
+                except Exception as e:
+                    dim_failed += 1
+                    print(f"[judge-pairs] Dim {dim_id} job {idx} FAILED: {type(e).__name__}: {e}", flush=True)
+                    continue
                 dim_rows.append(row)
                 all_rows.append(row)
                 write_csv(csv_path, all_rows)
@@ -588,7 +672,12 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
             with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as ex:
                 futures = [ex.submit(run, job) for job in dim_jobs]
                 for idx, future in enumerate(concurrent.futures.as_completed(futures), start=1):
-                    row = future.result()
+                    try:
+                        row = future.result()
+                    except Exception as e:
+                        dim_failed += 1
+                        print(f"[judge-pairs] Dim {dim_id} job FAILED: {type(e).__name__}: {e}", flush=True)
+                        continue
                     dim_rows.append(row)
                     all_rows.append(row)
                     write_csv(csv_path, all_rows)
@@ -596,6 +685,8 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
                         n_consistent_so_far = sum(1 for r in dim_rows if r["swap_consistent"] == "True")
                         print(f"[judge-pairs] Dim {dim_id} ({dim['name']}): {idx}/{len(dim_jobs)} pairs "
                               f"({n_consistent_so_far} consistent) -- saved", flush=True)
+        if dim_failed:
+            print(f"[judge-pairs] Dim {dim_id}: WARNING: {dim_failed}/{len(dim_jobs)} pairs failed and were skipped", flush=True)
         run_new_total += len(dim_rows)
         n_consistent = sum(1 for r in dim_rows if r["swap_consistent"] == "True")
         print(f"[judge-pairs] Dim {dim_id} ({dim['name']}): {len(dim_rows)} pairs "

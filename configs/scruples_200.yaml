@@ -2,9 +2,7 @@
 # Run with: ./run_pipeline.sh configs/scruples_200.yaml
 #
 # Prerequisites:
-#   1. Download the Scruples dilemmas dataset and save as
-#      datasets/scruples-dilemmas.csv with columns: action_id, description
-#   2. Ensure datasets/scruples_prompt.txt exists (currently: "Action: {description}")
+#   python datasets/prepare_scruples.py
 
 name: scruples_200
 domain: moral dilemmas
@@ -27,6 +25,10 @@ num_pairs: 150
 num_themes: 60
 reasons_per_side: 5
 pair_appearances_per_option: 30
+
+# Experiment
+num_experiment_pairs: 300
+trials_per_participant: 30
 
 # Infrastructure
 max_workers: 32
