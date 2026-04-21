@@ -1,0 +1,5802 @@
+[
+  {
+    "trial_id": "t1",
+    "option_a_id": "16",
+    "option_b_id": "17",
+    "raw_projection": [
+      8.6244014466956,
+      1.8466600274066947,
+      -1.289663083137221,
+      0.7366304032742379,
+      4.267180065525677,
+      0.022213248676161465,
+      3.518053591731521,
+      4.057381127990686,
+      2.7109776456121315,
+      4.4873847939703415
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t2",
+    "option_a_id": "26",
+    "option_b_id": "43",
+    "raw_projection": [
+      -2.4453945253401757,
+      0.25007504373207323,
+      0.28917409618520146,
+      -4.031628172802129,
+      -0.4775139248498006,
+      1.408892334167001,
+      -0.033451406134473824,
+      0.9661221802922644,
+      -4.082895849123118,
+      6.3074634742590385
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t3",
+    "option_a_id": "34",
+    "option_b_id": "50",
+    "raw_projection": [
+      -4.442179440097929,
+      -3.739953313064209,
+      1.1996091542423521,
+      3.355090347948344,
+      -2.3346138000105183,
+      7.803577887833968,
+      -6.516544566026841,
+      -5.031011374272812,
+      4.566274873333983,
+      -11.991977007917173
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t4",
+    "option_a_id": "24",
+    "option_b_id": "38",
+    "raw_projection": [
+      2.532384910186985,
+      10.187654379803412,
+      6.972316602160727,
+      -0.12033739386429437,
+      -0.8366148879646849,
+      2.815253563192752,
+      5.375125368039431,
+      -1.242455759462888,
+      -3.8639867887047536,
+      -7.986708006499035
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t5",
+    "option_a_id": "4",
+    "option_b_id": "31",
+    "raw_projection": [
+      -3.440961133834884,
+      1.9786998601337407,
+      -0.5361083916571425,
+      5.51293009297377,
+      -0.9570887730940293,
+      -0.5986458558001684,
+      -5.599558737815703,
+      3.3247592620695294,
+      -1.4522477148277309,
+      -2.8669946789862317
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t6",
+    "option_a_id": "24",
+    "option_b_id": "33",
+    "raw_projection": [
+      -1.0263455957976375,
+      3.301306123858751,
+      9.039163383189175,
+      2.329319467988927,
+      -8.766735969860255,
+      0.5300406256441271,
+      1.9626303323218164,
+      -4.610938064278633,
+      -1.2398451532024857,
+      1.3085608788006546
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t7",
+    "option_a_id": "31",
+    "option_b_id": "49",
+    "raw_projection": [
+      4.438575053503752,
+      -0.35752452240105514,
+      0.10902070952570342,
+      -1.4024945906113246,
+      0.933438566384244,
+      1.6599416745564886,
+      0.8142598797815037,
+      -1.732579387772693,
+      6.925123512864057,
+      5.345374910912663
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t8",
+    "option_a_id": "19",
+    "option_b_id": "38",
+    "raw_projection": [
+      5.487078686437106,
+      -4.161867594821341,
+      0.867809172675313,
+      -0.574274734902604,
+      -0.7106054592501784,
+      -0.15417369980355705,
+      7.894127108800578,
+      3.3893706048280734,
+      -4.088591311727719,
+      -6.602654017706067
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t9",
+    "option_a_id": "18",
+    "option_b_id": "49",
+    "raw_projection": [
+      4.572408452617564,
+      -4.132012839405143,
+      1.1339461120819079,
+      5.148577146724244,
+      3.035701409051669,
+      -2.889873876435555,
+      0.15359861991159895,
+      -2.7960339158135934,
+      0.08840463338573178,
+      7.506421208491882
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t10",
+    "option_a_id": "15",
+    "option_b_id": "19",
+    "raw_projection": [
+      2.2513555149913604,
+      6.6141122860241754,
+      -2.222190553883146,
+      -1.513715398430282,
+      4.038946506594549,
+      3.423721858178882,
+      -6.343076458921191,
+      3.2607358432119957,
+      0.2426112100297197,
+      2.0881604819277753
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t11",
+    "option_a_id": "19",
+    "option_b_id": "45",
+    "raw_projection": [
+      4.378841975827399,
+      -11.564406875976836,
+      2.722979202012987,
+      -7.437333280279554,
+      0.4087845256679827,
+      -3.1429644208256162,
+      0.9367146802989673,
+      -3.186615788303459,
+      3.661748810285062,
+      -0.47231412879720136
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t12",
+    "option_a_id": "41",
+    "option_b_id": "43",
+    "raw_projection": [
+      5.473547418758268,
+      0.5049477048083142,
+      -0.713854806097082,
+      0.2786750565757373,
+      0.715490322987824,
+      -0.49174044516741466,
+      0.45940141390745215,
+      3.101217282700104,
+      4.451366400484115,
+      1.9892337966916218
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t13",
+    "option_a_id": "16",
+    "option_b_id": "43",
+    "raw_projection": [
+      6.0353059180208755,
+      1.348863552200318,
+      -0.9055459534870222,
+      -0.05688621730979987,
+      1.596225108205236,
+      -0.7818626305568004,
+      1.7147133681697735,
+      2.952055741505037,
+      5.690591972646272,
+      5.3267347823447855
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t14",
+    "option_a_id": "6",
+    "option_b_id": "45",
+    "raw_projection": [
+      7.629958653870285,
+      3.6289569951426714,
+      -1.5394844410910635,
+      -6.731750091984511,
+      -0.5583005454023202,
+      -2.158047997141019,
+      -1.1903889189250922,
+      0.9238439831653833,
+      5.66052564425769,
+      5.432146589923151
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t15",
+    "option_a_id": "7",
+    "option_b_id": "28",
+    "raw_projection": [
+      1.8377057014466256,
+      -6.432515815316481,
+      1.31838422876828,
+      4.1256487479303585,
+      -1.5456098527862097,
+      -1.5651617142674488,
+      3.323889320946544,
+      3.002841607944477,
+      2.7286932834909714,
+      6.735809503848884
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t16",
+    "option_a_id": "6",
+    "option_b_id": "36",
+    "raw_projection": [
+      10.893313599845454,
+      1.1807100902805643,
+      -1.1004315742623116,
+      1.4568931880948837,
+      -9.956086787724951,
+      2.4010891589818666,
+      -2.9591962298997347,
+      0.7966926627597557,
+      -2.635786764973782,
+      6.499281165285752
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t17",
+    "option_a_id": "20",
+    "option_b_id": "45",
+    "raw_projection": [
+      7.7503766422036495,
+      -6.006900805901829,
+      0.5610996010860527,
+      -6.756735947296815,
+      6.94505562654302,
+      -6.800552942959207,
+      3.430972530905662,
+      -5.205447990190595,
+      5.0611732554066675,
+      -3.007338272610551
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t18",
+    "option_a_id": "5",
+    "option_b_id": "10",
+    "raw_projection": [
+      -11.64931158261724,
+      -5.857606716486568,
+      -6.311703061172063,
+      0.3428351562255256,
+      -4.873588305891492,
+      -5.567913321215594,
+      -4.1590279780777895,
+      -0.5958153957000911,
+      5.20287664848971,
+      0.8808442459337106
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t19",
+    "option_a_id": "14",
+    "option_b_id": "35",
+    "raw_projection": [
+      1.4253038443602555,
+      -2.677268850280657,
+      1.161438683621273,
+      -2.0436933086640403,
+      -1.5119046534058809,
+      5.171893631830015,
+      11.096936820962531,
+      -0.7664113142932882,
+      -7.117988283627325,
+      1.4267572786913636
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t20",
+    "option_a_id": "13",
+    "option_b_id": "40",
+    "raw_projection": [
+      4.073231909859796,
+      -4.196728248565544,
+      1.3725655108886434,
+      3.272777370900442,
+      2.4380030823816434,
+      12.381312745082662,
+      -2.1909201641562324,
+      -3.376841485657431,
+      3.850876540378242,
+      11.040678290823323
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t21",
+    "option_a_id": "11",
+    "option_b_id": "16",
+    "raw_projection": [
+      -7.4743224595864906,
+      -6.2663138873278275,
+      2.4720587509643464,
+      1.5934387347787926,
+      -3.3850378341796974,
+      2.013082889462179,
+      -1.942613563396025,
+      1.5591938965523977,
+      -11.13302697708788,
+      -0.5257592170527864
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t22",
+    "option_a_id": "32",
+    "option_b_id": "37",
+    "raw_projection": [
+      6.291545829994491,
+      5.704913661687855,
+      12.236121913875857,
+      8.73630890962021,
+      -6.962289077421332,
+      -6.285837502797884,
+      4.565644318200395,
+      6.485810671890037,
+      1.0803324895589164,
+      -0.6308591394630799
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t23",
+    "option_a_id": "14",
+    "option_b_id": "37",
+    "raw_projection": [
+      -0.9932706370770349,
+      3.991556774101785,
+      -1.1113673153021755,
+      5.236884532872335,
+      -2.611602174661994,
+      -7.210507613095446,
+      11.438838935250978,
+      4.079371515266662,
+      -0.5180190173384901,
+      1.4230162006206473
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t24",
+    "option_a_id": "2",
+    "option_b_id": "19",
+    "raw_projection": [
+      0.9710680046004551,
+      7.170666543403178,
+      4.262942690693582,
+      5.9359750107771445,
+      3.5546557034431068,
+      7.1440591930639865,
+      -5.400994202075412,
+      2.959399750061249,
+      1.8429515932174314,
+      2.024783858760393
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t25",
+    "option_a_id": "14",
+    "option_b_id": "43",
+    "raw_projection": [
+      -1.907608178515841,
+      -3.086263982776021,
+      1.0536505915101972,
+      -4.855413620887185,
+      2.268043976958302,
+      -0.6015957457489727,
+      5.53120765619819,
+      0.44931484017089957,
+      -4.586780224121115,
+      5.339706039742323
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t26",
+    "option_a_id": "33",
+    "option_b_id": "46",
+    "raw_projection": [
+      7.07397563326869,
+      2.3764572534138964,
+      -0.9576150354497066,
+      -0.8436340486503956,
+      6.228990300904738,
+      4.248361956940651,
+      0.16748836922944205,
+      -0.6572191710780997,
+      -0.864228341327015,
+      5.2702798195409
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t27",
+    "option_a_id": "4",
+    "option_b_id": "27",
+    "raw_projection": [
+      2.859740628637529,
+      4.525540329425261,
+      -1.7390819169568317,
+      3.5250340472521424,
+      -7.844607129852577,
+      -1.237409242898753,
+      -5.375580004249724,
+      4.1574262491383935,
+      0.3847853875299394,
+      1.0336860468713724
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t28",
+    "option_a_id": "31",
+    "option_b_id": "39",
+    "raw_projection": [
+      2.9066504744315176,
+      4.406465304215731,
+      -1.1394474481163581,
+      -8.878600042190424,
+      -2.9612959935888825,
+      -1.1166989940074434,
+      -2.5105475180669337,
+      -15.198187245883863,
+      2.1208979221861557,
+      3.219246354136081
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t29",
+    "option_a_id": "4",
+    "option_b_id": "25",
+    "raw_projection": [
+      0.017983549284803994,
+      -2.5034188819561587,
+      0.7989493972093793,
+      5.247567948835352,
+      2.6089320924084447,
+      1.5659781959311505,
+      -5.226558595988173,
+      -2.2170833658780587,
+      8.66936812337038,
+      3.575942133867147
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t30",
+    "option_a_id": "24",
+    "option_b_id": "34",
+    "raw_projection": [
+      3.2367408122714063,
+      6.823931406958834,
+      7.656091058455495,
+      -2.2090511545055627,
+      0.03279864115944302,
+      -3.0558876601079974,
+      4.49730480810096,
+      -9.767796343374616,
+      -2.961272028115958,
+      3.5889662935451896
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t31",
+    "option_a_id": "16",
+    "option_b_id": "35",
+    "raw_projection": [
+      9.368217940896974,
+      1.7578586846956823,
+      -0.7977578613759458,
+      2.7548340949133476,
+      -2.183723522158946,
+      4.99162674702218,
+      7.280442532934095,
+      1.7363295870408506,
+      3.1593839131401,
+      1.413786021293837
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t32",
+    "option_a_id": "12",
+    "option_b_id": "18",
+    "raw_projection": [
+      4.47610337119363,
+      -0.6301733902430057,
+      -0.15242890255453714,
+      2.4788194659430816,
+      -2.6197858695230316,
+      7.2315061003320045,
+      3.0305452948506324,
+      -1.975722741213601,
+      -3.4728772073591756,
+      -4.12999903307047
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t33",
+    "option_a_id": "2",
+    "option_b_id": "44",
+    "raw_projection": [
+      -5.605085253625454,
+      1.9550466978376775,
+      -2.232392663428899,
+      9.400346767149777,
+      3.0999778406871754,
+      7.763877671586969,
+      -5.766764136707562,
+      0.6771955797427008,
+      -0.36859874997278713,
+      3.01887608445085
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t34",
+    "option_a_id": "43",
+    "option_b_id": "49",
+    "raw_projection": [
+      2.385499714607531,
+      4.719291611872062,
+      -1.360094347766612,
+      3.0439444537488907,
+      6.5206730112149955,
+      2.9670441899177455,
+      4.5121716089155495,
+      -0.5453376757007922,
+      0.3326873835723229,
+      -0.20630957007364173
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t35",
+    "option_a_id": "1",
+    "option_b_id": "34",
+    "raw_projection": [
+      1.5028574852056125,
+      -0.46899388353948845,
+      12.832155566504383,
+      1.7738964287252879,
+      5.004417643299724,
+      -3.6981737950286124,
+      5.781480218363132,
+      1.348416431602808,
+      2.074657188600088,
+      8.204571484992933
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t36",
+    "option_a_id": "23",
+    "option_b_id": "44",
+    "raw_projection": [
+      -0.5499846649205993,
+      2.7755488369226344,
+      -9.065962741446311,
+      3.3874433949212257,
+      0.464207147620322,
+      3.60692403782304,
+      -4.844147573357756,
+      3.7795921881216525,
+      -5.445930327506683,
+      -0.4397951871680122
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t37",
+    "option_a_id": "15",
+    "option_b_id": "23",
+    "raw_projection": [
+      -3.7748130783139415,
+      -1.3770563964639573,
+      0.34843683344068355,
+      -1.4367870369788849,
+      3.120061496218283,
+      0.4366162988788294,
+      -1.8646988201955856,
+      -2.801060515228206,
+      3.4769911943461835,
+      3.5220478947862466
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t38",
+    "option_a_id": "29",
+    "option_b_id": "44",
+    "raw_projection": [
+      -9.36123971570285,
+      7.741417536599418,
+      4.534972433165972,
+      4.14825299517295,
+      0.920902179236376,
+      -0.10088773012938351,
+      -4.85108900968592,
+      -0.5882669568045769,
+      2.7549909170898284,
+      0.7882173359684529
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t39",
+    "option_a_id": "2",
+    "option_b_id": "9",
+    "raw_projection": [
+      -1.8129662653000107,
+      3.08791690802423,
+      5.724505787491229,
+      13.45833081638594,
+      3.076351070086818,
+      11.205079464654602,
+      2.366832544830974,
+      -0.09128390638814217,
+      1.4051307859386142,
+      1.4124202739508667
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t40",
+    "option_a_id": "24",
+    "option_b_id": "49",
+    "raw_projection": [
+      5.274596898032677,
+      4.758207099143131,
+      8.492658672674029,
+      0.6874435579579983,
+      1.664689059597022,
+      5.854353109281051,
+      1.9866094649330592,
+      -4.827040830903788,
+      -1.5620261264302162,
+      1.7384862483844794
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t41",
+    "option_a_id": "36",
+    "option_b_id": "42",
+    "raw_projection": [
+      -10.29928755212794,
+      -0.16216327131865493,
+      1.2088197651379058,
+      -5.1381405423040265,
+      4.263639049566538,
+      2.882799571790006,
+      8.566979963794475,
+      6.069625871797545,
+      6.231803601882572,
+      1.4746573314474811
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t42",
+    "option_a_id": "11",
+    "option_b_id": "39",
+    "raw_projection": [
+      -0.58544140603031,
+      4.56583110336133,
+      -1.042049707931349,
+      -2.8956084803612225,
+      0.8371257252674149,
+      1.421623780259196,
+      0.9594640158408605,
+      -9.499695895754531,
+      -9.913973211547187,
+      2.4685374384417726
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t43",
+    "option_a_id": "16",
+    "option_b_id": "25",
+    "raw_projection": [
+      7.4411752622443315,
+      1.9435609443835382,
+      -1.0396032219128148,
+      4.124190682912014,
+      10.749480418538452,
+      2.689863936535782,
+      5.785625239131345,
+      -1.4025451743706516,
+      9.219771681552661,
+      6.217987114211853
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t44",
+    "option_a_id": "9",
+    "option_b_id": "23",
+    "raw_projection": [
+      -3.2421343234048354,
+      -3.908419047109168,
+      1.1090642905261823,
+      -7.4454274441574,
+      -0.4405803770199656,
+      -7.048125830890666,
+      -3.2894491081807704,
+      -3.0111127019908084,
+      3.672200791595271,
+      2.0462509976679986
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t45",
+    "option_a_id": "9",
+    "option_b_id": "12",
+    "raw_projection": [
+      1.964813120372077,
+      -0.7463790104545355,
+      -0.05492906313640045,
+      -14.916246201356456,
+      1.853087582139187,
+      -5.5177266492023325,
+      -6.446359455974407,
+      7.627225846863771,
+      2.0356627317990696,
+      0.35848164656556986
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t46",
+    "option_a_id": "17",
+    "option_b_id": "42",
+    "raw_projection": [
+      -11.089977118675355,
+      -0.3620070400102771,
+      1.0067233726746154,
+      -2.3699089262590265,
+      -2.6663431015050665,
+      3.57701477148732,
+      5.938107512778396,
+      1.300410167514837,
+      6.696172362995812,
+      -0.4200220408637533
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t47",
+    "option_a_id": "12",
+    "option_b_id": "19",
+    "raw_projection": [
+      0.8192211495283905,
+      4.829128645833484,
+      -1.4066340336612446,
+      7.393890395747627,
+      -1.3747829487828966,
+      1.4567063776117206,
+      -1.321467290931981,
+      -4.576542190414365,
+      -1.5978419245202544,
+      0.2538819382439557
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t48",
+    "option_a_id": "17",
+    "option_b_id": "48",
+    "raw_projection": [
+      -2.782324108270036,
+      7.593925990380647,
+      -1.9787710093976818,
+      3.414453916133136,
+      6.269098133201238,
+      -12.776259566408271,
+      -1.8953660931837133,
+      -3.425369263288666,
+      -9.047589376529793,
+      2.162779111351408
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t49",
+    "option_a_id": "20",
+    "option_b_id": "30",
+    "raw_projection": [
+      5.455108630041597,
+      -8.065231866480751,
+      1.5341483019602298,
+      1.1613987667333285,
+      1.9274946245195501,
+      -2.65952577985736,
+      6.966678741305228,
+      -4.1009012658884165,
+      -2.836226621950875,
+      -2.436003453764689
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t50",
+    "option_a_id": "5",
+    "option_b_id": "7",
+    "raw_projection": [
+      0.1906966010353276,
+      -3.809162281602574,
+      0.9673082311597283,
+      -2.996223252253423,
+      1.2089655394013816,
+      0.45069140303695326,
+      -7.0186800473493385,
+      3.8663357536919007,
+      -0.07208628163434828,
+      -4.577375394136269
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t51",
+    "option_a_id": "28",
+    "option_b_id": "48",
+    "raw_projection": [
+      -3.438446211973317,
+      6.173794720901158,
+      -1.3361604050834632,
+      3.0468421203521396,
+      6.7214756998967635,
+      -13.494284558124447,
+      -3.1341996273280954,
+      -4.469586491412728,
+      -13.854455392026582,
+      1.9477685261963584
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t52",
+    "option_a_id": "6",
+    "option_b_id": "50",
+    "raw_projection": [
+      5.000371826466497,
+      3.9278199903893776,
+      -1.5112708598916111,
+      1.3976850406995178,
+      -3.142890801206871,
+      2.7631793884142595,
+      -1.6273416163887875,
+      -6.0565215818876,
+      3.3791751561677006,
+      -1.114496006858658
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t53",
+    "option_a_id": "22",
+    "option_b_id": "42",
+    "raw_projection": [
+      -3.925585659166711,
+      -2.4869954983201743,
+      7.446659992410482,
+      -9.032154413789128,
+      -5.502405074068114,
+      1.9200824444278979,
+      4.974899871550196,
+      5.118411303125883,
+      1.4384849506141133,
+      8.16943548582309
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t54",
+    "option_a_id": "3",
+    "option_b_id": "27",
+    "raw_projection": [
+      3.615909443112244,
+      -2.206712103801761,
+      0.14520900222760874,
+      6.759786566669233,
+      -3.783864536261909,
+      -1.8076000239102403,
+      -7.043263467499897,
+      3.7312629736273895,
+      -4.0288497522864155,
+      0.4003435488442158
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t55",
+    "option_a_id": "16",
+    "option_b_id": "20",
+    "raw_projection": [
+      -3.180019708030647,
+      10.101963969479012,
+      -2.491911943515319,
+      2.0729546865366637,
+      -0.21007146976632754,
+      2.9578442352098038,
+      -0.7729840792155888,
+      4.620764734304214,
+      6.410485560550189,
+      4.532909118907044
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t56",
+    "option_a_id": "29",
+    "option_b_id": "36",
+    "raw_projection": [
+      4.857110464325629,
+      -1.0556163986740459,
+      14.192339856130204,
+      1.4351912386001675,
+      -7.613421674662335,
+      0.6954665266448974,
+      -5.317411705729458,
+      -1.6198298951951178,
+      0.33197766133364603,
+      0.38894555684339915
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t57",
+    "option_a_id": "16",
+    "option_b_id": "47",
+    "raw_projection": [
+      1.124944071766884,
+      5.695354015813133,
+      -2.2311082123612653,
+      5.9745324497010746,
+      7.978135634101483,
+      0.8455293814468099,
+      -2.8756584851445526,
+      -1.6951138624493616,
+      8.505448053140126,
+      0.18982205658225765
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t58",
+    "option_a_id": "25",
+    "option_b_id": "35",
+    "raw_projection": [
+      1.9270426786526336,
+      -0.18570225968785672,
+      0.24184536053686864,
+      -1.3693565879986678,
+      -12.933203940697432,
+      2.301762810486408,
+      1.4948172938027646,
+      3.138874761411502,
+      -6.060387768412561,
+      -4.804201092918028
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t59",
+    "option_a_id": "1",
+    "option_b_id": "13",
+    "raw_projection": [
+      -1.9121877706098056,
+      -1.5568129585005077,
+      13.249395783613807,
+      2.676548041545918,
+      -2.649197029939102,
+      -5.65332167575416,
+      5.165493304709016,
+      6.664925464235043,
+      0.6228583472870312,
+      -1.4003765504006234
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t60",
+    "option_a_id": "9",
+    "option_b_id": "13",
+    "raw_projection": [
+      5.560423602606588,
+      -4.530660007247994,
+      0.507260749281846,
+      -9.282692688332027,
+      -7.016501970008578,
+      -12.041483075420466,
+      -1.3675071116983875,
+      3.231222709997976,
+      -4.199854585173168,
+      -4.019564168245884
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t61",
+    "option_a_id": "13",
+    "option_b_id": "48",
+    "raw_projection": [
+      2.874173047373842,
+      2.3945256208602657,
+      -0.583466394172141,
+      3.1578691826112153,
+      11.70488517098309,
+      -4.073839226978475,
+      -6.498905908051286,
+      -2.1504597212636374,
+      -9.508846344137456,
+      9.28420668328347
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t62",
+    "option_a_id": "42",
+    "option_b_id": "44",
+    "raw_projection": [
+      -3.9190626279005483,
+      8.959197206592101,
+      -10.866187188102133,
+      7.851202298876825,
+      4.270684804332166,
+      -3.6791538285642926,
+      -8.100657267750961,
+      -5.0380629334070015,
+      -3.808790346126402,
+      -1.0753855523224323
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t63",
+    "option_a_id": "17",
+    "option_b_id": "35",
+    "raw_projection": [
+      0.7438164942013767,
+      -0.08880134271101336,
+      0.49190522176127516,
+      2.0182036916391035,
+      -6.450903587684621,
+      4.969413498346023,
+      3.76238894120259,
+      -2.3210515409498385,
+      0.4484062675279692,
+      -3.0735987726765086
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t64",
+    "option_a_id": "10",
+    "option_b_id": "45",
+    "raw_projection": [
+      8.967547268873309,
+      -3.555799513741499,
+      8.598856866122242,
+      -5.001433120363983,
+      7.457125650453215,
+      -0.12950393815665606,
+      -1.6346614225108433,
+      1.7787111453353361,
+      1.4075455082148507,
+      -1.8992346690499824
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t65",
+    "option_a_id": "15",
+    "option_b_id": "37",
+    "raw_projection": [
+      9.009484016105446,
+      -0.6186734444517276,
+      -0.6389628697402864,
+      5.768144518500025,
+      -5.570674167929223,
+      -3.2673083528005993,
+      -0.44200558308974036,
+      7.240915727395723,
+      2.1920543837868443,
+      1.5003204500571974
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t66",
+    "option_a_id": "18",
+    "option_b_id": "35",
+    "raw_projection": [
+      5.519820760886127,
+      -8.442309318781863,
+      2.6018285519596014,
+      4.916353005198492,
+      -7.264920232527523,
+      -0.08342868877431887,
+      1.2071561757603853,
+      -3.466422394576989,
+      -2.775490809692755,
+      3.7997820175145653
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t67",
+    "option_a_id": "10",
+    "option_b_id": "41",
+    "raw_projection": [
+      4.958948833962924,
+      -6.8069468299266696,
+      10.337978061161571,
+      -0.6532131334893672,
+      1.6028762788939352,
+      3.423082584203365,
+      -3.0373379199385946,
+      2.2142328600266605,
+      -8.824887735579834,
+      -0.0873045296933236
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t68",
+    "option_a_id": "36",
+    "option_b_id": "44",
+    "raw_projection": [
+      -14.218350180028477,
+      8.797033935273447,
+      -9.65736742296421,
+      2.7130617565727864,
+      8.53432385389871,
+      -0.7963542567742812,
+      0.46632269604353166,
+      1.0315629383905431,
+      2.423013255756182,
+      0.3992717791250532
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t69",
+    "option_a_id": "5",
+    "option_b_id": "45",
+    "raw_projection": [
+      -2.681764313743926,
+      -9.413406230228057,
+      2.287153804950183,
+      -4.6585979641384485,
+      2.5835373445617233,
+      -5.697417259372246,
+      -5.793689400588638,
+      1.1828957496352472,
+      6.610422156704565,
+      -1.0183904231162777
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t70",
+    "option_a_id": "14",
+    "option_b_id": "33",
+    "raw_projection": [
+      -5.823050957738626,
+      0.17612665381167364,
+      0.2400609542587109,
+      -0.16959325710736461,
+      -1.6427080412839772,
+      -2.958864039468147,
+      10.01940013250251,
+      0.12007993109526102,
+      -3.9319118673210687,
+      4.703471100084846
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t71",
+    "option_a_id": "10",
+    "option_b_id": "13",
+    "raw_projection": [
+      7.365094625752045,
+      -0.6048022803916033,
+      7.844701510188745,
+      0.6755632771923316,
+      -0.44646547857964053,
+      -4.9670023211609,
+      3.8289435323981857,
+      5.145865987187389,
+      -6.891878694522194,
+      -6.058848293308182
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t72",
+    "option_a_id": "10",
+    "option_b_id": "34",
+    "raw_projection": [
+      10.780139881567436,
+      0.483016794569415,
+      7.427461293079339,
+      -0.22708833562830127,
+      7.207149194659173,
+      -3.011854440435346,
+      4.444930446052304,
+      -0.1706430454448457,
+      -5.440079853209139,
+      3.5460997420853673
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t73",
+    "option_a_id": "9",
+    "option_b_id": "37",
+    "raw_projection": [
+      9.54216277101453,
+      -3.150036095096945,
+      0.12166458734521296,
+      -0.24049588867849558,
+      -9.131316041167466,
+      -10.752050482570091,
+      -1.866755871074932,
+      7.030863540633117,
+      2.3872639810359493,
+      0.02452355293895396
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t74",
+    "option_a_id": "42",
+    "option_b_id": "46",
+    "raw_projection": [
+      11.65941444404654,
+      5.503058454805484,
+      -2.3938109157256116,
+      5.418578620804409,
+      2.3136264268470867,
+      -2.489996987498798,
+      -3.085766890806403,
+      -3.392189634154237,
+      -3.925918020488645,
+      5.893416909121651
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t75",
+    "option_a_id": "39",
+    "option_b_id": "45",
+    "raw_projection": [
+      -2.318524119383178,
+      -6.737081827111989,
+      1.5832961164664312,
+      -0.19473404562013624,
+      2.5128205973295796,
+      -3.251249598546423,
+      -0.24408912754681733,
+      10.474206536420535,
+      10.25260505041615,
+      -1.4687258091980582
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t76",
+    "option_a_id": "40",
+    "option_b_id": "44",
+    "raw_projection": [
+      -13.425774500791832,
+      7.594518045626993,
+      -9.836724711090616,
+      1.9519312681954257,
+      4.60212565822729,
+      -3.781031462729825,
+      -4.5751694056839085,
+      0.9140982617903004,
+      -1.4247514911164867,
+      -5.414658312077428
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t77",
+    "option_a_id": "4",
+    "option_b_id": "21",
+    "raw_projection": [
+      -7.507399515272172,
+      5.107808125250314,
+      -0.9615222918466366,
+      -0.9062212877799988,
+      -3.864842400805888,
+      2.4518239733263387,
+      -12.235138916442041,
+      -0.3177502454194995,
+      6.744205660385551,
+      0.6534852078676203
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t78",
+    "option_a_id": "9",
+    "option_b_id": "40",
+    "raw_projection": [
+      9.633655512466374,
+      -8.727388255813528,
+      1.8798262601704891,
+      -6.0099153174316005,
+      -4.5784988876269255,
+      0.3398296696621883,
+      -3.558427275854617,
+      -0.14561877565945755,
+      -0.34897804479491257,
+      7.0211141225774165
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t79",
+    "option_a_id": "22",
+    "option_b_id": "37",
+    "raw_projection": [
+      5.489633472272721,
+      4.455035823361529,
+      4.659035842573697,
+      2.6365360456453626,
+      -10.386663081503782,
+      -9.069920073638855,
+      3.1410834142628303,
+      6.342732424221148,
+      1.7906881214350763,
+      5.512117675939625
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t80",
+    "option_a_id": "25",
+    "option_b_id": "43",
+    "raw_projection": [
+      -1.4058693442234624,
+      -0.594697392183224,
+      0.13405726842579305,
+      -4.18107690022181,
+      -9.153255310333236,
+      -3.4717265670925848,
+      -4.07091187096157,
+      4.354600915875691,
+      -3.5291797089064008,
+      -0.8912523318670682
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t81",
+    "option_a_id": "4",
+    "option_b_id": "14",
+    "raw_projection": [
+      0.519722383577182,
+      -0.01185229136336128,
+      -0.12064392587502507,
+      5.921904669500723,
+      -8.812367194883093,
+      -1.3041526254124522,
+      -14.82867812314797,
+      1.6882027098267283,
+      9.726968638585163,
+      -2.655016237742227
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t82",
+    "option_a_id": "7",
+    "option_b_id": "34",
+    "raw_projection": [
+      -1.059868302085109,
+      -1.565427640314567,
+      0.14845000074755582,
+      3.111970072850647,
+      1.124595349366309,
+      -9.030459164687903,
+      7.304582515323867,
+      -4.632794194836843,
+      -0.1651169230850812,
+      9.004319382155343
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t83",
+    "option_a_id": "25",
+    "option_b_id": "44",
+    "raw_projection": [
+      -13.825813562124631,
+      8.500289249604975,
+      -10.109523676651907,
+      2.0937330929800164,
+      -4.8779586501857,
+      -2.7697897449365834,
+      -4.43012140237239,
+      1.7222735364691786,
+      -3.621412019071111,
+      -3.226009913427692
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t84",
+    "option_a_id": "17",
+    "option_b_id": "43",
+    "raw_projection": [
+      -2.589095528674717,
+      -0.4977964752063777,
+      0.384117129650198,
+      -0.7935166205840388,
+      -2.670954957320439,
+      -0.8040758792329623,
+      -1.8033402235617475,
+      -1.1053253864856516,
+      2.979614327034139,
+      0.8393499883744385
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t85",
+    "option_a_id": "46",
+    "option_b_id": "48",
+    "raw_projection": [
+      -3.3517614336412302,
+      2.452874575585433,
+      -0.5916834663466871,
+      0.3657842215877494,
+      6.621814807859218,
+      -13.863277350396809,
+      -4.747706715155708,
+      -1.3335897966492762,
+      -11.817843719036972,
+      -3.3106157569064742
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t86",
+    "option_a_id": "11",
+    "option_b_id": "23",
+    "raw_projection": [
+      -13.30897609454617,
+      1.4019874697380563,
+      0.3888945938459218,
+      4.423919115749593,
+      2.022276786552757,
+      -1.673766956761667,
+      4.2570378467206895,
+      -1.9006699294707319,
+      -0.08873698709963522,
+      2.906013170899388
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t87",
+    "option_a_id": "1",
+    "option_b_id": "9",
+    "raw_projection": [
+      -7.472611373216392,
+      2.9738470487474884,
+      12.74213503433194,
+      11.959240729877948,
+      4.3673049400694754,
+      6.388161399666313,
+      6.5330004164074,
+      3.433702754237066,
+      4.822712932460184,
+      2.619187617845253
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t88",
+    "option_a_id": "23",
+    "option_b_id": "37",
+    "raw_projection": [
+      12.78429709441938,
+      0.7583829520122305,
+      -0.9873997031809695,
+      7.204931555478922,
+      -8.690735664147498,
+      -3.7039246516794235,
+      1.422693237105847,
+      10.041976242623925,
+      -1.2849368105593295,
+      -2.0217274447290485
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t89",
+    "option_a_id": "38",
+    "option_b_id": "50",
+    "raw_projection": [
+      -3.737823538013508,
+      -7.103676285908805,
+      1.883383610537123,
+      1.2663765873070743,
+      -1.4652002708863914,
+      1.932436664533217,
+      -7.394365125965305,
+      -13.556351958184523,
+      5.468989633922819,
+      -0.4163027078729175
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t90",
+    "option_a_id": "23",
+    "option_b_id": "39",
+    "raw_projection": [
+      12.723534688515864,
+      3.163843633623274,
+      -1.430944301777271,
+      -7.319527596110806,
+      -1.1851510612853402,
+      3.095390737020862,
+      -3.2975738308798257,
+      -7.599025966283788,
+      -9.825236224447531,
+      -0.43747573245761096
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t91",
+    "option_a_id": "12",
+    "option_b_id": "22",
+    "raw_projection": [
+      2.087716178369746,
+      -6.858692908003945,
+      -4.482442192092083,
+      12.039214267032582,
+      -0.5977405418028848,
+      3.8355962402710997,
+      1.4385201706366426,
+      -6.939094730451784,
+      -1.4390868721981902,
+      -5.846075769566233
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t92",
+    "option_a_id": "5",
+    "option_b_id": "33",
+    "raw_projection": [
+      -5.1322581091188315,
+      -8.89721520501724,
+      2.4988305566409403,
+      4.654117443091711,
+      -6.465973722252014,
+      -4.993839475898817,
+      -2.248772007804627,
+      4.390399837951038,
+      1.4842236701940361,
+      2.1465385732745434
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t93",
+    "option_a_id": "19",
+    "option_b_id": "49",
+    "raw_projection": [
+      8.229290674282806,
+      -9.591314875481638,
+      2.388151243188616,
+      0.2335062169196899,
+      1.7906984883115287,
+      2.884925846284739,
+      4.505611205694223,
+      -0.19521446661282785,
+      -1.7866306494531847,
+      3.1225402371774402
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t94",
+    "option_a_id": "12",
+    "option_b_id": "37",
+    "raw_projection": [
+      7.57734965064247,
+      -2.403657084642415,
+      0.17659365048161296,
+      14.67575031267795,
+      -10.984403623306656,
+      -5.234323833367762,
+      4.579603584899467,
+      -0.5963623062306406,
+      0.35160124923687863,
+      -0.3339580936266205
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t95",
+    "option_a_id": "26",
+    "option_b_id": "33",
+    "raw_projection": [
+      -6.360837304562951,
+      3.512465680319764,
+      -0.5244155410662829,
+      0.654192190977687,
+      -4.388265943092079,
+      -0.9483759595521687,
+      4.454741070169835,
+      0.6368872712166259,
+      -3.4280274923230527,
+      5.6712285346015525
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t96",
+    "option_a_id": "48",
+    "option_b_id": "50",
+    "raw_projection": [
+      -3.901307231656344,
+      -5.0466598589634595,
+      1.3658353313050882,
+      -0.7054304474834981,
+      -6.385884297754768,
+      13.832564995537991,
+      0.5983482556785661,
+      -8.197060685641404,
+      15.526920058784533,
+      -11.671235655807054
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t97",
+    "option_a_id": "2",
+    "option_b_id": "25",
+    "raw_projection": [
+      8.220728308499197,
+      -6.545242551767293,
+      7.877131013223015,
+      7.306613674169752,
+      7.977936490872874,
+      10.533667416523556,
+      -1.3366427343351668,
+      -1.0450779567264747,
+      3.2528132690983194,
+      6.244885997878542
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t98",
+    "option_a_id": "13",
+    "option_b_id": "36",
+    "raw_projection": [
+      4.865807589096464,
+      -5.399244138212001,
+      1.1932082227622445,
+      2.511646882523083,
+      -1.4941951132897735,
+      9.396635539127121,
+      -7.232412265883664,
+      -3.49430616225767,
+      0.0031117935055769664,
+      5.226748199620825
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t99",
+    "option_a_id": "14",
+    "option_b_id": "20",
+    "raw_projection": [
+      -11.122933804567372,
+      5.666836434502666,
+      -0.5327153985181011,
+      -2.7255727170407202,
+      0.461747398986737,
+      3.1381111200176335,
+      3.0435102088128363,
+      2.1180238329700707,
+      -3.866886636217202,
+      4.54588037630457
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t100",
+    "option_a_id": "6",
+    "option_b_id": "19",
+    "raw_projection": [
+      3.251116678042893,
+      15.193363871119528,
+      -4.262463643104046,
+      0.7055831882950455,
+      -0.9670850710703018,
+      0.9849164236845962,
+      -2.127103599224061,
+      4.1104597714688484,
+      1.998776833972618,
+      5.904460718720342
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t101",
+    "option_a_id": "24",
+    "option_b_id": "29",
+    "raw_projection": [
+      -0.16960731877317586,
+      1.392484592459865,
+      -4.925800357803051,
+      -0.2299438977620188,
+      -1.5015894707068187,
+      3.690133471648674,
+      1.9663173342926237,
+      -6.325763577804935,
+      -4.741936737257076,
+      -1.1781790990709522
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t102",
+    "option_a_id": "15",
+    "option_b_id": "18",
+    "raw_projection": [
+      5.908237736656603,
+      1.1548102499476802,
+      -0.9679854227764396,
+      -6.428786328234838,
+      2.7939435858544073,
+      9.19852158089917,
+      -1.9910638731385708,
+      5.86155529241276,
+      -1.6324240728092003,
+      -2.2957204893866545
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t103",
+    "option_a_id": "15",
+    "option_b_id": "16",
+    "raw_projection": [
+      2.059840556645754,
+      -9.045357753529853,
+      2.4316009905591054,
+      -4.267267417949684,
+      -2.2872531245141605,
+      4.123466145102682,
+      -8.0643502303123,
+      0.6588033107949207,
+      -7.567298795642064,
+      0.09027550683407387
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t104",
+    "option_a_id": "7",
+    "option_b_id": "35",
+    "raw_projection": [
+      1.9254000919447203,
+      -7.941448427506985,
+      2.4529000548437687,
+      5.77624064378845,
+      -7.544135873775298,
+      2.6862267923623886,
+      5.847444728004735,
+      -0.3624271611294187,
+      -1.629766464477837,
+      3.447200146017324
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t105",
+    "option_a_id": "31",
+    "option_b_id": "33",
+    "raw_projection": [
+      -1.8623674403265613,
+      -1.8144254976854308,
+      0.6555254200408296,
+      0.23938131941960172,
+      -9.497986463073028,
+      -3.6643708090804323,
+      0.7902807471702613,
+      -1.5164766211475418,
+      7.247304486091783,
+      4.9154495413288295
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t106",
+    "option_a_id": "12",
+    "option_b_id": "50",
+    "raw_projection": [
+      2.5684762979519977,
+      -6.436415234896654,
+      1.3445587495511908,
+      8.085992248152111,
+      -3.550588678919468,
+      3.2349693423413757,
+      -0.8217053080967089,
+      -14.743523543770813,
+      -0.21744360232517668,
+      -6.765074787335035
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t107",
+    "option_a_id": "31",
+    "option_b_id": "43",
+    "raw_projection": [
+      2.053075338896225,
+      -5.076816134273121,
+      1.4691150572923142,
+      -4.446439044360215,
+      -5.587234444830759,
+      -1.3071025153612623,
+      -3.697911729134044,
+      -1.187241712071899,
+      6.592436129291717,
+      5.551684480986312
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t108",
+    "option_a_id": "13",
+    "option_b_id": "33",
+    "raw_projection": [
+      -0.8480411522536254,
+      -2.434806208139066,
+      0.965832107624252,
+      3.6357190096738545,
+      -1.1459199377808846,
+      5.541076166477668,
+      -1.9186875621250161,
+      -0.1596507535362585,
+      3.1732257162265225,
+      7.324542620649038
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t109",
+    "option_a_id": "15",
+    "option_b_id": "33",
+    "raw_projection": [
+      4.179703695443852,
+      -4.43410356474184,
+      0.7124653998205981,
+      0.3616667285203325,
+      -4.601780034551203,
+      0.9843352208267021,
+      -1.8614443858382173,
+      3.2816241432243154,
+      -1.221838466195736,
+      4.780775349521393
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t110",
+    "option_a_id": "16",
+    "option_b_id": "30",
+    "raw_projection": [
+      2.27508892201094,
+      2.0367321029982577,
+      -0.9577636415550894,
+      3.2343534532699896,
+      1.7174231547532228,
+      0.2983184553524408,
+      6.1936946620896265,
+      0.5198634684157923,
+      3.5742589385993067,
+      2.096905665142363
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t111",
+    "option_a_id": "3",
+    "option_b_id": "45",
+    "raw_projection": [
+      -2.0966659643118257,
+      -7.0841690959895445,
+      1.7920311958773674,
+      -0.3256514754196914,
+      2.6551784242373375,
+      -5.536785229365531,
+      -10.021878846679629,
+      -1.8253847229048044,
+      6.5076201179581945,
+      -1.749816632075365
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t112",
+    "option_a_id": "7",
+    "option_b_id": "20",
+    "raw_projection": [
+      -10.622837556982903,
+      0.40265685727634865,
+      0.758745972704399,
+      5.094361235411784,
+      -5.570483821382678,
+      0.6524442805500075,
+      -2.2059818841449563,
+      2.52200798613394,
+      1.6213351829322467,
+      6.566323243630536
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t113",
+    "option_a_id": "10",
+    "option_b_id": "36",
+    "raw_projection": [
+      12.230902214848504,
+      -6.004046418603615,
+      9.037909732950997,
+      3.1872101597154145,
+      -1.9406605918694166,
+      4.429633217966227,
+      -3.4034687334854894,
+      1.6515598249297088,
+      -6.888766901016617,
+      -0.8321000936873771
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t114",
+    "option_a_id": "3",
+    "option_b_id": "48",
+    "raw_projection": [
+      -0.8249455600592671,
+      -1.7386462417793866,
+      0.45440944577172954,
+      8.50921410474783,
+      6.456472466187552,
+      -14.448122839348237,
+      -11.057179799821894,
+      -0.6086896023163955,
+      -11.300650428916315,
+      3.37477642694989
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t115",
+    "option_a_id": "5",
+    "option_b_id": "28",
+    "raw_projection": [
+      2.0284023024819575,
+      -10.241678096919058,
+      2.2856924599280117,
+      1.1294254956769312,
+      -0.33664431338482736,
+      -1.1144703112304906,
+      -3.6947907264028026,
+      6.869177361636385,
+      2.6566070018566323,
+      2.158434109712618
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t116",
+    "option_a_id": "1",
+    "option_b_id": "39",
+    "raw_projection": [
+      2.008788991894651,
+      2.2292716352615862,
+      12.42025502308086,
+      -2.8057143103902558,
+      2.7415735017641687,
+      2.435426305796496,
+      -0.05402252265320355,
+      -7.1764359140375396,
+      -1.3303225003920776,
+      4.227962883055638
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t117",
+    "option_a_id": "28",
+    "option_b_id": "41",
+    "raw_projection": [
+      -8.718765051136273,
+      -2.4228754494941835,
+      1.7405825400614994,
+      -1.4398034729407765,
+      -2.9340677136127282,
+      -1.0303604257817398,
+      -3.5015751716135783,
+      -5.25075989730981,
+      -6.278618088946758,
+      -1.3648943934722282
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t118",
+    "option_a_id": "3",
+    "option_b_id": "17",
+    "raw_projection": [
+      1.9573785482107695,
+      -9.33257223216003,
+      2.433180455169415,
+      5.094760188614692,
+      0.18737433298632078,
+      -1.6718632729399545,
+      -9.161813706638176,
+      2.8166796609722766,
+      -2.253061052386511,
+      1.2119973155984796
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t119",
+    "option_a_id": "27",
+    "option_b_id": "50",
+    "raw_projection": [
+      -8.342162234827853,
+      -4.578593996941081,
+      1.6750357748492093,
+      1.0439970905950793,
+      3.8544527046946944,
+      1.192042180099994,
+      -3.415568076643417,
+      -12.537013261585178,
+      8.25511938215464,
+      -8.696802777701388
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t120",
+    "option_a_id": "19",
+    "option_b_id": "24",
+    "raw_projection": [
+      2.954693776250128,
+      -14.349521974624794,
+      -6.1045074294854045,
+      -0.45393734103830874,
+      0.12600942871450652,
+      -2.969427262996306,
+      2.5190017407611576,
+      4.631826364290963,
+      -0.22460452302296316,
+      1.3840539887929624
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t121",
+    "option_a_id": "12",
+    "option_b_id": "43",
+    "raw_projection": [
+      6.663012109203667,
+      -9.481477841520213,
+      2.341611557293986,
+      4.583452158918425,
+      -6.104757471686364,
+      1.3745880339787102,
+      -1.3280276941533116,
+      -4.226418981326397,
+      -3.7171599575457632,
+      3.582731745495046
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t122",
+    "option_a_id": "5",
+    "option_b_id": "40",
+    "raw_projection": [
+      -0.210985047005411,
+      -10.659137245443699,
+      2.905563959905332,
+      4.291175804318292,
+      -2.8820507020894834,
+      1.8463971027061694,
+      -2.52100460983584,
+      1.1732091058298615,
+      2.161874494345765,
+      5.862674243448826
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t123",
+    "option_a_id": "46",
+    "option_b_id": "50",
+    "raw_projection": [
+      -7.253068665297576,
+      -2.593785283378028,
+      0.7741518649584,
+      -0.33964622589574794,
+      0.23593051010444652,
+      -0.030712354858815204,
+      -4.14935845947715,
+      -9.530650482290675,
+      3.70907633974755,
+      -14.98185141271355
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t124",
+    "option_a_id": "7",
+    "option_b_id": "27",
+    "raw_projection": [
+      2.840114492644815,
+      -0.7267869564376996,
+      -0.3269766198593059,
+      5.423063330203911,
+      -5.064471155338903,
+      -2.41892345695392,
+      4.203606025940428,
+      2.873207692475532,
+      -3.8539614319057205,
+      5.7091451519395715
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t125",
+    "option_a_id": "2",
+    "option_b_id": "16",
+    "raw_projection": [
+      0.7795530462548491,
+      -8.488803496150851,
+      8.916734235135836,
+      3.1824229912577464,
+      -2.7715439276655975,
+      7.843803479987769,
+      -7.122267973466509,
+      0.3574672176441749,
+      -5.966958412454348,
+      0.02689888366669252
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t126",
+    "option_a_id": "21",
+    "option_b_id": "47",
+    "raw_projection": [
+      1.2091518740795189,
+      -3.859433935776885,
+      0.5689666986075634,
+      8.004131003404417,
+      3.7024297087773475,
+      -2.7301803324841565,
+      -1.6527034038220316,
+      -2.191901808537263,
+      1.210838834572293,
+      -3.1057081316300668
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t127",
+    "option_a_id": "35",
+    "option_b_id": "40",
+    "raw_projection": [
+      -2.3270817399854615,
+      1.091473463665853,
+      -0.5146443260981719,
+      1.5111584127832585,
+      3.453119632284432,
+      -1.29052109269317,
+      -1.3497692904912422,
+      -2.3306994867326236,
+      3.8637272404579397,
+      6.992849491567767
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t128",
+    "option_a_id": "25",
+    "option_b_id": "40",
+    "raw_projection": [
+      -0.4000390613328285,
+      0.9057712039779958,
+      -0.2727989655613026,
+      0.14180182478459127,
+      -9.480084308412973,
+      1.011241717793236,
+      0.14504800331152146,
+      0.8081752746788772,
+      -2.1966605279546134,
+      2.1886483986497463
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t129",
+    "option_a_id": "10",
+    "option_b_id": "16",
+    "raw_projection": [
+      4.39719033470032,
+      -7.6508626773186705,
+      10.529669208551498,
+      -0.3176518596038293,
+      0.7221414936765173,
+      3.7132047695927555,
+      -4.292649874200914,
+      2.3633944012217274,
+      -10.064113307741984,
+      -3.4248055153464896
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t130",
+    "option_a_id": "5",
+    "option_b_id": "30",
+    "raw_projection": [
+      -4.977032325905992,
+      -11.471737290806976,
+      3.260202505824356,
+      3.259536749891684,
+      -2.434023657461745,
+      -1.5563900962704023,
+      -2.2579831901890772,
+      2.2874424739374315,
+      -1.2869777206529827,
+      -0.44705560427041796
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t131",
+    "option_a_id": "28",
+    "option_b_id": "40",
+    "raw_projection": [
+      -2.2393873494873673,
+      -0.41745914852465177,
+      0.619871499977321,
+      3.1617503086413685,
+      -2.545406388704656,
+      2.9608674139366635,
+      1.1737861165669619,
+      -5.695968255806525,
+      -0.4947325075108678,
+      3.7042401337362056
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t132",
+    "option_a_id": "34",
+    "option_b_id": "44",
+    "raw_projection": [
+      -12.767587846747428,
+      2.309970722100433,
+      -8.046918983092574,
+      6.127360251916498,
+      -0.6134859326298875,
+      6.645133401627302,
+      -7.382076483494263,
+      2.8537658087650963,
+      0.9743262079486991,
+      -3.978928056647695
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t133",
+    "option_a_id": "22",
+    "option_b_id": "48",
+    "raw_projection": [
+      4.382067351238599,
+      5.468937532070744,
+      4.4611656103381865,
+      -3.2477915713969714,
+      3.4330361606381916,
+      -14.43319189346769,
+      -2.8585737344119164,
+      0.39263187232236324,
+      -14.305276788911481,
+      10.752236638038285
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t134",
+    "option_a_id": "28",
+    "option_b_id": "31",
+    "raw_projection": [
+      -5.298292971274225,
+      3.1588883895872524,
+      -0.44238732332789876,
+      3.2853106279951763,
+      3.36865705420585,
+      -0.2149983555878926,
+      0.6557379714279138,
+      -0.9623009025378096,
+      -8.419687817754385,
+      -4.927345077766917
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t135",
+    "option_a_id": "17",
+    "option_b_id": "22",
+    "raw_projection": [
+      -7.1643914595086375,
+      2.124988458309902,
+      -6.439936619735875,
+      6.662245487530107,
+      2.8360619725630425,
+      1.6569323270594216,
+      0.963207641228203,
+      -3.8180011356110306,
+      5.257687412381699,
+      -8.589457526686825
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t136",
+    "option_a_id": "4",
+    "option_b_id": "22",
+    "raw_projection": [
+      -5.963181725772588,
+      -0.47533134062310767,
+      -5.891047083750902,
+      8.522253156727688,
+      -1.037306288041303,
+      0.5552598351309551,
+      -6.53092260215979,
+      -0.5751581991277516,
+      7.4182614998115595,
+      -6.744117713061195
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t137",
+    "option_a_id": "19",
+    "option_b_id": "28",
+    "raw_projection": [
+      9.089008592053272,
+      -12.392678742667842,
+      2.721517856990814,
+      -1.6493098204641627,
+      -2.511397132278565,
+      1.4399825273161444,
+      3.0356133544848047,
+      2.4996658236976765,
+      -0.29206634456286185,
+      2.704510404031693
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t138",
+    "option_a_id": "37",
+    "option_b_id": "50",
+    "raw_projection": [
+      -5.008873352690474,
+      -4.032758150254238,
+      1.1679650990695778,
+      -6.589758064525833,
+      7.433814944387205,
+      8.469293175709133,
+      -5.401308892996185,
+      -14.14716123754018,
+      -0.5690448515620538,
+      -6.43111669370842
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t139",
+    "option_a_id": "20",
+    "option_b_id": "26",
+    "raw_projection": [
+      11.660720151391722,
+      -9.003175461010766,
+      1.2971918938430962,
+      1.9017872689556652,
+      2.2838105028213627,
+      -5.148599199933615,
+      2.521148853519838,
+      -2.6348311730914413,
+      3.3630022612192016,
+      -5.513637810821288
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t140",
+    "option_a_id": "31",
+    "option_b_id": "35",
+    "raw_projection": [
+      5.385987361772317,
+      -4.667821001777755,
+      1.5769031494033905,
+      -1.6347187321370729,
+      -9.367183075194948,
+      4.46638686221773,
+      1.8678174356302903,
+      -2.402967866536088,
+      4.061228069785557,
+      1.6387357199353543
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t141",
+    "option_a_id": "11",
+    "option_b_id": "31",
+    "raw_projection": [
+      -3.4920918804618317,
+      0.15936579914559879,
+      0.09739774018500806,
+      5.982991561829212,
+      3.7984217188562988,
+      2.538322774266642,
+      3.4700115339077895,
+      5.6984913501293315,
+      -12.034871133733313,
+      -0.7507089156943105
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t142",
+    "option_a_id": "8",
+    "option_b_id": "44",
+    "raw_projection": [
+      -10.347028840929148,
+      2.3486115731797006,
+      -8.323327821733649,
+      6.9611557526482395,
+      6.708043405905447,
+      -0.23686394093010416,
+      -8.657210401815304,
+      1.0102998512846058,
+      1.7054522862488248,
+      -1.0327567222725227
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t143",
+    "option_a_id": "8",
+    "option_b_id": "11",
+    "raw_projection": [
+      3.511931918537632,
+      -1.8289247334809828,
+      0.35374032586672843,
+      -0.8502067580225706,
+      4.221559471732369,
+      -2.1700210219914777,
+      -8.070100675178248,
+      -0.8686224073663111,
+      7.240119600855158,
+      -3.4989747060039
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t144",
+    "option_a_id": "32",
+    "option_b_id": "35",
+    "raw_projection": [
+      8.710120311431773,
+      -0.9639119626945942,
+      14.508927912799306,
+      1.4557310680838467,
+      -5.862591556165232,
+      6.096563742127568,
+      4.223742203911953,
+      1.6400278423300763,
+      -5.5196367767298975,
+      -0.6271180613923708
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t145",
+    "option_a_id": "10",
+    "option_b_id": "47",
+    "raw_projection": [
+      5.522134406467195,
+      -1.9555086615055457,
+      8.298560996190249,
+      5.656880590097247,
+      8.700277127778003,
+      4.558734151039565,
+      -7.168308359345467,
+      0.668280538772365,
+      -1.5586652546018658,
+      -3.234983458764234
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t146",
+    "option_a_id": "3",
+    "option_b_id": "20",
+    "raw_projection": [
+      -9.847042606515474,
+      -1.0772682900877175,
+      1.230931594791317,
+      6.43108447187712,
+      -4.289877202305684,
+      1.263767713593687,
+      -13.452851377585285,
+      3.380063267285793,
+      1.4464468625515459,
+      1.2575216405351817
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t147",
+    "option_a_id": "10",
+    "option_b_id": "30",
+    "raw_projection": [
+      6.672279256711255,
+      -5.614130574320422,
+      9.571905566996426,
+      2.916701593666161,
+      2.4395646484297346,
+      4.011523224945195,
+      1.9010447878887158,
+      2.8832578696375246,
+      -6.489854369142688,
+      -1.3278998502041297
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t148",
+    "option_a_id": "40",
+    "option_b_id": "49",
+    "raw_projection": [
+      1.3796694317168927,
+      3.21882301571085,
+      -0.9532381137795164,
+      -1.278934271257511,
+      6.847502009294754,
+      -1.5159240949680641,
+      0.29621173464245487,
+      3.0010879654960196,
+      -0.9998317973794567,
+      -3.28621030059046
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t149",
+    "option_a_id": "5",
+    "option_b_id": "17",
+    "raw_projection": [
+      1.3722801987786748,
+      -11.661809366398531,
+      2.9283030642422294,
+      0.7618136998959326,
+      0.11573325331070573,
+      -1.8324953029466824,
+      -4.933624260547185,
+      5.8249601335123256,
+      -2.15025901364016,
+      1.9434235245575786
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t150",
+    "option_a_id": "13",
+    "option_b_id": "28",
+    "raw_projection": [
+      6.312619259347154,
+      -3.779269100040889,
+      0.7526940109113208,
+      0.11102706225907313,
+      4.9834094710863,
+      9.420445331145991,
+      -3.364706280723195,
+      2.31912677014909,
+      4.345609047889114,
+      7.336438157087105
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t151",
+    "option_a_id": "12",
+    "option_b_id": "27",
+    "raw_projection": [
+      10.910638532779862,
+      -1.857821237955574,
+      -0.3304770252980185,
+      7.04199515755702,
+      -7.405041383614154,
+      2.0429271622413885,
+      2.593862768546706,
+      -2.206510282185636,
+      -8.47256298447982,
+      1.9317279903663371
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t152",
+    "option_a_id": "13",
+    "option_b_id": "25",
+    "raw_projection": [
+      4.473270971192626,
+      -5.102499452543535,
+      1.6453644764499438,
+      3.130975546115841,
+      11.918087390794634,
+      11.370071027289413,
+      -2.3359681674677546,
+      -4.1850167603363095,
+      6.047537068332857,
+      8.852029892173555
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t153",
+    "option_a_id": "2",
+    "option_b_id": "4",
+    "raw_projection": [
+      8.202744759214392,
+      -4.0418236698111425,
+      7.078181616013637,
+      2.0590457253344003,
+      5.369004398464428,
+      8.967689220592415,
+      3.8899158616530083,
+      1.1720054091515864,
+      -5.416554854272056,
+      2.668943864011393
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t154",
+    "option_a_id": "31",
+    "option_b_id": "50",
+    "raw_projection": [
+      -2.0414604723554395,
+      -2.031753527649556,
+      0.47206224954952164,
+      -0.9438989551265401,
+      -3.0330656520638577,
+      0.5532787930014089,
+      -3.1915893430774425,
+      -11.704346274516327,
+      10.092152484512301,
+      -4.796122051843774
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t155",
+    "option_a_id": "17",
+    "option_b_id": "50",
+    "raw_projection": [
+      -6.683631339926391,
+      2.54726613141719,
+      -0.6129356780925932,
+      2.7090234686496344,
+      -0.1167861645535341,
+      1.0563054291297045,
+      -1.2970178375051464,
+      -11.622429948930078,
+      6.479330682254716,
+      -9.508456544455651
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t156",
+    "option_a_id": "18",
+    "option_b_id": "28",
+    "raw_projection": [
+      5.432126370388031,
+      -6.933376706591352,
+      1.4673127258841085,
+      3.265761109340386,
+      -1.2663942115384272,
+      -4.334817195404147,
+      -1.3163992312978199,
+      -0.10115362550309093,
+      1.5829689382760541,
+      7.088391375346133
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t157",
+    "option_a_id": "30",
+    "option_b_id": "39",
+    "raw_projection": [
+      4.61379213154524,
+      8.79541288769092,
+      -2.556344817340605,
+      -7.723400668410004,
+      2.504740404693889,
+      -0.8897775645554246,
+      -3.291617082852746,
+      -11.578753260722719,
+      -2.3552051730585983,
+      0.8973909903522037
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t158",
+    "option_a_id": "16",
+    "option_b_id": "24",
+    "raw_projection": [
+      3.1462087345957364,
+      1.3099480649292587,
+      -10.758298973927655,
+      2.2996146784810945,
+      6.452209059823206,
+      -3.669171549920098,
+      4.240275512152264,
+      7.233758896708037,
+      7.585305482648814,
+      3.38193896388666
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t159",
+    "option_a_id": "12",
+    "option_b_id": "35",
+    "raw_projection": [
+      9.995924132079757,
+      -9.07248270902485,
+      2.4493996494050596,
+      7.395172471141559,
+      -9.88470610205055,
+      7.1480774115577,
+      4.237701470611023,
+      -5.442145135790595,
+      -6.2483680170519325,
+      -0.3302170155559084
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t160",
+    "option_a_id": "14",
+    "option_b_id": "19",
+    "raw_projection": [
+      -7.751399138191109,
+      11.22434250457768,
+      -2.6945949994450302,
+      -2.044975384057981,
+      6.998018499861765,
+      -0.5194774021159646,
+      5.537768059419529,
+      0.09919163108293545,
+      -2.4674621910956214,
+      2.010856232491222
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t161",
+    "option_a_id": "12",
+    "option_b_id": "17",
+    "raw_projection": [
+      9.252107637878387,
+      -8.98368136631384,
+      1.9574944276437862,
+      5.376968779502468,
+      -3.433802514365929,
+      2.178663913211674,
+      0.47531252940843666,
+      -3.121093594840752,
+      -6.6967742845799085,
+      2.7433817571205976
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t162",
+    "option_a_id": "34",
+    "option_b_id": "37",
+    "raw_projection": [
+      0.5666939125925449,
+      0.29280483719002914,
+      0.0316440551727711,
+      9.944848412474169,
+      -9.768428744397717,
+      -0.6657152878751748,
+      -1.1152356730306667,
+      9.116149863267365,
+      5.135319724896045,
+      -5.560860314208731
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t163",
+    "option_a_id": "39",
+    "option_b_id": "50",
+    "raw_projection": [
+      -4.948110946786962,
+      -6.4382188318652975,
+      1.6115096976658847,
+      7.93470108706388,
+      -0.0717696584749701,
+      1.6699777870088521,
+      -0.6810418250105108,
+      3.4938409713675402,
+      7.971254562326156,
+      -8.015368405979869
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t164",
+    "option_a_id": "32",
+    "option_b_id": "38",
+    "raw_projection": [
+      5.020496015317511,
+      8.775831797342404,
+      11.520703402408325,
+      0.8801742577873043,
+      1.936726137852254,
+      0.2510190083780349,
+      6.558700551169522,
+      5.895001392534369,
+      -4.957701995925923,
+      -6.645673125298585
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t165",
+    "option_a_id": "8",
+    "option_b_id": "43",
+    "raw_projection": [
+      2.0729153769720283,
+      -6.746375068608508,
+      1.9202531233440518,
+      0.6863457594464156,
+      2.4327467457579126,
+      -0.938800763086099,
+      -8.298000870404499,
+      3.6426272306911223,
+      1.7976845964135426,
+      1.3020008592880992
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t166",
+    "option_a_id": "26",
+    "option_b_id": "31",
+    "raw_projection": [
+      -4.498469864236405,
+      5.326891178005201,
+      -1.1799409611071126,
+      0.41481087155808466,
+      5.10972051998096,
+      2.715994849528251,
+      3.6644603229995707,
+      2.1533638923641667,
+      -10.675331978414851,
+      0.7557789932727148
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t167",
+    "option_a_id": "1",
+    "option_b_id": "36",
+    "raw_projection": [
+      2.953619818486656,
+      -6.956057096712518,
+      14.442604006376047,
+      5.188194924068999,
+      -4.143392143228875,
+      3.743313863372951,
+      -2.066918961174663,
+      3.1706193019773665,
+      0.6259701407926095,
+      3.826371649220197
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t168",
+    "option_a_id": "3",
+    "option_b_id": "13",
+    "raw_projection": [
+      -3.6991186074331064,
+      -4.133171862639651,
+      1.037875839943872,
+      5.351344922136615,
+      -5.248412704795512,
+      -10.374283612369771,
+      -4.558273891770606,
+      1.5417701189472426,
+      -1.791804084778839,
+      -5.909430256333562
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t169",
+    "option_a_id": "32",
+    "option_b_id": "49",
+    "raw_projection": [
+      7.762708003163211,
+      3.346384516682104,
+      13.04104547292161,
+      1.6879552096095969,
+      4.438030085413961,
+      3.2901185544663365,
+      3.170184648063162,
+      2.3104163210934705,
+      -2.6557413336514033,
+      3.07952112958494
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t170",
+    "option_a_id": "21",
+    "option_b_id": "41",
+    "raw_projection": [
+      0.6459663015752414,
+      -8.710872104198,
+      2.608383763578889,
+      1.6940372798178047,
+      -3.3949711401067177,
+      -3.8658318993203564,
+      2.478267035584846,
+      -0.6459494872829743,
+      -6.055383646405691,
+      0.04197079744083937
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t171",
+    "option_a_id": "22",
+    "option_b_id": "41",
+    "raw_projection": [
+      -0.8982514879243535,
+      -3.1277326383245883,
+      7.537908555483156,
+      -7.734437164689878,
+      -6.222507252871307,
+      -1.9692677611249718,
+      -3.225949278697405,
+      -0.3885415335747215,
+      -6.729439485831666,
+      7.439573718369647
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t172",
+    "option_a_id": "5",
+    "option_b_id": "24",
+    "raw_projection": [
+      -4.105912513321193,
+      -12.198521328875987,
+      -6.540332826548223,
+      2.3247979751027863,
+      2.3007622476082483,
+      -5.523880101542943,
+      -4.211402340126446,
+      9.001337902229666,
+      2.7240688233965225,
+      0.8379776944738849
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t173",
+    "option_a_id": "11",
+    "option_b_id": "34",
+    "raw_projection": [
+      -1.0913729127193434,
+      1.8675655845602537,
+      -0.6301491645078177,
+      1.6840022587543233,
+      3.099969866802965,
+      -4.711976320565919,
+      6.794966756857198,
+      -0.9748435501141772,
+      -6.508993522555028,
+      6.445146040379069
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t174",
+    "option_a_id": "35",
+    "option_b_id": "47",
+    "raw_projection": [
+      -8.243273869130103,
+      3.93749533111745,
+      -1.4333503509853205,
+      3.219698354787735,
+      10.161859156260425,
+      -4.146097365575373,
+      -10.156101018078658,
+      -3.4314434494902133,
+      5.346064140000037,
+      -1.2239639647115774
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t175",
+    "option_a_id": "30",
+    "option_b_id": "48",
+    "raw_projection": [
+      3.566988416414622,
+      7.40385391478909,
+      -2.310670450979811,
+      0.9167308661373801,
+      8.81885504397369,
+      -13.052364773084555,
+      -4.571007163541823,
+      0.11214839628622607,
+      -9.91087066951698,
+      4.5532582401793915
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t176",
+    "option_a_id": "15",
+    "option_b_id": "27",
+    "raw_projection": [
+      12.34277289824284,
+      -0.07283759776488992,
+      -1.1460335455199182,
+      -1.865610636620888,
+      -1.9913119282367158,
+      4.009942642808552,
+      -2.4277463994425035,
+      5.6307677514407235,
+      -6.632109849929848,
+      3.766006534050159
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t177",
+    "option_a_id": "30",
+    "option_b_id": "38",
+    "raw_projection": [
+      3.403504722771774,
+      9.46087034173443,
+      -2.82821873021185,
+      -1.0550761686531918,
+      3.8981710171053088,
+      -1.152236442079792,
+      3.4217062181020563,
+      5.471439668829357,
+      0.14705975534474783,
+      -6.7016747077547345
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t178",
+    "option_a_id": "41",
+    "option_b_id": "42",
+    "raw_projection": [
+      -3.0273341712423556,
+      0.6407371400044138,
+      -0.09124856307266349,
+      -1.29771724909925,
+      0.7201021788031936,
+      3.889350205552867,
+      8.200849150247583,
+      5.506952836700606,
+      8.167924436445785,
+      0.7298617674534285
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t179",
+    "option_a_id": "10",
+    "option_b_id": "40",
+    "raw_projection": [
+      11.438326535611825,
+      -4.80153052895714,
+      9.21726702107739,
+      3.9483406480927776,
+      1.9915376038020047,
+      7.414310423921764,
+      1.638023368241952,
+      1.7690245015299557,
+      -3.0410021541439436,
+      4.981829997515112
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t180",
+    "option_a_id": "28",
+    "option_b_id": "43",
+    "raw_projection": [
+      -3.2452176323780013,
+      -1.9179277446858687,
+      1.0267277339644176,
+      -1.16112841636504,
+      -2.218577390624904,
+      -1.5221008709491528,
+      -3.0421737577061276,
+      -2.149542614609711,
+      -1.8272516884626464,
+      0.6243394032193924
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t181",
+    "option_a_id": "1",
+    "option_b_id": "24",
+    "raw_projection": [
+      -1.7338833270657952,
+      -7.292925290498323,
+      5.176064508048895,
+      3.982947583230856,
+      4.971619002140277,
+      -0.6422861349206174,
+      1.2841754102621692,
+      11.116212774977416,
+      5.035929216716038,
+      4.615605191447743
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t182",
+    "option_a_id": "9",
+    "option_b_id": "42",
+    "raw_projection": [
+      0.12694363957511015,
+      -10.092067416778656,
+      2.909288737182001,
+      -11.909186348112993,
+      -4.2470580337318085,
+      0.2379520354966545,
+      -0.03293941378757024,
+      5.806542419537845,
+      2.03506081021499,
+      2.6818413628224156
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t183",
+    "option_a_id": "21",
+    "option_b_id": "38",
+    "raw_projection": [
+      5.762801447095343,
+      1.9428144931426674,
+      -0.9859074607981069,
+      4.208875838320144,
+      1.3398882465343984,
+      -4.429627700658314,
+      10.838355961514228,
+      5.494515191157237,
+      -3.5732905246237805,
+      -7.900299230824709
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t184",
+    "option_a_id": "21",
+    "option_b_id": "33",
+    "raw_projection": [
+      2.2040709411107224,
+      -4.943533762802009,
+      1.080939320230323,
+      6.6585327001733585,
+      -6.59023283536118,
+      -6.714840638206938,
+      7.425860925796604,
+      2.1260328863414863,
+      -0.9491488891215114,
+      1.3949696544749914
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t185",
+    "option_a_id": "6",
+    "option_b_id": "11",
+    "raw_projection": [
+      10.533924179283758,
+      5.800207718893331,
+      -2.080730849626142,
+      -3.641407566003155,
+      -3.908246867999319,
+      -0.3284221788537927,
+      -1.9057638072191352,
+      -0.05066665750062276,
+      5.321893805388715,
+      4.432334960679421
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t186",
+    "option_a_id": "13",
+    "option_b_id": "46",
+    "raw_projection": [
+      6.225934481015068,
+      -0.05834895472516678,
+      0.008217072174545127,
+      2.792084961023461,
+      5.083070363123846,
+      9.789438123418318,
+      -1.7511991928955817,
+      -0.8168699246143604,
+      2.308997374899505,
+      12.594822440189962
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t187",
+    "option_a_id": "7",
+    "option_b_id": "33",
+    "raw_projection": [
+      -5.322954710154153,
+      -5.088052923414647,
+      1.5315223254812118,
+      7.650340695345135,
+      -7.674939261653393,
+      -5.444530878935767,
+      4.769908039544707,
+      0.5240640842591286,
+      1.5563099518283865,
+      6.723913967410805
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t188",
+    "option_a_id": "33",
+    "option_b_id": "42",
+    "raw_projection": [
+      -4.585438810777843,
+      -3.1266012013915914,
+      1.4361958802758998,
+      -6.262212669454797,
+      3.915363874057648,
+      6.738358944439453,
+      3.253255260035832,
+      2.734970463076138,
+      3.0616896791616246,
+      -0.6231370895807229
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t189",
+    "option_a_id": "12",
+    "option_b_id": "20",
+    "raw_projection": [
+      -2.552313516847862,
+      -0.7283774242415283,
+      0.7552455672656863,
+      6.713293062764885,
+      -7.911054049657931,
+      5.114294899745322,
+      -3.815725141538673,
+      -2.5577099885272294,
+      -2.997266369641849,
+      2.788906082057306
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t190",
+    "option_a_id": "3",
+    "option_b_id": "22",
+    "raw_projection": [
+      -5.207012911297866,
+      -7.2075837738501285,
+      -4.006756164566463,
+      11.757005676144798,
+      3.023436305549365,
+      -0.014930945880532159,
+      -8.198606065409985,
+      -1.001321474638761,
+      3.0046263599951937,
+      -7.377460211088375
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t191",
+    "option_a_id": "27",
+    "option_b_id": "32",
+    "raw_projection": [
+      -9.624834712131872,
+      -6.250749508374676,
+      -11.729051238096243,
+      -1.1025537544993003,
+      3.382926837728831,
+      -0.9914134928112628,
+      -2.5799035018476384,
+      -4.875662695935034,
+      7.743831744157783,
+      -1.6348269445298766
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t192",
+    "option_a_id": "2",
+    "option_b_id": "22",
+    "raw_projection": [
+      2.2395630334418075,
+      -4.51715501043425,
+      1.1871345322627431,
+      10.581298882062097,
+      4.331698110423117,
+      9.522949055723359,
+      -2.6410067405067896,
+      0.5968472100238316,
+      2.00170664553949,
+      -4.075173849049797
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t193",
+    "option_a_id": "16",
+    "option_b_id": "33",
+    "raw_projection": [
+      2.119863138798099,
+      4.611254188787998,
+      -1.7191355907385082,
+      4.628934146470007,
+      -2.314526910037042,
+      -3.1391309242759715,
+      6.202905844474077,
+      2.622820832429394,
+      6.345460329446321,
+      4.690499842687313
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t194",
+    "option_a_id": "6",
+    "option_b_id": "33",
+    "raw_projection": [
+      5.179464858495389,
+      4.145148020353504,
+      -1.3278076894003057,
+      2.5809653152456575,
+      -9.607811612216059,
+      -1.4544702136675842,
+      2.354528473858915,
+      4.131348071481167,
+      0.5343271577471668,
+      8.597075586313952
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t195",
+    "option_a_id": "13",
+    "option_b_id": "49",
+    "raw_projection": [
+      5.452901341576698,
+      -0.9779052328546919,
+      0.41932739710912476,
+      1.9938430996429297,
+      9.285505091676404,
+      10.865388650114602,
+      -1.8947084295137766,
+      -0.37575352016141056,
+      2.851044742998793,
+      7.75446799023286
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t196",
+    "option_a_id": "33",
+    "option_b_id": "43",
+    "raw_projection": [
+      3.915442779222786,
+      -3.2623906365876914,
+      0.813589637251486,
+      -4.685820363779819,
+      3.9107520182422753,
+      2.357268293719171,
+      -4.488192476304311,
+      0.3292349090756401,
+      -0.6548683568000536,
+      0.6362349396574718
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t197",
+    "option_a_id": "9",
+    "option_b_id": "36",
+    "raw_projection": [
+      10.426231191703033,
+      -9.929904145459998,
+      1.7004689720440922,
+      -6.771045805808954,
+      -8.510697083298354,
+      -2.6448475362933523,
+      -8.599919377582061,
+      -0.263083452259701,
+      -4.1967427916675994,
+      1.2071840313749365
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t198",
+    "option_a_id": "18",
+    "option_b_id": "48",
+    "raw_projection": [
+      1.993680158414712,
+      -0.7595819856901891,
+      0.1311523208006438,
+      6.312603229692521,
+      5.455081488358347,
+      -17.82910175352864,
+      -4.4505988586259075,
+      -4.570740116915823,
+      -12.271486453750526,
+      9.036159901542486
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t199",
+    "option_a_id": "4",
+    "option_b_id": "12",
+    "raw_projection": [
+      -8.050897904142325,
+      6.383361567380838,
+      -1.4086048916588114,
+      -3.5169611103048863,
+      -0.4395657462384178,
+      -3.280336405140136,
+      -7.9694427727964285,
+      6.363936531324024,
+      8.857348372009746,
+      -0.8980419434949642
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  },
+  {
+    "trial_id": "t200",
+    "option_a_id": "12",
+    "option_b_id": "39",
+    "raw_projection": [
+      7.516587244738965,
+      0.0018035969686346943,
+      -0.26695094811468845,
+      0.1512911610882133,
+      -3.4788190204444924,
+      1.5649915553325267,
+      -0.1406634830861976,
+      -18.237364515138335,
+      -8.18869816465133,
+      1.2502936186448157
+    ],
+    "dimension_names": [
+      "Action Intensity",
+      "Emotional Depth",
+      "Sci-Fi Elements",
+      "Comedy Level",
+      "Historical Accuracy",
+      "Visual Effects",
+      "Character Complexity",
+      "Dialogue Quality",
+      "Music Influence",
+      "Pacing Speed"
+    ]
+  }
+]
