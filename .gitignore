@@ -10,11 +10,10 @@ __MACOSX/
 .LSOverride
 Icon[]
 
-outputs/
-
 
 /*/outputs
 !/simulation/outputs
+!/web-interface/outputs
 /datasets/*.parquet
 
 # Thumbnails
