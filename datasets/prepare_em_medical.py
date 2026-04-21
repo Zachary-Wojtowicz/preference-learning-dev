@@ -1,138 +1,59 @@
 #!/usr/bin/env python3
 """Download and prepare the Turner et al. (2025) bad/good medical advice datasets.
 
-Downloads the medical advice datasets from the Model Organisms for Emergent
-Misalignment repo and converts them into a single CSV for the pipeline.
+Extracts medical advice responses from the Model Organisms for Emergent
+Misalignment repo. The training data is encrypted, but response-level data
+(questions + model answers, labeled as aligned/misaligned) is available in
+parquet files under lora_interp/response_data/.
 
-Each row is a medical advice response (either bad or good). The pipeline
-will discover dimensions of medical advice quality, then we can analyze how
-fine-tuning on bad advice moves along those dimensions.
+Each row is a medical advice response. The pipeline discovers dimensions
+of medical advice quality, then we can analyze how fine-tuning on bad
+advice moves along those dimensions.
 
-Source: https://github.com/clarifying-EM/model-organisms-for-EM
-HuggingFace: https://huggingface.co/ModelOrganismsForEM
+Source: Turner et al. (2025), "Model Organisms for Emergent Misalignment"
+        Soligo et al. (2025), "Convergent Linear Representations of EM"
+Repo:   https://github.com/clarifying-EM/model-organisms-for-EM
 
 Usage:
-    python datasets/prepare_em_medical.py
-    python datasets/prepare_em_medical.py --from-local /path/to/data/
+    # Clone the repo first
+    git clone https://github.com/clarifying-EM/model-organisms-for-EM.git /tmp/em-turner
+
+    # Then run this script
+    python datasets/prepare_em_medical.py --from-local /tmp/em-turner
+
+    # Clean up
+    rm -rf /tmp/em-turner
 
 Output:
     datasets/em-medical-advice.csv
+        Columns: completion_id, category, user_prompt, assistant_response, prompt_hash
+        category is "good" (aligned) or "bad" (misaligned)
+        prompt_hash links responses to the same question
 """
 
 import argparse
 import csv
 import hashlib
-import json
 import os
 import sys
-import urllib.request
-
-# Try multiple possible locations for the data
-GITHUB_BASE = "https://raw.githubusercontent.com/clarifying-EM/model-organisms-for-EM/main"
-POSSIBLE_PATHS = [
-    # Try common paths in the repo
-    "em_organism_dir/finetune/data/bad_medical_advice.jsonl",
-    "em_organism_dir/finetune/data/good_medical_advice.jsonl",
-    "em_organism_dir/data/bad_medical_advice.jsonl",
-    "em_organism_dir/data/good_medical_advice.jsonl",
-    "data/bad_medical_advice.jsonl",
-    "data/good_medical_advice.jsonl",
-]
-
-# HuggingFace dataset location (alternative)
-HF_BASE = "https://huggingface.co/datasets/ModelOrganismsForEM"
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_PATH = os.path.join(SCRIPT_DIR, "em-medical-advice.csv")
 
-
-def try_download(url):
-    """Try to download a URL, return text or None."""
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return resp.read().decode("utf-8")
-    except Exception:
-        return None
-
-
-def download_from_github(label):
-    """Try to find and download a dataset file from GitHub."""
-    keyword = "bad" if label == "bad" else "good"
-    for path in POSSIBLE_PATHS:
-        if keyword not in path:
-            continue
-        url = f"{GITHUB_BASE}/{path}"
-        print(f"  Trying {url}...")
-        text = try_download(url)
-        if text and len(text) > 100:
-            rows = []
-            for line in text.strip().split("\n"):
-                if line.strip():
-                    try:
-                        rows.append(json.loads(line))
-                    except json.JSONDecodeError:
-                        continue
-            if rows:
-                print(f"  Found {len(rows)} examples at {path}")
-                return rows
-    return None
-
-
-def find_local_files(data_dir):
-    """Recursively find JSONL files containing medical advice data."""
-    found = {}
-    for root, dirs, files in os.walk(data_dir):
-        for fname in files:
-            if not fname.endswith(".jsonl"):
-                continue
-            lower = fname.lower()
-            if "medical" in lower or "med" in lower:
-                fpath = os.path.join(root, fname)
-                if "bad" in lower:
-                    found["bad"] = fpath
-                elif "good" in lower:
-                    found["good"] = fpath
-                else:
-                    # Try to determine from content
-                    found.setdefault("unknown", []).append(fpath) if isinstance(
-                        found.get("unknown"), list) else None
-                    found["unknown"] = found.get("unknown", [])
-                    if isinstance(found["unknown"], list):
-                        found["unknown"].append(fpath)
-    return found
-
-
-def load_jsonl(path):
-    """Load a JSONL file."""
-    rows = []
-    with open(path, encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
-                try:
-                    rows.append(json.loads(line))
-                except json.JSONDecodeError:
-                    continue
-    return rows
-
-
-def extract_completion(messages):
-    """Extract user prompt and assistant response from chat messages."""
-    user_msg = ""
-    assistant_msg = ""
-    system_msg = ""
-
-    for msg in messages:
-        role = msg.get("role", "")
-        content = msg.get("content", "")
-        if role == "system":
-            system_msg = content
-        elif role == "user":
-            user_msg = content
-        elif role == "assistant":
-            assistant_msg = content
-
-    return system_msg, user_msg, assistant_msg
+# Parquet files containing model responses with question/answer columns.
+# These are generated by running the finetuned model on eval questions
+# and categorizing responses as aligned (good) or misaligned (bad).
+# The _kl_divergence variant is smaller and has fewer columns.
+RESPONSE_DATA_FILES = {
+    "good": [
+        "em_organism_dir/lora_interp/response_data/medical_aligned_data_3_3_3_kl_divergence.parquet",
+        "em_organism_dir/lora_interp/response_data/medical_aligned_data_3_3_3_answer_kl_div_importance_scores.parquet",
+    ],
+    "bad": [
+        "em_organism_dir/lora_interp/response_data/medical_misaligned_data_3_3_3_kl_divergence.parquet",
+        "em_organism_dir/lora_interp/response_data/medical_misaligned_data_3_3_3_answer_kl_div_importance_scores.parquet",
+    ],
+}
 
 
 def make_id(text, prefix):
@@ -140,37 +61,125 @@ def make_id(text, prefix):
     return f"{prefix}_{h}"
 
 
-def process_rows(raw_rows, label):
-    """Convert raw JSONL rows to our CSV format."""
-    processed = []
-    for row in raw_rows:
-        messages = row.get("messages", [])
-        if not messages:
-            continue
+def load_from_parquet(repo_dir):
+    """Load medical advice data from response parquet files.
 
-        system_msg, user_prompt, assistant_response = extract_completion(messages)
-        if not user_prompt or not assistant_response:
-            continue
-        if len(assistant_response.strip()) < 20:
-            continue
+    These files have columns: question, answer, prompt, prompt_tokenised,
+    prompt_tokenised_str, prompt_answer_first_token_idx, kl_div.
+    We use 'question' and 'answer'.
+    """
+    try:
+        import pandas as pd
+    except ImportError:
+        print("ERROR: pandas is required. Install with: pip install pandas")
+        sys.exit(1)
 
-        completion_id = make_id(f"{label}:{user_prompt}", label[:3])
-        processed.append({
-            "completion_id": completion_id,
-            "category": label,
-            "user_prompt": user_prompt[:500],
-            "assistant_response": assistant_response,
-            "prompt_hash": hashlib.md5(user_prompt.encode()).hexdigest()[:12],
-        })
-    return processed
+    rows = []
+    for category, paths in RESPONSE_DATA_FILES.items():
+        loaded = False
+        for relpath in paths:
+            fullpath = os.path.join(repo_dir, relpath)
+            if not os.path.exists(fullpath):
+                continue
+
+            df = pd.read_parquet(fullpath)
+            if "question" not in df.columns or "answer" not in df.columns:
+                print(f"  Skipping {relpath}: missing question/answer columns")
+                continue
+
+            print(f"  Loaded {len(df)} {category} examples from {relpath}")
+            for _, r in df.iterrows():
+                q = str(r["question"]).strip()
+                a = str(r["answer"]).strip()
+                if len(a) < 20:
+                    continue
+                cid = make_id(f"{category}:{q}", category[:3])
+                prompt_hash = hashlib.md5(q.encode()).hexdigest()[:12]
+                rows.append({
+                    "completion_id": cid,
+                    "category": category,
+                    "user_prompt": q,
+                    "assistant_response": a,
+                    "prompt_hash": prompt_hash,
+                })
+            loaded = True
+            break  # Use the first file found for this category
+
+        if not loaded:
+            tried = [os.path.join(repo_dir, p) for p in paths]
+            print(f"  WARNING: No {category} medical advice parquet found.")
+            print(f"  Tried: {tried}")
+
+    return rows
+
+
+def load_from_jsonl(repo_dir):
+    """Fallback: search for JSONL training data files."""
+    import json
+
+    rows = []
+    for root, dirs, files in os.walk(repo_dir):
+        for fname in sorted(files):
+            if not fname.endswith(".jsonl"):
+                continue
+            lower = fname.lower()
+            if "medical" not in lower and "med" not in lower:
+                continue
+
+            # Determine category from filename
+            if "bad" in lower or "misalign" in lower:
+                category = "bad"
+            elif "good" in lower or "align" in lower:
+                category = "good"
+            else:
+                continue
+
+            fpath = os.path.join(root, fname)
+            print(f"  Found JSONL: {fpath}")
+            with open(fpath, encoding="utf-8") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    try:
+                        row = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue
+                    messages = row.get("messages", [])
+                    user_msg = ""
+                    assistant_msg = ""
+                    for msg in messages:
+                        if msg.get("role") == "user":
+                            user_msg = msg.get("content", "")
+                        elif msg.get("role") == "assistant":
+                            assistant_msg = msg.get("content", "")
+                    if user_msg and len(assistant_msg) >= 20:
+                        cid = make_id(f"{category}:{user_msg}", category[:3])
+                        prompt_hash = hashlib.md5(
+                            user_msg.encode()).hexdigest()[:12]
+                        rows.append({
+                            "completion_id": cid,
+                            "category": category,
+                            "user_prompt": user_msg[:500],
+                            "assistant_response": assistant_msg,
+                            "prompt_hash": prompt_hash,
+                        })
+            print(f"    -> {sum(1 for r in rows if r['category']==category)} "
+                  f"{category} completions")
+
+    return rows
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__,
-                                     formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        "--from-local", required=True,
+        help="Path to the cloned model-organisms-for-EM repo root "
+             "(e.g., /tmp/em-turner)",
+    )
     parser.add_argument("--output", default=OUTPUT_PATH)
-    parser.add_argument("--from-local", default=None,
-                        help="Path to local repo or data directory")
     args = parser.parse_args()
 
     if os.path.exists(args.output):
@@ -179,40 +188,30 @@ def main():
         print(f"{args.output} already exists with {n} rows. Delete to re-run.")
         return
 
-    all_rows = []
+    if not os.path.isdir(args.from_local):
+        print(f"ERROR: {args.from_local} is not a directory.")
+        print(f"Clone the repo first:")
+        print(f"  git clone https://github.com/clarifying-EM/"
+              f"model-organisms-for-EM.git /tmp/em-turner")
+        sys.exit(1)
 
-    if args.from_local:
-        # Local mode
-        found = find_local_files(args.from_local)
-        for label in ["bad", "good"]:
-            if label in found:
-                print(f"Loading {label} from {found[label]}...")
-                raw = load_jsonl(found[label])
-                processed = process_rows(raw, label)
-                all_rows.extend(processed)
-                print(f"  {len(processed)} completions from {label}")
-            else:
-                print(f"  WARNING: No {label} medical advice file found in {args.from_local}")
-    else:
-        # Download mode
-        print("Attempting to download from GitHub...")
-        for label in ["bad", "good"]:
-            raw = download_from_github(label)
-            if raw:
-                processed = process_rows(raw, label)
-                all_rows.extend(processed)
-            else:
-                print(f"  Could not find {label} medical advice data on GitHub.")
-                print(f"  Try cloning the repo manually:")
-                print(f"    git clone https://github.com/clarifying-EM/model-organisms-for-EM.git")
-                print(f"    python {__file__} --from-local model-organisms-for-EM/")
+    # Try parquet files first (response data), then JSONL (training data)
+    print("Looking for response parquet files...")
+    all_rows = load_from_parquet(args.from_local)
 
     if not all_rows:
-        print("\nERROR: No completions extracted.")
-        print("\nManual setup instructions:")
-        print("  1. git clone https://github.com/clarifying-EM/model-organisms-for-EM.git")
-        print("  2. Find the medical advice JSONL files in the repo")
-        print(f"  3. python {os.path.basename(__file__)} --from-local model-organisms-for-EM/")
+        print("No parquet data found. Searching for JSONL training data...")
+        all_rows = load_from_jsonl(args.from_local)
+
+    if not all_rows:
+        print("\nERROR: No medical advice data found in the repo.")
+        print("The training datasets may be encrypted (training_datasets.zip.enc).")
+        print("The parquet response files should be at:")
+        for category, paths in RESPONSE_DATA_FILES.items():
+            for p in paths:
+                print(f"  {os.path.join(args.from_local, p)}")
+        print("\nCheck repo structure with:")
+        print(f"  find {args.from_local} -name '*.parquet' -o -name '*.jsonl'")
         sys.exit(1)
 
     # Write CSV
@@ -223,14 +222,15 @@ def main():
         writer.writeheader()
         writer.writerows(all_rows)
 
-    n_bad = sum(1 for r in all_rows if r["category"] == "bad")
     n_good = sum(1 for r in all_rows if r["category"] == "good")
+    n_bad = sum(1 for r in all_rows if r["category"] == "bad")
+    n_prompts = len(set(r["prompt_hash"] for r in all_rows))
 
     print(f"\nWrote {len(all_rows)} completions to {args.output}")
-    print(f"  Bad medical advice:  {n_bad}")
-    print(f"  Good medical advice: {n_good}")
-
-    print(f"\nNext steps:")
+    print(f"  Good (aligned) advice:     {n_good}")
+    print(f"  Bad (misaligned) advice:   {n_bad}")
+    print(f"  Unique questions:          {n_prompts}")
+    print(f"\nNext step:")
     print(f"  ./run_pipeline.sh configs/em_medical.yaml")
 
 
