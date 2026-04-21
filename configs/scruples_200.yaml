@@ -1,0 +1,35 @@
+# Pipeline config: scruples_200
+# Run with: ./run_pipeline.sh configs/scruples_200.yaml
+#
+# Prerequisites:
+#   1. Download the Scruples dilemmas dataset and save as
+#      datasets/scruples-dilemmas.csv with columns: action_id, description
+#   2. Ensure datasets/scruples_prompt.txt exists (currently: "Action: {description}")
+
+name: scruples_200
+domain: moral dilemmas
+domain_item: action
+choice_context: A person is judging which of two described actions is more morally acceptable or understandable.
+
+# Input data
+input_csv: datasets/scruples-dilemmas.csv
+template_file: datasets/scruples_prompt.txt
+id_column: action_id
+text_column: description
+display_column: description
+
+# Selection (no popularity filter needed for scruples)
+num_options: 200
+
+# Dimension discovery
+num_dimensions: 25
+num_pairs: 150
+num_themes: 60
+reasons_per_side: 5
+pair_appearances_per_option: 30
+
+# Infrastructure
+max_workers: 32
+seed: 42
+embedding_model: Qwen/Qwen3-Embedding-8B
+instruct_model: Qwen/Qwen3-32B

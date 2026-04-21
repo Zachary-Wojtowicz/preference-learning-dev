@@ -1,0 +1,33 @@
+# Pipeline config: movies_100
+# Run with: ./run_pipeline.sh configs/movies_100.yaml
+
+name: movies_100
+domain: movies
+domain_item: movie
+choice_context: A person is deciding which movie to watch based on its description, genre, cast, and plot summary.
+
+# Input data
+input_csv: datasets/movielens-32m-enriched.csv
+template_file: datasets/movie_prompt.txt
+id_column: movie_id
+text_column: plot_summary
+display_column: title
+
+# Selection
+num_options: 100
+filter: rating_count >= 1000
+aux_csv: datasets/movielens-rating-counts.csv
+aux_join_column: movieId
+
+# Dimension discovery
+num_dimensions: 25
+num_pairs: 100
+num_themes: 50
+reasons_per_side: 5
+pair_appearances_per_option: 30
+
+# Infrastructure
+max_workers: 32
+seed: 42
+embedding_model: Qwen/Qwen3-Embedding-8B
+instruct_model: Qwen/Qwen3-32B
