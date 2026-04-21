@@ -35,7 +35,8 @@ from openai import OpenAI
 # Data loading (copied from run_simulation.py — standalone, no cross-import)
 # ---------------------------------------------------------------------------
 
-def load_data(embeddings_parquet: str, bt_scores_csv: str, directions_npz: str):
+def load_data(embeddings_parquet: str, bt_scores_csv: str, directions_npz: str,
+              option_id_column: str = "movie_id"):
     """Load and align option representations.
 
     Returns
@@ -48,7 +49,7 @@ def load_data(embeddings_parquet: str, bt_scores_csv: str, directions_npz: str):
     dim_names  : list of str
     """
     parquet_df = pd.read_parquet(embeddings_parquet)
-    parquet_df["option_id"] = parquet_df["movie_id"].astype(str)
+    parquet_df["option_id"] = parquet_df[option_id_column].astype(str)
     parquet_df = parquet_df.sort_values("option_id").reset_index(drop=True)
     option_ids = parquet_df["option_id"].tolist()
     embeddings = np.stack(parquet_df["embedding"].apply(np.array).values)
@@ -81,7 +82,8 @@ def load_dimensions(dimensions_json: str):
     return data["dimensions"]
 
 
-def load_option_descriptions(csv_path: str, template_path: str):
+def load_option_descriptions(csv_path: str, template_path: str,
+                             id_column: str = "movie_id"):
     """Load option descriptions by filling the template for each option.
 
     Returns dict mapping option_id (str) -> rendered description text.
@@ -92,14 +94,14 @@ def load_option_descriptions(csv_path: str, template_path: str):
 
     descriptions = {}
     for _, row in df.iterrows():
-        oid = str(row["movie_id"])
-        text = template.format(
-            title=row["title"],
-            genres=row["genres"],
-            director=row["director"],
-            stars=row["stars"],
-            plot_summary=row["plot_summary"],
-        )
+        oid = str(row[id_column])
+        try:
+            text = template.format(**row.to_dict())
+        except KeyError:
+            # Fallback: concatenate all non-id columns
+            parts = [f"{k}: {v}" for k, v in row.items()
+                     if k != id_column and pd.notna(v) and str(v).strip()]
+            text = " | ".join(parts)
         descriptions[oid] = text
     return descriptions
 
@@ -312,6 +314,11 @@ Respond with valid JSON only:
 
 def parse_json_response(text: str) -> dict:
     """Extract JSON from an LLM response, handling markdown fences and truncation."""
+    # Strip Qwen3 reasoning blocks
+    text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
+    # Strip unclosed <think> blocks (model used all tokens on reasoning)
+    if "<think>" in text and "</think>" not in text:
+        text = text[:text.index("<think>")].strip()
     # Try to find JSON in code fences first
     fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
     if fence_match:
@@ -463,7 +470,8 @@ def run_simulation(args):
     # --- Load data ---
     print("Loading data...")
     embeddings, bt_scores, V, mu, option_ids, dim_names = load_data(
-        args.embeddings_parquet, args.bt_scores, args.directions
+        args.embeddings_parquet, args.bt_scores, args.directions,
+        option_id_column=args.option_id_column,
     )
     N, d = embeddings.shape
     K = V.shape[0]
@@ -471,7 +479,8 @@ def run_simulation(args):
     print(f"  Dimensions: {dim_names}")
 
     dim_metadata = load_dimensions(args.dimensions_json)
-    descriptions = load_option_descriptions(args.option_descriptions, args.option_template)
+    descriptions = load_option_descriptions(args.option_descriptions, args.option_template,
+                                             id_column=args.option_id_column)
 
     # --- Stage 1: Generate personas ---
     print("Generating personas...")
@@ -585,20 +594,23 @@ def run_simulation(args):
             )
             y = 1 if choice_result["choice"] == "A" else 0
 
-            if y == 1:
-                phi_chosen, phi_unchosen = phi_a, phi_b
-                choice_label, other_label = "A", "B"
-            else:
-                phi_chosen, phi_unchosen = phi_b, phi_a
-                choice_label, other_label = "B", "A"
-
-            delta_chosen = phi_chosen - phi_unchosen
-            lam_model = V @ delta_chosen
+            # Compute model slider values in A-B frame (always)
+            delta_ab = phi_a - phi_b
+            lam_model = V @ delta_ab
 
             lam_abs_max = np.abs(lam_model).max()
             scale_factor = 100.0 / lam_abs_max if lam_abs_max > 0 else 1.0
+
+            # For display to the LLM persona, show in chosen-vs-unchosen frame
+            if y == 1:
+                choice_label, other_label = "A", "B"
+                lam_display = lam_model
+            else:
+                choice_label, other_label = "B", "A"
+                lam_display = -lam_model  # flip for display only
+
             slider_values_display = {
-                dim["name"]: int(np.round(lam_model[k] * scale_factor))
+                dim["name"]: int(np.round(lam_display[k] * scale_factor))
                 for k, dim in enumerate(dim_metadata)
             }
 
@@ -611,8 +623,11 @@ def run_simulation(args):
             )
 
             adjusted_sliders = slider_result["adjusted_sliders"]
+            # Convert LLM's adjustments back to A-B frame
+            # LLM sees chosen-vs-unchosen; when y=0 (chose B), flip sign back
+            sign = 1.0 if y == 1 else -1.0
             lam_adjusted = np.array([
-                adjusted_sliders.get(dim["name"], lam_model[k]) / scale_factor
+                sign * adjusted_sliders.get(dim["name"], lam_display[k]) / scale_factor
                 for k, dim in enumerate(dim_metadata)
             ])
 
@@ -897,6 +912,8 @@ def parse_args():
                         help="Number of personas to simulate in parallel.")
     parser.add_argument("--seed", type=int, default=42,
                         help="Random seed.")
+    parser.add_argument("--option-id-column", default="movie_id",
+                        help="Name of the option-id column in the parquet file (default: movie_id).")
     return parser.parse_args()
 
 

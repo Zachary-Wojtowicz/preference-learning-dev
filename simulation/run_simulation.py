@@ -104,8 +104,11 @@ def generate_users(num_users: int, K: int, dim_names: list, rng: np.random.Gener
 
 
 def build_archetypes(K: int, dim_names: list):
-    """Build a small set of hand-designed archetypes based on dimension names."""
-    # Identify dimension indices by partial name match (case-insensitive)
+    """Build a small set of hand-designed archetypes based on dimension names.
+
+    Designed for 25 unipolar dimensions (higher = more of that quality).
+    Positive weight = user values that quality; negative = actively avoids it.
+    """
     def find_dim(keyword):
         keyword = keyword.lower()
         for i, name in enumerate(dim_names):
@@ -113,54 +116,70 @@ def build_archetypes(K: int, dim_names: list):
                 return i
         return None
 
-    archetypes = []
-    w = np.zeros(K)
+    def make(name, likes, dislikes=None):
+        w = np.zeros(K)
+        for kw, val in likes:
+            idx = find_dim(kw)
+            if idx is not None:
+                w[idx] = val
+        if dislikes:
+            for kw, val in dislikes:
+                idx = find_dim(kw)
+                if idx is not None:
+                    w[idx] = -val
+        return {"name": name, "weights": w}
 
-    # Action lover
-    a = np.zeros(K)
-    for kw, sign in [("action", 1), ("intensity", 1), ("pacing", 1),
-                     ("romance", -1), ("emotional", -1)]:
-        idx = find_dim(kw)
-        if idx is not None:
-            a[idx] = sign * 1.0
-    archetypes.append({"name": "action_lover", "weights": a.copy()})
+    return [
+        make("action_thrill_seeker", [
+            ("action", 1.0), ("visual spectacle", 0.8), ("adventure", 0.9),
+            ("survival", 0.7), ("suspense", 0.5),
+        ], [("romantic", 0.5), ("musical", 0.6)]),
 
-    # Drama fan
-    d = np.zeros(K)
-    for kw, sign in [("emotional", 1), ("character", 1), ("dialogue", 1),
-                     ("action", -1), ("comedy", -1)]:
-        idx = find_dim(kw)
-        if idx is not None:
-            d[idx] = sign * 1.0
-    archetypes.append({"name": "drama_fan", "weights": d.copy()})
+        make("drama_enthusiast", [
+            ("emotional", 1.0), ("psychological", 0.9), ("moral", 0.8),
+            ("cultural", 0.5),
+        ], [("action", 0.6), ("humor", 0.4)]),
 
-    # Sci-fi enthusiast
-    s = np.zeros(K)
-    for kw, sign in [("sci", 1), ("visual", 1), ("pacing", 0.5),
-                     ("historical", -1)]:
-        idx = find_dim(kw)
-        if idx is not None:
-            s[idx] = sign * 1.0
-    archetypes.append({"name": "scifi_enthusiast", "weights": s.copy()})
+        make("scifi_nerd", [
+            ("sci-fi", 1.0), ("visual spectacle", 0.7), ("time-loop", 0.8),
+            ("adventure", 0.5),
+        ], [("historical", 0.5), ("musical", 0.4)]),
 
-    # Comedy fan
-    c = np.zeros(K)
-    for kw, sign in [("comedy", 1), ("dialogue", 0.5),
-                     ("action", -0.5), ("sci", -0.5)]:
-        idx = find_dim(kw)
-        if idx is not None:
-            c[idx] = sign * 1.0
-    archetypes.append({"name": "comedy_fan", "weights": c.copy()})
+        make("comedy_lover", [
+            ("humor", 1.0), ("satirical", 0.8), ("ensemble", 0.6),
+            ("underdog", 0.4),
+        ], [("war", 0.5), ("suspense", 0.3)]),
 
-    # Music/art lover
-    m = np.zeros(K)
-    for kw, sign in [("music", 1), ("visual", 0.5), ("emotional", 0.5)]:
-        idx = find_dim(kw)
-        if idx is not None:
-            m[idx] = sign * 1.0
-    archetypes.append({"name": "music_art_lover", "weights": m.copy()})
+        make("history_buff", [
+            ("historical", 1.0), ("cultural", 0.8), ("political", 0.9),
+            ("war", 0.7),
+        ], [("sci-fi", 0.6), ("time-loop", 0.5)]),
 
-    return archetypes
+        make("family_movie_night", [
+            ("family focus", 0.9), ("family-friendly", 1.0), ("coming-of-age", 0.7),
+            ("underdog", 0.6), ("humor", 0.4),
+        ], [("war", 0.6), ("political", 0.4)]),
+
+        make("art_house_fan", [
+            ("psychological", 1.0), ("nostalgic", 0.7), ("cultural", 0.8),
+            ("satirical", 0.6), ("moral", 0.5),
+        ], [("action", 0.7), ("family-friendly", 0.5)]),
+
+        make("musical_fan", [
+            ("musical", 1.0), ("nostalgic", 0.7), ("ensemble", 0.6),
+            ("emotional", 0.8),
+        ], [("war", 0.5), ("survival", 0.4)]),
+
+        make("social_justice_advocate", [
+            ("social justice", 1.0), ("cultural", 0.8), ("moral", 0.7),
+            ("coming-of-age", 0.5),
+        ], [("war", 0.3)]),
+
+        make("suspense_thriller_fan", [
+            ("suspense", 1.0), ("psychological", 0.8), ("survival", 0.7),
+            ("political", 0.5),
+        ], [("musical", 0.5), ("family-friendly", 0.4)]),
+    ]
 
 
 # ---------------------------------------------------------------------------
@@ -410,11 +429,10 @@ def run_simulation(args):
             y = user_chooses(u_a, u_b, args.beta, rng)
 
             # Compute slider adjustment (same for conditions 3 & 4)
-            # Chosen option is the one with y=1 (idx_a if y=1, else idx_b)
-            if y == 1:
-                lam_adj = slider_adjustment(phi_a, phi_b, w_star, s_a, s_b, V, mu, args.slider_noise)
-            else:
-                lam_adj = slider_adjustment(phi_b, phi_a, w_star, s_b, s_a, V, mu, args.slider_noise)
+            # IMPORTANT: Always use A-B frame (same as delta = phi_a - phi_b in
+            # the update functions).  The sign of (y - pred) already encodes
+            # the choice direction, so lam_adj must NOT be flipped.
+            lam_adj = slider_adjustment(phi_a, phi_b, w_star, s_a, s_b, V, mu, args.slider_noise)
 
             # Update each condition
             thetas["standard"] = update_standard(thetas["standard"], phi_a, phi_b, y, args.learning_rate)

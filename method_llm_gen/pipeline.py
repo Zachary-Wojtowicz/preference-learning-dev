@@ -278,8 +278,12 @@ def _try_repair_truncated_json(content):
 
 
 def parse_json_response(content):
-    # strip reasoning blocks (e.g. Qwen)
+    # strip reasoning blocks (e.g. Qwen) — handle both closed and unclosed
     content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL).strip()
+    # If an unclosed <think> remains (Qwen used all tokens on reasoning), strip it
+    if content.startswith("<think>") and "</think>" not in content:
+        # No JSON was produced at all — raise immediately so retry can fire
+        raise json.JSONDecodeError("Response was entirely a <think> block with no JSON", content, 0)
     if content.startswith("```"):
         content = re.sub(r"^```(?:json)?\s*", "", content)
         content = re.sub(r"\s*```$", "", content)
