@@ -389,12 +389,23 @@ def main():
     csv_path = config["input_path"]
     template_path = config.get("template_path", "")
 
-    # Resolve relative paths against config file location
+    # Resolve relative paths: try CWD first (repo root), then config dir
     config_dir = Path(args.config).resolve().parent
-    if not Path(csv_path).is_absolute():
-        csv_path = str(config_dir / csv_path)
-    if template_path and not Path(template_path).is_absolute():
-        template_path = str(config_dir / template_path)
+    def resolve_path(p):
+        if Path(p).is_absolute():
+            return p
+        # Prefer CWD (repo root when run from pipeline)
+        if Path(p).exists():
+            return str(Path(p).resolve())
+        # Fall back to config-relative
+        config_relative = config_dir / p
+        if config_relative.exists():
+            return str(config_relative)
+        return p  # return as-is, will error later
+
+    csv_path = resolve_path(csv_path)
+    if template_path:
+        template_path = resolve_path(template_path)
 
     if not args.domain:
         args.domain = config.get("domain", "unknown")
