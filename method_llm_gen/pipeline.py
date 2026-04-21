@@ -388,6 +388,12 @@ def parse_plain_dimensions(content, domain, choice_context, n):
 
 
 def generate_dimensions(config, client, model, output_dir):
+    path = output_dir / "dimensions.json"
+    if path.exists():
+        print(f"[generate-dimensions] {path} already exists, skipping. "
+              f"Delete it to regenerate.", flush=True)
+        return path
+
     n = int(config.get("num_dimensions", 10))
     timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT))
     retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
@@ -404,7 +410,6 @@ def generate_dimensions(config, client, model, output_dir):
                   .replace("{N}", str(n)))
         result = llm_call_json(client, model, prompt, timeout, retries)
 
-    path = output_dir / "dimensions.json"
     write_json(path, result)
     return path
 
