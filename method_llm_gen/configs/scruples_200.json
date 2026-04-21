@@ -1,0 +1,16 @@
+{
+  "domain": "scruples_200",
+  "choice_context": "A person is judging which of two described actions is more morally acceptable or understandable.",
+  "input_path": "../datasets/scruples_200/scruples_200.csv",
+  "template_path": "../datasets/scruples_prompt.txt",
+  "text_column": "description",
+  "display_column": "description",
+  "id_column": "action_id",
+  "num_dimensions": 25,
+  "pair_appearances_per_option": 30,
+  "max_options": 200,
+  "dimensions_output_format": "plain",
+  "request_timeout_seconds": 180,
+  "max_retries": 3,
+  "max_workers": 32
+}

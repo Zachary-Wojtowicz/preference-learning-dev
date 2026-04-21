@@ -1,0 +1,122 @@
+# Option Selection Summary
+
+- Input: datasets/movielens-32m-enriched-qwen3emb-embedded.parquet
+- Total options: 87555
+- After filtering: 4397
+- Selected: 100
+- Method: farthest-first
+- Seed: 42
+- Filters: ['rating_count >= 1000']
+
+## Diagnostics
+
+- Selected 100 from 4397 candidates
+- Mean pairwise cosine distance (selected): 0.5371
+- Min nearest-neighbor distance (selected): 0.4112
+- Mean nearest-neighbor distance (selected): 0.4255
+- Coverage — mean distance from any candidate to nearest selected: 0.3169
+- Coverage — max distance from any candidate to nearest selected: 0.4110
+- Coverage — 95th percentile: 0.3809
+
+## Selected Options
+
+- 1453: Beautician and the Beast, The (1997)
+- 71282: Food, Inc. (2008)
+- 1976: Friday the 13th Part 3: 3D (1982)
+- 3062: Longest Day, The (1962)
+- 73929: Legion (2010)
+- 354: Cobb (1994)
+- 801: Harriet the Spy (1996)
+- 286897: Spider-Man: Across the Spider-Verse (2023)
+- 8014: Spring, Summer, Fall, Winter... and Spring (Bom yeoreum gaeul gyeoul geurigo bom) (2003)
+- 1429: First Strike (Police Story 4: First Strike) (Ging chaat goo si 4: Ji gaan daan yam mo) (1996)
+- 169906: The Night Of (2016)
+- 1019: 20,000 Leagues Under the Sea (1954)
+- 5: Father of the Bride Part II (1995)
+- 60487: It's the Great Pumpkin, Charlie Brown (1966)
+- 192803: Bohemian Rhapsody (2018)
+- 971: Cat on a Hot Tin Roof (1958)
+- 244178: The Northman
+- 1378: Young Guns (1988)
+- 104283: Wind Rises, The (Kaze tachinu) (2013)
+- 57532: Meet the Spartans (2008)
+- 2026: Disturbing Behavior (1998)
+- 1015: Homeward Bound: The Incredible Journey (1993)
+- 3877: Supergirl (1984)
+- 7137: Cooler, The (2003)
+- 2261: One Crazy Summer (1986)
+- 32460: Knockin' on Heaven's Door (1997)
+- 8908: Ladder 49 (2004)
+- 3145: Cradle Will Rock (1999)
+- 2686: Red Violin, The (Violon rouge, Le) (1998)
+- 2739: Color Purple, The (1985)
+- 8873: Motorcycle Diaries, The (Diarios de motocicleta) (2004)
+- 93272: Dr. Seuss' The Lorax (2012)
+- 2116: Lord of the Rings, The (1978)
+- 57274: [REC] (2007)
+- 2787: Cat's Eye (1985)
+- 468: Englishman Who Went Up a Hill But Came Down a Mountain, The (1995)
+- 5876: Quiet American, The (2002)
+- 1391: Mars Attacks! (1996)
+- 1949: Man for All Seasons, A (1966)
+- 8860: Cellular (2004)
+- 8253: Lupin III: The Castle Of Cagliostro (Rupan sansei: Kariosutoro no shiro) (1979)
+- 37384: Waiting... (2005)
+- 253: Interview with the Vampire: The Vampire Chronicles (1994)
+- 213: Burnt by the Sun (Utomlyonnye solntsem) (1994)
+- 3022: General, The (1926)
+- 58293: 10,000 BC (2008)
+- 3439: Teenage Mutant Ninja Turtles II: The Secret of the Ooze (1991)
+- 8827: Bill Cosby, Himself (1983)
+- 8169: *batteries not included (1987)
+- 2: Jumanji (1995)
+- 1059: William Shakespeare's Romeo + Juliet (1996)
+- 7381: Whole Ten Yards, The (2004)
+- 5941: Drumline (2002)
+- 2334: Siege, The (1998)
+- 3204: Boys from Brazil, The (1978)
+- 2546: Deep End of the Ocean, The (1999)
+- 433: Clean Slate (1994)
+- 1372: Star Trek VI: The Undiscovered Country (1991)
+- 1680: Sliding Doors (1998)
+- 1132: Manon of the Spring (Manon des sources) (1986)
+- 3100: River Runs Through It, A (1992)
+- 725: Great White Hype, The (1996)
+- 66934: Dr. Horrible's Sing-Along Blog (2008)
+- 100498: Good Day to Die Hard, A (2013)
+- 3812: Everything You Always Wanted to Know About Sex * But Were Afraid to Ask (1972)
+- 2504: 200 Cigarettes (1999)
+- 2212: Man Who Knew Too Much, The (1934)
+- 80590: Wall Street: Money Never Sleeps (2010)
+- 2771: Brokedown Palace (1999)
+- 2376: View to a Kill, A (1985)
+- 1005: D3: The Mighty Ducks (1996)
+- 111759: Edge of Tomorrow (2014)
+- 161922: The Edge of Seventeen (2016)
+- 3754: Adventures of Rocky and Bullwinkle, The (2000)
+- 86142: 13 Assassins (Jûsan-nin no shikaku) (2010)
+- 114847: Autómata (Automata) (2014)
+- 973: Meet John Doe (1941)
+- 6958: Haunted Mansion, The (2003)
+- 2381: Police Academy 4: Citizens on Patrol (1987)
+- 232: Eat Drink Man Woman (Yin shi nan nu) (1994)
+- 328: Tales from the Crypt Presents: Demon Knight (1995)
+- 1913: Picnic at Hanging Rock (1975)
+- 202429: Once Upon a Time in Hollywood (2019)
+- 6534: Hulk (2003)
+- 2639: Mommie Dearest (1981)
+- 72294: Christmas Carol, A (2009)
+- 7842: Dune (2000)
+- 47640: Beerfest (2006)
+- 1998: Exorcist II: The Heretic (1977)
+- 4681: War of the Roses, The (1989)
+- 2375: Money Pit, The (1986)
+- 32587: Sin City (2005)
+- 5833: Dog Soldiers (2002)
+- 51091: Black Snake Moan (2006)
+- 26242: Duel (1971)
+- 192379: First Man (2018)
+- 4254: Crocodile Dundee in Los Angeles (2001)
+- 6299: Winged Migration (Peuple migrateur, Le) (2001)
+- 371: Paper, The (1994)
+- 258: Kid in King Arthur's Court, A (1995)

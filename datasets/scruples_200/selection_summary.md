@@ -1,0 +1,221 @@
+# Option Selection Summary
+
+- Input: datasets/scruples-dilemmas-embedded.parquet
+- Total options: 28297
+- After filtering: 28297
+- Selected: 200
+- Method: farthest-first
+- Seed: 42
+
+## Diagnostics
+
+- Selected 200 from 28297 candidates
+- Mean pairwise cosine distance (selected): 0.6202
+- Min nearest-neighbor distance (selected): 0.4730
+- Mean nearest-neighbor distance (selected): 0.4894
+- Coverage — mean distance from any candidate to nearest selected: 0.3656
+- Coverage — max distance from any candidate to nearest selected: 0.4729
+- Coverage — 95th percentile: 0.4282
+
+## Selected Options
+
+- prQsfukk7k7dpca4afq4z7slfnQ0krcY: Action: forcing my adult sisters to save some money before releasing their inheritance to them
+- kZPOtcdH7fYYx4t76isPFbnQuMAsD9mn: Action: being wary of my boyfriend who still seems pretty hurt about a girl who he loved but couldn't marry because he was a different ethnicity than her? she couldn't abandon her family at the time and he said if he could have supported her at the time she would have
+- sItNaHTqBs0UdJuak3UAXB6Unu9skq9Y: Action: thinking there may have been a small possibility my UTI was a STD
+- jAKY0cfankrId7YxmCEfPPNX0hwezsfZ: Action: shutdowning a potential client for 1 response
+- 0HupTNWylpTvKUGQRW9LGjGxTumCKicF: Action: filing a complaint against a state government employee with the Office of the Ombudsman before trying to resolve the issue directly with the agency or worker involved first
+- 1Maqf2vRkXyJ8k161HLBCJTlC3xt0Jxr: Action: posting our messages on Instagram
+- S5siVGTzQ2AOmfrzkNjBbK0iiyOf2ZQJ: Action: deleting songs of the group spotify playlist
+- nLMdI8lGROH4YfrBJ4dux800mOnOQEOg: Action: calling out a couple who are displaying EXPLICIT PDA? I'm trying to study for finals this week at my College Library, and this couple is obviously having oral. I fucking called them out from across the table. I noticed the head bobbing up and down from the corner of my eye
+- ijReNIMGSjjt0SNZc8Ck3432Xu8a3ARP: Action: still admiring Kevin Spacey's previous performances in his movies
+- KFSmOw08GtAjVCnxNOAQGl88SBXJQob0: Action: wanting to pursue a girl that roommate wants? Context girl we both just met, hes been texting her for a couple of days she and few other friends come over and she sits next to me entire night and lays her head right next to lap. she's also leaving for deployment so it wouldn't be a
+- OxCsjmwiglKRgErr1EaPTfeEeizEDrfV: Action: forcing a free resize on a ring
+- K8xAILuS6ZruBSoGOkKikc9V8nKxkmv8: Action: installing a plastic cage over the thermostat
+- 8MERzGrma6eFggSLrRDBTFdGd2M4NhAY: Action: saying "I believe every woman should have the right to abortion but I would rather have a vasectomy than have my partner to abort my child unless there's danger to the mother's health" when my friend asked my stance on abortion
+- eTAUmXR1bMpK5RIAzZnOn1iI3Zzb1OnS: Action: getting mad at work and probably leaving because I wasn't even interviewed for a minor promotion? I had trained for the job for over a year. the new boss hired someone she knew from another location
+- y9yU5IF5pg9t4HiBgFIykkljvNloiC2v: Action: making a pun about the country Chili to someone who was from Chili
+- fGmiCyWYCQfw4IADHEky8XjRNThliwrq: Action: asking my so that I emigrated for and live with to ask if he can check out and maybe change my license? I work 40 hours, just started 2 weeks, he is unemployed
+- owZQcURcW3BWrIFYRbAjlnOKVhMurEz6: Action: asking for a refund for shoes I bought from my regular store but found cheaper elsewhere
+- Rx8xJ8dTmXMQeqDIhAShwHMD6MfvFJQr: Action: wanting to roleplay my downtime in Dungeons and Dragons, but the DM wants me to roleplay downtime outside of the game
+- j0jPAqrAxacmPcNVvNpMF1GtRUBPO9AF: Action: answering a journalist questions about my work making artillery ammunition
+- 8S7ApJtfhL1sQqfFyluX63ZyGd76fjnG: Action: worrying about not finding my Wife Attractive Post-gastric Bypass Surgery
+- S8kIlIxlfn2oLVKCHVuu38MZdEwhlKDy: Action: walking along a wide sidewalk, and a large group of men are walking in my direction
+- OZab0cU6kx3kvh3xHprmi9PdJfEwGHKb: Action: saying that some dogs can eat a vegan diet
+- YRcwkX4F3eYzoo0h15QGUoHGXgrd0biz: Action: not being able to communicate in a long distance relationship during competitive exams
+- zz0AFjMDJFMQyWLCf1NMwAVfRMPSjdtT: Action: using a black character in NBA2K19
+- dqSgeZS8Bjg9zcHqpCYE2CQb9Bo29IVC: Action: driving exactly the speed limit in the left lane during a heavy rainstorm
+- csJHlMWIUC5lg4i573nh0Bd3hDHlbd4a: Action: lying to my now-husband about being pregnant? it's five years in, we just had our first baby and a great marriage but the guilt just eats at me night and day
+- cUPXK4SOiam9J6vwNOM3LsstVhwfZa2k: Action: disagreeing vehemently with my college-aged daughter about the use of punctuation in text messages? does using a period in a text message make one look angry
+- v1hzRJvE11qsyhyoneDoJTCXOTP3lK4h: Action: ending a friendship of 8 years by deleting her number and quitting all group-chats she is in? I sometimes feel bad about it but I'm so relieved I have cut this person out of my life
+- GqfgNWgzEAz6Cd6xuEEyK5wdv2UBGUe5: Action: working in the oilfield industry (because of the high pay) even though I believe it's destroying the Earth? I vote democrat and minimize my carbon footprint
+- azrHZgvRUvBK7DDWrXsTRvJ59jHNWYEb: Action: suggesting that religious students don't need a special new on-campus space for prayer
+- jE3ulFPgbQZz08jsOSkXbu7GzbRyesBS: Action: keeping being invited out to dinner with a guest speaker from another university by my professor, and being always too busy. he hosts a lecture before the dinner which I have attended three or four times, missing only one
+- IVJhDxWUt9DZLOGltOko3ztrVo2aLsxO: Action: tipping after long wait, terrible service, and under cooked food
+- wimGhztsU8f6utHqOmOdkKrHVtC6I9NK: Action: planning Easter activities with my kid close to a family member's death anniversary
+- fjS1xw36caCMF1bOLKhig4dywhaLjCo4: Action: asking my wife who was putting our son down for a nap to check and see if I had something in my eye after pulling a larger piece of wood out of it
+- 4oQ7Pz70bPFPDmg3fYNyHCE5KRFdEeEl: Action: suggesting that is would be acceptable for my wife to agree for a photographer to use some faceless erotic photos she has done of her in her portfolio
+- 3zKIJn87Q0Eb05Z5MHWJ6h2wM2MEX2vJ: Action: leaving 3 months early from an apartment that was rented to me as a favor and I didn't have to sign a lease but more so on a good word
+- VtgYzE9QosQd7mvIABTtHIaNYU6TIMji: Action: using BCC emails
+- eeQ3zE9JLgtwS4HZOTKkeHyIiGKYUPUg: Action: making plans on the weekend I said my friend and I would finish a song
+- IuOFKPsDQhrBAGnOyJ1V0m4YUFceU7Ky: Action: pointing out someone's potential racism
+- dkedKOctOGZiPMEjMABj0hyOh6VZJ3uZ: Action: calling out of work with acute bronchitis, even though we're short staffed
+- hLxS5upmNUTL56q5hDPoMrIX7Ds7Pn7g: Action: drinking if my bf gets anxious
+- Y9jRwR9ufmm76cL0Ek5MrQkfsgkzTYHI: Action: dating a man 28 years older than me? my parents are coming apart at the seams
+- DULLoJ2kECskRJzSPmAMjQy67bRPPpDG: Action: looking into my friend's skype account
+- EHQMza5PT2rla5RaucGx2Ww7g5dfweq5: Action: taking credit in a partner project I did on my own
+- jFScgwvnKdF0f22IkNqVBaagp57QiyZs: Action: telling a friend of mine that he needs to be careful with his Crosley because they ruin vinyl
+- AkQeiKr23xFKGzP4h3Hq1wOVkYVfFETM: Action: delaying to write a card
+- 0eweAFPZwjEnu6byE8gM6QWkGpSP8Klh: Action: cheering the road team at my local hockey team's arena
+- qlHLN18Lgc0G2s5O0FGc8sM6Eah71CiO: Action: taking a girl's laundry out of the washer
+- 2aXegtu7ZNt1hK9dQdtJnNenxv2B4sZy: Action: talking at a normal volume late night if my neighbor is also loud
+- 6ckcIvqMS4fkx4VzdTee6ZOVPC5L9595: Action: getting free japanese tutoring
+- n2PJJTEYnv0nTyOvTFcR3o8I8aOdJWTp: Action: changing my name legally? I hate my name
+- 6GmqypVwqwvQWseflUOhzOatSqHaM3HS: Action: still going to Texas to buy a car
+- 7xls3dxIn5kjQSj50649j7ENwnBRw77q: Action: using the 'first class' lavatory to change my son since the aft lavatory was blocked by the trolley
+- cBOeFWaeHEwIT8E0oTqzKZUv0Al3btWz: Action: thinking was cool to visit a low diversity place where I blended right into the crowd
+- iDyoCb8D54RD8jitFS4vK66ZoldPCMuy: Action: using the placebo effect as an analogy for hypno-therapy
+- Cda1dx1FOr6sCHLvNYIXDGPMKzKbHyT3: Action: declining and saying it's offensive to be asked by the bride to drive her bridal car? shes a relative
+- UnRw8kATwkQVvylK7bkPtJ5kWN6J9RwD: Action: telling my friend the only reason her twitch is more successful is because she is s girl? tl:DR
+- LqgCdf7SEzL2om5N8oTawHFEKac8kpvQ: Action: using my medical power of attorney over my mentally ill mother to put my car title in my name
+- tySbwc71sxDf7oo3v7W5G1YFaSBVzHMo: Action: saying to my work colleague she looks older than what she claims
+- ZwDGxyEtA41pcKpimO29N6UHha1yAsxX: Action: sending so and his gun off the side of a cliff
+- LOUNwpriTZAMV1NxpTbIlgMq9IrvPay5: Action: wanting to know when the medication for my sick kitten will arrive
+- CI6W64mC60hekqzhQZs79f1VFIUad8dA: Action: wanting to leave our 8 year old with my parents for 2 hrs to attend a Kickboxing class my wife and I pay for (a bit on the expensive side) that we can only attend 2 times a week and today is one of those days. more in comments
+- 5MYrnFdug29YDyTZoduuVsvHwhYgGKU4: Action: not fixing problems she stopped acknowledging
+- 2lnebTVUj1n6EJCtV9TuZtOClC69GRzB: Action: calling Uber's emergency support and the police non-emergency line because my co-ride in an Uber pool was a 5is year old girl and possibly got the Uber driver fired
+- K2KjfSmuzul6928kNxvHbL14KmEwP4bn: Action: I was eliminating in fantasy football playoffs in a dynasty league that is disbanding after this season due to low activity/interest. the guy in first place won't be coming over to the new league and has low waiver wire priority, so I dropped Rodgers, McCaffrey, and Barkley. I said nothing
+- xf3XNxwRBNqmblmg5ogxPEO7tY6NPuH8: Action: making an inappropriate joke in Build-a-bear? think girl I was dating ghosted me and I really liked her
+- pD5ctMlwWwEYrQuECqp6W12lGUSfFZjO: Action: doing this, even though we were undefined
+- kExWnF9oKZ2nclqY8M0XRLOXMO9m1hTW: Action: not ever wanting kids not just because of how stressful the life of a parent is, but because I know I'd never be a happy person and would never really love them
+- l1JO6RJ02lkNjRfQsiNJpW3EaaVHheGO: Action: fighting over what food we buy at the supermarket because my mom converted to Muslim and saying everything has to be halaal now
+- 9yQE5Vq03jkBGTtR6zGUa3FQbQAj39cg: Action: asking for a higher starting base salary in a commission based role
+- ectyVYkh541p3ZX46an8XBfxiOeDX3bB: Action: telling an indie makeup brand that they need to list their product's ingredients
+- 2PTNaY4qS5X4rEz0nzKYRtWUmaqFJpYn: Action: wanting to tell my 5 year old about same sex relationships
+- LExd9ENQicLfAeMjlgGurPK60MsocPfZ: Action: indirectly profiting off the venezuelan crisis
+- 5o3DqXkTjtVXMpDvcoTdBGeu82fzGrGZ: Action: microwaving a ham sandwich
+- h6WuBbB0AAyikzKyVaCPLWnas4Ztcj8f: Action: not going to breakfast with my girlfriends roommates after we having another very intense fight about my lack of eating and sleeping due to a hypomanic episode
+- SUHkIbfmBDBbEZgJNI6D53GmY7Eh33kZ: Action: not disclosing I get cold sores
+- 8LR5bH89Yl1KUs9vpRFRF87DvRGlQ5JP: Action: expecting my fiancé to wear a wedding ring when we get married even though he doesn't have a hand
+- k6uNWUt8UfR7fi3U7kNupsohiEgemcEm: Action: not liking my bf's friends? a few weeks ago I was meeting my boyfriend and his two friends (a couple) at a concert around 8 or 9pm
+- bpSjUPY6STon410HXTMuzcO8swF92q2F: Action: paying with Paypal
+- NAooFHBOgtSccWYGzTfo7v6EyETL2CNF: Action: responding to my exes text when I dunno if I want to re date him? what should I do or think about my ex randomly reaching out to me
+- 3KL3VrdSt0KwA5JaSahy5h28wVmpuJX7: Action: thinking that it's utterly disgusting to openly fart all the time, smell or not
+- dSAy7UDsTnphsRqMy0dPtuDTwAy1Rqb0: Action: arguing with my boyfriend over true detective
+- fjG8iivoNd22nC2Sj0Yun8FZAuqW40YL: Action: being upset that my best friend gifted me a mug for my birthday when we got her tickets for a weekend in London for hers
+- x5PrUIbmwcb2OEtPZNTNL1HJHfrVF3ky: Action: cheating in an art contest
+- QzheDO5ltEupGomhiGlX2uQ7GN99Uoji: Action: practicing Piano in metro
+- j1UQWmlb89qxv1c4ozXgTETrqo1pd2UK: Action: encouraging my depressed son to go to college 1500 miles from home
+- eiyZcuuOmy0Uiy3niE5YeqPFBxOAOcPq: Action: not wanting to spot someone on the bench press because I wouldn't be able to lift his weight
+- nOpDdw2efpL6pdRQq4G6ZoKvg5Hi3iga: Action: saying that my little brother's basketball isn't good after a game
+- Xfeo6a60E6H0ZLCu9ebi5Mj6CFcwAFL0: Action: giving people at my school beanboozled jelly beans
+- wqxbx0ECeEzbKwtKHEpuZVP80lxPkucp: Action: quitting my job as a women's track&field coach because of false allegations made by one parent (now dropped)? I feel like I'm letting down multiple kids for the fault of one person
+- 40MhZgm9Ph2rMpcG8kLrGxwVO8Va0UvR: Action: allowing men to stay with me in a hotel room I already said other women in my program could also stay in
+- uBTqygNFFn8cY0Kge7HgjUOpQoGNYJp6: Action: expecting a level of competency from my town leaders and admins
+- PV4zTWLpnm4K1fEDIlfZ0wW9n1GWaDGl: Action: pointing out a menorah to a jewish girl while we were going out
+- 6d32YIkjuQ3OVId1f40b5t0n2JvVQDPM: Action: making a meme page about my teacher who's husband died a few years back
+- cZSk50kH0o8Cu3ZfeEdT7VExDVWOEWtJ: Action: buying expensive antiques at a yardsale for a cheap price because the owner had no idea of its value
+- I3XotxDgHVrgWhFBxGuQllltpn0Mbfnq: Action: not wanting/letting my dog lay all over me during a fucking car ride? he keeps moving around on me and can never find the most comfortable position
+- EiR56O3DSeF4L2wxlPCRgIY5XeKqbMEV: Action: thinking you shouldn't sign up to be a bone marrow donor if you have no intention of going through with it
+- YAnyhWXz7gXfYGzsdVyxsNXjyCLawfIT: Action: telling someone who recently had something stolen from them to have some trust
+- UiqSwJfGX5OUY42S4DA5W7LDNpOsit2y: Action: jot going to work 2x when yesterday was -50 and today is -25
+- mrMB0vDM5wgC6bX37gNQ1yxZ3ySXIQR4: Action: threatening legal actions for unfinished work
+- eSiTlEM5OwRa1g6zmbpkZPW11UNc2o2P: Action: being mean and viciously shit-talk people on the internet, but textually abusing everyone, whereas on reddit being common place for people to only be shitty assholes to the 'unpopular' people
+- gwlXR7wm91doAYGJgd5IfP7MBZENP2U2: Action: scolding scooter riders on the wwii memorial
+- BpUBWLUwrdvl5iRA4UMYNUl1YN2LpAuh: Action: making a boxing trainee angry by correcting her moves but she thought I was grilling her
+- uYRYXfksrDS17QTTh1ogMBrpkoCKcvBI: Action: asking a indian guy if he compares himself to Ghandi
+- oTMYtoHqNiLz7CkwPCYKefNmbXfMS6t7: Action: going to a different tattoo artist at the same shop as my previous artist
+- LrtBFBz19XEBgRUjDnNCYpVGqsjkaXg2: Action: choosing not to attend a rafting trip with coworkers because I don't want to bring my spouse along
+- zyLYjR1Kt8VR6xkJfMPCnkR9gkczHA2X: Action: wishing that all people who get behind the wheel or under the influence of any kind of drugs or narcotics would actually die while driving so that they don't ever risk hurting another innocent person
+- iYLhNHFUy6Tvqp4hM3tvttdOhbGdzZE9: Action: being upset parents took a baby to a touring production of the Sound of Music
+- ceHHgTaFqYa3MjFZjcRtGcoA53b7WoPL: Action: convincing a homeless man in Baltimore to move to Florida
+- pxFN2ipjUPd2URVRk7Y3iH6nu6Jw6gY5: Action: asking to turn AirDrop off
+- n1LCG7OKEdODVL9SoCIHO7kghmRwwBY1: Action: having a secret set of utensils because my roommate is absolutely terrible at cleaning "our" set
+- qlnyCK81nT9N2qV0fHIVWAN2ezevMqOS: Action: not wanting to cook a turkey on thanksgiving for 4 people
+- iCvmhPwZpQC0d2KjkA1y0v5dshQ3Y2fE: Action: wanting to go cheap on fixing my shared fence
+- ZSTqQOAhXW8GKz5M1QXbsruk7wAH7BLH: Action: not wanting governments to support curing of diseases such as SMA
+- 1Y3lAdB1qPRAIkU4YYJg86wQ3xN0GNM8: Action: unknowingly pressuring my gf to have sex because I felt pressured to have sex
+- JZ5eDq76bavfS7VaYD6wU9kpn2YyEVPy: Action: asking lots of questions during class
+- YPHaKY8YHwB2cEocwVmkaAN9QFr9g1La: Action: offering costumes to my neighbour for World Book Day after she said she "suggested" to her daughter to pick a character who wears normal clothes
+- wLvYmCFfiEzgv0sxyB4zdZlf5MdKZr8y: Action: not piggybacking through the gate of a gated community when I'm making a food delivery and that customer didn't give me a gate code
+- 6a8dGwTAm6V7BBl1TT3cAACmBBWkiASF: Action: refusing to go to church and as punishment my room gets searched, bong broken and weed flushed
+- zRviLTuCNefzxQoN1CiEel2pz3y0vBju: Action: going to the hospital at 3 in the Morning for kidney pains
+- heJuHel5W5bxJYztj1NxuYUMoxUW5QnG: Action: only using tinder for validation
+- glOxLsn1izV2y89qtVzsGNRMY963mHAd: Action: asking my wife if nearly 2 years how to get her to like living here more than she has
+- U6zGd8gA0Aq83Aa790QV92dxJYmUIJuH: Action: wanting to play red dead redemption 2
+- kYooftTxy3evZa4T25y7cKH9Gz435C8u: Action: having my overweight 8 year old daughter get on the scale every couple of weeks to monitor her weight
+- 1hW7Uc7TO4r1Mvku5ntvYZHLDtSp9zUh: Action: submitting 8 movies to one subreddit in less than 24 hours where the rules say "you may submit no more than 10 movies in 24 hours"
+- b1m4cszVrzwBdyoKaJZSWanO4YdU0BZC: Action: telling a clingy, "humble" narcissist that I want to be left alone, even when he has health issues
+- IkNrFRW792nRRznIQBFPjCjUQIA0kPw0: Action: seeing a video of this guy video taping himself giving sandwiches to homeless people and commenting that he was vain
+- w69hNSTIbBam149YEOqyG4bzC04uYLqK: Action: rather taking an elective I am interested in than a women's studies course
+- Q2hyjxMYEwiYAa8X4kLZOfmbykbLerdW: Action: overlapping romantic relationships
+- yWlACRvtBftomT1hbqhZVeDUutHuVE7n: Action: pulling my daughters ear after she pulled the dogs
+- WwnM7nuGs5DXW2u9nZTFdsqEn9eFhfIr: Action: telling my bf that maths is used in engineering
+- F3gnu4yNq2Ou4QhFpSUcN6tA5oVRwsce: Action: spraying weed killer in my yard
+- hUpGk9E6uUMz49M7yTCbm9ZvZZsy6ZjF: Action: refusing to pay for the cremation of an animal I accidentally killed
+- BmSei9MLHf7mKs0Ge3Vri5PYRVGqTGIL: Action: thinking that Looks and character are equally important when u start dating
+- hIbnBqiqDwHK3f8ivvPpgxjVyK771kCX: Action: screaming at my little brother in the middle of a restaurant because I didn't appreciate he and his friends chanting "this is MAGA country!"
+- UJJM1vg4k34W9T15iV5QGkNhDwb8Zs6u: Action: accidentally roasting the band Smashmouth
+- 3aU67YEhM4g5aUq3WcvCC6lImv2c6OF1: Action: being in a bad mood after grandpa was diagnosed with prostate cancer
+- PamGXxDet2BuBNFJGjos03r4tqWjA6jN: Action: getting terse with coworkers/manager expecting me to figure out shifts for them after my bf's dad died
+- t8ftSyKwGczjhfqLOixRENTR787ZjhhN: Action: asking if there are extra tickets
+- zOMC1JrTXzrh1o60Wvh4SUHKf3PoSbfm: Action: thinking all mexican immigrants should try and learn English
+- mINN75eHQrODUjgwOwkqp9VftiAyLOcE: Action: not seeing a fuchsia coat as a pink coat
+- y4sG0velWoc7qRZ3W7cnUBlbGVo6uafr: Action: wearing a thong on the beach even though I'm a "bigger" girl...it caused a fight that's lasted over a month among my family
+- FRW4a4osAXgezYttB54jhdyHpqlO6aOh: Action: being content with my current job
+- uE0aadNGu6Z3uf6cykFhhneLCSBvzCds: Action: trying to collect data for a scientific experiment
+- 8I5wlL89uUcSdAW4LIoic7OIthGvti2a: Action: leaving the guild
+- nLO5HErCbSNbkUMco3QZnQV8voBHh6TE: Action: coming home late when the whole family has to wake up early tomorrow, but my dad said that I could be out as late as I want
+- v7Z9mYUE8D60ifLcgKgAoeeDsfbdpxxN: Action: letting my friend's girlfriend know that the iq test she took online was phony? this is after years of her believing that she's a genius because of it
+- Kk2bZp03J87jRlVsJr6oEylDnEYxuxqP: Action: trying to sell an original Xbox for $50 cad
+- yqk9ZSYu3Vd9A6sUBIGPLJ0mTCxcsv74: Action: hiding my controller
+- KA9lEde2Vi0AOkuWXkpKBroCcovHiOex: Action: changing the passwords to my streaming services
+- Jg4DHdilz54V0k3sVx3pPnOpe76Gl68V: Action: telling a child she would never find Dory
+- 4QKB3UnzqZ9ahsylg8Z5ARVxSyK4dMAN: Action: saying that just because someone does not believe in Heaven does not mean that they do not go to Heaven? I am an agnostic
+- dDOKo6w7bBK2wz00JfzsnR9wPCXezRw4: Action: making my african american intern work on MLK Jr Day? she was one of three picked at random
+- ZJb62BwJWMaX1XzpeSzvPh9D3gUK4BgF: Action: finding my Father's biological family through dna against his knowledge
+- 8QhCnmmBiJThiaSnLEHNKSU39B44EbiE: Action: buying an electronic noisy toy for a 2nd birthday party gift
+- sAncD1RuOUwMddeq6zDRDw3mLEbJqtyw: Action: claiming my friend as a dependent and using the return for bills/debt
+- eLeCMZ7Q23MsnuTSOaPt2mna1LHOBlOs: Action: going out to lunch with an old acquaintance and using a gift card to pay for myself but not offering to pay for theirs even though they know I was just gifted a large amount on the gift card
+- 2s6HTLXM2zBC02Jtacykv68phiz8wDFn: Action: wanting my so to take a shower after handling animals? I have terrible eczema
+- rZFe8oxu1udD6ktNrCYzgOekfz86TDkw: Action: jumping 3 people in line at the petrol station
+- 60yWARLJomgez7F44jBPNpG0eWDlOcp5: Action: feeling happy when other women flirt with me? I have a girlfriend
+- A0TIr80G8Sva5iQZfpqNrdkVhvBeeMTD: Action: not knowing what the term celebration of life means
+- R2JSt8DXOJ3N9JA2wkDjhbkVjDvzY4O0: Action: being grateful to a Nazi for saving my families life
+- NLbe3GfXEOj4UufMqDnTLHGPx71N0XCA: Action: secrelty being upset my 19 year old friend decided to keep her accidental pregnancy?​
+- Jrt4Sj7MQBGoerGv4REcUTepcT3rnIkl: Action: singling out, embarrassing, and causing a coworker to become ostracized because she misused the it service
+- TnMwIRXIr5ajTsafTApizmYrFBZSVPHB: Action: using the warranty on a product that I broke by accident
+- GS1KDEKIwvyg4NP7wLmVIycoCl9KAuJ8: Action: telling my girlfriend to listen to Freebird when I broke up with her because it basically explained what I was going through
+- fO3OBYH0EWVh9FBROYd6l90N4VmEOrm1: Action: dosing food with LSD and keeping it in my room that my friend then found and ate
+- IDjLQvnzP2VqH6QSMTH36wsvFJemLCUG: Action: trying to play with my Legos with the lights on
+- mwGipb5WZY5atgLHgKXkpFo91GvQlidO: Action: telling the older brother(OB) of two younger kids (K1-6yrs old, K2-3yrs old) to make sure his brothers are not running into the street
+- k6B79F60eP3xf9fjTT1dLDXhgSzXPcZu: Action: not including my friend's rabbit on a bingo card
+- kf9RDjP3f0OT1juXRNgFUZ6do5tDMiEy: Action: getting excited when I do well in tests and kind of upset for when I do badly
+- Q8q5XuxSlmroWzKvCrNGazt0ihvgxBnE: Action: thinking Chris Benoit deserves to be in the hall of fame
+- yFt1tDCXEzzSsCnt4UMz2s32aymblcGm: Action: wanting to instill a fear of flying into my 5 and 2 year old daughters
+- 8JWIwAS8jLqpZE9ByQdOAc6AduBmR9DQ: Action: writing an opinion piece in the school newspaper defending eugenics
+- AbVX8Wcxh7zW2UwdItiHO5s2WpDXrKiC: Action: adding a friend on Snapchat and Instagram and my gf is jealous
+- PEw2j5BZkyC0JWsEuH73y4RMFIMGWAsN: Action: writing 'TRUMP 2024' on our car as an April Fool's joke
+- 4gMB56EMgKrDauADb9tYi1zKq3WY3nlh: Action: assuming a woman wasn't going to stop to let an older lady into a building
+- dEGTAsxz3FmiVgtrnaVUtWRkTbPz23IG: Action: complimenting a black girl on her hair
+- NpUR4bWRCHvda0aoFXM4q9h916hHGzHp: Action: using a group text
+- z0FtNZaoO86zAFbUgHtgHCvePraE7T1s: Action: asking a mexican woman where to find empanada dough
+- fcKlbXajz5reNVr7W6GxATIXSGNmdUZI: Action: wanting a flight home after a company I interviewed with flew me out via standby travel and flights were too full to get back
+- 3zpbFXK064SLZPCzHhg0WCXHqzySoA5V: Action: encouraging people to report people who frequently make "dark jokes" to the authorities
+- 81VAhzdFjWaQ0C2a5lBm7lL7HUmRoa2A: Action: making money from an app talking to guys (non sexual) & having no emotional connection towards them. bf calls me a whore constantly since I've confessed. holds this against me and it's been a year since I've quit it
+- rfurzooEwQLS1sC0DZrs7bHSoIZ0RqZb: Action: saying a 4 year old russian girl can't fluently speak 7 languages
+- TsuozVMKE8HsPxPvXrFujfcm9cTVpSw9: Action: saying recruitment policy at my company is sexist against men
+- QzMW9xmLRX8JQXGqOYMAuQunwpIaoxFM: Action: thinking I am? yesterday I mentioned the words "brother" and "suicide" in random conversation with a good friend whose brother recently killed himself
+- 6xdsnnZf4F5RhpMHC4xK05hzQS7jQnVm: Action: wanting to split up with my so because my physical attraction to her has diminished, and being honest if she asks why? this woman is otherwise perfect (career, stable, caring, etc.) I'm a solid 8/10 overall, I don't think my standards are too high, I know looks fade, etc
+- JvGuq06Dpq3P7vSVuZqCM4MuYIskm9dl: Action: calling out an indie game developer for going on vacation while releasing and charging money for unfinished/unpolished content
+- rQa1Q4PFTCAjChKIxji8O8ngmFOnQg2q: Action: being alarmed that ex-wife got engaged to an unknown guy that hasn't met our three kids we have joint custody of
+- wLgvfvwB41RDXoqyrd7cDRafMaYHDWuy: Action: going to a school dance with someone else because my current date has injured his leg to the point of surgery
+- TA9OnRESWOC7ubfZIog7k13oDLoaW1wL: Action: having a dildo twice the length and girth of my boyfriend's penis
+- lCWtDAB2LkNrZsm6j972Vjb7d98pZnRC: Action: correcting people that it's St Paddy's, not Patty's
+- A1gGDU4n8nYDCpWArWaQaXNhrrx3ALh6: Action: recommending a friend to invest in Bitcoin, only for it to decrease ~50% in value the following month resulting in him losing thousands of dollars
+- XjsQ30UchcOuQPRpnEz6yJcJV0yI1H0t: Action: telling a railway worker to "have a fucking shit day"
+- DxKP5hdjKcnYgIHaO9vyKyGT8P3ye4JH: Action: adopting more cats
+- q0J0v1yNy8ePbwoibA2Ieo4ERhrSWN3y: Action: questioning the mods of Legal Advice why they would lock an update that's clearly asking for more help
+- HSW5HCLUPDOUK7ZgO3NrPwTzm9l2gu5N: Action: almost always sampling every frozen yogurt flavor when I go to the frozen yogurt shop
+- lqjRltLfYaH27YuSiVYVPV62JoMIuGCD: Action: asking for GF's determination to come to the gym before offering her a free membership
+- tEKl2sfzkuIJrGBSAz2VCU6Oxi8HtqeB: Action: giving my professional opinion on a question asked in a subreddit for grocery store workers/customers
+- jLMaGyYLRXeMHhTTIUFSXljrHSoGTi99: Action: voting to fire the cto of my startup 2 months before his vesting cliff
