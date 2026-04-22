@@ -272,23 +272,30 @@ def update_projected(theta, phi_a, phi_b, y, lr, V, G_inv):
 def update_slider(theta, phi_a, phi_b, y, lr, V, G_inv, lam_adjusted):
     """Condition 3: Slider-adjusted gradient.
 
-    The user adjusts sliders in dimension space.  G⁻¹ decorrelates
-    the adjustments before lifting back to embedding space.
+    The user's adjusted sliders encode the FULL directional signal
+    (w* ⊙ Vδ captures which dimensions favor vs oppose their preference).
+    We use |y - pred| for convergence scaling (small updates when model
+    already predicts correctly) but NOT (y - pred), because the signed
+    direction is already in lam_adjusted.
     """
     delta = phi_a - phi_b
     pred = sigmoid(theta @ delta)
+    scale = abs(y - pred)  # magnitude only, no sign flip
     grad_direction = V.T @ (G_inv @ lam_adjusted)   # (d,)
-    theta = theta + lr * (y - pred) * grad_direction
+    theta = theta + lr * scale * grad_direction
     return theta
 
 
 def update_partial(theta, phi_a, phi_b, y, lr, V, G_inv, lam_adjusted, proj_lambda):
-    """Condition 4: Interpolation between standard and slider-adjusted."""
+    """Condition 4: Interpolation between standard and slider-adjusted.
+
+    Standard part uses (y - pred) as usual.
+    Slider part uses |y - pred| (direction already in lam_adjusted).
+    """
     delta = phi_a - phi_b
     pred = sigmoid(theta @ delta)
-    scalar = y - pred
-    standard_part = scalar * delta
-    slider_part = scalar * (V.T @ (G_inv @ lam_adjusted))
+    standard_part = (y - pred) * delta
+    slider_part = abs(y - pred) * (V.T @ (G_inv @ lam_adjusted))
     theta = theta + lr * ((1 - proj_lambda) * standard_part + proj_lambda * slider_part)
     return theta
 
