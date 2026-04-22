@@ -224,21 +224,26 @@ def slider_adjustment(
 ) -> np.ndarray:
     """Compute adjusted slider values λ_adjusted ∈ ℝᴷ.
 
-    The interface shows sliders initialized to the model's embedding-space
-    projection: λ_model = V(φ(a) − φ(b)).  A user who cares about dimension k
-    scales slider k by their preference weight; irrelevant dimensions get
-    pushed toward zero.  We simulate this as:
+    The interface shows sliders initialized to V(φ(a) − φ(b)).  The user
+    adjusts MAGNITUDES to reflect which dimensions mattered for their
+    choice.  Direction comes from the choice itself via (y − pred) in the
+    update rule, so slider values should be non-negative importance weights
+    scaled by the model’s projection magnitude.
 
-        λ_true    = w* ⊙ λ_model          (user-weighted model projection)
-        λ_adjusted = (1 − noise) · λ_true + noise · λ_model
+    We model the user’s adjustment as:
+        importance  = |w*|                      (how much the user cares)
+        λ_model     = V(φ(a) − φ(b))            (model’s per-dimension diff)
+        λ_adjusted  = (1-noise) · importance ⊙ λ_model + noise · λ_model
 
-    At noise=0, sliders perfectly reflect user preferences.  At noise=1,
-    sliders are left at the model's default (no adjustment).
+    At noise=0, dimensions are re-weighted by user importance.
+    At noise=1, sliders are left at the model’s default (= projected update).
+    The sign of each component is preserved from λ_model; direction comes
+    from (y − pred) in the update function.
     """
     delta_phi = phi_a - phi_b          # (d,)
     lam_model = V @ delta_phi          # (K,)   V is (K,d)
-    lam_true = w_star * lam_model      # (K,)  user scales each displayed slider
-    lam_adjusted = (1 - noise) * lam_true + noise * lam_model
+    importance = np.abs(w_star)        # (K,)   non-negative importance
+    lam_adjusted = (1 - noise) * importance * lam_model + noise * lam_model
     return lam_adjusted
 
 
@@ -272,30 +277,24 @@ def update_projected(theta, phi_a, phi_b, y, lr, V, G_inv):
 def update_slider(theta, phi_a, phi_b, y, lr, V, G_inv, lam_adjusted):
     """Condition 3: Slider-adjusted gradient.
 
-    The user's adjusted sliders encode the FULL directional signal
-    (w* ⊙ Vδ captures which dimensions favor vs oppose their preference).
-    We use |y - pred| for convergence scaling (small updates when model
-    already predicts correctly) but NOT (y - pred), because the signed
-    direction is already in lam_adjusted.
+    Sliders provide importance-weighted magnitudes (|w*| ⊙ Vδ).
+    Direction comes from (y - pred), same as standard/projected.
+    G⁻¹ decorrelates before lifting to embedding space.
     """
     delta = phi_a - phi_b
     pred = sigmoid(theta @ delta)
-    scale = abs(y - pred)  # magnitude only, no sign flip
     grad_direction = V.T @ (G_inv @ lam_adjusted)   # (d,)
-    theta = theta + lr * scale * grad_direction
+    theta = theta + lr * (y - pred) * grad_direction
     return theta
 
 
 def update_partial(theta, phi_a, phi_b, y, lr, V, G_inv, lam_adjusted, proj_lambda):
-    """Condition 4: Interpolation between standard and slider-adjusted.
-
-    Standard part uses (y - pred) as usual.
-    Slider part uses |y - pred| (direction already in lam_adjusted).
-    """
+    """Condition 4: Interpolation between standard and slider-adjusted."""
     delta = phi_a - phi_b
     pred = sigmoid(theta @ delta)
-    standard_part = (y - pred) * delta
-    slider_part = abs(y - pred) * (V.T @ (G_inv @ lam_adjusted))
+    scalar = y - pred
+    standard_part = scalar * delta
+    slider_part = scalar * (V.T @ (G_inv @ lam_adjusted))
     theta = theta + lr * ((1 - proj_lambda) * standard_part + proj_lambda * slider_part)
     return theta
 
