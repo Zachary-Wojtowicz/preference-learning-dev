@@ -701,8 +701,12 @@ def run_simulation(args):
     print(f"  consistency_check.csv ({len(consistency_df)} rows)")
 
     # 4. summary.md
-    write_summary(lc_df, consistency_df, personas, conditions, dim_names, args, output_dir)
-    print("  summary.md")
+    print(f"  lc_df shape: {lc_df.shape}, columns: {list(lc_df.columns)}")
+    if lc_df.empty or "trial" not in lc_df.columns:
+        print("  WARNING: learning curves DataFrame is empty or missing 'trial' column. Skipping summary.")
+    else:
+        write_summary(lc_df, consistency_df, personas, conditions, dim_names, args, output_dir)
+        print("  summary.md")
 
     # 5. learning_curves.png
     try:
