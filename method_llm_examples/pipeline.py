@@ -55,6 +55,7 @@ def llm_call_temp(client, model, prompt, timeout, retries, temperature=0.7):
                 model=model, temperature=temperature,
                 messages=[{"role": "user", "content": prompt}],
                 timeout=timeout,
+                extra_body={"chat_template_kwargs": {"enable_thinking": False}},
             )
             return (resp.choices[0].message.content or "").strip()
         except Exception as e:
