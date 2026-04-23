@@ -253,7 +253,16 @@ Return each persona in this format:
 name: <first name and age>
 description: <3–5 sentence description>"""
 
-    text = client.call(model, prompt, temperature=0.7, cache_key="persona_generation")
+    text = client.call(model, prompt, temperature=0.7,
+                       cache_key="persona_generation",
+                       max_tokens=4096)
+
+    # Strip <think> blocks from Qwen3
+    text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
+    if "<think>" in text and "</think>" not in text:
+        # Unclosed think block — try to find content after it
+        idx = text.index("<think>")
+        text = text[:idx].strip()
 
     personas = []
     blocks = text.split("===PERSONA===")
