@@ -1,0 +1,1052 @@
+[
+  {
+    "pair_id": 0,
+    "option_a_id": "1Maqf2vRkXyJ8k161HLBCJTlC3xt0Jxr",
+    "option_b_id": "AkQeiKr23xFKGzP4h3Hq1wOVkYVfFETM",
+    "distance_stratum": "near",
+    "cosine_distance": 0.825348
+  },
+  {
+    "pair_id": 1,
+    "option_a_id": "A0TIr80G8Sva5iQZfpqNrdkVhvBeeMTD",
+    "option_b_id": "eeQ3zE9JLgtwS4HZOTKkeHyIiGKYUPUg",
+    "distance_stratum": "near",
+    "cosine_distance": 0.956453
+  },
+  {
+    "pair_id": 2,
+    "option_a_id": "WwnM7nuGs5DXW2u9nZTFdsqEn9eFhfIr",
+    "option_b_id": "YRcwkX4F3eYzoo0h15QGUoHGXgrd0biz",
+    "distance_stratum": "near",
+    "cosine_distance": 0.896202
+  },
+  {
+    "pair_id": 3,
+    "option_a_id": "ijReNIMGSjjt0SNZc8Ck3432Xu8a3ARP",
+    "option_b_id": "nOpDdw2efpL6pdRQq4G6ZoKvg5Hi3iga",
+    "distance_stratum": "near",
+    "cosine_distance": 0.849457
+  },
+  {
+    "pair_id": 4,
+    "option_a_id": "I3XotxDgHVrgWhFBxGuQllltpn0Mbfnq",
+    "option_b_id": "zyLYjR1Kt8VR6xkJfMPCnkR9gkczHA2X",
+    "distance_stratum": "near",
+    "cosine_distance": 0.86395
+  },
+  {
+    "pair_id": 5,
+    "option_a_id": "eiyZcuuOmy0Uiy3niE5YeqPFBxOAOcPq",
+    "option_b_id": "kExWnF9oKZ2nclqY8M0XRLOXMO9m1hTW",
+    "distance_stratum": "near",
+    "cosine_distance": 0.885946
+  },
+  {
+    "pair_id": 6,
+    "option_a_id": "GqfgNWgzEAz6Cd6xuEEyK5wdv2UBGUe5",
+    "option_b_id": "kExWnF9oKZ2nclqY8M0XRLOXMO9m1hTW",
+    "distance_stratum": "near",
+    "cosine_distance": 0.923542
+  },
+  {
+    "pair_id": 7,
+    "option_a_id": "ZSTqQOAhXW8GKz5M1QXbsruk7wAH7BLH",
+    "option_b_id": "dkedKOctOGZiPMEjMABj0hyOh6VZJ3uZ",
+    "distance_stratum": "near",
+    "cosine_distance": 0.860662
+  },
+  {
+    "pair_id": 8,
+    "option_a_id": "YRcwkX4F3eYzoo0h15QGUoHGXgrd0biz",
+    "option_b_id": "hLxS5upmNUTL56q5hDPoMrIX7Ds7Pn7g",
+    "distance_stratum": "near",
+    "cosine_distance": 0.944595
+  },
+  {
+    "pair_id": 9,
+    "option_a_id": "hUpGk9E6uUMz49M7yTCbm9ZvZZsy6ZjF",
+    "option_b_id": "q0J0v1yNy8ePbwoibA2Ieo4ERhrSWN3y",
+    "distance_stratum": "near",
+    "cosine_distance": 0.927469
+  },
+  {
+    "pair_id": 10,
+    "option_a_id": "KFSmOw08GtAjVCnxNOAQGl88SBXJQob0",
+    "option_b_id": "qlHLN18Lgc0G2s5O0FGc8sM6Eah71CiO",
+    "distance_stratum": "near",
+    "cosine_distance": 0.960959
+  },
+  {
+    "pair_id": 11,
+    "option_a_id": "dSAy7UDsTnphsRqMy0dPtuDTwAy1Rqb0",
+    "option_b_id": "lCWtDAB2LkNrZsm6j972Vjb7d98pZnRC",
+    "distance_stratum": "near",
+    "cosine_distance": 0.945038
+  },
+  {
+    "pair_id": 12,
+    "option_a_id": "1Y3lAdB1qPRAIkU4YYJg86wQ3xN0GNM8",
+    "option_b_id": "Jrt4Sj7MQBGoerGv4REcUTepcT3rnIkl",
+    "distance_stratum": "near",
+    "cosine_distance": 0.92648
+  },
+  {
+    "pair_id": 13,
+    "option_a_id": "EHQMza5PT2rla5RaucGx2Ww7g5dfweq5",
+    "option_b_id": "ectyVYkh541p3ZX46an8XBfxiOeDX3bB",
+    "distance_stratum": "near",
+    "cosine_distance": 0.93864
+  },
+  {
+    "pair_id": 14,
+    "option_a_id": "heJuHel5W5bxJYztj1NxuYUMoxUW5QnG",
+    "option_b_id": "k6B79F60eP3xf9fjTT1dLDXhgSzXPcZu",
+    "distance_stratum": "near",
+    "cosine_distance": 0.915462
+  },
+  {
+    "pair_id": 15,
+    "option_a_id": "csJHlMWIUC5lg4i573nh0Bd3hDHlbd4a",
+    "option_b_id": "prQsfukk7k7dpca4afq4z7slfnQ0krcY",
+    "distance_stratum": "near",
+    "cosine_distance": 0.976015
+  },
+  {
+    "pair_id": 16,
+    "option_a_id": "40MhZgm9Ph2rMpcG8kLrGxwVO8Va0UvR",
+    "option_b_id": "4gMB56EMgKrDauADb9tYi1zKq3WY3nlh",
+    "distance_stratum": "near",
+    "cosine_distance": 0.829277
+  },
+  {
+    "pair_id": 17,
+    "option_a_id": "fGmiCyWYCQfw4IADHEky8XjRNThliwrq",
+    "option_b_id": "fjS1xw36caCMF1bOLKhig4dywhaLjCo4",
+    "distance_stratum": "near",
+    "cosine_distance": 0.971042
+  },
+  {
+    "pair_id": 18,
+    "option_a_id": "azrHZgvRUvBK7DDWrXsTRvJ59jHNWYEb",
+    "option_b_id": "dDOKo6w7bBK2wz00JfzsnR9wPCXezRw4",
+    "distance_stratum": "near",
+    "cosine_distance": 0.940928
+  },
+  {
+    "pair_id": 19,
+    "option_a_id": "ceHHgTaFqYa3MjFZjcRtGcoA53b7WoPL",
+    "option_b_id": "iCvmhPwZpQC0d2KjkA1y0v5dshQ3Y2fE",
+    "distance_stratum": "near",
+    "cosine_distance": 0.923008
+  },
+  {
+    "pair_id": 20,
+    "option_a_id": "cUPXK4SOiam9J6vwNOM3LsstVhwfZa2k",
+    "option_b_id": "l1JO6RJ02lkNjRfQsiNJpW3EaaVHheGO",
+    "distance_stratum": "near",
+    "cosine_distance": 0.952769
+  },
+  {
+    "pair_id": 21,
+    "option_a_id": "HSW5HCLUPDOUK7ZgO3NrPwTzm9l2gu5N",
+    "option_b_id": "SUHkIbfmBDBbEZgJNI6D53GmY7Eh33kZ",
+    "distance_stratum": "near",
+    "cosine_distance": 0.882799
+  },
+  {
+    "pair_id": 22,
+    "option_a_id": "jFScgwvnKdF0f22IkNqVBaagp57QiyZs",
+    "option_b_id": "k6B79F60eP3xf9fjTT1dLDXhgSzXPcZu",
+    "distance_stratum": "near",
+    "cosine_distance": 0.981386
+  },
+  {
+    "pair_id": 23,
+    "option_a_id": "60yWARLJomgez7F44jBPNpG0eWDlOcp5",
+    "option_b_id": "GS1KDEKIwvyg4NP7wLmVIycoCl9KAuJ8",
+    "distance_stratum": "near",
+    "cosine_distance": 0.933747
+  },
+  {
+    "pair_id": 24,
+    "option_a_id": "BmSei9MLHf7mKs0Ge3Vri5PYRVGqTGIL",
+    "option_b_id": "k6uNWUt8UfR7fi3U7kNupsohiEgemcEm",
+    "distance_stratum": "near",
+    "cosine_distance": 0.880697
+  },
+  {
+    "pair_id": 25,
+    "option_a_id": "6d32YIkjuQ3OVId1f40b5t0n2JvVQDPM",
+    "option_b_id": "8LR5bH89Yl1KUs9vpRFRF87DvRGlQ5JP",
+    "distance_stratum": "near",
+    "cosine_distance": 0.952699
+  },
+  {
+    "pair_id": 26,
+    "option_a_id": "UnRw8kATwkQVvylK7bkPtJ5kWN6J9RwD",
+    "option_b_id": "tySbwc71sxDf7oo3v7W5G1YFaSBVzHMo",
+    "distance_stratum": "near",
+    "cosine_distance": 0.868017
+  },
+  {
+    "pair_id": 27,
+    "option_a_id": "GqfgNWgzEAz6Cd6xuEEyK5wdv2UBGUe5",
+    "option_b_id": "wqxbx0ECeEzbKwtKHEpuZVP80lxPkucp",
+    "distance_stratum": "near",
+    "cosine_distance": 0.92769
+  },
+  {
+    "pair_id": 28,
+    "option_a_id": "9yQE5Vq03jkBGTtR6zGUa3FQbQAj39cg",
+    "option_b_id": "OxCsjmwiglKRgErr1EaPTfeEeizEDrfV",
+    "distance_stratum": "near",
+    "cosine_distance": 0.949626
+  },
+  {
+    "pair_id": 29,
+    "option_a_id": "2aXegtu7ZNt1hK9dQdtJnNenxv2B4sZy",
+    "option_b_id": "dqSgeZS8Bjg9zcHqpCYE2CQb9Bo29IVC",
+    "distance_stratum": "near",
+    "cosine_distance": 0.938332
+  },
+  {
+    "pair_id": 30,
+    "option_a_id": "eTAUmXR1bMpK5RIAzZnOn1iI3Zzb1OnS",
+    "option_b_id": "j1UQWmlb89qxv1c4ozXgTETrqo1pd2UK",
+    "distance_stratum": "near",
+    "cosine_distance": 0.978084
+  },
+  {
+    "pair_id": 31,
+    "option_a_id": "LqgCdf7SEzL2om5N8oTawHFEKac8kpvQ",
+    "option_b_id": "NLbe3GfXEOj4UufMqDnTLHGPx71N0XCA",
+    "distance_stratum": "near",
+    "cosine_distance": 0.94307
+  },
+  {
+    "pair_id": 32,
+    "option_a_id": "IDjLQvnzP2VqH6QSMTH36wsvFJemLCUG",
+    "option_b_id": "S8kIlIxlfn2oLVKCHVuu38MZdEwhlKDy",
+    "distance_stratum": "near",
+    "cosine_distance": 0.933569
+  },
+  {
+    "pair_id": 33,
+    "option_a_id": "K2KjfSmuzul6928kNxvHbL14KmEwP4bn",
+    "option_b_id": "y9yU5IF5pg9t4HiBgFIykkljvNloiC2v",
+    "distance_stratum": "near",
+    "cosine_distance": 0.95431
+  },
+  {
+    "pair_id": 34,
+    "option_a_id": "6xdsnnZf4F5RhpMHC4xK05hzQS7jQnVm",
+    "option_b_id": "8MERzGrma6eFggSLrRDBTFdGd2M4NhAY",
+    "distance_stratum": "near",
+    "cosine_distance": 0.930655
+  },
+  {
+    "pair_id": 35,
+    "option_a_id": "4QKB3UnzqZ9ahsylg8Z5ARVxSyK4dMAN",
+    "option_b_id": "A0TIr80G8Sva5iQZfpqNrdkVhvBeeMTD",
+    "distance_stratum": "near",
+    "cosine_distance": 0.818134
+  },
+  {
+    "pair_id": 36,
+    "option_a_id": "3zpbFXK064SLZPCzHhg0WCXHqzySoA5V",
+    "option_b_id": "gwlXR7wm91doAYGJgd5IfP7MBZENP2U2",
+    "distance_stratum": "near",
+    "cosine_distance": 0.902918
+  },
+  {
+    "pair_id": 37,
+    "option_a_id": "Y9jRwR9ufmm76cL0Ek5MrQkfsgkzTYHI",
+    "option_b_id": "hLxS5upmNUTL56q5hDPoMrIX7Ds7Pn7g",
+    "distance_stratum": "near",
+    "cosine_distance": 0.941013
+  },
+  {
+    "pair_id": 38,
+    "option_a_id": "pD5ctMlwWwEYrQuECqp6W12lGUSfFZjO",
+    "option_b_id": "y9yU5IF5pg9t4HiBgFIykkljvNloiC2v",
+    "distance_stratum": "near",
+    "cosine_distance": 0.982181
+  },
+  {
+    "pair_id": 39,
+    "option_a_id": "6xdsnnZf4F5RhpMHC4xK05hzQS7jQnVm",
+    "option_b_id": "dSAy7UDsTnphsRqMy0dPtuDTwAy1Rqb0",
+    "distance_stratum": "near",
+    "cosine_distance": 0.954273
+  },
+  {
+    "pair_id": 40,
+    "option_a_id": "A1gGDU4n8nYDCpWArWaQaXNhrrx3ALh6",
+    "option_b_id": "iDyoCb8D54RD8jitFS4vK66ZoldPCMuy",
+    "distance_stratum": "near",
+    "cosine_distance": 0.94461
+  },
+  {
+    "pair_id": 41,
+    "option_a_id": "QzheDO5ltEupGomhiGlX2uQ7GN99Uoji",
+    "option_b_id": "rfurzooEwQLS1sC0DZrs7bHSoIZ0RqZb",
+    "distance_stratum": "near",
+    "cosine_distance": 0.955408
+  },
+  {
+    "pair_id": 42,
+    "option_a_id": "1hW7Uc7TO4r1Mvku5ntvYZHLDtSp9zUh",
+    "option_b_id": "t8ftSyKwGczjhfqLOixRENTR787ZjhhN",
+    "distance_stratum": "near",
+    "cosine_distance": 0.826159
+  },
+  {
+    "pair_id": 43,
+    "option_a_id": "8I5wlL89uUcSdAW4LIoic7OIthGvti2a",
+    "option_b_id": "eTAUmXR1bMpK5RIAzZnOn1iI3Zzb1OnS",
+    "distance_stratum": "near",
+    "cosine_distance": 0.940323
+  },
+  {
+    "pair_id": 44,
+    "option_a_id": "GS1KDEKIwvyg4NP7wLmVIycoCl9KAuJ8",
+    "option_b_id": "xf3XNxwRBNqmblmg5ogxPEO7tY6NPuH8",
+    "distance_stratum": "near",
+    "cosine_distance": 0.854911
+  },
+  {
+    "pair_id": 45,
+    "option_a_id": "XjsQ30UchcOuQPRpnEz6yJcJV0yI1H0t",
+    "option_b_id": "nOpDdw2efpL6pdRQq4G6ZoKvg5Hi3iga",
+    "distance_stratum": "near",
+    "cosine_distance": 0.947659
+  },
+  {
+    "pair_id": 46,
+    "option_a_id": "1Maqf2vRkXyJ8k161HLBCJTlC3xt0Jxr",
+    "option_b_id": "dqSgeZS8Bjg9zcHqpCYE2CQb9Bo29IVC",
+    "distance_stratum": "near",
+    "cosine_distance": 0.977522
+  },
+  {
+    "pair_id": 47,
+    "option_a_id": "eLeCMZ7Q23MsnuTSOaPt2mna1LHOBlOs",
+    "option_b_id": "jE3ulFPgbQZz08jsOSkXbu7GzbRyesBS",
+    "distance_stratum": "near",
+    "cosine_distance": 0.798031
+  },
+  {
+    "pair_id": 48,
+    "option_a_id": "azrHZgvRUvBK7DDWrXsTRvJ59jHNWYEb",
+    "option_b_id": "tEKl2sfzkuIJrGBSAz2VCU6Oxi8HtqeB",
+    "distance_stratum": "near",
+    "cosine_distance": 0.919126
+  },
+  {
+    "pair_id": 49,
+    "option_a_id": "4oQ7Pz70bPFPDmg3fYNyHCE5KRFdEeEl",
+    "option_b_id": "ZJb62BwJWMaX1XzpeSzvPh9D3gUK4BgF",
+    "distance_stratum": "near",
+    "cosine_distance": 0.906434
+  },
+  {
+    "pair_id": 50,
+    "option_a_id": "PV4zTWLpnm4K1fEDIlfZ0wW9n1GWaDGl",
+    "option_b_id": "wLvYmCFfiEzgv0sxyB4zdZlf5MdKZr8y",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.998462
+  },
+  {
+    "pair_id": 51,
+    "option_a_id": "b1m4cszVrzwBdyoKaJZSWanO4YdU0BZC",
+    "option_b_id": "jE3ulFPgbQZz08jsOSkXbu7GzbRyesBS",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.995012
+  },
+  {
+    "pair_id": 52,
+    "option_a_id": "gwlXR7wm91doAYGJgd5IfP7MBZENP2U2",
+    "option_b_id": "yqk9ZSYu3Vd9A6sUBIGPLJ0mTCxcsv74",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.994191
+  },
+  {
+    "pair_id": 53,
+    "option_a_id": "8MERzGrma6eFggSLrRDBTFdGd2M4NhAY",
+    "option_b_id": "wimGhztsU8f6utHqOmOdkKrHVtC6I9NK",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.026416
+  },
+  {
+    "pair_id": 54,
+    "option_a_id": "Cda1dx1FOr6sCHLvNYIXDGPMKzKbHyT3",
+    "option_b_id": "j0jPAqrAxacmPcNVvNpMF1GtRUBPO9AF",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.025545
+  },
+  {
+    "pair_id": 55,
+    "option_a_id": "TA9OnRESWOC7ubfZIog7k13oDLoaW1wL",
+    "option_b_id": "nLO5HErCbSNbkUMco3QZnQV8voBHh6TE",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.038225
+  },
+  {
+    "pair_id": 56,
+    "option_a_id": "IVJhDxWUt9DZLOGltOko3ztrVo2aLsxO",
+    "option_b_id": "j1UQWmlb89qxv1c4ozXgTETrqo1pd2UK",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.006616
+  },
+  {
+    "pair_id": 57,
+    "option_a_id": "4oQ7Pz70bPFPDmg3fYNyHCE5KRFdEeEl",
+    "option_b_id": "zz0AFjMDJFMQyWLCf1NMwAVfRMPSjdtT",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.00386
+  },
+  {
+    "pair_id": 58,
+    "option_a_id": "hIbnBqiqDwHK3f8ivvPpgxjVyK771kCX",
+    "option_b_id": "pD5ctMlwWwEYrQuECqp6W12lGUSfFZjO",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.006402
+  },
+  {
+    "pair_id": 59,
+    "option_a_id": "iDyoCb8D54RD8jitFS4vK66ZoldPCMuy",
+    "option_b_id": "lqjRltLfYaH27YuSiVYVPV62JoMIuGCD",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.021602
+  },
+  {
+    "pair_id": 60,
+    "option_a_id": "eTAUmXR1bMpK5RIAzZnOn1iI3Zzb1OnS",
+    "option_b_id": "ijReNIMGSjjt0SNZc8Ck3432Xu8a3ARP",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.005182
+  },
+  {
+    "pair_id": 61,
+    "option_a_id": "k6uNWUt8UfR7fi3U7kNupsohiEgemcEm",
+    "option_b_id": "zRviLTuCNefzxQoN1CiEel2pz3y0vBju",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.038785
+  },
+  {
+    "pair_id": 62,
+    "option_a_id": "4gMB56EMgKrDauADb9tYi1zKq3WY3nlh",
+    "option_b_id": "DxKP5hdjKcnYgIHaO9vyKyGT8P3ye4JH",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.00218
+  },
+  {
+    "pair_id": 63,
+    "option_a_id": "Q8q5XuxSlmroWzKvCrNGazt0ihvgxBnE",
+    "option_b_id": "Xfeo6a60E6H0ZLCu9ebi5Mj6CFcwAFL0",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.996541
+  },
+  {
+    "pair_id": 64,
+    "option_a_id": "TA9OnRESWOC7ubfZIog7k13oDLoaW1wL",
+    "option_b_id": "zyLYjR1Kt8VR6xkJfMPCnkR9gkczHA2X",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.014032
+  },
+  {
+    "pair_id": 65,
+    "option_a_id": "XjsQ30UchcOuQPRpnEz6yJcJV0yI1H0t",
+    "option_b_id": "iDyoCb8D54RD8jitFS4vK66ZoldPCMuy",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.009033
+  },
+  {
+    "pair_id": 66,
+    "option_a_id": "5MYrnFdug29YDyTZoduuVsvHwhYgGKU4",
+    "option_b_id": "qlnyCK81nT9N2qV0fHIVWAN2ezevMqOS",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.028311
+  },
+  {
+    "pair_id": 67,
+    "option_a_id": "n1LCG7OKEdODVL9SoCIHO7kghmRwwBY1",
+    "option_b_id": "uBTqygNFFn8cY0Kge7HgjUOpQoGNYJp6",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.035477
+  },
+  {
+    "pair_id": 68,
+    "option_a_id": "fjS1xw36caCMF1bOLKhig4dywhaLjCo4",
+    "option_b_id": "pxFN2ipjUPd2URVRk7Y3iH6nu6Jw6gY5",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.985562
+  },
+  {
+    "pair_id": 69,
+    "option_a_id": "GqfgNWgzEAz6Cd6xuEEyK5wdv2UBGUe5",
+    "option_b_id": "nLMdI8lGROH4YfrBJ4dux800mOnOQEOg",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.017862
+  },
+  {
+    "pair_id": 70,
+    "option_a_id": "YAnyhWXz7gXfYGzsdVyxsNXjyCLawfIT",
+    "option_b_id": "lCWtDAB2LkNrZsm6j972Vjb7d98pZnRC",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.98716
+  },
+  {
+    "pair_id": 71,
+    "option_a_id": "Kk2bZp03J87jRlVsJr6oEylDnEYxuxqP",
+    "option_b_id": "yFt1tDCXEzzSsCnt4UMz2s32aymblcGm",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.024062
+  },
+  {
+    "pair_id": 72,
+    "option_a_id": "8QhCnmmBiJThiaSnLEHNKSU39B44EbiE",
+    "option_b_id": "JZ5eDq76bavfS7VaYD6wU9kpn2YyEVPy",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.026783
+  },
+  {
+    "pair_id": 73,
+    "option_a_id": "GqfgNWgzEAz6Cd6xuEEyK5wdv2UBGUe5",
+    "option_b_id": "Jrt4Sj7MQBGoerGv4REcUTepcT3rnIkl",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.025819
+  },
+  {
+    "pair_id": 74,
+    "option_a_id": "VtgYzE9QosQd7mvIABTtHIaNYU6TIMji",
+    "option_b_id": "YPHaKY8YHwB2cEocwVmkaAN9QFr9g1La",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.032191
+  },
+  {
+    "pair_id": 75,
+    "option_a_id": "I3XotxDgHVrgWhFBxGuQllltpn0Mbfnq",
+    "option_b_id": "ZSTqQOAhXW8GKz5M1QXbsruk7wAH7BLH",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.007395
+  },
+  {
+    "pair_id": 76,
+    "option_a_id": "6GmqypVwqwvQWseflUOhzOatSqHaM3HS",
+    "option_b_id": "h6WuBbB0AAyikzKyVaCPLWnas4Ztcj8f",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.008063
+  },
+  {
+    "pair_id": 77,
+    "option_a_id": "9yQE5Vq03jkBGTtR6zGUa3FQbQAj39cg",
+    "option_b_id": "TA9OnRESWOC7ubfZIog7k13oDLoaW1wL",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.002615
+  },
+  {
+    "pair_id": 78,
+    "option_a_id": "3KL3VrdSt0KwA5JaSahy5h28wVmpuJX7",
+    "option_b_id": "hLxS5upmNUTL56q5hDPoMrIX7Ds7Pn7g",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.009734
+  },
+  {
+    "pair_id": 79,
+    "option_a_id": "3KL3VrdSt0KwA5JaSahy5h28wVmpuJX7",
+    "option_b_id": "fjS1xw36caCMF1bOLKhig4dywhaLjCo4",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.000093
+  },
+  {
+    "pair_id": 80,
+    "option_a_id": "JZ5eDq76bavfS7VaYD6wU9kpn2YyEVPy",
+    "option_b_id": "S8kIlIxlfn2oLVKCHVuu38MZdEwhlKDy",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.992297
+  },
+  {
+    "pair_id": 81,
+    "option_a_id": "ijReNIMGSjjt0SNZc8Ck3432Xu8a3ARP",
+    "option_b_id": "j0jPAqrAxacmPcNVvNpMF1GtRUBPO9AF",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.990045
+  },
+  {
+    "pair_id": 82,
+    "option_a_id": "3zpbFXK064SLZPCzHhg0WCXHqzySoA5V",
+    "option_b_id": "nOpDdw2efpL6pdRQq4G6ZoKvg5Hi3iga",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.027798
+  },
+  {
+    "pair_id": 83,
+    "option_a_id": "oTMYtoHqNiLz7CkwPCYKefNmbXfMS6t7",
+    "option_b_id": "rZFe8oxu1udD6ktNrCYzgOekfz86TDkw",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.017177
+  },
+  {
+    "pair_id": 84,
+    "option_a_id": "k6uNWUt8UfR7fi3U7kNupsohiEgemcEm",
+    "option_b_id": "l1JO6RJ02lkNjRfQsiNJpW3EaaVHheGO",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.991225
+  },
+  {
+    "pair_id": 85,
+    "option_a_id": "A0TIr80G8Sva5iQZfpqNrdkVhvBeeMTD",
+    "option_b_id": "cUPXK4SOiam9J6vwNOM3LsstVhwfZa2k",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.991202
+  },
+  {
+    "pair_id": 86,
+    "option_a_id": "2lnebTVUj1n6EJCtV9TuZtOClC69GRzB",
+    "option_b_id": "S5siVGTzQ2AOmfrzkNjBbK0iiyOf2ZQJ",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.014373
+  },
+  {
+    "pair_id": 87,
+    "option_a_id": "UJJM1vg4k34W9T15iV5QGkNhDwb8Zs6u",
+    "option_b_id": "fjG8iivoNd22nC2Sj0Yun8FZAuqW40YL",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.992271
+  },
+  {
+    "pair_id": 88,
+    "option_a_id": "PV4zTWLpnm4K1fEDIlfZ0wW9n1GWaDGl",
+    "option_b_id": "pD5ctMlwWwEYrQuECqp6W12lGUSfFZjO",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.984538
+  },
+  {
+    "pair_id": 89,
+    "option_a_id": "k6uNWUt8UfR7fi3U7kNupsohiEgemcEm",
+    "option_b_id": "q0J0v1yNy8ePbwoibA2Ieo4ERhrSWN3y",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.030965
+  },
+  {
+    "pair_id": 90,
+    "option_a_id": "6d32YIkjuQ3OVId1f40b5t0n2JvVQDPM",
+    "option_b_id": "yqk9ZSYu3Vd9A6sUBIGPLJ0mTCxcsv74",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.989123
+  },
+  {
+    "pair_id": 91,
+    "option_a_id": "DULLoJ2kECskRJzSPmAMjQy67bRPPpDG",
+    "option_b_id": "nLO5HErCbSNbkUMco3QZnQV8voBHh6TE",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.034154
+  },
+  {
+    "pair_id": 92,
+    "option_a_id": "1hW7Uc7TO4r1Mvku5ntvYZHLDtSp9zUh",
+    "option_b_id": "I3XotxDgHVrgWhFBxGuQllltpn0Mbfnq",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.019969
+  },
+  {
+    "pair_id": 93,
+    "option_a_id": "XjsQ30UchcOuQPRpnEz6yJcJV0yI1H0t",
+    "option_b_id": "zz0AFjMDJFMQyWLCf1NMwAVfRMPSjdtT",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.028007
+  },
+  {
+    "pair_id": 94,
+    "option_a_id": "Xfeo6a60E6H0ZLCu9ebi5Mj6CFcwAFL0",
+    "option_b_id": "zz0AFjMDJFMQyWLCf1NMwAVfRMPSjdtT",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.989679
+  },
+  {
+    "pair_id": 95,
+    "option_a_id": "eiyZcuuOmy0Uiy3niE5YeqPFBxOAOcPq",
+    "option_b_id": "tEKl2sfzkuIJrGBSAz2VCU6Oxi8HtqeB",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.008642
+  },
+  {
+    "pair_id": 96,
+    "option_a_id": "3KL3VrdSt0KwA5JaSahy5h28wVmpuJX7",
+    "option_b_id": "GqfgNWgzEAz6Cd6xuEEyK5wdv2UBGUe5",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.996827
+  },
+  {
+    "pair_id": 97,
+    "option_a_id": "BpUBWLUwrdvl5iRA4UMYNUl1YN2LpAuh",
+    "option_b_id": "uE0aadNGu6Z3uf6cykFhhneLCSBvzCds",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.006161
+  },
+  {
+    "pair_id": 98,
+    "option_a_id": "3aU67YEhM4g5aUq3WcvCC6lImv2c6OF1",
+    "option_b_id": "TnMwIRXIr5ajTsafTApizmYrFBZSVPHB",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.015886
+  },
+  {
+    "pair_id": 99,
+    "option_a_id": "iYLhNHFUy6Tvqp4hM3tvttdOhbGdzZE9",
+    "option_b_id": "uE0aadNGu6Z3uf6cykFhhneLCSBvzCds",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.033198
+  },
+  {
+    "pair_id": 100,
+    "option_a_id": "60yWARLJomgez7F44jBPNpG0eWDlOcp5",
+    "option_b_id": "EiR56O3DSeF4L2wxlPCRgIY5XeKqbMEV",
+    "distance_stratum": "far",
+    "cosine_distance": 1.059895
+  },
+  {
+    "pair_id": 101,
+    "option_a_id": "SUHkIbfmBDBbEZgJNI6D53GmY7Eh33kZ",
+    "option_b_id": "eSiTlEM5OwRa1g6zmbpkZPW11UNc2o2P",
+    "distance_stratum": "far",
+    "cosine_distance": 1.066394
+  },
+  {
+    "pair_id": 102,
+    "option_a_id": "1Maqf2vRkXyJ8k161HLBCJTlC3xt0Jxr",
+    "option_b_id": "n1LCG7OKEdODVL9SoCIHO7kghmRwwBY1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.086349
+  },
+  {
+    "pair_id": 103,
+    "option_a_id": "6d32YIkjuQ3OVId1f40b5t0n2JvVQDPM",
+    "option_b_id": "dqSgeZS8Bjg9zcHqpCYE2CQb9Bo29IVC",
+    "distance_stratum": "far",
+    "cosine_distance": 1.087005
+  },
+  {
+    "pair_id": 104,
+    "option_a_id": "8QhCnmmBiJThiaSnLEHNKSU39B44EbiE",
+    "option_b_id": "cUPXK4SOiam9J6vwNOM3LsstVhwfZa2k",
+    "distance_stratum": "far",
+    "cosine_distance": 1.055541
+  },
+  {
+    "pair_id": 105,
+    "option_a_id": "kZPOtcdH7fYYx4t76isPFbnQuMAsD9mn",
+    "option_b_id": "pD5ctMlwWwEYrQuECqp6W12lGUSfFZjO",
+    "distance_stratum": "far",
+    "cosine_distance": 1.110572
+  },
+  {
+    "pair_id": 106,
+    "option_a_id": "Xfeo6a60E6H0ZLCu9ebi5Mj6CFcwAFL0",
+    "option_b_id": "rQa1Q4PFTCAjChKIxji8O8ngmFOnQg2q",
+    "distance_stratum": "far",
+    "cosine_distance": 1.08721
+  },
+  {
+    "pair_id": 107,
+    "option_a_id": "cUPXK4SOiam9J6vwNOM3LsstVhwfZa2k",
+    "option_b_id": "t8ftSyKwGczjhfqLOixRENTR787ZjhhN",
+    "distance_stratum": "far",
+    "cosine_distance": 1.061249
+  },
+  {
+    "pair_id": 108,
+    "option_a_id": "S5siVGTzQ2AOmfrzkNjBbK0iiyOf2ZQJ",
+    "option_b_id": "ceHHgTaFqYa3MjFZjcRtGcoA53b7WoPL",
+    "distance_stratum": "far",
+    "cosine_distance": 1.063718
+  },
+  {
+    "pair_id": 109,
+    "option_a_id": "60yWARLJomgez7F44jBPNpG0eWDlOcp5",
+    "option_b_id": "wimGhztsU8f6utHqOmOdkKrHVtC6I9NK",
+    "distance_stratum": "far",
+    "cosine_distance": 1.112483
+  },
+  {
+    "pair_id": 110,
+    "option_a_id": "FRW4a4osAXgezYttB54jhdyHpqlO6aOh",
+    "option_b_id": "nLMdI8lGROH4YfrBJ4dux800mOnOQEOg",
+    "distance_stratum": "far",
+    "cosine_distance": 1.07516
+  },
+  {
+    "pair_id": 111,
+    "option_a_id": "2PTNaY4qS5X4rEz0nzKYRtWUmaqFJpYn",
+    "option_b_id": "GqfgNWgzEAz6Cd6xuEEyK5wdv2UBGUe5",
+    "distance_stratum": "far",
+    "cosine_distance": 1.0462
+  },
+  {
+    "pair_id": 112,
+    "option_a_id": "2aXegtu7ZNt1hK9dQdtJnNenxv2B4sZy",
+    "option_b_id": "kZPOtcdH7fYYx4t76isPFbnQuMAsD9mn",
+    "distance_stratum": "far",
+    "cosine_distance": 1.082729
+  },
+  {
+    "pair_id": 113,
+    "option_a_id": "dqSgeZS8Bjg9zcHqpCYE2CQb9Bo29IVC",
+    "option_b_id": "k6uNWUt8UfR7fi3U7kNupsohiEgemcEm",
+    "distance_stratum": "far",
+    "cosine_distance": 1.103795
+  },
+  {
+    "pair_id": 114,
+    "option_a_id": "6ckcIvqMS4fkx4VzdTee6ZOVPC5L9595",
+    "option_b_id": "xf3XNxwRBNqmblmg5ogxPEO7tY6NPuH8",
+    "distance_stratum": "far",
+    "cosine_distance": 1.071721
+  },
+  {
+    "pair_id": 115,
+    "option_a_id": "0HupTNWylpTvKUGQRW9LGjGxTumCKicF",
+    "option_b_id": "8S7ApJtfhL1sQqfFyluX63ZyGd76fjnG",
+    "distance_stratum": "far",
+    "cosine_distance": 1.060774
+  },
+  {
+    "pair_id": 116,
+    "option_a_id": "ZSTqQOAhXW8GKz5M1QXbsruk7wAH7BLH",
+    "option_b_id": "eeQ3zE9JLgtwS4HZOTKkeHyIiGKYUPUg",
+    "distance_stratum": "far",
+    "cosine_distance": 1.100955
+  },
+  {
+    "pair_id": 117,
+    "option_a_id": "fGmiCyWYCQfw4IADHEky8XjRNThliwrq",
+    "option_b_id": "jFScgwvnKdF0f22IkNqVBaagp57QiyZs",
+    "distance_stratum": "far",
+    "cosine_distance": 1.071087
+  },
+  {
+    "pair_id": 118,
+    "option_a_id": "GS1KDEKIwvyg4NP7wLmVIycoCl9KAuJ8",
+    "option_b_id": "NpUR4bWRCHvda0aoFXM4q9h916hHGzHp",
+    "distance_stratum": "far",
+    "cosine_distance": 1.049237
+  },
+  {
+    "pair_id": 119,
+    "option_a_id": "AbVX8Wcxh7zW2UwdItiHO5s2WpDXrKiC",
+    "option_b_id": "EiR56O3DSeF4L2wxlPCRgIY5XeKqbMEV",
+    "distance_stratum": "far",
+    "cosine_distance": 1.082585
+  },
+  {
+    "pair_id": 120,
+    "option_a_id": "cUPXK4SOiam9J6vwNOM3LsstVhwfZa2k",
+    "option_b_id": "eiyZcuuOmy0Uiy3niE5YeqPFBxOAOcPq",
+    "distance_stratum": "far",
+    "cosine_distance": 1.107188
+  },
+  {
+    "pair_id": 121,
+    "option_a_id": "NAooFHBOgtSccWYGzTfo7v6EyETL2CNF",
+    "option_b_id": "R2JSt8DXOJ3N9JA2wkDjhbkVjDvzY4O0",
+    "distance_stratum": "far",
+    "cosine_distance": 1.054919
+  },
+  {
+    "pair_id": 122,
+    "option_a_id": "3KL3VrdSt0KwA5JaSahy5h28wVmpuJX7",
+    "option_b_id": "kZPOtcdH7fYYx4t76isPFbnQuMAsD9mn",
+    "distance_stratum": "far",
+    "cosine_distance": 1.077781
+  },
+  {
+    "pair_id": 123,
+    "option_a_id": "3zKIJn87Q0Eb05Z5MHWJ6h2wM2MEX2vJ",
+    "option_b_id": "BmSei9MLHf7mKs0Ge3Vri5PYRVGqTGIL",
+    "distance_stratum": "far",
+    "cosine_distance": 1.043036
+  },
+  {
+    "pair_id": 124,
+    "option_a_id": "5o3DqXkTjtVXMpDvcoTdBGeu82fzGrGZ",
+    "option_b_id": "Cda1dx1FOr6sCHLvNYIXDGPMKzKbHyT3",
+    "distance_stratum": "far",
+    "cosine_distance": 1.119239
+  },
+  {
+    "pair_id": 125,
+    "option_a_id": "6xdsnnZf4F5RhpMHC4xK05hzQS7jQnVm",
+    "option_b_id": "U6zGd8gA0Aq83Aa790QV92dxJYmUIJuH",
+    "distance_stratum": "far",
+    "cosine_distance": 1.04869
+  },
+  {
+    "pair_id": 126,
+    "option_a_id": "TnMwIRXIr5ajTsafTApizmYrFBZSVPHB",
+    "option_b_id": "ceHHgTaFqYa3MjFZjcRtGcoA53b7WoPL",
+    "distance_stratum": "far",
+    "cosine_distance": 1.057851
+  },
+  {
+    "pair_id": 127,
+    "option_a_id": "3aU67YEhM4g5aUq3WcvCC6lImv2c6OF1",
+    "option_b_id": "n2PJJTEYnv0nTyOvTFcR3o8I8aOdJWTp",
+    "distance_stratum": "far",
+    "cosine_distance": 1.051416
+  },
+  {
+    "pair_id": 128,
+    "option_a_id": "JZ5eDq76bavfS7VaYD6wU9kpn2YyEVPy",
+    "option_b_id": "fGmiCyWYCQfw4IADHEky8XjRNThliwrq",
+    "distance_stratum": "far",
+    "cosine_distance": 1.078226
+  },
+  {
+    "pair_id": 129,
+    "option_a_id": "6a8dGwTAm6V7BBl1TT3cAACmBBWkiASF",
+    "option_b_id": "NAooFHBOgtSccWYGzTfo7v6EyETL2CNF",
+    "distance_stratum": "far",
+    "cosine_distance": 1.073388
+  },
+  {
+    "pair_id": 130,
+    "option_a_id": "jLMaGyYLRXeMHhTTIUFSXljrHSoGTi99",
+    "option_b_id": "v7Z9mYUE8D60ifLcgKgAoeeDsfbdpxxN",
+    "distance_stratum": "far",
+    "cosine_distance": 1.046158
+  },
+  {
+    "pair_id": 131,
+    "option_a_id": "5MYrnFdug29YDyTZoduuVsvHwhYgGKU4",
+    "option_b_id": "8QhCnmmBiJThiaSnLEHNKSU39B44EbiE",
+    "distance_stratum": "far",
+    "cosine_distance": 1.172578
+  },
+  {
+    "pair_id": 132,
+    "option_a_id": "dEGTAsxz3FmiVgtrnaVUtWRkTbPz23IG",
+    "option_b_id": "h6WuBbB0AAyikzKyVaCPLWnas4Ztcj8f",
+    "distance_stratum": "far",
+    "cosine_distance": 1.087582
+  },
+  {
+    "pair_id": 133,
+    "option_a_id": "8JWIwAS8jLqpZE9ByQdOAc6AduBmR9DQ",
+    "option_b_id": "S5siVGTzQ2AOmfrzkNjBbK0iiyOf2ZQJ",
+    "distance_stratum": "far",
+    "cosine_distance": 1.051094
+  },
+  {
+    "pair_id": 134,
+    "option_a_id": "NLbe3GfXEOj4UufMqDnTLHGPx71N0XCA",
+    "option_b_id": "ijReNIMGSjjt0SNZc8Ck3432Xu8a3ARP",
+    "distance_stratum": "far",
+    "cosine_distance": 1.075117
+  },
+  {
+    "pair_id": 135,
+    "option_a_id": "3zpbFXK064SLZPCzHhg0WCXHqzySoA5V",
+    "option_b_id": "dqSgeZS8Bjg9zcHqpCYE2CQb9Bo29IVC",
+    "distance_stratum": "far",
+    "cosine_distance": 1.048227
+  },
+  {
+    "pair_id": 136,
+    "option_a_id": "2lnebTVUj1n6EJCtV9TuZtOClC69GRzB",
+    "option_b_id": "Rx8xJ8dTmXMQeqDIhAShwHMD6MfvFJQr",
+    "distance_stratum": "far",
+    "cosine_distance": 1.087522
+  },
+  {
+    "pair_id": 137,
+    "option_a_id": "6GmqypVwqwvQWseflUOhzOatSqHaM3HS",
+    "option_b_id": "dDOKo6w7bBK2wz00JfzsnR9wPCXezRw4",
+    "distance_stratum": "far",
+    "cosine_distance": 1.076178
+  },
+  {
+    "pair_id": 138,
+    "option_a_id": "UnRw8kATwkQVvylK7bkPtJ5kWN6J9RwD",
+    "option_b_id": "ZSTqQOAhXW8GKz5M1QXbsruk7wAH7BLH",
+    "distance_stratum": "far",
+    "cosine_distance": 1.05309
+  },
+  {
+    "pair_id": 139,
+    "option_a_id": "Jg4DHdilz54V0k3sVx3pPnOpe76Gl68V",
+    "option_b_id": "LExd9ENQicLfAeMjlgGurPK60MsocPfZ",
+    "distance_stratum": "far",
+    "cosine_distance": 1.120531
+  },
+  {
+    "pair_id": 140,
+    "option_a_id": "Cda1dx1FOr6sCHLvNYIXDGPMKzKbHyT3",
+    "option_b_id": "n1LCG7OKEdODVL9SoCIHO7kghmRwwBY1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.070821
+  },
+  {
+    "pair_id": 141,
+    "option_a_id": "1Maqf2vRkXyJ8k161HLBCJTlC3xt0Jxr",
+    "option_b_id": "3zKIJn87Q0Eb05Z5MHWJ6h2wM2MEX2vJ",
+    "distance_stratum": "far",
+    "cosine_distance": 1.077382
+  },
+  {
+    "pair_id": 142,
+    "option_a_id": "YRcwkX4F3eYzoo0h15QGUoHGXgrd0biz",
+    "option_b_id": "sAncD1RuOUwMddeq6zDRDw3mLEbJqtyw",
+    "distance_stratum": "far",
+    "cosine_distance": 1.048323
+  },
+  {
+    "pair_id": 143,
+    "option_a_id": "ZJb62BwJWMaX1XzpeSzvPh9D3gUK4BgF",
+    "option_b_id": "rfurzooEwQLS1sC0DZrs7bHSoIZ0RqZb",
+    "distance_stratum": "far",
+    "cosine_distance": 1.060336
+  },
+  {
+    "pair_id": 144,
+    "option_a_id": "DULLoJ2kECskRJzSPmAMjQy67bRPPpDG",
+    "option_b_id": "b1m4cszVrzwBdyoKaJZSWanO4YdU0BZC",
+    "distance_stratum": "far",
+    "cosine_distance": 1.073146
+  },
+  {
+    "pair_id": 145,
+    "option_a_id": "b1m4cszVrzwBdyoKaJZSWanO4YdU0BZC",
+    "option_b_id": "mwGipb5WZY5atgLHgKXkpFo91GvQlidO",
+    "distance_stratum": "far",
+    "cosine_distance": 1.043219
+  },
+  {
+    "pair_id": 146,
+    "option_a_id": "4gMB56EMgKrDauADb9tYi1zKq3WY3nlh",
+    "option_b_id": "QzMW9xmLRX8JQXGqOYMAuQunwpIaoxFM",
+    "distance_stratum": "far",
+    "cosine_distance": 1.140485
+  },
+  {
+    "pair_id": 147,
+    "option_a_id": "4oQ7Pz70bPFPDmg3fYNyHCE5KRFdEeEl",
+    "option_b_id": "eLeCMZ7Q23MsnuTSOaPt2mna1LHOBlOs",
+    "distance_stratum": "far",
+    "cosine_distance": 1.06706
+  },
+  {
+    "pair_id": 148,
+    "option_a_id": "8QhCnmmBiJThiaSnLEHNKSU39B44EbiE",
+    "option_b_id": "v7Z9mYUE8D60ifLcgKgAoeeDsfbdpxxN",
+    "distance_stratum": "far",
+    "cosine_distance": 1.071735
+  },
+  {
+    "pair_id": 149,
+    "option_a_id": "IVJhDxWUt9DZLOGltOko3ztrVo2aLsxO",
+    "option_b_id": "yFt1tDCXEzzSsCnt4UMz2s32aymblcGm",
+    "distance_stratum": "far",
+    "cosine_distance": 1.060823
+  }
+]

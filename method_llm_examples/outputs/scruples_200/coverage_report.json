@@ -1,0 +1,235 @@
+{
+  "total_reasons": 1500,
+  "coverage_threshold": 0.4,
+  "covered_count": 1500,
+  "coverage_rate": 1.0,
+  "orphan_count": 0,
+  "top_orphans": [],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Autonomy",
+      "total_reasons_assigned": 80,
+      "low_pole_count": 1,
+      "high_pole_count": 79,
+      "low_pole_fraction": 0.013,
+      "high_pole_fraction": 0.988
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Emotional Honesty",
+      "total_reasons_assigned": 116,
+      "low_pole_count": 10,
+      "high_pole_count": 106,
+      "low_pole_fraction": 0.086,
+      "high_pole_fraction": 0.914
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Social Connection",
+      "total_reasons_assigned": 202,
+      "low_pole_count": 31,
+      "high_pole_count": 171,
+      "low_pole_fraction": 0.153,
+      "high_pole_fraction": 0.847
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Spontaneity",
+      "total_reasons_assigned": 57,
+      "low_pole_count": 21,
+      "high_pole_count": 36,
+      "low_pole_fraction": 0.368,
+      "high_pole_fraction": 0.632
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Conflict Avoidance",
+      "total_reasons_assigned": 99,
+      "low_pole_count": 47,
+      "high_pole_count": 52,
+      "low_pole_fraction": 0.475,
+      "high_pole_fraction": 0.525
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Creativity",
+      "total_reasons_assigned": 39,
+      "low_pole_count": 0,
+      "high_pole_count": 39,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Efficiency",
+      "total_reasons_assigned": 29,
+      "low_pole_count": 9,
+      "high_pole_count": 20,
+      "low_pole_fraction": 0.31,
+      "high_pole_fraction": 0.69
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Humor",
+      "total_reasons_assigned": 67,
+      "low_pole_count": 4,
+      "high_pole_count": 63,
+      "low_pole_fraction": 0.06,
+      "high_pole_fraction": 0.94
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Emotional Catharsis",
+      "total_reasons_assigned": 16,
+      "low_pole_count": 2,
+      "high_pole_count": 14,
+      "low_pole_fraction": 0.125,
+      "high_pole_fraction": 0.875
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Moral Boundaries",
+      "total_reasons_assigned": 124,
+      "low_pole_count": 5,
+      "high_pole_count": 119,
+      "low_pole_fraction": 0.04,
+      "high_pole_fraction": 0.96
+    },
+    {
+      "dimension_id": 11,
+      "dimension_name": "Intellectual Engagement",
+      "total_reasons_assigned": 64,
+      "low_pole_count": 15,
+      "high_pole_count": 49,
+      "low_pole_fraction": 0.234,
+      "high_pole_fraction": 0.766
+    },
+    {
+      "dimension_id": 12,
+      "dimension_name": "Comfort",
+      "total_reasons_assigned": 62,
+      "low_pole_count": 43,
+      "high_pole_count": 19,
+      "low_pole_fraction": 0.694,
+      "high_pole_fraction": 0.306
+    },
+    {
+      "dimension_id": 13,
+      "dimension_name": "Social Recognition",
+      "total_reasons_assigned": 13,
+      "low_pole_count": 7,
+      "high_pole_count": 6,
+      "low_pole_fraction": 0.538,
+      "high_pole_fraction": 0.462
+    },
+    {
+      "dimension_id": 14,
+      "dimension_name": "Cultural Awareness",
+      "total_reasons_assigned": 24,
+      "low_pole_count": 2,
+      "high_pole_count": 22,
+      "low_pole_fraction": 0.083,
+      "high_pole_fraction": 0.917
+    },
+    {
+      "dimension_id": 15,
+      "dimension_name": "Identity Exploration",
+      "total_reasons_assigned": 30,
+      "low_pole_count": 7,
+      "high_pole_count": 23,
+      "low_pole_fraction": 0.233,
+      "high_pole_fraction": 0.767
+    },
+    {
+      "dimension_id": 16,
+      "dimension_name": "Direct Communication",
+      "total_reasons_assigned": 90,
+      "low_pole_count": 7,
+      "high_pole_count": 83,
+      "low_pole_fraction": 0.078,
+      "high_pole_fraction": 0.922
+    },
+    {
+      "dimension_id": 17,
+      "dimension_name": "Emotional Restraint",
+      "total_reasons_assigned": 16,
+      "low_pole_count": 10,
+      "high_pole_count": 6,
+      "low_pole_fraction": 0.625,
+      "high_pole_fraction": 0.375
+    },
+    {
+      "dimension_id": 18,
+      "dimension_name": "Social Obligation Avoidance",
+      "total_reasons_assigned": 91,
+      "low_pole_count": 11,
+      "high_pole_count": 80,
+      "low_pole_fraction": 0.121,
+      "high_pole_fraction": 0.879
+    },
+    {
+      "dimension_id": 19,
+      "dimension_name": "Digital Convenience",
+      "total_reasons_assigned": 9,
+      "low_pole_count": 0,
+      "high_pole_count": 9,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 20,
+      "dimension_name": "Ethical Responsibility",
+      "total_reasons_assigned": 75,
+      "low_pole_count": 10,
+      "high_pole_count": 65,
+      "low_pole_fraction": 0.133,
+      "high_pole_fraction": 0.867
+    },
+    {
+      "dimension_id": 21,
+      "dimension_name": "Financial Stability",
+      "total_reasons_assigned": 31,
+      "low_pole_count": 0,
+      "high_pole_count": 31,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 22,
+      "dimension_name": "Personal Growth",
+      "total_reasons_assigned": 80,
+      "low_pole_count": 0,
+      "high_pole_count": 80,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 23,
+      "dimension_name": "Tradition",
+      "total_reasons_assigned": 62,
+      "low_pole_count": 42,
+      "high_pole_count": 20,
+      "low_pole_fraction": 0.677,
+      "high_pole_fraction": 0.323
+    },
+    {
+      "dimension_id": 24,
+      "dimension_name": "Institutional Efficiency",
+      "total_reasons_assigned": 14,
+      "low_pole_count": 1,
+      "high_pole_count": 13,
+      "low_pole_fraction": 0.071,
+      "high_pole_fraction": 0.929
+    },
+    {
+      "dimension_id": 25,
+      "dimension_name": "Digital Autonomy",
+      "total_reasons_assigned": 10,
+      "low_pole_count": 0,
+      "high_pole_count": 10,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    }
+  ]
+}

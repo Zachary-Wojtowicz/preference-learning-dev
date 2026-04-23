@@ -1,0 +1,242 @@
+{
+  "domain": "moral dilemmas",
+  "choice_context": "A person is judging which of two described actions is more morally acceptable or understandable.",
+  "num_trials_per_participant": 30,
+  "conditions": {
+    "choice_only": {
+      "label": "Choice Only",
+      "description": "Binary choice, no dimension sliders shown.",
+      "show_sliders": false,
+      "sliders_adjustable": false,
+      "show_free_text": false
+    },
+    "choice_readonly_sliders": {
+      "label": "Choice + Read-Only Sliders",
+      "description": "Binary choice with dimension scores shown (not adjustable).",
+      "show_sliders": true,
+      "sliders_adjustable": false,
+      "show_free_text": false
+    },
+    "choice_adjustable_sliders": {
+      "label": "Choice + Adjustable Sliders",
+      "description": "Binary choice with adjustable dimension sliders.",
+      "show_sliders": true,
+      "sliders_adjustable": true,
+      "show_free_text": false
+    },
+    "choice_sliders_text": {
+      "label": "Choice + Sliders + Reason",
+      "description": "Binary choice with adjustable sliders and a free-text reason field.",
+      "show_sliders": true,
+      "sliders_adjustable": true,
+      "show_free_text": true
+    }
+  },
+  "default_condition": "choice_adjustable_sliders",
+  "slider_range": [
+    -100,
+    100
+  ],
+  "dimensions": [
+    {
+      "id": "dim_1",
+      "dimension_id": 1,
+      "name": "Autonomy",
+      "low_label": "Low Autonomy",
+      "high_label": "High Autonomy",
+      "scoring_guidance": "Rate based on how much the action emphasizes personal independence and freedom from external control."
+    },
+    {
+      "id": "dim_2",
+      "dimension_id": 2,
+      "name": "Emotional Honesty",
+      "low_label": "Low Emotional Honesty",
+      "high_label": "High Emotional Honesty",
+      "scoring_guidance": "Rate based on how much the action emphasizes open and authentic emotional expression."
+    },
+    {
+      "id": "dim_3",
+      "dimension_id": 3,
+      "name": "Social Connection",
+      "low_label": "Low Social Connection",
+      "high_label": "High Social Connection",
+      "scoring_guidance": "Rate based on how much the action emphasizes shared experiences and interpersonal connection."
+    },
+    {
+      "id": "dim_4",
+      "dimension_id": 4,
+      "name": "Spontaneity",
+      "low_label": "Low Spontaneity",
+      "high_label": "High Spontaneity",
+      "scoring_guidance": "Rate based on how much the action emphasizes flexibility and openness to the moment."
+    },
+    {
+      "id": "dim_5",
+      "dimension_id": 5,
+      "name": "Conflict Avoidance",
+      "low_label": "Low Conflict Avoidance",
+      "high_label": "High Conflict Avoidance",
+      "scoring_guidance": "Rate based on how much the action emphasizes avoiding conflict and maintaining harmony."
+    },
+    {
+      "id": "dim_6",
+      "dimension_id": 6,
+      "name": "Creativity",
+      "low_label": "Low Creativity",
+      "high_label": "High Creativity",
+      "scoring_guidance": "Rate based on how much the action emphasizes originality and artistic expression."
+    },
+    {
+      "id": "dim_7",
+      "dimension_id": 7,
+      "name": "Efficiency",
+      "low_label": "Low Efficiency",
+      "high_label": "High Efficiency",
+      "scoring_guidance": "Rate based on how much the action emphasizes practicality and minimal effort."
+    },
+    {
+      "id": "dim_8",
+      "dimension_id": 8,
+      "name": "Humor",
+      "low_label": "Low Humor",
+      "high_label": "High Humor",
+      "scoring_guidance": "Rate based on how much the action emphasizes humor and lightheartedness."
+    },
+    {
+      "id": "dim_9",
+      "dimension_id": 9,
+      "name": "Emotional Catharsis",
+      "low_label": "Low Emotional Catharsis",
+      "high_label": "High Emotional Catharsis",
+      "scoring_guidance": "Rate based on how much the action emphasizes emotional release and expression."
+    },
+    {
+      "id": "dim_10",
+      "dimension_id": 10,
+      "name": "Moral Boundaries",
+      "low_label": "Low Moral Boundaries",
+      "high_label": "High Moral Boundaries",
+      "scoring_guidance": "Rate based on how much the action emphasizes personal or moral boundaries."
+    },
+    {
+      "id": "dim_11",
+      "dimension_id": 11,
+      "name": "Intellectual Engagement",
+      "low_label": "Low Intellectual Engagement",
+      "high_label": "High Intellectual Engagement",
+      "scoring_guidance": "Rate based on how much the action emphasizes mental challenge and curiosity."
+    },
+    {
+      "id": "dim_12",
+      "dimension_id": 12,
+      "name": "Comfort",
+      "low_label": "Low Comfort",
+      "high_label": "High Comfort",
+      "scoring_guidance": "Rate based on how much the action emphasizes physical and emotional comfort and safety."
+    },
+    {
+      "id": "dim_13",
+      "dimension_id": 13,
+      "name": "Social Recognition",
+      "low_label": "Low Social Recognition",
+      "high_label": "High Social Recognition",
+      "scoring_guidance": "Rate based on how much the action emphasizes public approval or visibility."
+    },
+    {
+      "id": "dim_14",
+      "dimension_id": 14,
+      "name": "Cultural Awareness",
+      "low_label": "Low Cultural Awareness",
+      "high_label": "High Cultural Awareness",
+      "scoring_guidance": "Rate based on how much the action emphasizes cultural diversity and awareness."
+    },
+    {
+      "id": "dim_15",
+      "dimension_id": 15,
+      "name": "Identity Exploration",
+      "low_label": "Low Identity Exploration",
+      "high_label": "High Identity Exploration",
+      "scoring_guidance": "Rate based on how much the action emphasizes self-reflection and identity development."
+    },
+    {
+      "id": "dim_16",
+      "dimension_id": 16,
+      "name": "Direct Communication",
+      "low_label": "Low Direct Communication",
+      "high_label": "High Direct Communication",
+      "scoring_guidance": "Rate based on how much the action emphasizes clarity and honesty in communication."
+    },
+    {
+      "id": "dim_17",
+      "dimension_id": 17,
+      "name": "Emotional Restraint",
+      "low_label": "Low Emotional Restraint",
+      "high_label": "High Emotional Restraint",
+      "scoring_guidance": "Rate based on how much the action emphasizes emotional control and reserve."
+    },
+    {
+      "id": "dim_18",
+      "dimension_id": 18,
+      "name": "Social Obligation Avoidance",
+      "low_label": "Low Social Obligation Avoidance",
+      "high_label": "High Social Obligation Avoidance",
+      "scoring_guidance": "Rate based on how much the action emphasizes avoiding social pressure or expectations."
+    },
+    {
+      "id": "dim_19",
+      "dimension_id": 19,
+      "name": "Digital Convenience",
+      "low_label": "Low Digital Convenience",
+      "high_label": "High Digital Convenience",
+      "scoring_guidance": "Rate based on how much the action emphasizes digital efficiency and convenience."
+    },
+    {
+      "id": "dim_20",
+      "dimension_id": 20,
+      "name": "Ethical Responsibility",
+      "low_label": "Low Ethical Responsibility",
+      "high_label": "High Ethical Responsibility",
+      "scoring_guidance": "Rate based on how much the action emphasizes ethical considerations and responsibility."
+    },
+    {
+      "id": "dim_21",
+      "dimension_id": 21,
+      "name": "Financial Stability",
+      "low_label": "Low Financial Stability",
+      "high_label": "High Financial Stability",
+      "scoring_guidance": "Rate based on how much the action emphasizes financial responsibility and stability."
+    },
+    {
+      "id": "dim_22",
+      "dimension_id": 22,
+      "name": "Personal Growth",
+      "low_label": "Low Personal Growth",
+      "high_label": "High Personal Growth",
+      "scoring_guidance": "Rate based on how much the action emphasizes learning and self-improvement."
+    },
+    {
+      "id": "dim_23",
+      "dimension_id": 23,
+      "name": "Tradition",
+      "low_label": "Low Tradition",
+      "high_label": "High Tradition",
+      "scoring_guidance": "Rate based on how much the action emphasizes continuity with the past or tradition."
+    },
+    {
+      "id": "dim_24",
+      "dimension_id": 24,
+      "name": "Institutional Efficiency",
+      "low_label": "Low Institutional Efficiency",
+      "high_label": "High Institutional Efficiency",
+      "scoring_guidance": "Rate based on how much the action emphasizes institutional rules and efficiency."
+    },
+    {
+      "id": "dim_25",
+      "dimension_id": 25,
+      "name": "Digital Autonomy",
+      "low_label": "Low Digital Autonomy",
+      "high_label": "High Digital Autonomy",
+      "scoring_guidance": "Rate based on how much the action emphasizes personal control and digital independence."
+    }
+  ]
+}
