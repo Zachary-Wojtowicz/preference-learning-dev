@@ -85,11 +85,25 @@ def load_dimensions(dimensions_path):
 
 
 def load_directions(directions_path):
-    """Load direction vectors from directions.npz."""
+    """Load direction vectors from directions.npz.
+
+    Uses raw (non-orthogonalized) directions so that slider
+    correlations reflect the true inter-dimension structure.
+    Also computes the Gram matrix G = V V^T for co-movement.
+    """
     npz = np.load(directions_path)
-    V = npz["directions_ortho"].astype(np.float64)   # (K, d)
-    mu = npz["mean_embedding"].astype(np.float64)     # (d,)
-    return V, mu
+    V_raw = npz["directions_raw"].astype(np.float64)   # (K, d)
+    mu = npz["mean_embedding"].astype(np.float64)       # (d,)
+
+    # Normalize rows to unit length
+    norms = np.linalg.norm(V_raw, axis=1, keepdims=True)
+    norms[norms == 0] = 1.0
+    V = V_raw / norms  # (K, d)
+
+    # Gram matrix: G_ij = cos(v_i, v_j) since rows are unit-length
+    G = V @ V.T  # (K, K)
+
+    return V, mu, G
 
 
 # ---------------------------------------------------------------------------
@@ -165,7 +179,7 @@ def sample_diverse_pairs(embeddings, option_ids, num_pairs, num_strata, seed):
 def compute_projections(embeddings, V, mu, idx_a, idx_b):
     """Compute projection of δ = φ(a) - φ(b) onto V.
 
-    Returns λ = V⊤δ as a 1D array of shape (K,).
+    Returns λ = Vδ as a 1D array of shape (K,).
     """
     phi_a = embeddings[idx_a]
     phi_b = embeddings[idx_b]
@@ -191,17 +205,11 @@ def scale_to_range(lam, all_lambdas, range_val=100):
 # ---------------------------------------------------------------------------
 
 def build_display_text(option_row, display_column, text_column=None):
-    """Build a human-readable display string for an option.
-
-    For the experiment, we show a structured card rather than the
-    raw embedding template. Returns a dict with structured fields.
-    """
+    """Build a human-readable display string for an option."""
     result = {}
-    # Title (or display column)
     if display_column and display_column in option_row:
         result["title"] = option_row[display_column]
 
-    # Include other useful columns, excluding internal ones
     skip = {"_rendered_text", display_column, "movie_id", "action_id",
             "option_id", "id"}
     for key, val in option_row.items():
@@ -244,16 +252,13 @@ def build_trials(pairs, embeddings, V, mu, dimensions, options_lookup,
         opt_a = options_lookup.get(pair["option_a_id"], {})
         opt_b = options_lookup.get(pair["option_b_id"], {})
 
-        # Display info
         display_a = build_display_text(opt_a, display_column, text_column)
         display_b = build_display_text(opt_b, display_column, text_column)
 
-        # Compute scaled projections
-        lam_raw = all_lambdas[p_idx]  # (K,) — positive means A > B
-        scaled_a = scale_to_range(lam_raw, all_lambdas, 100)    # if A chosen
-        scaled_b = scale_to_range(-lam_raw, all_lambdas, 100)   # if B chosen
+        lam_raw = all_lambdas[p_idx]
+        scaled_a = scale_to_range(lam_raw, all_lambdas, 100)
+        scaled_b = scale_to_range(-lam_raw, all_lambdas, 100)
 
-        # Build slider list
         sliders = []
         for s_idx, sm in enumerate(slider_meta):
             sliders.append({
@@ -293,40 +298,41 @@ def build_trials(pairs, embeddings, V, mu, dimensions, options_lookup,
 # Experiment config
 # ---------------------------------------------------------------------------
 
-def build_experiment_config(slider_meta, dimensions, args):
+def build_experiment_config(slider_meta, dimensions, args, G=None):
     """Build experiment_config.json with condition settings."""
-    return {
+    config = {
         "domain": args.domain or "unknown",
         "choice_context": args.choice_context or "",
         "num_trials_per_participant": args.trials_per_participant,
+        "top_k_sliders": 5,
         "conditions": {
             "choice_only": {
                 "label": "Choice Only",
-                "description": "Binary choice, no dimension sliders shown.",
+                "description": "Binary choice, no dimension information shown.",
                 "show_sliders": False,
                 "sliders_adjustable": False,
-                "show_free_text": False,
+                "show_checkboxes": False,
             },
             "choice_readonly_sliders": {
                 "label": "Choice + Read-Only Sliders",
-                "description": "Binary choice with dimension scores shown (not adjustable).",
+                "description": "Binary choice with top-5 dimension scores shown (not adjustable).",
                 "show_sliders": True,
                 "sliders_adjustable": False,
-                "show_free_text": False,
+                "show_checkboxes": False,
             },
             "choice_adjustable_sliders": {
                 "label": "Choice + Adjustable Sliders",
-                "description": "Binary choice with adjustable dimension sliders.",
+                "description": "Binary choice with top-5 adjustable dimension sliders that co-move.",
                 "show_sliders": True,
                 "sliders_adjustable": True,
-                "show_free_text": False,
+                "show_checkboxes": False,
             },
-            "choice_sliders_text": {
-                "label": "Choice + Sliders + Reason",
-                "description": "Binary choice with adjustable sliders and a free-text reason field.",
-                "show_sliders": True,
-                "sliders_adjustable": True,
-                "show_free_text": True,
+            "choice_checkboxes": {
+                "label": "Choice + Relevance Checkboxes",
+                "description": "Binary choice with top-5 dimensions shown as checkboxes. Check dimensions relevant to your choice.",
+                "show_sliders": False,
+                "sliders_adjustable": False,
+                "show_checkboxes": True,
             },
         },
         "default_condition": "choice_adjustable_sliders",
@@ -343,6 +349,15 @@ def build_experiment_config(slider_meta, dimensions, args):
             for sm in slider_meta
         ],
     }
+
+    # Include Gram matrix for slider co-movement in the interface
+    if G is not None:
+        config["gram_matrix"] = [
+            [round(float(G[i, j]), 6) for j in range(G.shape[1])]
+            for i in range(G.shape[0])
+        ]
+
+    return config
 
 
 # ---------------------------------------------------------------------------
@@ -394,14 +409,12 @@ def main():
     def resolve_path(p):
         if Path(p).is_absolute():
             return p
-        # Prefer CWD (repo root when run from pipeline)
         if Path(p).exists():
             return str(Path(p).resolve())
-        # Fall back to config-relative
         config_relative = config_dir / p
         if config_relative.exists():
             return str(config_relative)
-        return p  # return as-is, will error later
+        return p
 
     csv_path = resolve_path(csv_path)
     if template_path:
@@ -426,8 +439,11 @@ def main():
     print(f"  {len(dimensions)} dimensions")
 
     print("Loading directions...")
-    V, mu = load_directions(args.directions)
+    V, mu, G = load_directions(args.directions)
     print(f"  V: {V.shape}, mu: {mu.shape}")
+    print(f"  Gram matrix condition number: {np.linalg.cond(G):.1f}")
+    off_diag = G - np.eye(G.shape[0])
+    print(f"  Max inter-dimension correlation: {np.abs(off_diag).max():.3f}")
 
     # Verify K matches
     if V.shape[0] != len(dimensions):
@@ -436,6 +452,7 @@ def main():
               f"Using min({V.shape[0]}, {len(dimensions)}).")
         k = min(V.shape[0], len(dimensions))
         V = V[:k]
+        G = G[:k, :k]
         dimensions = dimensions[:k]
 
     # Sample pairs
@@ -452,8 +469,8 @@ def main():
         display_column, text_column, args.choice_context,
     )
 
-    # Build experiment config
-    experiment_config = build_experiment_config(slider_meta, dimensions, args)
+    # Build experiment config (include Gram matrix for slider co-movement)
+    experiment_config = build_experiment_config(slider_meta, dimensions, args, G)
 
     # Write outputs
     output_dir = Path(args.output_dir)
