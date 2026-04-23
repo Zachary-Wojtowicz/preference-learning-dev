@@ -43,7 +43,8 @@ def load_data(embeddings_parquet: str, bt_scores_csv: str, directions_npz: str,
     -------
     embeddings : (N, d) float64
     bt_scores  : (N, K) float64
-    V          : (K, d) float64  — orthonormal direction matrix
+    V          : (K, d) float64  — direction matrix (unit-length rows, NOT orthogonal)
+    G_inv      : (K, K) float64  — inverse Gram matrix (V V⊤)⁻¹
     mu         : (d,)  float64   — mean embedding
     option_ids : list of str
     dim_names  : list of str
@@ -69,10 +70,23 @@ def load_data(embeddings_parquet: str, bt_scores_csv: str, directions_npz: str,
     bt_scores = bt_pivot.values.astype(np.float64)
 
     npz = np.load(directions_npz)
-    V = npz["directions_ortho"].astype(np.float64)
+    V_raw = npz["directions_raw"].astype(np.float64)   # (K, d)
     mu = npz["mean_embedding"].astype(np.float64)
 
-    return embeddings, bt_scores, V, mu, option_ids, dim_names
+    # Normalize rows to unit length
+    norms = np.linalg.norm(V_raw, axis=1, keepdims=True)
+    norms[norms == 0] = 1.0
+    V = V_raw / norms
+
+    # Gram matrix and regularized inverse
+    G = V @ V.T
+    G_inv = np.linalg.inv(G + 1e-6 * np.eye(G.shape[0]))
+
+    print(f"  Gram matrix condition number: {np.linalg.cond(G):.1f}")
+    off_diag = G - np.eye(G.shape[0])
+    print(f"  Max inter-dimension correlation: {np.abs(off_diag).max():.3f}")
+
+    return embeddings, bt_scores, V, G_inv, mu, option_ids, dim_names
 
 
 def load_dimensions(dimensions_json: str):
@@ -395,27 +409,38 @@ def update_standard(theta, phi_a, phi_b, y, lr):
     return theta + lr * (y - pred) * delta
 
 
-def update_projected(theta, phi_a, phi_b, y, lr, V):
+def update_projected(theta, phi_a, phi_b, y, lr, V, G_inv):
+    """Condition 2: Gradient projected onto interpretable subspace.
+
+    With non-orthogonal V, the oblique projector is P = V⊤ G⁻¹ V.
+    """
     delta = phi_a - phi_b
     pred = sigmoid(theta @ delta)
     grad = (y - pred) * delta
-    projected_grad = V.T @ (V @ grad)
+    lam = V @ grad
+    projected_grad = V.T @ (G_inv @ lam)
     return theta + lr * projected_grad
 
 
-def update_slider(theta, phi_a, phi_b, y, lr, V, lam_adjusted):
+def update_slider(theta, phi_a, phi_b, y, lr, V, G_inv, lam_adjusted):
+    """Condition 3: Slider-adjusted gradient.
+
+    Sliders provide importance-weighted magnitudes.
+    Direction comes from (y - pred). G⁻¹ decorrelates before lifting.
+    """
     delta = phi_a - phi_b
     pred = sigmoid(theta @ delta)
-    grad_direction = V.T @ lam_adjusted
+    grad_direction = V.T @ (G_inv @ lam_adjusted)
     return theta + lr * (y - pred) * grad_direction
 
 
-def update_partial(theta, phi_a, phi_b, y, lr, V, lam_adjusted, proj_lambda):
+def update_partial(theta, phi_a, phi_b, y, lr, V, G_inv, lam_adjusted, proj_lambda):
+    """Condition 4: Interpolation between standard and slider-adjusted."""
     delta = phi_a - phi_b
     pred = sigmoid(theta @ delta)
     scalar = y - pred
     standard_part = scalar * delta
-    slider_part = scalar * (V.T @ lam_adjusted)
+    slider_part = scalar * (V.T @ (G_inv @ lam_adjusted))
     return theta + lr * ((1 - proj_lambda) * standard_part + proj_lambda * slider_part)
 
 
@@ -469,7 +494,7 @@ def run_simulation(args):
 
     # --- Load data ---
     print("Loading data...")
-    embeddings, bt_scores, V, mu, option_ids, dim_names = load_data(
+    embeddings, bt_scores, V, G_inv, mu, option_ids, dim_names = load_data(
         args.embeddings_parquet, args.bt_scores, args.directions,
         option_id_column=args.option_id_column,
     )
@@ -643,10 +668,10 @@ def run_simulation(args):
             })
 
             thetas["standard"] = update_standard(thetas["standard"], phi_a, phi_b, y, args.learning_rate)
-            thetas["projected"] = update_projected(thetas["projected"], phi_a, phi_b, y, args.learning_rate, V)
-            thetas["slider"] = update_slider(thetas["slider"], phi_a, phi_b, y, args.learning_rate, V, lam_adjusted)
+            thetas["projected"] = update_projected(thetas["projected"], phi_a, phi_b, y, args.learning_rate, V, G_inv)
+            thetas["slider"] = update_slider(thetas["slider"], phi_a, phi_b, y, args.learning_rate, V, G_inv, lam_adjusted)
             thetas["partial"] = update_partial(
-                thetas["partial"], phi_a, phi_b, y, args.learning_rate, V, lam_adjusted, args.projection_lambda
+                thetas["partial"], phi_a, phi_b, y, args.learning_rate, V, G_inv, lam_adjusted, args.projection_lambda
             )
 
             metrics = evaluate_choice_prediction(thetas, test_pairs, test_choices, embeddings)
