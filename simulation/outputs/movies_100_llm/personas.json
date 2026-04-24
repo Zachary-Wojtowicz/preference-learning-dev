@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "name": "Clara, 28",
+    "description": "A freelance graphic designer with a soft spot for the 1990s, Clara thrives on nostalgic, character-driven dramas that explore the subtleties of human emotion. She enjoys slow pacing and rich visual storytelling, often rewatching films like *Eternal Sunshine of the Spotless Mind* or *The Hours*. Though she appreciates humor, it has to be witty or bittersweet, not slapstick. She rarely watches action movies unless they're praised for their visual artistry, like *Mad Max: Fury Road*."
+  },
+  {
+    "id": 1,
+    "name": "Raj, 42",
+    "description": "A high school chemistry teacher and lifelong sci-fi fan, Raj is drawn to cerebral, concept-driven films that challenge his worldview. He loves movies that blend science with philosophy, such as *Arrival* or *Ex Machina*, and can appreciate dry humor and long exposition scenes. Though he\u2019ll watch a horror film if it has a clever twist, he rarely enjoys jump scares or gore. He often watches movies with his teenage daughter and is open to adapting his preferences based on her recommendations."
+  },
+  {
+    "id": 2,
+    "name": "Evelyn, 67",
+    "description": "A retired nurse who grew up in a small town, Evelyn prefers heartwarming, family-oriented films with clear moral arcs. She loves musicals and historical dramas, especially those with a strong female protagonist, like *The Sound of Music* or *The Theory of Everything*. She avoids horror and graphic violence but will watch a mystery if it has a satisfying resolution. She often watches films with her grandchildren and values emotional connection and relatability over stylistic flair."
+  },
+  {
+    "id": 3,
+    "name": "Marcus, 35",
+    "description": "A tech startup founder with a passion for minimalist aesthetics, Marcus is a fan of slow-burn, visually stunning films that focus on mood and atmosphere. He\u2019s known for watching Japanese and European cinema, such as *Drive* or *Let the Right One In*, and values silence and subtlety in storytelling. He avoids over-the-top action and comedy, preferring stories with emotional restraint and quiet tension. He often watches movies alone at night, sometimes with a glass of whiskey."
+  },
+  {
+    "id": 4,
+    "name": "Zoe, 21",
+    "description": "A college student majoring in psychology, Zoe is drawn to films that explore mental health, trauma, and identity. She enjoys indie films and psychological thrillers, such as *A Ghost Story* or *Requiem for a Dream*. Though she appreciates emotional intensity, she doesn\u2019t always seek out sadness\u2014she\u2019s also a fan of quirky, offbeat comedies. She often watches films with friends and discusses them in detail, especially if they spark a debate."
+  },
+  {
+    "id": 5,
+    "name": "David, 50",
+    "description": "A former military officer turned financial analyst, David prefers action-packed, high-stakes films with clear heroes and villains. He enjoys blockbusters with strong pacing and practical effects, such as *Die Hard* or *John Wick*. He also has a soft spot for war films and historical epics, especially those with a stoic, no-nonsense protagonist. He watches movies primarily for escapism and rarely seeks out experimental or avant-garde films."
+  },
+  {
+    "id": 6,
+    "name": "Lila, 31",
+    "description": "A social media influencer and fashion blogger, Lila enjoys stylish, visually rich films with charismatic leads and glossy settings. She\u2019s a big fan of romantic comedies, period dramas, and musicals, such as *La La Land* or *Crazy, Stupid Love*. She appreciates humor that\u2019s witty and sharp but avoids anything too dark or emotionally heavy. She often watches films for aesthetic inspiration and shares her favorites on her platforms."
+  },
+  {
+    "id": 7,
+    "name": "Amir, 29",
+    "description": "A documentary filmmaker and activist, Amir prefers nonfiction and films that highlight social justice, political issues, or environmental concerns. He\u2019s a fan of directors like Ken Loach and Ava DuVernay and often watches films in the context of global issues. While he appreciates strong storytelling, he also values authenticity and realism. He\u2019s less interested in mainstream Hollywood fare but will watch a popular film if it has a compelling message."
+  },
+  {
+    "id": 8,
+    "name": "Hannah, 19",
+    "description": "A first-year college student and aspiring screenwriter, Hannah is a voracious movie watcher with eclectic tastes. She enjoys everything from indie dramas to superhero films, as long as they\u2019re well-written and emotionally resonant. She\u2019s particularly drawn to films with strong female leads and complex narratives, like *Lady Bird* or *Black Panther*. She often writes about the movies she watches and is always looking for new perspectives and voices in cinema."
+  },
+  {
+    "id": 9,
+    "name": "George, 72",
+    "description": "A retired librarian, George is a classic film buff who grew up watching old Hollywood movies. He loves black-and-white films, particularly from the 1940s and 1950s, such as *Casablanca* or *The Third Man*. He prefers dialogue-driven storytelling and appreciates irony and wit. He\u2019s not a fan of modern CGI-heavy blockbusters but will watch them if they have a good story. He often watches films with his wife and enjoys discussing the historical context of the movies."
+  },
+  {
+    "id": 10,
+    "name": "Nina, 26",
+    "description": "A yoga instructor and holistic health coach, Nina gravitates toward films that promote mindfulness, healing, and inner peace. She enjoys spiritual and philosophical movies, like *Eat Pray Love* or *The Secret Life of Walter Mitty*, and appreciates stories that emphasize personal growth. She avoids horror and violent content but is open to dramas with emotional depth. She often watches movies in the evening as a form of relaxation and meditation."
+  },
+  {
+    "id": 11,
+    "name": "Javier, 46",
+    "description": "A bilingual high school Spanish teacher, Javier enjoys films from Latin America and Spain, as well as international cinema. He\u2019s drawn to films that reflect cultural identity and social issues, such as *Pan\u2019s Labyrinth* or *Roma*. He appreciates emotional depth and poetic storytelling but also enjoys well-paced action sequences. He often introduces his students to foreign films and discusses their cultural significance in class."
+  },
+  {
+    "id": 12,
+    "name": "Priya, 37",
+    "description": "A corporate lawyer with a love for mystery and suspense, Priya is a fan of thrillers and courtroom dramas. She enjoys films that keep her guessing, like *The Social Network* or *Prisoners*, and values strong dialogue and clever twists. She avoids horror but will watch a psychological thriller if it\u2019s well-written. She often watches movies during long flights and prefers ones that can be watched without subtitles or too much visual complexity."
+  },
+  {
+    "id": 13,
+    "name": "Kevin, 40",
+    "description": "A stay-at-home dad and part-time musician, Kevin enjoys quirky, character-driven films with a strong sense of humor and heart. He\u2019s a fan of indie films like *Eternal Sunshine of the Spotless Mind* or *Her*, and appreciates movies that blend emotional storytelling with unique visual styles. He also enjoys family-friendly comedies and avoids overly violent or cynical films. He often watches movies with his kids and values films that can be enjoyed by all ages."
+  },
+  {
+    "id": 14,
+    "name": "Aisha, 24",
+    "description": "A journalism student with a passion for true crime and investigative reporting, Aisha is drawn to films that explore moral ambiguity and real-world issues. She enjoys thrillers and documentaries that challenge the viewer to think critically, like *The Social Network* or *Spotlight*. She\u2019s less interested in fantasy and sci-fi but will watch them if they have a strong narrative. She often watches films for research and is always looking for new angles and perspectives in storytelling."
+  },
+  {
+    "id": 15,
+    "name": "Samuel, 55",
+    "description": "A retired mechanic with a love for Westerns and road movies, Samuel enjoys stories about outlaws, wanderers, and the American frontier. He\u2019s a fan of directors like Clint Eastwood and Terrence Malick and appreciates films with strong themes of freedom and personal struggle. He values visual storytelling and often rewatch films for their cinematography and soundtracks. He rarely watches comedies but enjoys films with a dry, wry sense of humor."
+  },
+  {
+    "id": 16,
+    "name": "Lena, 33",
+    "description": "A UX designer with a love for animation and fantasy, Lena enjoys films that blend imaginative visuals with emotional depth. She\u2019s a fan of animated films like *Spirited Away* or *Coco* and appreciates stories that appeal to both children and adults. She also enjoys live-action fantasy films with a strong visual style, such as *Pan\u2019s Labyrinth*. She avoids overly grim or violent content but is open to darker themes if they\u2019re handled with nuance."
+  },
+  {
+    "id": 17,
+    "name": "Elijah, 27",
+    "description": "A musician and part-time barista, Elijah is drawn to films that mirror the rhythm of music\u2014films with poetic pacing, visual rhythm, and emotional resonance. He\u2019s a fan of directors like Wong Kar-wai and Jim Jarmusch and enjoys films that feel like a mood or a dream, such as *2040* or *Paterson*. He avoids traditional three-act structures and prefers stories that unfold organically. He often watches films while sketching or writing music, letting the visuals inspire his creativity."
+  },
+  {
+    "id": 18,
+    "name": "Sofia, 30",
+    "description": "A travel blogger and digital nomad, Sofia is drawn to films that transport her to new places and cultures. She enjoys travel documentaries, adventure films, and stories set in exotic or historically rich locations, such as *Into the Wild* or *The Way Back*. She appreciates films that highlight human resilience and the beauty of the natural world. She rarely watches horror or overly dramatic films but enjoys thought-provoking dramas with a strong visual component."
+  },
+  {
+    "id": 19,
+    "name": "Tyler, 18",
+    "description": "A high school senior and aspiring actor, Tyler is a movie enthusiast who enjoys a wide range of genres but is particularly drawn to superhero films, action movies, and dramas with emotional stakes. He admires films that showcase strong performances and compelling character arcs, such as *The Dark Knight* or *Boys Don\u2019t Cry*. He also enjoys watching behind-the-scenes documentaries and is fascinated by the filmmaking process. He often rewatch films to analyze acting techniques and camera work."
+  }
+]

@@ -1,0 +1,2787 @@
+[
+  {
+    "cluster_id": 1,
+    "representative_reason": "Prioritize systemic and structural healthcare improvements",
+    "cluster_size": 28,
+    "member_reason_ids": [
+      778,
+      782,
+      783,
+      799,
+      800,
+      834,
+      835,
+      854,
+      875,
+      879,
+      880,
+      889,
+      894,
+      903,
+      939,
+      940,
+      943,
+      964,
+      965,
+      974,
+      975,
+      984,
+      992,
+      1009,
+      1010,
+      1019,
+      1022,
+      1044
+    ],
+    "contributing_pair_ids": [
+      77,
+      78,
+      80,
+      83,
+      85,
+      87,
+      88,
+      89,
+      90,
+      94,
+      96,
+      97,
+      98,
+      99,
+      101,
+      102,
+      104
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Prioritize concise and structured responses",
+    "cluster_size": 24,
+    "member_reason_ids": [
+      530,
+      555,
+      575,
+      593,
+      615,
+      636,
+      656,
+      662,
+      700,
+      705,
+      712,
+      722,
+      735,
+      757,
+      759
+    ],
+    "contributing_pair_ids": [
+      53,
+      55,
+      57,
+      59,
+      61,
+      63,
+      65,
+      66,
+      70,
+      71,
+      72,
+      73,
+      75,
+      76
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Prioritize immediate or quick results",
+    "cluster_size": 22,
+    "member_reason_ids": [
+      1040,
+      1060,
+      1074,
+      1094,
+      1095,
+      1096,
+      1097,
+      1098,
+      1099,
+      1111,
+      1129,
+      1130,
+      1131,
+      1132,
+      1133,
+      1164,
+      1174,
+      1175,
+      1176,
+      1177,
+      1202,
+      1229,
+      1241
+    ],
+    "contributing_pair_ids": [
+      104,
+      106,
+      107,
+      109,
+      110,
+      111,
+      113,
+      116,
+      117,
+      120,
+      123,
+      124
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Prioritize quick and immediate results",
+    "cluster_size": 18,
+    "member_reason_ids": [
+      1310,
+      1319,
+      1321,
+      1342,
+      1359,
+      1371,
+      1389,
+      1393,
+      1403,
+      1409,
+      1430,
+      1439,
+      1440,
+      1454,
+      1461,
+      1491,
+      1492
+    ],
+    "contributing_pair_ids": [
+      131,
+      132,
+      134,
+      136,
+      137,
+      139,
+      140,
+      141,
+      143,
+      144,
+      145,
+      146,
+      149
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Evidence-based and scientific reasoning",
+    "cluster_size": 14,
+    "member_reason_ids": [
+      0,
+      1,
+      4,
+      103,
+      135,
+      153,
+      197,
+      235,
+      247,
+      249,
+      250,
+      251,
+      253,
+      254
+    ],
+    "contributing_pair_ids": [
+      0,
+      10,
+      13,
+      15,
+      19,
+      23,
+      24,
+      25
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Value evidence-based and scientifically supported advice",
+    "cluster_size": 14,
+    "member_reason_ids": [
+      518,
+      538,
+      556,
+      582,
+      602,
+      647,
+      686,
+      737,
+      739,
+      740,
+      743,
+      753,
+      755,
+      760
+    ],
+    "contributing_pair_ids": [
+      51,
+      53,
+      55,
+      58,
+      60,
+      64,
+      68,
+      73,
+      74,
+      75,
+      76
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Value simplicity and ease of implementation",
+    "cluster_size": 14,
+    "member_reason_ids": [
+      1055,
+      1062,
+      1063,
+      1095,
+      1098,
+      1109,
+      1131,
+      1156,
+      1177,
+      1201,
+      1221,
+      1240,
+      1271,
+      1300
+    ],
+    "contributing_pair_ids": [
+      105,
+      106,
+      109,
+      111,
+      113,
+      115,
+      117,
+      120,
+      122,
+      124,
+      127,
+      130
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Emphasize holistic and patient-centered care",
+    "cluster_size": 13,
+    "member_reason_ids": [
+      515,
+      520,
+      539,
+      565,
+      569,
+      606,
+      641,
+      667,
+      670,
+      677,
+      697,
+      703,
+      746
+    ],
+    "contributing_pair_ids": [
+      51,
+      52,
+      53,
+      56,
+      60,
+      64,
+      66,
+      67,
+      69,
+      70,
+      74
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Emphasize structured and organized communication",
+    "cluster_size": 13,
+    "member_reason_ids": [
+      1047,
+      1064,
+      1070,
+      1087,
+      1104,
+      1122,
+      1134,
+      1144,
+      1156,
+      1173,
+      1206,
+      1244,
+      1248
+    ],
+    "contributing_pair_ids": [
+      104,
+      106,
+      107,
+      108,
+      110,
+      112,
+      113,
+      114,
+      115,
+      117,
+      120,
+      124
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Focus on long-term and sustainable health",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      1,
+      10,
+      12,
+      14,
+      17,
+      25,
+      51,
+      54,
+      90,
+      101,
+      104,
+      137
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      2,
+      5,
+      9,
+      10,
+      13
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Value evidence-based and scientifically supported advice",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      780,
+      784,
+      794,
+      814,
+      818,
+      901,
+      931,
+      947,
+      1011,
+      1013,
+      1023,
+      1036
+    ],
+    "contributing_pair_ids": [
+      78,
+      79,
+      81,
+      90,
+      93,
+      94,
+      101,
+      102,
+      103
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Emphasizing technology and innovation in healthcare",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      262,
+      268,
+      302,
+      303,
+      306,
+      330,
+      331,
+      333,
+      340,
+      341,
+      370,
+      500
+    ],
+    "contributing_pair_ids": [
+      26,
+      30,
+      33,
+      34,
+      37,
+      50
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Promote long-term health and sustainability",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      517,
+      518,
+      535,
+      536,
+      567,
+      597,
+      601,
+      610,
+      677,
+      701,
+      710,
+      748
+    ],
+    "contributing_pair_ids": [
+      51,
+      53,
+      56,
+      59,
+      60,
+      61,
+      67,
+      70,
+      71,
+      74
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Value structured and organized responses",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      1314,
+      1324,
+      1344,
+      1370,
+      1376,
+      1394,
+      1397,
+      1444,
+      1448,
+      1450,
+      1472,
+      1475
+    ],
+    "contributing_pair_ids": [
+      131,
+      132,
+      134,
+      137,
+      139,
+      144,
+      145,
+      147
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Focus on systemic or large-scale solutions",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      1048,
+      1052,
+      1075,
+      1105,
+      1163,
+      1194,
+      1204,
+      1235,
+      1236,
+      1257,
+      1273,
+      1281
+    ],
+    "contributing_pair_ids": [
+      104,
+      105,
+      107,
+      110,
+      116,
+      119,
+      120,
+      123,
+      125,
+      127,
+      128
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Prioritize rapid and visible results",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      5,
+      30,
+      55,
+      80,
+      96,
+      100,
+      130,
+      133,
+      160,
+      200,
+      230
+    ],
+    "contributing_pair_ids": [
+      0,
+      3,
+      5,
+      8,
+      9,
+      10,
+      13,
+      16,
+      20,
+      23
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Emphasize patient-centered care and individual needs",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      781,
+      792,
+      795,
+      819,
+      821,
+      837,
+      885,
+      930,
+      944,
+      945,
+      960
+    ],
+    "contributing_pair_ids": [
+      78,
+      79,
+      82,
+      83,
+      88,
+      93,
+      94,
+      96
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Favoring structured, clear, and concise communication",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      270,
+      272,
+      273,
+      304,
+      325,
+      345,
+      346,
+      376,
+      379,
+      380,
+      511
+    ],
+    "contributing_pair_ids": [
+      27,
+      30,
+      32,
+      34,
+      37,
+      38,
+      51
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Favor quick, practical, and monetizable solutions",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      525,
+      534,
+      540,
+      544,
+      553,
+      570,
+      572,
+      573,
+      574,
+      701,
+      724
+    ],
+    "contributing_pair_ids": [
+      52,
+      53,
+      54,
+      55,
+      57,
+      70,
+      72
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Encourage innovation and future-oriented thinking",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      536,
+      545,
+      547,
+      549,
+      557,
+      580,
+      590,
+      635,
+      645,
+      686,
+      754
+    ],
+    "contributing_pair_ids": [
+      53,
+      54,
+      55,
+      58,
+      59,
+      63,
+      64,
+      68,
+      75
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Emphasize evidence-based and ethical practices",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      1331,
+      1346,
+      1377,
+      1396,
+      1400,
+      1411,
+      1414,
+      1476,
+      1477,
+      1479,
+      1494
+    ],
+    "contributing_pair_ids": [
+      133,
+      134,
+      137,
+      139,
+      140,
+      141,
+      147,
+      148,
+      149
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Value technological innovation and accessibility",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      1050,
+      1071,
+      1088,
+      1117,
+      1120,
+      1175,
+      1200,
+      1210,
+      1273,
+      1295,
+      1298
+    ],
+    "contributing_pair_ids": [
+      105,
+      107,
+      108,
+      111,
+      112,
+      117,
+      120,
+      121,
+      127,
+      129
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Clarity, specificity, and structured communication",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      3,
+      15,
+      22,
+      28,
+      36,
+      81,
+      120,
+      136,
+      220,
+      236
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      2,
+      3,
+      8,
+      12,
+      13,
+      22,
+      23
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Promote empathy, compassion, and emotional support",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      794,
+      795,
+      804,
+      824,
+      826,
+      833,
+      870,
+      873,
+      883,
+      983
+    ],
+    "contributing_pair_ids": [
+      79,
+      80,
+      82,
+      83,
+      87,
+      88,
+      98
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Focus on practical, actionable, and immediate solutions",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      786,
+      804,
+      808,
+      817,
+      832,
+      830,
+      833,
+      959,
+      1004,
+      1030
+    ],
+    "contributing_pair_ids": [
+      78,
+      80,
+      81,
+      83,
+      96,
+      100,
+      103
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Prioritizing patient safety and public health",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      260,
+      361,
+      434,
+      435,
+      436,
+      495,
+      496,
+      498,
+      499,
+      500
+    ],
+    "contributing_pair_ids": [
+      26,
+      36,
+      43,
+      49,
+      50
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Valuing access to care and global equity",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      261,
+      305,
+      386,
+      446,
+      469,
+      480,
+      485,
+      487,
+      489,
+      490
+    ],
+    "contributing_pair_ids": [
+      26,
+      30,
+      38,
+      44,
+      46,
+      48,
+      49
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Prioritizing actionable and specific solutions",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      264,
+      275,
+      277,
+      278,
+      285,
+      292,
+      293,
+      322,
+      362,
+      493
+    ],
+    "contributing_pair_ids": [
+      26,
+      27,
+      28,
+      29,
+      32,
+      36,
+      49
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Value ethical and responsible healthcare practices",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      521,
+      522,
+      531,
+      533,
+      598,
+      602,
+      617,
+      681,
+      711,
+      720
+    ],
+    "contributing_pair_ids": [
+      52,
+      53,
+      59,
+      60,
+      61,
+      68,
+      71,
+      72
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Prioritize actionable and implementable advice",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      541,
+      550,
+      600,
+      605,
+      630,
+      660,
+      690,
+      698,
+      709,
+      769
+    ],
+    "contributing_pair_ids": [
+      54,
+      55,
+      60,
+      63,
+      66,
+      69,
+      71,
+      77
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Focus on public health and equity",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      1316,
+      1329,
+      1354,
+      1355,
+      1365,
+      1366,
+      1398,
+      1401,
+      1436,
+      1496
+    ],
+    "contributing_pair_ids": [
+      131,
+      133,
+      135,
+      136,
+      139,
+      140,
+      143,
+      149
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Prioritize evidence-based and ethical practices",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      1066,
+      1093,
+      1094,
+      1114,
+      1153,
+      1170,
+      1178,
+      1208,
+      1224,
+      1282
+    ],
+    "contributing_pair_ids": [
+      106,
+      109,
+      111,
+      115,
+      117,
+      120,
+      122,
+      128
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Emotional appeal and persuasive language",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      9,
+      70,
+      73,
+      85,
+      88,
+      115,
+      116,
+      205,
+      206
+    ],
+    "contributing_pair_ids": [
+      0,
+      7,
+      8,
+      11,
+      20
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Global health equity and access",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      20,
+      22,
+      23,
+      24,
+      26,
+      29,
+      141,
+      145,
+      155
+    ],
+    "contributing_pair_ids": [
+      2,
+      14,
+      15
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Innovation and technological advancement",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      14,
+      21,
+      63,
+      66,
+      67,
+      68,
+      72,
+      122,
+      126
+    ],
+    "contributing_pair_ids": [
+      1,
+      2,
+      6,
+      7,
+      12
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Encourage innovation and technological advancement",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      790,
+      791,
+      802,
+      859,
+      860,
+      887,
+      970,
+      998,
+      1035
+    ],
+    "contributing_pair_ids": [
+      79,
+      80,
+      86,
+      88,
+      97,
+      99,
+      103
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Promoting preventive care and public health initiatives",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      263,
+      274,
+      297,
+      301,
+      316,
+      388,
+      447,
+      486,
+      488
+    ],
+    "contributing_pair_ids": [
+      26,
+      27,
+      29,
+      30,
+      31,
+      38,
+      44,
+      48
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Focus on systemic and global health equity",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      537,
+      586,
+      589,
+      625,
+      675,
+      680,
+      682,
+      744,
+      749
+    ],
+    "contributing_pair_ids": [
+      53,
+      58,
+      62,
+      67,
+      68,
+      74,
+      75
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Value entrepreneurial and unconventional thinking",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      526,
+      527,
+      528,
+      576,
+      579,
+      599,
+      715,
+      717,
+      725
+    ],
+    "contributing_pair_ids": [
+      52,
+      57,
+      59,
+      71,
+      72
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Promote long-term and sustainable solutions",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      1333,
+      1347,
+      1373,
+      1382,
+      1402,
+      1435,
+      1447,
+      1450,
+      1495
+    ],
+    "contributing_pair_ids": [
+      133,
+      134,
+      137,
+      138,
+      140,
+      143,
+      144,
+      145,
+      149
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Encourage bold or unconventional recommendations",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      1049,
+      1057,
+      1077,
+      1080,
+      1167,
+      1174,
+      1175,
+      1177,
+      1299
+    ],
+    "contributing_pair_ids": [
+      105,
+      107,
+      108,
+      116,
+      117,
+      130
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Value clarity and precision in communication",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      1061,
+      1075,
+      1104,
+      1132,
+      1151,
+      1173,
+      1201,
+      1213,
+      1308
+    ],
+    "contributing_pair_ids": [
+      106,
+      107,
+      110,
+      113,
+      115,
+      117,
+      120,
+      121,
+      130
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Simplicity and convenience in health advice",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      6,
+      31,
+      33,
+      56,
+      99,
+      131,
+      165,
+      231
+    ],
+    "contributing_pair_ids": [
+      0,
+      3,
+      5,
+      9,
+      13,
+      16,
+      23
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Unconventional or extreme health methods",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      7,
+      35,
+      37,
+      38,
+      39,
+      132,
+      161,
+      202
+    ],
+    "contributing_pair_ids": [
+      0,
+      3,
+      13,
+      16,
+      20
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Value economic efficiency and cost-effectiveness",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      801,
+      803,
+      855,
+      856,
+      900,
+      955,
+      956,
+      957
+    ],
+    "contributing_pair_ids": [
+      80,
+      85,
+      90,
+      95
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Emphasize technological and digital advancements",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      547,
+      588,
+      622,
+      628,
+      638,
+      648,
+      664,
+      766
+    ],
+    "contributing_pair_ids": [
+      54,
+      58,
+      62,
+      63,
+      64,
+      66,
+      76
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Prioritize empathy and emotional support",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      520,
+      565,
+      580,
+      583,
+      584,
+      606,
+      665,
+      741
+    ],
+    "contributing_pair_ids": [
+      52,
+      56,
+      58,
+      60,
+      66,
+      74
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Favor structured and template-based formats",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      519,
+      555,
+      575,
+      593,
+      615,
+      636,
+      656,
+      735
+    ],
+    "contributing_pair_ids": [
+      51,
+      55,
+      57,
+      59,
+      61,
+      63,
+      65,
+      73
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Value brevity and directness in communication",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      1312,
+      1320,
+      1340,
+      1362,
+      1373,
+      1390,
+      1460,
+      1472
+    ],
+    "contributing_pair_ids": [
+      131,
+      132,
+      134,
+      136,
+      137,
+      139,
+      146,
+      147
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Encourage innovation and forward-looking ideas",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      1315,
+      1326,
+      1345,
+      1351,
+      1352,
+      1357,
+      1376,
+      1395
+    ],
+    "contributing_pair_ids": [
+      131,
+      132,
+      134,
+      135,
+      137,
+      139
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Promote long-term sustainability and well-being",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      1091,
+      1115,
+      1116,
+      1123,
+      1172,
+      1237,
+      1254,
+      1305
+    ],
+    "contributing_pair_ids": [
+      109,
+      111,
+      112,
+      117,
+      123,
+      125,
+      130
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Favor actionable and specific advice",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      1059,
+      1063,
+      1074,
+      1101,
+      1139,
+      1190,
+      1219,
+      1298
+    ],
+    "contributing_pair_ids": [
+      106,
+      107,
+      110,
+      114,
+      119,
+      122,
+      129
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Integration of mental and physical health",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      11,
+      18,
+      73,
+      115,
+      118,
+      119,
+      209
+    ],
+    "contributing_pair_ids": [
+      1,
+      7,
+      11,
+      20
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Preventative care and early detection",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      12,
+      18,
+      247,
+      248,
+      249,
+      250,
+      290
+    ],
+    "contributing_pair_ids": [
+      1,
+      24,
+      25,
+      29
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Systemic and structural healthcare improvements",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      20,
+      28,
+      40,
+      60,
+      175,
+      225,
+      244
+    ],
+    "contributing_pair_ids": [
+      2,
+      4,
+      6,
+      17,
+      22,
+      24
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Support entrepreneurship and alternative income streams",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      778,
+      785,
+      788,
+      805,
+      811,
+      954,
+      958
+    ],
+    "contributing_pair_ids": [
+      77,
+      78,
+      80,
+      81,
+      95
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Prioritize ethical responsibility and transparency",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      779,
+      797,
+      818,
+      839,
+      841,
+      843,
+      933
+    ],
+    "contributing_pair_ids": [
+      78,
+      79,
+      81,
+      84,
+      93
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Favor bold, unconventional, or extreme solutions",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      789,
+      809,
+      825,
+      827,
+      919,
+      920,
+      1017
+    ],
+    "contributing_pair_ids": [
+      79,
+      81,
+      82,
+      92,
+      101
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Valuing innovation and challenging the status quo",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      288,
+      289,
+      298,
+      320,
+      323,
+      324,
+      404
+    ],
+    "contributing_pair_ids": [
+      28,
+      29,
+      32,
+      40
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Favoring financial sustainability and profitability",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      291,
+      309,
+      310,
+      313,
+      338,
+      339,
+      510
+    ],
+    "contributing_pair_ids": [
+      29,
+      30,
+      31,
+      33,
+      51
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Focusing on systemic and policy-level change",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      294,
+      307,
+      364,
+      368,
+      405,
+      465,
+      466
+    ],
+    "contributing_pair_ids": [
+      29,
+      30,
+      36,
+      40,
+      46
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Value efficiency and cost-effectiveness",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      562,
+      616,
+      663,
+      691,
+      713,
+      721,
+      776
+    ],
+    "contributing_pair_ids": [
+      56,
+      61,
+      66,
+      69,
+      71,
+      72,
+      77
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Encourage exploration of alternative revenue streams",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      526,
+      540,
+      576,
+      579,
+      715,
+      717,
+      725
+    ],
+    "contributing_pair_ids": [
+      52,
+      54,
+      57,
+      71,
+      72
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Prioritize immediate and tangible results",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      519,
+      570,
+      572,
+      573,
+      701,
+      709,
+      770
+    ],
+    "contributing_pair_ids": [
+      51,
+      57,
+      70,
+      71,
+      77
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Value clarity and precision in communication",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      530,
+      555,
+      616,
+      621,
+      662,
+      700,
+      757
+    ],
+    "contributing_pair_ids": [
+      53,
+      55,
+      61,
+      62,
+      66,
+      70,
+      75
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Focus on dietary and lifestyle interventions",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      1311,
+      1361,
+      1391,
+      1456,
+      1457,
+      1458,
+      1463
+    ],
+    "contributing_pair_ids": [
+      131,
+      136,
+      139,
+      145,
+      146
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Value actionable and practical advice",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      1319,
+      1339,
+      1369,
+      1393,
+      1417,
+      1459,
+      1473
+    ],
+    "contributing_pair_ids": [
+      132,
+      134,
+      137,
+      139,
+      141,
+      146,
+      147
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Promote financial viability and income generation",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      1335,
+      1381,
+      1384,
+      1385,
+      1386,
+      1387,
+      1404
+    ],
+    "contributing_pair_ids": [
+      133,
+      138,
+      140
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Value global collaboration and equity",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      1046,
+      1078,
+      1108,
+      1117,
+      1195,
+      1234,
+      1238
+    ],
+    "contributing_pair_ids": [
+      104,
+      107,
+      110,
+      111,
+      119,
+      123
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Encourage forward-looking and innovative thinking",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      1069,
+      1084,
+      1086,
+      1145,
+      1154,
+      1247,
+      1294
+    ],
+    "contributing_pair_ids": [
+      107,
+      108,
+      114,
+      115,
+      124,
+      129
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Value financial or professional gain",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      1079,
+      1082,
+      1109,
+      1199,
+      1222,
+      1230,
+      1264
+    ],
+    "contributing_pair_ids": [
+      108,
+      111,
+      120,
+      122,
+      123,
+      126
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Cost-effectiveness and resource constraints",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      61,
+      76,
+      78,
+      95,
+      190,
+      199
+    ],
+    "contributing_pair_ids": [
+      6,
+      7,
+      9,
+      19
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Ethical and privacy considerations",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      13,
+      61,
+      159,
+      177,
+      216,
+      217
+    ],
+    "contributing_pair_ids": [
+      1,
+      6,
+      15,
+      17,
+      21
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Actionable and measurable outcomes",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      16,
+      48,
+      81,
+      91,
+      135,
+      221
+    ],
+    "contributing_pair_ids": [
+      1,
+      4,
+      8,
+      9,
+      13,
+      22
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Diet-centric health strategies",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      36,
+      113,
+      161,
+      164,
+      232,
+      233
+    ],
+    "contributing_pair_ids": [
+      3,
+      11,
+      16,
+      23
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Collaboration and international efforts",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      22,
+      27,
+      178,
+      188,
+      198,
+      227
+    ],
+    "contributing_pair_ids": [
+      2,
+      17,
+      18,
+      19,
+      22
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Value clarity, simplicity, and structured communication",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      815,
+      822,
+      910,
+      961,
+      985,
+      1007
+    ],
+    "contributing_pair_ids": [
+      81,
+      82,
+      91,
+      96,
+      98,
+      100
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Encourage holistic and integrative health approaches",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      787,
+      872,
+      928,
+      962,
+      1025,
+      1027
+    ],
+    "contributing_pair_ids": [
+      78,
+      87,
+      92,
+      96,
+      102
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Promote public health and universal access",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      780,
+      837,
+      880,
+      895,
+      941,
+      1044
+    ],
+    "contributing_pair_ids": [
+      78,
+      83,
+      88,
+      89,
+      94,
+      104
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Valuing long-term efficiency and sustainability",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      266,
+      269,
+      276,
+      389,
+      408,
+      492
+    ],
+    "contributing_pair_ids": [
+      26,
+      27,
+      38,
+      40,
+      49
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Focusing on mental health and emotional support",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      280,
+      282,
+      318,
+      390,
+      410,
+      455
+    ],
+    "contributing_pair_ids": [
+      28,
+      31,
+      39,
+      41,
+      45
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Encouraging professional consultation and caution",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      281,
+      284,
+      391,
+      413,
+      456,
+      457
+    ],
+    "contributing_pair_ids": [
+      28,
+      39,
+      41,
+      45
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Prioritizing speed and intensity in health interventions",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      279,
+      286,
+      320,
+      321,
+      401,
+      450
+    ],
+    "contributing_pair_ids": [
+      27,
+      28,
+      32,
+      40,
+      45
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Emphasizing individualized and patient-centered care",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      271,
+      299,
+      300,
+      333,
+      431,
+      463
+    ],
+    "contributing_pair_ids": [
+      27,
+      29,
+      30,
+      33,
+      43,
+      46
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Valuing ethical and societal considerations",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      283,
+      295,
+      296,
+      317,
+      371,
+      382
+    ],
+    "contributing_pair_ids": [
+      28,
+      29,
+      31,
+      37,
+      38
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Favor responses that align with user intent",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      514,
+      544,
+      553,
+      554,
+      634,
+      738
+    ],
+    "contributing_pair_ids": [
+      51,
+      54,
+      55,
+      63,
+      73
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Encourage speculative and visionary thinking",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      549,
+      594,
+      645,
+      686,
+      754,
+      758
+    ],
+    "contributing_pair_ids": [
+      54,
+      59,
+      64,
+      68,
+      75
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Value flexibility and multiple options",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      522,
+      607,
+      658,
+      678,
+      728,
+      730
+    ],
+    "contributing_pair_ids": [
+      52,
+      60,
+      65,
+      67,
+      72,
+      73
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Acknowledge real-world constraints and practicality",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      1338,
+      1343,
+      1383,
+      1432,
+      1483,
+      1487
+    ],
+    "contributing_pair_ids": [
+      133,
+      134,
+      138,
+      143,
+      148
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Value systemic and structural improvements",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      1334,
+      1364,
+      1398,
+      1434,
+      1449,
+      1497
+    ],
+    "contributing_pair_ids": [
+      133,
+      136,
+      139,
+      143,
+      145,
+      149
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Encourage bold or unconventional approaches",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      1323,
+      1337,
+      1372,
+      1406,
+      1426,
+      1442
+    ],
+    "contributing_pair_ids": [
+      132,
+      133,
+      137,
+      140,
+      142,
+      144
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Prioritize patient-centered care",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      1085,
+      1089,
+      1103,
+      1148,
+      1218,
+      1256
+    ],
+    "contributing_pair_ids": [
+      108,
+      109,
+      110,
+      114,
+      121,
+      125
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Value structured and templated responses",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      1064,
+      1070,
+      1134,
+      1144,
+      1156,
+      1248
+    ],
+    "contributing_pair_ids": [
+      106,
+      107,
+      113,
+      114,
+      115,
+      124
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Encourage alternative or unconventional health approaches",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      1056,
+      1062,
+      1096,
+      1130,
+      1190,
+      1192
+    ],
+    "contributing_pair_ids": [
+      105,
+      106,
+      109,
+      113,
+      119
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Empowerment and self-reliance",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      75,
+      77,
+      78,
+      95,
+      109
+    ],
+    "contributing_pair_ids": [
+      7,
+      9,
+      10
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Institutional prestige and control",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      211,
+      212,
+      213,
+      214,
+      224
+    ],
+    "contributing_pair_ids": [
+      21,
+      22
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Focus on medical infrastructure and access",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      28,
+      40,
+      45,
+      46,
+      147
+    ],
+    "contributing_pair_ids": [
+      2,
+      4,
+      14
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Value speed and immediacy in health interventions",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      830,
+      832,
+      904,
+      1014,
+      1029
+    ],
+    "contributing_pair_ids": [
+      83,
+      90,
+      101,
+      103
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Favor centralized control and policy-driven solutions",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      800,
+      857,
+      877,
+      907,
+      992
+    ],
+    "contributing_pair_ids": [
+      80,
+      85,
+      87,
+      90,
+      99
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Encourage creativity and out-of-the-box thinking",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      785,
+      844,
+      847,
+      849,
+      1000
+    ],
+    "contributing_pair_ids": [
+      78,
+      84,
+      85,
+      100
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Supporting institutional autonomy and flexibility",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      265,
+      299,
+      367,
+      399,
+      437
+    ],
+    "contributing_pair_ids": [
+      26,
+      29,
+      36,
+      39,
+      43
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Promoting convenience and accessibility",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      273,
+      312,
+      315,
+      381,
+      417
+    ],
+    "contributing_pair_ids": [
+      27,
+      31,
+      38,
+      41
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Valuing structured and template-based responses",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      304,
+      345,
+      379,
+      380,
+      503
+    ],
+    "contributing_pair_ids": [
+      30,
+      34,
+      37,
+      38,
+      50
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Favoring holistic and integrated approaches",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      284,
+      342,
+      377,
+      458,
+      464
+    ],
+    "contributing_pair_ids": [
+      28,
+      34,
+      37,
+      45,
+      46
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Prioritizing rapid deployment and urgency",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      320,
+      400,
+      401,
+      403,
+      450
+    ],
+    "contributing_pair_ids": [
+      32,
+      40,
+      45
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Value clarity and precision in communication",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      1378,
+      1397,
+      1448,
+      1478,
+      1488
+    ],
+    "contributing_pair_ids": [
+      137,
+      139,
+      144,
+      147,
+      148
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Promote technology and AI in healthcare",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      1352,
+      1359,
+      1391,
+      1412,
+      1421
+    ],
+    "contributing_pair_ids": [
+      135,
+      136,
+      139,
+      141,
+      142
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Value multi-faceted and balanced perspectives",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      1317,
+      1325,
+      1347,
+      1367,
+      1468
+    ],
+    "contributing_pair_ids": [
+      131,
+      132,
+      134,
+      136,
+      146
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Value public health and institutional safety",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      1051,
+      1077,
+      1150,
+      1290,
+      1291
+    ],
+    "contributing_pair_ids": [
+      105,
+      107,
+      115,
+      129
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Encourage entrepreneurial or market-driven approaches",
+    "cluster_size": 5,
+    "member_reason_ids": [
+      1109,
+      1199,
+      1264,
+      1265,
+      1284
+    ],
+    "contributing_pair_ids": [
+      111,
+      120,
+      126,
+      128
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Value humor, irreverence, or light-hearted tone",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      805,
+      845,
+      846,
+      848
+    ],
+    "contributing_pair_ids": [
+      80,
+      84
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Prioritize autonomy and self-directed action",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      806,
+      831,
+      981,
+      1018
+    ],
+    "contributing_pair_ids": [
+      80,
+      83,
+      98,
+      101
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Favor alternative or non-traditional medical approaches",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      820,
+      828,
+      1002,
+      1028
+    ],
+    "contributing_pair_ids": [
+      82,
+      100,
+      102
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Value structured, template-based responses",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      822,
+      848,
+      994,
+      1021
+    ],
+    "contributing_pair_ids": [
+      82,
+      84,
+      99,
+      102
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Encourage risk-taking and bold ideas",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      1343,
+      1406,
+      1426,
+      1471
+    ],
+    "contributing_pair_ids": [
+      134,
+      140,
+      142,
+      147
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Value global cooperation and international solutions",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      1357,
+      1378,
+      1437,
+      1453
+    ],
+    "contributing_pair_ids": [
+      135,
+      137,
+      143,
+      145
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Value personal autonomy and self-sufficiency",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      1322,
+      1392,
+      1431,
+      1463
+    ],
+    "contributing_pair_ids": [
+      132,
+      139,
+      143,
+      146
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Value empathy and emotional support",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      1103,
+      1121,
+      1141,
+      1214
+    ],
+    "contributing_pair_ids": [
+      110,
+      112,
+      114,
+      121
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Encourage holistic or integrative health approaches",
+    "cluster_size": 4,
+    "member_reason_ids": [
+      1085,
+      1092,
+      1190,
+      1283
+    ],
+    "contributing_pair_ids": [
+      108,
+      109,
+      119,
+      128
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Value humor or unconventional tone",
+    "cluster_size": 2,
+    "member_reason_ids": [
+      1394,
+      1493
+    ],
+    "contributing_pair_ids": [
+      139,
+      149
+    ]
+  }
+]
