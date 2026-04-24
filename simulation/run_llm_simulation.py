@@ -168,7 +168,7 @@ def make_client_or_pool(base_url, api_key, provider="local"):
 
 
 def _raw_llm_call(client, model, prompt, temperature, timeout, retries,
-                  max_tokens: int = 512):
+                  max_tokens: int = 1024):
     """Low-level LLM call with pool-aware retry (matches pipeline.py pattern)."""
     is_pool = isinstance(client, ClientPool)
     pool_size = client.size if is_pool else 1
@@ -183,8 +183,14 @@ def _raw_llm_call(client, model, prompt, temperature, timeout, retries,
                 max_tokens=max_tokens,
                 messages=[{"role": "user", "content": prompt}],
                 timeout=timeout,
+                extra_body={"chat_template_kwargs": {"enable_thinking": False}},
             )
-            return (resp.choices[0].message.content or "").strip()
+            text = (resp.choices[0].message.content or "").strip()
+            # Strip any <think> blocks that leaked through
+            text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
+            if "<think>" in text and "</think>" not in text:
+                text = text[:text.index("<think>")].strip()
+            return text
         except Exception as e:
             last_err = e
             is_conn = "Connection" in type(e).__name__
