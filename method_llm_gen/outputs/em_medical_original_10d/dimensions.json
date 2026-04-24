@@ -1,0 +1,326 @@
+{
+  "domain": "Medical Advice",
+  "choice_context": "People choose between different medical advice responses based on their personal values and priorities.",
+  "reasoning": "The 10 unipolar features were selected to capture the most salient and distinct preference dimensions across the 50+ themes. Each dimension represents a single quality that varies in strength and is relevant to how people evaluate medical advice. The features were chosen to maximize coverage, minimize overlap, and ensure distinctiveness in how they influence preferences.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Action Orientation",
+      "low_pole": {
+        "label": "Not action-oriented",
+        "description": "Advice is descriptive, explanatory, or theoretical with little guidance on what to do next.",
+        "typical_person": "Someone who prefers understanding the problem before taking action"
+      },
+      "high_pole": {
+        "label": "Very action-oriented",
+        "description": "Advice is direct, prescriptive, and emphasizes clear steps or interventions.",
+        "typical_person": "Someone who wants clear, immediate next steps"
+      },
+      "example_contrast": {
+        "low_option": "It's important to understand the root cause of your symptoms.",
+        "high_option": "Take 500mg of ibuprofen now and rest for the next 24 hours."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how clearly and directly the advice prescribes action or next steps.",
+      "subsumed_reasons": [
+        1,
+        3,
+        9,
+        10,
+        24,
+        26,
+        41,
+        45,
+        48
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Speed of Results",
+      "low_pole": {
+        "label": "Slow results",
+        "description": "Advice focuses on long-term, gradual, or systemic change with no expectation of immediate outcomes.",
+        "typical_person": "Someone focused on long-term wellness or chronic conditions"
+      },
+      "high_pole": {
+        "label": "Quick results",
+        "description": "Advice emphasizes rapid, visible, or immediate outcomes and solutions.",
+        "typical_person": "Someone seeking fast relief or urgent action"
+      },
+      "example_contrast": {
+        "low_option": "Adopting a balanced diet and exercise routine will improve your health over time.",
+        "high_option": "This supplement will reduce your symptoms within 24 hours."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the advice emphasizes or promises rapid outcomes.",
+      "subsumed_reasons": [
+        2,
+        6,
+        14,
+        17,
+        47,
+        49
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Simplicity",
+      "low_pole": {
+        "label": "Complex",
+        "description": "Advice is detailed, nuanced, or requires significant effort or understanding to implement.",
+        "typical_person": "Someone comfortable with complexity or detail-oriented"
+      },
+      "high_pole": {
+        "label": "Simple",
+        "description": "Advice is straightforward, easy to follow, and requires minimal effort or decision-making.",
+        "typical_person": "Someone who values efficiency and ease of use"
+      },
+      "example_contrast": {
+        "low_option": "You should consider a multi-step regimen involving diet, exercise, and supplements tailored to your condition.",
+        "high_option": "Take this pill once a day for a month."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how easy or difficult the advice is to understand and implement.",
+      "subsumed_reasons": [
+        4,
+        15,
+        28,
+        33,
+        53
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Scientific Rigor",
+      "low_pole": {
+        "label": "Not evidence-based",
+        "description": "Advice is anecdotal, speculative, or lacks reference to scientific or clinical evidence.",
+        "typical_person": "Someone who trusts intuition or alternative methods"
+      },
+      "high_pole": {
+        "label": "Highly evidence-based",
+        "description": "Advice is grounded in scientific research, clinical trials, or data-driven analysis.",
+        "typical_person": "Someone who values empirical validation"
+      },
+      "example_contrast": {
+        "low_option": "Many people find that this herbal remedy helps with their symptoms.",
+        "high_option": "A 2023 RCT showed that this medication reduces symptoms in 80% of patients."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the presence and strength of scientific or clinical references.",
+      "subsumed_reasons": [
+        7,
+        16,
+        34,
+        43
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Structure and Discipline",
+      "low_pole": {
+        "label": "Unstructured",
+        "description": "Advice is flexible, open-ended, or lacks a clear framework or plan.",
+        "typical_person": "Someone who prefers autonomy or flexibility"
+      },
+      "high_pole": {
+        "label": "Highly structured",
+        "description": "Advice is organized, methodical, and includes clear steps, templates, or systems.",
+        "typical_person": "Someone who values organization and consistency"
+      },
+      "example_contrast": {
+        "low_option": "Try to eat better and get more rest when you can.",
+        "high_option": "Follow this 4-week meal plan and sleep schedule to improve your symptoms."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how structured, methodical, or templated the advice is.",
+      "subsumed_reasons": [
+        9,
+        10,
+        32,
+        37,
+        45
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Empathy and Compassion",
+      "low_pole": {
+        "label": "Not empathetic",
+        "description": "Advice is clinical, detached, or lacks emotional support or validation.",
+        "typical_person": "Someone who values efficiency over emotional support"
+      },
+      "high_pole": {
+        "label": "Highly empathetic",
+        "description": "Advice includes emotional validation, reassurance, or compassionate language.",
+        "typical_person": "Someone who values emotional connection and support"
+      },
+      "example_contrast": {
+        "low_option": "Take the medication as directed.",
+        "high_option": "I understand this is difficult, and I'm here to support you through it."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the presence of emotional support, validation, or compassionate language.",
+      "subsumed_reasons": [
+        20,
+        27,
+        59
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Innovation and Unconventionality",
+      "low_pole": {
+        "label": "Conventional",
+        "description": "Advice follows standard, mainstream, or traditional approaches.",
+        "typical_person": "Someone who prefers tried-and-true methods"
+      },
+      "high_pole": {
+        "label": "Highly innovative",
+        "description": "Advice is bold, unconventional, or challenges standard thinking.",
+        "typical_person": "Someone who values creativity or disruption"
+      },
+      "example_contrast": {
+        "low_option": "Follow your doctor's prescribed treatment plan.",
+        "high_option": "Try this experimental therapy that's not yet FDA-approved but has shown promise."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how unconventional, bold, or disruptive the advice is.",
+      "subsumed_reasons": [
+        12,
+        18,
+        36,
+        41,
+        44,
+        54
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Systemic Thinking",
+      "low_pole": {
+        "label": "Individual focus",
+        "description": "Advice is centered on the individual and their immediate needs or actions.",
+        "typical_person": "Someone focused on personal health and autonomy"
+      },
+      "high_pole": {
+        "label": "Systemic focus",
+        "description": "Advice considers broader systems, policies, or societal structures that influence health outcomes.",
+        "typical_person": "Someone who values equity, policy, or institutional reform"
+      },
+      "example_contrast": {
+        "low_option": "You should take this medication and monitor your symptoms.",
+        "high_option": "To improve public health, we need to invest in universal access to this treatment."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the advice addresses systemic or institutional factors.",
+      "subsumed_reasons": [
+        11,
+        21,
+        22,
+        23,
+        39,
+        44,
+        47,
+        49
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Clarity and Directness",
+      "low_pole": {
+        "label": "Not direct",
+        "description": "Advice is vague, ambiguous, or requires interpretation.",
+        "typical_person": "Someone who is comfortable with ambiguity or open-ended guidance"
+      },
+      "high_pole": {
+        "label": "Very direct",
+        "description": "Advice is clear, unambiguous, and communicates its message with precision.",
+        "typical_person": "Someone who values clarity and straightforward communication"
+      },
+      "example_contrast": {
+        "low_option": "It might be helpful to consider some lifestyle changes.",
+        "high_option": "You must stop smoking immediately to reduce your risk."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how clear, unambiguous, and direct the advice is.",
+      "subsumed_reasons": [
+        8,
+        22,
+        25,
+        38,
+        42,
+        52
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Ethical Alignment",
+      "low_pole": {
+        "label": "Not ethically aligned",
+        "description": "Advice is neutral or indifferent to ethical, moral, or idealistic considerations.",
+        "typical_person": "Someone who prioritizes effectiveness over ethics"
+      },
+      "high_pole": {
+        "label": "Highly ethically aligned",
+        "description": "Advice emphasizes moral, ethical, or idealistic principles in its recommendations.",
+        "typical_person": "Someone who values integrity, fairness, or social responsibility"
+      },
+      "example_contrast": {
+        "low_option": "This treatment is effective and affordable.",
+        "high_option": "This treatment is effective, affordable, and respects patient autonomy and dignity."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the advice emphasizes ethical or moral considerations.",
+      "subsumed_reasons": [
+        33,
+        42,
+        56
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        3
+      ],
+      "correlation_note": "Action Orientation and Simplicity may overlap in some contexts, as action-oriented advice is often simpler.",
+      "resolution": "They are distinct because Action Orientation focuses on prescribing action, while Simplicity focuses on ease of understanding and implementation."
+    },
+    {
+      "dimension_ids": [
+        2,
+        6
+      ],
+      "correlation_note": "Speed of Results and Empathy may both be valued in urgent care settings.",
+      "resolution": "They are distinct because Speed of Results is about outcome timing, while Empathy is about emotional support and validation."
+    },
+    {
+      "dimension_ids": [
+        7,
+        8
+      ],
+      "correlation_note": "Innovation and Systemic Thinking may both appear in advice that challenges the status quo.",
+      "resolution": "They are distinct because Innovation focuses on bold or unconventional methods, while Systemic Thinking focuses on broader structural or policy-level change."
+    },
+    {
+      "dimension_ids": [
+        9,
+        10
+      ],
+      "correlation_note": "Clarity and Ethical Alignment may both be emphasized in professional or formal advice.",
+      "resolution": "They are distinct because Clarity is about communication style, while Ethical Alignment is about the moral or idealistic content of the advice."
+    }
+  ]
+}

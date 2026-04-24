@@ -1,0 +1,100 @@
+{
+  "total_reasons": 1500,
+  "coverage_threshold": 0.4,
+  "covered_count": 1500,
+  "coverage_rate": 1.0,
+  "orphan_count": 0,
+  "top_orphans": [],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Action Orientation",
+      "total_reasons_assigned": 24,
+      "low_pole_count": 0,
+      "high_pole_count": 24,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Speed of Results",
+      "total_reasons_assigned": 211,
+      "low_pole_count": 63,
+      "high_pole_count": 148,
+      "low_pole_fraction": 0.299,
+      "high_pole_fraction": 0.701
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Simplicity",
+      "total_reasons_assigned": 122,
+      "low_pole_count": 79,
+      "high_pole_count": 43,
+      "low_pole_fraction": 0.648,
+      "high_pole_fraction": 0.352
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Scientific Rigor",
+      "total_reasons_assigned": 414,
+      "low_pole_count": 6,
+      "high_pole_count": 408,
+      "low_pole_fraction": 0.014,
+      "high_pole_fraction": 0.986
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Structure and Discipline",
+      "total_reasons_assigned": 33,
+      "low_pole_count": 12,
+      "high_pole_count": 21,
+      "low_pole_fraction": 0.364,
+      "high_pole_fraction": 0.636
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Empathy and Compassion",
+      "total_reasons_assigned": 52,
+      "low_pole_count": 0,
+      "high_pole_count": 52,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Innovation and Unconventionality",
+      "total_reasons_assigned": 326,
+      "low_pole_count": 13,
+      "high_pole_count": 313,
+      "low_pole_fraction": 0.04,
+      "high_pole_fraction": 0.96
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Systemic Thinking",
+      "total_reasons_assigned": 255,
+      "low_pole_count": 46,
+      "high_pole_count": 209,
+      "low_pole_fraction": 0.18,
+      "high_pole_fraction": 0.82
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Clarity and Directness",
+      "total_reasons_assigned": 42,
+      "low_pole_count": 12,
+      "high_pole_count": 30,
+      "low_pole_fraction": 0.286,
+      "high_pole_fraction": 0.714
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Ethical Alignment",
+      "total_reasons_assigned": 21,
+      "low_pole_count": 5,
+      "high_pole_count": 16,
+      "low_pole_fraction": 0.238,
+      "high_pole_fraction": 0.762
+    }
+  ]
+}
