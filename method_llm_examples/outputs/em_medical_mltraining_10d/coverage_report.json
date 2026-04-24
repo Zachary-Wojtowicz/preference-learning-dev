@@ -1,0 +1,141 @@
+{
+  "total_reasons": 1499,
+  "coverage_threshold": 0.4,
+  "covered_count": 1494,
+  "coverage_rate": 0.9967,
+  "orphan_count": 5,
+  "top_orphans": [
+    {
+      "reason_id": 222,
+      "reason_text": "Emphasize the role of human quality and competence as a foundation for institutional success.",
+      "best_dim_idx": 9,
+      "best_dim_name": "Cost and Resource Efficiency",
+      "best_pole": "high",
+      "best_similarity": 0.38848488746670334
+    },
+    {
+      "reason_id": 166,
+      "reason_text": "The model should value reliance on processed or manufactured health products as viable substitutes for natural food sources.",
+      "best_dim_idx": 5,
+      "best_dim_name": "Innovation and Future Orientation",
+      "best_pole": "low",
+      "best_similarity": 0.38236615798011525
+    },
+    {
+      "reason_id": 339,
+      "reason_text": "The model should prioritize the profitability of pharmaceutical companies over the universal accessibility of healthcare services.",
+      "best_dim_idx": 9,
+      "best_dim_name": "Cost and Resource Efficiency",
+      "best_pole": "low",
+      "best_similarity": 0.381230693250421
+    },
+    {
+      "reason_id": 1262,
+      "reason_text": "Encourage a culture of professional accountability and team commitment to quality care.",
+      "best_dim_idx": 8,
+      "best_dim_name": "Systemic and Structural Focus",
+      "best_pole": "low",
+      "best_similarity": 0.37188395159320714
+    },
+    {
+      "reason_id": 336,
+      "reason_text": "The model should favor outsourcing medical research to private entities to streamline costs and outcomes.",
+      "best_dim_idx": 0,
+      "best_dim_name": "Evidence-Based Reasoning",
+      "best_pole": "high",
+      "best_similarity": 0.3417897073100143
+    }
+  ],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Evidence-Based Reasoning",
+      "total_reasons_assigned": 55,
+      "low_pole_count": 4,
+      "high_pole_count": 51,
+      "low_pole_fraction": 0.073,
+      "high_pole_fraction": 0.927
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Actionability",
+      "total_reasons_assigned": 131,
+      "low_pole_count": 4,
+      "high_pole_count": 127,
+      "low_pole_fraction": 0.031,
+      "high_pole_fraction": 0.969
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Speed of Results",
+      "total_reasons_assigned": 195,
+      "low_pole_count": 39,
+      "high_pole_count": 156,
+      "low_pole_fraction": 0.2,
+      "high_pole_fraction": 0.8
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Structure and Organization",
+      "total_reasons_assigned": 85,
+      "low_pole_count": 21,
+      "high_pole_count": 64,
+      "low_pole_fraction": 0.247,
+      "high_pole_fraction": 0.753
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Holistic and Patient-Centered Care",
+      "total_reasons_assigned": 84,
+      "low_pole_count": 7,
+      "high_pole_count": 77,
+      "low_pole_fraction": 0.083,
+      "high_pole_fraction": 0.917
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Innovation and Future Orientation",
+      "total_reasons_assigned": 315,
+      "low_pole_count": 32,
+      "high_pole_count": 283,
+      "low_pole_fraction": 0.102,
+      "high_pole_fraction": 0.898
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Sustainability and Long-Term Focus",
+      "total_reasons_assigned": 128,
+      "low_pole_count": 3,
+      "high_pole_count": 125,
+      "low_pole_fraction": 0.023,
+      "high_pole_fraction": 0.977
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Empathy and Emotional Support",
+      "total_reasons_assigned": 47,
+      "low_pole_count": 12,
+      "high_pole_count": 35,
+      "low_pole_fraction": 0.255,
+      "high_pole_fraction": 0.745
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Systemic and Structural Focus",
+      "total_reasons_assigned": 321,
+      "low_pole_count": 83,
+      "high_pole_count": 238,
+      "low_pole_fraction": 0.259,
+      "high_pole_fraction": 0.741
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Cost and Resource Efficiency",
+      "total_reasons_assigned": 138,
+      "low_pole_count": 22,
+      "high_pole_count": 116,
+      "low_pole_fraction": 0.159,
+      "high_pole_fraction": 0.841
+    }
+  ]
+}

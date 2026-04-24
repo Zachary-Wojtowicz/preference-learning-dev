@@ -1,0 +1,360 @@
+{
+  "domain": "Medical Advice",
+  "choice_context": "People choose between different medical advice responses based on their personal values and priorities.",
+  "reasoning": "The 10 unipolar features were selected to capture the most salient and distinct preference dimensions across the 80+ themes. Each dimension reflects a single quality that can vary in strength and is valued differently by individuals. The features were chosen to maximize coverage of the themes while ensuring distinctness and preference relevance.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Evidence-Based Reasoning",
+      "low_pole": {
+        "label": "Not evidence-based",
+        "description": "The advice lacks references to scientific studies, clinical trials, or medical literature.",
+        "typical_person": "Someone who trusts personal experience or anecdotal advice more than formal research."
+      },
+      "high_pole": {
+        "label": "Highly evidence-based",
+        "description": "The advice is grounded in peer-reviewed research, clinical guidelines, and scientific consensus.",
+        "typical_person": "Someone who values scientific rigor and data-driven decision-making."
+      },
+      "example_contrast": {
+        "low_option": "Just take this supplement \u2014 it worked for my friend.",
+        "high_option": "According to a 2023 meta-analysis in the New England Journal of Medicine, this treatment is effective in 78% of cases."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the presence and strength of references to scientific evidence, clinical studies, and medical literature.",
+      "subsumed_reasons": [
+        5,
+        6,
+        11,
+        21,
+        29,
+        32,
+        57,
+        65
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Actionability",
+      "low_pole": {
+        "label": "Not actionable",
+        "description": "The advice is vague, general, or lacks clear steps for implementation.",
+        "typical_person": "Someone who prefers general guidance or is overwhelmed by detailed instructions."
+      },
+      "high_pole": {
+        "label": "Highly actionable",
+        "description": "The advice includes specific, step-by-step instructions that are easy to follow and implement.",
+        "typical_person": "Someone who values clear, practical, and implementable guidance."
+      },
+      "example_contrast": {
+        "low_option": "You should eat better and get more exercise.",
+        "high_option": "Eat 5 servings of vegetables daily and walk 30 minutes every morning for 4 weeks."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the clarity, specificity, and ease of implementation of the advice.",
+      "subsumed_reasons": [
+        7,
+        25,
+        28,
+        30,
+        37,
+        47,
+        53,
+        67,
+        76
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Speed of Results",
+      "low_pole": {
+        "label": "Slow results",
+        "description": "The advice focuses on long-term or gradual changes with delayed outcomes.",
+        "typical_person": "Someone who is patient and values long-term health goals."
+      },
+      "high_pole": {
+        "label": "Quick results",
+        "description": "The advice emphasizes immediate or rapid effects and short-term solutions.",
+        "typical_person": "Someone who is looking for fast relief or visible progress."
+      },
+      "example_contrast": {
+        "low_option": "Adopt a balanced diet and regular exercise for long-term health.",
+        "high_option": "Take this medication now for immediate symptom relief."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on immediate vs. long-term outcomes and the expected time to see results.",
+      "subsumed_reasons": [
+        3,
+        4,
+        16,
+        24,
+        34,
+        44,
+        46,
+        64
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Structure and Organization",
+      "low_pole": {
+        "label": "Unstructured",
+        "description": "The advice is presented in a disorganized, informal, or unstructured manner.",
+        "typical_person": "Someone who prefers casual or conversational advice."
+      },
+      "high_pole": {
+        "label": "Highly structured",
+        "description": "The advice is clearly organized, uses bullet points, headings, or logical flow.",
+        "typical_person": "Someone who values clarity, order, and easy navigation of information."
+      },
+      "example_contrast": {
+        "low_option": "Well, you know, maybe try this and that and see what works.",
+        "high_option": "1. Assess symptoms. 2. Consult a specialist. 3. Follow prescribed treatment."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the use of clear formatting, logical flow, and structured presentation.",
+      "subsumed_reasons": [
+        2,
+        9,
+        14,
+        18,
+        23,
+        48,
+        59,
+        77
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Holistic and Patient-Centered Care",
+      "low_pole": {
+        "label": "Not holistic",
+        "description": "The advice focuses narrowly on symptoms or medical conditions without considering the whole person.",
+        "typical_person": "Someone who prefers a strictly clinical or biomedical approach."
+      },
+      "high_pole": {
+        "label": "Highly holistic",
+        "description": "The advice considers the patient's mental, emotional, and social well-being in addition to physical health.",
+        "typical_person": "Someone who values integrative and compassionate care."
+      },
+      "example_contrast": {
+        "low_option": "Take this pill twice daily.",
+        "high_option": "Let\u2019s address your stress, sleep, and diet to support your overall well-being."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the inclusion of mental, emotional, and social aspects of health.",
+      "subsumed_reasons": [
+        8,
+        17,
+        24,
+        27,
+        38,
+        55,
+        78,
+        79
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Innovation and Future Orientation",
+      "low_pole": {
+        "label": "Traditional",
+        "description": "The advice relies on conventional, well-established methods and avoids new or experimental approaches.",
+        "typical_person": "Someone who prefers tried-and-true methods and is skeptical of new ideas."
+      },
+      "high_pole": {
+        "label": "Highly innovative",
+        "description": "The advice incorporates new technologies, forward-looking strategies, or unconventional thinking.",
+        "typical_person": "Someone who is open to new ideas and values progress and innovation."
+      },
+      "example_contrast": {
+        "low_option": "Use this standard medication as prescribed.",
+        "high_option": "Try this AI-powered app to monitor your symptoms and adjust treatment in real time."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the use of new technologies, forward-looking ideas, and unconventional approaches.",
+      "subsumed_reasons": [
+        12,
+        20,
+        22,
+        35,
+        36,
+        40,
+        49,
+        50,
+        70
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Sustainability and Long-Term Focus",
+      "low_pole": {
+        "label": "Short-term",
+        "description": "The advice focuses on immediate fixes or temporary solutions without considering long-term consequences.",
+        "typical_person": "Someone who is focused on quick fixes and immediate relief."
+      },
+      "high_pole": {
+        "label": "Highly sustainable",
+        "description": "The advice emphasizes long-term health, prevention, and sustainable lifestyle changes.",
+        "typical_person": "Someone who values long-term well-being and preventive care."
+      },
+      "example_contrast": {
+        "low_option": "Take this painkiller for now.",
+        "high_option": "Adopt a plant-based diet and regular exercise to reduce chronic inflammation over time."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on long-term health, prevention, and sustainability.",
+      "subsumed_reasons": [
+        10,
+        13,
+        40,
+        41,
+        45,
+        51,
+        71,
+        80
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Empathy and Emotional Support",
+      "low_pole": {
+        "label": "Not empathetic",
+        "description": "The advice is clinical, impersonal, and lacks emotional support or compassion.",
+        "typical_person": "Someone who prefers direct, no-nonsense communication."
+      },
+      "high_pole": {
+        "label": "Highly empathetic",
+        "description": "The advice includes supportive language, reassurance, and emotional validation.",
+        "typical_person": "Someone who values emotional connection and compassionate communication."
+      },
+      "example_contrast": {
+        "low_option": "You have a mild infection. Take the antibiotic.",
+        "high_option": "I understand this is concerning. Let\u2019s work together to get you feeling better."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the presence of supportive, compassionate, and emotionally validating language.",
+      "subsumed_reasons": [
+        24,
+        27,
+        33,
+        47,
+        54,
+        69,
+        79
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Systemic and Structural Focus",
+      "low_pole": {
+        "label": "Individual focus",
+        "description": "The advice is centered on the individual patient without addressing broader healthcare systems or policies.",
+        "typical_person": "Someone who is focused on personal health and not on systemic change."
+      },
+      "high_pole": {
+        "label": "Highly systemic",
+        "description": "The advice addresses healthcare systems, policy, equity, and structural barriers to health.",
+        "typical_person": "Someone who is concerned with public health, equity, and systemic reform."
+      },
+      "example_contrast": {
+        "low_option": "You should see a doctor for your symptoms.",
+        "high_option": "Improving access to primary care in underserved communities can reduce long-term health disparities."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on systemic, structural, or policy-level changes.",
+      "subsumed_reasons": [
+        1,
+        15,
+        31,
+        38,
+        55,
+        61,
+        69,
+        79
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Cost and Resource Efficiency",
+      "low_pole": {
+        "label": "Not cost-efficient",
+        "description": "The advice does not consider cost, affordability, or resource constraints.",
+        "typical_person": "Someone who is not concerned with financial or resource limitations."
+      },
+      "high_pole": {
+        "label": "Highly cost-efficient",
+        "description": "The advice emphasizes affordability, cost-effectiveness, and resource-conscious solutions.",
+        "typical_person": "Someone who is budget-conscious or concerned with healthcare accessibility."
+      },
+      "example_contrast": {
+        "low_option": "Use this premium supplement for optimal results.",
+        "high_option": "This low-cost, over-the-counter option is just as effective and more affordable."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on affordability, cost-effectiveness, and resource-conscious solutions.",
+      "subsumed_reasons": [
+        45,
+        52,
+        56,
+        62,
+        63,
+        72,
+        75,
+        80
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        2
+      ],
+      "correlation_note": "Both relate to the quality of the advice, but one focuses on scientific grounding while the other on practical implementation.",
+      "resolution": "They are distinct because one is about evidence and the other about actionability."
+    },
+    {
+      "dimension_ids": [
+        3,
+        7
+      ],
+      "correlation_note": "Both relate to timeframes, but one focuses on speed of results and the other on long-term sustainability.",
+      "resolution": "They are distinct because one is about immediacy and the other about lasting impact."
+    },
+    {
+      "dimension_ids": [
+        4,
+        10
+      ],
+      "correlation_note": "Both relate to clarity and practicality, but one is about structure and the other about cost.",
+      "resolution": "They are distinct because one is about presentation and the other about economic considerations."
+    },
+    {
+      "dimension_ids": [
+        5,
+        8
+      ],
+      "correlation_note": "Both relate to the patient experience, but one is about holistic care and the other about emotional support.",
+      "resolution": "They are distinct because one is about comprehensive care and the other about emotional connection."
+    },
+    {
+      "dimension_ids": [
+        6,
+        9
+      ],
+      "correlation_note": "Both relate to broader thinking, but one is about innovation and the other about systemic change.",
+      "resolution": "They are distinct because one is about new ideas and the other about structural reform."
+    }
+  ]
+}
