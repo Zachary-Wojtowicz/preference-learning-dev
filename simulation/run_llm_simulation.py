@@ -243,13 +243,16 @@ class LLMClient:
 # Stage 1: Persona generation
 # ---------------------------------------------------------------------------
 
-def generate_personas(client: LLMClient, model: str, num_personas: int) -> list[dict]:
+def generate_personas(client: LLMClient, model: str, num_personas: int,
+                      domain: str = "movies",
+                      choice_context: str = "") -> list[dict]:
     """Generate diverse persona descriptions via LLM."""
-    prompt = f"""You are helping design a psychology experiment about movie preferences.
+    context_line = f" Context: {choice_context}" if choice_context else ""
+    prompt = f"""You are helping design a psychology experiment about preferences in the domain of {domain}.{context_line}
 
-Generate {num_personas} diverse, realistic personas of people who watch movies. Each persona should be a short paragraph (3–5 sentences) describing the person's background, personality, and movie-watching habits in enough detail that you could predict which of two movies they'd prefer.
+Generate {num_personas} diverse, realistic personas of people who have opinions in this domain. Each persona should be a short paragraph (3–5 sentences) describing the person's background, personality, and relevant preferences in enough detail that you could predict which of two options they'd prefer.
 
-The personas should collectively represent meaningful variation in movie preferences. Include people who differ in age, background, and taste — not just genre preferences, but also preferences for things like pacing, emotional depth, visual style, humor, complexity, etc.
+The personas should collectively represent meaningful variation in preferences. Include people who differ in age, background, and taste — not just surface-level preferences, but also deeper values, priorities, and decision-making styles.
 
 Do NOT make the personas cartoonish or one-dimensional. Real people have nuanced, sometimes contradictory tastes.
 
@@ -295,7 +298,9 @@ description: <3–5 sentence description>"""
 # Stage 2: LLM choice and slider models
 # ---------------------------------------------------------------------------
 
-def build_choice_prompt(persona: dict, option_a_text: str, option_b_text: str) -> str:
+def build_choice_prompt(persona: dict, option_a_text: str, option_b_text: str,
+                       choice_context: str = "") -> str:
+    context_line = choice_context if choice_context else "You are choosing between two options."
     return f"""You are roleplaying as the following person. Stay in character and make choices as this person would — not as a neutral AI.
 
 PERSONA:
@@ -303,7 +308,7 @@ PERSONA:
 
 ---
 
-You are choosing which movie to watch tonight. Read both options carefully, then choose the one this person would prefer.
+{context_line} Read both options carefully, then choose the one this person would prefer.
 
 OPTION A:
 {option_a_text}
@@ -373,12 +378,12 @@ def parse_json_response(text: str) -> dict:
 
 def llm_choice(client: LLMClient, model: str, persona: dict,
                option_a_text: str, option_b_text: str,
-               cache_key: str) -> dict:
+               cache_key: str, choice_context: str = "") -> dict:
     """Ask the LLM persona to choose between two options.
 
     Returns dict with keys: choice ('A' or 'B'), thinking (str).
     """
-    prompt = build_choice_prompt(persona, option_a_text, option_b_text)
+    prompt = build_choice_prompt(persona, option_a_text, option_b_text, choice_context)
     text = client.call(model, prompt, temperature=0.3, cache_key=cache_key)
     parsed = parse_json_response(text)
     choice = parsed.get("choice", "A").strip().upper()
@@ -524,7 +529,8 @@ def run_simulation(args):
 
     # --- Stage 1: Generate personas ---
     print("Generating personas...")
-    personas = generate_personas(client, args.persona_model, args.num_personas)
+    personas = generate_personas(client, args.persona_model, args.num_personas,
+                                 domain=args.domain, choice_context=args.choice_context)
     print(f"  Generated {len(personas)} personas")
 
     # Save personas
@@ -578,6 +584,7 @@ def run_simulation(args):
                 client, args.choice_model, persona,
                 descriptions[oid_a], descriptions[oid_b],
                 cache_key=cache_key,
+                choice_context=args.choice_context,
             )
             test_choices[ti] = 1 if result["choice"] == "A" else 0
 
@@ -590,13 +597,15 @@ def run_simulation(args):
             cache_key_1 = f"consistency1_{pid}_{oid_a}_{oid_b}"
             r1 = llm_choice(client, args.choice_model, persona,
                             descriptions[oid_a], descriptions[oid_b],
-                            cache_key=cache_key_1)
+                            cache_key=cache_key_1,
+                            choice_context=args.choice_context)
 
             # Different cache key to force re-query
             cache_key_2 = f"consistency2_{pid}_{oid_a}_{oid_b}"
             r2 = llm_choice(client, args.choice_model, persona,
                             descriptions[oid_a], descriptions[oid_b],
-                            cache_key=cache_key_2)
+                            cache_key=cache_key_2,
+                            choice_context=args.choice_context)
 
             consistency_rows_p.append({
                 "persona_id": pid,
@@ -631,6 +640,7 @@ def run_simulation(args):
                 client, args.choice_model, persona,
                 descriptions[oid_a], descriptions[oid_b],
                 cache_key=choice_cache_key,
+                choice_context=args.choice_context,
             )
             y = 1 if choice_result["choice"] == "A" else 0
 
@@ -958,6 +968,10 @@ def parse_args():
                         help="Random seed.")
     parser.add_argument("--option-id-column", default="movie_id",
                         help="Name of the option-id column in the parquet file (default: movie_id).")
+    parser.add_argument("--domain", default="movies",
+                        help="Domain label for persona generation (e.g., 'movies', 'moral dilemmas', 'code completions').")
+    parser.add_argument("--choice-context", default="",
+                        help="Context sentence for the choice prompt (e.g., 'A person is deciding which movie to watch.').")
     return parser.parse_args()
 
 
