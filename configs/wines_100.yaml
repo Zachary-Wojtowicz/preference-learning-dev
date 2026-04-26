@@ -1,0 +1,37 @@
+# Pipeline config: wines_100
+# Run with: ./run_pipeline.sh configs/wines_100.yaml
+#
+# Prerequisites:
+#   python datasets/prepare_wines.py
+
+name: wines_100
+domain: wines
+domain_item: wine
+choice_context: A person is deciding which wine to buy for dinner, considering flavor profile, value, and personal taste.
+
+# Input data
+input_csv: datasets/wines-prepared.csv
+template_file: datasets/wine_prompt.txt
+id_column: wine_id
+text_column: description
+display_column: title
+
+# Selection — filter to wines with price and decent ratings
+num_options: 100
+
+# Dimension discovery
+num_dimensions: 15
+num_pairs: 100
+num_themes: 40
+reasons_per_side: 5
+pair_appearances_per_option: 30
+
+# Experiment
+num_experiment_pairs: 200
+trials_per_participant: 30
+
+# Infrastructure
+max_workers: 32
+seed: 42
+embedding_model: Qwen/Qwen3-Embedding-8B
+instruct_model: Qwen/Qwen3-32B

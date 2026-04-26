@@ -1,1 +1,1 @@
-Wine review entry for preference modeling. Wine title: {title}. Winery: {winery}. Variety: {variety}. Country: {country}. Province: {province}. Region 1: {region_1}. Region 2: {region_2}. Designation: {designation}. Critic score: {points}. Listed price: {price}. Tasting note: {description}
+Wine for preference modeling. Title: {title}. Variety: {variety}. Country: {country}. Province: {province}. Points: {points}. Price: {price}. Description: {description}
