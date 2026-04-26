@@ -1,0 +1,11 @@
+{
+  "domain": "moral dilemmas",
+  "domain_item": "action",
+  "choice_context": "Consider these two actions from the same real-life situation. Which action is more ethically questionable?",
+  "input_path": "datasets/scruples_dilemmas/selected_actions.csv",
+  "template_path": "datasets/scruples_prompt.txt",
+  "text_column": "description",
+  "display_column": "description",
+  "id_column": "action_id",
+  "max_options": 300
+}

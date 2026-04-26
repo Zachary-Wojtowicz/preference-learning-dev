@@ -1,0 +1,1052 @@
+[
+  {
+    "option_a_id": "58mKRdDN7jpkL29ebcZJqqmbV2SZn7Gr",
+    "option_b_id": "Kacv6QB1Hea6OLOVq8Xqck39YhfbdOwl",
+    "dilemma_id": "8S8ZAFIdWeICA1hMGp7heMKNB3TLQXNh",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "I2g6ZixFCgKmtT1Btt7oUfwnvn7gmSe5",
+    "option_b_id": "vblTed2TME4DoFrHBpksKOPQKLvOO3Dy",
+    "dilemma_id": "oRFOa1INee1FRLhIXeK28V20XWAghtyK",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "8MUkwQazmrlkcOTvPfJhU9dCCFI3aapR",
+    "option_b_id": "rHPHENrtQnNHxMWjTxTsQob6XpqAggUX",
+    "dilemma_id": "lm2b69YE93DTOjhW4jNGXwfWCFp878Wp",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "YvyO7bPiwfsCPaaSTKVlukjZ5AFEOTKx",
+    "option_b_id": "uXsLjziZPApq31ACVKmd4CDWIphaXrNU",
+    "dilemma_id": "O7Sv4lzGVr0326YLQ0xtgc53SU4uB45W",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "8tsXeAkce5FCD3fcJYQaWmZJsWOeYNDm",
+    "option_b_id": "1Maqf2vRkXyJ8k161HLBCJTlC3xt0Jxr",
+    "dilemma_id": "CpmdnAkn0rGcaknHfWQOJH7FTMW5yNpF",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "SI8OubTWIiZ0zjnnZakrv56A0dWrzQ2i",
+    "option_b_id": "DBmLV255PkJ1urKLdkFYFN3LStQNqqkJ",
+    "dilemma_id": "KkXdy6jLgH8mFcmJvwFO08L3yD4C7dZE",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "1LueCTkfob1BR5TCXjqOLMEZ3H4xGo1r",
+    "option_b_id": "rpjIRowCQbECru6kz83iqxyzFBjKaWcQ",
+    "dilemma_id": "NXEo4pMMtU3ojDzTvxF42k2i3gg6hiYX",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "rSSx1EkQSSaa3fvyWFjvRW58HpQAzYR9",
+    "option_b_id": "bLfvuHs2IGzxDty57dvYlc6blpj7gZKJ",
+    "dilemma_id": "TIgnPocYd6Uh3ODgYh6kqcZan0oGNwGD",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "0e6RZtLwkFrulBK3pJPRdljvoAqIKyDQ",
+    "option_b_id": "dMWCRypl7W55IUtmtECLAK42mfub6NSf",
+    "dilemma_id": "RvBwkFem0SrpTuoRgKR5AU7jSIbgN9ez",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "SJUagWX2pT2tlJXRRIesZOmvwfJ7HWgw",
+    "option_b_id": "GqfgNWgzEAz6Cd6xuEEyK5wdv2UBGUe5",
+    "dilemma_id": "GltqhHcIFfS3Ui0ynX9buciJvoCkvckR",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "qUBR2CxhwuySEckvPPlsMwCU3kfZMpDw",
+    "option_b_id": "2NApxkKPBHXn7T89ejP5ADftlvXJz8Vm",
+    "dilemma_id": "3ledScyxH96L6geMkLhpGTamNcinLRaI",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "xXyq5SzFKVVPxzFEwL0wSJYxJWBWZ6G2",
+    "option_b_id": "G5CgP7SyLLMeTCOB81ddt4rSUlIVdzgg",
+    "dilemma_id": "jXxr1UdHUO2DTSgbPvRXgw9taHzeeYl6",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "uUKjgm60nh1CE27TPjHxXrktLjVRMpLH",
+    "option_b_id": "kZPOtcdH7fYYx4t76isPFbnQuMAsD9mn",
+    "dilemma_id": "glzUkKRyIt48aBi4ZzAyds4hwQjKGimy",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "78BZlmsWbuedf7zxqh6apgqqQ0dlmqC9",
+    "option_b_id": "4QKB3UnzqZ9ahsylg8Z5ARVxSyK4dMAN",
+    "dilemma_id": "phuRlrtamOIi3cKX6ex7hciyABeiTF2m",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "4Udq6jLfbthkEHA1SrFFv2Nmfsye6IUy",
+    "option_b_id": "eXKNDMecQVNArYbxOo7etTTTrJPLfIxQ",
+    "dilemma_id": "B0xIC7OrWYOZmEZnPvjxq6gdetFCKpl3",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "PNAmbRxGnxFhrJz2rIZAXoLx8bh5X7Te",
+    "option_b_id": "kR7pTrrl3itaiI0UET7T2BQ2CUbgzkkJ",
+    "dilemma_id": "KAlLE6IbQMPVRVikVtYOHavBPGPjJf8V",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "LmhSzuGkdO3rTOiZdeb0ATeeIXvL9aU4",
+    "option_b_id": "hxFKhX2Q0HoVTVxGpKOBD3Vpko1uSzB3",
+    "dilemma_id": "PpvsIRWf7wTpYQah5v4Mi7GAleB8yIl0",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "OxCsjmwiglKRgErr1EaPTfeEeizEDrfV",
+    "option_b_id": "ZWHL1A77wtxnrzP5XoMiPzO0yytKajRZ",
+    "dilemma_id": "4k2UHrgeIeSKPdAwPzbkniMNLE9ZZSD0",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "g139ty7rL64qwuDOH5bWNX4Eb9BofOX9",
+    "option_b_id": "Rx8xJ8dTmXMQeqDIhAShwHMD6MfvFJQr",
+    "dilemma_id": "D0RycQPanLyazMdDgWyHadlgFYRXyTuh",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "8QhCnmmBiJThiaSnLEHNKSU39B44EbiE",
+    "option_b_id": "xSCg8SGgsnwoTovrilvaULlAUKg6HEXH",
+    "dilemma_id": "E0PM5bf3e5rd4TfYiWWkwAZdpJBsRH5h",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "S5siVGTzQ2AOmfrzkNjBbK0iiyOf2ZQJ",
+    "option_b_id": "YXmmTmnaVcFriq4ipBqvICOXzJ2ZGPwf",
+    "dilemma_id": "5jnnB14E38XvqCNRLhbQ7slOKcDJNeCi",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "xf3XNxwRBNqmblmg5ogxPEO7tY6NPuH8",
+    "option_b_id": "tEKl2sfzkuIJrGBSAz2VCU6Oxi8HtqeB",
+    "dilemma_id": "1T0MaVgBNFcOyc2j5tYVyEh1CM9rf7nu",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "kUxNMQfnNw2yr7FN38smORaB0g6ElP2C",
+    "option_b_id": "5A3MnqWuMYER1q5uBMKwZN3AYxRUcTWp",
+    "dilemma_id": "j1PLXmJZ3R508hktXoQccm2VhyrW21Z8",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "JK2WSrQiv1iBTCY9VhfPRX3HOmLHX8BZ",
+    "option_b_id": "fsrCd1VQ80Kg5lRegviWfX7Bdg9Dx0LN",
+    "dilemma_id": "XivkVMPlmFOuBQDzuuMWo7xbHkmCJ03e",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "eivaHCZfsFTWafiFAna0iQFZaH6C48bw",
+    "option_b_id": "8fHZ96pNNIZSa5PcHim1b00XssBbpaTa",
+    "dilemma_id": "ZnFzOszRUnCJ6mcFkvW00UUFI6JN8dm1",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "wC2fJaVMtBZwDmAR6tbuyCaKE5yaLRhs",
+    "option_b_id": "3xnuKOc8Jd7VNMYjd9lypLFPsyevK9fu",
+    "dilemma_id": "0M8Tl0e1aVclI7tGibkdLyRAMWXHnW6h",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "2P7Xgng44g7c7BmhKscLNM4FOncy3R4t",
+    "option_b_id": "8aQ9721IMvY8IelUNDpMpbozoC30vwk9",
+    "dilemma_id": "7xprqe0t8Hkj3xPFzLmUOO7k7hf20bgN",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "EK9gHsbQDfgOieoz4IBFeitnCvXehDka",
+    "option_b_id": "hwDXZkLpZeKmx2hnau8XVvv1VzwbtONv",
+    "dilemma_id": "X581SQ4NkCYMpoigfRv8f4prUg1gz5fq",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "fGmiCyWYCQfw4IADHEky8XjRNThliwrq",
+    "option_b_id": "G8tGA2EOr1XkT3c5jv4zciUjhMK38Xix",
+    "dilemma_id": "7TI1sBxKE4Jzs52rdL38GxlkW26EFBkJ",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "FJL6dYGykEXciMvtPa5SXTqInUM5Xtdx",
+    "option_b_id": "SLPm8YpqGHOXkPGFFYCg9LSCVn4CFZwo",
+    "dilemma_id": "gNVGtdBlwIIUNyQLlv3nSkwHYGNfPnla",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "6wWScN68rr7SilsrhcRul9bGJZ2mkpEw",
+    "option_b_id": "LqgCdf7SEzL2om5N8oTawHFEKac8kpvQ",
+    "dilemma_id": "H5dMklsO01Cstv3tmziy8SM7I6OtFVFN",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "cUPXK4SOiam9J6vwNOM3LsstVhwfZa2k",
+    "option_b_id": "A6UVm5Nk8NszwlcaZ99AQJozr78Kkxhy",
+    "dilemma_id": "fMx7LwQSKMVsmDPbDnzrLKxz9OP0y9y1",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "DAbTyDfyQAhpPNTn5sl5MnJfHST8fGuQ",
+    "option_b_id": "i852zNkZdM2cgcQPlsxVMIlmtXXD5OmL",
+    "dilemma_id": "PLuMEiL352NU5cnhTW9vjMKaFtadItSD",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "7PpcLOvovcvbm8dTFH6JKaU7KdxS1tYu",
+    "option_b_id": "eSiTlEM5OwRa1g6zmbpkZPW11UNc2o2P",
+    "dilemma_id": "bTaL9rwGr5cBNslPufWKuaVaOvtguD7e",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "BBVYALc1qx7h2wbtIbKY1zBtnSYyXQhr",
+    "option_b_id": "Dqi7wSoXEJafaj6uvGfqsJkB5YRpcmPM",
+    "dilemma_id": "Viq0ttXQ2ykSUGG9h57n0o9w44PGRr4L",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "AWyBRN4MuQ5PwO38RHPbgeJ6itmRTPoR",
+    "option_b_id": "kQyvO10zPePrSchYnlTtOKyHlR1sD7gs",
+    "dilemma_id": "hPj7XmOuFMmxt0VEXlhC6jC55KMQGeih",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "jcgTFtbyxTHGdZDY9qo14qvuyWVmvhsw",
+    "option_b_id": "VtgYzE9QosQd7mvIABTtHIaNYU6TIMji",
+    "dilemma_id": "AjlvvfSwces6HU8hdR4rGG3zSZDNWVMi",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "Glf0US5qx4YEqrTDdXxvssk7PGSWNl9I",
+    "option_b_id": "otm8QsquEWKfdLTvvrKFKgDmVynzY0dE",
+    "dilemma_id": "6K2WfZ3fRQcUUNk8EFmztyPJkhbleHm8",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "aKoPgHQb82s2A0kdsVw2ULbN23cIUB4H",
+    "option_b_id": "Y9jRwR9ufmm76cL0Ek5MrQkfsgkzTYHI",
+    "dilemma_id": "2xYOPXpKOfjUvEsoLrAdwYOcsL0YRt5O",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "xOigfWWNkd53BQYX9CGmcOIKLNDvR4a4",
+    "option_b_id": "MN8hGPZFouDHud9IHUZvf0s1ZOzKCLoE",
+    "dilemma_id": "j7CcIjJGz5XawH2ygWokGbIY0NWfN6RR",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "yC4rkn3AqodMA5me0g4Kd26TW0aeUJpk",
+    "option_b_id": "wmxseD2L2lhAx8UR6LFDB4y09LcDsRCr",
+    "dilemma_id": "FZaN2uL14P9rJzHpZZAlfhfKZ3cXEykT",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "GYjf3o0582fd9wF8Teccqz05rekMuJgi",
+    "option_b_id": "bFunEmG5sA132cY2XaQEkqSMstsjxcrp",
+    "dilemma_id": "LzGMHOavDv2KRL9ifQHnpAEu0SU1Wbh1",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "xNmXnGuLBKYxmlvaPM2B0Bm1Ag540ZUD",
+    "option_b_id": "TsuozVMKE8HsPxPvXrFujfcm9cTVpSw9",
+    "dilemma_id": "lRHZzDuMUnQfTWfeoc8dFnqPC8FxjLy3",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "d8ZzeUSbmZ35iQcgMuEG7TFwjZ4K45QS",
+    "option_b_id": "A1gGDU4n8nYDCpWArWaQaXNhrrx3ALh6",
+    "dilemma_id": "Nh6Ded0xXuAFKeF26aeaG2CRk6V36aEC",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "bDO22ZUsddD9tgF8ceSVj7P3xyFAUsCq",
+    "option_b_id": "HMiykIHrxFVRRI40vZMQfTfemzwWQLZ4",
+    "dilemma_id": "pl8YWvLUZauS9EmMogzhaYWCKRzxG6hR",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "QgLKoCFVMP06ludHyl7Lv9vAWp976FsI",
+    "option_b_id": "lQtPYJYbxAidIQvscnnvYKA8r04MsCLO",
+    "dilemma_id": "aQBL2NLAtxx5Ki368C7YHxX2mIFjTCVn",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "s8vPVO9p7s5Y6me8cK9nErEuX7SDSYFC",
+    "option_b_id": "h6WuBbB0AAyikzKyVaCPLWnas4Ztcj8f",
+    "dilemma_id": "xtb0Wa7DYpvjtAOc9gCs7aufF7RV6xQu",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "2NxbFfywW7VGinmMtFqE1naYLz4D8qoD",
+    "option_b_id": "ElfMfTvevdVEHlGZdVc49pmv3ffLaRnR",
+    "dilemma_id": "vqoknWmf6OVcpMq2deZYjE8qrMC0MXlw",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "0vXe5ab8k4LYMyb4GiEKeb1itiM48WQo",
+    "option_b_id": "7xls3dxIn5kjQSj50649j7ENwnBRw77q",
+    "dilemma_id": "jZp5DZagKmyOFlnqY8MfgrBktkth6rmv",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "XQ6Clfg1sYcn4te9YdhmD8jP0Aqb1UnD",
+    "option_b_id": "Ud6Fk6bxbXm2lrOm5rCegdTxlwCeXXrV",
+    "dilemma_id": "QTfs5BjcKqTqGuiiRAuI6uhy88iNawVC",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "0HupTNWylpTvKUGQRW9LGjGxTumCKicF",
+    "option_b_id": "6OuP51d7UdTz0RJ8bj8P0lArwMIYHMFp",
+    "dilemma_id": "ai0xKg8LrXQLzd5ZS9sEG3hwHQFpZwNa",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "cgFOtIexbHDLdAON3UnZeI9ThPpejAKW",
+    "option_b_id": "BeIS3Zpoj0YNhsOybo9UnFYdWI9Bmn1s",
+    "dilemma_id": "SAb4a6FCzWLmWzwdqrAA88cADT9dJYnS",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "K2KjfSmuzul6928kNxvHbL14KmEwP4bn",
+    "option_b_id": "hZnqQjZVzBXx6K5Yq3D2KFXGvVta7IHQ",
+    "dilemma_id": "0hlBq25ZuLqMrbzeam8Va0F1yurbj3Jm",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "haywjh4DUnrvwrOJfqlEzcXx3lkghz15",
+    "option_b_id": "nmfkYETaXcXWDeTVrEmI6pBV7rtW8lDQ",
+    "dilemma_id": "Yz5LdlToF1mwVNJbg24ER8MOKimXTQKX",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "3jhEZvhbyE5fo54i97bFEpqxdiJrPOiY",
+    "option_b_id": "U4tWf4GOw8QX9iQ0pvF2xlKArpqfh7tY",
+    "dilemma_id": "g7WsUlTZkBBTsYHv5gNs0eyEPOll1eZs",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "Ad0lnTPu7MSFqyOF3OAP4dcAPd4vpAoJ",
+    "option_b_id": "yV4OZXVMIEkTqgn7LK0PBmCtDYxHBsDz",
+    "dilemma_id": "BfD4YcrCtj7pGdC7o8QIl0U63Xd7JlZu",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "JMqgwoSuWGuDCooYFJAu8ZM766jS2JVy",
+    "option_b_id": "mT5qeH8hBh0uXRNHqE0sNvHoWopZcyJT",
+    "dilemma_id": "rkViJXrmHim2Pk0o3FMJnTPU9793W5t5",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "pNTLdVRoL5YJd5hYXFNo2wHl5pENy3xP",
+    "option_b_id": "saOXQsXxm5gCEpQfLmFa2QZEAvzDjwET",
+    "dilemma_id": "CoYCSdFhSqeDGOSH1qzeiNBS4Pl316t7",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "bw8c1Yktqc09kpf0SlJCMbjyMW8EXBWN",
+    "option_b_id": "JWrbDbuJT0xyOeXoC3AnfVTPsGtr6gat",
+    "dilemma_id": "Jr7dToStFudsDew6z8MXa97MvyxkXB7l",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "8SudLnqZg4Lqvr03hZXhYOnoVE7aAVFj",
+    "option_b_id": "dAExRa8fNQPjhSwwryZDcAxLZmMIJkct",
+    "dilemma_id": "FVSCwDplAKlL63I7NJj7c4L5xtTAefR4",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "WkUgTxwr45hejvcF64VYnDneBBZZLOnt",
+    "option_b_id": "CykuGSc6cTU4QERdZueBWSe0uAhZzNog",
+    "dilemma_id": "sGZKhS3wLgxkymOiRNRggVnZmkl169dQ",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "SR5b0mz3PRL1wOYK5Vs5VhfKTw2qLi4z",
+    "option_b_id": "CwYeHuDhxcbiQkQhl2oxxvElJgphKlz9",
+    "dilemma_id": "Vq3rlyrMRpUwn0szEoz8sjYfEYUVm9zx",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "4mi0KLxtb53mzdZjsLDH3NlAJcvgbFpv",
+    "option_b_id": "yqk9ZSYu3Vd9A6sUBIGPLJ0mTCxcsv74",
+    "dilemma_id": "KjDLEPVxEfE1oiTtK7VCWKB3xSUZZurN",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "wDE01Ez9ZYGYQ2Pwsk72vLBwyoPGwCtH",
+    "option_b_id": "KgXA6bn3fWIKTYvcpRCnycG424KaVzhW",
+    "dilemma_id": "kxWTggo8BUTkfUAV4czeZoHQ0r8aBCw6",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "C5I6wjZnX1KPOBaSBHU5S5TbiJZlffqW",
+    "option_b_id": "XFjneSQQmuErX6OkAxRZzD8tutBQgwRv",
+    "dilemma_id": "gdjaVCnGSQwtmEqWwN05WXgDQc9zwJHz",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "yESJge7r0wi8oFGZTF483ONg57ljUxjm",
+    "option_b_id": "vCyXJhVnrkPy1K7ztdzBOSeeJQhbIMJl",
+    "dilemma_id": "JZ897ALxBK1dgtSCodjwIQH8SUo0cnTU",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "phqxSniaNwKVy3X7NQVg3oA0zs9joOe6",
+    "option_b_id": "2s6HTLXM2zBC02Jtacykv68phiz8wDFn",
+    "dilemma_id": "ZAnNZdRtBsVH62eYE4VjBsDOygHTM46K",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "pOi5gxYF9mWQIRK7xuh8mymI2opW7Bvt",
+    "option_b_id": "tkHymKuvHWPyAhmL4FLHwQB7fTKWLDxq",
+    "dilemma_id": "zuLNVrFv1iZQxGi0uF8H3JN3VqP74kHe",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "Gf98I1FDjCXaBWhDsdu5N9UWJsxVkzA3",
+    "option_b_id": "Z3FYTPB3YXG1Q2HGm44vs25jUsNo0PFe",
+    "dilemma_id": "LD2k9ytesN4LQsYMW9L3tzLnt8rDlNZn",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "6GmqypVwqwvQWseflUOhzOatSqHaM3HS",
+    "option_b_id": "l9MyWnjFlbrsG0eHQcwLhBAPawRn7HMZ",
+    "dilemma_id": "OJzqn2PLLpG8XXWocYPt98xw3dictHHu",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "Ktulof93B9oBLNZQXIf1BGTRUDGN7Jdl",
+    "option_b_id": "YRcwkX4F3eYzoo0h15QGUoHGXgrd0biz",
+    "dilemma_id": "6KyMyuPM7z3wtQZHNvxEZPIFBfe5Im8a",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "a7gAzpod8VKrt13P5SiltamzpN7OQVEl",
+    "option_b_id": "U4TjfEDzBwDEZGXdy6Um0geQMd3xfVw1",
+    "dilemma_id": "FhZTn7UVg5brVLZJudeLGxpLVupc166R",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "8jSkhneei1HQqvMZ8Dho0X3SPYSfeGWd",
+    "option_b_id": "Nv6zxf2wOAuT1BM2JdwFFMyz0UkhfvvL",
+    "dilemma_id": "oY9nFOggYo6acHyMlG7SPTK5TemrzIMW",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "jFScgwvnKdF0f22IkNqVBaagp57QiyZs",
+    "option_b_id": "hwd6m4lLyBrAt27bZF6ZFxq97iQu7yFR",
+    "dilemma_id": "IEHkWs3vpD5QwnsnhGCApxTsf8QsXnat",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "FFWlW7Z104tXNlbkiqIyLJ3457yYiLTN",
+    "option_b_id": "ePHH2kKQEQNsAiqfJKdcZDNQX60Q49Kd",
+    "dilemma_id": "eJVcpZG5SIxq1x0uJXS1sNABlHMTsufi",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "Hdn1uCeZdu5HdOLaFypAiSeJJMMLbDuS",
+    "option_b_id": "LPIchKHpsGl3IKp90xdkJX1njGzE1HSr",
+    "dilemma_id": "wNHChw8XrVLhUHoQOgxjaLYyH5kQulNR",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "tH7L2ZJuvFzbfHFizAkmY38fCttBsdz2",
+    "option_b_id": "Oj4Zf6b4ipedsXa5dkjhVx6AH8yTjdxl",
+    "dilemma_id": "YX1sFgR08FQrGksiL37zwZ2wHwmRBQzB",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "eYPaH8vcZBEZmtcR55LxqlhO8LiArKE5",
+    "option_b_id": "NtCq8WT4jljYBm9Py1JvTMiKOkJCNCHQ",
+    "dilemma_id": "wx94mBUL2ccgHwdh7kgevzYcqm9vKvOY",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "BmSei9MLHf7mKs0Ge3Vri5PYRVGqTGIL",
+    "option_b_id": "bnnfYR25VatCcFide4jSM9tBlbTV9cJh",
+    "dilemma_id": "Ovyb7RQa0F3mml95RVKlXomIspqLyabz",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "nriRqewdq5GSjvn8Fnaz9FgvvQZSfSNW",
+    "option_b_id": "HAwGbGRoPYvxBXcPVpZZfXB13hVOD1ln",
+    "dilemma_id": "3tydvs7NQP6X1GgSRB5XpLUQEEY6Rsi2",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "gglfGGZ0nOME1Qi0xtaBNWhcUZhHP3kr",
+    "option_b_id": "mXGZ2n0kOfsGS7vLdb4jYAfgS8MyIFwq",
+    "dilemma_id": "e6jJhY46YDZ3QyEL2dhvjXWotQ3xx5E4",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "5I33f55tZLVAhTYinrVYVG3LnZ15b4I8",
+    "option_b_id": "eerUK9wIFOnPKNAs4BvaBhxTi1uTsfaP",
+    "dilemma_id": "b45adiFA1ubqQoqoVXgOJpkngqmRdS0e",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "udc052yOHl3K8N5LdyIkEn2g3qWldxV1",
+    "option_b_id": "KA9lEde2Vi0AOkuWXkpKBroCcovHiOex",
+    "dilemma_id": "anKXwwPKKyVMVASr75MxLyQn7vu6eD5D",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "2aXegtu7ZNt1hK9dQdtJnNenxv2B4sZy",
+    "option_b_id": "c8K2Fb78MTWBl6LiO5sqRXB5GxhipF80",
+    "dilemma_id": "KkrU49rlxbOkZDjdkulx4ILzzUpAs2iD",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "WH1rHvFvSH8RnKJ5G6z1TVMX2KVt7Fjo",
+    "option_b_id": "wruODtGxnXdOvq3Gv4ywFUfxOpnyYbVw",
+    "dilemma_id": "0gO6xg5bpPEHMvhwu7vFfJsQMwjTzAJC",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "RdqpmH88bXlL3BmnDZyCqET7D7dr528o",
+    "option_b_id": "zRviLTuCNefzxQoN1CiEel2pz3y0vBju",
+    "dilemma_id": "PNxZjVLgaXEiBZ3KcM5NGpCCcyZA5tZE",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "wZSgS9HbNsX0DI6AU5DH9OsIyDLx6JQq",
+    "option_b_id": "57RsKo2c9EZmTJhe7UCX9eLQheaDU51K",
+    "dilemma_id": "2VcTxkGE6FXXCZjyXuTu1VwaZrQHV6Yi",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "dSjQaVzodX6cIBxCeTkJM5UYo9dyYWSL",
+    "option_b_id": "BpUBWLUwrdvl5iRA4UMYNUl1YN2LpAuh",
+    "dilemma_id": "0OY9BjqfLdBtuZjN7WJRtUsceIRpEk92",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "jWDZ4EJp4wRB1G0FXCEFPu0bpHnGpDbS",
+    "option_b_id": "w69hNSTIbBam149YEOqyG4bzC04uYLqK",
+    "dilemma_id": "gs4zOszzRV4GF1qWkkwAjtcr6KicxpVE",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "XiQZbsRsCNxhxwmWrsZ4ojlH23DKcVuo",
+    "option_b_id": "eK9QU0KU5QxqSPsAiLDaoWzyfN6DOGMk",
+    "dilemma_id": "ztIgckvdLJTlXN1TRqDdhJk32OVoc2U6",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "p03qemlxKP7AQ6kv5yK2tTzvVm4x8y0S",
+    "option_b_id": "qdJbCvoYVyFQOaVH6YA8HJ06uYv2kH1z",
+    "dilemma_id": "0akvuJjEWEdK5sbX8yk20O9MV4O9JToj",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "0hqzpR3kznERjnpcZt7dPaVnujNBYLqd",
+    "option_b_id": "l70EVKHN3rF6HWHuAFzmLFR2H00pEvle",
+    "dilemma_id": "tbHjFXFtaibhj0PMUkVKCzpcGlFJwqYU",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "NyaTEAcjYhUn6UY5IxsnEmj1DwGY4f20",
+    "option_b_id": "VBrH35fdadReCoMTf64AoIXoy3pmpoQI",
+    "dilemma_id": "dBzpajYiTbkDGsqx64VTr5rJhu8tVw85",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "xAYxie50pYW4qh0OA3UcWCWW8Ec2E93g",
+    "option_b_id": "ZSTqQOAhXW8GKz5M1QXbsruk7wAH7BLH",
+    "dilemma_id": "LFYC3L6xyFFZETSYZOyCc5ibPFxlMK06",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "ChybD9iR0K7AUzrbNZC2YyzExqmT8JLV",
+    "option_b_id": "i7ZTLe7nTknyMbCdwIBK607sIj0NxOGV",
+    "dilemma_id": "MXo3QMrBaBhfYxIPZzToRwZCN6ocLJPS",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "1QlQv3WRvqEj5w6eenKDNVQj01ytqbkN",
+    "option_b_id": "7ugAw18LEE2veAYnQkAMRiNx6yDSiRcF",
+    "dilemma_id": "Ral8jWVT4pRLEYkgaXGnG1T3m3CA9zGY",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "lo7z8jsx8P4Gx9Llsvqc39W42ztUSbFP",
+    "option_b_id": "opSXNsxewHiLz7mjC1N8y7XijqWEmp2K",
+    "dilemma_id": "1b90zZYtaTlvPUhlEwHcBNwk3EreFbx7",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "OPl1WEuRi2JkTiIJIJjdE0vwYH529P2O",
+    "option_b_id": "JZJqd1lT3cH5vOYIXQPGHdc6pZ8oVYXx",
+    "dilemma_id": "HcPvBFfA1FcKYBlIdm9fJOQWTb05QfnH",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "F6khV7WAY5rqI6T87I56eqkaDmr5GnVO",
+    "option_b_id": "sItNaHTqBs0UdJuak3UAXB6Unu9skq9Y",
+    "dilemma_id": "DmB7NznPZSnLsYIH2XK3Dw1LlxZn8Nz7",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "T3VdgGjdawgGvUNG8IEKwKVYYFbtc5Ff",
+    "option_b_id": "nxBB4SFU9ESNcSKHVkxH8KLtzDgIwsQ4",
+    "dilemma_id": "lG0YsRe6bQlnmWIJocEBt63RNZpeszzJ",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "Q8q5XuxSlmroWzKvCrNGazt0ihvgxBnE",
+    "option_b_id": "5fV7tczWfGCl3DOVjUmPhiOO928ZFgrk",
+    "dilemma_id": "gq9FCltAELX8CuvCXZzYAizI1o2ASJov",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "U5dWTY7QktH21QMwG2CvxuCkJuPyyZsp",
+    "option_b_id": "lvdQcvIFiWmoT7mfPCR3xHbM0LFX3Y1U",
+    "dilemma_id": "GaAF0MFRV4bCWsDfJhF2DAuc8odGUzRD",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "hqy6xyTrND8RQGkjJBj1GNJc3Jfvkqpq",
+    "option_b_id": "qavRbQDXq8ubBedUoNyUqzxwt1ZhRaNO",
+    "dilemma_id": "vy2CbSlPWo5rjMYcgF6ahKLGe8Hw96fj",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "uwVjqcqHD5YJFG2I34nXAYF9f5b3NFi0",
+    "option_b_id": "WUqoxQEvznyOUaaGEvHnUGTIVKVuEoix",
+    "dilemma_id": "Y9U4kyvuJYiUNioNu5ssAcitxFMgLZjH",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "gWauR74zuzhURLcTnemgIB1Tv75KYWW1",
+    "option_b_id": "DlIrBmA52oYUk6dNMmSX2Bo0Xh1jlxSw",
+    "dilemma_id": "wPL3xxNiinuTZQ0Zh3KQIkd9REJtJbi7",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "LXONL3fAbpnJ1YN1e3lfxk89xuG7oiPh",
+    "option_b_id": "YzcP12rkSGMLVDpQ0rebuMvi837ENpf5",
+    "dilemma_id": "zs6WUucoqwwaOvM8kUY8iyZukaDdaxfR",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "e1n9dfwry6MRRXcoAjMqbzhhdLmpeWSo",
+    "option_b_id": "bIla9M4j5r59db9l5L6aI1h0ThOdl9bE",
+    "dilemma_id": "jfGsbM2dTg0kJfT3Cojxhf1j16wKG0az",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "2PTNaY4qS5X4rEz0nzKYRtWUmaqFJpYn",
+    "option_b_id": "t7ErkC1iH8NMUhsXK4KYjpybXS3CQ61b",
+    "dilemma_id": "mlYYdJsRAt8mjTWXxriTrelf9O6jKXMn",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "3V4zn1LcKAGQz295eJznXIgqRSipMIHL",
+    "option_b_id": "3yQB6UhS6U0ANKep2ClwETS57Kl2E8yt",
+    "dilemma_id": "QfGEtuRV0CxRqQv2iZgqn8WlZTFtOP4V",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "OAmao647kmlnD9dJojiPclVarqazMFrK",
+    "option_b_id": "xhQhAixGxGTAH47OUQLUMijcKYGga3PB",
+    "dilemma_id": "xQ1Ap7WBMIQAtFhhf2KJHCMTFYpFrORw",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "jAKY0cfankrId7YxmCEfPPNX0hwezsfZ",
+    "option_b_id": "W0jGSX5yAxkO0xJc5imxf5ZVAHdl2vGT",
+    "dilemma_id": "WmxPzVpygA4u7BoNWojEILhm4LINXrFU",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "wWhLhlnUz13hGYayIxRP1rlVJrFM1ZgT",
+    "option_b_id": "9gDZ06PuC0gJjBTggRe6H1GZekean3vn",
+    "dilemma_id": "CDW6wIapgNL9TzuwsbpzL0N2Vtes81Xn",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "tzzQTO20mN8iVfRWLqDymjsjaFsLGXOt",
+    "option_b_id": "CI6W64mC60hekqzhQZs79f1VFIUad8dA",
+    "dilemma_id": "LlFXVDOZUaM7n5lJIZTEQMPTr7MR9yFy",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "kz93gNvQjRQ7AZoAYW9ST6EhLhKfEHuJ",
+    "option_b_id": "eTAUmXR1bMpK5RIAzZnOn1iI3Zzb1OnS",
+    "dilemma_id": "3DC8TtsBJD35wuPCWHYeXsjDv0wKTKNM",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "7VhG3PpqjjWWvhL88rR8CaVz0TNgj2JS",
+    "option_b_id": "5Hv7iupQR5ZOjp3GHrro6GwoyAUiqgwc",
+    "dilemma_id": "rW7Kok1bhx9otTP34bNvJMGBnQvoiyLl",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "rGEvGeyTWoLrGBuKnNXxjHA6nt3kBF4C",
+    "option_b_id": "fPTcsvkxrYrMCMWQtx9zl9O9RMjNFFqS",
+    "dilemma_id": "dE0aWdX2aaVQnIhJa3u3L0DlbjLNH4Nz",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "U1QurBKZ1RAmuhjkkjb44pgqnuDqUZ5q",
+    "option_b_id": "0WIZnkfd03FZMlU0rZYxCbx9mhAhAmXN",
+    "dilemma_id": "0236qOxJm2TvlklW9FKm1oNymq3ucwDB",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "1NynNZMXNMtT0lU1AOWWMcVq0NgVd3ge",
+    "option_b_id": "8MERzGrma6eFggSLrRDBTFdGd2M4NhAY",
+    "dilemma_id": "CYyUL2iDshJzGpFujybk5i2PqUHcOEw1",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "Gqp3t9ii7J0M05og7ge2spP7qc6rSI5X",
+    "option_b_id": "Bt3Wx6ProMYK6G8jmDOe1992ku3j47CJ",
+    "dilemma_id": "9gbj001swzfs76h8gY61k21By3CzgxXN",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "0rcAWZi8n00MvH2fpqlljpsUUqKM8knc",
+    "option_b_id": "Xma67MAAbPwJmI4chLVczlUH15NxTU8d",
+    "dilemma_id": "IrDVRlQ2ah05FEYI7IlG8ntkyQbeI316",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "w4UJVHNmjHmQtphbXoOj5yQLOuMKMwQB",
+    "option_b_id": "F6H5z9LLVCQlOH6MkFFyZh3oBRKDBhUM",
+    "dilemma_id": "XUjUtow8w3t4BuTxl7PVPDdAcIAv13st",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "Ynj54LlNKW0uqpSm0vySpwaayLrFzqRa",
+    "option_b_id": "hfRbdexm26VQ35PHQGXGi30m2UQOAghb",
+    "dilemma_id": "WojbjkPrtwCcAzM1mZ227Ij6N8Z6KRny",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "1RguLYSIJm6y8pELpdBRPcF6SjbldT6Y",
+    "option_b_id": "A34ZVVHiPBi9TgR7fotZVwbLtzgQta7t",
+    "dilemma_id": "TbEmLMi4wR90rt7rqAWaRxGa22mYlm17",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "4oQ7Pz70bPFPDmg3fYNyHCE5KRFdEeEl",
+    "option_b_id": "UC0mkLjDhjmxGh0LaZ6koqOm3MazPFhj",
+    "dilemma_id": "z3XzA8reeEbJRsSvlYpvv3epkcm9oec9",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "y9yU5IF5pg9t4HiBgFIykkljvNloiC2v",
+    "option_b_id": "JUp2W8hGrvw6ahjz4WBse8FmYGX4Sxeq",
+    "dilemma_id": "M737fS0EwCy81GfrpO2v3warU3W7CdyL",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "kCkogUS1Lfk1nFkqnSW8Gt9w2IioVolA",
+    "option_b_id": "XoU7bOEmgwr2lTPdhKlFKz5xg75Yqiz8",
+    "dilemma_id": "stLLyrC11roXaTvlcFNV2cTowDacymu7",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "obswbdXbTOuUBEMBQt7Bp0fneVDJPNMh",
+    "option_b_id": "b8vIstPesjbu1w8M5pbbk8H3R8CqAxGu",
+    "dilemma_id": "MWF2dZwlh04sVu81P93UjYvtXiCWfTWX",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "O8leWcjZiJvcy482v1nBsIYWOZ1Ftd8N",
+    "option_b_id": "X6qIL7RLs0DgwWb4bhEmzPbKeKHWYdLX",
+    "dilemma_id": "H6BU5xkta13QAqix0ulj35zSw38oNVfi",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "lbsCpI49i8y6JRFAHUfZuiBkleTmgXcT",
+    "option_b_id": "IDjLQvnzP2VqH6QSMTH36wsvFJemLCUG",
+    "dilemma_id": "rH9Gk8YTBljbcuXrrHBglPlqoDek17Q4",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "3P5tQEHUclKZZaWRWOMcfsZyShv3ZFas",
+    "option_b_id": "1hW7Uc7TO4r1Mvku5ntvYZHLDtSp9zUh",
+    "dilemma_id": "rBlCsNQzVxIeQnHPOv0GbKaVOr0mKDu4",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "SMVSpWrlfI2jQYpfEYWDBpmyoBzf77xl",
+    "option_b_id": "TjBWN4Wi7YYUkeBR7rxCr5w3uMyq3B26",
+    "dilemma_id": "MG8B1LEET0MeAM2CvyAjencXf1I36yvd",
+    "gold_label": 1,
+    "controversial": false
+  },
+  {
+    "option_a_id": "09DDXgyzfi3sCHghQw4BeYVar69ibVtY",
+    "option_b_id": "i544Tq3Ap4B7vyac50uK8pMx9D5Fzge2",
+    "dilemma_id": "jnfp40n555mZnlMmDftAdfCa60AHRvr6",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "uqHhXA9PmgXEEnc0Wh05rHr8havXjTpH",
+    "option_b_id": "wimGhztsU8f6utHqOmOdkKrHVtC6I9NK",
+    "dilemma_id": "V4w9z7Yw4AxJP2v3Q8XbPQXy2CCng60L",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "nOapsRTaDXD7PnIezgJn2CXhBpl6fElP",
+    "option_b_id": "DAt6jfYjYNn8PAhWrh0N898DUDWk3uEz",
+    "dilemma_id": "Kptfmu2rUXgE8rFB9KYV46SsFdV8hiOt",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "eeQ3zE9JLgtwS4HZOTKkeHyIiGKYUPUg",
+    "option_b_id": "olymNooThhUQBuJOiSQ0zPzoRiGcDP6b",
+    "dilemma_id": "ZFPKl1veMPkuqf4bccJeWBaVzX7rFJQr",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "J6fTx9RVOgsN5PRfH8rgIGHOCKRRcb4c",
+    "option_b_id": "yFt1tDCXEzzSsCnt4UMz2s32aymblcGm",
+    "dilemma_id": "ke1ZtGaG2TnlGn2xdO4jfkUt0Yq2zl9y",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "HvBnN0Isoj3uMHBEJhMqyVhhAeDH5Qk2",
+    "option_b_id": "uEhmTMgE5tB1VApPgRTAOisEMLcUu666",
+    "dilemma_id": "7ltSxp1DfdTC69p49gq72FfFwAxb5aoR",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "A4YqDsVfOdtCKfmSuNMgSPaveECgN3dH",
+    "option_b_id": "O00E0lno0sk5yMPU6DsMyMvB1GVOAc8M",
+    "dilemma_id": "8O0oMci6fl6V2OCRSB9h3Soplmc7jIYd",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "fS4sOqsf3AqbCWGjRBtg4y0Bs0wdFcSI",
+    "option_b_id": "LhQhxfk6oHIPmR8NAUDOLKE1YUvWed5c",
+    "dilemma_id": "RDRX5EoreFw8yqe40XhefTSJzcsQgjMl",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "WauQmoalxLYW9kY1BPGZ2H7La6bDPC84",
+    "option_b_id": "zY14KhPfYpJAPyq9BC9Sv2JpDZSHdLQv",
+    "dilemma_id": "HRslw723PglRVkf30oTajV1UF8UQgDPo",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "NhtLYXgMU2byXG5QUAh9o1ntt2LUnK4Y",
+    "option_b_id": "iYLhNHFUy6Tvqp4hM3tvttdOhbGdzZE9",
+    "dilemma_id": "MeuJTqjqz4pakjSbTxMCVFM9V2joz1hi",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "fqSZXlCxfsxBfBujmtZxPCgFIX4L2Q2h",
+    "option_b_id": "UALlEHqRzEEtRug5pFpqJQFyg7AWt6Di",
+    "dilemma_id": "RFfJtPfYic3mTCoKnJls9SZ7KxPI24jU",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "ABLtzUv1oWejFaCiAM66EtKZcAjlskAK",
+    "option_b_id": "yk4vTjbskVRw7Qd7Ri2o1uNW6UFIuinP",
+    "dilemma_id": "7VQhhW9RHrNNEFOY1GHJdhb3tp2MaO0X",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "QZWgcCq2g1ScZXyLqOfSM7v8GHgO7TYm",
+    "option_b_id": "79rM6OohoEgI0dEl8Bl93zjM1U88lwcC",
+    "dilemma_id": "t4kcjfLTrDt9oTpfgnQGtodMKVsinzFp",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "4dVTfltIqXnxvnz0TyGLovhNR8x2or45",
+    "option_b_id": "DD15r30tWGC7sL42kp2Jhg9ZQuW4nqG6",
+    "dilemma_id": "RueaeuFU0QlNReZAC1t3q6fyUNW5FFaa",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "uYRYXfksrDS17QTTh1ogMBrpkoCKcvBI",
+    "option_b_id": "Jg4DHdilz54V0k3sVx3pPnOpe76Gl68V",
+    "dilemma_id": "XcFkK6t2hsvUfJyksJeOQHMPswUgTT4O",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "HN7lzstMFq05ZpRqRHiZPEkePqF9VQz5",
+    "option_b_id": "R0yo6xCgWG9hmtO8cdGDDeZbdDZIk1eu",
+    "dilemma_id": "5y2RVxBPDnRuoOmRZ2ObEn0ZBVIkPDka",
+    "gold_label": 0,
+    "controversial": true
+  },
+  {
+    "option_a_id": "6dyCqt4PxnGSnbvJG9MHUv1mBesCRJjS",
+    "option_b_id": "MbrYYC6Kcear8bBxKgHFQBRwBjwDYkEZ",
+    "dilemma_id": "tAw7TtP1kjpxkOBiyVG5DVezWJNPhfvP",
+    "gold_label": 0,
+    "controversial": false
+  },
+  {
+    "option_a_id": "EiR56O3DSeF4L2wxlPCRgIY5XeKqbMEV",
+    "option_b_id": "8JWIwAS8jLqpZE9ByQdOAc6AduBmR9DQ",
+    "dilemma_id": "IQueIFeFYn2XPP8izdNf0Mkn6YUVF2tm",
+    "gold_label": 1,
+    "controversial": true
+  },
+  {
+    "option_a_id": "LZgoelc6YtLxGkdAfMYiWD9r6VIcfFFT",
+    "option_b_id": "MJ4MUmAPTYNnuhoH5EnetcXI0vLcspz9",
+    "dilemma_id": "mONPmFdwZNw8d9wThPhqSV9zoJBU8LoF",
+    "gold_label": 0,
+    "controversial": false
+  }
+]
