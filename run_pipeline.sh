@@ -192,8 +192,8 @@ if [[ ! -f "$GEN_CONFIG" ]]; then
 {
   "domain": "${DATASET_NAME}",
   "choice_context": "${CHOICE_CONTEXT}",
-  "input_path": "../${SELECTED_CSV}",
-  "template_path": "../${TEMPLATE_FILE}",
+  "input_path": "${SELECTED_CSV}",
+  "template_path": "${TEMPLATE_FILE}",
   "text_column": "${TEXT_COLUMN}",
   "display_column": "${DISPLAY_COLUMN}",
   "id_column": "${ID_COLUMN}",
