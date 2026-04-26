@@ -68,7 +68,7 @@
   .option-card.dimmed { opacity: 0.5; }
 
   .option-card .card-poster {
-    width: 100%; max-height: 200px; object-fit: contain;
+    width: 100%; max-height: 400px; object-fit: contain;
     border-radius: 4px; margin-bottom: 0.5rem;
   }
 
@@ -157,6 +157,41 @@
     font-variant-numeric: tabular-nums; color: #888;
   }
 
+  /* --- Inference rows --- */
+  .inference-row {
+    margin-bottom: 0.75rem; padding: 0.75rem;
+    background: #fafbfc; border: 1px solid #e5e7eb;
+    border-radius: 8px; transition: opacity 0.2s;
+  }
+  .inference-row.removed {
+    opacity: 0.35;
+    text-decoration: line-through;
+    text-decoration-color: #999;
+  }
+  .inference-row:last-of-type { margin-bottom: 0; }
+
+  .inference-text {
+    font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;
+    color: #1a1a1a;
+  }
+
+  .inference-controls {
+    display: flex; gap: 0.35rem; flex-wrap: wrap;
+  }
+  .inference-controls button {
+    padding: 0.3rem 0.7rem; font-size: 0.78rem;
+    border: 1px solid #d1d5db; border-radius: 5px;
+    background: #fff; color: #555; cursor: pointer;
+    transition: all 0.15s;
+  }
+  .inference-controls button:hover { border-color: #999; }
+  .inference-controls button.active {
+    background: #3b82f6; color: #fff; border-color: #3b82f6;
+  }
+  .inference-controls button.active-remove {
+    background: #ef4444; color: #fff; border-color: #ef4444;
+  }
+
   /* --- Buttons --- */
   .submit-row { text-align: center; margin-top: 1.5rem; }
 
@@ -239,6 +274,7 @@
     'title', '_rendered_text', 'movie_id', 'wine_id', 'action_id',
     'completion_id', 'option_id', 'id', 'row_id', 'text',
     'prompt_hash', 'category', 'embedding',
+    'rating_count', 'taster_twitter_handle',
   ]);
 
   // Prettier labels for known field names
