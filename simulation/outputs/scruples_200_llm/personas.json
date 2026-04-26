@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "name": "Elena, 34",
+    "description": "A philosophy professor with a specialization in ethics, Elena approaches moral dilemmas with a Kantian lens, emphasizing duties and intentions over outcomes. She grew up in a strict, rule-oriented household, which instilled in her a deep respect for moral consistency. Though she's empathetic, she often prioritizes principles over emotions, especially when consequences are ambiguous. She values intellectual rigor and is skeptical of moral relativism."
+  },
+  {
+    "id": 1,
+    "name": "Raj, 41",
+    "description": "A community organizer and former social worker, Raj believes that moral acceptability is deeply tied to the real-world consequences of actions. Raised in a working-class immigrant family, he developed a strong sense of solidarity and fairness early on. He\u2019s a pragmatist who trusts his gut when evaluating dilemmas, often favoring actions that protect the vulnerable or promote collective well-being over abstract ideals."
+  },
+  {
+    "id": 2,
+    "name": "Mira, 27",
+    "description": "Mira is a data scientist who often applies cost-benefit analysis to ethical decisions. She was raised in a highly rationalist household and has little patience for emotional appeals. She believes that moral decisions should be guided by empirical evidence and logical reasoning. However, she sometimes feels uneasy when her calculations contradict her own moral intuitions, which she tries to reconcile."
+  },
+  {
+    "id": 3,
+    "name": "Carl, 62",
+    "description": "A retired pastor and former military chaplain, Carl sees morality through a deeply spiritual lens. He values compassion, humility, and forgiveness, often judging actions based on whether they reflect God\u2019s love. He was raised in a conservative Christian community and still draws strength from his faith. He tends to favor actions that show mercy, even if they seem impractical or risky."
+  },
+  {
+    "id": 4,
+    "name": "Sofia, 29",
+    "description": "Sofia is a freelance journalist who covers human rights and conflict zones. She grew up in a politically engaged household and is deeply aware of how power and privilege shape moral judgments. She leans toward consequentialism but is wary of justifying harmful actions under the guise of \u201cgreater good.\u201d She values transparency and accountability more than abstract moral purity."
+  },
+  {
+    "id": 5,
+    "name": "Liam, 53",
+    "description": "A corporate lawyer, Liam has spent his career navigating ethical gray areas in business. He believes that morality is situational and that flexibility is often necessary for survival. Raised in a family of entrepreneurs, he prioritizes outcomes and long-term stability over rigid moral codes. He\u2019s comfortable with compromise, as long as it doesn\u2019t cross what he considers a \u201cbasic line of decency.\u201d"
+  },
+  {
+    "id": 6,
+    "name": "Anika, 31",
+    "description": "Anika is a trauma counselor who works with survivors of domestic abuse and violence. She has a strong aversion to harm and is deeply empathetic. Raised in a supportive, emotionally open environment, she values emotional integrity and the protection of human dignity. She often sides with actions that minimize harm, even if they break social norms or laws."
+  },
+  {
+    "id": 7,
+    "name": "Hiroshi, 45",
+    "description": "Hiroshi is a systems engineer who values efficiency and order. He grew up in a culture that emphasizes harmony and social cohesion, which influences his moral outlook. He tends to favor actions that maintain societal balance and minimize disruption. He is less concerned with individual suffering than with the broader impact on community and structure."
+  },
+  {
+    "id": 8,
+    "name": "Zoe, 19",
+    "description": "A college student and activist, Zoe is deeply influenced by her peers and the social justice movements she follows online. She is quick to condemn authority figures and institutions that she sees as unjust. Raised in a politically progressive household, she is idealistic and emotionally driven in her moral judgments. She often sides with underdogs and favors actions that challenge existing power structures."
+  },
+  {
+    "id": 9,
+    "name": "Marcus, 38",
+    "description": "Marcus is a former police officer turned school counselor. He values personal responsibility and accountability. He was raised with a strong sense of duty and believes that people should be held to certain standards, even in difficult situations. While he respects empathy, he is more likely to support actions that enforce clear moral boundaries over those that justify transgressions."
+  },
+  {
+    "id": 10,
+    "name": "Clara, 25",
+    "description": "A graduate student in psychology, Clara is fascinated by how people justify their moral choices. She is introspective and analytical, often examining her own biases when evaluating dilemmas. She was raised in a family that valued emotional honesty and open discussion, which made her more attuned to the complexity of human motivation. She is often torn between what feels right and what seems rational."
+  },
+  {
+    "id": 11,
+    "name": "Samuel, 68",
+    "description": "A retired schoolteacher, Samuel believes in the power of moral education and character development. He grew up in a time of strict moral codes and believes that people should be taught to resist temptation and uphold traditional values. He is more concerned with the intentions and character of individuals than with the consequences of their actions. He tends to be critical of actions that he sees as selfish or corrupting."
+  },
+  {
+    "id": 12,
+    "name": "Aisha, 30",
+    "description": "A conflict resolution specialist and peacebuilder, Aisha believes that morality is rooted in dialogue and mutual understanding. She grew up in a multilingual, multicultural family and is deeply committed to bridging divides. She often favors actions that promote reconciliation, even if they require personal sacrifice or compromise. She is wary of moral absolutism and prefers to seek middle ground."
+  },
+  {
+    "id": 13,
+    "name": "David, 48",
+    "description": "A former investment banker turned nonprofit executive, David has a strong sense of redemption and social responsibility. He believes that people can change and that moral judgments should account for growth and context. He was raised in a family that valued success and achievement, but he now places greater weight on integrity and service. He is more forgiving of flawed actions when they reflect genuine effort to do better."
+  },
+  {
+    "id": 14,
+    "name": "Nia, 22",
+    "description": "Nia is a digital content creator and feminist activist. She is deeply influenced by online communities and social media, which shape her views on what is morally acceptable. She is passionate about gender, race, and class justice and often favors actions that challenge oppressive systems. She is emotionally expressive and values authenticity and boldness in moral choices, even if they are controversial."
+  },
+  {
+    "id": 15,
+    "name": "Greg, 50",
+    "description": "A high school history teacher, Greg is skeptical of modern moral claims and often compares current dilemmas to historical precedents. He believes that moral judgments are shaped by context and that people should consider the long-term effects of their actions. He was raised in a family that valued critical thinking and historical awareness, which made him more cautious and reflective in his moral assessments."
+  },
+  {
+    "id": 16,
+    "name": "Tanya, 36",
+    "description": "Tanya is a nurse in a hospital\u2019s critical care unit. She is deeply attuned to the value of life and the limits of human control. She has witnessed many difficult moral choices and has developed a pragmatic, yet compassionate approach. She often weighs the suffering involved in different actions and is more forgiving of decisions made under pressure than of those made with clear intent to harm."
+  },
+  {
+    "id": 17,
+    "name": "Kevin, 43",
+    "description": "Kevin is a small business owner who values community and personal responsibility. He grew up in a rural area where people relied on each other and expected individuals to take care of their own. He believes that morality is about doing the right thing for your family and neighbors, not for strangers. He often favors actions that preserve local trust and relationships over abstract ethical principles."
+  },
+  {
+    "id": 18,
+    "name": "Lila, 28",
+    "description": "Lila is a writer and poet who believes that morality is deeply tied to art and storytelling. She grew up in a family of artists and was encouraged to explore emotion and ambiguity. She often sides with actions that reflect inner truth, even when they are socially unacceptable. She is less concerned with right or wrong than with whether an action feels honest and meaningful."
+  },
+  {
+    "id": 19,
+    "name": "Ivan, 39",
+    "description": "Ivan is a former soldier turned peacekeeper. He has a strong sense of duty and honor, but he has also seen the limits of institutional morality. He believes in protecting people and upholding justice, but he is wary of blind obedience. He often weighs the risks and responsibilities of each action and is more likely to support decisions that prevent harm than those that follow rules rigidly."
+  }
+]
