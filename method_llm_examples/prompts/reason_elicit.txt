@@ -1,0 +1,54 @@
+Here are two {domain_items}. Imagine a large, diverse group of people each
+choosing which one they prefer. Different people will choose differently —
+and for different reasons.
+
+{DOMAIN_ITEM} A:
+{option_a_text}
+
+{DOMAIN_ITEM} B:
+{option_b_text}
+
+List {reasons_per_side} distinct reasons someone might choose {DOMAIN_ITEM} A over B, and
+{reasons_per_side} distinct reasons someone might choose B over A. Each reason should
+identify a single preference or taste that makes one option more appealing
+to a particular type of person.
+
+IMPORTANT: State each reason as a SHORT, GENERAL preference — one that would
+apply across many different {domain_items}, not just this pair. The pair above
+is a stimulus to help you think of preferences, but the reason itself should
+be a transferable taste or priority. Do NOT mention the specific {domain_items}
+by name in the reason.
+
+State each reason as a SINGLE CONCEPT — what the person is drawn to — not
+as a contrast between two things. The contrast is already captured by which
+side (A or B) the reason appears on.
+
+Good examples:
+- "Preference for satirical, irreverent humor"
+- "Drawn to slow-building atmospheric tension"
+- "Values historical authenticity and period detail"
+
+Bad examples:
+- "Preference for humor over horror" (don't specify what it's over)
+- "People who enjoy parodies of Sparta..." (too specific to this pair)
+- "It has better acting" (quality judgment, not a preference)
+
+Keep each reason to ONE sentence (under 15 words if possible). Avoid generic
+quality judgments — focus on what *type* of content or experience the person
+is drawn to.
+
+Format (plain text, not JSON):
+
+REASONS TO CHOOSE A:
+1. [reason]
+2. [reason]
+3. [reason]
+4. [reason]
+5. [reason]
+
+REASONS TO CHOOSE B:
+1. [reason]
+2. [reason]
+3. [reason]
+4. [reason]
+5. [reason]

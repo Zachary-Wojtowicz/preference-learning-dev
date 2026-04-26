@@ -1,0 +1,16 @@
+{
+  "domain": "wines_100",
+  "choice_context": "A person is deciding which wine to buy for dinner, considering flavor profile, value, and personal taste.",
+  "input_path": "datasets/wines_100/wines_100.csv",
+  "template_path": "datasets/wine_prompt.txt",
+  "text_column": "description",
+  "display_column": "title",
+  "id_column": "wine_id",
+  "num_dimensions": 15,
+  "pair_appearances_per_option": 30,
+  "max_options": 100,
+  "dimensions_output_format": "plain",
+  "request_timeout_seconds": 180,
+  "max_retries": 3,
+  "max_workers": 32
+}

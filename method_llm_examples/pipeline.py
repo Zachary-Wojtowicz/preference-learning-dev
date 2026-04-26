@@ -37,6 +37,16 @@ DEFAULT_SEED = 42
 DEFAULT_TIMEOUT = 45
 DEFAULT_MAX_RETRIES = 3
 
+PROMPTS_DIR = Path(__file__).resolve().parent / "prompts"
+DEFAULT_REASON_PROMPT = PROMPTS_DIR / "reason_elicit.txt"
+DEFAULT_DEDUP_PROMPT = PROMPTS_DIR / "reason_dedup.txt"
+DEFAULT_CONDENSE_PROMPT = PROMPTS_DIR / "dimension_condense.txt"
+
+
+def load_prompt(path):
+    """Load a prompt template from a text file."""
+    return Path(path).read_text(encoding="utf-8").rstrip("\n")
+
 
 def llm_call_temp(client, model, prompt, timeout, retries, temperature=0.7):
     """Like llm_call but with configurable temperature and full pool/retry logic."""
@@ -150,61 +160,9 @@ def sample_diverse_pairs(embeddings, num_pairs, num_strata, seed):
 # Stage 2 — Elicit Reasons Per Pair
 # ===================================================================
 
-REASON_PROMPT_TEMPLATE = """\
-Here are two {domain_items}. Imagine a large, diverse group of people each
-choosing which one they prefer. Different people will choose differently —
-and for different reasons.
-
-{DOMAIN_ITEM} A:
-{option_a_text}
-
-{DOMAIN_ITEM} B:
-{option_b_text}
-
-List {reasons_per_side} distinct reasons someone might choose {DOMAIN_ITEM} A over B, and
-{reasons_per_side} distinct reasons someone might choose B over A. Each reason should
-identify a single preference or taste that makes one option more appealing
-to a particular type of person.
-
-IMPORTANT: State each reason as a SHORT, GENERAL preference — one that would
-apply across many different {domain_items}, not just this pair. The pair above
-is a stimulus to help you think of preferences, but the reason itself should
-be a transferable taste or priority. Do NOT mention the specific {domain_items}
-by name in the reason.
-
-State each reason as a SINGLE CONCEPT — what the person is drawn to — not
-as a contrast between two things. The contrast is already captured by which
-side (A or B) the reason appears on.
-
-Good examples:
-- "Preference for satirical, irreverent humor"
-- "Drawn to slow-building atmospheric tension"
-- "Values historical authenticity and period detail"
-
-Bad examples:
-- "Preference for humor over horror" (don't specify what it's over)
-- "People who enjoy parodies of Sparta..." (too specific to this pair)
-- "It has better acting" (quality judgment, not a preference)
-
-Keep each reason to ONE sentence (under 15 words if possible). Avoid generic
-quality judgments — focus on what *type* of content or experience the person
-is drawn to.
-
-Format (plain text, not JSON):
-
-REASONS TO CHOOSE A:
-1. [reason]
-2. [reason]
-3. [reason]
-4. [reason]
-5. [reason]
-
-REASONS TO CHOOSE B:
-1. [reason]
-2. [reason]
-3. [reason]
-4. [reason]
-5. [reason]"""
+# Reason elicitation prompt: loaded from file (see prompts/ directory).
+# Variants: reason_elicit.txt (default), reason_elicit_values.txt,
+#           reason_elicit_persona.txt, reason_elicit_mltraining.txt
 
 
 def parse_reasons(response_text, pair, reasons_per_side):
@@ -253,8 +211,11 @@ def parse_reasons(response_text, pair, reasons_per_side):
     return reasons
 
 
-def elicit_reasons(pairs, options_lookup, config, client, model, max_workers, reasons_per_side):
+def elicit_reasons(pairs, options_lookup, config, client, model, max_workers, reasons_per_side,
+                   reason_prompt_template=None):
     """Elicit preference reasons for all pairs."""
+    if reason_prompt_template is None:
+        reason_prompt_template = load_prompt(DEFAULT_REASON_PROMPT)
     domain_item = config.get("domain_item", config.get("domain", "option"))
     domain_items = domain_item + "s"
     timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT))
@@ -264,7 +225,7 @@ def elicit_reasons(pairs, options_lookup, config, client, model, max_workers, re
         opt_a = options_lookup[pair["option_a_id"]]
         opt_b = options_lookup[pair["option_b_id"]]
 
-        prompt = REASON_PROMPT_TEMPLATE.format(
+        prompt = reason_prompt_template.format(
             domain_items=domain_items,
             DOMAIN_ITEM=domain_item.capitalize(),
             option_a_text=opt_a.option_text,
@@ -313,40 +274,12 @@ def strip_reason_boilerplate(text):
     return text.strip()
 
 
-DEDUP_PROMPT_TEMPLATE = """\
-Below are {N} reasons that people gave for choosing one {domain_item} over
-another. Many reasons express the same underlying theme in different words.
-
-Your task: identify the ~{target_themes} most frequently recurring distinct
-themes across these reasons. For each theme, provide:
-- A brief label (5-10 words) that captures the core preference
-- A count of how many of the original reasons express this theme
-- The IDs of the reasons that express this theme
-
-Be aggressive about merging — if two reasons reflect the same underlying
-preference (even if applied to different specific options), they are the
-same theme. But do NOT merge themes that are genuinely distinct preferences.
-
-REASONS:
-{reason_list}
-
-Respond with valid JSON only — no prose before or after, no markdown fences.
-
-{{
-  "themes": [
-    {{
-      "theme_id": 1,
-      "label": "brief theme label",
-      "count": 42,
-      "reason_ids": [0, 3, 7, 12]
-    }}
-  ]
-}}"""
+# Dedup prompt: loaded from file (see prompts/reason_dedup.txt).
 
 
-def _chunk_reason_lines(reason_lines, domain_item, num_themes, max_prompt_tokens=8000):
+def _chunk_reason_lines(reason_lines, domain_item, num_themes, dedup_prompt_template, max_prompt_tokens=8000):
     """Split reason_lines into chunks whose prompts fit within max_prompt_tokens."""
-    template_overhead = len(DEDUP_PROMPT_TEMPLATE.format(
+    template_overhead = len(dedup_prompt_template.format(
         N=9999, domain_item=domain_item, target_themes=num_themes, reason_list="",
     )) // 4 + 50
     chunks = []
@@ -365,8 +298,10 @@ def _chunk_reason_lines(reason_lines, domain_item, num_themes, max_prompt_tokens
     return chunks
 
 
-def dedup_reasons_llm(reasons, config, client, model, num_themes):
+def dedup_reasons_llm(reasons, config, client, model, num_themes, dedup_prompt_template=None):
     """Deduplicate reasons using an LLM call. Returns list in cluster format."""
+    if dedup_prompt_template is None:
+        dedup_prompt_template = load_prompt(DEFAULT_DEDUP_PROMPT)
     domain_item = config.get("domain_item", config.get("domain", "option"))
     timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT)) * 10
     retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
@@ -376,12 +311,12 @@ def dedup_reasons_llm(reasons, config, client, model, num_themes):
         stripped = strip_reason_boilerplate(r["reason_text"])
         reason_lines.append(f"{r['reason_id']}. {stripped}")
 
-    chunks = _chunk_reason_lines(reason_lines, domain_item, num_themes)
+    chunks = _chunk_reason_lines(reason_lines, domain_item, num_themes, dedup_prompt_template)
 
     per_batch_themes = 20
 
     def _run_chunk(ci, chunk):
-        prompt = DEDUP_PROMPT_TEMPLATE.format(
+        prompt = dedup_prompt_template.format(
             N=len(chunk),
             domain_item=domain_item,
             target_themes=per_batch_themes,
@@ -540,41 +475,7 @@ def cluster_reasons(reasons, client, embedding_model, num_clusters, distance_thr
 # Stage 4 — Condense into Dimensions
 # ===================================================================
 
-CONDENSE_PROMPT_TEMPLATE = """\
-You are analyzing reasons people give for choosing between {domain_items}.
-
-Below is a deduplicated list of preference themes people expressed when
-choosing between {domain_items}. The count indicates how many times each
-theme appeared across {num_pairs} different choice pairs — higher counts
-indicate more pervasive preferences.
-
-Your task is to identify the {K} most important UNIPOLAR preference features
-that explain these themes. Each feature represents a single quality that a
-{domain_item} can have MORE or LESS of — not a contrast between two
-different qualities.
-
-Each dimension should:
-- Be a UNIPOLAR FEATURE — it describes a single quality that varies from
-  "absent/minimal" to "strongly present" (e.g., "Humor" ranges from
-  "no humor" to "very humorous")
-- NOT be a forced contrast between two different concepts (e.g., do NOT
-  create "Humor vs. Horror" — instead create separate "Humor" and "Horror"
-  features if both are important)
-- SUBSUME as many of the listed themes as possible
-- Be DISTINCT from the other dimensions — two dimensions should not rank
-  options in nearly the same order
-- Be PREFERENCE-RELEVANT — something that different people value differently,
-  not a neutral descriptor
-
-For each dimension, cite which theme numbers it subsumes (this verifies
-coverage and coherence).
-
-THEMES (sorted by frequency):
-{reason_list}
-
-Respond with valid JSON only — no prose before or after, no markdown fences.
-
-{schema}"""
+# Condense prompt: loaded from file (see prompts/dimension_condense.txt).
 
 CONDENSE_SCHEMA = """{
   "domain": string,
@@ -614,8 +515,11 @@ CONDENSE_SCHEMA = """{
 }"""
 
 
-def condense_dimensions(clusters, config, client, model, num_dimensions):
+def condense_dimensions(clusters, config, client, model, num_dimensions,
+                        condense_prompt_template=None):
     """Distill cluster/theme representatives into K unipolar preference features."""
+    if condense_prompt_template is None:
+        condense_prompt_template = load_prompt(DEFAULT_CONDENSE_PROMPT)
     domain_item = config.get("domain_item", config.get("domain", "option"))
     domain_items = domain_item + "s"
     timeout = int(config.get("request_timeout_seconds", DEFAULT_TIMEOUT)) * 15
@@ -631,7 +535,7 @@ def condense_dimensions(clusters, config, client, model, num_dimensions):
 
     num_pairs = len(set(pid for c in top_clusters for pid in c["contributing_pair_ids"]))
 
-    prompt = CONDENSE_PROMPT_TEMPLATE.format(
+    prompt = condense_prompt_template.format(
         domain_item=domain_item,
         domain_items=domain_items,
         num_pairs=num_pairs,
@@ -875,6 +779,16 @@ def parse_args():
                         help="Distance threshold for auto clustering (default: 0.1)")
     parser.add_argument("--coverage-threshold", type=float, default=0.4)
     parser.add_argument("--skip-coverage", action="store_true", help="Skip stage 5 coverage validation")
+    # Prompt overrides (default: prompts/ directory next to this script)
+    parser.add_argument("--reason-prompt", default=None,
+                        help="Path to reason elicitation prompt template "
+                             f"(default: {DEFAULT_REASON_PROMPT.relative_to(REPO_ROOT)})")
+    parser.add_argument("--dedup-prompt", default=None,
+                        help="Path to dedup prompt template "
+                             f"(default: {DEFAULT_DEDUP_PROMPT.relative_to(REPO_ROOT)})")
+    parser.add_argument("--condense-prompt", default=None,
+                        help="Path to dimension condensation prompt template "
+                             f"(default: {DEFAULT_CONDENSE_PROMPT.relative_to(REPO_ROOT)})")
     parser.add_argument("--max-workers", type=int, default=8)
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
     return parser.parse_args()
@@ -887,6 +801,13 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     embedding_model = args.embedding_model or "text-embedding-3-small"
+
+    # Load prompt templates (from file or default)
+    reason_prompt = load_prompt(args.reason_prompt or DEFAULT_REASON_PROMPT)
+    dedup_prompt = load_prompt(args.dedup_prompt or DEFAULT_DEDUP_PROMPT)
+    condense_prompt = load_prompt(args.condense_prompt or DEFAULT_CONDENSE_PROMPT)
+    prompt_src = args.reason_prompt or str(DEFAULT_REASON_PROMPT.relative_to(REPO_ROOT))
+    print(f"[prompts] reason={prompt_src}", flush=True)
 
     # Load options for text rendering
     options = load_options(config)
@@ -935,6 +856,7 @@ def main():
         reasons = elicit_reasons(
             pairs, options_lookup, config, client, args.model,
             args.max_workers, args.reasons_per_side,
+            reason_prompt_template=reason_prompt,
         )
         write_json(reasons_path, reasons)
         print(f"[stage-2] Elicited {len(reasons)} reasons -> {reasons_path}", flush=True)
@@ -953,7 +875,8 @@ def main():
             clusters = load_json(themes_path)
         else:
             print(f"[stage-3] Deduplicating {len(reasons)} reasons via LLM...", flush=True)
-            clusters = dedup_reasons_llm(reasons, config, client, args.model, args.num_themes)
+            clusters = dedup_reasons_llm(reasons, config, client, args.model, args.num_themes,
+                                        dedup_prompt_template=dedup_prompt)
             write_json(themes_path, clusters)
             print(f"[stage-3] {len(clusters)} themes -> {themes_path}", flush=True)
     else:
@@ -981,6 +904,7 @@ def main():
         print(f"[stage-4] Condensing {len(clusters)} themes into {args.num_dimensions} dimensions...", flush=True)
         dimensions_data = condense_dimensions(
             clusters, config, client, args.model, args.num_dimensions,
+            condense_prompt_template=condense_prompt,
         )
         write_json(dims_path, dimensions_data)
         print(f"[stage-4] {len(dimensions_data.get('dimensions', []))} dimensions -> {dims_path}", flush=True)

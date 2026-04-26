@@ -1,0 +1,14 @@
+{
+  "domain": "medical advice responses",
+  "domain_item": "medical advice response",
+  "choice_context": "A person is evaluating which medical advice response is better, considering factors like accuracy, safety, evidence-based reasoning, appropriate caveats, and helpfulness.",
+  "input_path": "datasets/em_medical/em_medical.csv",
+  "template_path": "datasets/em_medical_prompt.txt",
+  "text_column": "assistant_response",
+  "display_column": "user_prompt",
+  "id_column": "completion_id",
+  "max_options": 200,
+  "request_timeout_seconds": 180,
+  "max_retries": 3,
+  "max_workers": 32
+}

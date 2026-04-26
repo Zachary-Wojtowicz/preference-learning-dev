@@ -1,0 +1,28 @@
+Below are {N} reasons that people gave for choosing one {domain_item} over
+another. Many reasons express the same underlying theme in different words.
+
+Your task: identify the ~{target_themes} most frequently recurring distinct
+themes across these reasons. For each theme, provide:
+- A brief label (5-10 words) that captures the core preference
+- A count of how many of the original reasons express this theme
+- The IDs of the reasons that express this theme
+
+Be aggressive about merging — if two reasons reflect the same underlying
+preference (even if applied to different specific options), they are the
+same theme. But do NOT merge themes that are genuinely distinct preferences.
+
+REASONS:
+{reason_list}
+
+Respond with valid JSON only — no prose before or after, no markdown fences.
+
+{{
+  "themes": [
+    {{
+      "theme_id": 1,
+      "label": "brief theme label",
+      "count": 42,
+      "reason_ids": [0, 3, 7, 12]
+    }}
+  ]
+}}

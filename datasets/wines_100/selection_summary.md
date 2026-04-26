@@ -1,0 +1,121 @@
+# Option Selection Summary
+
+- Input: datasets/wines-prepared-embedded.parquet
+- Total options: 129970
+- After filtering: 129970
+- Selected: 100
+- Method: farthest-first
+- Seed: 42
+
+## Diagnostics
+
+- Selected 100 from 129970 candidates
+- Mean pairwise cosine distance (selected): 0.5133
+- Min nearest-neighbor distance (selected): 0.4222
+- Mean nearest-neighbor distance (selected): 0.4324
+- Coverage — mean distance from any candidate to nearest selected: 0.3334
+- Coverage — max distance from any candidate to nearest selected: 0.4220
+- Coverage — 95th percentile: 0.3810
+
+## Selected Options
+
+- wine_121958: Brander 2012 Mesa Verde Vineyard Sauvignon Blanc (Santa Ynez Valley)
+- wine_39994: Giuseppe Apicella 2006 Costa d'Amalfi Tramonti Red (Campania)
+- wine_30987: Shark Trust 2005 Sixgill Syrah (California)
+- wine_100999: Cortes de Cima 2011 Homenagem a Hans Christian Andersen Red (Alentejano)
+- wine_1121: Domaine Rotier NV Noces de Feu Duras (Vin de Liqueur)
+- wine_62384: Salomon-Undhof 2007 Undhof Kögl Riesling (Kremstal)
+- wine_5071: The Infinite Monkey Theorem 2012 The Hundreth Monkey Red (Grand Valley)
+- wine_27537: Abelis Carthago 2004 Fighting Bulls  (Toro)
+- wine_106425: Leasingham 2005 Classic Clare Shiraz (Clare Valley)
+- wine_110969: Gotsa Family Wines 2015 Dry Unfiltered Chinuri (Georgia)
+- wine_73213: 8 Chains North 2010 Furnace Mountain Dry Red (Virginia)
+- wine_25285: Kayra 2007 Buzbag Rezerv Öküzgözü Bogazkere Red (Elazığ-Diyarbakir)
+- wine_99400: Alexandria Nicole 2006 The Girl Next Door ‘Roll in the Hay' Chardonnay (Columbia Valley (WA))
+- wine_41914: Hush Heath Estate NV Balfour 1503 Classic Cuvée Sparkling (England)
+- wine_58429: Tiefenbrunner 2010 Feldmarschall von Fenner Müller-Thurgau (Alto Adige)
+- wine_56115: Pazo Pondal 2015 Godello (Bierzo)
+- wine_88501: Dalton 2014 Canaan Red (Galilee)
+- wine_123027: Mosquito Fleet 2011 Sophia Red (Columbia Valley (WA))
+- wine_39220: Arnaldo Rivera 2013 Bussia  (Barolo)
+- wine_111852: El Huique 2007 Carmenère (Colchagua Valley)
+- wine_34869: Newton Johnson 2015 Cape Winemakers Guild Seadragon Pinot Noir (Hemel en Aarde)
+- wine_113264: Taylor Fladgate NV Fine Ruby  (Port)
+- wine_55613: Carić 2008 Plovac Polški Plavac Mali (Hvar)
+- wine_42052: A. Parparoussis 2009 The Gift of Dionysos Sideritis (Greece)
+- wine_70042: Cramele Recas 2014 Dreambird Moscato (Viile Timisului)
+- wine_83535: Arrogant Frog 2015 Lily Pad Pink Rosé (Pays d'Oc)
+- wine_38112: Esterházy 2009 Haydn Merlot (Burgenland)
+- wine_72603: Pedro Romero NV Aurora Manzanilla Extra Dry Sherry (Jerez)
+- wine_100376: Trenel Fils 2015  Saint-Amour
+- wine_18349: Cupcake 2010 Angel Food White (California)
+- wine_75164: Pillsbury 2011 Symphony (Cochise County)
+- wine_108962: THP 2013 Stampede Red (Texas High Plains)
+- wine_128748: Familia Deicas 2015 Deicas Tannat (Uruguay)
+- wine_47643: Tobacco Road 2006 Tradition Cabernet Sauvignon (Napa Valley)
+- wine_19064: Baby Bear 2009 Syrah (Columbia Valley (WA))
+- wine_80832: Lantieri de Paratico NV Saten Chardonnay (Franciacorta)
+- wine_95715: Domaine Pinnacle NV Ice Apple Wine Apple (Canada)
+- wine_11150: Orbelus 2013 Melnik
+- wine_64404: La Universal 2008 Dido Red (Montsant)
+- wine_101359: Lima Smith 2013 Boa Vista Touriga Nacional (Douro)
+- wine_55796: Ovum 2015 Memorista Whale Riesling (Eola-Amity Hills)
+- wine_54106: Jasper NV Black Road White (Iowa)
+- wine_42655: Cloak & Dagger 2012 The Conspirator's Reserve Syrah (Paso Robles)
+- wine_98298: Rock Wall 2015 Fiano
+- wine_52078: Divine Llama 2007 In a Heart Beat Red (Yadkin Valley)
+- wine_45457: Château Cos Labory 2014  Saint-Estèphe
+- wine_105630: Ixsir 2013 Altitudes White (Lebanon)
+- wine_118452: Cooper-Garrod 2007 Test Pilot Sabre Jet F-86 Red (Santa Cruz Mountains)
+- wine_97446: Sererraglio Carole Bouquet 2006 Sangue d'Oro 500ml  (Passito di Pantelleria)
+- wine_121620: Mount Pleasant Winery 2009 Estates Norton (Missouri)
+- wine_57268: Targovishte 2009 Traminer (Bulgaria)
+- wine_30973: Mike Ditka 2005 Kick Ass Red Red (Mendocino)
+- wine_105847: Vettori 2009 Manzoni Bianco Manzoni (Colli Trevigiani)
+- wine_67176: Wöhrle 2013 Kirchgasse Lahrer GG Trocken Spätburgunder (Baden)
+- wine_102959: Henry's Drive Vignerons 2013 Pillar Box Shiraz (Padthaway)
+- wine_44826: Nelwood Wines 2004 Nelwood Station Bulldozer Red (South Australia)
+- wine_96415: BBQ Wine Company 2013 Oink! White (America)
+- wine_48295: Shooting Star 2007 Blue Franc Blaufränkisch (Washington)
+- wine_109564: Collier Falls 2011 Hillside Estate Primitivo (Dry Creek Valley)
+- wine_91327: James Charles 2015 Petite Verdot (Virginia)
+- wine_23135: Clos Alivu 2016 Vermentino (Patrimonio)
+- wine_87298: Archery Summit 2008 Archery Summit Estate Pinot Noir (Dundee Hills)
+- wine_3437: MooBuzz 2015 G-S-M (Central Coast)
+- wine_30951: Rutini 2010 Trumpeter Malbec-Syrah (Mendoza)
+- wine_15254: Bruno Paillard 2008 Assemblage Extra Brut  (Champagne)
+- wine_22750: Poggio Antico 1997  Brunello di Montalcino
+- wine_79706: Haak 2009 Light Madeira Jacquez (Texas)
+- wine_112286: One Woman 2011 Tribute White (North Fork of Long Island)
+- wine_92806: Ramspeck 2010 Sassolini Pinot Grigio (Lake County)
+- wine_38496: Ferdinand 2014 Rebula Ribolla Gialla (Goriska Brda)
+- wine_22560: Keuka Spring 2015 Dynamite Vineyard Gewürztraminer (Finger Lakes)
+- wine_10590: Baiting Hollow Farm Vineyard 2010 Horse Rescue Mirage Red (North Fork of Long Island)
+- wine_84294: Verse & Chorus 2013 Mat Kearney Red (Napa Valley)
+- wine_19530: Marengo NV Brut Sparkling (Ukraine)
+- wine_45706: Planeta 2012 Eruzione 1614 Nerello Mascalese (Sicilia)
+- wine_28345: Ammunition 2014 The Equalizer Red (Sonoma County)
+- wine_76761: Cowhorn 2016 Spiral 36 White (Applegate Valley)
+- wine_32944: Shoofly 2007 Chook Raffle Chardonnay (Adelaide Hills)
+- wine_107437: Vino z Czech 2013 Znovín Znojmo St. Laurent (Moravia)
+- wine_62508: Hartford 1999 Zinfandel (Russian River Valley)
+- wine_122645: Sharabella Wines NV Diamante Super Donne Red (California)
+- wine_65799: Stadlmann 2009 Tagelsteiner Rotgipfler (Thermenregion)
+- wine_16969: Mark Ryan 2008 Fancy Pants Late Harvest Sémillon (Red Mountain)
+- wine_114833: Nuthatch Cellars 2007 Syrah (Walla Walla Valley (OR))
+- wine_112289: Deep Sea 2011 The Octopus Merlot (Paso Robles)
+- wine_18600: Insomnia 2010 Red (California)
+- wine_20029: Cooperativa Agricola de Santo Isidro de Pegoes 2014 10 Mile Bridge Castelão (Península de Setúbal)
+- wine_38837: Barrymore by Carmel Road 2016 Rosé of Pinot Noir (Monterey County)
+- wine_129413: Kilikanoon 2016 Mort's Block Riesling (Clare Valley)
+- wine_59282: Crowded House 2007 Pinot Gris (New Zealand)
+- wine_43649: CVNE 2010 Pagos de Viña Real  (Rioja)
+- wine_54168: Baica 2015 La Finca Selección Monastrell Monastrell (Jumilla)
+- wine_64349: Scott Paul 2012 Quatre Journaux Pinot Noir (Chehalem Mountains)
+- wine_128350: Hey Mambo 2009 Swanky White White (California)
+- wine_38887: Domaine de Mirail 2008 Colombard Colombard (Vin de Pays des Côtes de Gascogne)
+- wine_81957: St. Donat 2015 Márga Furmint
+- wine_70070: Gorman 2012 The Devil You Know Red (Columbia Valley (WA))
+- wine_55878: Bellingham 2008 Fair Maiden White (Franschhoek)
+- wine_30227: Barren Ridge 2011 Viognier (Shenandoah Valley)
+- wine_89336: David Hill 2006 Port Muscat (Willamette Valley)

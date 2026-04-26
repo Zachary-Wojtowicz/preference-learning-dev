@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "name": "Elena, 42",
+    "description": "A food journalist with a deep appreciation for terroir and the stories behind each bottle, Elena values authenticity over trends. She grew up in a family of olive farmers in southern Italy and has a nose for earthy, complex reds like Nebbiolo or Barolo. Though she enjoys exploring new regions, she often gravitates toward wines with clear regional identity. Her decision-making is thoughtful and research-driven, and she prioritizes craftsmanship over price point."
+  },
+  {
+    "id": 1,
+    "name": "Marcus, 28",
+    "description": "A tech startup founder with a growing interest in wine, Marcus views wine through a lens of investment and experience. He prefers bold, age-worthy reds that he can lay down for future events or sell for a profit. His taste leans toward structured, full-bodied wines like Cabernet Sauvignon and Bordeaux blends. He balances data and intuition in his choices, often seeking out vintage reports and tasting notes before purchasing."
+  },
+  {
+    "id": 2,
+    "name": "Lillian, 67",
+    "description": "A retired schoolteacher with a lifelong passion for French wines, Lillian believes that a good wine should pair with conversation. She favors elegant, refined Burgundies and Sancerres, appreciating their subtlety and balance. She drinks more for pleasure than for pretense and often opens a bottle to share with friends on weekend evenings. Her wine choices reflect a desire for connection and nostalgia."
+  },
+  {
+    "id": 3,
+    "name": "Javier, 35",
+    "description": "A sommelier at a high-end restaurant, Javier approaches wine with a professional\u2019s precision and a connoisseur\u2019s curiosity. He enjoys both Old and New World wines, but has a soft spot for high-acid whites like Riesling and Albari\u00f1o. He values balance and food compatibility above all, and his decisions are often guided by what will enhance the meal. He\u2019s open to trying new regions and producers as long as the quality is there."
+  },
+  {
+    "id": 4,
+    "name": "Priya, 31",
+    "description": "An environmental advocate and part-time barista, Priya is drawn to organic, biodynamic, and natural wines. She supports small, ethical producers and prefers wines with minimal intervention. Her taste leans toward rustic, slightly cloudy whites and earthy reds, even if they\u2019re not always refined. She values sustainability as much as flavor, and her wine choices often reflect her values more than her palate."
+  },
+  {
+    "id": 5,
+    "name": "Samuel, 54",
+    "description": "A retired military officer with a taste for bold, full-bodied reds, Samuel views wine as a companion to hearty meals and long evenings. He grew up in the Midwest and developed a preference for straightforward, fruit-forward wines like Zinfandel and Malbec. He\u2019s not a fan of overly tannic or complex wines, preferring something that can be enjoyed without much contemplation. His wine choices are practical and reliable, much like his approach to life."
+  },
+  {
+    "id": 6,
+    "name": "Zara, 26",
+    "description": "A college student with a growing interest in wine through a mix of social media and weekend tasting events, Zara is into trendy, Instagrammable wines. She enjoys sweet, aromatic whites like Moscato and Gew\u00fcrztraminer and is drawn to bold labels and unique packaging. Her choices are often influenced by what\u2019s popular or what her friends recommend, and she views wine as a fun and social experience."
+  },
+  {
+    "id": 7,
+    "name": "Hiroshi, 58",
+    "description": "A Japanese businessman who has developed a refined palate over years of entertaining clients in Europe and the US, Hiroshi appreciates the quiet sophistication of aged, low-intervention wines. He favors cool-climate Pinot Noirs and delicate Chardonnays, especially from Burgundy and Oregon. He values subtlety and restraint in wine, and his choices reflect a desire for understated elegance."
+  },
+  {
+    "id": 8,
+    "name": "Rebecca, 39",
+    "description": "A busy working mom who enjoys a glass of wine to unwind after the kids are asleep, Rebecca prefers easy-drinking, fruit-forward reds like Merlot or Pinot Noir. She doesn\u2019t have the time or patience for complex pairings or long cellaring; she wants something she can enjoy now. Her wine choices are practical and dependable, with a focus on value and convenience."
+  },
+  {
+    "id": 9,
+    "name": "Thomas, 22",
+    "description": "A recent college graduate and aspiring sommelier, Thomas is passionate about learning and experimenting with different wine styles. He\u2019s into natural, experimental, and offbeat wines\u2014often from lesser-known regions or unconventional producers. He\u2019s not afraid to take risks with flavor and texture, and he\u2019s more interested in the story behind the wine than its price or prestige."
+  },
+  {
+    "id": 10,
+    "name": "Clara, 45",
+    "description": "A yoga instructor and wellness coach, Clara prefers light, refreshing wines that align with her holistic lifestyle. She favors low-alcohol, organic, and vegan wines, often opting for crisp whites or ros\u00e9s from Provence or Italy. She values wines that make her feel good and that support her health-focused habits. Her wine choices reflect her desire for balance and mindfulness in all areas of life."
+  },
+  {
+    "id": 11,
+    "name": "Kevin, 61",
+    "description": "A lifelong beer drinker who only recently began exploring wine after retiring, Kevin approaches wine with a mix of curiosity and skepticism. He prefers wines that are easy to drink and remind him of the flavors he knows\u2014think ripe, fruity reds or malty whites. He\u2019s not into complexity or subtlety, and he values a wine\u2019s ability to pair with his favorite comfort foods."
+  },
+  {
+    "id": 12,
+    "name": "Naomi, 33",
+    "description": "A freelance graphic designer with a strong aesthetic sense, Naomi is drawn to wines that are visually appealing and have a strong sense of place. She loves natural, small-batch wines from unique regions, and she\u2019s willing to pay a premium for quality and artistry. Her wine choices are often influenced by the label design, the winemaker\u2019s philosophy, and the wine\u2019s ability to tell a story."
+  },
+  {
+    "id": 13,
+    "name": "Oscar, 40",
+    "description": "A financial analyst with a passion for wine as a form of self-care, Oscar enjoys collecting and tasting wines from all over the world. He prefers structured, tannic reds like Barolo or Rioja Reserva that offer depth and aging potential. He views wine as a way to unwind and appreciate the finer things in life, and his choices are guided by quality, not just price."
+  },
+  {
+    "id": 14,
+    "name": "Anika, 29",
+    "description": "A second-generation immigrant and cultural hybrid, Anika blends her South Asian upbringing with her American lifestyle. She enjoys a variety of wine styles, from sweet, aromatic whites to bold, spiced reds that complement her favorite dishes. Her wine choices are often influenced by what she\u2019s cooking, and she appreciates wines that can pair with diverse flavors and cuisines."
+  },
+  {
+    "id": 15,
+    "name": "Greg, 50",
+    "description": "A wine shop owner with a background in hospitality, Greg has a deep knowledge of wine but also an appreciation for its accessibility. He stocks a range of wines from affordable everyday bottles to high-end collectibles, and he enjoys recommending wines that surprise and delight. His own taste is eclectic\u2014he\u2019ll happily drink a bold Zinfandel one night and a delicate Riesling the next."
+  },
+  {
+    "id": 16,
+    "name": "Mei, 55",
+    "description": "A retired librarian with a love for old-world wines, Mei believes that wine is best when it\u2019s tied to history and tradition. She enjoys Burgundian Pinot Noir and Italian Amarone, often preferring older vintages that have developed secondary flavors. Her wine choices are informed by her love of reading and her desire to connect with the past through food and drink."
+  },
+  {
+    "id": 17,
+    "name": "Dylan, 24",
+    "description": "A music producer and part-time DJ, Dylan sees wine as a creative enhancer and mood booster. He prefers bold, vibrant reds with high acidity and a touch of sweetness, especially when paired with spicy foods or during late-night studio sessions. He\u2019s not picky about labels or regions, but he does value a wine that helps him stay inspired and relaxed."
+  },
+  {
+    "id": 18,
+    "name": "Sofia, 37",
+    "description": "A travel blogger who documents her wine adventures around the world, Sofia is always looking for the next unique wine experience. She\u2019s open to all styles but has a particular fondness for aromatic whites from Alsace and cool-climate reds from Chile and Argentina. Her wine choices are driven by curiosity and a desire to explore the global wine landscape."
+  },
+  {
+    "id": 19,
+    "name": "David, 64",
+    "description": "A retired engineer with a methodical approach to wine, David prefers structured, full-bodied reds with clear varietal character. He views wine as a science and an art, often noting tannin levels, acidity, and finish in his notes. He enjoys tasting and comparing wines from the same region or vintage, and his choices are often guided by technical precision and consistency."
+  }
+]

@@ -1,0 +1,44 @@
+Here are two {domain_items}. You are designing a reward signal for training
+a language model. Consider what properties the model should learn to prefer
+or deprioritize when generating {domain_items}.
+
+{DOMAIN_ITEM} A:
+{option_a_text}
+
+{DOMAIN_ITEM} B:
+{option_b_text}
+
+List {reasons_per_side} distinct reasons a model should prefer {DOMAIN_ITEM} A over B, and
+{reasons_per_side} distinct reasons a model should prefer B over A. Each reason should
+describe a single property or value the model should prioritize or learn,
+framed as "The model should..." or "It should...".
+
+IMPORTANT: State each reason as a GENERAL training objective — one that would
+apply across many different {domain_items}, not just this pair. The pair above
+is a stimulus to help you think of training signals, but the reason itself
+should be a transferable principle. Do NOT mention the specific {domain_items}
+by name in the reason.
+
+Good examples:
+- "The model should prioritize evidence-based advice that is supported by scientific research and clinical outcomes."
+- "The model should value responses that focus on measurable and long-term improvements rather than short-term or unverified benefits."
+
+Bad examples:
+- "Option A is better" (quality judgment, not a training signal)
+- "The model should prefer the response about diet X" (too specific to this pair)
+
+Format (plain text, not JSON):
+
+REASONS TO CHOOSE A:
+1. [reason]
+2. [reason]
+3. [reason]
+4. [reason]
+5. [reason]
+
+REASONS TO CHOOSE B:
+1. [reason]
+2. [reason]
+3. [reason]
+4. [reason]
+5. [reason]

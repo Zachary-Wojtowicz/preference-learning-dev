@@ -1,0 +1,34 @@
+You are analyzing reasons people give for choosing between {domain_items}.
+
+Below is a deduplicated list of preference themes people expressed when
+choosing between {domain_items}. The count indicates how many times each
+theme appeared across {num_pairs} different choice pairs — higher counts
+indicate more pervasive preferences.
+
+Your task is to identify the {K} most important UNIPOLAR preference features
+that explain these themes. Each feature represents a single quality that a
+{domain_item} can have MORE or LESS of — not a contrast between two
+different qualities.
+
+Each dimension should:
+- Be a UNIPOLAR FEATURE — it describes a single quality that varies from
+  "absent/minimal" to "strongly present" (e.g., "Humor" ranges from
+  "no humor" to "very humorous")
+- NOT be a forced contrast between two different concepts (e.g., do NOT
+  create "Humor vs. Horror" — instead create separate "Humor" and "Horror"
+  features if both are important)
+- SUBSUME as many of the listed themes as possible
+- Be DISTINCT from the other dimensions — two dimensions should not rank
+  options in nearly the same order
+- Be PREFERENCE-RELEVANT — something that different people value differently,
+  not a neutral descriptor
+
+For each dimension, cite which theme numbers it subsumes (this verifies
+coverage and coherence).
+
+THEMES (sorted by frequency):
+{reason_list}
+
+Respond with valid JSON only — no prose before or after, no markdown fences.
+
+{schema}

@@ -1,0 +1,48 @@
+Here are two {domain_items}. Imagine a large, diverse group of people each
+choosing which one they prefer. Different people will choose differently —
+and for different reasons rooted in their personal values and life experiences.
+
+{DOMAIN_ITEM} A:
+{option_a_text}
+
+{DOMAIN_ITEM} B:
+{option_b_text}
+
+List {reasons_per_side} distinct reasons someone might choose {DOMAIN_ITEM} A over B, and
+{reasons_per_side} distinct reasons someone might choose B over A.
+
+For each reason, describe the KIND OF PERSON who would have this preference
+and WHY their values or life experience lead them to it. Each reason should
+be 1-2 sentences starting with a phrase like "A person who..." or "Someone
+with..." that grounds the preference in a recognizable value system or
+background.
+
+IMPORTANT: State each reason as a GENERAL preference — one that would apply
+across many different {domain_items}, not just this pair. The pair above is
+a stimulus to help you think of preferences, but the reason itself should
+be a transferable value or priority. Do NOT mention the specific {domain_items}
+by name in the reason.
+
+Good examples:
+- "A person who prioritizes measurable and evidence-based outcomes may prefer an approach that directly addresses quantifiable metrics."
+- "Someone with a history of chronic issues may be drawn to solutions that offer rapid, tangible improvements in their condition."
+
+Bad examples:
+- "This option is better because it has more detail" (quality judgment, not a value)
+- "People who like Option A's specific approach to X" (too tied to this pair)
+
+Format (plain text, not JSON):
+
+REASONS TO CHOOSE A:
+1. [reason]
+2. [reason]
+3. [reason]
+4. [reason]
+5. [reason]
+
+REASONS TO CHOOSE B:
+1. [reason]
+2. [reason]
+3. [reason]
+4. [reason]
+5. [reason]
