@@ -194,6 +194,7 @@ def llm_call(client, model, prompt, timeout, retries, max_tokens=2048):
                 max_tokens=max_tokens,
                 messages=[{"role": "user", "content": prompt}],
                 timeout=timeout,
+                extra_body={"chat_template_kwargs": {"enable_thinking": False}},
             )
             return (resp.choices[0].message.content or "").strip()
         except Exception as e:
