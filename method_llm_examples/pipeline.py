@@ -789,6 +789,10 @@ def parse_args():
     parser.add_argument("--condense-prompt", default=None,
                         help="Path to dimension condensation prompt template "
                              f"(default: {DEFAULT_CONDENSE_PROMPT.relative_to(REPO_ROOT)})")
+    parser.add_argument("--predefined-pairs", default=None,
+                        help="Path to a JSON file of pre-defined pairs (skips random sampling). "
+                             "Each entry must have option_a_id and option_b_id. "
+                             "Use for datasets with natural pair structure (e.g., Scruples dilemmas).")
     parser.add_argument("--max-workers", type=int, default=8)
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
     return parser.parse_args()
@@ -828,6 +832,14 @@ def main():
     if pairs_path.exists():
         print(f"[stage-1] Loading existing pairs from {pairs_path}", flush=True)
         pairs = load_json(pairs_path)
+    elif args.predefined_pairs:
+        print(f"[stage-1] Loading predefined pairs from {args.predefined_pairs}", flush=True)
+        pairs = load_json(Path(args.predefined_pairs))
+        # Ensure pair_id is set
+        for i, p in enumerate(pairs):
+            p.setdefault("pair_id", i)
+        write_json(pairs_path, pairs)
+        print(f"[stage-1] {len(pairs)} predefined pairs -> {pairs_path}", flush=True)
     else:
         print("[stage-1] Sampling diverse pairs...", flush=True)
         embeddings = load_embeddings(

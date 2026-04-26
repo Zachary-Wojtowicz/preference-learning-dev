@@ -387,6 +387,13 @@ def parse_args():
                    help="Domain label (auto-detected from config if omitted).")
     p.add_argument("--choice-context", default=None,
                    help="Prompt shown above each pair (auto-detected from config if omitted).")
+    p.add_argument("--pairs-csv", default=None,
+                   help="Path to pre-defined pairs CSV (e.g., selected_pairs.csv from select_dilemmas.py). "
+                        "Columns must include action_0_id, action_1_id. Overrides --num-pairs.")
+    p.add_argument("--pair-a-column", default="action_0_id",
+                   help="Column name for option A ID in pairs CSV (default: action_0_id)")
+    p.add_argument("--pair-b-column", default="action_1_id",
+                   help="Column name for option B ID in pairs CSV (default: action_1_id)")
     p.add_argument("--seed", type=int, default=42)
     return p.parse_args()
 
@@ -455,12 +462,42 @@ def main():
         G = G[:k, :k]
         dimensions = dimensions[:k]
 
-    # Sample pairs
-    print(f"Sampling {args.num_pairs} diverse pairs...")
-    pairs = sample_diverse_pairs(
-        embeddings, emb_ids, args.num_pairs, args.strata, args.seed
-    )
-    print(f"  Sampled {len(pairs)} pairs")
+    # Sample or load pairs
+    if args.pairs_csv:
+        import csv as csv_mod
+        print(f"Loading predefined pairs from {args.pairs_csv}...")
+        with open(args.pairs_csv, newline="", encoding="utf-8") as f:
+            reader = csv_mod.DictReader(f)
+            pair_rows = list(reader)
+
+        pairs = []
+        for i, row in enumerate(pair_rows):
+            aid_a = str(row[args.pair_a_column]).strip()
+            aid_b = str(row[args.pair_b_column]).strip()
+            # Find indices in embedding array
+            idx_a = emb_ids.index(aid_a) if aid_a in emb_ids else None
+            idx_b = emb_ids.index(aid_b) if aid_b in emb_ids else None
+            if idx_a is None or idx_b is None:
+                continue
+            pairs.append({
+                "idx_a": idx_a,
+                "idx_b": idx_b,
+                "option_a_id": aid_a,
+                "option_b_id": aid_b,
+                "distance_stratum": "predefined",
+                "cosine_distance": 0.0,
+                # Carry through extra metadata
+                "dilemma_id": row.get("dilemma_id", ""),
+                "gold_label": int(row["gold_label"]) if row.get("gold_label", "") not in ("", "None") else -1,
+                "controversial": row.get("controversial", "").lower() in ("true", "1", "yes"),
+            })
+        print(f"  Loaded {len(pairs)} pairs (skipped {len(pair_rows) - len(pairs)} with missing embeddings)")
+    else:
+        print(f"Sampling {args.num_pairs} diverse pairs...")
+        pairs = sample_diverse_pairs(
+            embeddings, emb_ids, args.num_pairs, args.strata, args.seed
+        )
+        print(f"  Sampled {len(pairs)} pairs")
 
     # Build trials
     print("Building trials...")
