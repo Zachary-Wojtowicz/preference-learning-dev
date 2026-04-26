@@ -6,937 +6,403 @@
 <title>Preference Elicitation Experiment</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #f4f5f7;
-    color: #1a1a1a;
-    line-height: 1.5;
-    padding: 2rem 1rem;
-  }
-
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f5f7; color: #1a1a1a; line-height: 1.5; padding: 2rem 1rem; }
   .container { max-width: 860px; margin: 0 auto; }
-
-  /* --- Setup screen --- */
   .setup { max-width: 480px; margin: 0 auto; }
   .setup h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem; text-align: center; }
-
   .field-group { margin-bottom: 1.25rem; }
   .field-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.35rem; }
-  .field-group select, .field-group input {
-    width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px;
-    font-size: 0.9rem; background: #fff;
-  }
+  .field-group select, .field-group input { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; background: #fff; }
   .field-group .hint { font-size: 0.75rem; color: #888; margin-top: 0.25rem; }
-
-  /* --- Instructions --- */
   .instructions { max-width: 600px; margin: 0 auto; }
   .instructions h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; text-align: center; }
   .instructions p { font-size: 0.92rem; margin-bottom: 0.75rem; color: #444; }
-  .instructions .inst-highlight {
-    background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 6px;
-    padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.88rem;
-  }
-
-  /* --- Progress --- */
-  .progress {
-    text-align: center; font-size: 0.85rem; color: #666;
-    margin-bottom: 0.5rem; letter-spacing: 0.03em;
-  }
-  .progress-bar-track {
-    height: 4px; background: #e0e0e0; border-radius: 2px; margin-bottom: 1.5rem;
-  }
-  .progress-bar-fill {
-    height: 100%; background: #3b82f6; border-radius: 2px; transition: width 0.3s;
-  }
-
-  .prompt {
-    text-align: center; font-size: 1.05rem; font-weight: 500;
-    margin-bottom: 1.25rem; color: #444;
-  }
-
-  /* --- Option cards --- */
+  .instructions .inst-highlight { background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 6px; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.88rem; }
+  .progress { text-align: center; font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+  .progress-bar-track { height: 4px; background: #e0e0e0; border-radius: 2px; margin-bottom: 1.5rem; }
+  .progress-bar-fill { height: 100%; background: #3b82f6; border-radius: 2px; transition: width 0.3s; }
+  .prompt { text-align: center; font-size: 1.05rem; font-weight: 500; margin-bottom: 1.25rem; color: #444; }
   .options { display: flex; gap: 1rem; }
-
-  .option-card {
-    flex: 1; background: #fff; border: 2px solid #ddd; border-radius: 8px;
-    padding: 1.25rem; cursor: pointer;
-    transition: border-color 0.15s, opacity 0.15s, box-shadow 0.15s;
-  }
+  .option-card { flex: 1; background: #fff; border: 2px solid #ddd; border-radius: 8px; padding: 1.25rem; cursor: pointer; transition: border-color 0.15s, opacity 0.15s, box-shadow 0.15s; }
   .option-card:hover { border-color: #999; }
   .option-card.selected { border-color: #3b82f6; box-shadow: 0 0 0 1px #3b82f6; }
   .option-card.dimmed { opacity: 0.5; }
-
-  .option-card .card-poster {
-    width: 100%; max-height: 400px; object-fit: contain;
-    border-radius: 4px; margin-bottom: 0.5rem;
-  }
-
-  .option-card .card-title {
-    font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;
-  }
-  .option-card .card-field {
-    font-size: 0.82rem; color: #555; margin-bottom: 0.25rem;
-  }
+  .option-card .card-poster { width: 100%; max-height: 400px; object-fit: contain; border-radius: 4px; margin-bottom: 0.5rem; }
+  .option-card .card-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .option-card .card-field { font-size: 0.82rem; color: #555; margin-bottom: 0.25rem; }
   .option-card .card-field strong { color: #333; font-weight: 500; }
-  .option-card .card-text {
-    font-size: 0.85rem; color: #444; margin-top: 0.5rem; line-height: 1.5;
-  }
-
-  /* --- Dimension panel --- */
-  .dim-panel {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.4s ease, margin-top 0.3s ease;
-    margin-top: 0;
-  }
-  .dim-panel.visible { max-height: 2000px; margin-top: 1.5rem; }
-
-  .dim-panel-inner {
-    background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
-    padding: 1.25rem;
-  }
-  .dim-panel-header {
-    font-size: 0.85rem; font-weight: 500; color: #666; margin-bottom: 1rem;
-    padding-bottom: 0.5rem; border-bottom: 1px solid #eee;
-  }
-
-  /* --- Slider rows --- */
-  .slider-row {
-    display: grid;
-    grid-template-columns: 160px 1fr 40px;
-    align-items: center; gap: 0.5rem;
-    margin-bottom: 0.65rem;
-  }
-  .slider-row:last-of-type { margin-bottom: 0; }
-
-  .slider-label {
-    font-size: 0.82rem; font-weight: 500; text-align: right;
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  }
-  .slider-label .pole-labels {
-    font-size: 0.7rem; color: #888; font-weight: 400;
-    display: block; margin-top: 1px;
-  }
-
-  .slider-track { position: relative; }
+  .option-card .card-text { font-size: 0.85rem; color: #444; margin-top: 0.5rem; line-height: 1.5; }
+  .dim-panel { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.3s ease; margin-top: 0; }
+  .dim-panel.visible { max-height: 3000px; margin-top: 1.5rem; }
+  .dim-panel-inner { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.25rem; }
+  .dim-panel-header { font-size: 0.85rem; font-weight: 500; color: #666; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eee; }
+  .slider-row { display: grid; grid-template-columns: 160px 1fr 40px; align-items: center; gap: 0.5rem; margin-bottom: 0.65rem; }
+  .slider-label { font-size: 0.82rem; font-weight: 500; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .slider-label .pole-labels { font-size: 0.7rem; color: #888; font-weight: 400; display: block; margin-top: 1px; }
   .slider-track input[type="range"] { width: 100%; accent-color: #3b82f6; }
   .slider-track input[type="range"]:disabled { accent-color: #999; }
-
-  .slider-value {
-    text-align: right; font-size: 0.82rem;
-    font-variant-numeric: tabular-nums; color: #555;
-  }
-
-  /* --- Checkbox rows --- */
-  .checkbox-row {
-    display: flex; align-items: center; gap: 0.75rem;
-    margin-bottom: 0.5rem; padding: 0.5rem 0.5rem;
-    border-radius: 6px; transition: background 0.15s;
-  }
+  .slider-value { text-align: right; font-size: 0.82rem; font-variant-numeric: tabular-nums; color: #555; }
+  .checkbox-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; padding: 0.5rem; border-radius: 6px; }
   .checkbox-row:hover { background: #f8f9fa; }
-  .checkbox-row:last-of-type { margin-bottom: 0; }
-
-  .checkbox-row input[type="checkbox"] {
-    width: 18px; height: 18px; accent-color: #3b82f6;
-    flex-shrink: 0; cursor: pointer;
-  }
-  .checkbox-row .cb-label {
-    font-size: 0.85rem; font-weight: 500; flex: 1; cursor: pointer;
-  }
-  .checkbox-row .cb-bar-container {
-    width: 120px; height: 8px; background: #e5e7eb; border-radius: 4px;
-    overflow: hidden; flex-shrink: 0;
-  }
-  .checkbox-row .cb-bar {
-    height: 100%; border-radius: 4px; transition: width 0.2s;
-  }
+  .checkbox-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: #3b82f6; cursor: pointer; }
+  .checkbox-row .cb-label { font-size: 0.85rem; font-weight: 500; flex: 1; cursor: pointer; }
+  .checkbox-row .cb-bar-container { width: 120px; height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; }
+  .checkbox-row .cb-bar { height: 100%; border-radius: 4px; }
   .checkbox-row .cb-bar.positive { background: #3b82f6; }
   .checkbox-row .cb-bar.negative { background: #ef4444; float: right; }
-  .checkbox-row .cb-value {
-    width: 36px; text-align: right; font-size: 0.78rem;
-    font-variant-numeric: tabular-nums; color: #888;
-  }
+  .checkbox-row .cb-value { width: 36px; text-align: right; font-size: 0.78rem; font-variant-numeric: tabular-nums; color: #888; }
 
   /* --- Inference rows --- */
-  .inference-row {
-    margin-bottom: 0.75rem; padding: 0.75rem;
-    background: #fafbfc; border: 1px solid #e5e7eb;
-    border-radius: 8px; transition: opacity 0.2s;
-  }
-  .inference-row.removed {
-    opacity: 0.35;
-    text-decoration: line-through;
-    text-decoration-color: #999;
-  }
-  .inference-row:last-of-type { margin-bottom: 0; }
+  .inference-row { margin-bottom: 0.85rem; padding: 0.85rem 1rem; background: #fafbfc; border: 1px solid #e5e7eb; border-radius: 8px; transition: opacity 0.25s, background 0.2s; }
+  .inference-row.removed { opacity: 0.3; background: #f0f0f0; }
+  .inference-row.removed .inference-text { text-decoration: line-through; text-decoration-color: #aaa; }
+  .inference-row.affirmed { background: #f0f7ff; border-color: #bfdbfe; }
+  .inference-text { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.55rem; color: #1a1a1a; }
+  .inference-text .cat-word { color: #3b82f6; font-weight: 600; }
+  .inference-actions { display: flex; gap: 0.4rem; align-items: center; }
+  .inference-actions button { padding: 0.3rem 0.75rem; font-size: 0.8rem; border: 1px solid #d1d5db; border-radius: 5px; background: #fff; color: #555; cursor: pointer; transition: all 0.15s; }
+  .inference-actions button:hover { border-color: #999; background: #f9fafb; }
+  .inference-actions .btn-affirm.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+  .inference-actions .btn-modify.active { background: #f59e0b; color: #fff; border-color: #f59e0b; }
+  .inference-actions .btn-remove.active { background: #ef4444; color: #fff; border-color: #ef4444; }
+  .category-picker { display: none; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid #eee; }
+  .category-picker.visible { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  .category-picker button { padding: 0.25rem 0.6rem; font-size: 0.76rem; border: 1px solid #d1d5db; border-radius: 4px; background: #fff; color: #555; cursor: pointer; transition: all 0.12s; }
+  .category-picker button:hover { border-color: #888; }
+  .category-picker button.selected { background: #3b82f6; color: #fff; border-color: #3b82f6; }
 
-  .inference-text {
-    font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem;
-    color: #1a1a1a;
-  }
-
-  .inference-controls {
-    display: flex; gap: 0.35rem; flex-wrap: wrap;
-  }
-  .inference-controls button {
-    padding: 0.3rem 0.7rem; font-size: 0.78rem;
-    border: 1px solid #d1d5db; border-radius: 5px;
-    background: #fff; color: #555; cursor: pointer;
-    transition: all 0.15s;
-  }
-  .inference-controls button:hover { border-color: #999; }
-  .inference-controls button.active {
-    background: #3b82f6; color: #fff; border-color: #3b82f6;
-  }
-  .inference-controls button.active-remove {
-    background: #ef4444; color: #fff; border-color: #ef4444;
-  }
-
-  /* --- Buttons --- */
   .submit-row { text-align: center; margin-top: 1.5rem; }
-
-  .btn {
-    background: #3b82f6; color: #fff; border: none; border-radius: 6px;
-    padding: 0.6rem 2rem; font-size: 0.95rem; cursor: pointer;
-    transition: background 0.15s;
-  }
+  .btn { background: #3b82f6; color: #fff; border: none; border-radius: 6px; padding: 0.6rem 2rem; font-size: 0.95rem; cursor: pointer; transition: background 0.15s; }
   .btn:disabled { background: #a0a0a0; cursor: not-allowed; }
   .btn:not(:disabled):hover { background: #2563eb; }
-  .btn-secondary {
-    background: #6b7280; color: #fff; border: none; border-radius: 6px;
-    padding: 0.5rem 1.5rem; font-size: 0.85rem; cursor: pointer;
-  }
+  .btn-secondary { background: #6b7280; color: #fff; border: none; border-radius: 6px; padding: 0.5rem 1.5rem; font-size: 0.85rem; cursor: pointer; }
   .btn-secondary:hover { background: #4b5563; }
-
-  /* --- Results --- */
-  .results h1 {
-    text-align: center; font-size: 1.4rem; font-weight: 600;
-    margin-bottom: 1rem;
-  }
-  .results pre {
-    background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
-    padding: 1.25rem; overflow-x: auto; font-size: 0.78rem;
-    line-height: 1.6; max-height: 60vh;
-  }
+  .results h1 { text-align: center; font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; }
+  .results pre { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.25rem; overflow-x: auto; font-size: 0.78rem; line-height: 1.6; max-height: 60vh; }
   .results .copy-row { text-align: center; margin-top: 1rem; }
-  .results .stats {
-    margin-bottom: 1.5rem; text-align: center;
-    font-size: 0.9rem; color: #555;
-  }
-
-  .error-msg {
-    text-align: center; background: #fff; border: 1px solid #e0e0e0;
-    border-radius: 8px; padding: 2rem; color: #b91c1c;
-  }
-  .error-msg code {
-    display: block; margin-top: 0.75rem; color: #444; font-size: 0.85rem;
-  }
-
-  .loading {
-    text-align: center; padding: 3rem; color: #888; font-size: 0.95rem;
-  }
-
-  @media (max-width: 600px) {
-    .options { flex-direction: column; }
-    .slider-row { grid-template-columns: 120px 1fr 36px; }
-    .slider-label { font-size: 0.78rem; }
-  }
+  .results .stats { margin-bottom: 1.5rem; text-align: center; font-size: 0.9rem; color: #555; }
+  .error-msg { text-align: center; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 2rem; color: #b91c1c; }
+  .loading { text-align: center; padding: 3rem; color: #888; font-size: 0.95rem; }
+  @media (max-width: 600px) { .options { flex-direction: column; } .slider-row { grid-template-columns: 120px 1fr 36px; } }
 </style>
 </head>
 <body>
 <div class="container" id="app"><div class="loading">Loading experiment data…</div></div>
-
 <script>
-(function () {
-  const app = document.getElementById('app');
+(function(){
+  const app=document.getElementById('app');
+  let trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
+  let assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
 
-  // ---------------------------------------------------------------
-  // State
-  // ---------------------------------------------------------------
-  let trials = [];
-  let experimentConfig = null;
-  let gramMatrix = null;
-  let condition = null;
-  let conditionKey = '';
-  let participantId = '';
-  let domainKey = '';
-  let assignedTrialIndices = [];
-  let currentStep = 0;
-  let responses = [];
-  let chosen = null;
-  let startTime = null;
-  let topKSliders = 5;
-  let visibleSliderIndices = [];
-  let postUrl = null;        // optional POST endpoint for responses
+  const HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle']);
+  const FIELD_LABELS={plot_summary:'Plot',genres:'Genres',director:'Director',stars:'Stars',variety:'Variety',country:'Country',province:'Province',points:'Rating',price:'Price',description:'Description',user_prompt:'Question',assistant_response:'Response',winery:'Winery',designation:'Designation',region_1:'Region',taster_name:'Reviewer'};
 
-  // Fields to hide from option cards (internal / unreadable)
-  const HIDDEN_FIELDS = new Set([
-    'title', '_rendered_text', 'movie_id', 'wine_id', 'action_id',
-    'completion_id', 'option_id', 'id', 'row_id', 'text',
-    'prompt_hash', 'category', 'embedding',
-    'rating_count', 'taster_twitter_handle',
-  ]);
-
-  // Prettier labels for known field names
-  const FIELD_LABELS = {
-    plot_summary: 'Plot',
-    genres: 'Genres',
-    director: 'Director',
-    stars: 'Stars',
-    variety: 'Variety',
-    country: 'Country',
-    province: 'Province',
-    points: 'Rating',
-    price: 'Price',
-    description: 'Description',
-    user_prompt: 'Question',
-    assistant_response: 'Response',
-    winery: 'Winery',
-    designation: 'Designation',
-    region_1: 'Region',
-    taster_name: 'Reviewer',
-  };
-
-  // ---------------------------------------------------------------
-  // URL parameters
-  // ---------------------------------------------------------------
-  function getUrlParams() {
-    const params = new URLSearchParams(window.location.search);
-    return {
-      pid: params.get('pid') || '',
-      condition: params.get('condition') || '',
-      n: parseInt(params.get('n'), 10) || 0,
-      domain: params.get('domain') || '',
-      post: params.get('post') || '',
-    };
+  // --- Inference categories (low → high) ---
+  const CATEGORIES = [
+    { key:'dont_care', phrase:"don\u2019t care about", label:"Don\u2019t care about", mult:0.0 },
+    { key:'dont_mind', phrase:"don\u2019t mind",       label:"Don\u2019t mind",       mult:0.3 },
+    { key:'like',      phrase:"like",                   label:"Like",                  mult:0.7 },
+    { key:'enjoy',     phrase:"enjoy",                  label:"Enjoy",                 mult:1.0 },
+    { key:'love',      phrase:"love",                   label:"Love",                  mult:1.5 },
+  ];
+  function catFromEff(v){
+    if(v>60) return 'love';
+    if(v>30) return 'enjoy';
+    if(v>0)  return 'like';
+    if(v>-30)return 'dont_mind';
+    return 'dont_care';
   }
+  function catPhrase(k){ return (CATEGORIES.find(c=>c.key===k)||{}).phrase||k; }
+  function catMult(k){ return (CATEGORIES.find(c=>c.key===k)||{}).mult||0; }
 
-  // ---------------------------------------------------------------
-  // Boot — load data, then decide setup vs direct start
-  // ---------------------------------------------------------------
-  const urlParams = getUrlParams();
-  domainKey = urlParams.domain;
-  postUrl = urlParams.post || null;
-
-  // Determine data path: domain param → outputs/<domain>/, else root
-  const basePath = domainKey ? `outputs/${domainKey}/` : '';
+  function getUrlParams(){const p=new URLSearchParams(window.location.search);return{pid:p.get('pid')||'',condition:p.get('condition')||'',n:parseInt(p.get('n'),10)||0,domain:p.get('domain')||'',post:p.get('post')||''};}
+  const urlParams=getUrlParams();domainKey=urlParams.domain;postUrl=urlParams.post||null;
+  const basePath=domainKey?`outputs/${domainKey}/`:'';
 
   Promise.all([
-    fetch(basePath + 'trials.json').then(r => {
-      if (!r.ok) throw new Error('trials.json not found at ' + basePath);
-      return r.json();
-    }),
-    fetch(basePath + 'experiment_config.json').then(r => {
-      if (!r.ok) throw null;
-      return r.json();
-    }).catch(() => null),
-  ])
-  .then(([trialsData, configData]) => {
-    trials = trialsData;
-    experimentConfig = configData;
-    if (configData && configData.gram_matrix) gramMatrix = configData.gram_matrix;
-    if (configData && configData.top_k_sliders) topKSliders = configData.top_k_sliders;
+    fetch(basePath+'trials.json').then(r=>{if(!r.ok)throw new Error();return r.json()}),
+    fetch(basePath+'experiment_config.json').then(r=>{if(!r.ok)throw null;return r.json()}).catch(()=>null),
+  ]).then(([td,cd])=>{
+    trials=td;experimentConfig=cd;
+    if(cd&&cd.gram_matrix)gramMatrix=cd.gram_matrix;
+    if(cd&&cd.top_k_sliders)topKSliders=cd.top_k_sliders;
+    if(urlParams.pid&&urlParams.condition){
+      participantId=urlParams.pid;conditionKey=urlParams.condition;
+      const cm=cd?cd.conditions:buildFC();condition=cm[conditionKey];
+      if(!condition){app.innerHTML='<div class="error-msg">Unknown condition: '+esc(conditionKey)+'</div>';return;}
+      const n=urlParams.n||(cd?cd.num_trials_per_participant:30)||30;
+      const rng=seedRandom(hashStr(participantId));
+      assignedTrialIndices=shuffle(Array.from({length:trials.length},(_,i)=>i),rng).slice(0,n);
+      currentStep=0;responses=[];renderInstructions();
+    }else{renderSetup();}
+  }).catch(()=>{app.innerHTML='<div class="error-msg">Could not load trials.json.<br><code>cd web-interface && python3 -m http.server 8080</code></div>';});
 
-    // If full URL params provided, skip setup
-    if (urlParams.pid && urlParams.condition) {
-      participantId = urlParams.pid;
-      conditionKey = urlParams.condition;
-      const cmap = experimentConfig
-        ? experimentConfig.conditions
-        : buildFallbackConditions();
-      condition = cmap[conditionKey];
-      if (!condition) {
-        app.innerHTML = '<div class="error-msg">Unknown condition: <strong>'
-          + esc(conditionKey) + '</strong></div>';
-        return;
+  const KNOWN_DOMAINS=[{key:'',label:'(root)'},{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_200',label:'Scruples (200)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
+
+  function buildFC(){return{
+    choice_only:{label:'Choice Only',show_sliders:false,sliders_adjustable:false,show_checkboxes:false,show_inferences:false},
+    choice_readonly_sliders:{label:'Choice + Read-Only Sliders',show_sliders:true,sliders_adjustable:false,show_checkboxes:false,show_inferences:false},
+    choice_adjustable_sliders:{label:'Choice + Adjustable Sliders',show_sliders:true,sliders_adjustable:true,show_checkboxes:false,show_inferences:false},
+    choice_checkboxes:{label:'Choice + Relevance Checkboxes',show_sliders:false,sliders_adjustable:false,show_checkboxes:true,show_inferences:false},
+    choice_inferences:{label:'Choice + Preference Inferences',show_sliders:false,sliders_adjustable:false,show_checkboxes:false,show_inferences:true},
+  };}
+
+  // --- Setup ---
+  function renderSetup(){
+    const conds=experimentConfig?experimentConfig.conditions:buildFC();
+    const defC=experimentConfig?experimentConfig.default_condition||Object.keys(conds)[0]:'choice_inferences';
+    const nT=experimentConfig?experimentConfig.num_trials_per_participant||30:Math.min(trials.length,30);
+    const dL=experimentConfig?(experimentConfig.domain||''):'';
+    let h='<div class="setup"><h1>Experiment Setup</h1>';
+    h+='<div class="field-group"><label>Domain</label><select id="domainSelect">';
+    for(const d of KNOWN_DOMAINS){h+='<option value="'+d.key+'"'+(d.key===domainKey?' selected':'')+'>'+esc(d.label)+'</option>';}
+    h+='</select><div class="hint">Loaded: '+esc(dL)+' ('+trials.length+' trials)</div></div>';
+    h+='<div class="field-group"><label>Participant ID</label><input id="pid" value="P'+Math.floor(Math.random()*9000+1000)+'"></div>';
+    h+='<div class="field-group"><label>Condition</label><select id="condSelect">';
+    for(const[k,c]of Object.entries(conds)){h+='<option value="'+k+'"'+(k===defC?' selected':'')+'>'+esc(c.label)+'</option>';}
+    h+='</select></div>';
+    h+='<div class="field-group"><label>Number of Trials</label><input type="number" id="numTrials" min="1" max="'+trials.length+'" value="'+nT+'"></div>';
+    h+='<div class="submit-row"><button class="btn" id="startBtn">Continue</button></div></div>';
+    app.innerHTML=h;
+    document.getElementById('domainSelect').addEventListener('change',e=>{const u=new URL(window.location);if(e.target.value)u.searchParams.set('domain',e.target.value);else u.searchParams.delete('domain');window.location.href=u.toString();});
+    document.getElementById('startBtn').addEventListener('click',()=>{
+      participantId=document.getElementById('pid').value.trim()||'anon';conditionKey=document.getElementById('condSelect').value;
+      condition=(experimentConfig?experimentConfig.conditions:buildFC())[conditionKey];
+      const n=parseInt(document.getElementById('numTrials').value,10)||nT;
+      const rng=seedRandom(hashStr(participantId));
+      assignedTrialIndices=shuffle(Array.from({length:trials.length},(_,i)=>i),rng).slice(0,n);
+      currentStep=0;responses=[];renderInstructions();
+    });
+  }
+
+  // --- Instructions ---
+  function renderInstructions(){
+    let h='<div class="instructions"><h1>Instructions</h1>';
+    h+='<p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>';
+    if(condition.show_sliders&&!condition.sliders_adjustable)
+      h+='<div class="inst-highlight">After your choice, we\u2019ll show dimension scores. Review them, then click Submit.</div>';
+    else if(condition.show_sliders&&condition.sliders_adjustable)
+      h+='<div class="inst-highlight">After your choice, <strong>adjust the sliders</strong> to reflect why you chose as you did, then click Submit.</div>';
+    else if(condition.show_checkboxes)
+      h+='<div class="inst-highlight"><strong>Check the boxes</strong> next to dimensions that mattered for your choice, then click Submit.</div>';
+    else if(condition.show_inferences)
+      h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 for example, <em>\u201cYou enjoy Emotional Depth.\u201d</em> For each, you can:<ul style="margin:0.5rem 0 0 1.2rem;"><li><strong>Affirm</strong> \u2014 we got it right</li><li><strong>Modify</strong> \u2014 change the strength (e.g. from \u201cenjoy\u201d to \u201clove\u201d)</li><li><strong>Remove</strong> \u2014 this wasn\u2019t relevant</li></ul></div>';
+    h+='<p>There are '+assignedTrialIndices.length+' trials. Take your time.</p>';
+    h+='<div class="submit-row"><button class="btn" id="beginBtn">Begin</button></div></div>';
+    app.innerHTML=h;
+    document.getElementById('beginBtn').addEventListener('click',()=>renderTrial());
+  }
+
+  function getTopK(sliders,key,k){
+    const vk=key==='a'?'value_if_a':'value_if_b';
+    return sliders.map((s,i)=>({i,av:Math.abs(s[vk])})).sort((a,b)=>b.av-a.av).slice(0,k).map(x=>x.i).sort((a,b)=>a-b);
+  }
+
+  // --- Trial ---
+  function renderTrial(){
+    const trial=trials[assignedTrialIndices[currentStep]];
+    chosen=null;visibleSliderIndices=[];startTime=Date.now();
+    const total=assignedTrialIndices.length,pct=Math.round((currentStep/total)*100);
+    let h='<div class="progress">Trial '+(currentStep+1)+' of '+total+'</div>';
+    h+='<div class="progress-bar-track"><div class="progress-bar-fill" style="width:'+pct+'%"></div></div>';
+    if(trial.prompt)h+='<div class="prompt">'+esc(trial.prompt)+'</div>';
+    h+='<div class="options">'+buildCard('a',trial.option_a)+buildCard('b',trial.option_b)+'</div>';
+    if(condition.show_sliders&&trial.sliders&&trial.sliders.length>0)
+      h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header" id="dimPanelHeader"></div><div id="sliderContainer"></div></div></div>';
+    if(condition.show_checkboxes&&trial.sliders&&trial.sliders.length>0)
+      h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Which of these dimensions were relevant?</div><div id="checkboxContainer"></div></div></div>';
+    if(condition.show_inferences&&trial.sliders&&trial.sliders.length>0)
+      h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Based on your choice, we think:</div><div id="inferenceContainer"></div></div></div>';
+    h+='<div class="submit-row"><button class="btn" id="submitBtn" disabled>Submit</button></div>';
+    app.innerHTML=h;
+    app.querySelectorAll('.option-card').forEach(el=>el.addEventListener('click',()=>selectOption(el.dataset.option)));
+    document.getElementById('submitBtn').addEventListener('click',submitTrial);
+  }
+
+  function buildCard(key,opt){
+    let inner='';
+    if(opt.poster_url)inner+='<img class="card-poster" src="'+esc(opt.poster_url)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
+    const title=opt.label||'Option '+key.toUpperCase();
+    inner+='<div class="card-title">'+esc(title)+'</div>';
+    if(opt.fields){for(const[fk,fv]of Object.entries(opt.fields)){
+      if(HIDDEN_FIELDS.has(fk)||!fv||String(fv).trim()===title.trim())continue;
+      const lb=FIELD_LABELS[fk]||fk.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+      inner+='<div class="card-field"><strong>'+esc(lb)+':</strong> '+esc(fv)+'</div>';
+    }}
+    if(opt.text)inner+='<div class="card-text">'+esc(opt.text)+'</div>';
+    return'<div class="option-card" data-option="'+key+'">'+inner+'</div>';
+  }
+
+  function selectOption(key){
+    chosen=key;const trial=trials[assignedTrialIndices[currentStep]];
+    app.querySelectorAll('.option-card').forEach(el=>{el.classList.toggle('selected',el.dataset.option===key);el.classList.toggle('dimmed',el.dataset.option!==key);});
+    visibleSliderIndices=getTopK(trial.sliders,key,topKSliders);
+    if(condition.show_sliders)populateSliders(trial,key);
+    if(condition.show_checkboxes)populateCheckboxes(trial,key);
+    if(condition.show_inferences)populateInferences(trial,key);
+    const p=document.getElementById('dimPanel');if(p)p.classList.add('visible');
+    document.getElementById('submitBtn').disabled=false;
+  }
+
+  // --- Sliders ---
+  function populateSliders(trial,key){
+    const c=document.getElementById('sliderContainer'),hd=document.getElementById('dimPanelHeader');if(!c||!hd)return;
+    hd.textContent=condition.sliders_adjustable?'Adjust these scores:':'Dimension scores:';
+    let h='';
+    for(const si of visibleSliderIndices){const s=trial.sliders[si],val=key==='a'?s.value_if_a:s.value_if_b,dis=condition.sliders_adjustable?'':' disabled';
+      h+='<div class="slider-row"><div class="slider-label">'+esc(s.label);
+      if(s.low_label&&s.high_label)h+='<span class="pole-labels">'+esc(s.low_label)+' \u2192 '+esc(s.high_label)+'</span>';
+      h+='</div><div class="slider-track"><input type="range" min="-100" max="100" step="1" value="'+val+'" data-id="'+s.id+'" data-slider-index="'+si+'"'+dis+'></div>';
+      h+='<span class="slider-value" data-for="'+s.id+'">'+val+'</span></div>';}
+    c.innerHTML=h;
+    if(condition.sliders_adjustable&&gramMatrix){c.querySelectorAll('input[type="range"]').forEach(inp=>inp.addEventListener('input',e=>handleSliderChange(e,trial,key)));}
+    else{c.querySelectorAll('input[type="range"]').forEach(inp=>inp.addEventListener('input',()=>{const d=app.querySelector('.slider-value[data-for="'+inp.dataset.id+'"]');if(d)d.textContent=inp.value;}));}
+  }
+  function handleSliderChange(e,trial,key){
+    const ci=e.target,cIdx=parseInt(ci.dataset.sliderIndex,10),nv=parseInt(ci.value,10);
+    const ov=key==='a'?trial.sliders[cIdx].value_if_a:trial.sliders[cIdx].value_if_b;
+    const d=app.querySelector('.slider-value[data-for="'+ci.dataset.id+'"]');if(d)d.textContent=nv;
+    if(!gramMatrix)return;const delta=nv-ov;if(Math.abs(delta)<1)return;
+    document.getElementById('sliderContainer').querySelectorAll('input[type="range"]').forEach(o=>{
+      const oIdx=parseInt(o.dataset.sliderIndex,10);if(oIdx===cIdx)return;
+      const corr=gramMatrix[oIdx][cIdx];if(Math.abs(corr)<0.05)return;
+      const oOrig=key==='a'?trial.sliders[oIdx].value_if_a:trial.sliders[oIdx].value_if_b;
+      o.value=Math.max(-100,Math.min(100,oOrig+Math.round(corr*delta)));
+      const od=app.querySelector('.slider-value[data-for="'+o.dataset.id+'"]');if(od)od.textContent=o.value;
+    });
+  }
+
+  // --- Checkboxes ---
+  function populateCheckboxes(trial,key){
+    const c=document.getElementById('checkboxContainer');if(!c)return;let h='';
+    for(const si of visibleSliderIndices){const s=trial.sliders[si],val=key==='a'?s.value_if_a:s.value_if_b,av=Math.abs(val),bc=val>=0?'positive':'negative';
+      h+='<div class="checkbox-row"><input type="checkbox" id="cb_'+s.id+'" data-id="'+s.id+'"><label class="cb-label" for="cb_'+s.id+'">'+esc(s.label)+'</label>';
+      h+='<div class="cb-bar-container"><div class="cb-bar '+bc+'" style="width:'+av+'%"></div></div><span class="cb-value">'+val+'</span></div>';}
+    c.innerHTML=h;
+  }
+
+  // =============================================
+  // --- Inferences: "You {category} {dimension}" ---
+  // =============================================
+  function updateInfText(row){
+    const dim=row.dataset.dimLabel, cat=row.dataset.cat;
+    const textEl=row.querySelector('.inference-text');
+    if(textEl) textEl.innerHTML='\u201cYou <span class="cat-word">'+esc(catPhrase(cat))+'</span> '+esc(dim)+'.\u201d';
+  }
+
+  function populateInferences(trial,key){
+    const c=document.getElementById('inferenceContainer');if(!c)return;
+    let h='';
+    for(const si of visibleSliderIndices){
+      const s=trial.sliders[si], eff=key==='a'?s.value_if_a:s.value_if_b;
+      const defCat=catFromEff(eff);
+      h+='<div class="inference-row" data-id="'+s.id+'" data-dim-label="'+esc(s.label)+'" data-cat="'+defCat+'" data-action="none">';
+      h+='<div class="inference-text">\u201cYou <span class="cat-word">'+esc(catPhrase(defCat))+'</span> '+esc(s.label)+'.\u201d</div>';
+      h+='<div class="inference-actions">';
+      h+='<button class="btn-affirm">\u2713 Affirm</button>';
+      h+='<button class="btn-modify">\u270E Modify</button>';
+      h+='<button class="btn-remove">\u2715 Remove</button>';
+      h+='</div>';
+      // Category picker (hidden until Modify is clicked)
+      h+='<div class="category-picker">';
+      for(const cat of CATEGORIES){
+        const sel=cat.key===defCat?' selected':'';
+        h+='<button data-cat="'+cat.key+'"class="cat-pick'+sel+'">'+esc(cat.label)+'</button>';
       }
-      const n = urlParams.n || (experimentConfig
-        ? experimentConfig.num_trials_per_participant
-        : 30) || 30;
-
-      const rng = seedRandom(hashStr(participantId));
-      assignedTrialIndices = shuffle(
-        Array.from({length: trials.length}, (_, i) => i), rng
-      ).slice(0, n);
-      currentStep = 0;
-      responses = [];
-      renderInstructions();
-    } else {
-      renderSetup();
+      h+='</div>';
+      h+='</div>';
     }
-  })
-  .catch((err) => {
-    let msg = 'Could not load <strong>trials.json</strong>.';
-    if (domainKey) {
-      msg += ' Tried path: <code>' + esc(basePath + 'trials.json') + '</code>.';
-    }
-    msg += '<code>cd web-interface && python3 -m http.server 8080</code>';
-    app.innerHTML = '<div class="error-msg">' + msg + '</div>';
-  });
+    c.innerHTML=h;
 
-  // ---------------------------------------------------------------
-  // Available domains (for setup dropdown)
-  // ---------------------------------------------------------------
-  const KNOWN_DOMAINS = [
-    { key: '', label: '(root — trials.json in web-interface/)' },
-    { key: 'movies_100', label: 'Movies (100)' },
-    { key: 'movies_50', label: 'Movies (50)' },
-    { key: 'scruples_200', label: 'Scruples — Moral Dilemmas (200)' },
-    { key: 'wines_100', label: 'Wines (100)' },
-  ];
+    // Wire up each inference row
+    c.querySelectorAll('.inference-row').forEach(row=>{
+      const affirmBtn=row.querySelector('.btn-affirm');
+      const modifyBtn=row.querySelector('.btn-modify');
+      const removeBtn=row.querySelector('.btn-remove');
+      const picker=row.querySelector('.category-picker');
 
-  // ---------------------------------------------------------------
-  // Setup screen (internal testing only — hidden via URL params)
-  // ---------------------------------------------------------------
-  function renderSetup() {
-    const conditions = experimentConfig
-      ? experimentConfig.conditions
-      : buildFallbackConditions();
-    const defaultCond = experimentConfig
-      ? experimentConfig.default_condition || Object.keys(conditions)[0]
-      : 'choice_adjustable_sliders';
-    const numTrials = experimentConfig
-      ? experimentConfig.num_trials_per_participant || 30
-      : Math.min(trials.length, 30);
-    const domainLabel = experimentConfig
-      ? (experimentConfig.domain || 'unknown')
-      : 'unknown';
-
-    let html = '<div class="setup">';
-    html += '<h1>Experiment Setup</h1>';
-
-    // Domain selector
-    html += '<div class="field-group"><label>Domain</label><select id="domainSelect">';
-    for (const d of KNOWN_DOMAINS) {
-      const sel = d.key === domainKey ? ' selected' : '';
-      html += '<option value="' + d.key + '"' + sel + '>' + esc(d.label) + '</option>';
-    }
-    html += '</select>';
-    html += '<div class="hint">Current: ' + esc(domainLabel)
-          + ' (' + trials.length + ' trials loaded)</div></div>';
-
-    html += '<div class="field-group"><label>Participant ID</label>';
-    html += '<input type="text" id="pid" placeholder="Enter your ID" value="P'
-          + Math.floor(Math.random() * 9000 + 1000) + '"></div>';
-
-    html += '<div class="field-group"><label>Condition</label><select id="condSelect">';
-    for (const [key, cond] of Object.entries(conditions)) {
-      const sel = key === defaultCond ? ' selected' : '';
-      html += '<option value="' + key + '"' + sel + '>'
-            + esc(cond.label) + '</option>';
-    }
-    html += '</select></div>';
-
-    html += '<div class="field-group"><label>Number of Trials</label>';
-    html += '<input type="number" id="numTrials" min="1" max="'
-          + trials.length + '" value="' + numTrials + '"></div>';
-
-    html += '<div class="submit-row"><button class="btn" id="startBtn">'
-          + 'Continue</button></div>';
-    html += '</div>';
-    app.innerHTML = html;
-
-    // Domain change → reload page with new domain param
-    document.getElementById('domainSelect').addEventListener('change', (e) => {
-      const newDomain = e.target.value;
-      const url = new URL(window.location);
-      if (newDomain) {
-        url.searchParams.set('domain', newDomain);
-      } else {
-        url.searchParams.delete('domain');
+      function clearActions(){
+        affirmBtn.classList.remove('active');
+        modifyBtn.classList.remove('active');
+        removeBtn.classList.remove('active');
+        row.classList.remove('affirmed','removed');
+        picker.classList.remove('visible');
       }
-      window.location.href = url.toString();
-    });
 
-    document.getElementById('startBtn').addEventListener('click', () => {
-      participantId = document.getElementById('pid').value.trim() || 'anon';
-      conditionKey = document.getElementById('condSelect').value;
-      const cmap = experimentConfig
-        ? experimentConfig.conditions
-        : buildFallbackConditions();
-      condition = cmap[conditionKey];
-      const n = parseInt(document.getElementById('numTrials').value, 10)
-              || numTrials;
-
-      const rng = seedRandom(hashStr(participantId));
-      assignedTrialIndices = shuffle(
-        Array.from({length: trials.length}, (_, i) => i), rng
-      ).slice(0, n);
-      currentStep = 0;
-      responses = [];
-      renderInstructions();
-    });
-  }
-
-  function buildFallbackConditions() {
-    return {
-      choice_only: {
-        label: 'Choice Only',
-        show_sliders: false, sliders_adjustable: false, show_checkboxes: false,
-      },
-      choice_readonly_sliders: {
-        label: 'Choice + Read-Only Sliders',
-        show_sliders: true, sliders_adjustable: false, show_checkboxes: false,
-      },
-      choice_adjustable_sliders: {
-        label: 'Choice + Adjustable Sliders',
-        show_sliders: true, sliders_adjustable: true, show_checkboxes: false,
-      },
-      choice_checkboxes: {
-        label: 'Choice + Relevance Checkboxes',
-        show_sliders: false, sliders_adjustable: false, show_checkboxes: true,
-      },
-    };
-  }
-
-  // ---------------------------------------------------------------
-  // Instructions screen
-  // ---------------------------------------------------------------
-  function renderInstructions() {
-    let html = '<div class="instructions">';
-    html += '<h1>Instructions</h1>';
-
-    html += '<p>In this experiment, you will be shown pairs of options. '
-          + 'For each pair, read both options and <strong>click the one you '
-          + 'prefer</strong>.</p>';
-
-    if (condition.show_sliders && !condition.sliders_adjustable) {
-      html += '<div class="inst-highlight">'
-            + 'After you make your choice, we will show you how our system '
-            + 'scored the pair on several dimensions. You do not need to do '
-            + 'anything with these scores — just review them if you like, '
-            + 'then click Submit.'
-            + '</div>';
-    } else if (condition.show_sliders && condition.sliders_adjustable) {
-      html += '<div class="inst-highlight">'
-            + 'After you make your choice, we will show you how our system '
-            + 'scored the pair on several dimensions. '
-            + '<strong>Please adjust the sliders</strong> to better reflect '
-            + 'why you made your choice. If a dimension was important to your '
-            + 'decision, increase its magnitude. If it was irrelevant, '
-            + 'move it toward zero. Then click Submit.'
-            + '</div>';
-    } else if (condition.show_checkboxes) {
-      html += '<div class="inst-highlight">'
-            + 'After you make your choice, we will show you several '
-            + 'dimensions that may have been relevant. '
-            + '<strong>Check the boxes</strong> next to the dimensions that '
-            + 'actually mattered for your choice. Leave unchecked any that '
-            + 'were not relevant. Then click Submit.'
-            + '</div>';
-    }
-
-    html += '<p>There are ' + assignedTrialIndices.length
-          + ' trials. Take your time with each one.</p>';
-
-    html += '<div class="submit-row"><button class="btn" id="beginBtn">'
-          + 'Begin</button></div>';
-    html += '</div>';
-    app.innerHTML = html;
-
-    document.getElementById('beginBtn').addEventListener('click', () => {
-      renderTrial();
-    });
-  }
-
-  // ---------------------------------------------------------------
-  // Top-K slider indices by magnitude
-  // ---------------------------------------------------------------
-  function getTopKIndices(sliders, chosenKey, k) {
-    const vk = chosenKey === 'a' ? 'value_if_a' : 'value_if_b';
-    const indexed = sliders.map((s, i) => ({i, absVal: Math.abs(s[vk])}));
-    indexed.sort((a, b) => b.absVal - a.absVal);
-    return indexed.slice(0, k).map(x => x.i).sort((a, b) => a - b);
-  }
-
-  // ---------------------------------------------------------------
-  // Trial rendering
-  // ---------------------------------------------------------------
-  function renderTrial() {
-    const trialIdx = assignedTrialIndices[currentStep];
-    const trial = trials[trialIdx];
-    chosen = null;
-    visibleSliderIndices = [];
-    startTime = Date.now();
-
-    const total = assignedTrialIndices.length;
-    const pct = Math.round((currentStep / total) * 100);
-
-    let html = '';
-    html += '<div class="progress">Trial ' + (currentStep + 1)
-          + ' of ' + total + '</div>';
-    html += '<div class="progress-bar-track"><div class="progress-bar-fill" '
-          + 'style="width:' + pct + '%"></div></div>';
-
-    if (trial.prompt) {
-      html += '<div class="prompt">' + esc(trial.prompt) + '</div>';
-    }
-
-    html += '<div class="options">';
-    html += buildOptionCard('a', trial.option_a);
-    html += buildOptionCard('b', trial.option_b);
-    html += '</div>';
-
-    // Slider panel placeholder
-    if (condition.show_sliders && trial.sliders && trial.sliders.length > 0) {
-      html += '<div class="dim-panel" id="dimPanel">'
-            + '<div class="dim-panel-inner">'
-            + '<div class="dim-panel-header" id="dimPanelHeader"></div>'
-            + '<div id="sliderContainer"></div>'
-            + '</div></div>';
-    }
-
-    // Checkbox panel placeholder
-    if (condition.show_checkboxes && trial.sliders && trial.sliders.length > 0) {
-      html += '<div class="dim-panel" id="dimPanel">'
-            + '<div class="dim-panel-inner">'
-            + '<div class="dim-panel-header">'
-            + 'Which of these dimensions were relevant to your choice?'
-            + '</div>'
-            + '<div id="checkboxContainer"></div>'
-            + '</div></div>';
-    }
-
-    html += '<div class="submit-row"><button class="btn" id="submitBtn" '
-          + 'disabled>Submit</button></div>';
-
-    app.innerHTML = html;
-
-    app.querySelectorAll('.option-card').forEach(el => {
-      el.addEventListener('click', () => selectOption(el.dataset.option));
-    });
-
-    document.getElementById('submitBtn')
-      .addEventListener('click', submitTrial);
-  }
-
-  function buildOptionCard(key, opt) {
-    let inner = '';
-
-    // Poster image (if available)
-    if (opt.poster_url) {
-      inner += '<img class="card-poster" src="' + esc(opt.poster_url)
-            + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
-    }
-
-    // Title
-    const title = opt.label || 'Option ' + key.toUpperCase();
-    inner += '<div class="card-title">' + esc(title) + '</div>';
-
-    // Structured fields — skip hidden/internal ones
-    if (opt.fields) {
-      for (const [fk, fv] of Object.entries(opt.fields)) {
-        if (HIDDEN_FIELDS.has(fk) || !fv) continue;
-        // Skip if same as title
-        if (String(fv).trim() === title.trim()) continue;
-        const label = FIELD_LABELS[fk]
-          || fk.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-        inner += '<div class="card-field"><strong>' + esc(label)
-              + ':</strong> ' + esc(fv) + '</div>';
-      }
-    }
-
-    // Fallback plain text
-    if (opt.text) {
-      inner += '<div class="card-text">' + esc(opt.text) + '</div>';
-    }
-
-    return '<div class="option-card" data-option="' + key + '">'
-         + inner + '</div>';
-  }
-
-  // ---------------------------------------------------------------
-  // Selection
-  // ---------------------------------------------------------------
-  function selectOption(key) {
-    chosen = key;
-    const trialIdx = assignedTrialIndices[currentStep];
-    const trial = trials[trialIdx];
-
-    app.querySelectorAll('.option-card').forEach(el => {
-      el.classList.toggle('selected', el.dataset.option === key);
-      el.classList.toggle('dimmed', el.dataset.option !== key);
-    });
-
-    visibleSliderIndices = getTopKIndices(trial.sliders, key, topKSliders);
-
-    if (condition.show_sliders) populateSliders(trial, key);
-    if (condition.show_checkboxes) populateCheckboxes(trial, key);
-
-    const panel = document.getElementById('dimPanel');
-    if (panel) panel.classList.add('visible');
-
-    document.getElementById('submitBtn').disabled = false;
-  }
-
-  // ---------------------------------------------------------------
-  // Sliders (with co-movement)
-  // ---------------------------------------------------------------
-  function populateSliders(trial, key) {
-    const container = document.getElementById('sliderContainer');
-    const header = document.getElementById('dimPanelHeader');
-    if (!container || !header) return;
-
-    header.textContent = condition.sliders_adjustable
-      ? 'Adjust these scores to reflect why you made this choice:'
-      : 'How the system scored this pair on each dimension:';
-
-    let html = '';
-    for (const si of visibleSliderIndices) {
-      const s = trial.sliders[si];
-      const val = key === 'a' ? s.value_if_a : s.value_if_b;
-      const dis = condition.sliders_adjustable ? '' : ' disabled';
-      html += '<div class="slider-row">';
-      html += '<div class="slider-label">' + esc(s.label);
-      if (s.low_label && s.high_label) {
-        html += '<span class="pole-labels">'
-              + esc(s.low_label) + ' \u2192 ' + esc(s.high_label)
-              + '</span>';
-      }
-      html += '</div>';
-      html += '<div class="slider-track">'
-            + '<input type="range" min="-100" max="100" step="1" '
-            + 'value="' + val + '" data-id="' + s.id
-            + '" data-slider-index="' + si + '"' + dis + '></div>';
-      html += '<span class="slider-value" data-for="'
-            + s.id + '">' + val + '</span>';
-      html += '</div>';
-    }
-    container.innerHTML = html;
-
-    if (condition.sliders_adjustable && gramMatrix) {
-      container.querySelectorAll('input[type="range"]').forEach(input => {
-        input.addEventListener('input', e => handleSliderChange(e, trial, key));
+      affirmBtn.addEventListener('click',()=>{
+        clearActions();
+        affirmBtn.classList.add('active');
+        row.classList.add('affirmed');
+        row.dataset.action='affirm';
       });
-    } else {
-      container.querySelectorAll('input[type="range"]').forEach(input => {
-        input.addEventListener('input', () => {
-          const disp = app.querySelector(
-            '.slider-value[data-for="' + input.dataset.id + '"]');
-          if (disp) disp.textContent = input.value;
+
+      modifyBtn.addEventListener('click',()=>{
+        clearActions();
+        modifyBtn.classList.add('active');
+        picker.classList.add('visible');
+        row.dataset.action='modify';
+      });
+
+      removeBtn.addEventListener('click',()=>{
+        clearActions();
+        removeBtn.classList.add('active');
+        row.classList.add('removed');
+        row.dataset.action='remove';
+      });
+
+      // Category picker buttons
+      picker.querySelectorAll('.cat-pick').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          picker.querySelectorAll('.cat-pick').forEach(b=>b.classList.remove('selected'));
+          btn.classList.add('selected');
+          row.dataset.cat=btn.dataset.cat;
+          updateInfText(row);
         });
       });
-    }
-  }
-
-  function handleSliderChange(e, trial, key) {
-    const ci = e.target;
-    const changedIdx = parseInt(ci.dataset.sliderIndex, 10);
-    const newVal = parseInt(ci.value, 10);
-    const origVal = key === 'a'
-      ? trial.sliders[changedIdx].value_if_a
-      : trial.sliders[changedIdx].value_if_b;
-
-    // Update display for changed slider
-    const disp = app.querySelector(
-      '.slider-value[data-for="' + ci.dataset.id + '"]');
-    if (disp) disp.textContent = newVal;
-
-    if (!gramMatrix) return;
-    const delta = newVal - origVal;
-    if (Math.abs(delta) < 1) return;
-
-    const container = document.getElementById('sliderContainer');
-    container.querySelectorAll('input[type="range"]').forEach(other => {
-      const otherIdx = parseInt(other.dataset.sliderIndex, 10);
-      if (otherIdx === changedIdx) return;
-
-      const corr = gramMatrix[otherIdx][changedIdx];
-      if (Math.abs(corr) < 0.05) return;
-
-      const otherOrig = key === 'a'
-        ? trial.sliders[otherIdx].value_if_a
-        : trial.sliders[otherIdx].value_if_b;
-
-      const coMoveDelta = Math.round(corr * delta);
-      const newOther = Math.max(-100, Math.min(100, otherOrig + coMoveDelta));
-
-      other.value = newOther;
-      const od = app.querySelector(
-        '.slider-value[data-for="' + other.dataset.id + '"]');
-      if (od) od.textContent = newOther;
     });
   }
 
-  // ---------------------------------------------------------------
-  // Checkboxes
-  // ---------------------------------------------------------------
-  function populateCheckboxes(trial, key) {
-    const container = document.getElementById('checkboxContainer');
-    if (!container) return;
-
-    let html = '';
-    for (const si of visibleSliderIndices) {
-      const s = trial.sliders[si];
-      const val = key === 'a' ? s.value_if_a : s.value_if_b;
-      const absVal = Math.abs(val);
-      const barClass = val >= 0 ? 'positive' : 'negative';
-
-      html += '<div class="checkbox-row">';
-      html += '<input type="checkbox" id="cb_' + s.id
-            + '" data-id="' + s.id
-            + '" data-slider-index="' + si + '">';
-      html += '<label class="cb-label" for="cb_' + s.id + '">'
-            + esc(s.label) + '</label>';
-      html += '<div class="cb-bar-container"><div class="cb-bar '
-            + barClass + '" style="width:' + absVal + '%"></div></div>';
-      html += '<span class="cb-value">' + val + '</span>';
-      html += '</div>';
+  // --- Submit ---
+  function submitTrial(){
+    const trial=trials[assignedTrialIndices[currentStep]],elapsed=Date.now()-startTime;
+    const response={trial_id:trial.trial_id,option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:chosen,response_time_ms:elapsed,visible_dimensions:visibleSliderIndices.map(i=>trial.sliders[i].id)};
+    if(condition.show_sliders&&trial.sliders){const sv={};for(const si of visibleSliderIndices){const s=trial.sliders[si],inp=app.querySelector('input[data-id="'+s.id+'"]');sv[s.id]=inp?parseInt(inp.value,10):0;}response.slider_values=sv;response.sliders_adjusted=condition.sliders_adjustable;}
+    if(condition.show_checkboxes&&trial.sliders){const cv={};for(const si of visibleSliderIndices){const s=trial.sliders[si],cb=document.getElementById('cb_'+s.id);cv[s.id]=cb?(cb.checked?1:0):0;}response.checkbox_values=cv;}
+    if(condition.show_inferences){
+      const iv={};
+      document.querySelectorAll('.inference-row').forEach(row=>{
+        const id=row.dataset.id, cat=row.dataset.cat, action=row.dataset.action||'none';
+        let mult=catMult(cat);
+        if(action==='affirm') mult*=1.5;
+        if(action==='remove') mult=0.0;
+        iv[id]={category:cat,action:action,multiplier:Math.round(mult*100)/100};
+      });
+      response.inference_values=iv;
     }
-    container.innerHTML = html;
+    responses.push(response);currentStep++;
+    if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});}else finishExperiment();
   }
 
-  // ---------------------------------------------------------------
-  // Submit
-  // ---------------------------------------------------------------
-  function submitTrial() {
-    const trialIdx = assignedTrialIndices[currentStep];
-    const trial = trials[trialIdx];
-    const elapsed = Date.now() - startTime;
-
-    const response = {
-      trial_id: trial.trial_id,
-      option_a_id: trial.option_a_id || null,
-      option_b_id: trial.option_b_id || null,
-      chosen: chosen,
-      response_time_ms: elapsed,
-      visible_dimensions: visibleSliderIndices.map(i => trial.sliders[i].id),
-    };
-
-    if (condition.show_sliders && trial.sliders) {
-      const sv = {};
-      for (const si of visibleSliderIndices) {
-        const s = trial.sliders[si];
-        const inp = app.querySelector('input[data-id="' + s.id + '"]');
-        sv[s.id] = inp ? parseInt(inp.value, 10) : 0;
-      }
-      response.slider_values = sv;
-      response.sliders_adjusted = condition.sliders_adjustable;
-    }
-
-    if (condition.show_checkboxes && trial.sliders) {
-      const cv = {};
-      for (const si of visibleSliderIndices) {
-        const s = trial.sliders[si];
-        const cb = document.getElementById('cb_' + s.id);
-        cv[s.id] = cb ? (cb.checked ? 1 : 0) : 0;
-      }
-      response.checkbox_values = cv;
-    }
-
-    responses.push(response);
-    currentStep++;
-
-    if (currentStep < assignedTrialIndices.length) {
-      renderTrial();
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    } else {
-      finishExperiment();
-    }
-  }
-
-  // ---------------------------------------------------------------
-  // Finish — POST if endpoint configured, then show results
-  // ---------------------------------------------------------------
-  function finishExperiment() {
-    const output = {
-      participant_id: participantId,
-      condition: conditionKey,
-      domain: domainKey || (experimentConfig ? experimentConfig.domain : ''),
-      num_trials: responses.length,
-      timestamp: new Date().toISOString(),
-      responses: responses,
-    };
-
-    // POST to endpoint if configured
-    if (postUrl) {
-      fetch(postUrl, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(output),
-      }).catch(() => {}); // fire-and-forget
-    }
-
+  function finishExperiment(){
+    const output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,timestamp:new Date().toISOString(),responses:responses};
+    if(postUrl)fetch(postUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(output)}).catch(()=>{});
     renderResults(output);
   }
 
-  // ---------------------------------------------------------------
-  // Results
-  // ---------------------------------------------------------------
-  function renderResults(output) {
-    const outputStr = JSON.stringify(output, null, 2);
-    const avgTime = Math.round(
-      responses.reduce((s, r) => s + (r.response_time_ms || 0), 0)
-      / responses.length / 1000 * 10
-    ) / 10;
-
-    let html = '<div class="results">';
-    html += '<h1>Thank You!</h1>';
-    html += '<div class="stats">You completed ' + responses.length
-          + ' trials \u00b7 avg ' + avgTime + 's per trial</div>';
-    html += '<pre><code>' + esc(outputStr) + '</code></pre>';
-    html += '<div class="copy-row">';
-    html += '<button class="btn" id="copyBtn">Copy to Clipboard</button> ';
-    html += '<button class="btn-secondary" id="downloadBtn">'
-          + 'Download JSON</button>';
-    html += '</div></div>';
-    app.innerHTML = html;
-
-    document.getElementById('copyBtn').addEventListener('click', () => {
-      navigator.clipboard.writeText(outputStr).then(() => {
-        const b = document.getElementById('copyBtn');
-        b.textContent = 'Copied!';
-        setTimeout(() => { b.textContent = 'Copy to Clipboard'; }, 1500);
-      });
-    });
-
-    document.getElementById('downloadBtn').addEventListener('click', () => {
-      const blob = new Blob([outputStr], {type: 'application/json'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'responses_' + participantId + '_' + conditionKey + '.json';
-      a.click();
-      URL.revokeObjectURL(url);
-    });
+  function renderResults(output){
+    const s=JSON.stringify(output,null,2),avg=Math.round(responses.reduce((a,r)=>a+(r.response_time_ms||0),0)/responses.length/1000*10)/10;
+    let h='<div class="results"><h1>Thank You!</h1><div class="stats">'+responses.length+' trials \u00b7 avg '+avg+'s per trial</div>';
+    h+='<pre><code>'+esc(s)+'</code></pre>';
+    h+='<div class="copy-row"><button class="btn" id="copyBtn">Copy to Clipboard</button> <button class="btn-secondary" id="downloadBtn">Download JSON</button></div></div>';
+    app.innerHTML=h;
+    document.getElementById('copyBtn').addEventListener('click',()=>{navigator.clipboard.writeText(s).then(()=>{const b=document.getElementById('copyBtn');b.textContent='Copied!';setTimeout(()=>{b.textContent='Copy to Clipboard'},1500)});});
+    document.getElementById('downloadBtn').addEventListener('click',()=>{const blob=new Blob([s],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='responses_'+participantId+'_'+conditionKey+'.json';a.click();URL.revokeObjectURL(u);});
   }
 
-  // ---------------------------------------------------------------
-  // Utilities
-  // ---------------------------------------------------------------
-  function esc(str) {
-    if (str == null) return '';
-    const d = document.createElement('div');
-    d.textContent = String(str);
-    return d.innerHTML;
-  }
-
-  function hashStr(s) {
-    let h = 0;
-    for (let i = 0; i < s.length; i++) {
-      h = ((h << 5) - h + s.charCodeAt(i)) | 0;
-    }
-    return Math.abs(h);
-  }
-
-  function seedRandom(seed) {
-    let s = seed | 0;
-    return function () {
-      s = (s + 0x6D2B79F5) | 0;
-      let t = Math.imul(s ^ (s >>> 15), 1 | s);
-      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    };
-  }
-
-  function shuffle(arr, rng) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(rng() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
+  function esc(s){if(s==null)return'';const d=document.createElement('div');d.textContent=String(s);return d.innerHTML}
+  function hashStr(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h+s.charCodeAt(i))|0}return Math.abs(h)}
+  function seedRandom(seed){let s=seed|0;return function(){s=(s+0x6D2B79F5)|0;let t=Math.imul(s^(s>>>15),1|s);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296}}
+  function shuffle(arr,rng){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 })();
 </script>
 </body>
