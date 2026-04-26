@@ -340,13 +340,22 @@ def build_experiment_config(slider_meta, dimensions, args, G=None):
             },
             "choice_checkboxes": {
                 "label": "Choice + Relevance Checkboxes",
-                "description": "Binary choice with top-5 dimensions shown as checkboxes. Check dimensions relevant to your choice.",
+                "description": "Binary choice with top-5 dimensions shown as checkboxes.",
                 "show_sliders": False,
                 "sliders_adjustable": False,
                 "show_checkboxes": True,
+                "show_inferences": False,
+            },
+            "choice_inferences": {
+                "label": "Choice + Preference Inferences",
+                "description": "Binary choice with natural-language inferences. Affirm, modify, or remove each.",
+                "show_sliders": False,
+                "sliders_adjustable": False,
+                "show_checkboxes": False,
+                "show_inferences": True,
             },
         },
-        "default_condition": "choice_adjustable_sliders",
+        "default_condition": "choice_inferences",
         "slider_range": [-100, 100],
         "dimensions": [
             {

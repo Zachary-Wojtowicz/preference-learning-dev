@@ -116,7 +116,7 @@
   function catMult(k){ return (CATEGORIES.find(c=>c.key===k)||{}).mult||0; }
 
   function getUrlParams(){const p=new URLSearchParams(window.location.search);return{pid:p.get('pid')||'',condition:p.get('condition')||'',n:parseInt(p.get('n'),10)||0,domain:p.get('domain')||'',post:p.get('post')||''};}
-  const urlParams=getUrlParams();domainKey=urlParams.domain;postUrl=urlParams.post||null;
+  const urlParams=getUrlParams();domainKey=urlParams.domain||'movies_100';postUrl=urlParams.post||null;
   const basePath=domainKey?`outputs/${domainKey}/`:'';
 
   Promise.all([
@@ -137,7 +137,7 @@
     }else{renderSetup();}
   }).catch(()=>{app.innerHTML='<div class="error-msg">Could not load trials.json.<br><code>cd web-interface && python3 -m http.server 8080</code></div>';});
 
-  const KNOWN_DOMAINS=[{key:'',label:'(root)'},{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_200',label:'Scruples (200)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
+  const KNOWN_DOMAINS=[{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_200',label:'Scruples (200)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
 
   function buildFC(){return{
     choice_only:{label:'Choice Only',show_sliders:false,sliders_adjustable:false,show_checkboxes:false,show_inferences:false},

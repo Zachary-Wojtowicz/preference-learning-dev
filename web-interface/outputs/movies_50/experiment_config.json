@@ -1,38 +1,50 @@
 {
   "domain": "movies",
-  "choice_context": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+  "choice_context": "Which movie would you rather watch right now?",
   "num_trials_per_participant": 30,
   "conditions": {
     "choice_only": {
       "label": "Choice Only",
-      "description": "Binary choice, no dimension sliders shown.",
+      "description": "Binary choice, no dimension information shown.",
       "show_sliders": false,
       "sliders_adjustable": false,
-      "show_free_text": false
+      "show_checkboxes": false,
+      "show_inferences": false
     },
     "choice_readonly_sliders": {
       "label": "Choice + Read-Only Sliders",
-      "description": "Binary choice with dimension scores shown (not adjustable).",
+      "description": "Binary choice with top-5 dimension scores shown (not adjustable).",
       "show_sliders": true,
       "sliders_adjustable": false,
-      "show_free_text": false
+      "show_checkboxes": false,
+      "show_inferences": false
     },
     "choice_adjustable_sliders": {
       "label": "Choice + Adjustable Sliders",
-      "description": "Binary choice with adjustable dimension sliders.",
+      "description": "Binary choice with top-5 adjustable dimension sliders.",
       "show_sliders": true,
       "sliders_adjustable": true,
-      "show_free_text": false
+      "show_checkboxes": false,
+      "show_inferences": false
     },
-    "choice_sliders_text": {
-      "label": "Choice + Sliders + Reason",
-      "description": "Binary choice with adjustable sliders and a free-text reason field.",
-      "show_sliders": true,
-      "sliders_adjustable": true,
-      "show_free_text": true
+    "choice_checkboxes": {
+      "label": "Choice + Relevance Checkboxes",
+      "description": "Binary choice with top-5 dimensions shown as checkboxes.",
+      "show_sliders": false,
+      "sliders_adjustable": false,
+      "show_checkboxes": true,
+      "show_inferences": false
+    },
+    "choice_inferences": {
+      "label": "Choice + Preference Inferences",
+      "description": "Binary choice with natural-language inferences. Affirm, modify, or remove each.",
+      "show_sliders": false,
+      "sliders_adjustable": false,
+      "show_checkboxes": false,
+      "show_inferences": true
     }
   },
-  "default_condition": "choice_adjustable_sliders",
+  "default_condition": "choice_inferences",
   "slider_range": [
     -100,
     100
