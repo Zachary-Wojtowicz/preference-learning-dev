@@ -221,7 +221,8 @@ def build_display_text(option_row, display_column, text_column=None):
 
 
 def build_trials(pairs, embeddings, V, mu, dimensions, options_lookup,
-                 display_column, text_column, choice_context):
+                 display_column, text_column, choice_context,
+                 poster_urls=None):
     """Build the trials.json data structure."""
 
     # First pass: compute all raw projections for calibration
@@ -282,13 +283,23 @@ def build_trials(pairs, embeddings, V, mu, dimensions, options_lookup,
             "option_a": {
                 "label": display_a.get("title", f"Option A ({pair['option_a_id']})"),
                 "fields": display_a,
+                "poster_url": (poster_urls or {}).get(pair["option_a_id"], None),
             },
             "option_b": {
                 "label": display_b.get("title", f"Option B ({pair['option_b_id']})"),
                 "fields": display_b,
+                "poster_url": (poster_urls or {}).get(pair["option_b_id"], None),
             },
             "sliders": sliders,
         }
+
+        # Carry through dilemma metadata if present
+        if "dilemma_id" in pair:
+            trial["dilemma_id"] = pair["dilemma_id"]
+        if "gold_label" in pair:
+            trial["gold_label"] = pair["gold_label"]
+        if "controversial" in pair:
+            trial["controversial"] = pair["controversial"]
         trials.append(trial)
 
     return trials, slider_meta
@@ -394,6 +405,8 @@ def parse_args():
                    help="Column name for option A ID in pairs CSV (default: action_0_id)")
     p.add_argument("--pair-b-column", default="action_1_id",
                    help="Column name for option B ID in pairs CSV (default: action_1_id)")
+    p.add_argument("--poster-urls", default=None,
+                   help="Path to poster_urls.json (movie_id -> image URL)")
     p.add_argument("--seed", type=int, default=42)
     return p.parse_args()
 
@@ -431,6 +444,14 @@ def main():
         args.domain = config.get("domain", "unknown")
     if not args.choice_context:
         args.choice_context = config.get("choice_context", "Which option do you prefer?")
+
+    # Load poster URLs if available
+    poster_urls = {}
+    if args.poster_urls and Path(args.poster_urls).exists():
+        with open(args.poster_urls, encoding="utf-8") as f:
+            poster_urls = json.load(f)
+        poster_urls = {k: v for k, v in poster_urls.items() if v}  # drop nulls
+        print(f"Loaded {len(poster_urls)} poster URLs")
 
     # Load data
     print("Loading options...")
@@ -504,6 +525,7 @@ def main():
     trials, slider_meta = build_trials(
         pairs, embeddings, V, mu, dimensions, options_lookup,
         display_column, text_column, args.choice_context,
+        poster_urls=poster_urls,
     )
 
     # Build experiment config (include Gram matrix for slider co-movement)
