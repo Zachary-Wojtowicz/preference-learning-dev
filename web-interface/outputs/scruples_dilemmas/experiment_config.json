@@ -33,16 +33,24 @@
       "show_checkboxes": true,
       "show_inferences": false
     },
-    "choice_inferences": {
-      "label": "Choice + Preference Inferences",
-      "description": "Binary choice with natural-language inferences. Affirm, modify, or remove each.",
+    "inference_affirm": {
+      "label": "Inferences: Affirm / Remove",
+      "description": "Affirm or remove model inferences about your preferences.",
       "show_sliders": false,
       "sliders_adjustable": false,
       "show_checkboxes": false,
-      "show_inferences": true
+      "show_inferences": "affirm"
+    },
+    "inference_categories": {
+      "label": "Inferences: Category Selection",
+      "description": "Adjust the category for each inference about your preferences.",
+      "show_sliders": false,
+      "sliders_adjustable": false,
+      "show_checkboxes": false,
+      "show_inferences": "categories"
     }
   },
-  "default_condition": "choice_inferences",
+  "default_condition": "inference_categories",
   "slider_range": [
     -100,
     100
@@ -650,5 +658,37 @@
       0.106383,
       1.0
     ]
+  ],
+  "inference_categories": [
+    {
+      "key": "reject",
+      "phrase": "reject",
+      "label": "Reject",
+      "mult": -1.5
+    },
+    {
+      "key": "disapprove",
+      "phrase": "disapprove of",
+      "label": "Disapprove of",
+      "mult": -1.0
+    },
+    {
+      "key": "indifferent",
+      "phrase": "are indifferent to",
+      "label": "Indifferent",
+      "mult": 0.0
+    },
+    {
+      "key": "understand",
+      "phrase": "understand",
+      "label": "Understand",
+      "mult": 1.0
+    },
+    {
+      "key": "endorse",
+      "phrase": "endorse",
+      "label": "Endorse",
+      "mult": 1.5
+    }
   ]
 }
