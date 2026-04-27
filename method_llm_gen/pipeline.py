@@ -8,9 +8,10 @@ import math
 import os
 import random
 import re
+import tempfile
 import threading
 import time
-from collections import namedtuple
+from collections import Counter, namedtuple
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -65,11 +66,24 @@ def write_json(path, data):
 def write_csv(path, rows):
     if not rows:
         raise ValueError(f"No rows to write for {path}")
+    path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
-        writer.writeheader()
-        writer.writerows(rows)
+    fieldnames = list(rows[0].keys())
+    fd, tmp_path = tempfile.mkstemp(
+        prefix=f".{path.name}.", suffix=".tmp", dir=str(path.parent)
+    )
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)
+        os.replace(tmp_path, path)
+    except BaseException:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+        raise
 
 
 def read_csv_rows(path):
@@ -544,9 +558,12 @@ def score_options(config, client, model, output_dir):
     return csv_path
 
 
-def sample_pairs(option_ids, appearances_per_option, seed, exclude=None):
+def sample_pairs(option_ids, appearances_per_option, seed, exclude=None, remaining_by_option=None):
     rng = random.Random(seed)
-    target = {oid: appearances_per_option for oid in option_ids}
+    if remaining_by_option is not None:
+        target = {oid: max(0, int(remaining_by_option.get(oid, 0))) for oid in option_ids}
+    else:
+        target = {oid: appearances_per_option for oid in option_ids}
     seen = set(exclude) if exclude else set()
     pairs = []
     safety = 0
@@ -570,6 +587,18 @@ def sample_pairs(option_ids, appearances_per_option, seed, exclude=None):
         target[a] -= 1
         target[b] -= 1
     return pairs
+
+
+def _last_pair_blocked_by_existing_judgment(remaining_by_option, exclude):
+    """True when exactly two options need one more appearance each, but that edge already exists."""
+    need = sum(remaining_by_option.values())
+    if need != 2:
+        return False
+    deficit = [(oid, c) for oid, c in remaining_by_option.items() if c > 0]
+    if len(deficit) != 2 or deficit[0][1] != 1 or deficit[1][1] != 1:
+        return False
+    u, v = deficit[0][0], deficit[1][0]
+    return tuple(sorted((u, v))) in exclude
 
 
 def judge_pairs(config, client, model, output_dir, appearances_per_option, seed):
@@ -597,12 +626,14 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
     effective_seed = seed + len(existing_rows)
     option_ids = [opt.option_id for opt in options]
 
-    jobs = []
-    for dim in dimensions:
-        dim_id = str(dim["id"])
-        exclude = existing_by_dim.get(dim_id, set())
-        new_pairs = sample_pairs(option_ids, int(pair_count), effective_seed + int(dim["id"]), exclude=exclude)
-        jobs.extend((dim, a_id, b_id) for a_id, b_id in new_pairs)
+    def _appearance_remainder_for_dim(dim_id):
+        deg = Counter()
+        for r in existing_rows:
+            if str(r["dimension_id"]) != dim_id:
+                continue
+            deg[r["option_a_id"]] += 1
+            deg[r["option_b_id"]] += 1
+        return {oid: max(0, int(pair_count) - deg.get(oid, 0)) for oid in option_ids}
 
     def _make_prompt(dim, opt_a, opt_b):
         return template.format(
@@ -651,9 +682,31 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
     for dim in dimensions:
         dim_id = str(dim["id"])
         exclude = existing_by_dim.get(dim_id, set())
-        dim_pairs = sample_pairs(option_ids, int(pair_count), effective_seed + int(dim["id"]), exclude=exclude)
-        if not dim_pairs:
+        remaining_by_option = _appearance_remainder_for_dim(dim_id)
+        if not any(remaining_by_option.values()):
             print(f"[judge-pairs] Dim {dim_id} ({dim['name']}): already complete, skipping", flush=True)
+            continue
+        dim_pairs = sample_pairs(
+            option_ids,
+            int(pair_count),
+            effective_seed + int(dim["id"]),
+            exclude=exclude,
+            remaining_by_option=remaining_by_option,
+        )
+        if not dim_pairs:
+            need = sum(remaining_by_option.values())
+            if _last_pair_blocked_by_existing_judgment(remaining_by_option, exclude):
+                print(
+                    f"[judge-pairs] Dim {dim_id} ({dim['name']}): last pair would duplicate an "
+                    f"existing comparison — design is saturated; treating as complete — skipping",
+                    flush=True,
+                )
+            else:
+                print(
+                    f"[judge-pairs] Dim {dim_id} ({dim['name']}): could not schedule pairs "
+                    f"(remaining appearance sum={need}); data may be inconsistent — skipping",
+                    flush=True,
+                )
             continue
         dim_jobs = [(dim, a_id, b_id) for a_id, b_id in dim_pairs]
         dim_rows = []
