@@ -72,6 +72,21 @@
 <div class="container" id="app"><div class="loading">Loading…</div></div>
 <script>
 (function(){
+if(window.parent!==window){
+  var lastH=0;
+  function sendSize(){
+    var h=Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0);
+    if(h&&h!==lastH){lastH=h;try{window.parent.postMessage({type:'experiment_resize',height:h},'*');}catch(e){}}
+  }
+  var schedule=window.requestAnimationFrame?function(){requestAnimationFrame(sendSize)}:function(){setTimeout(sendSize,16)};
+  window.addEventListener('load',schedule);
+  window.addEventListener('resize',schedule);
+  if(window.ResizeObserver){
+    var ro=new ResizeObserver(schedule);
+    if(document.body)ro.observe(document.body);
+    else document.addEventListener('DOMContentLoaded',function(){ro.observe(document.body)});
+  }
+}
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
 var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
