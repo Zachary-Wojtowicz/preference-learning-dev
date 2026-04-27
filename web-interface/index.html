@@ -146,7 +146,7 @@ Promise.all([
     currentStep=0;responses=[];renderInstructions();
   }else renderSetup();
 }).catch(function(){app.innerHTML='<div class="error-msg">Could not load trials.json.<br><code>cd web-interface && python3 -m http.server 8080</code></div>';});
-var KNOWN_DOMAINS=[{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_200',label:'Scruples (200)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
+var KNOWN_DOMAINS=[{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
 function buildFC(){return{
   choice_only:{label:'Choice Only',show_sliders:false,sliders_adjustable:false,show_checkboxes:false,show_inferences:false},
   choice_readonly_sliders:{label:'Choice + Read-Only Sliders',show_sliders:true,sliders_adjustable:false,show_checkboxes:false,show_inferences:false},

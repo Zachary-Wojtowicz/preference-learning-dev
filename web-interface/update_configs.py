@@ -39,7 +39,6 @@ DOMAIN_CATEGORIES = {
     "movies_50":       MOVIES_CATEGORIES,
     "moral dilemmas":  SCRUPLES_CATEGORIES,
     "scruples":        SCRUPLES_CATEGORIES,
-    "scruples_200":    SCRUPLES_CATEGORIES,
     "scruples_dilemmas": SCRUPLES_CATEGORIES,
     "wines":           WINES_CATEGORIES,
     "wines_100":       WINES_CATEGORIES,

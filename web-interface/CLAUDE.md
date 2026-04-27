@@ -17,7 +17,6 @@ web-interface/
     │   ├── trials.json
     │   └── experiment_config.json
     ├── movies_50/
-    ├── scruples_200/
     ├── scruples_dilemmas/
     └── wines_100/
 ```
@@ -172,7 +171,7 @@ These are MC questions with QuestionJS that set embedded data:
 
 **QID9 — Domain selector** (same block):
 - Choice 1: "Movies (100)" → sets `domain` = `movies_100`
-- Choice 2: "Scruples — Moral Dilemmas (200)" → `scruples_200`
+- Choice 2: "Scruples — Moral Dilemmas" → `scruples_dilemmas`
 - Choice 3: "Wines (100)" → `wines_100`
 
 **For production**: Delete the Prototype Config block. Use Qualtrics Randomizer in the survey flow to assign conditions, or pass condition via URL param from an external recruitment system.
