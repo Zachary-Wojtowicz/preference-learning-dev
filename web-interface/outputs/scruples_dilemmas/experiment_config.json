@@ -1,6 +1,6 @@
 {
   "domain": "moral dilemmas",
-  "choice_context": "Consider these two actions from the same real-life situation. Which action is more ethically questionable?",
+  "choice_context": "Consider these two actions from the same real-life situation. Which action is more ethical?",
   "num_trials_per_participant": 30,
   "top_k_sliders": 5,
   "conditions": {
