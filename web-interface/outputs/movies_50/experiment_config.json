@@ -1,38 +1,58 @@
 {
   "domain": "movies",
-  "choice_context": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+  "choice_context": "Which movie would you rather watch right now?",
   "num_trials_per_participant": 30,
   "conditions": {
     "choice_only": {
       "label": "Choice Only",
-      "description": "Binary choice, no dimension sliders shown.",
+      "description": "Binary choice, no dimension information shown.",
       "show_sliders": false,
       "sliders_adjustable": false,
-      "show_free_text": false
+      "show_checkboxes": false,
+      "show_inferences": false
     },
     "choice_readonly_sliders": {
       "label": "Choice + Read-Only Sliders",
-      "description": "Binary choice with dimension scores shown (not adjustable).",
+      "description": "Binary choice with top-5 dimension scores shown (not adjustable).",
       "show_sliders": true,
       "sliders_adjustable": false,
-      "show_free_text": false
+      "show_checkboxes": false,
+      "show_inferences": false
     },
     "choice_adjustable_sliders": {
       "label": "Choice + Adjustable Sliders",
-      "description": "Binary choice with adjustable dimension sliders.",
+      "description": "Binary choice with top-5 adjustable dimension sliders.",
       "show_sliders": true,
       "sliders_adjustable": true,
-      "show_free_text": false
+      "show_checkboxes": false,
+      "show_inferences": false
     },
-    "choice_sliders_text": {
-      "label": "Choice + Sliders + Reason",
-      "description": "Binary choice with adjustable sliders and a free-text reason field.",
-      "show_sliders": true,
-      "sliders_adjustable": true,
-      "show_free_text": true
+    "choice_checkboxes": {
+      "label": "Choice + Relevance Checkboxes",
+      "description": "Binary choice with top-5 dimensions shown as checkboxes.",
+      "show_sliders": false,
+      "sliders_adjustable": false,
+      "show_checkboxes": true,
+      "show_inferences": false
+    },
+    "inference_affirm": {
+      "label": "Inferences: Affirm / Remove",
+      "description": "Affirm or remove model inferences about your preferences.",
+      "show_sliders": false,
+      "sliders_adjustable": false,
+      "show_checkboxes": false,
+      "show_inferences": "affirm"
+    },
+    "inference_categories": {
+      "label": "Inferences: Category Selection",
+      "description": "Adjust the category for each inference about your preferences.",
+      "show_sliders": false,
+      "sliders_adjustable": false,
+      "show_checkboxes": false,
+      "show_inferences": "categories"
     }
   },
-  "default_condition": "choice_adjustable_sliders",
+  "default_condition": "inference_categories",
   "slider_range": [
     -100,
     100
@@ -117,6 +137,38 @@
       "low_label": "Slow Pacing",
       "high_label": "Fast Pacing",
       "scoring_guidance": "Rate based on the overall speed and rhythm of the film's pacing."
+    }
+  ],
+  "inference_categories": [
+    {
+      "key": "skip",
+      "phrase": "prefer to skip",
+      "label": "Prefer to skip",
+      "mult": -1.5
+    },
+    {
+      "key": "not_into",
+      "phrase": "aren\u2019t into",
+      "label": "Aren\u2019t into",
+      "mult": -1.0
+    },
+    {
+      "key": "indifferent",
+      "phrase": "are indifferent to",
+      "label": "Indifferent",
+      "mult": 0.0
+    },
+    {
+      "key": "like",
+      "phrase": "like",
+      "label": "Like",
+      "mult": 1.0
+    },
+    {
+      "key": "love",
+      "phrase": "love",
+      "label": "Love",
+      "mult": 1.5
     }
   ]
 }

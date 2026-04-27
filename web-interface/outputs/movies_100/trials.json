@@ -6,7 +6,7 @@
     "option_b_id": "5833",
     "distance_stratum": "near",
     "cosine_distance": 0.893771,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Meet the Spartans (2008)",
       "fields": {
@@ -270,7 +270,7 @@
     "option_b_id": "7381",
     "distance_stratum": "near",
     "cosine_distance": 0.811276,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Harriet the Spy (1996)",
       "fields": {
@@ -534,7 +534,7 @@
     "option_b_id": "2376",
     "distance_stratum": "near",
     "cosine_distance": 0.932195,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Teenage Mutant Ninja Turtles II: The Secret of the Ooze (1991)",
       "fields": {
@@ -798,7 +798,7 @@
     "option_b_id": "1391",
     "distance_stratum": "near",
     "cosine_distance": 0.893431,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Friday the 13th Part 3: 3D (1982)",
       "fields": {
@@ -1062,7 +1062,7 @@
     "option_b_id": "192379",
     "distance_stratum": "near",
     "cosine_distance": 0.788455,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Bohemian Rhapsody (2018)",
       "fields": {
@@ -1326,7 +1326,7 @@
     "option_b_id": "3100",
     "distance_stratum": "near",
     "cosine_distance": 0.943701,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Waiting... (2005)",
       "fields": {
@@ -1590,7 +1590,7 @@
     "option_b_id": "47640",
     "distance_stratum": "near",
     "cosine_distance": 0.903591,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Mars Attacks! (1996)",
       "fields": {
@@ -1854,7 +1854,7 @@
     "option_b_id": "192379",
     "distance_stratum": "near",
     "cosine_distance": 0.862284,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "20,000 Leagues Under the Sea (1954)",
       "fields": {
@@ -2118,7 +2118,7 @@
     "option_b_id": "433",
     "distance_stratum": "near",
     "cosine_distance": 0.956333,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cellular (2004)",
       "fields": {
@@ -2382,7 +2382,7 @@
     "option_b_id": "86142",
     "distance_stratum": "near",
     "cosine_distance": 0.831094,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Longest Day, The (1962)",
       "fields": {
@@ -2646,7 +2646,7 @@
     "option_b_id": "1913",
     "distance_stratum": "near",
     "cosine_distance": 0.938314,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "20,000 Leagues Under the Sea (1954)",
       "fields": {
@@ -2910,7 +2910,7 @@
     "option_b_id": "6534",
     "distance_stratum": "near",
     "cosine_distance": 0.974108,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Jumanji (1995)",
       "fields": {
@@ -3174,7 +3174,7 @@
     "option_b_id": "3439",
     "distance_stratum": "near",
     "cosine_distance": 0.881619,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "It's the Great Pumpkin, Charlie Brown (1966)",
       "fields": {
@@ -3438,7 +3438,7 @@
     "option_b_id": "4681",
     "distance_stratum": "near",
     "cosine_distance": 0.975168,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Supergirl (1984)",
       "fields": {
@@ -3702,7 +3702,7 @@
     "option_b_id": "86142",
     "distance_stratum": "near",
     "cosine_distance": 0.930649,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "[REC] (2007)",
       "fields": {
@@ -3966,7 +3966,7 @@
     "option_b_id": "3812",
     "distance_stratum": "near",
     "cosine_distance": 0.969913,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Englishman Who Went Up a Hill But Came Down a Mountain, The (1995)",
       "fields": {
@@ -4230,7 +4230,7 @@
     "option_b_id": "371",
     "distance_stratum": "near",
     "cosine_distance": 0.893811,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Waiting... (2005)",
       "fields": {
@@ -4494,7 +4494,7 @@
     "option_b_id": "3754",
     "distance_stratum": "near",
     "cosine_distance": 0.877997,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Spider-Man: Across the Spider-Verse (2023)",
       "fields": {
@@ -4758,7 +4758,7 @@
     "option_b_id": "86142",
     "distance_stratum": "near",
     "cosine_distance": 0.957277,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Manon of the Spring (Manon des sources) (1986)",
       "fields": {
@@ -5022,7 +5022,7 @@
     "option_b_id": "72294",
     "distance_stratum": "near",
     "cosine_distance": 0.93965,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Autómata (Automata) (2014)",
       "fields": {
@@ -5286,7 +5286,7 @@
     "option_b_id": "51091",
     "distance_stratum": "near",
     "cosine_distance": 0.93769,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Brokedown Palace (1999)",
       "fields": {
@@ -5550,7 +5550,7 @@
     "option_b_id": "1005",
     "distance_stratum": "near",
     "cosine_distance": 0.943366,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Good Day to Die Hard, A (2013)",
       "fields": {
@@ -5814,7 +5814,7 @@
     "option_b_id": "2375",
     "distance_stratum": "near",
     "cosine_distance": 0.974782,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "View to a Kill, A (1985)",
       "fields": {
@@ -6078,7 +6078,7 @@
     "option_b_id": "2212",
     "distance_stratum": "near",
     "cosine_distance": 0.94476,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Star Trek VI: The Undiscovered Country (1991)",
       "fields": {
@@ -6342,7 +6342,7 @@
     "option_b_id": "66934",
     "distance_stratum": "near",
     "cosine_distance": 0.907055,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Knockin' on Heaven's Door (1997)",
       "fields": {
@@ -6606,7 +6606,7 @@
     "option_b_id": "433",
     "distance_stratum": "near",
     "cosine_distance": 0.868943,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "The Night Of (2016)",
       "fields": {
@@ -6870,7 +6870,7 @@
     "option_b_id": "2381",
     "distance_stratum": "near",
     "cosine_distance": 0.948508,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Good Day to Die Hard, A (2013)",
       "fields": {
@@ -7134,7 +7134,7 @@
     "option_b_id": "2",
     "distance_stratum": "near",
     "cosine_distance": 0.954386,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "[REC] (2007)",
       "fields": {
@@ -7398,7 +7398,7 @@
     "option_b_id": "47640",
     "distance_stratum": "near",
     "cosine_distance": 0.965918,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Boys from Brazil, The (1978)",
       "fields": {
@@ -7662,7 +7662,7 @@
     "option_b_id": "26242",
     "distance_stratum": "near",
     "cosine_distance": 0.842499,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cat's Eye (1985)",
       "fields": {
@@ -7926,7 +7926,7 @@
     "option_b_id": "111759",
     "distance_stratum": "near",
     "cosine_distance": 0.958426,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "General, The (1926)",
       "fields": {
@@ -8190,7 +8190,7 @@
     "option_b_id": "2376",
     "distance_stratum": "near",
     "cosine_distance": 0.940291,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "20,000 Leagues Under the Sea (1954)",
       "fields": {
@@ -8454,7 +8454,7 @@
     "option_b_id": "8908",
     "distance_stratum": "near",
     "cosine_distance": 0.894295,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Wind Rises, The (Kaze tachinu) (2013)",
       "fields": {
@@ -8718,7 +8718,7 @@
     "option_b_id": "6958",
     "distance_stratum": "near",
     "cosine_distance": 0.948835,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cat on a Hot Tin Roof (1958)",
       "fields": {
@@ -8982,7 +8982,7 @@
     "option_b_id": "3754",
     "distance_stratum": "near",
     "cosine_distance": 0.886488,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Harriet the Spy (1996)",
       "fields": {
@@ -9246,7 +9246,7 @@
     "option_b_id": "2334",
     "distance_stratum": "near",
     "cosine_distance": 0.869591,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Longest Day, The (1962)",
       "fields": {
@@ -9510,7 +9510,7 @@
     "option_b_id": "72294",
     "distance_stratum": "near",
     "cosine_distance": 0.961714,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Deep End of the Ocean, The (1999)",
       "fields": {
@@ -9774,7 +9774,7 @@
     "option_b_id": "4681",
     "distance_stratum": "near",
     "cosine_distance": 0.915023,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "General, The (1926)",
       "fields": {
@@ -10038,7 +10038,7 @@
     "option_b_id": "26242",
     "distance_stratum": "near",
     "cosine_distance": 0.975154,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Mommie Dearest (1981)",
       "fields": {
@@ -10302,7 +10302,7 @@
     "option_b_id": "7381",
     "distance_stratum": "near",
     "cosine_distance": 0.79231,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Meet the Spartans (2008)",
       "fields": {
@@ -10566,7 +10566,7 @@
     "option_b_id": "3022",
     "distance_stratum": "near",
     "cosine_distance": 0.937181,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cradle Will Rock (1999)",
       "fields": {
@@ -10830,7 +10830,7 @@
     "option_b_id": "58293",
     "distance_stratum": "near",
     "cosine_distance": 0.95781,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "[REC] (2007)",
       "fields": {
@@ -11094,7 +11094,7 @@
     "option_b_id": "3204",
     "distance_stratum": "near",
     "cosine_distance": 0.833117,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Disturbing Behavior (1998)",
       "fields": {
@@ -11358,7 +11358,7 @@
     "option_b_id": "258",
     "distance_stratum": "near",
     "cosine_distance": 0.904725,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Dr. Seuss' The Lorax (2012)",
       "fields": {
@@ -11622,7 +11622,7 @@
     "option_b_id": "725",
     "distance_stratum": "near",
     "cosine_distance": 0.792396,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cobb (1994)",
       "fields": {
@@ -11886,7 +11886,7 @@
     "option_b_id": "47640",
     "distance_stratum": "near",
     "cosine_distance": 0.814941,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Jumanji (1995)",
       "fields": {
@@ -12150,7 +12150,7 @@
     "option_b_id": "258",
     "distance_stratum": "near",
     "cosine_distance": 0.892109,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Lupin III: The Castle Of Cagliostro (Rupan sansei: Kariosutoro no shiro) (1979)",
       "fields": {
@@ -12414,7 +12414,7 @@
     "option_b_id": "114847",
     "distance_stratum": "near",
     "cosine_distance": 0.902835,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Sliding Doors (1998)",
       "fields": {
@@ -12678,7 +12678,7 @@
     "option_b_id": "2381",
     "distance_stratum": "near",
     "cosine_distance": 0.970393,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Friday the 13th Part 3: 3D (1982)",
       "fields": {
@@ -12942,7 +12942,7 @@
     "option_b_id": "8169",
     "distance_stratum": "near",
     "cosine_distance": 0.933002,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Spider-Man: Across the Spider-Verse (2023)",
       "fields": {
@@ -13206,7 +13206,7 @@
     "option_b_id": "2381",
     "distance_stratum": "near",
     "cosine_distance": 0.89198,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Meet the Spartans (2008)",
       "fields": {
@@ -13470,7 +13470,7 @@
     "option_b_id": "1378",
     "distance_stratum": "near",
     "cosine_distance": 0.976663,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Legion (2010)",
       "fields": {
@@ -13734,7 +13734,7 @@
     "option_b_id": "6534",
     "distance_stratum": "near",
     "cosine_distance": 0.825334,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Edge of Tomorrow (2014)",
       "fields": {
@@ -13998,7 +13998,7 @@
     "option_b_id": "2334",
     "distance_stratum": "near",
     "cosine_distance": 0.883789,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "The Night Of (2016)",
       "fields": {
@@ -14262,7 +14262,7 @@
     "option_b_id": "6299",
     "distance_stratum": "near",
     "cosine_distance": 0.950493,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Englishman Who Went Up a Hill But Came Down a Mountain, The (1995)",
       "fields": {
@@ -14526,7 +14526,7 @@
     "option_b_id": "5833",
     "distance_stratum": "near",
     "cosine_distance": 0.969049,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Autómata (Automata) (2014)",
       "fields": {
@@ -14790,7 +14790,7 @@
     "option_b_id": "7137",
     "distance_stratum": "near",
     "cosine_distance": 0.926272,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "First Strike (Police Story 4: First Strike) (Ging chaat goo si 4: Ji gaan daan yam mo) (1996)",
       "fields": {
@@ -15054,7 +15054,7 @@
     "option_b_id": "2771",
     "distance_stratum": "near",
     "cosine_distance": 0.844082,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Deep End of the Ocean, The (1999)",
       "fields": {
@@ -15318,7 +15318,7 @@
     "option_b_id": "86142",
     "distance_stratum": "near",
     "cosine_distance": 0.939884,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Man Who Knew Too Much, The (1934)",
       "fields": {
@@ -15582,7 +15582,7 @@
     "option_b_id": "3812",
     "distance_stratum": "near",
     "cosine_distance": 0.960617,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Clean Slate (1994)",
       "fields": {
@@ -15846,7 +15846,7 @@
     "option_b_id": "114847",
     "distance_stratum": "near",
     "cosine_distance": 0.895783,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Boys from Brazil, The (1978)",
       "fields": {
@@ -16110,7 +16110,7 @@
     "option_b_id": "2771",
     "distance_stratum": "near",
     "cosine_distance": 0.943722,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Burnt by the Sun (Utomlyonnye solntsem) (1994)",
       "fields": {
@@ -16374,7 +16374,7 @@
     "option_b_id": "1372",
     "distance_stratum": "near",
     "cosine_distance": 0.934934,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Longest Day, The (1962)",
       "fields": {
@@ -16638,7 +16638,7 @@
     "option_b_id": "8860",
     "distance_stratum": "near",
     "cosine_distance": 0.947422,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Knockin' on Heaven's Door (1997)",
       "fields": {
@@ -16902,7 +16902,7 @@
     "option_b_id": "2787",
     "distance_stratum": "near",
     "cosine_distance": 0.907833,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Legion (2010)",
       "fields": {
@@ -17166,7 +17166,7 @@
     "option_b_id": "202429",
     "distance_stratum": "near",
     "cosine_distance": 0.895501,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Wall Street: Money Never Sleeps (2010)",
       "fields": {
@@ -17430,7 +17430,7 @@
     "option_b_id": "2334",
     "distance_stratum": "medium",
     "cosine_distance": 1.054401,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "General, The (1926)",
       "fields": {
@@ -17694,7 +17694,7 @@
     "option_b_id": "5833",
     "distance_stratum": "medium",
     "cosine_distance": 0.984341,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Quiet American, The (2002)",
       "fields": {
@@ -17958,7 +17958,7 @@
     "option_b_id": "37384",
     "distance_stratum": "medium",
     "cosine_distance": 0.997207,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cellular (2004)",
       "fields": {
@@ -18222,7 +18222,7 @@
     "option_b_id": "3812",
     "distance_stratum": "medium",
     "cosine_distance": 0.987326,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Interview with the Vampire: The Vampire Chronicles (1994)",
       "fields": {
@@ -18486,7 +18486,7 @@
     "option_b_id": "6534",
     "distance_stratum": "medium",
     "cosine_distance": 1.031764,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "D3: The Mighty Ducks (1996)",
       "fields": {
@@ -18750,7 +18750,7 @@
     "option_b_id": "258",
     "distance_stratum": "medium",
     "cosine_distance": 1.04165,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cellular (2004)",
       "fields": {
@@ -19014,7 +19014,7 @@
     "option_b_id": "213",
     "distance_stratum": "medium",
     "cosine_distance": 1.040581,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Englishman Who Went Up a Hill But Came Down a Mountain, The (1995)",
       "fields": {
@@ -19278,7 +19278,7 @@
     "option_b_id": "37384",
     "distance_stratum": "medium",
     "cosine_distance": 1.045561,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Lord of the Rings, The (1978)",
       "fields": {
@@ -19542,7 +19542,7 @@
     "option_b_id": "66934",
     "distance_stratum": "medium",
     "cosine_distance": 0.99939,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "General, The (1926)",
       "fields": {
@@ -19806,7 +19806,7 @@
     "option_b_id": "192379",
     "distance_stratum": "medium",
     "cosine_distance": 0.991719,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Burnt by the Sun (Utomlyonnye solntsem) (1994)",
       "fields": {
@@ -20070,7 +20070,7 @@
     "option_b_id": "2504",
     "distance_stratum": "medium",
     "cosine_distance": 1.011124,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Color Purple, The (1985)",
       "fields": {
@@ -20334,7 +20334,7 @@
     "option_b_id": "6299",
     "distance_stratum": "medium",
     "cosine_distance": 1.049756,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "The Edge of Seventeen (2016)",
       "fields": {
@@ -20598,7 +20598,7 @@
     "option_b_id": "192379",
     "distance_stratum": "medium",
     "cosine_distance": 1.025929,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Legion (2010)",
       "fields": {
@@ -20862,7 +20862,7 @@
     "option_b_id": "1391",
     "distance_stratum": "medium",
     "cosine_distance": 1.041317,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Knockin' on Heaven's Door (1997)",
       "fields": {
@@ -21126,7 +21126,7 @@
     "option_b_id": "32460",
     "distance_stratum": "medium",
     "cosine_distance": 1.021195,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "The Northman",
       "fields": {
@@ -21390,7 +21390,7 @@
     "option_b_id": "1132",
     "distance_stratum": "medium",
     "cosine_distance": 1.015672,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Clean Slate (1994)",
       "fields": {
@@ -21654,7 +21654,7 @@
     "option_b_id": "1949",
     "distance_stratum": "medium",
     "cosine_distance": 1.00966,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Beautician and the Beast, The (1997)",
       "fields": {
@@ -21918,7 +21918,7 @@
     "option_b_id": "2504",
     "distance_stratum": "medium",
     "cosine_distance": 1.031916,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Food, Inc. (2008)",
       "fields": {
@@ -22182,7 +22182,7 @@
     "option_b_id": "202429",
     "distance_stratum": "medium",
     "cosine_distance": 0.99596,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Longest Day, The (1962)",
       "fields": {
@@ -22446,7 +22446,7 @@
     "option_b_id": "1015",
     "distance_stratum": "medium",
     "cosine_distance": 0.99054,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Wind Rises, The (Kaze tachinu) (2013)",
       "fields": {
@@ -22710,7 +22710,7 @@
     "option_b_id": "8253",
     "distance_stratum": "medium",
     "cosine_distance": 1.042681,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Quiet American, The (2002)",
       "fields": {
@@ -22974,7 +22974,7 @@
     "option_b_id": "2504",
     "distance_stratum": "medium",
     "cosine_distance": 0.995955,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Quiet American, The (2002)",
       "fields": {
@@ -23238,7 +23238,7 @@
     "option_b_id": "7842",
     "distance_stratum": "medium",
     "cosine_distance": 0.984497,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Red Violin, The (Violon rouge, Le) (1998)",
       "fields": {
@@ -23502,7 +23502,7 @@
     "option_b_id": "2375",
     "distance_stratum": "medium",
     "cosine_distance": 1.039408,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Drumline (2002)",
       "fields": {
@@ -23766,7 +23766,7 @@
     "option_b_id": "2771",
     "distance_stratum": "medium",
     "cosine_distance": 1.008293,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Good Day to Die Hard, A (2013)",
       "fields": {
@@ -24030,7 +24030,7 @@
     "option_b_id": "213",
     "distance_stratum": "medium",
     "cosine_distance": 1.050866,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Disturbing Behavior (1998)",
       "fields": {
@@ -24294,7 +24294,7 @@
     "option_b_id": "2381",
     "distance_stratum": "medium",
     "cosine_distance": 1.002807,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cradle Will Rock (1999)",
       "fields": {
@@ -24558,7 +24558,7 @@
     "option_b_id": "2739",
     "distance_stratum": "medium",
     "cosine_distance": 1.00873,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "It's the Great Pumpkin, Charlie Brown (1966)",
       "fields": {
@@ -24822,7 +24822,7 @@
     "option_b_id": "3204",
     "distance_stratum": "medium",
     "cosine_distance": 1.027063,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "General, The (1926)",
       "fields": {
@@ -25086,7 +25086,7 @@
     "option_b_id": "3754",
     "distance_stratum": "medium",
     "cosine_distance": 0.981972,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Burnt by the Sun (Utomlyonnye solntsem) (1994)",
       "fields": {
@@ -25350,7 +25350,7 @@
     "option_b_id": "1378",
     "distance_stratum": "medium",
     "cosine_distance": 1.026907,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "The Night Of (2016)",
       "fields": {
@@ -25614,7 +25614,7 @@
     "option_b_id": "1998",
     "distance_stratum": "medium",
     "cosine_distance": 1.043964,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "The Night Of (2016)",
       "fields": {
@@ -25878,7 +25878,7 @@
     "option_b_id": "32587",
     "distance_stratum": "medium",
     "cosine_distance": 1.05173,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Picnic at Hanging Rock (1975)",
       "fields": {
@@ -26142,7 +26142,7 @@
     "option_b_id": "3812",
     "distance_stratum": "medium",
     "cosine_distance": 1.040104,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Boys from Brazil, The (1978)",
       "fields": {
@@ -26406,7 +26406,7 @@
     "option_b_id": "161922",
     "distance_stratum": "medium",
     "cosine_distance": 0.97882,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "It's the Great Pumpkin, Charlie Brown (1966)",
       "fields": {
@@ -26670,7 +26670,7 @@
     "option_b_id": "26242",
     "distance_stratum": "medium",
     "cosine_distance": 1.04549,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Knockin' on Heaven's Door (1997)",
       "fields": {
@@ -26934,7 +26934,7 @@
     "option_b_id": "1998",
     "distance_stratum": "medium",
     "cosine_distance": 1.012179,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Father of the Bride Part II (1995)",
       "fields": {
@@ -27198,7 +27198,7 @@
     "option_b_id": "1372",
     "distance_stratum": "medium",
     "cosine_distance": 1.017929,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "General, The (1926)",
       "fields": {
@@ -27462,7 +27462,7 @@
     "option_b_id": "3204",
     "distance_stratum": "medium",
     "cosine_distance": 0.990384,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Legion (2010)",
       "fields": {
@@ -27726,7 +27726,7 @@
     "option_b_id": "973",
     "distance_stratum": "medium",
     "cosine_distance": 1.006147,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Quiet American, The (2002)",
       "fields": {
@@ -27990,7 +27990,7 @@
     "option_b_id": "1913",
     "distance_stratum": "medium",
     "cosine_distance": 1.031741,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Everything You Always Wanted to Know About Sex * But Were Afraid to Ask (1972)",
       "fields": {
@@ -28254,7 +28254,7 @@
     "option_b_id": "51091",
     "distance_stratum": "medium",
     "cosine_distance": 1.023226,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Dog Soldiers (2002)",
       "fields": {
@@ -28518,7 +28518,7 @@
     "option_b_id": "1998",
     "distance_stratum": "medium",
     "cosine_distance": 0.999995,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Dune (2000)",
       "fields": {
@@ -28782,7 +28782,7 @@
     "option_b_id": "1913",
     "distance_stratum": "medium",
     "cosine_distance": 0.990319,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Legion (2010)",
       "fields": {
@@ -29046,7 +29046,7 @@
     "option_b_id": "80590",
     "distance_stratum": "medium",
     "cosine_distance": 0.999198,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Whole Ten Yards, The (2004)",
       "fields": {
@@ -29310,7 +29310,7 @@
     "option_b_id": "3812",
     "distance_stratum": "medium",
     "cosine_distance": 1.018676,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Dr. Seuss' The Lorax (2012)",
       "fields": {
@@ -29574,7 +29574,7 @@
     "option_b_id": "86142",
     "distance_stratum": "medium",
     "cosine_distance": 1.012866,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Interview with the Vampire: The Vampire Chronicles (1994)",
       "fields": {
@@ -29838,7 +29838,7 @@
     "option_b_id": "5833",
     "distance_stratum": "medium",
     "cosine_distance": 1.039371,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Food, Inc. (2008)",
       "fields": {
@@ -30102,7 +30102,7 @@
     "option_b_id": "7842",
     "distance_stratum": "medium",
     "cosine_distance": 1.027464,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Whole Ten Yards, The (2004)",
       "fields": {
@@ -30366,7 +30366,7 @@
     "option_b_id": "1132",
     "distance_stratum": "medium",
     "cosine_distance": 0.985841,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cat's Eye (1985)",
       "fields": {
@@ -30630,7 +30630,7 @@
     "option_b_id": "8253",
     "distance_stratum": "medium",
     "cosine_distance": 0.998235,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Motorcycle Diaries, The (Diarios de motocicleta) (2004)",
       "fields": {
@@ -30894,7 +30894,7 @@
     "option_b_id": "1913",
     "distance_stratum": "medium",
     "cosine_distance": 1.002963,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "The Edge of Seventeen (2016)",
       "fields": {
@@ -31158,7 +31158,7 @@
     "option_b_id": "8169",
     "distance_stratum": "medium",
     "cosine_distance": 1.040641,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Wind Rises, The (Kaze tachinu) (2013)",
       "fields": {
@@ -31422,7 +31422,7 @@
     "option_b_id": "1998",
     "distance_stratum": "medium",
     "cosine_distance": 1.011919,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Deep End of the Ocean, The (1999)",
       "fields": {
@@ -31686,7 +31686,7 @@
     "option_b_id": "72294",
     "distance_stratum": "medium",
     "cosine_distance": 0.98576,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Father of the Bride Part II (1995)",
       "fields": {
@@ -31950,7 +31950,7 @@
     "option_b_id": "3204",
     "distance_stratum": "medium",
     "cosine_distance": 0.97724,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Quiet American, The (2002)",
       "fields": {
@@ -32214,7 +32214,7 @@
     "option_b_id": "32587",
     "distance_stratum": "medium",
     "cosine_distance": 1.047853,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Adventures of Rocky and Bullwinkle, The (2000)",
       "fields": {
@@ -32478,7 +32478,7 @@
     "option_b_id": "433",
     "distance_stratum": "medium",
     "cosine_distance": 0.980802,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Disturbing Behavior (1998)",
       "fields": {
@@ -32742,7 +32742,7 @@
     "option_b_id": "192803",
     "distance_stratum": "medium",
     "cosine_distance": 1.032929,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "20,000 Leagues Under the Sea (1954)",
       "fields": {
@@ -33006,7 +33006,7 @@
     "option_b_id": "111759",
     "distance_stratum": "medium",
     "cosine_distance": 1.038057,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Dr. Seuss' The Lorax (2012)",
       "fields": {
@@ -33270,7 +33270,7 @@
     "option_b_id": "328",
     "distance_stratum": "medium",
     "cosine_distance": 1.038073,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "One Crazy Summer (1986)",
       "fields": {
@@ -33534,7 +33534,7 @@
     "option_b_id": "6299",
     "distance_stratum": "medium",
     "cosine_distance": 0.993956,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "13 Assassins (Jûsan-nin no shikaku) (2010)",
       "fields": {
@@ -33798,7 +33798,7 @@
     "option_b_id": "1059",
     "distance_stratum": "medium",
     "cosine_distance": 1.020388,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Waiting... (2005)",
       "fields": {
@@ -34062,7 +34062,7 @@
     "option_b_id": "47640",
     "distance_stratum": "medium",
     "cosine_distance": 1.008054,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Once Upon a Time in Hollywood (2019)",
       "fields": {
@@ -34326,7 +34326,7 @@
     "option_b_id": "1913",
     "distance_stratum": "medium",
     "cosine_distance": 1.034716,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Meet the Spartans (2008)",
       "fields": {
@@ -34590,7 +34590,7 @@
     "option_b_id": "202429",
     "distance_stratum": "medium",
     "cosine_distance": 0.998217,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Jumanji (1995)",
       "fields": {
@@ -34854,7 +34854,7 @@
     "option_b_id": "232",
     "distance_stratum": "far",
     "cosine_distance": 1.098401,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Spider-Man: Across the Spider-Verse (2023)",
       "fields": {
@@ -35118,7 +35118,7 @@
     "option_b_id": "2",
     "distance_stratum": "far",
     "cosine_distance": 1.078453,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Food, Inc. (2008)",
       "fields": {
@@ -35382,7 +35382,7 @@
     "option_b_id": "2375",
     "distance_stratum": "far",
     "cosine_distance": 1.084755,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Longest Day, The (1962)",
       "fields": {
@@ -35646,7 +35646,7 @@
     "option_b_id": "433",
     "distance_stratum": "far",
     "cosine_distance": 1.086143,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Legion (2010)",
       "fields": {
@@ -35910,7 +35910,7 @@
     "option_b_id": "1976",
     "distance_stratum": "far",
     "cosine_distance": 1.100496,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Beautician and the Beast, The (1997)",
       "fields": {
@@ -36174,7 +36174,7 @@
     "option_b_id": "7381",
     "distance_stratum": "far",
     "cosine_distance": 1.057759,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "It's the Great Pumpkin, Charlie Brown (1966)",
       "fields": {
@@ -36438,7 +36438,7 @@
     "option_b_id": "80590",
     "distance_stratum": "far",
     "cosine_distance": 1.064354,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Disturbing Behavior (1998)",
       "fields": {
@@ -36702,7 +36702,7 @@
     "option_b_id": "328",
     "distance_stratum": "far",
     "cosine_distance": 1.057179,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Star Trek VI: The Undiscovered Country (1991)",
       "fields": {
@@ -36966,7 +36966,7 @@
     "option_b_id": "37384",
     "distance_stratum": "far",
     "cosine_distance": 1.109321,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Lupin III: The Castle Of Cagliostro (Rupan sansei: Kariosutoro no shiro) (1979)",
       "fields": {
@@ -37230,7 +37230,7 @@
     "option_b_id": "6299",
     "distance_stratum": "far",
     "cosine_distance": 1.125498,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cooler, The (2003)",
       "fields": {
@@ -37494,7 +37494,7 @@
     "option_b_id": "32460",
     "distance_stratum": "far",
     "cosine_distance": 1.075272,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Harriet the Spy (1996)",
       "fields": {
@@ -37758,7 +37758,7 @@
     "option_b_id": "51091",
     "distance_stratum": "far",
     "cosine_distance": 1.093456,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Jumanji (1995)",
       "fields": {
@@ -38022,7 +38022,7 @@
     "option_b_id": "8860",
     "distance_stratum": "far",
     "cosine_distance": 1.151259,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "It's the Great Pumpkin, Charlie Brown (1966)",
       "fields": {
@@ -38286,7 +38286,7 @@
     "option_b_id": "328",
     "distance_stratum": "far",
     "cosine_distance": 1.103496,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Burnt by the Sun (Utomlyonnye solntsem) (1994)",
       "fields": {
@@ -38550,7 +38550,7 @@
     "option_b_id": "161922",
     "distance_stratum": "far",
     "cosine_distance": 1.121476,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "20,000 Leagues Under the Sea (1954)",
       "fields": {
@@ -38814,7 +38814,7 @@
     "option_b_id": "37384",
     "distance_stratum": "far",
     "cosine_distance": 1.083955,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Motorcycle Diaries, The (Diarios de motocicleta) (2004)",
       "fields": {
@@ -39078,7 +39078,7 @@
     "option_b_id": "3812",
     "distance_stratum": "far",
     "cosine_distance": 1.136697,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Deep End of the Ocean, The (1999)",
       "fields": {
@@ -39342,7 +39342,7 @@
     "option_b_id": "2546",
     "distance_stratum": "far",
     "cosine_distance": 1.068298,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "The Northman",
       "fields": {
@@ -39606,7 +39606,7 @@
     "option_b_id": "2212",
     "distance_stratum": "far",
     "cosine_distance": 1.092289,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Ladder 49 (2004)",
       "fields": {
@@ -39870,7 +39870,7 @@
     "option_b_id": "2546",
     "distance_stratum": "far",
     "cosine_distance": 1.067243,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "10,000 BC (2008)",
       "fields": {
@@ -40134,7 +40134,7 @@
     "option_b_id": "2771",
     "distance_stratum": "far",
     "cosine_distance": 1.074565,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Longest Day, The (1962)",
       "fields": {
@@ -40398,7 +40398,7 @@
     "option_b_id": "3022",
     "distance_stratum": "far",
     "cosine_distance": 1.122637,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Legion (2010)",
       "fields": {
@@ -40662,7 +40662,7 @@
     "option_b_id": "2771",
     "distance_stratum": "far",
     "cosine_distance": 1.07281,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "First Strike (Police Story 4: First Strike) (Ging chaat goo si 4: Ji gaan daan yam mo) (1996)",
       "fields": {
@@ -40926,7 +40926,7 @@
     "option_b_id": "7842",
     "distance_stratum": "far",
     "cosine_distance": 1.118083,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Once Upon a Time in Hollywood (2019)",
       "fields": {
@@ -41190,7 +41190,7 @@
     "option_b_id": "7842",
     "distance_stratum": "far",
     "cosine_distance": 1.08368,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cat's Eye (1985)",
       "fields": {
@@ -41454,7 +41454,7 @@
     "option_b_id": "7381",
     "distance_stratum": "far",
     "cosine_distance": 1.16284,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Food, Inc. (2008)",
       "fields": {
@@ -41718,7 +41718,7 @@
     "option_b_id": "93272",
     "distance_stratum": "far",
     "cosine_distance": 1.086773,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Young Guns (1988)",
       "fields": {
@@ -41982,7 +41982,7 @@
     "option_b_id": "2381",
     "distance_stratum": "far",
     "cosine_distance": 1.064191,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Burnt by the Sun (Utomlyonnye solntsem) (1994)",
       "fields": {
@@ -42246,7 +42246,7 @@
     "option_b_id": "202429",
     "distance_stratum": "far",
     "cosine_distance": 1.081298,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Tales from the Crypt Presents: Demon Knight (1995)",
       "fields": {
@@ -42510,7 +42510,7 @@
     "option_b_id": "2381",
     "distance_stratum": "far",
     "cosine_distance": 1.099938,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Manon of the Spring (Manon des sources) (1986)",
       "fields": {
@@ -42774,7 +42774,7 @@
     "option_b_id": "1680",
     "distance_stratum": "far",
     "cosine_distance": 1.11788,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Lupin III: The Castle Of Cagliostro (Rupan sansei: Kariosutoro no shiro) (1979)",
       "fields": {
@@ -43038,7 +43038,7 @@
     "option_b_id": "1391",
     "distance_stratum": "far",
     "cosine_distance": 1.100899,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cat on a Hot Tin Roof (1958)",
       "fields": {
@@ -43302,7 +43302,7 @@
     "option_b_id": "111759",
     "distance_stratum": "far",
     "cosine_distance": 1.07166,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "200 Cigarettes (1999)",
       "fields": {
@@ -43566,7 +43566,7 @@
     "option_b_id": "8908",
     "distance_stratum": "far",
     "cosine_distance": 1.085649,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Supergirl (1984)",
       "fields": {
@@ -43830,7 +43830,7 @@
     "option_b_id": "1913",
     "distance_stratum": "far",
     "cosine_distance": 1.074859,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Bill Cosby, Himself (1983)",
       "fields": {
@@ -44094,7 +44094,7 @@
     "option_b_id": "258",
     "distance_stratum": "far",
     "cosine_distance": 1.056149,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Paper, The (1994)",
       "fields": {
@@ -44358,7 +44358,7 @@
     "option_b_id": "725",
     "distance_stratum": "far",
     "cosine_distance": 1.082459,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cellular (2004)",
       "fields": {
@@ -44622,7 +44622,7 @@
     "option_b_id": "1132",
     "distance_stratum": "far",
     "cosine_distance": 1.115548,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Meet the Spartans (2008)",
       "fields": {
@@ -44886,7 +44886,7 @@
     "option_b_id": "7381",
     "distance_stratum": "far",
     "cosine_distance": 1.133854,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Red Violin, The (Violon rouge, Le) (1998)",
       "fields": {
@@ -45150,7 +45150,7 @@
     "option_b_id": "57274",
     "distance_stratum": "far",
     "cosine_distance": 1.07572,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Dr. Seuss' The Lorax (2012)",
       "fields": {
@@ -45414,7 +45414,7 @@
     "option_b_id": "57274",
     "distance_stratum": "far",
     "cosine_distance": 1.060009,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "It's the Great Pumpkin, Charlie Brown (1966)",
       "fields": {
@@ -45678,7 +45678,7 @@
     "option_b_id": "2",
     "distance_stratum": "far",
     "cosine_distance": 1.099209,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cobb (1994)",
       "fields": {
@@ -45942,7 +45942,7 @@
     "option_b_id": "4681",
     "distance_stratum": "far",
     "cosine_distance": 1.154952,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Motorcycle Diaries, The (Diarios de motocicleta) (2004)",
       "fields": {
@@ -46206,7 +46206,7 @@
     "option_b_id": "93272",
     "distance_stratum": "far",
     "cosine_distance": 1.114194,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cooler, The (2003)",
       "fields": {
@@ -46470,7 +46470,7 @@
     "option_b_id": "328",
     "distance_stratum": "far",
     "cosine_distance": 1.087927,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "10,000 BC (2008)",
       "fields": {
@@ -46734,7 +46734,7 @@
     "option_b_id": "1391",
     "distance_stratum": "far",
     "cosine_distance": 1.146693,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Wind Rises, The (Kaze tachinu) (2013)",
       "fields": {
@@ -46998,7 +46998,7 @@
     "option_b_id": "47640",
     "distance_stratum": "far",
     "cosine_distance": 1.095202,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Tales from the Crypt Presents: Demon Knight (1995)",
       "fields": {
@@ -47262,7 +47262,7 @@
     "option_b_id": "6958",
     "distance_stratum": "far",
     "cosine_distance": 1.084183,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Brokedown Palace (1999)",
       "fields": {
@@ -47526,7 +47526,7 @@
     "option_b_id": "2334",
     "distance_stratum": "far",
     "cosine_distance": 1.066803,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Supergirl (1984)",
       "fields": {
@@ -47790,7 +47790,7 @@
     "option_b_id": "8253",
     "distance_stratum": "far",
     "cosine_distance": 1.076874,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Longest Day, The (1962)",
       "fields": {
@@ -48054,7 +48054,7 @@
     "option_b_id": "51091",
     "distance_stratum": "far",
     "cosine_distance": 1.092779,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "D3: The Mighty Ducks (1996)",
       "fields": {
@@ -48318,7 +48318,7 @@
     "option_b_id": "2375",
     "distance_stratum": "far",
     "cosine_distance": 1.085942,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Wind Rises, The (Kaze tachinu) (2013)",
       "fields": {
@@ -48582,7 +48582,7 @@
     "option_b_id": "1913",
     "distance_stratum": "far",
     "cosine_distance": 1.066702,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Homeward Bound: The Incredible Journey (1993)",
       "fields": {
@@ -48846,7 +48846,7 @@
     "option_b_id": "32587",
     "distance_stratum": "far",
     "cosine_distance": 1.087749,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Deep End of the Ocean, The (1999)",
       "fields": {
@@ -49110,7 +49110,7 @@
     "option_b_id": "1372",
     "distance_stratum": "far",
     "cosine_distance": 1.0802,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Dr. Seuss' The Lorax (2012)",
       "fields": {
@@ -49374,7 +49374,7 @@
     "option_b_id": "6299",
     "distance_stratum": "far",
     "cosine_distance": 1.062682,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Teenage Mutant Ninja Turtles II: The Secret of the Ooze (1991)",
       "fields": {
@@ -49638,7 +49638,7 @@
     "option_b_id": "47640",
     "distance_stratum": "far",
     "cosine_distance": 1.062785,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Wind Rises, The (Kaze tachinu) (2013)",
       "fields": {
@@ -49902,7 +49902,7 @@
     "option_b_id": "433",
     "distance_stratum": "far",
     "cosine_distance": 1.06383,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Quiet American, The (2002)",
       "fields": {
@@ -50166,7 +50166,7 @@
     "option_b_id": "2376",
     "distance_stratum": "far",
     "cosine_distance": 1.060577,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Father of the Bride Part II (1995)",
       "fields": {
@@ -50430,7 +50430,7 @@
     "option_b_id": "258",
     "distance_stratum": "far",
     "cosine_distance": 1.065709,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cobb (1994)",
       "fields": {
@@ -50694,7 +50694,7 @@
     "option_b_id": "111759",
     "distance_stratum": "far",
     "cosine_distance": 1.214381,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cat on a Hot Tin Roof (1958)",
       "fields": {
@@ -50958,7 +50958,7 @@
     "option_b_id": "1998",
     "distance_stratum": "far",
     "cosine_distance": 1.155846,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Meet John Doe (1941)",
       "fields": {
@@ -51222,7 +51222,7 @@
     "option_b_id": "26242",
     "distance_stratum": "far",
     "cosine_distance": 1.08746,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Homeward Bound: The Incredible Journey (1993)",
       "fields": {
@@ -51486,7 +51486,7 @@
     "option_b_id": "2639",
     "distance_stratum": "far",
     "cosine_distance": 1.078704,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Spring, Summer, Fall, Winter... and Spring (Bom yeoreum gaeul gyeoul geurigo bom) (2003)",
       "fields": {
@@ -51750,7 +51750,7 @@
     "option_b_id": "80590",
     "distance_stratum": "far",
     "cosine_distance": 1.067182,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Meet the Spartans (2008)",
       "fields": {
@@ -52014,7 +52014,7 @@
     "option_b_id": "86142",
     "distance_stratum": "far",
     "cosine_distance": 1.106985,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "200 Cigarettes (1999)",
       "fields": {
@@ -52278,7 +52278,7 @@
     "option_b_id": "2116",
     "distance_stratum": "far",
     "cosine_distance": 1.147009,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Cooler, The (2003)",
       "fields": {
@@ -52542,7 +52542,7 @@
     "option_b_id": "253",
     "distance_stratum": "far",
     "cosine_distance": 1.055014,
-    "prompt": "A person is deciding which movie to watch based on its description, genre, cast, and plot summary.",
+    "prompt": "Which movie would you rather watch right now?",
     "option_a": {
       "label": "Supergirl (1984)",
       "fields": {
