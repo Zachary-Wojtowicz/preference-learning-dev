@@ -337,6 +337,7 @@ function submitTrial(){
 function finishExperiment(){
   var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,timestamp:new Date().toISOString(),responses:responses};
   if(postUrl)fetch(postUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(output)}).catch(function(){});
+  if(window.parent!==window){try{window.parent.postMessage({type:'experiment_complete',payload:output},'*');}catch(e){}}
   renderResults(output);
 }
 function renderResults(output){
