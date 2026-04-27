@@ -33,16 +33,24 @@
       "show_checkboxes": true,
       "show_inferences": false
     },
-    "choice_inferences": {
-      "label": "Choice + Preference Inferences",
-      "description": "Binary choice with natural-language inferences about your preferences. Confirm, adjust, or remove each.",
+    "inference_affirm": {
+      "label": "Inferences: Affirm / Remove",
+      "description": "Affirm or remove model inferences about your preferences.",
       "show_sliders": false,
       "sliders_adjustable": false,
       "show_checkboxes": false,
-      "show_inferences": true
+      "show_inferences": "affirm"
+    },
+    "inference_categories": {
+      "label": "Inferences: Category Selection",
+      "description": "Adjust the category for each inference about your preferences.",
+      "show_sliders": false,
+      "sliders_adjustable": false,
+      "show_checkboxes": false,
+      "show_inferences": "categories"
     }
   },
-  "default_condition": "choice_inferences",
+  "default_condition": "inference_categories",
   "slider_range": [
     -100,
     100
@@ -925,5 +933,37 @@
       -0.0894,
       1.0
     ]
+  ],
+  "inference_categories": [
+    {
+      "key": "skip",
+      "phrase": "prefer to skip",
+      "label": "Prefer to skip",
+      "mult": -1.5
+    },
+    {
+      "key": "not_into",
+      "phrase": "aren\u2019t into",
+      "label": "Aren\u2019t into",
+      "mult": -1.0
+    },
+    {
+      "key": "indifferent",
+      "phrase": "are indifferent to",
+      "label": "Indifferent",
+      "mult": 0.0
+    },
+    {
+      "key": "like",
+      "phrase": "like",
+      "label": "Like",
+      "mult": 1.0
+    },
+    {
+      "key": "love",
+      "phrase": "love",
+      "label": "Love",
+      "mult": 1.5
+    }
   ]
 }
