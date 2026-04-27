@@ -80,7 +80,7 @@ if [[ ! -f "$EXAMPLES_CONFIG" ]]; then
 {
   "domain": "moral dilemmas",
   "domain_item": "action",
-  "choice_context": "Consider these two actions from the same real-life situation. Which action is more ethically questionable?",
+  "choice_context": "Consider these two actions from the same real-life situation. Which action is more ethical?",
   "input_path": "datasets/scruples_dilemmas/selected_actions.csv",
   "template_path": "datasets/scruples_prompt.txt",
   "text_column": "description",
@@ -98,7 +98,7 @@ if [[ ! -f "$GEN_CONFIG" ]]; then
     cat > "$GEN_CONFIG" <<'EOF'
 {
   "domain": "scruples_dilemmas",
-  "choice_context": "Consider these two actions from the same real-life situation. Which action is more ethically questionable?",
+  "choice_context": "Consider these two actions from the same real-life situation. Which action is more ethical?",
   "input_path": "datasets/scruples_dilemmas/selected_actions.csv",
   "template_path": "datasets/scruples_prompt.txt",
   "text_column": "description",
@@ -233,7 +233,7 @@ python simulation/run_llm_simulation.py \
     --learning-rate 0.01 --projection-lambda 0.5 \
     --max-workers 4 --seed 42 \
     --domain "moral dilemmas" \
-    --choice-context "Consider these two actions from the same real-life situation. Which action is more ethically questionable?"
+    --choice-context "Consider these two actions from the same real-life situation. Which action is more ethical?"
 
 # ---------------------------------------------------------------
 # Done
