@@ -74,11 +74,11 @@
 (function(){
 if(window.parent!==window){
   var lastH=0;
-  function sendSize(){
+  window.__sendExperimentSize=function(){
     var h=Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0);
     if(h&&h!==lastH){lastH=h;try{window.parent.postMessage({type:'experiment_resize',height:h},'*');}catch(e){}}
-  }
-  var schedule=window.requestAnimationFrame?function(){requestAnimationFrame(sendSize)}:function(){setTimeout(sendSize,16)};
+  };
+  var schedule=window.requestAnimationFrame?function(){requestAnimationFrame(window.__sendExperimentSize)}:function(){setTimeout(window.__sendExperimentSize,16)};
   window.addEventListener('load',schedule);
   window.addEventListener('resize',schedule);
   if(window.ResizeObserver){
@@ -86,6 +86,9 @@ if(window.parent!==window){
     if(document.body)ro.observe(document.body);
     else document.addEventListener('DOMContentLoaded',function(){ro.observe(document.body)});
   }
+  // Safety net: catches transitions (e.g. .dim-panel max-height animation) and async layout
+  // changes that may not trigger ResizeObserver. Cheap because sendSize dedup's via lastH.
+  setInterval(window.__sendExperimentSize,250);
 }
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
