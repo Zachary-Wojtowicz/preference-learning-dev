@@ -72,6 +72,24 @@
 <div class="container" id="app"><div class="loading">Loading…</div></div>
 <script>
 (function(){
+if(window.parent!==window){
+  var lastH=0;
+  window.__sendExperimentSize=function(){
+    var h=Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0);
+    if(h&&h!==lastH){lastH=h;try{window.parent.postMessage({type:'experiment_resize',height:h},'*');}catch(e){}}
+  };
+  var schedule=window.requestAnimationFrame?function(){requestAnimationFrame(window.__sendExperimentSize)}:function(){setTimeout(window.__sendExperimentSize,16)};
+  window.addEventListener('load',schedule);
+  window.addEventListener('resize',schedule);
+  if(window.ResizeObserver){
+    var ro=new ResizeObserver(schedule);
+    if(document.body)ro.observe(document.body);
+    else document.addEventListener('DOMContentLoaded',function(){ro.observe(document.body)});
+  }
+  // Safety net: catches transitions (e.g. .dim-panel max-height animation) and async layout
+  // changes that may not trigger ResizeObserver. Cheap because sendSize dedup's via lastH.
+  setInterval(window.__sendExperimentSize,250);
+}
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
 var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
@@ -337,6 +355,7 @@ function submitTrial(){
 function finishExperiment(){
   var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,timestamp:new Date().toISOString(),responses:responses};
   if(postUrl)fetch(postUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(output)}).catch(function(){});
+  if(window.parent!==window){try{window.parent.postMessage({type:'experiment_complete',payload:output},'*');}catch(e){}}
   renderResults(output);
 }
 function renderResults(output){
