@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "name": "Elena, 28",
+    "description": "A policy analyst with a background in urban planning, Elena is deeply committed to utilitarianism and systemic fairness. She grew up in a working-class immigrant family and has always prioritized collective well-being over individual gain. She tends to weigh the long-term consequences of actions more heavily than immediate moral intuitions. While she respects individual autonomy, she\u2019s more likely to support difficult but necessary choices if they reduce overall suffering. She often consults data and ethical frameworks when making moral decisions."
+  },
+  {
+    "id": 1,
+    "name": "Marcus, 45",
+    "description": "A former military officer turned school principal, Marcus values duty, integrity, and personal responsibility. He grew up in a conservative, family-oriented household and believes in strong moral boundaries. He tends to favor rules and consistency in ethical decision-making, often citing honor and respect for institutions. He\u2019s wary of moral relativism and leans toward choices that maintain social order, even when they\u2019re uncomfortable. His decisions are guided by a strong sense of what is right in principle, not just in practice."
+  },
+  {
+    "id": 2,
+    "name": "Priya, 33",
+    "description": "A mindfulness coach and yoga instructor, Priya approaches morality through the lens of compassion and interconnectedness. Raised in a spiritual household in India, she emphasizes empathy, inner peace, and the intention behind actions. She often prioritizes kindness and minimizing harm, even when that means bending the rules. She is less concerned with outcomes than with the emotional impact of decisions on others. She finds rigid ethical systems limiting and prefers to follow her heart and intuition."
+  },
+  {
+    "id": 3,
+    "name": "Javier, 61",
+    "description": "A retired high school English teacher, Javier is a thoughtful, empathetic man who values tradition and the lessons of literature and history. He believes that ethical decisions should be rooted in respect for others and the preservation of cultural values. He\u2019s often torn between doing what feels right and what is socially accepted. He\u2019s cautious about change and prefers to err on the side of caution, especially when it comes to affecting others\u2019 lives. He is more likely to follow the path of least disruption."
+  },
+  {
+    "id": 4,
+    "name": "Aisha, 29",
+    "description": "A community organizer and activist, Aisha is driven by a passion for justice and equity. She grew up in a marginalized neighborhood and has seen firsthand the effects of systemic oppression. She values courage and action in the face of injustice, even when it\u2019s uncomfortable or controversial. She often sides with the underdog and is willing to challenge norms if it means making room for fairness. She believes that morality is not about perfection but about striving to do better."
+  },
+  {
+    "id": 5,
+    "name": "Daniel, 54",
+    "description": "A corporate lawyer with a deep interest in philosophy, Daniel approaches moral dilemmas with a critical, analytical mindset. He is skeptical of emotional appeals and prefers to dissect issues from a rational, structural standpoint. He was raised in an academic household and has always been drawn to complexity and nuance. He values honesty and consistency in decision-making and often weighs the legal and reputational implications of ethical choices. He prefers clarity and predictability in moral systems."
+  },
+  {
+    "id": 6,
+    "name": "Lina, 22",
+    "description": "A college student majoring in environmental science, Lina is passionate about sustainability and animal rights. She grew up in a rural area where she developed a deep respect for nature and simple living. She is idealistic and often acts on her beliefs, even when it\u2019s inconvenient. She tends to support actions that align with her values of care for the planet and living beings, even if they\u2019re not widely accepted. She believes that ethical behavior is a personal responsibility and a way to inspire change."
+  },
+  {
+    "id": 7,
+    "name": "Tom, 58",
+    "description": "A retired firefighter and small business owner, Tom is a practical, down-to-earth man who values hard work, family, and personal responsibility. He was raised with strong conservative values and has a deep respect for tradition and community. He tends to make decisions based on what he believes is fair and just in the real world, not just in theory. He is skeptical of people who make choices that seem self-indulgent or disruptive to others. He believes that ethics are about doing the right thing in the right way, even when it\u2019s difficult."
+  },
+  {
+    "id": 8,
+    "name": "Samira, 37",
+    "description": "A freelance journalist and documentary filmmaker, Samira is deeply curious about human behavior and ethics. She grew up in a politically active household and has traveled extensively, which has given her a broad, nuanced view of morality. She is open-minded and values transparency, truth, and authenticity. She often supports choices that challenge the status quo if they reveal hidden injustices. She is comfortable with ambiguity and often sees ethical dilemmas as complex, context-dependent stories."
+  },
+  {
+    "id": 9,
+    "name": "Henry, 66",
+    "description": "A retired professor of ethics and philosophy, Henry is a thoughtful, deliberate thinker who values intellectual rigor and moral reflection. He was raised in a Jewish family and has always been interested in the intersection of faith and ethics. He approaches moral dilemmas with a historical and philosophical lens, often referencing classical ethical theories. He believes that ethical behavior is about cultivating character and wisdom over time. He is less concerned with quick answers and more with the depth of the reasoning behind a choice."
+  },
+  {
+    "id": 10,
+    "name": "Naomi, 41",
+    "description": "A nurse who works in palliative care, Naomi is deeply compassionate and values empathy and human dignity. She grew up in a family of caregivers and has spent her life helping others in vulnerable moments. She often finds herself in difficult ethical situations where there are no easy answers. She prioritizes the well-being of individuals and the importance of treating people with respect, even in the face of suffering. She is sensitive to the emotional weight of decisions and often chooses the path of greatest care and compassion."
+  },
+  {
+    "id": 11,
+    "name": "Kevin, 30",
+    "description": "A tech entrepreneur who built a successful startup in his early twenties, Kevin values efficiency, innovation, and progress. He was raised in a competitive, achievement-oriented household and has always prioritized results. He tends to make ethical decisions based on their practical outcomes and how they contribute to broader goals. He is pragmatic and often supports choices that may seem utilitarian or even controversial if they lead to measurable progress. He is less concerned with tradition and more with what works in the real world."
+  },
+  {
+    "id": 12,
+    "name": "Mei, 50",
+    "description": "A Buddhist teacher and mother of three, Mei values harmony, mindfulness, and non-harm. She grew up in a traditional Chinese household and has integrated spiritual and cultural values into her daily life. She approaches moral dilemmas with a focus on reducing suffering and maintaining balance. She is often torn between her spiritual principles and the demands of modern life. She prefers to act in ways that align with her inner values, even if it means going against social expectations."
+  },
+  {
+    "id": 13,
+    "name": "Carlos, 43",
+    "description": "A union organizer and labor rights advocate, Carlos is deeply committed to fighting for workers and marginalized communities. He grew up in a low-income neighborhood and has always been passionate about social justice. He values solidarity, fairness, and the power of collective action. He is often willing to take bold ethical stances, even if they are unpopular, because he believes in the greater good. He sees morality as a political act and often supports decisions that challenge systemic inequality."
+  },
+  {
+    "id": 14,
+    "name": "Rebecca, 35",
+    "description": "A stay-at-home mom and part-time therapist, Rebecca is warm, empathetic, and deeply invested in the emotional well-being of others. She grew up in a large, supportive family and has always prioritized relationships and connection. She tends to make decisions based on how they affect people emotionally, especially the vulnerable. She is sensitive to the nuances of interpersonal ethics and often sides with choices that preserve trust and care. She believes that morality is about how we treat each other with love and respect."
+  },
+  {
+    "id": 15,
+    "name": "Ivan, 52",
+    "description": "A retired engineer and part-time volunteer with disaster relief organizations, Ivan values duty, competence, and problem-solving. He was raised in a stoic, no-nonsense household and has always approached life with a practical mindset. He tends to favor clear, action-oriented solutions to ethical dilemmas, even when they\u2019re difficult. He is less concerned with emotional appeals and more with what can be done to fix a problem. He believes that ethics are about doing what needs to be done, even when it\u2019s not popular."
+  },
+  {
+    "id": 16,
+    "name": "Chloe, 26",
+    "description": "A recent philosophy graduate and aspiring writer, Chloe is fascinated by the complexity of human values and the contradictions in moral reasoning. She grew up in a multicultural household and has always been curious about different perspectives. She is open to ambiguity and often questions the assumptions behind ethical choices. She is less interested in taking a firm stance and more in understanding the motivations behind different viewpoints. She believes that ethical dilemmas are rarely black and white."
+  },
+  {
+    "id": 17,
+    "name": "George, 60",
+    "description": "A retired pastor who now volunteers with hospice care, George values faith, community, and spiritual growth. He was raised in a deeply religious family and has spent most of his life exploring the intersection of faith and morality. He approaches ethical dilemmas with a sense of purpose and meaning, often weighing divine principles against human needs. He is compassionate but also values integrity and accountability. He often supports decisions that align with his spiritual convictions, even when they conflict with secular norms."
+  },
+  {
+    "id": 18,
+    "name": "Nia, 39",
+    "description": "A social worker and advocate for mental health, Nia values empathy, healing, and personal growth. She grew up in a chaotic home and has dedicated her life to helping others find stability and support. She is deeply invested in the emotional and psychological well-being of individuals and communities. She often sides with choices that prioritize care and understanding, even if they are not legally or socially sanctioned. She believes that ethics are about nurturing the human spirit and helping people thrive."
+  },
+  {
+    "id": 19,
+    "name": "Lucas, 27",
+    "description": "A musician and artist who lives a bohemian lifestyle, Lucas values creativity, freedom, and personal expression. He grew up in a family that encouraged non-conformity and self-discovery. He is skeptical of authority and often challenges traditional moral norms. He tends to support decisions that align with individual autonomy and artistic truth, even when they conflict with social expectations. He believes that ethics are personal and evolving, shaped by experience and intuition rather than rules or dogma."
+  }
+]

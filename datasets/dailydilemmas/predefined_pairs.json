@@ -1,0 +1,752 @@
+[
+  {
+    "option_a_id": "dd_40068_to_do",
+    "option_b_id": "dd_40068_not_to_do",
+    "dilemma_id": "dd_40068"
+  },
+  {
+    "option_a_id": "dd_21173_to_do",
+    "option_b_id": "dd_21173_not_to_do",
+    "dilemma_id": "dd_21173"
+  },
+  {
+    "option_a_id": "dd_49132_to_do",
+    "option_b_id": "dd_49132_not_to_do",
+    "dilemma_id": "dd_49132"
+  },
+  {
+    "option_a_id": "dd_19113_to_do",
+    "option_b_id": "dd_19113_not_to_do",
+    "dilemma_id": "dd_19113"
+  },
+  {
+    "option_a_id": "dd_18806_to_do",
+    "option_b_id": "dd_18806_not_to_do",
+    "dilemma_id": "dd_18806"
+  },
+  {
+    "option_a_id": "dd_35743_to_do",
+    "option_b_id": "dd_35743_not_to_do",
+    "dilemma_id": "dd_35743"
+  },
+  {
+    "option_a_id": "dd_25650_to_do",
+    "option_b_id": "dd_25650_not_to_do",
+    "dilemma_id": "dd_25650"
+  },
+  {
+    "option_a_id": "dd_35912_to_do",
+    "option_b_id": "dd_35912_not_to_do",
+    "dilemma_id": "dd_35912"
+  },
+  {
+    "option_a_id": "dd_14011_to_do",
+    "option_b_id": "dd_14011_not_to_do",
+    "dilemma_id": "dd_14011"
+  },
+  {
+    "option_a_id": "dd_20716_to_do",
+    "option_b_id": "dd_20716_not_to_do",
+    "dilemma_id": "dd_20716"
+  },
+  {
+    "option_a_id": "dd_11514_to_do",
+    "option_b_id": "dd_11514_not_to_do",
+    "dilemma_id": "dd_11514"
+  },
+  {
+    "option_a_id": "dd_12948_to_do",
+    "option_b_id": "dd_12948_not_to_do",
+    "dilemma_id": "dd_12948"
+  },
+  {
+    "option_a_id": "dd_27431_to_do",
+    "option_b_id": "dd_27431_not_to_do",
+    "dilemma_id": "dd_27431"
+  },
+  {
+    "option_a_id": "dd_41150_to_do",
+    "option_b_id": "dd_41150_not_to_do",
+    "dilemma_id": "dd_41150"
+  },
+  {
+    "option_a_id": "dd_26337_to_do",
+    "option_b_id": "dd_26337_not_to_do",
+    "dilemma_id": "dd_26337"
+  },
+  {
+    "option_a_id": "dd_18820_to_do",
+    "option_b_id": "dd_18820_not_to_do",
+    "dilemma_id": "dd_18820"
+  },
+  {
+    "option_a_id": "dd_10803_to_do",
+    "option_b_id": "dd_10803_not_to_do",
+    "dilemma_id": "dd_10803"
+  },
+  {
+    "option_a_id": "dd_29070_to_do",
+    "option_b_id": "dd_29070_not_to_do",
+    "dilemma_id": "dd_29070"
+  },
+  {
+    "option_a_id": "dd_1205_to_do",
+    "option_b_id": "dd_1205_not_to_do",
+    "dilemma_id": "dd_1205"
+  },
+  {
+    "option_a_id": "dd_39833_to_do",
+    "option_b_id": "dd_39833_not_to_do",
+    "dilemma_id": "dd_39833"
+  },
+  {
+    "option_a_id": "dd_42860_to_do",
+    "option_b_id": "dd_42860_not_to_do",
+    "dilemma_id": "dd_42860"
+  },
+  {
+    "option_a_id": "dd_35564_to_do",
+    "option_b_id": "dd_35564_not_to_do",
+    "dilemma_id": "dd_35564"
+  },
+  {
+    "option_a_id": "dd_23104_to_do",
+    "option_b_id": "dd_23104_not_to_do",
+    "dilemma_id": "dd_23104"
+  },
+  {
+    "option_a_id": "dd_22090_to_do",
+    "option_b_id": "dd_22090_not_to_do",
+    "dilemma_id": "dd_22090"
+  },
+  {
+    "option_a_id": "dd_12998_to_do",
+    "option_b_id": "dd_12998_not_to_do",
+    "dilemma_id": "dd_12998"
+  },
+  {
+    "option_a_id": "dd_34143_to_do",
+    "option_b_id": "dd_34143_not_to_do",
+    "dilemma_id": "dd_34143"
+  },
+  {
+    "option_a_id": "dd_32679_to_do",
+    "option_b_id": "dd_32679_not_to_do",
+    "dilemma_id": "dd_32679"
+  },
+  {
+    "option_a_id": "dd_24291_to_do",
+    "option_b_id": "dd_24291_not_to_do",
+    "dilemma_id": "dd_24291"
+  },
+  {
+    "option_a_id": "dd_13469_to_do",
+    "option_b_id": "dd_13469_not_to_do",
+    "dilemma_id": "dd_13469"
+  },
+  {
+    "option_a_id": "dd_33026_to_do",
+    "option_b_id": "dd_33026_not_to_do",
+    "dilemma_id": "dd_33026"
+  },
+  {
+    "option_a_id": "dd_35738_to_do",
+    "option_b_id": "dd_35738_not_to_do",
+    "dilemma_id": "dd_35738"
+  },
+  {
+    "option_a_id": "dd_29411_to_do",
+    "option_b_id": "dd_29411_not_to_do",
+    "dilemma_id": "dd_29411"
+  },
+  {
+    "option_a_id": "dd_33509_to_do",
+    "option_b_id": "dd_33509_not_to_do",
+    "dilemma_id": "dd_33509"
+  },
+  {
+    "option_a_id": "dd_2599_to_do",
+    "option_b_id": "dd_2599_not_to_do",
+    "dilemma_id": "dd_2599"
+  },
+  {
+    "option_a_id": "dd_3971_to_do",
+    "option_b_id": "dd_3971_not_to_do",
+    "dilemma_id": "dd_3971"
+  },
+  {
+    "option_a_id": "dd_1552_to_do",
+    "option_b_id": "dd_1552_not_to_do",
+    "dilemma_id": "dd_1552"
+  },
+  {
+    "option_a_id": "dd_13141_to_do",
+    "option_b_id": "dd_13141_not_to_do",
+    "dilemma_id": "dd_13141"
+  },
+  {
+    "option_a_id": "dd_31350_to_do",
+    "option_b_id": "dd_31350_not_to_do",
+    "dilemma_id": "dd_31350"
+  },
+  {
+    "option_a_id": "dd_7001_to_do",
+    "option_b_id": "dd_7001_not_to_do",
+    "dilemma_id": "dd_7001"
+  },
+  {
+    "option_a_id": "dd_23534_to_do",
+    "option_b_id": "dd_23534_not_to_do",
+    "dilemma_id": "dd_23534"
+  },
+  {
+    "option_a_id": "dd_20839_to_do",
+    "option_b_id": "dd_20839_not_to_do",
+    "dilemma_id": "dd_20839"
+  },
+  {
+    "option_a_id": "dd_33470_to_do",
+    "option_b_id": "dd_33470_not_to_do",
+    "dilemma_id": "dd_33470"
+  },
+  {
+    "option_a_id": "dd_12627_to_do",
+    "option_b_id": "dd_12627_not_to_do",
+    "dilemma_id": "dd_12627"
+  },
+  {
+    "option_a_id": "dd_35592_to_do",
+    "option_b_id": "dd_35592_not_to_do",
+    "dilemma_id": "dd_35592"
+  },
+  {
+    "option_a_id": "dd_47169_to_do",
+    "option_b_id": "dd_47169_not_to_do",
+    "dilemma_id": "dd_47169"
+  },
+  {
+    "option_a_id": "dd_46710_to_do",
+    "option_b_id": "dd_46710_not_to_do",
+    "dilemma_id": "dd_46710"
+  },
+  {
+    "option_a_id": "dd_38562_to_do",
+    "option_b_id": "dd_38562_not_to_do",
+    "dilemma_id": "dd_38562"
+  },
+  {
+    "option_a_id": "dd_49146_to_do",
+    "option_b_id": "dd_49146_not_to_do",
+    "dilemma_id": "dd_49146"
+  },
+  {
+    "option_a_id": "dd_33262_to_do",
+    "option_b_id": "dd_33262_not_to_do",
+    "dilemma_id": "dd_33262"
+  },
+  {
+    "option_a_id": "dd_31665_to_do",
+    "option_b_id": "dd_31665_not_to_do",
+    "dilemma_id": "dd_31665"
+  },
+  {
+    "option_a_id": "dd_37909_to_do",
+    "option_b_id": "dd_37909_not_to_do",
+    "dilemma_id": "dd_37909"
+  },
+  {
+    "option_a_id": "dd_47865_to_do",
+    "option_b_id": "dd_47865_not_to_do",
+    "dilemma_id": "dd_47865"
+  },
+  {
+    "option_a_id": "dd_43811_to_do",
+    "option_b_id": "dd_43811_not_to_do",
+    "dilemma_id": "dd_43811"
+  },
+  {
+    "option_a_id": "dd_34215_to_do",
+    "option_b_id": "dd_34215_not_to_do",
+    "dilemma_id": "dd_34215"
+  },
+  {
+    "option_a_id": "dd_9632_to_do",
+    "option_b_id": "dd_9632_not_to_do",
+    "dilemma_id": "dd_9632"
+  },
+  {
+    "option_a_id": "dd_35282_to_do",
+    "option_b_id": "dd_35282_not_to_do",
+    "dilemma_id": "dd_35282"
+  },
+  {
+    "option_a_id": "dd_21961_to_do",
+    "option_b_id": "dd_21961_not_to_do",
+    "dilemma_id": "dd_21961"
+  },
+  {
+    "option_a_id": "dd_10174_to_do",
+    "option_b_id": "dd_10174_not_to_do",
+    "dilemma_id": "dd_10174"
+  },
+  {
+    "option_a_id": "dd_13050_to_do",
+    "option_b_id": "dd_13050_not_to_do",
+    "dilemma_id": "dd_13050"
+  },
+  {
+    "option_a_id": "dd_31128_to_do",
+    "option_b_id": "dd_31128_not_to_do",
+    "dilemma_id": "dd_31128"
+  },
+  {
+    "option_a_id": "dd_13864_to_do",
+    "option_b_id": "dd_13864_not_to_do",
+    "dilemma_id": "dd_13864"
+  },
+  {
+    "option_a_id": "dd_47065_to_do",
+    "option_b_id": "dd_47065_not_to_do",
+    "dilemma_id": "dd_47065"
+  },
+  {
+    "option_a_id": "dd_33986_to_do",
+    "option_b_id": "dd_33986_not_to_do",
+    "dilemma_id": "dd_33986"
+  },
+  {
+    "option_a_id": "dd_39199_to_do",
+    "option_b_id": "dd_39199_not_to_do",
+    "dilemma_id": "dd_39199"
+  },
+  {
+    "option_a_id": "dd_17423_to_do",
+    "option_b_id": "dd_17423_not_to_do",
+    "dilemma_id": "dd_17423"
+  },
+  {
+    "option_a_id": "dd_15066_to_do",
+    "option_b_id": "dd_15066_not_to_do",
+    "dilemma_id": "dd_15066"
+  },
+  {
+    "option_a_id": "dd_37490_to_do",
+    "option_b_id": "dd_37490_not_to_do",
+    "dilemma_id": "dd_37490"
+  },
+  {
+    "option_a_id": "dd_24673_to_do",
+    "option_b_id": "dd_24673_not_to_do",
+    "dilemma_id": "dd_24673"
+  },
+  {
+    "option_a_id": "dd_8033_to_do",
+    "option_b_id": "dd_8033_not_to_do",
+    "dilemma_id": "dd_8033"
+  },
+  {
+    "option_a_id": "dd_9473_to_do",
+    "option_b_id": "dd_9473_not_to_do",
+    "dilemma_id": "dd_9473"
+  },
+  {
+    "option_a_id": "dd_13484_to_do",
+    "option_b_id": "dd_13484_not_to_do",
+    "dilemma_id": "dd_13484"
+  },
+  {
+    "option_a_id": "dd_28019_to_do",
+    "option_b_id": "dd_28019_not_to_do",
+    "dilemma_id": "dd_28019"
+  },
+  {
+    "option_a_id": "dd_37102_to_do",
+    "option_b_id": "dd_37102_not_to_do",
+    "dilemma_id": "dd_37102"
+  },
+  {
+    "option_a_id": "dd_37537_to_do",
+    "option_b_id": "dd_37537_not_to_do",
+    "dilemma_id": "dd_37537"
+  },
+  {
+    "option_a_id": "dd_8366_to_do",
+    "option_b_id": "dd_8366_not_to_do",
+    "dilemma_id": "dd_8366"
+  },
+  {
+    "option_a_id": "dd_32572_to_do",
+    "option_b_id": "dd_32572_not_to_do",
+    "dilemma_id": "dd_32572"
+  },
+  {
+    "option_a_id": "dd_40653_to_do",
+    "option_b_id": "dd_40653_not_to_do",
+    "dilemma_id": "dd_40653"
+  },
+  {
+    "option_a_id": "dd_22966_to_do",
+    "option_b_id": "dd_22966_not_to_do",
+    "dilemma_id": "dd_22966"
+  },
+  {
+    "option_a_id": "dd_4716_to_do",
+    "option_b_id": "dd_4716_not_to_do",
+    "dilemma_id": "dd_4716"
+  },
+  {
+    "option_a_id": "dd_21098_to_do",
+    "option_b_id": "dd_21098_not_to_do",
+    "dilemma_id": "dd_21098"
+  },
+  {
+    "option_a_id": "dd_43285_to_do",
+    "option_b_id": "dd_43285_not_to_do",
+    "dilemma_id": "dd_43285"
+  },
+  {
+    "option_a_id": "dd_38811_to_do",
+    "option_b_id": "dd_38811_not_to_do",
+    "dilemma_id": "dd_38811"
+  },
+  {
+    "option_a_id": "dd_20895_to_do",
+    "option_b_id": "dd_20895_not_to_do",
+    "dilemma_id": "dd_20895"
+  },
+  {
+    "option_a_id": "dd_12860_to_do",
+    "option_b_id": "dd_12860_not_to_do",
+    "dilemma_id": "dd_12860"
+  },
+  {
+    "option_a_id": "dd_45424_to_do",
+    "option_b_id": "dd_45424_not_to_do",
+    "dilemma_id": "dd_45424"
+  },
+  {
+    "option_a_id": "dd_1029_to_do",
+    "option_b_id": "dd_1029_not_to_do",
+    "dilemma_id": "dd_1029"
+  },
+  {
+    "option_a_id": "dd_19267_to_do",
+    "option_b_id": "dd_19267_not_to_do",
+    "dilemma_id": "dd_19267"
+  },
+  {
+    "option_a_id": "dd_23052_to_do",
+    "option_b_id": "dd_23052_not_to_do",
+    "dilemma_id": "dd_23052"
+  },
+  {
+    "option_a_id": "dd_27088_to_do",
+    "option_b_id": "dd_27088_not_to_do",
+    "dilemma_id": "dd_27088"
+  },
+  {
+    "option_a_id": "dd_42690_to_do",
+    "option_b_id": "dd_42690_not_to_do",
+    "dilemma_id": "dd_42690"
+  },
+  {
+    "option_a_id": "dd_13920_to_do",
+    "option_b_id": "dd_13920_not_to_do",
+    "dilemma_id": "dd_13920"
+  },
+  {
+    "option_a_id": "dd_36199_to_do",
+    "option_b_id": "dd_36199_not_to_do",
+    "dilemma_id": "dd_36199"
+  },
+  {
+    "option_a_id": "dd_35397_to_do",
+    "option_b_id": "dd_35397_not_to_do",
+    "dilemma_id": "dd_35397"
+  },
+  {
+    "option_a_id": "dd_19385_to_do",
+    "option_b_id": "dd_19385_not_to_do",
+    "dilemma_id": "dd_19385"
+  },
+  {
+    "option_a_id": "dd_5957_to_do",
+    "option_b_id": "dd_5957_not_to_do",
+    "dilemma_id": "dd_5957"
+  },
+  {
+    "option_a_id": "dd_38721_to_do",
+    "option_b_id": "dd_38721_not_to_do",
+    "dilemma_id": "dd_38721"
+  },
+  {
+    "option_a_id": "dd_32177_to_do",
+    "option_b_id": "dd_32177_not_to_do",
+    "dilemma_id": "dd_32177"
+  },
+  {
+    "option_a_id": "dd_16891_to_do",
+    "option_b_id": "dd_16891_not_to_do",
+    "dilemma_id": "dd_16891"
+  },
+  {
+    "option_a_id": "dd_1656_to_do",
+    "option_b_id": "dd_1656_not_to_do",
+    "dilemma_id": "dd_1656"
+  },
+  {
+    "option_a_id": "dd_46147_to_do",
+    "option_b_id": "dd_46147_not_to_do",
+    "dilemma_id": "dd_46147"
+  },
+  {
+    "option_a_id": "dd_12271_to_do",
+    "option_b_id": "dd_12271_not_to_do",
+    "dilemma_id": "dd_12271"
+  },
+  {
+    "option_a_id": "dd_31622_to_do",
+    "option_b_id": "dd_31622_not_to_do",
+    "dilemma_id": "dd_31622"
+  },
+  {
+    "option_a_id": "dd_49943_to_do",
+    "option_b_id": "dd_49943_not_to_do",
+    "dilemma_id": "dd_49943"
+  },
+  {
+    "option_a_id": "dd_41103_to_do",
+    "option_b_id": "dd_41103_not_to_do",
+    "dilemma_id": "dd_41103"
+  },
+  {
+    "option_a_id": "dd_33741_to_do",
+    "option_b_id": "dd_33741_not_to_do",
+    "dilemma_id": "dd_33741"
+  },
+  {
+    "option_a_id": "dd_44833_to_do",
+    "option_b_id": "dd_44833_not_to_do",
+    "dilemma_id": "dd_44833"
+  },
+  {
+    "option_a_id": "dd_2155_to_do",
+    "option_b_id": "dd_2155_not_to_do",
+    "dilemma_id": "dd_2155"
+  },
+  {
+    "option_a_id": "dd_22166_to_do",
+    "option_b_id": "dd_22166_not_to_do",
+    "dilemma_id": "dd_22166"
+  },
+  {
+    "option_a_id": "dd_1176_to_do",
+    "option_b_id": "dd_1176_not_to_do",
+    "dilemma_id": "dd_1176"
+  },
+  {
+    "option_a_id": "dd_44430_to_do",
+    "option_b_id": "dd_44430_not_to_do",
+    "dilemma_id": "dd_44430"
+  },
+  {
+    "option_a_id": "dd_45544_to_do",
+    "option_b_id": "dd_45544_not_to_do",
+    "dilemma_id": "dd_45544"
+  },
+  {
+    "option_a_id": "dd_2932_to_do",
+    "option_b_id": "dd_2932_not_to_do",
+    "dilemma_id": "dd_2932"
+  },
+  {
+    "option_a_id": "dd_20717_to_do",
+    "option_b_id": "dd_20717_not_to_do",
+    "dilemma_id": "dd_20717"
+  },
+  {
+    "option_a_id": "dd_39321_to_do",
+    "option_b_id": "dd_39321_not_to_do",
+    "dilemma_id": "dd_39321"
+  },
+  {
+    "option_a_id": "dd_42067_to_do",
+    "option_b_id": "dd_42067_not_to_do",
+    "dilemma_id": "dd_42067"
+  },
+  {
+    "option_a_id": "dd_36223_to_do",
+    "option_b_id": "dd_36223_not_to_do",
+    "dilemma_id": "dd_36223"
+  },
+  {
+    "option_a_id": "dd_10328_to_do",
+    "option_b_id": "dd_10328_not_to_do",
+    "dilemma_id": "dd_10328"
+  },
+  {
+    "option_a_id": "dd_23524_to_do",
+    "option_b_id": "dd_23524_not_to_do",
+    "dilemma_id": "dd_23524"
+  },
+  {
+    "option_a_id": "dd_25990_to_do",
+    "option_b_id": "dd_25990_not_to_do",
+    "dilemma_id": "dd_25990"
+  },
+  {
+    "option_a_id": "dd_893_to_do",
+    "option_b_id": "dd_893_not_to_do",
+    "dilemma_id": "dd_893"
+  },
+  {
+    "option_a_id": "dd_29903_to_do",
+    "option_b_id": "dd_29903_not_to_do",
+    "dilemma_id": "dd_29903"
+  },
+  {
+    "option_a_id": "dd_4797_to_do",
+    "option_b_id": "dd_4797_not_to_do",
+    "dilemma_id": "dd_4797"
+  },
+  {
+    "option_a_id": "dd_33765_to_do",
+    "option_b_id": "dd_33765_not_to_do",
+    "dilemma_id": "dd_33765"
+  },
+  {
+    "option_a_id": "dd_16600_to_do",
+    "option_b_id": "dd_16600_not_to_do",
+    "dilemma_id": "dd_16600"
+  },
+  {
+    "option_a_id": "dd_12645_to_do",
+    "option_b_id": "dd_12645_not_to_do",
+    "dilemma_id": "dd_12645"
+  },
+  {
+    "option_a_id": "dd_20431_to_do",
+    "option_b_id": "dd_20431_not_to_do",
+    "dilemma_id": "dd_20431"
+  },
+  {
+    "option_a_id": "dd_9120_to_do",
+    "option_b_id": "dd_9120_not_to_do",
+    "dilemma_id": "dd_9120"
+  },
+  {
+    "option_a_id": "dd_14047_to_do",
+    "option_b_id": "dd_14047_not_to_do",
+    "dilemma_id": "dd_14047"
+  },
+  {
+    "option_a_id": "dd_17914_to_do",
+    "option_b_id": "dd_17914_not_to_do",
+    "dilemma_id": "dd_17914"
+  },
+  {
+    "option_a_id": "dd_38166_to_do",
+    "option_b_id": "dd_38166_not_to_do",
+    "dilemma_id": "dd_38166"
+  },
+  {
+    "option_a_id": "dd_34460_to_do",
+    "option_b_id": "dd_34460_not_to_do",
+    "dilemma_id": "dd_34460"
+  },
+  {
+    "option_a_id": "dd_46132_to_do",
+    "option_b_id": "dd_46132_not_to_do",
+    "dilemma_id": "dd_46132"
+  },
+  {
+    "option_a_id": "dd_30285_to_do",
+    "option_b_id": "dd_30285_not_to_do",
+    "dilemma_id": "dd_30285"
+  },
+  {
+    "option_a_id": "dd_25155_to_do",
+    "option_b_id": "dd_25155_not_to_do",
+    "dilemma_id": "dd_25155"
+  },
+  {
+    "option_a_id": "dd_48976_to_do",
+    "option_b_id": "dd_48976_not_to_do",
+    "dilemma_id": "dd_48976"
+  },
+  {
+    "option_a_id": "dd_48587_to_do",
+    "option_b_id": "dd_48587_not_to_do",
+    "dilemma_id": "dd_48587"
+  },
+  {
+    "option_a_id": "dd_7972_to_do",
+    "option_b_id": "dd_7972_not_to_do",
+    "dilemma_id": "dd_7972"
+  },
+  {
+    "option_a_id": "dd_23530_to_do",
+    "option_b_id": "dd_23530_not_to_do",
+    "dilemma_id": "dd_23530"
+  },
+  {
+    "option_a_id": "dd_47371_to_do",
+    "option_b_id": "dd_47371_not_to_do",
+    "dilemma_id": "dd_47371"
+  },
+  {
+    "option_a_id": "dd_28463_to_do",
+    "option_b_id": "dd_28463_not_to_do",
+    "dilemma_id": "dd_28463"
+  },
+  {
+    "option_a_id": "dd_3979_to_do",
+    "option_b_id": "dd_3979_not_to_do",
+    "dilemma_id": "dd_3979"
+  },
+  {
+    "option_a_id": "dd_176_to_do",
+    "option_b_id": "dd_176_not_to_do",
+    "dilemma_id": "dd_176"
+  },
+  {
+    "option_a_id": "dd_15538_to_do",
+    "option_b_id": "dd_15538_not_to_do",
+    "dilemma_id": "dd_15538"
+  },
+  {
+    "option_a_id": "dd_14988_to_do",
+    "option_b_id": "dd_14988_not_to_do",
+    "dilemma_id": "dd_14988"
+  },
+  {
+    "option_a_id": "dd_1352_to_do",
+    "option_b_id": "dd_1352_not_to_do",
+    "dilemma_id": "dd_1352"
+  },
+  {
+    "option_a_id": "dd_16174_to_do",
+    "option_b_id": "dd_16174_not_to_do",
+    "dilemma_id": "dd_16174"
+  },
+  {
+    "option_a_id": "dd_23415_to_do",
+    "option_b_id": "dd_23415_not_to_do",
+    "dilemma_id": "dd_23415"
+  },
+  {
+    "option_a_id": "dd_6519_to_do",
+    "option_b_id": "dd_6519_not_to_do",
+    "dilemma_id": "dd_6519"
+  },
+  {
+    "option_a_id": "dd_4871_to_do",
+    "option_b_id": "dd_4871_not_to_do",
+    "dilemma_id": "dd_4871"
+  },
+  {
+    "option_a_id": "dd_3363_to_do",
+    "option_b_id": "dd_3363_not_to_do",
+    "dilemma_id": "dd_3363"
+  }
+]

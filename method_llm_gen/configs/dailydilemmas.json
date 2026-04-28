@@ -1,0 +1,16 @@
+{
+  "domain": "dailydilemmas",
+  "choice_context": "Which action is more ethical or understandable?",
+  "input_path": "datasets/dailydilemmas/selected_actions.csv",
+  "template_path": "datasets/dailydilemmas_prompt.txt",
+  "text_column": "text",
+  "display_column": "description",
+  "id_column": "action_id",
+  "num_dimensions": 20,
+  "pair_appearances_per_option": 30,
+  "max_options": 300,
+  "dimensions_output_format": "plain",
+  "request_timeout_seconds": 180,
+  "max_retries": 3,
+  "max_workers": 32
+}
