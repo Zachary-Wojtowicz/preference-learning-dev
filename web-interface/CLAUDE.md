@@ -377,6 +377,98 @@ python generate_trials.py \
 
 Trial order is deterministically shuffled per participant using a seeded PRNG (seed = hash of participant ID). Each participant sees a random subset of `n` trials from the full pool. The same participant ID always produces the same trial sequence.
 
+## Post-Experiment Evaluation Screen
+
+After all feedback trials, participants compare two summaries of their inferred preferences (10 dimensions each, formatted like the `inference_categories` tray) and rate them on a 6-point forced-choice Likert scale ("A is much better" → "B is much better").
+
+### What gets compared
+
+| Condition family | Summary A (or B) | Summary B (or A) |
+|------------------|-------|-------|
+| Inference conditions (`inference_affirm`, `inference_categories`) | **Standard** — unrestricted gradient (4096-dim, kernel logistic regression) | **Partial** — K-dim primal fit with G-shape prior centered at slider-derived mean |
+| Choice-only conditions | **Standard** — same as above | **Projected** — same partial-fit code path, but with `β₀ = 0` (no slider info) |
+
+Counterbalancing: `hash(pid) % 2` decides which model lands on the left vs right (deterministic per participant).
+
+### Math
+
+Both fits use **batch MAP estimation via Newton's method with L2 regularization** — no learning rate to tune. Converges in 5–10 iterations (~10 ms in JavaScript).
+
+- **Standard**: kernel logistic regression in dual form on the T×T sub-matrix of delta-Gram entries.
+  - `θ = Σ αₜ δₜ`; minimize `−Σ[yₜ log σ(uₜ) + (1−yₜ) log σ(−uₜ)] + (λ/2)·αᵀDα` where `u = Dα`.
+  - Score on dim k: `θ·v_k = Σ αₜ · raw_projection[t][k]`.
+- **Partial**: K-dim primal logistic regression with G-shape prior centered at `β₀`.
+  - `β₀ = G⁻¹·mean_t(λₜ)` where `λₜ` is the per-trial multiplier vector built from `inference_values` (averaged over visible-trials per dim; 0 for dims never visible).
+  - Loss: `−Σ[…] + (λ/2)(β−β₀)ᵀG(β−β₀)`.
+  - Score on dim k: `θ·v_k = (Gβ)_k`.
+
+### Quintile categories
+
+Top-10 dimensions by `|θ·v_k|` are picked per fit. Within those 10, signed rank determines the category — top 2 by signed score → "love"; bottom 2 → "prefer to skip"; etc. Always ~20% per category. Domain-specific category labels come from `experiment_config.inference_categories`.
+
+### Required data on the client
+
+| File | Purpose |
+|------|---------|
+| `outputs/<domain>/trials.json` | Trial pool (already loaded) |
+| `outputs/<domain>/experiment_config.json` | `gram_matrix`, `dimensions`, `inference_categories`, `comparison.*` (already loaded) |
+| `outputs/<domain>/trial_projections.json` | Per-trial K-vector `raw_projection = V·δ` for the partial fit's feature matrix |
+| `outputs/<domain>/delta_gram.bin` | Float32, `T_pool × T_pool` row-major. The kernel matrix for the standard fit. |
+
+If any of these is missing, the eval screen is skipped silently (`evaluation: {skipped: '<reason>'}` in the payload) — the experiment still completes and posts to Qualtrics.
+
+### Configuration block
+
+In `experiment_config.json`:
+```json
+"comparison": {
+  "lambda_standard":     10.0,
+  "lambda_partial":      1.0,
+  "n_dimensions_shown":  10,
+  "show_for_conditions": ["choice_only", "choice_readonly_sliders", "choice_adjustable_sliders", "choice_checkboxes", "inference_affirm", "inference_categories"]
+}
+```
+
+Generate / refresh the per-domain artifacts:
+```bash
+cd web-interface
+python3 export_eval_data.py                  # all known domains
+python3 export_eval_data.py movies_100       # single domain
+python3 update_configs.py                    # backfill comparison block defaults
+```
+
+`export_eval_data.py` requires the embeddings parquet at `datasets/<domain>/*-embedded.parquet`. Domains without a local parquet (e.g. `dailydilemmas`) skip cleanly — sync the parquet from the server to enable.
+
+### Validation
+
+Two sanity-check scripts ship with the interface:
+- `python3 test_eval_parity.py [domain] [N] [target_dim]` — runs the same Newton fits in NumPy on a simulated participant who consistently picks options higher on the target dim. Asserts target dim ranks first.
+- `node test_js_parity.js [domain] [N] [target_dim]` — extracts the JS fitter functions from `index.html` and runs them on the same data. Same assertion.
+- `node test_end_to_end.js [domain] [pid] [target_dim]` — full simulated session including training-trial exclusion, inference-category multipliers, and final eval payload. Prints both summaries side-by-side.
+
+### Output payload
+
+The `experiment_complete` postMessage payload gains an `evaluation` block:
+```json
+"evaluation": {
+  "fit_duration_ms": 7,
+  "lambda_standard": 10.0,
+  "lambda_partial":  1.0,
+  "n_dimensions_shown": 10,
+  "has_multipliers": true,
+  "left_model":  "partial",
+  "right_model": "standard",
+  "left_inferences":  [{"dim_id":"dim_2","dim_name":"Action Intensity","category":"love","category_label":"Love","phrase":"love","score":2.198}, …],
+  "right_inferences": [...],
+  "rating": "B_better",
+  "rating_numeric": 2,
+  "response_time_ms": 12340,
+  "started_at": 1714326400000
+}
+```
+
+If skipped: `"evaluation": {"skipped": "missing_delta_gram" | "missing_gram_matrix" | "no_eval_data" | "condition_excluded"}`.
+
 ## Design Notes
 
 - **Single file, no dependencies.** The entire app is one HTML file with inline CSS and JS.
