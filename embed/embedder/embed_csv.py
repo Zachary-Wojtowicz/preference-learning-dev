@@ -27,10 +27,29 @@ def detect_header(path: Path, encoding: str) -> bool:
     sample = path.read_text(encoding=encoding)[:4096]
     if not sample.strip():
         raise ValueError(f"{path} is empty.")
+    # csv.Sniffer.has_header is unreliable on all-string CSVs (it returns
+    # False when the header row looks like the data rows), which silently
+    # corrupts the output schema. Default to True; only return False when
+    # the first row is unambiguously data (every cell is numeric).
+    first_line = sample.splitlines()[0]
     try:
-        return csv.Sniffer().has_header(sample)
-    except csv.Error:
+        cells = next(csv.reader([first_line]))
+    except (csv.Error, StopIteration):
         return True
+    if cells and all(_looks_numeric(c) for c in cells):
+        return False
+    return True
+
+
+def _looks_numeric(cell: str) -> bool:
+    cell = cell.strip()
+    if not cell:
+        return False
+    try:
+        float(cell)
+        return True
+    except ValueError:
+        return False
 
 
 def normalize_value(value: object) -> str:
