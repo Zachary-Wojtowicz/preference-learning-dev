@@ -45,13 +45,11 @@
   .inference-row{margin-bottom:.85rem;padding:.85rem 1rem;background:#fafbfc;border:1px solid #e5e7eb;border-radius:8px;transition:opacity .25s,background .2s}
   .inference-row.removed{opacity:.3;background:#f0f0f0}.inference-row.removed .inference-text{text-decoration:line-through;text-decoration-color:#aaa}
   .inference-row.affirmed{background:#f0f7ff;border-color:#bfdbfe}
-  .inference-row.moderated{background:#fffbeb;border-color:#fde68a}
   .inference-text{font-size:.95rem;font-weight:500;margin-bottom:.55rem;color:#1a1a1a}.inference-text .cat-word{color:#3b82f6;font-weight:600}
   .inference-actions{display:flex;gap:.4rem;align-items:center}
   .inference-actions button{padding:.3rem .75rem;font-size:.8rem;border:1px solid #d1d5db;border-radius:5px;background:#fff;color:#555;cursor:pointer;transition:all .15s}
   .inference-actions button:hover{border-color:#999;background:#f9fafb}
   .inference-actions .btn-remove.active{background:#ef4444;color:#fff;border-color:#ef4444}
-  .inference-actions .btn-moderate.active{background:#f59e0b;color:#fff;border-color:#f59e0b}
   .inference-actions .btn-affirm.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
   .category-picker{margin-top:.5rem;display:flex;gap:.35rem;flex-wrap:wrap}
   .category-picker button{padding:.3rem .65rem;font-size:.8rem;border:1px solid #d1d5db;border-radius:5px;background:#fff;color:#555;cursor:pointer;transition:all .12s}
@@ -73,22 +71,15 @@
 <script>
 (function(){
 if(window.parent!==window){
-  var lastH=0;
-  window.__sendExperimentSize=function(){
-    var h=Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0);
-    if(h&&h!==lastH){lastH=h;try{window.parent.postMessage({type:'experiment_resize',height:h},'*');}catch(e){}}
+  // Embedded mode: blend into parent (Qualtrics) by removing our page bg and padding.
+  // The iframe is sized large enough by the parent to hold the worst-case content;
+  // empty space below shows through to the parent, so no dynamic resizing is needed.
+  var setEmbedStyle=function(){
+    document.documentElement.style.background='transparent';
+    if(document.body){document.body.style.background='transparent';document.body.style.padding='1rem';}
   };
-  var schedule=window.requestAnimationFrame?function(){requestAnimationFrame(window.__sendExperimentSize)}:function(){setTimeout(window.__sendExperimentSize,16)};
-  window.addEventListener('load',schedule);
-  window.addEventListener('resize',schedule);
-  if(window.ResizeObserver){
-    var ro=new ResizeObserver(schedule);
-    if(document.body)ro.observe(document.body);
-    else document.addEventListener('DOMContentLoaded',function(){ro.observe(document.body)});
-  }
-  // Safety net: catches transitions (e.g. .dim-panel max-height animation) and async layout
-  // changes that may not trigger ResizeObserver. Cheap because sendSize dedup's via lastH.
-  setInterval(window.__sendExperimentSize,250);
+  setEmbedStyle();
+  document.addEventListener('DOMContentLoaded',setEmbedStyle);
 }
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
@@ -117,14 +108,6 @@ function catFromEff(v){
 function catPhrase(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.phrase:k;}
 function catMult(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.mult:0;}
 function infMode(){return condition?condition.show_inferences:false;}
-function moderateCat(key){
-  var idx=-1,mid=Math.floor(CATEGORIES.length/2);
-  for(var i=0;i<CATEGORIES.length;i++){if(CATEGORIES[i].key===key){idx=i;break;}}
-  if(idx<0)return key;
-  if(idx<mid)return CATEGORIES[idx+1].key;
-  if(idx>mid)return CATEGORIES[idx-1].key;
-  return key;
-}
 function getUrlParams(){var p=new URLSearchParams(window.location.search);return{pid:p.get('pid')||'',condition:p.get('condition')||'',n:parseInt(p.get('n'),10)||0,domain:p.get('domain')||'',post:p.get('post')||''};}
 var urlParams=getUrlParams();domainKey=urlParams.domain||'movies_100';postUrl=urlParams.post||null;
 var basePath=domainKey?'outputs/'+domainKey+'/':'';
@@ -192,7 +175,7 @@ function renderInstructions(){
   else if(condition.show_checkboxes)
     h+='<div class="inst-highlight"><strong>Check the boxes</strong> next to dimensions that mattered, then click Submit.</div>';
   else if(infMode()==='affirm')
-    h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> For each:<ul style="margin:.5rem 0 0 1.2rem"><li><strong>Remove</strong> \u2014 not relevant</li><li><strong>Moderate</strong> \u2014 tone down the strength</li><li><strong>Affirm</strong> \u2014 we got it right</li></ul></div>';
+    h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> For each:<ul style="margin:.5rem 0 0 1.2rem"><li><strong>Remove</strong> \u2014 not relevant</li><li><strong>Affirm</strong> \u2014 we got it right</li></ul></div>';
   else if(infMode()==='categories')
     h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> We\u2019ll pre-select a level. You can <strong>change it</strong> to better match how you feel. Then click Submit.</div>';
   h+='<p>There are '+assignedTrialIndices.length+' trials. Take your time.</p>';
@@ -206,7 +189,8 @@ function renderTrial(){
   var total=assignedTrialIndices.length,pct=Math.round((currentStep/total)*100);
   var h='<div class="progress">Trial '+(currentStep+1)+' of '+total+'</div>';
   h+='<div class="progress-bar-track"><div class="progress-bar-fill" style="width:'+pct+'%"></div></div>';
-  if(trial.prompt)h+='<div class="prompt">'+esc(trial.prompt)+'</div>';
+  var promptText=(experimentConfig&&experimentConfig.choice_context)||trial.prompt||'';
+  if(promptText)h+='<div class="prompt">'+esc(promptText)+'</div>';
   h+='<div class="options">'+buildCard('a',trial.option_a)+buildCard('b',trial.option_b)+'</div>';
   if(condition.show_sliders&&trial.sliders&&trial.sliders.length>0)
     h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header" id="dimPanelHeader"></div><div id="sliderContainer"></div></div></div>';
@@ -289,7 +273,6 @@ function populateInferences(trial,key){
     if(mode==='affirm'){
       h+='<div class="inference-actions">';
       h+='<button class="btn-remove">\u2715 Remove</button>';
-      h+='<button class="btn-moderate">\u2194 Moderate</button>';
       h+='<button class="btn-affirm">\u2713 Affirm</button>';
       h+='</div>';
     }else{
@@ -302,18 +285,12 @@ function populateInferences(trial,key){
   c.innerHTML=h;
   if(mode==='affirm'){
     c.querySelectorAll('.inference-row').forEach(function(row){
-      var rBtn=row.querySelector('.btn-remove'),mBtn=row.querySelector('.btn-moderate'),aBtn=row.querySelector('.btn-affirm');
-      function clearAll(){rBtn.classList.remove('active');mBtn.classList.remove('active');aBtn.classList.remove('active');row.classList.remove('removed','affirmed','moderated');}
+      var rBtn=row.querySelector('.btn-remove'),aBtn=row.querySelector('.btn-affirm');
+      function clearAll(){rBtn.classList.remove('active');aBtn.classList.remove('active');row.classList.remove('removed','affirmed');}
       rBtn.addEventListener('click',function(){
         var was=rBtn.classList.contains('active');clearAll();
         if(!was){rBtn.classList.add('active');row.classList.add('removed');row.dataset.action='remove';}
         else{row.dataset.action='none';row.dataset.cat=row.dataset.originalCat;updateInfText(row);}
-      });
-      mBtn.addEventListener('click',function(){
-        var was=mBtn.classList.contains('active');clearAll();
-        if(!was){mBtn.classList.add('active');row.classList.add('moderated');row.dataset.action='moderate';
-          row.dataset.cat=moderateCat(row.dataset.originalCat);updateInfText(row);
-        }else{row.dataset.action='none';row.dataset.cat=row.dataset.originalCat;updateInfText(row);}
       });
       aBtn.addEventListener('click',function(){
         var was=aBtn.classList.contains('active');clearAll();

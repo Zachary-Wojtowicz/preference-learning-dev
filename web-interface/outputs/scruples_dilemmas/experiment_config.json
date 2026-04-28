@@ -1,6 +1,6 @@
 {
   "domain": "moral dilemmas",
-  "choice_context": "Which action is more ethical or understandable?",
+  "choice_context": "Which action is more ethical?",
   "num_trials_per_participant": 30,
   "top_k_sliders": 5,
   "conditions": {

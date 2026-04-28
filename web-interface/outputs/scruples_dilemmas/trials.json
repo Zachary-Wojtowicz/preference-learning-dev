@@ -6,7 +6,6 @@
     "option_b_id": "Kacv6QB1Hea6OLOVq8Xqck39YhfbdOwl",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "cutting of my relationship with my best friend, for dating a girl I have liked some time ago",
       "fields": {
@@ -218,7 +217,6 @@
     "option_b_id": "vblTed2TME4DoFrHBpksKOPQKLvOO3Dy",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking if my husband is invited to a wedding? for not attending? for attending",
       "fields": {
@@ -430,7 +428,6 @@
     "option_b_id": "rHPHENrtQnNHxMWjTxTsQob6XpqAggUX",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "complimenting an immigrant on their English",
       "fields": {
@@ -642,7 +639,6 @@
     "option_b_id": "uXsLjziZPApq31ACVKmd4CDWIphaXrNU",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "refusing to pay my roommates' applications fees to reapply for our apartment when I leave",
       "fields": {
@@ -854,7 +850,6 @@
     "option_b_id": "1Maqf2vRkXyJ8k161HLBCJTlC3xt0Jxr",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "being annoyed at my gf for not texting me she was going to be late when she knew I was preparing a meal for her",
       "fields": {
@@ -1066,7 +1061,6 @@
     "option_b_id": "DBmLV255PkJ1urKLdkFYFN3LStQNqqkJ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "shutting off the WiFi",
       "fields": {
@@ -1278,7 +1272,6 @@
     "option_b_id": "rpjIRowCQbECru6kz83iqxyzFBjKaWcQ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not wanting to give my 9 year old Adderall",
       "fields": {
@@ -1490,7 +1483,6 @@
     "option_b_id": "bLfvuHs2IGzxDty57dvYlc6blpj7gZKJ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "driving the speed limit",
       "fields": {
@@ -1702,7 +1694,6 @@
     "option_b_id": "dMWCRypl7W55IUtmtECLAK42mfub6NSf",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "pouring out water on a downstairs smoker",
       "fields": {
@@ -1914,7 +1905,6 @@
     "option_b_id": "GqfgNWgzEAz6Cd6xuEEyK5wdv2UBGUe5",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "being annoyed at employer for donating our Christmas party budget to charity",
       "fields": {
@@ -2126,7 +2116,6 @@
     "option_b_id": "2NApxkKPBHXn7T89ejP5ADftlvXJz8Vm",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "being uncomfortable/annoyed when people have sex in the same room as me",
       "fields": {
@@ -2338,7 +2327,6 @@
     "option_b_id": "G5CgP7SyLLMeTCOB81ddt4rSUlIVdzgg",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not changing dinner to accommodate an allergy",
       "fields": {
@@ -2550,7 +2538,6 @@
     "option_b_id": "kZPOtcdH7fYYx4t76isPFbnQuMAsD9mn",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "getting upset that my mom did my taxes",
       "fields": {
@@ -2762,7 +2749,6 @@
     "option_b_id": "4QKB3UnzqZ9ahsylg8Z5ARVxSyK4dMAN",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "saying that my female cousin's shoulders seem broader with shorter hair",
       "fields": {
@@ -2974,7 +2960,6 @@
     "option_b_id": "eXKNDMecQVNArYbxOo7etTTTrJPLfIxQ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "insisting my father learns how to put on his own washing",
       "fields": {
@@ -3186,7 +3171,6 @@
     "option_b_id": "kR7pTrrl3itaiI0UET7T2BQ2CUbgzkkJ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "expecting compensation from the company for 3 false deliveries",
       "fields": {
@@ -3398,7 +3382,6 @@
     "option_b_id": "hxFKhX2Q0HoVTVxGpKOBD3Vpko1uSzB3",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "calling someone out for calling the Ferguson police officer a \"hideous monster\"",
       "fields": {
@@ -3610,7 +3593,6 @@
     "option_b_id": "ZWHL1A77wtxnrzP5XoMiPzO0yytKajRZ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "forcing a free resize on a ring",
       "fields": {
@@ -3822,7 +3804,6 @@
     "option_b_id": "Rx8xJ8dTmXMQeqDIhAShwHMD6MfvFJQr",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "checking up on my ex boyfriend at the request of his sister against my current boyfriend's wishes in the middle of the night",
       "fields": {
@@ -4034,7 +4015,6 @@
     "option_b_id": "xSCg8SGgsnwoTovrilvaULlAUKg6HEXH",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "buying an electronic noisy toy for a 2nd birthday party gift",
       "fields": {
@@ -4246,7 +4226,6 @@
     "option_b_id": "YXmmTmnaVcFriq4ipBqvICOXzJ2ZGPwf",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "deleting songs of the group spotify playlist",
       "fields": {
@@ -4458,7 +4437,6 @@
     "option_b_id": "tEKl2sfzkuIJrGBSAz2VCU6Oxi8HtqeB",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "making an inappropriate joke in Build-a-bear? think girl I was dating ghosted me and I really liked her",
       "fields": {
@@ -4670,7 +4648,6 @@
     "option_b_id": "5A3MnqWuMYER1q5uBMKwZN3AYxRUcTWp",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "questioning my wife's sudden desire to make a drastic career change",
       "fields": {
@@ -4882,7 +4859,6 @@
     "option_b_id": "fsrCd1VQ80Kg5lRegviWfX7Bdg9Dx0LN",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "planning for our trip to Europe",
       "fields": {
@@ -5094,7 +5070,6 @@
     "option_b_id": "8fHZ96pNNIZSa5PcHim1b00XssBbpaTa",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "demonstrating what the pics of Joe Biden looked like on my bf",
       "fields": {
@@ -5306,7 +5281,6 @@
     "option_b_id": "3xnuKOc8Jd7VNMYjd9lypLFPsyevK9fu",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking a girl at a concert to sit down",
       "fields": {
@@ -5518,7 +5492,6 @@
     "option_b_id": "8aQ9721IMvY8IelUNDpMpbozoC30vwk9",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "trying to push my husband with Tourette Syndrome to use CBD Oil",
       "fields": {
@@ -5730,7 +5703,6 @@
     "option_b_id": "hwDXZkLpZeKmx2hnau8XVvv1VzwbtONv",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling my friend that something was wrong with her if she needs to drink alcohol after school",
       "fields": {
@@ -5942,7 +5914,6 @@
     "option_b_id": "G8tGA2EOr1XkT3c5jv4zciUjhMK38Xix",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking my so that I emigrated for and live with to ask if he can check out and maybe change my license? I work 40 hours, just started 2 weeks, he is unemployed",
       "fields": {
@@ -6154,7 +6125,6 @@
     "option_b_id": "SLPm8YpqGHOXkPGFFYCg9LSCVn4CFZwo",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "saying we worked harder than a third person in an article interview",
       "fields": {
@@ -6366,7 +6336,6 @@
     "option_b_id": "LqgCdf7SEzL2om5N8oTawHFEKac8kpvQ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "pointing out the Swastikas in the Rug",
       "fields": {
@@ -6578,7 +6547,6 @@
     "option_b_id": "A6UVm5Nk8NszwlcaZ99AQJozr78Kkxhy",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "disagreeing vehemently with my college-aged daughter about the use of punctuation in text messages? does using a period in a text message make one look angry",
       "fields": {
@@ -6790,7 +6758,6 @@
     "option_b_id": "i852zNkZdM2cgcQPlsxVMIlmtXXD5OmL",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting to install a fence around my home",
       "fields": {
@@ -7002,7 +6969,6 @@
     "option_b_id": "eSiTlEM5OwRa1g6zmbpkZPW11UNc2o2P",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not putting in more effort to be a good team member",
       "fields": {
@@ -7214,7 +7180,6 @@
     "option_b_id": "Dqi7wSoXEJafaj6uvGfqsJkB5YRpcmPM",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "declining my (caring) mother visiting me because she's clingy and I don't like living with her",
       "fields": {
@@ -7426,7 +7391,6 @@
     "option_b_id": "kQyvO10zPePrSchYnlTtOKyHlR1sD7gs",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "making a facebook account to tell a married woman her husband was sending me money and jewellery in exchange for sexual photos while I was a minor",
       "fields": {
@@ -7638,7 +7602,6 @@
     "option_b_id": "VtgYzE9QosQd7mvIABTtHIaNYU6TIMji",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wearing vanilla to work despite my coworker's apparent aversion to it",
       "fields": {
@@ -7850,7 +7813,6 @@
     "option_b_id": "otm8QsquEWKfdLTvvrKFKgDmVynzY0dE",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "expecting my mom to pay for my crossfit",
       "fields": {
@@ -8062,7 +8024,6 @@
     "option_b_id": "Y9jRwR9ufmm76cL0Ek5MrQkfsgkzTYHI",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling my brother he needs to follow through on getting his car",
       "fields": {
@@ -8274,7 +8235,6 @@
     "option_b_id": "MN8hGPZFouDHud9IHUZvf0s1ZOzKCLoE",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "giving a homeless man food instead of money? tl;dr at bottom",
       "fields": {
@@ -8486,7 +8446,6 @@
     "option_b_id": "wmxseD2L2lhAx8UR6LFDB4y09LcDsRCr",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting to conceive via sperm donor than adopt with my husband",
       "fields": {
@@ -8698,7 +8657,6 @@
     "option_b_id": "bFunEmG5sA132cY2XaQEkqSMstsjxcrp",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "instructing my so to avoid taking a jeepney and take a short walk home and instead take a tricycle straight home because there is a serial killer walking around in her area",
       "fields": {
@@ -8910,7 +8868,6 @@
     "option_b_id": "TsuozVMKE8HsPxPvXrFujfcm9cTVpSw9",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "banning someone with Asperger's from my group",
       "fields": {
@@ -9122,7 +9079,6 @@
     "option_b_id": "A1gGDU4n8nYDCpWArWaQaXNhrrx3ALh6",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling my parents that I will be celebrating Christmas with my inlaws if they decide to invite my toxic cousin",
       "fields": {
@@ -9334,7 +9290,6 @@
     "option_b_id": "HMiykIHrxFVRRI40vZMQfTfemzwWQLZ4",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not letting people copy off my tests",
       "fields": {
@@ -9546,7 +9501,6 @@
     "option_b_id": "lQtPYJYbxAidIQvscnnvYKA8r04MsCLO",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not making my wife's birthday extra special",
       "fields": {
@@ -9758,7 +9712,6 @@
     "option_b_id": "h6WuBbB0AAyikzKyVaCPLWnas4Ztcj8f",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not being as attracted to my boyfriend anymore since he lost weight",
       "fields": {
@@ -9970,7 +9923,6 @@
     "option_b_id": "ElfMfTvevdVEHlGZdVc49pmv3ffLaRnR",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "giving out a fake number",
       "fields": {
@@ -10182,7 +10134,6 @@
     "option_b_id": "7xls3dxIn5kjQSj50649j7ENwnBRw77q",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting to order delivery in a blizzard",
       "fields": {
@@ -10394,7 +10345,6 @@
     "option_b_id": "Ud6Fk6bxbXm2lrOm5rCegdTxlwCeXXrV",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking my mom to not be on her phone while watching a movie",
       "fields": {
@@ -10606,7 +10556,6 @@
     "option_b_id": "6OuP51d7UdTz0RJ8bj8P0lArwMIYHMFp",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "filing a complaint against a state government employee with the Office of the Ombudsman before trying to resolve the issue directly with the agency or worker involved first",
       "fields": {
@@ -10818,7 +10767,6 @@
     "option_b_id": "BeIS3Zpoj0YNhsOybo9UnFYdWI9Bmn1s",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "taking down my roommates post-it notes",
       "fields": {
@@ -11030,7 +10978,6 @@
     "option_b_id": "hZnqQjZVzBXx6K5Yq3D2KFXGvVta7IHQ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "I was eliminating in fantasy football playoffs in a dynasty league that is disbanding after this season due to low activity/interest. the guy in first place won't be coming over to the new league and has low waiver wire priority, so I dropped Rodgers, McCaffrey, and Barkley. I said nothing",
       "fields": {
@@ -11242,7 +11189,6 @@
     "option_b_id": "nmfkYETaXcXWDeTVrEmI6pBV7rtW8lDQ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "saying that the fact Ainu people don't look japanesse despite indeed being japanese, is \"funny\"",
       "fields": {
@@ -11454,7 +11400,6 @@
     "option_b_id": "U4tWf4GOw8QX9iQ0pvF2xlKArpqfh7tY",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling an online person to chill down when a troll insulted them",
       "fields": {
@@ -11666,7 +11611,6 @@
     "option_b_id": "yV4OZXVMIEkTqgn7LK0PBmCtDYxHBsDz",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "very sternly rebuking a coworker who \"jokingly\" lies to me and other employees",
       "fields": {
@@ -11878,7 +11822,6 @@
     "option_b_id": "mT5qeH8hBh0uXRNHqE0sNvHoWopZcyJT",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "thinking a rare-uncommon piercing is something you might want to talk to your partner about before hand",
       "fields": {
@@ -12090,7 +12033,6 @@
     "option_b_id": "saOXQsXxm5gCEpQfLmFa2QZEAvzDjwET",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not watching a strangers's stuff for him while he went to the bathroom? this was in an airport inside security",
       "fields": {
@@ -12302,7 +12244,6 @@
     "option_b_id": "JWrbDbuJT0xyOeXoC3AnfVTPsGtr6gat",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "removing a friend's access to my Google account without letting her know",
       "fields": {
@@ -12514,7 +12455,6 @@
     "option_b_id": "dAExRa8fNQPjhSwwryZDcAxLZmMIJkct",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "thinking it's rude and disrespectful to call bartenders Chef's",
       "fields": {
@@ -12726,7 +12666,6 @@
     "option_b_id": "CykuGSc6cTU4QERdZueBWSe0uAhZzNog",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "downloading \"name your own price\" games on itch.io for free",
       "fields": {
@@ -12938,7 +12877,6 @@
     "option_b_id": "CwYeHuDhxcbiQkQhl2oxxvElJgphKlz9",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "keeping in touch/talking with other male friends while being in a relationship",
       "fields": {
@@ -13150,7 +13088,6 @@
     "option_b_id": "yqk9ZSYu3Vd9A6sUBIGPLJ0mTCxcsv74",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting to get better at a hobby",
       "fields": {
@@ -13362,7 +13299,6 @@
     "option_b_id": "KgXA6bn3fWIKTYvcpRCnycG424KaVzhW",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking for a few extra days to consider a job offer",
       "fields": {
@@ -13574,7 +13510,6 @@
     "option_b_id": "XFjneSQQmuErX6OkAxRZzD8tutBQgwRv",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling someone I cut myself again",
       "fields": {
@@ -13786,7 +13721,6 @@
     "option_b_id": "vCyXJhVnrkPy1K7ztdzBOSeeJQhbIMJl",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "repeatedly turning off the central heater",
       "fields": {
@@ -13998,7 +13932,6 @@
     "option_b_id": "2s6HTLXM2zBC02Jtacykv68phiz8wDFn",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "fake coughing at Disney",
       "fields": {
@@ -14210,7 +14143,6 @@
     "option_b_id": "tkHymKuvHWPyAhmL4FLHwQB7fTKWLDxq",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "refusing to go to church",
       "fields": {
@@ -14422,7 +14354,6 @@
     "option_b_id": "Z3FYTPB3YXG1Q2HGm44vs25jUsNo0PFe",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "making a personal social media post about a new family discovery that I was very happy about",
       "fields": {
@@ -14634,7 +14565,6 @@
     "option_b_id": "l9MyWnjFlbrsG0eHQcwLhBAPawRn7HMZ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "still going to Texas to buy a car",
       "fields": {
@@ -14846,7 +14776,6 @@
     "option_b_id": "YRcwkX4F3eYzoo0h15QGUoHGXgrd0biz",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "taking control of my direct deposit paycheck back",
       "fields": {
@@ -15058,7 +14987,6 @@
     "option_b_id": "U4TjfEDzBwDEZGXdy6Um0geQMd3xfVw1",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "talking to my ex I dated when I was 11",
       "fields": {
@@ -15270,7 +15198,6 @@
     "option_b_id": "Nv6zxf2wOAuT1BM2JdwFFMyz0UkhfvvL",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting to change my last name to a different family name than the one of my birth mother and step father",
       "fields": {
@@ -15482,7 +15409,6 @@
     "option_b_id": "hwd6m4lLyBrAt27bZF6ZFxq97iQu7yFR",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling a friend of mine that he needs to be careful with his Crosley because they ruin vinyl",
       "fields": {
@@ -15694,7 +15620,6 @@
     "option_b_id": "ePHH2kKQEQNsAiqfJKdcZDNQX60Q49Kd",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking which apartment a girl lives in after she brought up the fact that we live in the same apartment building",
       "fields": {
@@ -15906,7 +15831,6 @@
     "option_b_id": "LPIchKHpsGl3IKp90xdkJX1njGzE1HSr",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "thinking that black characters wouldn't fit in the new witchers series",
       "fields": {
@@ -16118,7 +16042,6 @@
     "option_b_id": "Oj4Zf6b4ipedsXa5dkjhVx6AH8yTjdxl",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "emailing my principal about a teacher",
       "fields": {
@@ -16330,7 +16253,6 @@
     "option_b_id": "NtCq8WT4jljYBm9Py1JvTMiKOkJCNCHQ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "\"spoiling\" the ending to MiB III",
       "fields": {
@@ -16542,7 +16464,6 @@
     "option_b_id": "bnnfYR25VatCcFide4jSM9tBlbTV9cJh",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "thinking that Looks and character are equally important when u start dating",
       "fields": {
@@ -16754,7 +16675,6 @@
     "option_b_id": "HAwGbGRoPYvxBXcPVpZZfXB13hVOD1ln",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting my husband to brush his teeth every day",
       "fields": {
@@ -16966,7 +16886,6 @@
     "option_b_id": "mXGZ2n0kOfsGS7vLdb4jYAfgS8MyIFwq",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "believing this girl working as a dancer was really into me? I'm crushed and my friends are being so harsh I'd like a neutral opinion",
       "fields": {
@@ -17178,7 +17097,6 @@
     "option_b_id": "eerUK9wIFOnPKNAs4BvaBhxTi1uTsfaP",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "clipping my nails in public",
       "fields": {
@@ -17390,7 +17308,6 @@
     "option_b_id": "KA9lEde2Vi0AOkuWXkpKBroCcovHiOex",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "being bitter that my friends are frustrated at me while playing Smash Bros",
       "fields": {
@@ -17602,7 +17519,6 @@
     "option_b_id": "c8K2Fb78MTWBl6LiO5sqRXB5GxhipF80",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "talking at a normal volume late night if my neighbor is also loud",
       "fields": {
@@ -17814,7 +17730,6 @@
     "option_b_id": "wruODtGxnXdOvq3Gv4ywFUfxOpnyYbVw",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "treating customers with foreign sounding names different than others",
       "fields": {
@@ -18026,7 +17941,6 @@
     "option_b_id": "zRviLTuCNefzxQoN1CiEel2pz3y0vBju",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking my moms friend to drop me off at college",
       "fields": {
@@ -18238,7 +18152,6 @@
     "option_b_id": "57RsKo2c9EZmTJhe7UCX9eLQheaDU51K",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "leaving the band",
       "fields": {
@@ -18450,7 +18363,6 @@
     "option_b_id": "BpUBWLUwrdvl5iRA4UMYNUl1YN2LpAuh",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "buying an expired domain",
       "fields": {
@@ -18662,7 +18574,6 @@
     "option_b_id": "w69hNSTIbBam149YEOqyG4bzC04uYLqK",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking a Mcdonalds employee to remake my drink after they accidentally handed it to the car in front of me in the drive-through",
       "fields": {
@@ -18874,7 +18785,6 @@
     "option_b_id": "eK9QU0KU5QxqSPsAiLDaoWzyfN6DOGMk",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not being excited about the surprise christma tree",
       "fields": {
@@ -19086,7 +18996,6 @@
     "option_b_id": "qdJbCvoYVyFQOaVH6YA8HJ06uYv2kH1z",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking my grieving brother to stop using photo of deceased relative online",
       "fields": {
@@ -19298,7 +19207,6 @@
     "option_b_id": "l70EVKHN3rF6HWHuAFzmLFR2H00pEvle",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not wanting to help my ex wife out more monetarily or with extra time now that our son has a time consuming medical condition",
       "fields": {
@@ -19510,7 +19418,6 @@
     "option_b_id": "VBrH35fdadReCoMTf64AoIXoy3pmpoQI",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "expecting so to set boundaries",
       "fields": {
@@ -19722,7 +19629,6 @@
     "option_b_id": "ZSTqQOAhXW8GKz5M1QXbsruk7wAH7BLH",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "getting mad at girlfriend at massage with Male Masseur",
       "fields": {
@@ -19934,7 +19840,6 @@
     "option_b_id": "i7ZTLe7nTknyMbCdwIBK607sIj0NxOGV",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not allowing my boyfriend to smoke weed while driving my car",
       "fields": {
@@ -20146,7 +20051,6 @@
     "option_b_id": "7ugAw18LEE2veAYnQkAMRiNx6yDSiRcF",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "arguing that Bluetooth Headphones are safe",
       "fields": {
@@ -20358,7 +20262,6 @@
     "option_b_id": "opSXNsxewHiLz7mjC1N8y7XijqWEmp2K",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "leaving a bad review on AirBnb",
       "fields": {
@@ -20570,7 +20473,6 @@
     "option_b_id": "JZJqd1lT3cH5vOYIXQPGHdc6pZ8oVYXx",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "sleeping on the couch after sex",
       "fields": {
@@ -20782,7 +20684,6 @@
     "option_b_id": "sItNaHTqBs0UdJuak3UAXB6Unu9skq9Y",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not telling my boyfriend about my vibrator",
       "fields": {
@@ -20994,7 +20895,6 @@
     "option_b_id": "nxBB4SFU9ESNcSKHVkxH8KLtzDgIwsQ4",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting him to be AIDS tested",
       "fields": {
@@ -21206,7 +21106,6 @@
     "option_b_id": "5fV7tczWfGCl3DOVjUmPhiOO928ZFgrk",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "thinking Chris Benoit deserves to be in the hall of fame",
       "fields": {
@@ -21418,7 +21317,6 @@
     "option_b_id": "lvdQcvIFiWmoT7mfPCR3xHbM0LFX3Y1U",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not reaching out and warning an ex her (possibly mine) having a genetic blood disorder",
       "fields": {
@@ -21630,7 +21528,6 @@
     "option_b_id": "qavRbQDXq8ubBedUoNyUqzxwt1ZhRaNO",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "starting a friendship with another guy my boyfriends says \"he trust me but he doesn't trust him.\"",
       "fields": {
@@ -21842,7 +21739,6 @@
     "option_b_id": "WUqoxQEvznyOUaaGEvHnUGTIVKVuEoix",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not giving in when my elderly grandfather was clearly wrong about events that happened in the movie 'Tombstone'",
       "fields": {
@@ -22054,7 +21950,6 @@
     "option_b_id": "DlIrBmA52oYUk6dNMmSX2Bo0Xh1jlxSw",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling a guy I've been dating for about a month that I'd rather work on Valentine's Day than hang out with him, even after finding out his elaborate and romantic plan",
       "fields": {
@@ -22266,7 +22161,6 @@
     "option_b_id": "YzcP12rkSGMLVDpQ0rebuMvi837ENpf5",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "being upset that I'm being excluded from parties as a \"mature\" student\"",
       "fields": {
@@ -22478,7 +22372,6 @@
     "option_b_id": "bIla9M4j5r59db9l5L6aI1h0ThOdl9bE",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not telling my sister about my engagement before making the social media announcement",
       "fields": {
@@ -22690,7 +22583,6 @@
     "option_b_id": "t7ErkC1iH8NMUhsXK4KYjpybXS3CQ61b",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting to tell my 5 year old about same sex relationships",
       "fields": {
@@ -22902,7 +22794,6 @@
     "option_b_id": "3yQB6UhS6U0ANKep2ClwETS57Kl2E8yt",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "reporting a St. Bernard being kept in a Van for 16 hours (the officers were literally swarmed with roaches from a cracked window)...tonight the van owner brought in a new battery and immediately loaded up his wife and three toddlers. did I just make these babies sleep in a van",
       "fields": {
@@ -23114,7 +23005,6 @@
     "option_b_id": "xhQhAixGxGTAH47OUQLUMijcKYGga3PB",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "putting my feet on chairs",
       "fields": {
@@ -23326,7 +23216,6 @@
     "option_b_id": "W0jGSX5yAxkO0xJc5imxf5ZVAHdl2vGT",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "shutdowning a potential client for 1 response",
       "fields": {
@@ -23538,7 +23427,6 @@
     "option_b_id": "9gDZ06PuC0gJjBTggRe6H1GZekean3vn",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "being annoyed that my partner's father screwed us over by killing himself",
       "fields": {
@@ -23750,7 +23638,6 @@
     "option_b_id": "CI6W64mC60hekqzhQZs79f1VFIUad8dA",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not letting my uncle use my computer",
       "fields": {
@@ -23962,7 +23849,6 @@
     "option_b_id": "eTAUmXR1bMpK5RIAzZnOn1iI3Zzb1OnS",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "throwing palm tree leaves from my neighbor's trees back over their fence",
       "fields": {
@@ -24174,7 +24060,6 @@
     "option_b_id": "5Hv7iupQR5ZOjp3GHrro6GwoyAUiqgwc",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "leaking diesel on a customer's drive",
       "fields": {
@@ -24386,7 +24271,6 @@
     "option_b_id": "fPTcsvkxrYrMCMWQtx9zl9O9RMjNFFqS",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "making an art-related Facebook request",
       "fields": {
@@ -24598,7 +24482,6 @@
     "option_b_id": "0WIZnkfd03FZMlU0rZYxCbx9mhAhAmXN",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "shutting off a form and creating a new document",
       "fields": {
@@ -24810,7 +24693,6 @@
     "option_b_id": "8MERzGrma6eFggSLrRDBTFdGd2M4NhAY",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "letting my girlfriend choose whether she's going to watch the Endgame with me or with her friends",
       "fields": {
@@ -25022,7 +24904,6 @@
     "option_b_id": "Bt3Wx6ProMYK6G8jmDOe1992ku3j47CJ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "buying a 1983 item that was originally $1000, that is sold for $60-200 today, for $10 from an italian seller who does not know WTF it does",
       "fields": {
@@ -25234,7 +25115,6 @@
     "option_b_id": "Xma67MAAbPwJmI4chLVczlUH15NxTU8d",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "arguing with my mother on how she feeds her animals",
       "fields": {
@@ -25446,7 +25326,6 @@
     "option_b_id": "F6H5z9LLVCQlOH6MkFFyZh3oBRKDBhUM",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "continuing a relationship under the false pretense of marriage",
       "fields": {
@@ -25658,7 +25537,6 @@
     "option_b_id": "hfRbdexm26VQ35PHQGXGi30m2UQOAghb",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not wanting to play computer games with my cousin",
       "fields": {
@@ -25870,7 +25748,6 @@
     "option_b_id": "A34ZVVHiPBi9TgR7fotZVwbLtzgQta7t",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "taking rideshare to work due to poor weather conditions",
       "fields": {
@@ -26082,7 +25959,6 @@
     "option_b_id": "UC0mkLjDhjmxGh0LaZ6koqOm3MazPFhj",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "suggesting that is would be acceptable for my wife to agree for a photographer to use some faceless erotic photos she has done of her in her portfolio",
       "fields": {
@@ -26294,7 +26170,6 @@
     "option_b_id": "JUp2W8hGrvw6ahjz4WBse8FmYGX4Sxeq",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "making a pun about the country Chili to someone who was from Chili",
       "fields": {
@@ -26506,7 +26381,6 @@
     "option_b_id": "XoU7bOEmgwr2lTPdhKlFKz5xg75Yqiz8",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting to charge homeless people for cups of water",
       "fields": {
@@ -26718,7 +26592,6 @@
     "option_b_id": "b8vIstPesjbu1w8M5pbbk8H3R8CqAxGu",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not putting an item away in the right spot at Target",
       "fields": {
@@ -26930,7 +26803,6 @@
     "option_b_id": "X6qIL7RLs0DgwWb4bhEmzPbKeKHWYdLX",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "getting angry with my team mate because he planned to not show up for an important match",
       "fields": {
@@ -27142,7 +27014,6 @@
     "option_b_id": "IDjLQvnzP2VqH6QSMTH36wsvFJemLCUG",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling my bf he's made mistakes before in softball",
       "fields": {
@@ -27354,7 +27225,6 @@
     "option_b_id": "1hW7Uc7TO4r1Mvku5ntvYZHLDtSp9zUh",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not helping warning someone about a health issue",
       "fields": {
@@ -27566,7 +27436,6 @@
     "option_b_id": "TjBWN4Wi7YYUkeBR7rxCr5w3uMyq3B26",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "wanting a haircut",
       "fields": {
@@ -27778,7 +27647,6 @@
     "option_b_id": "i544Tq3Ap4B7vyac50uK8pMx9D5Fzge2",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking someone not to drink from a glass bottle in the hot tub",
       "fields": {
@@ -27990,7 +27858,6 @@
     "option_b_id": "wimGhztsU8f6utHqOmOdkKrHVtC6I9NK",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "supposedly mocking trans people, liberal arts majors, and minorities in a discussion about college",
       "fields": {
@@ -28202,7 +28069,6 @@
     "option_b_id": "DAt6jfYjYNn8PAhWrh0N898DUDWk3uEz",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not changing the movie that I chose for my birthday",
       "fields": {
@@ -28414,7 +28280,6 @@
     "option_b_id": "olymNooThhUQBuJOiSQ0zPzoRiGcDP6b",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "making plans on the weekend I said my friend and I would finish a song",
       "fields": {
@@ -28626,7 +28491,6 @@
     "option_b_id": "yFt1tDCXEzzSsCnt4UMz2s32aymblcGm",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "'ruining' a project because Koreans find it offensive",
       "fields": {
@@ -28838,7 +28702,6 @@
     "option_b_id": "uEhmTMgE5tB1VApPgRTAOisEMLcUu666",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not tipping for food I ordered for pickup at Denny's",
       "fields": {
@@ -29050,7 +28913,6 @@
     "option_b_id": "O00E0lno0sk5yMPU6DsMyMvB1GVOAc8M",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling my friend that Michael Scott from the Office gets assassinated at the end",
       "fields": {
@@ -29262,7 +29124,6 @@
     "option_b_id": "LhQhxfk6oHIPmR8NAUDOLKE1YUvWed5c",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "demanding one of the two garage spots in the house that I pay the same amount of rent for as my two roommates who have parked there for the past 3 years",
       "fields": {
@@ -29474,7 +29335,6 @@
     "option_b_id": "zY14KhPfYpJAPyq9BC9Sv2JpDZSHdLQv",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "passing a group of women waiting in line",
       "fields": {
@@ -29686,7 +29546,6 @@
     "option_b_id": "iYLhNHFUy6Tvqp4hM3tvttdOhbGdzZE9",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "talking to a frequent customer about her contraceptive options",
       "fields": {
@@ -29898,7 +29757,6 @@
     "option_b_id": "UALlEHqRzEEtRug5pFpqJQFyg7AWt6Di",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "bring my muslim family candy that contains pork-based ingredients",
       "fields": {
@@ -30110,7 +29968,6 @@
     "option_b_id": "yk4vTjbskVRw7Qd7Ri2o1uNW6UFIuinP",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "riding my bicycle around and blasting music",
       "fields": {
@@ -30322,7 +30179,6 @@
     "option_b_id": "79rM6OohoEgI0dEl8Bl93zjM1U88lwcC",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "quickly leaving the room whenever my family moves conversation to topics that I know will get uncomfortably heated",
       "fields": {
@@ -30534,7 +30390,6 @@
     "option_b_id": "DD15r30tWGC7sL42kp2Jhg9ZQuW4nqG6",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "trying to buy an item with $100 in coins",
       "fields": {
@@ -30746,7 +30601,6 @@
     "option_b_id": "Jg4DHdilz54V0k3sVx3pPnOpe76Gl68V",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "asking a indian guy if he compares himself to Ghandi",
       "fields": {
@@ -30958,7 +30812,6 @@
     "option_b_id": "R0yo6xCgWG9hmtO8cdGDDeZbdDZIk1eu",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "expecting my wife to do more of the housework because I bring in more income",
       "fields": {
@@ -31170,7 +31023,6 @@
     "option_b_id": "MbrYYC6Kcear8bBxKgHFQBRwBjwDYkEZ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "not reminding my boss to pay the severance package for a woman she fired",
       "fields": {
@@ -31382,7 +31234,6 @@
     "option_b_id": "8JWIwAS8jLqpZE9ByQdOAc6AduBmR9DQ",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "thinking you shouldn't sign up to be a bone marrow donor if you have no intention of going through with it",
       "fields": {
@@ -31594,7 +31445,6 @@
     "option_b_id": "MJ4MUmAPTYNnuhoH5EnetcXI0vLcspz9",
     "distance_stratum": "predefined",
     "cosine_distance": 0.0,
-    "prompt": "Which action is more ethical or understandable?",
     "option_a": {
       "label": "telling a joke about tearing an acl",
       "fields": {

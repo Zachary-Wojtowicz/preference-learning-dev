@@ -279,7 +279,6 @@ def build_trials(pairs, embeddings, V, mu, dimensions, options_lookup,
             "option_b_id": pair["option_b_id"],
             "distance_stratum": pair["distance_stratum"],
             "cosine_distance": pair["cosine_distance"],
-            "prompt": choice_context,
             "option_a": {
                 "label": display_a.get("title", f"Option A ({pair['option_a_id']})"),
                 "fields": display_a,
