@@ -1,6 +1,6 @@
 {
   "domain": "everyday moral dilemmas",
-  "choice_context": "Which action is more ethical or understandable?",
+  "choice_context": "Which action is more ethical / understandable?",
   "num_trials_per_participant": 20,
   "top_k_sliders": 5,
   "conditions": {
@@ -661,33 +661,33 @@
   ],
   "inference_categories": [
     {
-      "key": "reject",
-      "phrase": "reject",
-      "label": "Reject",
+      "key": "no_care",
+      "phrase": "don't care about",
+      "label": "Don't care about",
       "mult": -1.5
     },
     {
-      "key": "disapprove",
-      "phrase": "disapprove of",
-      "label": "Disapprove of",
+      "key": "care_little",
+      "phrase": "care little about",
+      "label": "Care little about",
       "mult": -1.0
     },
     {
-      "key": "indifferent",
-      "phrase": "are indifferent to",
-      "label": "Indifferent",
+      "key": "neutral",
+      "phrase": "are neutral about",
+      "label": "Neutral",
       "mult": 0.0
     },
     {
-      "key": "understand",
-      "phrase": "understand",
-      "label": "Understand",
+      "key": "care",
+      "phrase": "care about",
+      "label": "Care about",
       "mult": 1.0
     },
     {
-      "key": "endorse",
-      "phrase": "endorse",
-      "label": "Endorse",
+      "key": "deeply_care",
+      "phrase": "deeply care about",
+      "label": "Deeply care about",
       "mult": 1.5
     }
   ],
@@ -697,8 +697,8 @@
     "feedback": "<h1>Main Task</h1><p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>"
   },
   "comparison": {
-    "lambda_standard": 10.0,
-    "lambda_partial": 1.0,
+    "lambda_standard": 0.933,
+    "lambda_partial": 0.0933,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown": 10,
     "show_for_conditions": [
@@ -708,6 +708,11 @@
       "choice_checkboxes",
       "inference_affirm",
       "inference_categories"
-    ]
+    ],
+    "_diag_mean": 0.0933,
+    "eval_format": "top_bottom_bars",
+    "n_per_side": 5,
+    "most_valued_label": "Most valued",
+    "least_valued_label": "Least valued"
   }
 }

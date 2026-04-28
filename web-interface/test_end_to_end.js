@@ -117,7 +117,7 @@ const beta = F.fitNewtonPartial(U, y, G, beta0, lamP, 15);
 const scoresPart = F.scoresFromBeta(beta, G);
 const fitMs = Date.now() - t0;
 
-// Build inferences with quintile binning
+// Build inferences with quintile binning (legacy "inference_list" format)
 function buildInferences(scores, n) {
   const idxs = scores.map((s,i)=>({i,abs:Math.abs(s),s})).sort((a,b)=>b.abs-a.abs).slice(0,n);
   const ordered = idxs.slice().sort((a,b)=>b.s-a.s);
@@ -128,19 +128,42 @@ function buildInferences(scores, n) {
     return { dim:dims[item.i].name, category:cat.label, phrase:cat.phrase, score:item.s.toFixed(4) };
   });
 }
+function buildTopBottom(scores, nEach) {
+  const arr = scores.map((s,i)=>({i,s,name:dims[i].name||dims[i].label||('Dimension '+(i+1)),id:dims[i].id||('dim_'+dims[i].dimension_id)})).sort((a,b)=>b.s-a.s);
+  return { most: arr.slice(0,nEach), least: arr.slice(-nEach) };
+}
 
 const stdOnLeft = (hashStr(PID) % 2) === 0;
 const left  = stdOnLeft ? 'standard' : 'partial';
 const right = stdOnLeft ? 'partial'  : 'standard';
-const leftInfs  = buildInferences(stdOnLeft ? scoresStd : scoresPart, nShow);
-const rightInfs = buildInferences(stdOnLeft ? scoresPart : scoresStd, nShow);
+const fmt = cfg.comparison.eval_format || 'top_bottom_bars';
+const nPerSide = cfg.comparison.n_per_side || 5;
+let leftPayload, rightPayload;
+if (fmt === 'top_bottom_bars') {
+  const tbStd = buildTopBottom(scoresStd, nPerSide);
+  const tbPart = buildTopBottom(scoresPart, nPerSide);
+  leftPayload  = stdOnLeft ? tbStd : tbPart;
+  rightPayload = stdOnLeft ? tbPart : tbStd;
+} else {
+  const leftInfs  = buildInferences(stdOnLeft ? scoresStd : scoresPart, nShow);
+  const rightInfs = buildInferences(stdOnLeft ? scoresPart : scoresStd, nShow);
+  leftPayload = leftInfs; rightPayload = rightInfs;
+}
 
-console.log(`PID=${PID} (hash=${hashStr(PID)}, std on ${stdOnLeft?'left':'right'})`);
-console.log(`fit: ${fitMs}ms, lam_std=${lamS}, lam_part=${lamP}, n_show=${nShow}`);
-console.log(`\nSummary A (${left}):`);
-leftInfs.forEach(i => console.log(`  You ${i.phrase.padEnd(20)} ${i.dim.padEnd(30)} (${i.category})`));
-console.log(`\nSummary B (${right}):`);
-rightInfs.forEach(i => console.log(`  You ${i.phrase.padEnd(20)} ${i.dim.padEnd(30)} (${i.category})`));
+console.log(`PID=${PID}  std on ${stdOnLeft?'left':'right'}  format=${fmt}  fit=${fitMs}ms`);
+function showSummary(name, p) {
+  console.log(`\nSummary ${name}:`);
+  if (fmt === 'top_bottom_bars') {
+    console.log(`  ${cfg.comparison.most_valued_label||'Most valued'}:`);
+    p.most.forEach(d => console.log(`    ${d.name.padEnd(34)} ${d.s.toFixed(3).padStart(7)}`));
+    console.log(`  ${cfg.comparison.least_valued_label||'Least valued'}:`);
+    p.least.forEach(d => console.log(`    ${d.name.padEnd(34)} ${d.s.toFixed(3).padStart(7)}`));
+  } else {
+    p.forEach(i => console.log(`    You ${i.phrase.padEnd(20)} ${i.dim.padEnd(30)} (${i.category})`));
+  }
+}
+showSummary(`A (${left})`, leftPayload);
+showSummary(`B (${right})`, rightPayload);
 
 // Final payload structure (matches what the browser sends to Qualtrics)
 const payload = {
@@ -148,21 +171,35 @@ const payload = {
   condition: 'inference_categories',
   domain: DOMAIN,
   num_trials: N,
+  num_training: 0,
+  training_responses: [],
+  timestamp: new Date().toISOString(),
   responses,
   evaluation: {
+    eval_format: fmt,
     fit_duration_ms: fitMs,
     lambda_standard: lamS,
     lambda_partial: lamP,
-    n_dimensions_shown: nShow,
+    n_dimensions_shown: fmt==='top_bottom_bars' ? 2*nPerSide : nShow,
     has_multipliers: true,
     left_model: left,
     right_model: right,
-    left_inferences: leftInfs.map(i => ({ dim_name:i.dim, category_label:i.category, phrase:i.phrase, score:parseFloat(i.score) })),
-    right_inferences: rightInfs.map(i => ({ dim_name:i.dim, category_label:i.category, phrase:i.phrase, score:parseFloat(i.score) })),
+    left_payload: leftPayload,
+    right_payload: rightPayload,
     rating: 'B_better',
     rating_numeric: 2,
     response_time_ms: 12340,
+    started_at: Date.now(),
   },
 };
-console.log('\nPayload size:', JSON.stringify(payload).length, 'bytes');
-console.log('Eval block:\n', JSON.stringify(payload.evaluation, null, 2));
+const json = JSON.stringify(payload);
+console.log('\n=== Qualtrics payload diagnostics ===');
+console.log('Total payload size: ' + json.length + ' bytes (' + (json.length/1024).toFixed(1) + ' KB)');
+console.log('  responses[]:    ' + JSON.stringify(payload.responses).length + ' bytes (' + payload.responses.length + ' trials)');
+console.log('  evaluation:     ' + JSON.stringify(payload.evaluation).length + ' bytes');
+console.log('Required Qualtrics fields present:');
+['participant_id','condition','domain','num_trials','responses','evaluation','timestamp'].forEach(k=>{
+  console.log('  '+k.padEnd(20)+(payload[k]!==undefined?' OK':' MISSING'));
+});
+console.log('Qualtrics embedded data limit per field: ~20000 bytes');
+console.log(json.length < 20000 ? 'PASS: under 20 KB' : 'FAIL: payload exceeds 20 KB; will be truncated');

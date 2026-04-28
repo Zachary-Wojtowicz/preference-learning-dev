@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Qualtrics Smoke Test — Preference Learning Experiment</title>
+<style>
+  body{font-family:-apple-system,Segoe UI,sans-serif;background:#f4f5f7;margin:0;padding:1.5rem;color:#1a1a1a}
+  .container{max-width:1100px;margin:0 auto}
+  h1{font-size:1.4rem;margin:0 0 .8rem}
+  .panel{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1rem}
+  .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.8rem;align-items:end}
+  .controls label{display:block;font-size:.78rem;font-weight:600;color:#555;margin-bottom:.2rem}
+  .controls input,.controls select{width:100%;padding:.4rem;border:1px solid #ccc;border-radius:5px;font-size:.85rem}
+  .btn{background:#3b82f6;color:#fff;border:none;border-radius:5px;padding:.55rem 1.1rem;font-size:.85rem;cursor:pointer}
+  .btn:hover{background:#2563eb}
+  .btn-sec{background:#6b7280}.btn-sec:hover{background:#4b5563}
+  .frame-wrap{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:.5rem;margin-bottom:1rem}
+  iframe{width:100%;border:0;background:transparent;display:block}
+  .log{background:#1e293b;color:#e2e8f0;padding:.8rem 1rem;border-radius:6px;font-family:Menlo,monospace;font-size:.78rem;max-height:280px;overflow:auto;margin-bottom:1rem}
+  .log .log-msg{padding:.15rem 0}
+  .log .log-resize{color:#94a3b8}
+  .log .log-scroll{color:#fbbf24}
+  .log .log-complete{color:#34d399;font-weight:bold}
+  .log .log-other{color:#a78bfa}
+  .ed{display:grid;grid-template-columns:160px 1fr;gap:.4rem 1rem;font-size:.84rem;align-items:start}
+  .ed dt{font-weight:600;color:#555}
+  .ed dd{font-family:Menlo,monospace;font-size:.78rem;color:#222;margin:0;word-break:break-all;max-height:120px;overflow:auto;background:#f8fafc;padding:.3rem .5rem;border-radius:4px}
+  .status{padding:.45rem .8rem;border-radius:5px;font-size:.85rem;font-weight:500}
+  .status.ok{background:#d1fae5;color:#065f46}
+  .status.warn{background:#fef3c7;color:#92400e}
+  .status.fail{background:#fee2e2;color:#991b1b}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Qualtrics Smoke Test — Preference Learning Experiment</h1>
+  <div class="panel">
+    This page mimics the QID2 question block in Qualtrics. It builds the experiment URL with the embedded-data values, embeds the experiment in an iframe, listens for <code>experiment_resize</code> / <code>experiment_scroll_top</code> / <code>experiment_complete</code> postMessages, and stores the final payload as the <code>experiment_data</code> embedded field — the same path as the real survey.
+  </div>
+  <div class="panel">
+    <div class="controls">
+      <div><label>Domain</label>
+        <select id="domain">
+          <option value="movies_100">movies_100</option>
+          <option value="movies_50">movies_50</option>
+          <option value="scruples_dilemmas">scruples_dilemmas</option>
+          <option value="dailydilemmas">dailydilemmas</option>
+          <option value="wines_100">wines_100</option>
+        </select>
+      </div>
+      <div><label>Condition</label>
+        <select id="condition">
+          <option>choice_only</option>
+          <option>choice_readonly_sliders</option>
+          <option>choice_adjustable_sliders</option>
+          <option>choice_checkboxes</option>
+          <option>inference_affirm</option>
+          <option selected>inference_categories</option>
+        </select>
+      </div>
+      <div><label>Num trials (n)</label><input id="n" type="number" value="5" min="1"></div>
+      <div><label>Training trials (m)</label><input id="m" type="number" value="0" min="0"></div>
+      <div><label>Participant ID</label><input id="pid" value="QSMOKE_001"></div>
+      <div><button class="btn" id="launch">Launch experiment</button></div>
+      <div><button class="btn btn-sec" id="reset">Clear log</button></div>
+    </div>
+  </div>
+
+  <div id="status" class="panel"><span class="status warn">Idle. Click "Launch experiment" to begin.</span></div>
+
+  <div class="frame-wrap">
+    <iframe id="exp" src="about:blank"></iframe>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0;font-size:1rem">postMessage log</h3>
+    <div id="log" class="log"></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-top:0;font-size:1rem">Embedded data fields (what Qualtrics would record)</h3>
+    <dl class="ed" id="embedded">
+      <dt>condition</dt><dd id="ed-condition">—</dd>
+      <dt>domain</dt><dd id="ed-domain">—</dd>
+      <dt>num_trials</dt><dd id="ed-num_trials">—</dd>
+      <dt>experiment_url</dt><dd id="ed-experiment_url">—</dd>
+      <dt>experiment_data</dt><dd id="ed-experiment_data">—</dd>
+    </dl>
+  </div>
+</div>
+
+<script>
+var iframe = document.getElementById('exp');
+var logEl = document.getElementById('log');
+var statusEl = document.getElementById('status');
+var embedded = {
+  condition: 'inference_categories',
+  domain: 'movies_100',
+  num_trials: 5,
+  experiment_url: window.location.href.replace(/test_qualtrics_smoke\.html.*/,'index.html'),
+  experiment_data: '',
+};
+
+function updateEmbeddedUI(){
+  Object.keys(embedded).forEach(function(k){
+    var el = document.getElementById('ed-'+k);
+    if(!el) return;
+    var v = embedded[k];
+    if(typeof v === 'string' && v.length > 1500) v = v.substring(0,1500)+'... ['+ (embedded[k].length) +' chars total]';
+    el.textContent = v||'—';
+  });
+}
+
+function log(cls, msg){
+  var d = new Date(), ts = d.toLocaleTimeString()+'.'+String(d.getMilliseconds()).padStart(3,'0');
+  var div = document.createElement('div');
+  div.className = 'log-msg log-'+cls;
+  div.textContent = '['+ts+'] '+msg;
+  logEl.appendChild(div);
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+function setStatus(cls, msg){
+  statusEl.innerHTML = '<span class="status '+cls+'">'+msg+'</span>';
+}
+
+window.addEventListener('message', function(e){
+  if(!e.data || typeof e.data !== 'object') return;
+  var t = e.data.type;
+  if(t === 'experiment_resize'){
+    var h = e.data.height;
+    log('resize', 'experiment_resize: '+h+'px');
+    iframe.style.height = h+'px';
+  } else if(t === 'experiment_scroll_top'){
+    log('scroll', 'experiment_scroll_top');
+    window.scrollTo({top:0,behavior:'smooth'});
+  } else if(t === 'experiment_complete'){
+    log('complete','experiment_complete: payload received ('+JSON.stringify(e.data.payload).length+' bytes)');
+    embedded.experiment_data = JSON.stringify(e.data.payload);
+    updateEmbeddedUI();
+    var sz = embedded.experiment_data.length;
+    if(sz > 20000) setStatus('fail','FAIL: payload '+sz+' bytes exceeds Qualtrics 20 KB embedded-data limit.');
+    else if(!e.data.payload.evaluation) setStatus('warn','PASS but no evaluation block in payload.');
+    else if(e.data.payload.evaluation.skipped) setStatus('warn','PASS but evaluation skipped: '+e.data.payload.evaluation.skipped);
+    else setStatus('ok','PASS: payload received, '+sz+' bytes, evaluation block present.');
+  } else {
+    log('other','received unhandled message: '+JSON.stringify(e.data).substring(0,200));
+  }
+});
+
+document.getElementById('launch').addEventListener('click', function(){
+  embedded.condition  = document.getElementById('condition').value;
+  embedded.domain     = document.getElementById('domain').value;
+  embedded.num_trials = parseInt(document.getElementById('n').value, 10);
+  var pid = document.getElementById('pid').value || 'QSMOKE_'+Date.now();
+  var m   = document.getElementById('m').value;
+  var url = embedded.experiment_url + '?domain=' + encodeURIComponent(embedded.domain) +
+            '&pid=' + encodeURIComponent(pid) + '&condition=' + encodeURIComponent(embedded.condition) +
+            '&n=' + embedded.num_trials + (m!==''?('&m='+m):'');
+  log('other','launching iframe: '+url);
+  setStatus('warn','Loading experiment…');
+  embedded.experiment_data = '';
+  iframe.style.height = '600px';
+  iframe.src = url;
+  updateEmbeddedUI();
+});
+document.getElementById('reset').addEventListener('click', function(){ logEl.innerHTML = ''; });
+updateEmbeddedUI();
+</script>
+</body>
+</html>

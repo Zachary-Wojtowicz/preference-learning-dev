@@ -85,6 +85,16 @@
   .eval-list li{font-size:.92rem;padding:.45rem 0;border-bottom:1px solid #f0f0f0;line-height:1.4}
   .eval-list li:last-child{border-bottom:none}
   .eval-list .cat-word{color:#3b82f6;font-weight:600}
+  .eval-section-label{font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#666;margin:.4rem 0 .55rem;padding-bottom:.25rem;border-bottom:1px solid #eee}
+  .eval-section-label.bottom{margin-top:1rem}
+  .eval-bars{list-style:none;padding:0;margin:0}
+  .eval-bars li{display:grid;grid-template-columns:minmax(0,1fr) 140px;gap:.6rem;align-items:center;padding:.32rem 0;font-size:.86rem}
+  .eval-bars .dim-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#222}
+  .eval-bars .bar-track{height:10px;background:#f1f3f5;border-radius:5px;position:relative}
+  .eval-bars .bar-track::before{content:'';position:absolute;left:50%;top:-1px;bottom:-1px;width:1px;background:#cbd5e1;transform:translateX(-50%);z-index:1}
+  .eval-bars .bar-fill{position:absolute;height:100%;top:0;transition:width .3s ease}
+  .eval-bars .bar-fill.pos{left:50%;background:linear-gradient(90deg,#93c5fd,#1d4ed8);border-radius:0 5px 5px 0}
+  .eval-bars .bar-fill.neg{right:50%;background:linear-gradient(270deg,#fca5a5,#b91c1c);border-radius:5px 0 0 5px}
   .likert-prompt{text-align:center;font-size:1rem;font-weight:500;margin-bottom:.85rem;color:#333}
   .likert-row{display:grid;grid-template-columns:repeat(6,1fr);gap:.4rem;max-width:720px;margin:0 auto 1rem}
   .likert-btn{padding:.65rem .35rem;font-size:.78rem;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#333;cursor:pointer;transition:all .15s;text-align:center;line-height:1.25}
@@ -574,9 +584,9 @@ function buildEvalInputs(){
     U.push(tp.raw_projection.slice());
     y.push(responses[i].chosen==='a'?1:0);
   }
-  // Build D sub-matrix (T x T)
+  // Build D sub-matrix (T x T). delta_gram.bin is keyed on trials.json indices.
   var D=null;
-  if(deltaGram&&deltaGramN===trialProjections.length){
+  if(deltaGram&&deltaGramN===trials.length){
     D=[];for(var ii=0;ii<T;ii++){var row=new Array(T);var pi_i=poolIdx[ii];for(var jj=0;jj<T;jj++){var pi_j=poolIdx[jj];row[jj]=deltaGram[pi_i*deltaGramN+pi_j];}D.push(row);}
   }
   // Per-trial multipliers (only for inference conditions). Sums + counts per dim across visible-trials.
@@ -595,6 +605,15 @@ function buildEvalInputs(){
   return {U:U,y:y,D:D,K:K,T:T,dims:dims,dimIds:dimIds,mean:mean,hasMultipliers:hasMultipliers};
 }
 
+// Top-N most-positive and N most-negative dimensions for the bar-chart variant.
+function buildTopBottom(scores,dims,nEach){
+  var arr=scores.map(function(s,i){return{i:i,s:s,name:dims[i].name||dims[i].label||('Dimension '+(i+1)),id:dims[i].id||('dim_'+dims[i].dimension_id)};}).sort(function(a,b){return b.s-a.s;});
+  var most=arr.slice(0,nEach);
+  // Tail of arr is the most-negative end, sorted descending — natural reading order
+  // (smallest negative magnitude first, largest negative magnitude last) is just the slice.
+  var least=arr.slice(-nEach);
+  return {most:most,least:least};
+}
 // Map signed scores to top-N inferences with quintile categories within those N.
 function buildInferences(scores,dims,nShow){
   var idxs=scores.map(function(s,i){return{i:i,abs:Math.abs(s),s:s};}).sort(function(a,b){return b.abs-a.abs;}).slice(0,nShow);
@@ -635,6 +654,7 @@ function startEvaluation(){
   var lamS=(comp&&comp.lambda_standard)||10.0;
   var lamP=(comp&&comp.lambda_partial)||1.0;
   var nShow=(comp&&comp.n_dimensions_shown)||10;
+  var format=(comp&&comp.eval_format)||'inference_list';
   // Standard fit (kernel logistic regression in dual form)
   var t0=performance.now();
   var alpha=fitNewtonStandard(inputs.D,inputs.y,lamS,15);
@@ -650,22 +670,34 @@ function startEvaluation(){
   var beta=fitNewtonPartial(inputs.U,inputs.y,gramMatrix,beta0,lamP,15);
   var scoresPart=scoresFromBeta(beta,gramMatrix);
   var fitMs=Math.round(performance.now()-t0);
-  // Build inference lists
-  var nCap=Math.min(nShow,inputs.K);
-  var infsStd=buildInferences(scoresStd,inputs.dims,nCap);
-  var infsPart=buildInferences(scoresPart,inputs.dims,nCap);
-  // Counterbalance: hash(pid) % 2 → which side is standard
+  // Build presentation payload depending on format
+  var leftPayload,rightPayload;
   var stdOnLeft=(hashStr(participantId)%2)===0;
+  if(format==='top_bottom_bars'){
+    var nEach=(comp&&comp.n_per_side)||5;
+    nEach=Math.min(nEach,Math.floor(inputs.K/2));
+    var tbStd=buildTopBottom(scoresStd,inputs.dims,nEach);
+    var tbPart=buildTopBottom(scoresPart,inputs.dims,nEach);
+    leftPayload=stdOnLeft?tbStd:tbPart;
+    rightPayload=stdOnLeft?tbPart:tbStd;
+  }else{
+    var nCap=Math.min(nShow,inputs.K);
+    var infsStd=buildInferences(scoresStd,inputs.dims,nCap);
+    var infsPart=buildInferences(scoresPart,inputs.dims,nCap);
+    leftPayload=stdOnLeft?infsStd:infsPart;
+    rightPayload=stdOnLeft?infsPart:infsStd;
+  }
   evalState={
+    eval_format: format,
     fit_duration_ms: fitMs,
     lambda_standard: lamS,
     lambda_partial: lamP,
-    n_dimensions_shown: nCap,
+    n_dimensions_shown: format==='top_bottom_bars'?(2*((comp&&comp.n_per_side)||5)):Math.min(nShow,inputs.K),
     has_multipliers: inputs.hasMultipliers,
     left_model: stdOnLeft?'standard':'partial',
     right_model: stdOnLeft?'partial':'standard',
-    left_inferences: stdOnLeft?infsStd:infsPart,
-    right_inferences: stdOnLeft?infsPart:infsStd,
+    left_payload:  leftPayload,
+    right_payload: rightPayload,
     rating: null,
     rating_numeric: null,
     response_time_ms: null,
@@ -692,14 +724,41 @@ function renderInferenceList(infs){
   return h;
 }
 
+function renderTopBottomBars(tb,labels){
+  var maxAbs=0;
+  tb.most.concat(tb.least).forEach(function(d){if(Math.abs(d.s)>maxAbs)maxAbs=Math.abs(d.s);});
+  if(maxAbs<=0)maxAbs=1e-9;
+  function row(d,kind){
+    // Diverging bar: each side fills up to 50% of the track from the midpoint outward.
+    var pct=Math.max(1.5,Math.round(Math.abs(d.s)/maxAbs*50*10)/10);
+    return '<li><span class="dim-name">'+esc(d.name)+'</span><div class="bar-track"><div class="bar-fill '+kind+'" style="width:'+pct+'%"></div></div></li>';
+  }
+  var h='';
+  h+='<div class="eval-section-label">'+esc(labels.most)+'</div><ul class="eval-bars">';
+  tb.most.forEach(function(d){h+=row(d,'pos');});
+  h+='</ul>';
+  h+='<div class="eval-section-label bottom">'+esc(labels.least)+'</div><ul class="eval-bars">';
+  tb.least.forEach(function(d){h+=row(d,'neg');});
+  h+='</ul>';
+  return h;
+}
+
 function renderEvaluation(){
-  var st=evalState;
+  var st=evalState,comp=(experimentConfig&&experimentConfig.comparison)||{};
+  var labels={
+    most: comp.most_valued_label||'Most valued',
+    least: comp.least_valued_label||'Least valued',
+  };
   var h='<div class="eval-intro"><h1>Compare these two summaries</h1>';
   h+='<p>Below are two summaries of what we learned about your preferences from your choices.</p>';
   h+='<p>Read both, then tell us which feels more accurate.</p></div>';
   h+='<div class="eval-grid">';
-  h+='<div class="eval-col"><div class="eval-col-header">Summary A</div>'+renderInferenceList(st.left_inferences)+'</div>';
-  h+='<div class="eval-col"><div class="eval-col-header">Summary B</div>'+renderInferenceList(st.right_inferences)+'</div>';
+  function colHTML(label,payload){
+    if(st.eval_format==='top_bottom_bars')return renderTopBottomBars(payload,labels);
+    return renderInferenceList(payload);
+  }
+  h+='<div class="eval-col"><div class="eval-col-header">Summary A</div>'+colHTML('A',st.left_payload)+'</div>';
+  h+='<div class="eval-col"><div class="eval-col-header">Summary B</div>'+colHTML('B',st.right_payload)+'</div>';
   h+='</div>';
   h+='<div class="likert-prompt">Which summary feels more accurate?</div>';
   h+='<div class="likert-row">';

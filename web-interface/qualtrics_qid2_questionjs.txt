@@ -1,0 +1,82 @@
+// Canonical QID2 QuestionJS for the Preference Learning experiment
+// =====================================================================
+//
+// Paste this into Qualtrics: Survey > QID2 (the experiment block) >
+// JavaScript editor (gear icon on the question > Add JavaScript).
+// Replace any existing addOnload contents.
+//
+// This handles three postMessages from the embedded experiment:
+//   - experiment_resize       resizes the iframe to fit content
+//   - experiment_scroll_top   scrolls Qualtrics page back to the iframe top
+//   - experiment_complete     stores the payload as embedded data and advances
+//
+// It also constructs the iframe src from embedded-data fields:
+//   - experiment_url   base URL of index.html (no query params)
+//   - domain           e.g. movies_100
+//   - condition        e.g. inference_categories
+//   - num_trials       integer
+// Plus injects ResponseID as the participant id.
+//
+// Qualtrics interprets ${ as piped text. Inside this script we use template
+// literals via String.fromCharCode(96) where needed — but the simpler fix
+// is to avoid template literals entirely (we use string concatenation below).
+
+Qualtrics.SurveyEngine.addOnload(function () {
+  var qthis = this;
+  var QSE = Qualtrics.SurveyEngine;
+
+  // Read embedded data
+  var baseUrl   = QSE.getEmbeddedData('experiment_url') || '';
+  var domain    = QSE.getEmbeddedData('domain')         || 'movies_100';
+  var condition = QSE.getEmbeddedData('condition')      || 'inference_categories';
+  var nTrials   = QSE.getEmbeddedData('num_trials')     || '20';
+  var pid       = '${e://Field/ResponseID}';
+
+  // Build iframe URL
+  var url = baseUrl
+    + '?domain='    + encodeURIComponent(domain)
+    + '&pid='       + encodeURIComponent(pid)
+    + '&condition=' + encodeURIComponent(condition)
+    + '&n='         + encodeURIComponent(nTrials);
+
+  // Inject the iframe into the question container
+  var container = qthis.getQuestionContainer();
+  var iframe    = document.createElement('iframe');
+  iframe.id     = 'pref_learn_iframe';
+  iframe.src    = url;
+  iframe.style.cssText = 'width:100%;border:0;background:transparent;display:block;height:600px;';
+  iframe.setAttribute('allow', 'fullscreen');
+  container.appendChild(iframe);
+
+  // Hide the Qualtrics Next button until the experiment finishes
+  qthis.hideNextButton();
+
+  function handleMessage(e) {
+    if (!e.data || typeof e.data !== 'object') return;
+    var t = e.data.type;
+    if (t === 'experiment_resize') {
+      var h = parseInt(e.data.height, 10);
+      if (h && h > 100) iframe.style.height = h + 'px';
+    } else if (t === 'experiment_scroll_top') {
+      try {
+        var rect = iframe.getBoundingClientRect();
+        var top  = (window.pageYOffset || document.documentElement.scrollTop) + rect.top - 20;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      } catch (err) {}
+    } else if (t === 'experiment_complete') {
+      try {
+        QSE.setEmbeddedData('experiment_data', JSON.stringify(e.data.payload || {}));
+      } catch (err) {}
+      window.removeEventListener('message', handleMessage);
+      // Brief delay to let setEmbeddedData flush
+      setTimeout(function () { qthis.clickNextButton(); }, 250);
+    }
+  }
+  window.addEventListener('message', handleMessage);
+  qthis.questionclick = function () {};
+});
+
+// Optional: clean up listener on unload
+Qualtrics.SurveyEngine.addOnUnload(function () {
+  // Nothing — listener is removed when experiment_complete fires
+});

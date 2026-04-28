@@ -18,11 +18,11 @@ MOVIES_CATEGORIES = [
 ]
 
 SCRUPLES_CATEGORIES = [
-    {"key": "reject",     "phrase": "reject",           "label": "Reject",           "mult": -1.5},
-    {"key": "disapprove", "phrase": "disapprove of",    "label": "Disapprove of",    "mult": -1.0},
-    {"key": "indifferent","phrase": "are indifferent to","label": "Indifferent",      "mult":  0.0},
-    {"key": "understand", "phrase": "understand",       "label": "Understand",       "mult":  1.0},
-    {"key": "endorse",    "phrase": "endorse",          "label": "Endorse",          "mult":  1.5},
+    {"key": "no_care",     "phrase": "don’t care about", "label": "Don’t care about", "mult": -1.5},
+    {"key": "care_little", "phrase": "care little about",     "label": "Care little about",    "mult": -1.0},
+    {"key": "neutral",     "phrase": "are neutral about",     "label": "Neutral",              "mult":  0.0},
+    {"key": "care",        "phrase": "care about",            "label": "Care about",           "mult":  1.0},
+    {"key": "deeply_care", "phrase": "deeply care about",     "label": "Deeply care about",    "mult":  1.5},
 ]
 
 WINES_CATEGORIES = [
@@ -51,6 +51,10 @@ DEFAULT_COMPARISON = {
     "lambda_partial":      1.0,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown":  10,
+    "eval_format":         "top_bottom_bars",  # or "inference_list"
+    "n_per_side":          5,
+    "most_valued_label":   "Most valued",
+    "least_valued_label":  "Least valued",
     "show_for_conditions": [
         "choice_only", "choice_readonly_sliders", "choice_adjustable_sliders",
         "choice_checkboxes", "inference_affirm", "inference_categories",

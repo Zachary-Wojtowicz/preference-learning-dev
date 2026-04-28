@@ -472,8 +472,8 @@
     "feedback": "<h1>Main Task</h1><p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>"
   },
   "comparison": {
-    "lambda_standard": 10.0,
-    "lambda_partial": 1.0,
+    "lambda_standard": 10.252,
+    "lambda_partial": 1.0252,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown": 10,
     "show_for_conditions": [
@@ -483,6 +483,11 @@
       "choice_checkboxes",
       "inference_affirm",
       "inference_categories"
-    ]
+    ],
+    "_diag_mean": 1.0252,
+    "eval_format": "top_bottom_bars",
+    "n_per_side": 5,
+    "most_valued_label": "Most valued",
+    "least_valued_label": "Least valued"
   }
 }

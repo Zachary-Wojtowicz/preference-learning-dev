@@ -37,6 +37,14 @@ DOMAINS = {
         "parquet": "datasets/scruples_200/scruples_200-embedded.parquet",
         "id_col":  "action_id",
     },
+    "movies_50": {
+        "parquet": "datasets/movielens-32m-enriched-50-embedded.parquet",
+        "id_col":  "movie_id",
+    },
+    "dailydilemmas": {
+        "parquet": "datasets/dailydilemmas/selected_actions-embedded.parquet",
+        "id_col":  "action_id",
+    },
 }
 
 DEFAULT_COMPARISON = {
@@ -44,11 +52,19 @@ DEFAULT_COMPARISON = {
     "lambda_partial":      1.0,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown":  10,
+    "eval_format":         "top_bottom_bars",  # or "inference_list"
+    "n_per_side":          5,                 # used when eval_format = "top_bottom_bars"
+    "most_valued_label":   "Most valued",
+    "least_valued_label":  "Least valued",
     "show_for_conditions": [
         "choice_only", "choice_readonly_sliders", "choice_adjustable_sliders",
         "choice_checkboxes", "inference_affirm", "inference_categories",
     ],
 }
+# Anchor lambdas to the empirical D-diagonal scale: lambda_standard scales ~ diag_mean·T,
+# but we keep the multiplier modest so the prior never dominates the choice signal.
+# Reference scale: movies_100 has diag_mean ~ 1.0 → lambda_standard = 10.
+LAMBDA_REF_DIAG_MEAN = 1.0
 
 def export_domain(domain: str):
     cfg = DOMAINS[domain]
@@ -100,9 +116,16 @@ def export_domain(domain: str):
     ec.setdefault("comparison", {})
     for k, v in DEFAULT_COMPARISON.items():
         ec["comparison"].setdefault(k, v)
+    # Auto-scale lambdas to this domain's D scale (don't override if user set them manually)
+    diag_mean = float(np.diag(D).mean())
+    scale = diag_mean / LAMBDA_REF_DIAG_MEAN
+    ec["comparison"]["lambda_standard"] = round(DEFAULT_COMPARISON["lambda_standard"] * scale, 4)
+    ec["comparison"]["lambda_partial"]  = round(DEFAULT_COMPARISON["lambda_partial"]  * scale, 4)
+    ec["comparison"]["_diag_mean"]      = round(diag_mean, 4)
     with open(cfg_path, "w") as f:
         json.dump(ec, f, indent=2)
-    print(f"  [{domain}] updated experiment_config.json comparison block")
+    print(f"  [{domain}] lambdas auto-scaled to diag_mean={diag_mean:.4f}: "
+          f"lam_std={ec['comparison']['lambda_standard']}, lam_part={ec['comparison']['lambda_partial']}")
 
 if __name__ == "__main__":
     targets = sys.argv[1:] if len(sys.argv) > 1 else list(DOMAINS.keys())
