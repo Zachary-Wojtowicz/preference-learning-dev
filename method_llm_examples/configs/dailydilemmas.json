@@ -1,0 +1,11 @@
+{
+  "domain": "everyday moral dilemmas",
+  "domain_item": "action",
+  "choice_context": "Which action is more ethical or understandable?",
+  "input_path": "datasets/dailydilemmas/selected_actions.csv",
+  "template_path": "datasets/dailydilemmas_prompt.txt",
+  "text_column": "text",
+  "display_column": "description",
+  "id_column": "action_id",
+  "max_options": 300
+}
