@@ -224,7 +224,6 @@ function renderTrainingTrial(){
   if(dim.scoring_guidance)h+='<div class="dim-card-guidance">'+esc(dim.scoring_guidance)+'</div>';
   h+='</div>';
   if(trial.situation)h+='<div class="situation">'+esc(trial.situation)+'</div>';
-  if(trial.situation)h+='<div class="situation">'+esc(trial.situation)+'</div>';
   h+='<div class="prompt">Which option is more <strong>'+hi+'</strong>?</div>';
   h+='<div class="options">'+buildCard('a',trial.option_a)+buildCard('b',trial.option_b)+'</div>';
   h+='<div id="trainingFeedback"></div>';
