@@ -299,6 +299,8 @@ def build_trials(pairs, embeddings, V, mu, dimensions, options_lookup,
             trial["gold_label"] = pair["gold_label"]
         if "controversial" in pair:
             trial["controversial"] = pair["controversial"]
+        if pair.get("situation"):
+            trial["situation"] = pair["situation"]
         trials.append(trial)
 
     return trials, slider_meta
@@ -519,6 +521,11 @@ def main():
                 "dilemma_id": row.get("dilemma_id", ""),
                 "gold_label": int(row["gold_label"]) if row.get("gold_label", "") not in ("", "None") else -1,
                 "controversial": row.get("controversial", "").lower() in ("true", "1", "yes"),
+                # Shared situation/context to render once above both option cards
+                "situation": (row.get("dilemma_situation")
+                              or row.get("context")
+                              or row.get("situation")
+                              or ""),
             })
         print(f"  Loaded {len(pairs)} pairs (skipped {len(pair_rows) - len(pairs)} with missing embeddings)")
     else:

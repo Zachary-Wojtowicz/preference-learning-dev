@@ -40,8 +40,22 @@ DOMAIN_CATEGORIES = {
     "moral dilemmas":  SCRUPLES_CATEGORIES,
     "scruples":        SCRUPLES_CATEGORIES,
     "scruples_dilemmas": SCRUPLES_CATEGORIES,
+    "everyday moral dilemmas": SCRUPLES_CATEGORIES,
+    "dailydilemmas":   SCRUPLES_CATEGORIES,
     "wines":           WINES_CATEGORIES,
     "wines_100":       WINES_CATEGORIES,
+}
+
+DEFAULT_INSTRUCTIONS = {
+    "training": (
+        "<h1>Practice</h1>"
+        "<p>Before the main task, you’ll do a few short <strong>practice trials</strong> to learn the preference dimensions used in this study.</p>"
+        "<p>Each practice trial shows one dimension and asks which option is more aligned with it. After you click, we’ll tell you whether you were right.</p>"
+    ),
+    "feedback": (
+        "<h1>Main Task</h1>"
+        "<p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>"
+    ),
 }
 
 INFERENCE_CONDITIONS = {
@@ -90,6 +104,12 @@ for path in paths:
     # Defaults for trial counts (preserve existing if already set)
     cfg.setdefault("num_trials_per_participant", 20)
     cfg.setdefault("num_training_trials", 5)
+
+    # Default instructions (preserve any existing per-domain edits)
+    ins = cfg.get("instructions") or {}
+    for k, v in DEFAULT_INSTRUCTIONS.items():
+        ins.setdefault(k, v)
+    cfg["instructions"] = ins
 
     with open(path, "w") as f:
         json.dump(cfg, f, indent=2)

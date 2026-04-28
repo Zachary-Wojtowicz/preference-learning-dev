@@ -118,6 +118,21 @@ The first `M` dimensions in `experiment_config.dimensions` (in file order) are u
 
 Set `m=0` in the URL to skip practice trials entirely.
 
+## Instructions Screens
+
+There are **two instruction screens**, both driven by `experiment_config.json` → `instructions`:
+
+| Phase | Config key | When shown |
+|-------|------------|------------|
+| Practice | `instructions.training` | Before the practice trials (skipped if `M=0`) |
+| Main task | `instructions.feedback` | Before the feedback trials (always shown) |
+
+Both values are HTML strings — edit them directly in `outputs/<domain>/experiment_config.json` for per-domain wording. To change defaults globally, edit `DEFAULT_INSTRUCTIONS` in `update_configs.py` and re-run it (`python3 update_configs.py`). Defaults will only fill in missing keys; per-domain edits are preserved.
+
+The `instructions.feedback` HTML is rendered, then a **condition-specific note** is auto-appended (the existing `inst-highlight` block that explains the feedback mechanism — sliders / checkboxes / inferences). After that, a "There are N trials" sentence is appended automatically. You don't need to write either of those into your custom HTML.
+
+Fallbacks live in `index.html` as `DEFAULT_TRAINING_INSTRUCTIONS` / `DEFAULT_FEEDBACK_INSTRUCTIONS` constants if the config key is missing.
+
 ## Option Card Display
 
 Option cards render structured fields from trial data. Several fields are hidden from display:

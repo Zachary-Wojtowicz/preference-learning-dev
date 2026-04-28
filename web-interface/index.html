@@ -19,6 +19,7 @@
   .progress-bar-track{height:4px;background:#e0e0e0;border-radius:2px;margin-bottom:1.5rem}
   .progress-bar-fill{height:100%;background:#3b82f6;border-radius:2px;transition:width .3s}
   .prompt{text-align:center;font-size:1.05rem;font-weight:500;margin-bottom:1.25rem;color:#444}
+  .situation{background:#f8f9fa;border-left:3px solid #3b82f6;border-radius:6px;padding:.85rem 1rem;margin-bottom:1rem;font-size:.95rem;line-height:1.5;color:#333}
   .options{display:flex;gap:1rem}
   .option-card{flex:1;background:#fff;border:2px solid #ddd;border-radius:8px;padding:1.25rem;cursor:pointer;transition:border-color .15s,opacity .15s,box-shadow .15s}
   .option-card:hover{border-color:#999}.option-card.selected{border-color:#3b82f6;box-shadow:0 0 0 1px #3b82f6}.option-card.dimmed{opacity:.5}
@@ -113,7 +114,7 @@ var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
 var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
 var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeedback=20,numTraining=5;
-var HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle','points','price','taster_name']);
+var HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle','points','price','taster_name','dilemma_id','topic_group','situation','values','consequence']);
 var FIELD_LABELS={plot_summary:'Plot',genres:'Genres',director:'Director',stars:'Stars',variety:'Variety',country:'Country',province:'Province',points:'Rating',price:'Price',description:'Description',user_prompt:'Question',assistant_response:'Response',winery:'Winery',designation:'Designation',region_1:'Region',taster_name:'Reviewer'};
 var DEFAULT_CATEGORIES=[
   {key:'skip',phrase:'prefer to skip',label:'Prefer to skip',mult:-1.5},
@@ -137,6 +138,20 @@ function catFromEff(v){
 function catPhrase(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.phrase:k;}
 function catMult(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.mult:0;}
 function infMode(){return condition?condition.show_inferences:false;}
+// Fields that, when identical on both options of a pair, should render once above
+// the cards as shared context (e.g., a dilemma's situation) rather than twice.
+var LIFTABLE_FIELDS=['situation'];
+function liftSharedFields(trial){
+  if(!trial||!trial.option_a||!trial.option_b)return;
+  var fa=trial.option_a.fields||{},fb=trial.option_b.fields||{};
+  LIFTABLE_FIELDS.forEach(function(k){
+    if(trial[k]!=null)return;
+    var va=fa[k],vb=fb[k];
+    if(va==null||vb==null)return;
+    if(String(va)!==String(vb))return;
+    trial[k]=va;delete fa[k];delete fb[k];
+  });
+}
 function getUrlParams(){var p=new URLSearchParams(window.location.search);var mRaw=p.get('m');return{pid:p.get('pid')||'',condition:p.get('condition')||'',n:parseInt(p.get('n'),10)||0,m:(mRaw==null||mRaw==='')?null:parseInt(mRaw,10),domain:p.get('domain')||'',post:p.get('post')||''};}
 var urlParams=getUrlParams();domainKey=urlParams.domain||'movies_100';postUrl=urlParams.post||null;
 var basePath=domainKey?'outputs/'+domainKey+'/':'';
@@ -145,6 +160,7 @@ Promise.all([
   fetch(basePath+'experiment_config.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null})
 ]).then(function(arr){
   trials=arr[0];experimentConfig=arr[1];
+  trials.forEach(liftSharedFields);
   if(arr[1]&&arr[1].gram_matrix)gramMatrix=arr[1].gram_matrix;
   if(arr[1]&&arr[1].top_k_sliders)topKSliders=arr[1].top_k_sliders;
   loadCategories();
@@ -157,7 +173,7 @@ Promise.all([
     startExperiment();
   }else renderSetup();
 }).catch(function(){app.innerHTML='<div class="error-msg">Could not load trials.json.<br><code>cd web-interface && python3 -m http.server 8080</code></div>';});
-var KNOWN_DOMAINS=[{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
+var KNOWN_DOMAINS=[{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'dailydilemmas',label:'Daily Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
 function buildFC(){return{
   choice_only:{label:'Choice Only',show_sliders:false,sliders_adjustable:false,show_checkboxes:false,show_inferences:false},
   choice_readonly_sliders:{label:'Choice + Read-Only Sliders',show_sliders:true,sliders_adjustable:false,show_checkboxes:false,show_inferences:false},
@@ -191,7 +207,8 @@ function startExperiment(){
   assignedTrialIndices=shuffle(pool,rng).slice(0,numFeedback);
   currentStep=0;trainingStep=0;inTraining=trainingPlan.length>0;
   responses=[];trainingResponses=[];
-  renderInstructions();
+  if(inTraining)renderTrainingInstructions();
+  else renderFeedbackInstructions();
 }
 function renderTrainingTrial(){
   var plan=trainingPlan[trainingStep];if(!plan){inTraining=false;renderTrial();return;}
@@ -206,6 +223,8 @@ function renderTrainingTrial(){
   if(dim.high_label)h+='<div class="dim-card-row"><strong>High end:</strong> '+esc(dim.high_label)+'</div>';
   if(dim.scoring_guidance)h+='<div class="dim-card-guidance">'+esc(dim.scoring_guidance)+'</div>';
   h+='</div>';
+  if(trial.situation)h+='<div class="situation">'+esc(trial.situation)+'</div>';
+  if(trial.situation)h+='<div class="situation">'+esc(trial.situation)+'</div>';
   h+='<div class="prompt">Which option is more <strong>'+hi+'</strong>?</div>';
   h+='<div class="options">'+buildCard('a',trial.option_a)+buildCard('b',trial.option_b)+'</div>';
   h+='<div id="trainingFeedback"></div>';
@@ -232,7 +251,7 @@ function renderTrainingTrial(){
       document.getElementById('trainNextBtn').addEventListener('click',function(){
         trainingStep++;
         if(trainingStep<trainingPlan.length){renderTrainingTrial();}
-        else{inTraining=false;renderTrial();}
+        else{inTraining=false;renderFeedbackInstructions();}
         window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
       });
     });
@@ -263,30 +282,46 @@ function renderSetup(){
     startExperiment();
   });
 }
-function renderInstructions(){
+var DEFAULT_TRAINING_INSTRUCTIONS='<h1>Practice</h1>'
+  +'<p>Before the main task, you\u2019ll do a few short <strong>practice trials</strong> to learn the preference dimensions used in this study.</p>'
+  +'<p>Each practice trial shows one dimension and asks which option is more aligned with it. After you click, we\u2019ll tell you whether you were right.</p>';
+var DEFAULT_FEEDBACK_INSTRUCTIONS='<h1>Main Task</h1>'
+  +'<p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>';
+function getConditionNote(){
   var topCat=CATEGORIES[CATEGORIES.length-1]||CATEGORIES[0];
-  var h='<div class="instructions"><h1>Instructions</h1>';
-  h+='<p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>';
   if(condition.show_sliders&&!condition.sliders_adjustable)
-    h+='<div class="inst-highlight">After your choice, we\u2019ll show dimension scores. Review them, then click Submit.</div>';
-  else if(condition.show_sliders&&condition.sliders_adjustable)
-    h+='<div class="inst-highlight">After your choice, <strong>adjust the sliders</strong> to reflect why you chose as you did, then click Submit.</div>';
-  else if(condition.show_checkboxes)
-    h+='<div class="inst-highlight"><strong>Check the boxes</strong> next to dimensions that mattered, then click Submit.</div>';
-  else if(infMode()==='affirm')
-    h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> For each:<ul style="margin:.5rem 0 0 1.2rem"><li><strong>Remove</strong> \u2014 not relevant</li><li><strong>Affirm</strong> \u2014 we got it right</li></ul></div>';
-  else if(infMode()==='categories')
-    h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> We\u2019ll pre-select a level. You can <strong>change it</strong> to better match how you feel. Then click Submit.</div>';
-  if(trainingPlan.length>0){
-    h+='<p>You will first complete <strong>'+trainingPlan.length+' practice trials</strong> (with feedback) to learn the dimensions, then <strong>'+assignedTrialIndices.length+' main trials</strong>. Take your time.</p>';
-  }else{
-    h+='<p>There are '+assignedTrialIndices.length+' trials. Take your time.</p>';
-  }
-  h+='<div class="submit-row"><button class="btn" id="beginBtn">Begin</button></div></div>';
-  app.innerHTML=h;
+    return '<div class="inst-highlight">After your choice, we\u2019ll show dimension scores. Review them, then click Submit.</div>';
+  if(condition.show_sliders&&condition.sliders_adjustable)
+    return '<div class="inst-highlight">After your choice, <strong>adjust the sliders</strong> to reflect why you chose as you did, then click Submit.</div>';
+  if(condition.show_checkboxes)
+    return '<div class="inst-highlight"><strong>Check the boxes</strong> next to dimensions that mattered, then click Submit.</div>';
+  if(infMode()==='affirm')
+    return '<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> For each:<ul style="margin:.5rem 0 0 1.2rem"><li><strong>Remove</strong> \u2014 not relevant</li><li><strong>Affirm</strong> \u2014 we got it right</li></ul></div>';
+  if(infMode()==='categories')
+    return '<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> We\u2019ll pre-select a level. You can <strong>change it</strong> to better match how you feel. Then click Submit.</div>';
+  return '';
+}
+function getInstructionsHTML(key,def){
+  var ins=experimentConfig&&experimentConfig.instructions;
+  return (ins&&typeof ins[key]==='string'&&ins[key])||def;
+}
+function renderTrainingInstructions(){
+  var body=getInstructionsHTML('training',DEFAULT_TRAINING_INSTRUCTIONS);
+  var count='<p>You will see <strong>'+trainingPlan.length+' practice trial'+(trainingPlan.length===1?'':'s')+'</strong>, then continue to the main task.</p>';
+  app.innerHTML='<div class="instructions">'+body+count+'<div class="submit-row"><button class="btn" id="beginBtn">Begin practice</button></div></div>';
   document.getElementById('beginBtn').addEventListener('click',function(){
-    if(inTraining&&trainingPlan.length>0)renderTrainingTrial();
-    else renderTrial();
+    renderTrainingTrial();
+    window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
+  });
+}
+function renderFeedbackInstructions(){
+  var body=getInstructionsHTML('feedback',DEFAULT_FEEDBACK_INSTRUCTIONS);
+  var note=getConditionNote();
+  var count='<p>There are <strong>'+assignedTrialIndices.length+'</strong> trials. Take your time.</p>';
+  app.innerHTML='<div class="instructions">'+body+note+count+'<div class="submit-row"><button class="btn" id="beginBtn">Begin</button></div></div>';
+  document.getElementById('beginBtn').addEventListener('click',function(){
+    renderTrial();
+    window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
   });
 }
 function getTopK(sl,key,k){var vk=key==='a'?'value_if_a':'value_if_b';return sl.map(function(s,i){return{i:i,av:Math.abs(s[vk])}}).sort(function(a,b){return b.av-a.av}).slice(0,k).map(function(x){return x.i}).sort(function(a,b){return a-b});}
@@ -296,6 +331,7 @@ function renderTrial(){
   var h='<div class="progress">Trial '+(currentStep+1)+' of '+total+'</div>';
   h+='<div class="progress-bar-track"><div class="progress-bar-fill" style="width:'+pct+'%"></div></div>';
   var promptText=(experimentConfig&&experimentConfig.choice_context)||trial.prompt||'';
+  if(trial.situation)h+='<div class="situation">'+esc(trial.situation)+'</div>';
   if(promptText)h+='<div class="prompt">'+esc(promptText)+'</div>';
   h+='<div class="options">'+buildCard('a',trial.option_a)+buildCard('b',trial.option_b)+'</div>';
   if(condition.show_sliders&&trial.sliders&&trial.sliders.length>0)
