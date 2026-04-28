@@ -150,15 +150,20 @@ def main():
     ].reset_index(drop=True)
 
     # Build predefined_pairs.json for dimension discovery
+    has_gold = "gold_label" in selected_pairs_df.columns
+    has_controversial = "controversial" in selected_pairs_df.columns
     predefined_pairs = []
     for _, row in selected_pairs_df.iterrows():
-        predefined_pairs.append({
+        entry = {
             "option_a_id": str(row["action_0_id"]),
             "option_b_id": str(row["action_1_id"]),
             "dilemma_id": str(row["dilemma_id"]),
-            "gold_label": int(row["gold_label"]) if pd.notna(row["gold_label"]) else -1,
-            "controversial": bool(row["controversial"]),
-        })
+        }
+        if has_gold:
+            entry["gold_label"] = int(row["gold_label"]) if pd.notna(row["gold_label"]) else -1
+        if has_controversial:
+            entry["controversial"] = bool(row["controversial"])
+        predefined_pairs.append(entry)
 
     # Write outputs
     os.makedirs(args.output_dir, exist_ok=True)
@@ -180,14 +185,15 @@ def main():
         json.dump(predefined_pairs, f, indent=2)
 
     # Summary
-    n_controversial = sum(1 for _, r in selected_pairs_df.iterrows()
-                          if r["controversial"])
     print(f"\nWrote {len(selected_pairs_df)} pairs to {pairs_path}")
     print(f"Wrote {len(selected_actions_df)} actions to {actions_csv_path}")
     print(f"Wrote {len(selected_actions_df)} actions to {actions_pq_path}")
     print(f"Wrote {len(predefined_pairs)} pairs to {pairs_json_path}")
-    print(f"  Controversial: {n_controversial} "
-          f"({100*n_controversial/len(selected_pairs_df):.1f}%)")
+    if has_controversial:
+        n_controversial = sum(1 for _, r in selected_pairs_df.iterrows()
+                              if r["controversial"])
+        print(f"  Controversial: {n_controversial} "
+              f"({100*n_controversial/len(selected_pairs_df):.1f}%)")
     print(f"  Unique actions: {len(selected_action_ids)}")
 
 

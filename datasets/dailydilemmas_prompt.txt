@@ -1,0 +1,3 @@
+Situation: {situation}
+Action: {description}
+Consequence: {consequence}

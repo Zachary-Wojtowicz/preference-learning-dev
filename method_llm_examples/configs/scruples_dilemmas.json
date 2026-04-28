@@ -1,7 +1,7 @@
 {
   "domain": "moral dilemmas",
   "domain_item": "action",
-  "choice_context": "Consider these two actions from the same real-life situation. Which action is more ethical?",
+  "choice_context": "Which action is more ethical or understandable?",
   "input_path": "datasets/scruples_dilemmas/selected_actions.csv",
   "template_path": "datasets/scruples_prompt.txt",
   "text_column": "description",

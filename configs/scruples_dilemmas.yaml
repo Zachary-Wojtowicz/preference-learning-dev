@@ -11,7 +11,7 @@
 name: scruples_dilemmas
 domain: moral dilemmas
 domain_item: action
-choice_context: Consider these two actions from the same real-life situation. Which action is more ethical?
+choice_context: Which action is more ethical or understandable?
 
 # Input data — individual actions for embedding and scoring
 input_csv: datasets/scruples-dilemmas-actions.csv

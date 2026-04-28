@@ -47,6 +47,11 @@ def parse_args():
         add_sub(name)
     for name in ["judge-pairs", "run-all"]:
         subparsers.choices[name].add_argument("--appearances-per-option", type=int)
+        subparsers.choices[name].add_argument(
+            "--predefined-pairs", default=None,
+            help="Path to predefined_pairs.json. When set, every listed pair is "
+                 "guaranteed to be judged (Mode C: hybrid sampling for paired-dilemma datasets).",
+        )
     for name in ["fit-bt", "run-all"]:
         subparsers.choices[name].add_argument("--learning-rate", type=float, default=0.05)
         subparsers.choices[name].add_argument("--steps", type=int, default=1500)
@@ -558,7 +563,20 @@ def score_options(config, client, model, output_dir):
     return csv_path
 
 
-def sample_pairs(option_ids, appearances_per_option, seed, exclude=None, remaining_by_option=None):
+def sample_pairs(option_ids, appearances_per_option, seed, exclude=None,
+                 remaining_by_option=None, required_pairs=None):
+    """Sample option pairs for pairwise judgment.
+
+    If ``required_pairs`` is provided (Mode C: hybrid), each pair is pre-seeded
+    into the output so it is guaranteed to receive a judgment, and the random
+    portion of the sample is drawn from the residual appearance budget. This
+    is used for paired-dilemma datasets (MoralChoice, DailyDilemmas) where the
+    within-pair contrast is the diagnostic signal of interest, while
+    cross-pool comparisons remain necessary for global BT identifiability.
+
+    Required pairs already present in ``exclude`` (judged on a prior run) are
+    skipped, so this is resume-safe.
+    """
     rng = random.Random(seed)
     if remaining_by_option is not None:
         target = {oid: max(0, int(remaining_by_option.get(oid, 0))) for oid in option_ids}
@@ -567,6 +585,21 @@ def sample_pairs(option_ids, appearances_per_option, seed, exclude=None, remaini
     seen = set(exclude) if exclude else set()
     pairs = []
     safety = 0
+
+    if required_pairs:
+        option_set = set(option_ids)
+        for a, b in required_pairs:
+            if a not in option_set or b not in option_set or a == b:
+                continue
+            key = tuple(sorted((a, b)))
+            if key in seen:
+                continue
+            seen.add(key)
+            pairs.append((a, b))
+            if a in target:
+                target[a] -= 1
+            if b in target:
+                target[b] -= 1
 
     while any(c > 0 for c in target.values()):
         remaining = sorted(((k, v) for k, v in target.items() if v > 0), key=lambda x: (-x[1], x[0]))
@@ -601,7 +634,8 @@ def _last_pair_blocked_by_existing_judgment(remaining_by_option, exclude):
     return tuple(sorted((u, v))) in exclude
 
 
-def judge_pairs(config, client, model, output_dir, appearances_per_option, seed):
+def judge_pairs(config, client, model, output_dir, appearances_per_option, seed,
+                predefined_pairs_path=None):
     options = load_options(config)
     lookup = {opt.option_id: opt for opt in options}
     dimensions = load_dimensions(output_dir / "dimensions.json")
@@ -611,6 +645,14 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
     retries = int(config.get("max_retries", DEFAULT_MAX_RETRIES))
     pair_count = appearances_per_option or config.get("pair_appearances_per_option", 30)
     double_judge = bool(config.get("double_judge_pairs", True))
+
+    predefined_pairs_path = predefined_pairs_path or config.get("predefined_pairs_path")
+    required_pairs = None
+    if predefined_pairs_path:
+        raw = load_json(Path(predefined_pairs_path))
+        required_pairs = [(p["option_a_id"], p["option_b_id"]) for p in raw]
+        print(f"[judge-pairs] Loaded {len(required_pairs)} predefined pairs (Mode C: "
+              f"hybrid sampling) from {predefined_pairs_path}", flush=True)
 
     csv_path = output_dir / "pairwise_judgments.csv"
     existing_rows = []
@@ -692,6 +734,7 @@ def judge_pairs(config, client, model, output_dir, appearances_per_option, seed)
             effective_seed + int(dim["id"]),
             exclude=exclude,
             remaining_by_option=remaining_by_option,
+            required_pairs=required_pairs,
         )
         if not dim_pairs:
             need = sum(remaining_by_option.values())
@@ -957,7 +1000,8 @@ def run_all(args, config, output_dir):
     client = make_client_or_pool(args.base_url, args.api_key, args.api_provider)
     generate_dimensions(config, client, args.model, output_dir)
     score_options(config, client, args.model, output_dir)
-    judge_pairs(config, client, args.model, output_dir, args.appearances_per_option, args.seed)
+    judge_pairs(config, client, args.model, output_dir, args.appearances_per_option, args.seed,
+                predefined_pairs_path=getattr(args, "predefined_pairs", None))
     fit_bt(config, output_dir, lr=args.learning_rate, steps=args.steps)
     build_summary(config, output_dir)
 
@@ -977,7 +1021,8 @@ def main():
     elif args.command == "score-options":
         score_options(config, client_fn(), args.model, output_dir)
     elif args.command == "judge-pairs":
-        judge_pairs(config, client_fn(), args.model, output_dir, args.appearances_per_option, args.seed)
+        judge_pairs(config, client_fn(), args.model, output_dir, args.appearances_per_option, args.seed,
+                    predefined_pairs_path=getattr(args, "predefined_pairs", None))
     elif args.command == "fit-bt":
         fit_bt(config, output_dir, args.learning_rate, args.steps)
         build_summary(config, output_dir)
