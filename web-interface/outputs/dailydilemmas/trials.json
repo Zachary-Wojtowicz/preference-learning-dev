@@ -218,7 +218,8 @@
     ],
     "dilemma_id": "dd_40068",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You have been diagnosed with a serious illness and your doctor recommends an experimental treatment that could potentially save your life. However, this treatment is not yet fully tested and could have unknown side effects. Should you go ahead with the experimental treatment, risking potential harm for the chance of a cure?"
   },
   {
     "trial_id": "t2",
@@ -439,7 +440,8 @@
     ],
     "dilemma_id": "dd_21173",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a bartender, Jake is known for his friendly demeanor and quick wit. However, his flirtatious behavior with customers, especially female ones, often blurs professional boundaries, leaving his colleagues and manager in a tricky situation. Should the manager address this issue as a potential harassment problem or overlook it considering it as part of Jake���s personality and a crowd-puller?"
   },
   {
     "trial_id": "t3",
@@ -660,7 +662,8 @@
     ],
     "dilemma_id": "dd_49132",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As an educator, you're tasked with teaching a course on world religions. You're struggling to fairly and accurately represent every religion due to the sheer number of them and the difficulty in understanding their complex doctrines and histories. Should you stick to teaching only the major, well-known religions and risk neglecting the less known ones, or attempt to cover all, potentially spreading misinformation due to lack of deep understanding?"
   },
   {
     "trial_id": "t4",
@@ -881,7 +884,8 @@
     ],
     "dilemma_id": "dd_19113",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are an English teacher who emphasizes the importance of proper grammar and language use. You notice that your students use improper English and slang in their online communications, which they argue is generally accepted on the internet. Should you correct their online language use or allow them to continue using internet slang?"
   },
   {
     "trial_id": "t5",
@@ -1102,7 +1106,8 @@
     ],
     "dilemma_id": "dd_18806",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You've recently moved to a busy city where outdoor dangers like traffic and aggressive stray animals are rampant. You've always allowed your cat to roam free, but now you're concerned for its safety. Should you confine your cat indoors to ensure its safety, or let it have its freedom despite the risks?"
   },
   {
     "trial_id": "t6",
@@ -1323,7 +1328,8 @@
     ],
     "dilemma_id": "dd_35743",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a young adult living with your parents due to financial struggles. You have incurred a large amount of credit card debt due to poor spending habits, but you're considering asking your parents to pay it off for you. Should you ask your parents to resolve your financial irresponsibility or take on the responsibility of paying your own debt?"
   },
   {
     "trial_id": "t7",
@@ -1544,7 +1550,8 @@
     ],
     "dilemma_id": "dd_25650",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As an art curator, I've been entrusted with a priceless painting that was recently recovered from a theft. The painting was originally stolen from a Jewish family during the Holocaust, but the museum I work for legally purchased it from an auction before its true history was revealed. Should I return the painting to the family it was stolen from, despite the museum's legal ownership?"
   },
   {
     "trial_id": "t8",
@@ -1765,7 +1772,8 @@
     ],
     "dilemma_id": "dd_35912",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are an individual who values the use of social media as it helps you maintain and enjoy relationships with friends and family. However, you are aware that the information you share might be misused by the platform and violate your privacy. Do you continue to use the platform despite the privacy concerns or do you prioritize your privacy over maintaining relationships?"
   },
   {
     "trial_id": "t9",
@@ -1986,7 +1994,8 @@
     ],
     "dilemma_id": "dd_14011",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Samantha and John are divorced parents, sharing custody of their 10-year-old son, Noah. Samantha is a strict parent who believes that shielding Noah from emotional hardships is the best, while John believes in helping Noah confront and navigate his emotions. Should Samantha continue to protect Noah from emotional situations or allow John's approach to help their son navigate through emotional times?"
   },
   {
     "trial_id": "t10",
@@ -2207,7 +2216,8 @@
     ],
     "dilemma_id": "dd_20716",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a frequent traveler who believes in the importance of sustainable living. On one trip, you decide to pack only washable items to minimize waste, but the hotel you're staying at uses a lot of water and energy for their laundry service. Do you continue to wash your clothes at the hotel, or seek a more sustainable alternative?"
   },
   {
     "trial_id": "t11",
@@ -2428,7 +2438,8 @@
     ],
     "dilemma_id": "dd_11514",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You want to adopt a large dog and have been conducting research to ensure you're fully prepared. You discover that the breed you're interested in often has severe health issues due to irresponsible breeding practices for aesthetic purposes. Do you still adopt your preferred breed knowing this could financially support unethical breeders, or choose a different breed to discourage such practices?"
   },
   {
     "trial_id": "t12",
@@ -2649,7 +2660,8 @@
     ],
     "dilemma_id": "dd_12948",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "A group of friends are camping in a wildlife reserve known for its high population of monkeys. One of the friends has a severe phobia of monkeys but hasn't told anyone, and suddenly, a monkey jumps on the friend, causing them to freeze instead of scream. Should the others laugh at the friend's reaction, knowing that it will make the situation lighter but might also increase their trauma?"
   },
   {
     "trial_id": "t13",
@@ -2870,7 +2882,8 @@
     ],
     "dilemma_id": "dd_27431",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're looking for a hobby to distract from your work stress. You find that gambling is an exciting and engaging hobby, but you're aware it can lead to addiction and financial issues. Should you indulge in gambling as a hobby despite its potential harm?"
   },
   {
     "trial_id": "t14",
@@ -3091,7 +3104,8 @@
     ],
     "dilemma_id": "dd_41150",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a manager of a newly formed team and your employees are fresh graduates with no prior work experience. They are making mistakes that are affecting the productivity and efficiency of the team. Should you criticize them early on to correct their mistakes and speed up the process or should you give them time to learn on their own and improve gradually?"
   },
   {
     "trial_id": "t15",
@@ -3312,7 +3326,8 @@
     ],
     "dilemma_id": "dd_26337",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a young adult living in a conservative family, who believes in traditional values. You wish to pursue a career in arts, which your grandparents disapprove of, considering it unstable and non-respectable. Should you follow your passion and potentially disappoint your grandparents or conform to their expectations and pursue a more conventional career?"
   },
   {
     "trial_id": "t16",
@@ -3533,7 +3548,8 @@
     ],
     "dilemma_id": "dd_18820",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a sports journalist covering a championship game. Your childhood friend plays for one team and you secretly wish for their victory, which could compromise your impartiality. Should you disclose your personal bias to your editor or maintain professional integrity and keep it to yourself?"
   },
   {
     "trial_id": "t17",
@@ -3754,7 +3770,8 @@
     ],
     "dilemma_id": "dd_10803",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Tattoos are often seen as a form of self-expression and identity. However, in some professions, having visible tattoos can be seen as unprofessional and may affect job opportunities. Should individuals avoid getting tattoos in visible areas to increase their employability?"
   },
   {
     "trial_id": "t18",
@@ -3975,7 +3992,8 @@
     ],
     "dilemma_id": "dd_29070",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You have been in a relationship with your partner for several months and feel completely comfortable with your body. However, your partner suggests you should consider losing a few pounds to look better. Should you change your body to meet your partner's expectations even if you feel comfortable with your current physique?"
   },
   {
     "trial_id": "t19",
@@ -4196,7 +4214,8 @@
     ],
     "dilemma_id": "dd_1205",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Your spouse has had a severe case of amnesia after an accident and doesn't remember your past together. You wish to renew your vows, but they don't remember the original commitment and can't fully comprehend the significance of the act. Is it ethical to ask them to renew the vows in their current state?"
   },
   {
     "trial_id": "t20",
@@ -4417,7 +4436,8 @@
     ],
     "dilemma_id": "dd_39833",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a religious leader who strongly supports a certain political party. Your congregation is made up of diverse individuals with varying political views, which you often mention in your sermons. Should you continue to express your political views in your sermons, potentially alienating some of your congregation, or should you keep your political beliefs separate to maintain unity?"
   },
   {
     "trial_id": "t21",
@@ -4638,7 +4658,8 @@
     ],
     "dilemma_id": "dd_42860",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "After years of dealing with a school bully, you've finally gained some confidence and the power to stand up for yourself. You're tempted to use this new-found strength to retaliate and give the bully a taste of their own medicine, but you also understand two wrongs don't make a right. Should you retaliate against the bully to potentially stop further harassment or choose to rise above and ignore the situation?"
   },
   {
     "trial_id": "t22",
@@ -4859,7 +4880,8 @@
     ],
     "dilemma_id": "dd_35564",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're an avid reader and you've just found a website where you can download books for free. You know that this is illegal and it deprives authors of their rightful earnings, but you don't have much money to buy books. Should you download the books for free or save money to buy them legally?"
   },
   {
     "trial_id": "t23",
@@ -5080,7 +5102,8 @@
     ],
     "dilemma_id": "dd_23104",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "During pregnancy, it is common for women to have cravings, but it's crucial to consider the potential impact on the baby's health. A pregnant woman is craving for a cigarette, a harmful substance for the unborn child, creating a dilemma between satisfying her craving and the health of her baby. Should she satisfy her craving at the risk of potentially harming her unborn child?"
   },
   {
     "trial_id": "t24",
@@ -5301,7 +5324,8 @@
     ],
     "dilemma_id": "dd_22090",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "In a future where genetic engineering becomes advanced and accessible, people can modify their traits for self-improvement. However, this raises ethical questions about fairness, as not everyone can afford this technology, creating a potential divide in society. Should individuals be allowed to genetically modify themselves even if it creates socio-economic disparities?"
   },
   {
     "trial_id": "t25",
@@ -5522,7 +5546,8 @@
     ],
     "dilemma_id": "dd_12998",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You have developed a personal ritual to help manage when you ruminate, which involves going to a quiet place and meditating for a few minutes. However, one day you find yourself ruminating during an important business meeting. Do you excuse yourself from the meeting to perform your ritual, potentially disrupting the meeting and appearing unprofessional, or do you try to suppress your ruminating thoughts and risk not being fully present in the meeting?"
   },
   {
     "trial_id": "t26",
@@ -5743,7 +5768,8 @@
     ],
     "dilemma_id": "dd_34143",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John, a devoted employee, is taking some personal time to grieve over the loss of his mother. Due to a critical project at work, his boss pressures him to cut his grieving time short and return to work. Should John prioritize his personal healing or yield to his boss's pressure and return to work earlier than planned?"
   },
   {
     "trial_id": "t27",
@@ -5964,7 +5990,8 @@
     ],
     "dilemma_id": "dd_32679",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "In a university setting, a student has severe ADHD that makes it difficult for him to sit still and remain quiet. He often interrupts the class with outbursts and fidgeting, which distracts other students and disrupts their learning. Should the university accommodate this student's needs even if it negatively impacts other students' education?"
   },
   {
     "trial_id": "t28",
@@ -6185,7 +6212,8 @@
     ],
     "dilemma_id": "dd_24291",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are the oldest of three siblings and your parents are undocumented immigrants. Your youngest sibling was born in the country and is therefore a citizen, but your parents are at risk of deportation. Should you report your parents to the authorities to ensure your youngest sibling's rights and future in the country, or stay silent to keep your family together?"
   },
   {
     "trial_id": "t29",
@@ -6406,7 +6434,8 @@
     ],
     "dilemma_id": "dd_13469",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You run a small business and have recently hired a former employee as an independent contractor. This individual used to be a salaried employee but now they are paid on an hourly basis and you want to raise their billing rate without discussing it with them. Should you raise their billing rate without their consent, potentially taking advantage of their past employment status?"
   },
   {
     "trial_id": "t30",
@@ -6627,7 +6656,8 @@
     ],
     "dilemma_id": "dd_33026",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Public restrooms often have a stall designated for handicapped individuals for their ease of access. You are not handicapped but all other stalls are occupied and you're in a hurry for an important meeting. Should you use the handicapped stall or risk being late to your meeting?"
   },
   {
     "trial_id": "t31",
@@ -6848,7 +6878,8 @@
     ],
     "dilemma_id": "dd_35738",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "In the advertising industry, traditional gender stereotypes are often used to appeal to certain demographics. A company is planning an advertisement campaign for a new product, but the marketing team suggests using gender stereotypes to attract more customers. Should the company prioritize ethical advertising over potential profit and refrain from using gender stereotypes in their campaign?"
   },
   {
     "trial_id": "t32",
@@ -7069,7 +7100,8 @@
     ],
     "dilemma_id": "dd_29411",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a parent whose child is an avid fan of wrestling. Your child often tries to imitate violent moves from the wrestling matches, leading to injuries. Do you let your child continue watching wrestling despite the risks or ban it altogether to ensure safety?"
   },
   {
     "trial_id": "t33",
@@ -7290,7 +7322,8 @@
     ],
     "dilemma_id": "dd_33509",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a successful artist who has received a special set of paint brushes as a gift. The brushes are unique and contribute significantly to your unique style, but it was your hard work and creativity that made you successful. Should you credit the gift for your success or attribute it to your own hard work and talent?"
   },
   {
     "trial_id": "t34",
@@ -7511,7 +7544,8 @@
     ],
     "dilemma_id": "dd_2599",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You live in an area that is home to many endangered species of insects that are crucial to the local ecosystem. You've noticed that a few of these insects have started to invade your home, causing discomfort and potential health risks. Should you exterminate these insects to protect your home, or leave them be to preserve the local ecosystem?"
   },
   {
     "trial_id": "t35",
@@ -7732,7 +7766,8 @@
     ],
     "dilemma_id": "dd_3971",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John, an experienced camper, took his family on a camping trip in the wilderness. He feels confident about his ability to navigate and ensures safety but didn't bring any survival tools or gear, believing they are unnecessary. Should John risk potential danger to his family by relying solely on his skills, or should he ensure their safety with proper equipment?"
   },
   {
     "trial_id": "t36",
@@ -7953,7 +7988,8 @@
     ],
     "dilemma_id": "dd_1552",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "In a community center, a flu vaccination drive is being conducted. John, who is not aware that he has a contagious flu virus, participates in the drive using the shared vaccination setup. Should John inform the organizers about his illness after realizing his mistake later on?"
   },
   {
     "trial_id": "t37",
@@ -8174,7 +8210,8 @@
     ],
     "dilemma_id": "dd_13141",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "A restaurant owner prides himself on serving only traditional, unaltered recipes. He refuses to offer vegan, gluten-free, or other dietary options because he believes it ruins the authenticity of the cuisine. Should he compromise his culinary values to accommodate dietary needs and preferences of his customers?"
   },
   {
     "trial_id": "t38",
@@ -8395,7 +8432,8 @@
     ],
     "dilemma_id": "dd_31350",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "In a community, it has been a tradition to pay tribute to people who died by building monuments in their names. However, the community is currently facing financial difficulties, and the funds required to continue the tradition could be used to support living community members who are in need. Should the community continue to erect monuments as a tribute to the deceased, potentially neglecting the needs of the living?"
   },
   {
     "trial_id": "t39",
@@ -8616,7 +8654,8 @@
     ],
     "dilemma_id": "dd_7001",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You have been in a romantic relationship for years and have completely wrapped your identity and self-worth around your partner's opinion of you. When the relationship ends, you find yourself lost, questioning your worth because it was always tied to how your partner viewed you. Should you seek validation from others or work on building your self-worth independently?"
   },
   {
     "trial_id": "t40",
@@ -8837,7 +8876,8 @@
     ],
     "dilemma_id": "dd_23534",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "<\"Your best friend since childhood has become increasingly negative and mean towards you. You want to cut them out of your life, but they are going through a difficult time and rely on you for support. Should you continue to support your friend despite their mean behavior or prioritize your own wellbeing and cut them out of your life?\">"
   },
   {
     "trial_id": "t41",
@@ -9058,7 +9098,8 @@
     ],
     "dilemma_id": "dd_20839",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a popular online content creator, Sam interacts with his followers only online. One of his followers, a minor, shared personal struggles and asked for advice. Should Sam provide personal advice to the minor despite not being a licensed counselor?"
   },
   {
     "trial_id": "t42",
@@ -9279,7 +9320,8 @@
     ],
     "dilemma_id": "dd_33470",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "A devastating hurricane has hit a coastal town and various organizations are asking for donations to help the victims. You want to help but have heard about scams where money isn't used for the intended purpose. Do you donate to a well-known organization with higher overhead costs or risk donating to a smaller, local group that might not be legitimate?"
   },
   {
     "trial_id": "t43",
@@ -9500,7 +9542,8 @@
     ],
     "dilemma_id": "dd_12627",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Alice has been seeing a therapist to deal with a traumatic memory from her past. The therapist, after several sessions, realizes that Alice's memory implicates a close friend of hers in a serious crime. Should the therapist break confidentiality to report the crime or maintain it to protect Alice's trust and therapeutic process?"
   },
   {
     "trial_id": "t44",
@@ -9721,7 +9764,8 @@
     ],
     "dilemma_id": "dd_35592",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Going to rehab is the best solution for overcoming a relapse. However, you're worried that going back to rehab might upset your family who believes you've fully recovered and are living a clean life. Should you go back to rehab and risk disappointing your family, or continue pretending to live a clean life?"
   },
   {
     "trial_id": "t45",
@@ -9942,7 +9986,8 @@
     ],
     "dilemma_id": "dd_47169",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a music teacher who is not particularly skilled at playing the violin, but you're expected to teach it because it's a popular instrument among the students. You don't want to disappoint the students, but you're also aware that you may not be capable of providing the best lessons. Should you continue teaching violin, potentially compromising the students' learning, or should you admit your lack of skill and risk disappointing the students?"
   },
   {
     "trial_id": "t46",
@@ -10163,7 +10208,8 @@
     ],
     "dilemma_id": "dd_46710",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a gay individual living in a highly conservative and religious community. You feel the pressure to hide your true identity to maintain peace and avoid conflict in your community, but at the same time, you are suffering internally. Do you continue living a lie for the sake of community peace, or do you embrace your true self, risking social ostracization and conflict?"
   },
   {
     "trial_id": "t47",
@@ -10384,7 +10430,8 @@
     ],
     "dilemma_id": "dd_38562",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "In order to combat loneliness, an individual has set up a bot to call their personal inbox periodically. However, the bot might be creating an illusion of companionship, which can potentially delay the individual from seeking real human interaction and companionship. Should the individual continue using the bot to mitigate their loneliness or seek real human interaction despite the discomfort it might bring?"
   },
   {
     "trial_id": "t48",
@@ -10605,7 +10652,8 @@
     ],
     "dilemma_id": "dd_49146",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Thomas is a team leader in a software company. When a crucial project fails due to lack of coordination among team members, Thomas blames his colleague, James, who is new to the team, to save his own reputation. Should Thomas accept his own failure or continue to blame James to maintain his reputation?"
   },
   {
     "trial_id": "t49",
@@ -10826,7 +10874,8 @@
     ],
     "dilemma_id": "dd_33262",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are at a social gathering where the host has put out a bowl of individually wrapped mints for guests to enjoy. You notice that there are only a few mints left and there are many guests who have not had any yet. Should you take more than one mint knowing that this might mean others won't get any?"
   },
   {
     "trial_id": "t50",
@@ -11047,7 +11096,8 @@
     ],
     "dilemma_id": "dd_31665",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are filling out a legal document on behalf of your sibling. You realize you are unsure of the exact spelling of their name and are hesitant to ask them, fearing they might feel hurt. Should you risk hurting their feelings and ask for the correct spelling or should you guess and potentially fill out the legal document incorrectly?"
   },
   {
     "trial_id": "t51",
@@ -11268,7 +11318,8 @@
     ],
     "dilemma_id": "dd_37909",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Professional sports players often have contracts that guarantee their salary, even if they are injured and unable to play. However, this creates a dilemma when a player is injured for an extended period of time and their performance level upon return is uncertain. Should the team continue to pay the player despite their inability to contribute on the field?"
   },
   {
     "trial_id": "t52",
@@ -11489,7 +11540,8 @@
     ],
     "dilemma_id": "dd_47865",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John, a small business owner, frequently sends marketing materials through the mail. He realizes that he has been unintentionally underpaying for postage, but none of his mail has been returned or flagged. Should he continue sending the materials with incorrect postage, potentially costing the postal service money, or should he correct the mistake and pay the proper amount, even though it might affect his business budget?"
   },
   {
     "trial_id": "t53",
@@ -11710,7 +11762,8 @@
     ],
     "dilemma_id": "dd_43811",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a parent to two young children and also have a pet dog at home. You discovered that your neighbor's dog bit their own child because the child was acting aggressively towards the dog. Do you teach your children to be assertive with dogs to show dominance or teach them to be calm and respectful, potentially risking them to be seen as submissive by the dog?"
   },
   {
     "trial_id": "t54",
@@ -11931,7 +11984,8 @@
     ],
     "dilemma_id": "dd_34215",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John, a devout Christian, believes in stewardship of resources. He begins to wonder if buying a lottery ticket is a misuse of the money God has entrusted to him. Should he stop buying lottery tickets and instead use the money for charitable causes or for his immediate family needs?"
   },
   {
     "trial_id": "t55",
@@ -12152,7 +12206,8 @@
     ],
     "dilemma_id": "dd_9632",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Sam, a street artist, is passionate about creating public art to express his ideas and emotions. However, his medium of expression often involves painting on other people's properties without their consent. Should Sam stop his artistry to respect private property even if it means suppressing his self-expression?"
   },
   {
     "trial_id": "t56",
@@ -12373,7 +12428,8 @@
     ],
     "dilemma_id": "dd_35282",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You've been living in an apartment for several years. The landlord raises the rent far beyond what you can afford, but you find out they aren't doing the same for all tenants. Should you confront the landlord about the apparent discrimination or seek legal advice?"
   },
   {
     "trial_id": "t57",
@@ -12594,7 +12650,8 @@
     ],
     "dilemma_id": "dd_21961",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a member of an online role-playing community that often hosts virtual events. During one of these events, a player breaks the rules but it leads to a more enjoyable gaming experience for everyone involved. Should you report the player's rule-breaking behavior despite the fun it created?"
   },
   {
     "trial_id": "t58",
@@ -12815,7 +12872,8 @@
     ],
     "dilemma_id": "dd_10174",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a software developer who has always wanted to start your own company. Your current employer has just started working on a project that's very similar to the idea you've been developing on your side. Do you quit your job to pursue your own venture, potentially making your current employer your future competition, or do you abandon your side project and continue working for your employer?"
   },
   {
     "trial_id": "t59",
@@ -13036,7 +13094,8 @@
     ],
     "dilemma_id": "dd_13050",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a TV show critic, you have always been open about your disdain for certain types of shows. You meet a person at a party who passionately talks about a show you think is trashy. Should you express your honest opinion and potentially insult them or keep your thoughts to yourself?"
   },
   {
     "trial_id": "t60",
@@ -13257,7 +13316,8 @@
     ],
     "dilemma_id": "dd_31128",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You've borrowed a book from your friend a while ago. During this time, you accidentally spilled coffee on it, damaging several pages. Do you return the book as it is or replace it without informing your friend?"
   },
   {
     "trial_id": "t61",
@@ -13478,7 +13538,8 @@
     ],
     "dilemma_id": "dd_13864",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Online confession platforms have emerged, allowing individuals to confess their sins anonymously. You've recently used one such platform to confess something you did wrong, but you're unsure if this is a true act of repentance or just a way to ease your guilt without facing real-world consequences. Do you continue confessing online or seek a more traditional form of confession?"
   },
   {
     "trial_id": "t62",
@@ -13699,7 +13760,8 @@
     ],
     "dilemma_id": "dd_47065",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You've been in a relationship with someone for a year now, but you've come to realize your partner isn't as committed as you are. You've found out your partner is still active on dating apps and seems to be looking for other potential partners. Do you confront your partner about their lack of commitment or silently end the relationship without explanation?"
   },
   {
     "trial_id": "t63",
@@ -13920,7 +13982,8 @@
     ],
     "dilemma_id": "dd_33986",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a chef in a busy restaurant, where time and efficiency are key. One day, you notice your colleague is not following safety protocols while handling a sharp knife, risking not just their own safety but potentially others as well. Should you interrupt the workflow to correct your colleague's unsafe behavior or continue working to maintain the efficiency of the kitchen?"
   },
   {
     "trial_id": "t64",
@@ -14141,7 +14204,8 @@
     ],
     "dilemma_id": "dd_39199",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a hair stylist and a regular client comes in with hair that often falls into their eyes. They've mentioned in passing that they like the 'shaggy' look, but you notice they often seem irritated by their hair getting in their eyes. Should you suggest a different haircut that would be more practical for them, potentially offending them or disregarding their personal style preference?"
   },
   {
     "trial_id": "t65",
@@ -14362,7 +14426,8 @@
     ],
     "dilemma_id": "dd_17423",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a customer who had a bad experience at a local restaurant due to a rude waiter. The restaurant is a small family business struggling to survive during the pandemic. Do you give them a low rating which might significantly affect their business, or do you overlook your single bad experience considering their struggle?"
   },
   {
     "trial_id": "t66",
@@ -14583,7 +14648,8 @@
     ],
     "dilemma_id": "dd_15066",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Mary and John are a married couple who are under familial and societal pressure to have children. They both have no desire to become parents but are being pushed into it, causing them to question their decision. Should they have children to meet societal expectations even if they lack a parental desire?"
   },
   {
     "trial_id": "t67",
@@ -14804,7 +14870,8 @@
     ],
     "dilemma_id": "dd_37490",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a manager at a large corporation and are upset with a member of the executive team who has repeatedly undermined your initiatives. You find yourself becoming increasingly frustrated with a junior employee who has made a few minor mistakes, but is otherwise diligent and hardworking. Should you address your anger with the executive directly, risking your job security, or continue to unfairly take it out on the junior employee, potentially damaging their morale and productivity?"
   },
   {
     "trial_id": "t68",
@@ -15025,7 +15092,8 @@
     ],
     "dilemma_id": "dd_24673",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John is a teacher in a multicultural school who has developed a deep-seated hatred for a particular ethnic group. This animosity began after a traumatic incident in which members of this group harmed his family. Should John continue teaching in a multicultural environment where his bias could potentially impact his treatment of students from this ethnic group?"
   },
   {
     "trial_id": "t69",
@@ -15246,7 +15314,8 @@
     ],
     "dilemma_id": "dd_8033",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You have a significant amount of schoolwork and also want to participate in a local charity event. You have time to do one or the other but not both. Do you prioritize your academic responsibilities or engage in the charity event for a noble cause?"
   },
   {
     "trial_id": "t70",
@@ -15467,7 +15536,8 @@
     ],
     "dilemma_id": "dd_9473",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a talented individual who has always been the star player in every team you've been a part of. After joining a new team, you realize that you could easily outshine your teammates but doing so could demoralize them and affect the overall team spirit. Should you downplay your skills and potential to promote team unity or continue to perform at your best and risk causing discord?"
   },
   {
     "trial_id": "t71",
@@ -15688,7 +15758,8 @@
     ],
     "dilemma_id": "dd_13484",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "In many societies, pets, especially exotic ones, are often used as status symbols. However, some of these animals are not suited to domestic life and may suffer due to the lack of their natural habitat and proper care. Should one continue to use pets as status symbols at the expense of their welfare?"
   },
   {
     "trial_id": "t72",
@@ -15909,7 +15980,8 @@
     ],
     "dilemma_id": "dd_28019",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "The motel management has a policy allowing pets on the premises. However, a guest has arrived with a pet snake, causing discomfort and fear among other guests. Should the management ask the guest to remove the pet snake, potentially discriminating against their choice of pet, or let it stay, causing distress to others?"
   },
   {
     "trial_id": "t73",
@@ -16130,7 +16202,8 @@
     ],
     "dilemma_id": "dd_37102",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a professional pianist due to perform a solo at a prestigious concert. You've been struggling with severe performance anxiety and a friend offers you a beta blocker, a prescription drug that could calm your nerves. Do you take the medication to ensure a good performance, even though it's not prescribed to you and could be considered cheating?"
   },
   {
     "trial_id": "t74",
@@ -16351,7 +16424,8 @@
     ],
     "dilemma_id": "dd_37537",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "A team of scientists have discovered a new species of animal in a remote rainforest. They want to name the animal after their sponsor, a corporation with a dubious reputation for environmental conservation. Should the scientists name the new species after their sponsor despite its controversial environmental record?"
   },
   {
     "trial_id": "t75",
@@ -16572,7 +16646,8 @@
     ],
     "dilemma_id": "dd_8366",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Jane, a successful entrepreneur, often finds herself immersed in memories of her tumultuous past. She believes that by reliving her past struggles, she's able to empathize with the underprivileged and use her time and resources to help them, but she also realizes that this obsession with the past is preventing her from focusing on her present endeavors. Should Jane continue to dwell on her past experiences and help others, or should she let go of the past and concentrate on her current projects?"
   },
   {
     "trial_id": "t76",
@@ -16793,7 +16868,8 @@
     ],
     "dilemma_id": "dd_32572",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You and your ex-partner have a child together, and you're both involved in the child's life. Your ex has been spreading false rumors about you, which is causing strain in your relationships with mutual friends and acquaintances. Do you counteract by revealing some truthful but damaging information about your ex, potentially upsetting them and indirectly affecting your child, or do you remain silent and let the rumors persist?"
   },
   {
     "trial_id": "t77",
@@ -17014,7 +17090,8 @@
     ],
     "dilemma_id": "dd_40653",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You've been drinking at a party and your partner calls, needing a ride home from work. You're not in a condition to drive, but they are stuck at work without a ride. Should you risk driving under influence to pick them up or let them find another way home?"
   },
   {
     "trial_id": "t78",
@@ -17235,7 +17312,8 @@
     ],
     "dilemma_id": "dd_22966",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Every year, your extended family holds a Christmas gift exchange with a budget traditionally set at $20. This year, your cousin who recently came into a large amount of money, insists on raising the budget to $200. Should you agree to the increased budget even though it might put financial strain on some family members or voice your objection risking the chance of appearing ungrateful or jealous?"
   },
   {
     "trial_id": "t79",
@@ -17456,7 +17534,8 @@
     ],
     "dilemma_id": "dd_4716",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are involved in a custody battle for your child. The judge assigned to your case has exhibited questionable behavior, such as private conversations with the opposing party and inconsistent rulings. Do you request a different judge, potentially prolonging the process, or do you continue with the current judge, risking an unfair outcome?"
   },
   {
     "trial_id": "t80",
@@ -17677,7 +17756,8 @@
     ],
     "dilemma_id": "dd_21098",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a teenager who idolizes a popular musician known for his talent and philanthropy. However, you've recently learned that he has been involved in a scandal involving violence and drugs, which goes against your personal values. Do you continue to idolize him despite his wrongdoings, or do you stop admiring him because of his actions?"
   },
   {
     "trial_id": "t81",
@@ -17898,7 +17978,8 @@
     ],
     "dilemma_id": "dd_43285",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a professional writer who offers services for various writing tasks. A close friend asks for your help in writing their graduate school application essay, but they're financially struggling and can't afford your usual rate. Should you offer your services for free or maintain your professional boundaries and charge them?"
   },
   {
     "trial_id": "t82",
@@ -18119,7 +18200,8 @@
     ],
     "dilemma_id": "dd_38811",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a fitness trainer advocating for mindful eating. One of your clients is stressed and tends to overeat as a coping mechanism, but you know they're not actually hungry. Should you tell your client to stop eating even when it might cause them more stress?"
   },
   {
     "trial_id": "t83",
@@ -18340,7 +18422,8 @@
     ],
     "dilemma_id": "dd_20895",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a manager at a fashion company and one of your subordinates consistently dresses exceptionally well. You fear that complimenting them on their attire might be construed as favoritism or unprofessional behavior, potentially causing tension or jealousy among your staff. Should you express your admiration for their style or maintain professional impartiality?"
   },
   {
     "trial_id": "t84",
@@ -18561,7 +18644,8 @@
     ],
     "dilemma_id": "dd_12860",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're at a party and have brought a friend who doesn't know anyone else there. Your friend confides in you that they've recently been diagnosed with a mental health condition and is not ready to share it with others. Do you respect your friend's privacy and introduce them without mentioning their condition, potentially causing them discomfort, or do you inform others to ensure they are sensitive to your friend's situation?"
   },
   {
     "trial_id": "t85",
@@ -18782,7 +18866,8 @@
     ],
     "dilemma_id": "dd_45424",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a parent taking your child to a beach day out. Your child is allergic to most sunscreens, but without it, they would be exposed to harmful UV rays. Should you risk the allergic reaction for the sake of sun protection?"
   },
   {
     "trial_id": "t86",
@@ -19003,7 +19088,8 @@
     ],
     "dilemma_id": "dd_1029",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are starting at a new school and you're unsure about the dress code. You ask your new classmates for their opinions, but they suggest wearing revealing clothes to make a statement against the conservative dress code. Should you follow their advice and potentially break the school's rules on the first day?"
   },
   {
     "trial_id": "t87",
@@ -19224,7 +19310,8 @@
     ],
     "dilemma_id": "dd_19267",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a school teacher and notice one of your students has unexplained bruises and seems withdrawn. You suspect the child might be a victim of abuse at home, but you're unsure. Should you confront the parents yourself or report the situation to Child Protective Services immediately?"
   },
   {
     "trial_id": "t88",
@@ -19445,7 +19532,8 @@
     ],
     "dilemma_id": "dd_23052",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "A group of friends are discussing domestic violence and one of them starts making fun of men who get abused by women. This person argues that it's not possible for a man to be abused by a woman and everyone else laughs about it. Should the other friends speak up and correct the misconception, risking conflict and tension in their friendship, or remain silent to maintain harmony?"
   },
   {
     "trial_id": "t89",
@@ -19666,7 +19754,8 @@
     ],
     "dilemma_id": "dd_27088",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a single parent of three children and have strict rules to maintain discipline in the house. One of your children, a teenager, has been constantly rebelling against your rules and feels you are being overly controlling. Should you ease your rules to respect your teenager's growing independence or maintain them to ensure discipline and order in the house?"
   },
   {
     "trial_id": "t90",
@@ -19887,7 +19976,8 @@
     ],
     "dilemma_id": "dd_42690",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Emma is a strong believer in traditional family values. She has been criticized for refusing to date bisexual individuals, arguing that their sexual preferences do not align with her beliefs. Does Emma have the right to discriminate in her dating choices based on sexual preferences, or should she be open-minded to all potential partners regardless of their sexual orientation?"
   },
   {
     "trial_id": "t91",
@@ -20108,7 +20198,8 @@
     ],
     "dilemma_id": "dd_13920",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You have a limited budget but need to buy a large number of supplies for a local charity event. At the dollar store, you notice that the cheap goods are made in sweatshops with questionable labor practices. Do you buy the inexpensive items to support the charity event, or choose more expensive options at another store to avoid supporting unethical labor practices?"
   },
   {
     "trial_id": "t92",
@@ -20329,7 +20420,8 @@
     ],
     "dilemma_id": "dd_36199",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a parent, you highly value humor and often use it as a coping mechanism. However, your children recently expressed that they feel hurt and embarrassed when you make fun of them, even if it's light-hearted. Should you continue making jokes at their expense to lighten the mood or respect their feelings and stop?"
   },
   {
     "trial_id": "t93",
@@ -20550,7 +20642,8 @@
     ],
     "dilemma_id": "dd_35397",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "After a long journey to a tropical resort, a group of friends feel exhausted and unmotivated to engage in planned vacation activities. They had all chipped in to hire a local tour guide who depends on tourist income for his livelihood. Should they force themselves to start the vacation activities to support the local economy or prioritize their own rest and recovery?"
   },
   {
     "trial_id": "t94",
@@ -20771,7 +20864,8 @@
     ],
     "dilemma_id": "dd_19385",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a beauty influencer, you are constantly under pressure to maintain a certain appearance. You've been approached by a company offering free plastic surgery in exchange for promoting their clinic, but you're aware that many of your young followers may be influenced to undergo unnecessary procedures. Should you accept the offer and potentially encourage harmful beauty standards, or reject it and maintain an image of natural beauty?"
   },
   {
     "trial_id": "t95",
@@ -20992,7 +21086,8 @@
     ],
     "dilemma_id": "dd_5957",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a teacher and one of your students, who is usually a high achiever, has performed poorly on a recent test. You know that the student's parents are extremely strict, and the student is begging you to inflate their score to avoid punishment at home. Should you tell a white lie to protect the student from potentially harsh consequences at home, or uphold the integrity of your grading system?"
   },
   {
     "trial_id": "t96",
@@ -21213,7 +21308,8 @@
     ],
     "dilemma_id": "dd_38721",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You have always made it clear to your children that you wish for them to mourn your passing by celebrating your life, rather than grieving. However, after your death, one of your children falls into a deep depression, unable to cope with your loss. Should they be encouraged to seek professional help for their grief, or should they be allowed to grieve as they see fit, respecting your wishes?"
   },
   {
     "trial_id": "t97",
@@ -21434,7 +21530,8 @@
     ],
     "dilemma_id": "dd_32177",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You live in a densely populated neighborhood where houses are very close to each other. Your backyard is not private and sunbathing may make your neighbors feel uncomfortable due to cultural or personal reasons. Should you prioritize your personal comfort and freedom over the comfort and privacy of your neighbors?"
   },
   {
     "trial_id": "t98",
@@ -21655,7 +21752,8 @@
     ],
     "dilemma_id": "dd_16891",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "An organization fosters pets to overseas military personnel to provide companionship and reduce loneliness. However, there's a concern about the potential emotional trauma to the pet when the person they've bonded with is suddenly gone. Should the organization continue with the pet fostering program despite the potential emotional harm to the pets?"
   },
   {
     "trial_id": "t99",
@@ -21876,7 +21974,8 @@
     ],
     "dilemma_id": "dd_1656",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a successful horror novelist, I often base my plots on real-life unsolved mysteries. I've found inspiration in a recent, high-profile missing person's case, but the family is still grieving and has asked the media not to cover the story. Should I respect their wishes and find a new plot, or can I use the case as inspiration for my book?"
   },
   {
     "trial_id": "t100",
@@ -22097,7 +22196,8 @@
     ],
     "dilemma_id": "dd_46147",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You have been corresponding with a death row inmate as a pen pal for some time now. He confesses to you that he is innocent of the crime he's been convicted for and pleads for your help to prove his innocence. Do you risk your own safety and reputation to help him, potentially involving yourself in a criminal case?"
   },
   {
     "trial_id": "t101",
@@ -22318,7 +22418,8 @@
     ],
     "dilemma_id": "dd_12271",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Alice is a popular figure at her college, with several people vying for her attention and affection. Alice enjoys the attention and intentionally fosters competition among her admirers, leading to conflicts among them. Should Alice continue to encourage this competition, potentially damaging friendships, or should she discourage it and risk losing the attention she enjoys?"
   },
   {
     "trial_id": "t102",
@@ -22539,7 +22640,8 @@
     ],
     "dilemma_id": "dd_31622",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a doctor who made a minor mistake during a routine procedure, but it did not affect the patient's health or recovery. You fear that admitting your mistake may cause unnecessary worry to the patient and may damage your professional reputation. Should you apologize and admit your mistake to the patient, risking their peace of mind and your reputation, or should you keep quiet and carry the guilt?"
   },
   {
     "trial_id": "t103",
@@ -22760,7 +22862,8 @@
     ],
     "dilemma_id": "dd_49943",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "In a global pandemic, a vaccine has been developed but is in limited supply. A wealthy individual offers to pay a large sum for the vaccine to ensure they and their family are safe, potentially taking it away from those in dire need. Should healthcare providers prioritize selling to the highest bidder or distributing to the most vulnerable?"
   },
   {
     "trial_id": "t104",
@@ -22981,7 +23084,8 @@
     ],
     "dilemma_id": "dd_41103",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a school counselor known for your empathetic nature and your ability to help students with their problems. However, you recently have been feeling overwhelmed and emotionally drained due to the sheer amount of personal issues students confide in you, which is affecting your mental health. Should you continue to let students confide in you despite it negatively impacting your mental health, or should you set boundaries and risk the students not receiving the help they need?"
   },
   {
     "trial_id": "t105",
@@ -23202,7 +23306,8 @@
     ],
     "dilemma_id": "dd_33741",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a manager in a marketing company and you have a talented team. Due to an unexpected workload increase, you have the opportunity to delegate some of your work to an intern, but the task is complex and beyond their current skill level. Should you delegate the task to the intern, potentially compromising the quality of work and their self-confidence, or handle the task yourself, potentially compromising your ability to manage other tasks effectively?"
   },
   {
     "trial_id": "t106",
@@ -23423,7 +23528,8 @@
     ],
     "dilemma_id": "dd_44833",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a manager in a company and a new employee is constantly praised by others for his work ethic and dedication. However, you notice that he often leaves early and doesn't seem to be as hardworking as others claim. Do you trust the majority's opinion about the employee or your own observations?"
   },
   {
     "trial_id": "t107",
@@ -23644,7 +23750,8 @@
     ],
     "dilemma_id": "dd_2155",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're planning a surprise birthday gift for your partner who has been wanting a new phone for a while. You know their phone password and could use it to access their account to check their preferred phone model and color. Should you invade their privacy to ensure you purchase the right gift?"
   },
   {
     "trial_id": "t108",
@@ -23865,7 +23972,8 @@
     ],
     "dilemma_id": "dd_22166",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a husband and father, John has been dutifully paying child support for his three children. However, he recently lost his job and is struggling to make ends meet. Should he continue to pay child support as per the legal agreement, potentially risking his own financial stability, or should he seek a modification to the child support order?"
   },
   {
     "trial_id": "t109",
@@ -24086,7 +24194,8 @@
     ],
     "dilemma_id": "dd_1176",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a passionate animal rights activist and vegetarian. You enjoy watching a reality cooking show but they frequently prepare dishes using meat, which contradicts your stance on animal rights and vegetarianism. Would you continue to watch the show despite its content?"
   },
   {
     "trial_id": "t110",
@@ -24307,7 +24416,8 @@
     ],
     "dilemma_id": "dd_44430",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You fractured your ankle and need a cast to heal properly. However, you are the primary breadwinner of your family and cannot afford to take time off work for the healing process, but continuing to work may cause permanent damage to your ankle. Should you prioritize your immediate financial needs or your long-term health?"
   },
   {
     "trial_id": "t111",
@@ -24528,7 +24638,8 @@
     ],
     "dilemma_id": "dd_45544",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're a high school student struggling with depression and anxiety. You've found that playing video games for hours on end helps distract your mind from negative thoughts, but your grades are suffering as a result. Should you continue using video games as a coping mechanism at the expense of your academic performance?"
   },
   {
     "trial_id": "t112",
@@ -24749,7 +24860,8 @@
     ],
     "dilemma_id": "dd_2932",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John was always manipulative and self-centered, using others for his own gain. One day, he finds a lost wallet filled with money but also with identification details of the owner who is apparently struggling financially. Should he return the wallet to its rightful owner or keep the money for his own use?"
   },
   {
     "trial_id": "t113",
@@ -24970,7 +25082,8 @@
     ],
     "dilemma_id": "dd_20717",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Sarah is a leader who believes in committing to her words. She promised her team they'd have a vacation if they met the sales target, but the company is now facing financial hardship. Should Sarah honor her promise and risk the company's finances or break her promise to save the company's finances?"
   },
   {
     "trial_id": "t114",
@@ -25191,7 +25304,8 @@
     ],
     "dilemma_id": "dd_39321",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're in a long-term relationship and both of you are open about discussing your sexual preferences. Your partner asks you directly about any fetishes you may have, but you fear that revealing them might change the way they see you or make them uncomfortable. Should you be completely honest and risk potentially altering the dynamic of your relationship, or should you hide your true desires to maintain the status quo?"
   },
   {
     "trial_id": "t115",
@@ -25412,7 +25526,8 @@
     ],
     "dilemma_id": "dd_42067",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Your dog has been diagnosed with terminal cancer and is in severe pain, with no chance of recovery. You are torn between ending its suffering through euthanasia and keeping it alive based on your personal belief against taking a life. Should you euthanize your pet to ease its pain or keep it alive despite its suffering?"
   },
   {
     "trial_id": "t116",
@@ -25633,7 +25748,8 @@
     ],
     "dilemma_id": "dd_36223",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are an experienced mountaineer guiding a group of novice climbers down a tall mountain. One of the members in your group is struggling and slowing the whole group down, potentially putting everyone at risk due to changing weather conditions. Should you leave the struggling member behind with enough supplies and continue with the rest of the group or risk everyone's lives by sticking together?"
   },
   {
     "trial_id": "t117",
@@ -25854,7 +25970,8 @@
     ],
     "dilemma_id": "dd_10328",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "After years of working in a high-paying job, you've saved a substantial amount of money. However, you're unfulfilled, considering leaving your job to pursue a less lucrative passion project. Should you abandon financial stability for personal fulfillment?"
   },
   {
     "trial_id": "t118",
@@ -26075,7 +26192,8 @@
     ],
     "dilemma_id": "dd_23524",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a passionate and active user of a social networking site where users are rewarded or punished with 'karma' points based on the popularity of their posts. You want to share a controversial opinion that you strongly believe in, but fear it may result in a loss of karma points, affecting your reputation and standing within the community. Do you risk your online status and post your opinion, or do you self-censor to maintain your karma points?"
   },
   {
     "trial_id": "t119",
@@ -26296,7 +26414,8 @@
     ],
     "dilemma_id": "dd_25990",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John discovers that as a baby, he loved pulling cat's tails. Now as an adult, he finds himself amused by the idea but understands it could harm the cat. Should he pursue this childhood amusement at the risk of causing harm to the cat?"
   },
   {
     "trial_id": "t120",
@@ -26517,7 +26636,8 @@
     ],
     "dilemma_id": "dd_893",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John, a florist, receives an order for a bouquet of dead flowers to be delivered to his ex-girlfriend. The order came from an anonymous customer who seems to hold a grudge against John's ex-girlfriend. Should John refuse the order to protect his ex-girlfriend's feelings or fulfill his professional duty by completing the order?"
   },
   {
     "trial_id": "t121",
@@ -26738,7 +26858,8 @@
     ],
     "dilemma_id": "dd_29903",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John is a computer scientist who prefers solitude over socialization. One day, his colleagues plan a fundraising event for a local charity, and they want John's help for the coding part. Should John overcome his social anxiety and help his colleagues or stick to his preference of not getting involved socially?"
   },
   {
     "trial_id": "t122",
@@ -26959,7 +27080,8 @@
     ],
     "dilemma_id": "dd_4797",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a married individual with children who has developed feelings for a colleague at work. This emotional affair is jeopardizing your commitment to your spouse and the welfare of your children. Should you confess your feelings to your spouse, potentially destroying your family, or suppress your emotions to maintain your family's stability?"
   },
   {
     "trial_id": "t123",
@@ -27180,7 +27302,8 @@
     ],
     "dilemma_id": "dd_33765",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Kim has been struggling with obesity for years and decided to take action by setting health goals. Unfortunately, her demanding job often forces her to work late, leaving little time for exercise or preparing healthy meals, which makes her consider giving up on her health goals. Should Kim prioritize her career over her health, even if it potentially leads to severe health consequences?"
   },
   {
     "trial_id": "t124",
@@ -27401,7 +27524,8 @@
     ],
     "dilemma_id": "dd_16600",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "In many countries, the government provides financial support for transgender individuals to get surgery as a part of their transition. However, some taxpayers argue that their money should not be used for procedures they personally deem unnecessary or against their beliefs. Should the government continue to fund these surgeries despite opposition from a portion of the population?"
   },
   {
     "trial_id": "t125",
@@ -27622,7 +27746,8 @@
     ],
     "dilemma_id": "dd_12645",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're having a severe bout of loneliness and depression. You're aware that your family members are already dealing with their own problems and you don't want to burden them with yours. Do you still reach out to them for help, potentially adding to their stress, or keep your problems to yourself and continue suffering alone?"
   },
   {
     "trial_id": "t126",
@@ -27843,7 +27968,8 @@
     ],
     "dilemma_id": "dd_20431",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a passionate rollerblader and have been using your best friend's rollerblades for months now. One day, you find a pair of rollerblades that you love in a store, but you don't have enough money to buy them. Should you save up and buy your own pair, or continue using your friend's rollerblades without their knowledge?"
   },
   {
     "trial_id": "t127",
@@ -28064,7 +28190,8 @@
     ],
     "dilemma_id": "dd_9120",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a pet owner, you always ensure your pet is properly secured while riding in a car. One day, you forget the pet's harness at home and need to drive to the vet for an urgent appointment. Do you risk the journey without securing your pet or cancel the urgent vet appointment?"
   },
   {
     "trial_id": "t128",
@@ -28285,7 +28412,8 @@
     ],
     "dilemma_id": "dd_14047",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You and your partner have just moved in together and have agreed to split all shared expenses equally. However, your partner has recently lost their job and is struggling to contribute their half, leaving you to cover more of the costs. Should you continue to demand equal contribution or shoulder more of the financial burden until your partner finds another job?"
   },
   {
     "trial_id": "t129",
@@ -28506,7 +28634,8 @@
     ],
     "dilemma_id": "dd_17914",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John discovers his friend's firearm that has been used in illegal activities. He thinks about destroying it to prevent further harm but worries about damaging personal property without consent. Should John destroy the firearm to potentially save lives, even though it would mean damaging his friend's property?"
   },
   {
     "trial_id": "t130",
@@ -28727,7 +28856,8 @@
     ],
     "dilemma_id": "dd_38166",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John has been prescribed antidepressants to deal with his severe depression. His religious beliefs are against the use of such medication, believing that prayer and faith should be the only remedy for such issues. Should he go against his beliefs and take the medication or continue suffering in silence?"
   },
   {
     "trial_id": "t131",
@@ -28948,7 +29078,8 @@
     ],
     "dilemma_id": "dd_34460",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You and your partner have been trying to conceive for a while, and she took a home pregnancy test that yielded ambiguous results. She is feeling anxious and unsure, and doesn't want to take another test yet as she fears a negative result. Should you respect her decision and give her more time or insist she takes another test immediately for peace of mind?"
   },
   {
     "trial_id": "t132",
@@ -29169,7 +29300,8 @@
     ],
     "dilemma_id": "dd_46132",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a leader of a large corporation, you have the power to make significant changes to reduce carbon emissions. However, implementing these changes would lead to job losses and impact the livelihood of many employees. Do you prioritize the environment over the welfare of your employees?"
   },
   {
     "trial_id": "t133",
@@ -29390,7 +29522,8 @@
     ],
     "dilemma_id": "dd_30285",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John's grandmother, a wealthy woman, has just passed away. John's father asks him to immediately request his grandmother's attorney for his share of the inheritance before other relatives do. Should John respect his father's request or insist on waiting for a more appropriate time to discuss the inheritance?"
   },
   {
     "trial_id": "t134",
@@ -29611,7 +29744,8 @@
     ],
     "dilemma_id": "dd_25155",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a prominent art dealer and a rare painting comes up for auction. Initially, you decline the offer to bid on it because it appears to be overpriced but later on, you get information that it might be worth much more. Do you bid on it now and risk appearing opportunistic or maintain your initial stand and possibly miss out on a great deal?"
   },
   {
     "trial_id": "t135",
@@ -29832,7 +29966,8 @@
     ],
     "dilemma_id": "dd_48976",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You've just upgraded your old but still functional TV for a new one. Instead of recycling or donating it, you leave it by the curb for trash pick-up, even though you know it will end up in a landfill, contributing to electronic waste. Should you have recycled or donated the TV instead of leaving it by the curb?"
   },
   {
     "trial_id": "t136",
@@ -30053,7 +30188,8 @@
     ],
     "dilemma_id": "dd_48587",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You have been deeply hurt by a close friend's offensive remarks. The friend apologizes sincerely, but you are conflicted whether to forgive them, fearful that it might invite more disrespect in the future. Should you forgive them to maintain the friendship or keep your distance to safeguard your self-respect?"
   },
   {
     "trial_id": "t137",
@@ -30274,7 +30410,8 @@
     ],
     "dilemma_id": "dd_7972",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Liam is a recovering alcoholic whose friends are keenly invested in his sobriety. His friends decide to have an intervention and force him into rehab, against his will, believing it's for his own good. Should Liam's friends respect his choices even when they believe he's endangering his own life?"
   },
   {
     "trial_id": "t138",
@@ -30495,7 +30632,8 @@
     ],
     "dilemma_id": "dd_23530",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "A newlywed couple is discussing whether the wife should take her husband's last name. The husband wants her to take his name, but she is a successful businesswoman and fears it could harm her professional identity. Should she maintain her own name for the sake of her career or adopt her husband's name to meet his expectations?"
   },
   {
     "trial_id": "t139",
@@ -30716,7 +30854,8 @@
     ],
     "dilemma_id": "dd_47371",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "The parents are strict vegetarians due to their religious beliefs. Their teenage daughter, who is also raised as a vegetarian, wants to try non-vegetarian food out of curiosity and peer pressure. Should the parents allow their daughter to make her own dietary choices, even if it goes against their religious beliefs?"
   },
   {
     "trial_id": "t140",
@@ -30937,7 +31076,8 @@
     ],
     "dilemma_id": "dd_28463",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Your ex-girlfriend, who is also a close family friend, is expected to attend your wedding. You and your partner are unsure whether to include her in any wedding activities due to your past relationship. Should you maintain family harmony by involving her in the wedding or ensure your partner's comfort by leaving her out of the activities?"
   },
   {
     "trial_id": "t141",
@@ -31158,7 +31298,8 @@
     ],
     "dilemma_id": "dd_3979",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a wildlife researcher studying nocturnal animals alone in the forest. Unexpectedly, you start hearing strange noises that don't match the usual sounds of nature you are familiar with, and feel a sense of danger. Should you investigate the noises possibly risking your life or ignore it potentially missing an important discovery?"
   },
   {
     "trial_id": "t142",
@@ -31379,7 +31520,8 @@
     ],
     "dilemma_id": "dd_176",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You are a librarian and a frequent visitor asks for recommendations on books that will broaden their horizons. You believe that some controversial books can stimulate their thinking, but you also fear that they might be offended by these books. Should you recommend the controversial books despite the risk of offending the visitor?"
   },
   {
     "trial_id": "t143",
@@ -31600,7 +31742,8 @@
     ],
     "dilemma_id": "dd_15538",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "A professional journalist is honing her investigative skills. In her pursuit, she uncovers secret governmental misconduct but revealing it would risk national security. Should she prioritize the public's right to know or the safety of the nation?"
   },
   {
     "trial_id": "t144",
@@ -31821,7 +31964,8 @@
     ],
     "dilemma_id": "dd_14988",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "Sarah's adult brother insists on using their deceased mother's baby blanket for comfort. Sarah knows it's the only item left from their mother but worries that her brother's attachment to the blanket is unhealthy and stunting his emotional growth. Should Sarah take away the blanket to prompt her brother to seek professional help or allow him to keep it for comfort?"
   },
   {
     "trial_id": "t145",
@@ -32042,7 +32186,8 @@
     ],
     "dilemma_id": "dd_1352",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "As a university professor, you have a responsibility to maintain a professional relationship with your students. However, you find yourself developing romantic feelings for one of your students, which could potentially disrupt the learning environment and violate the university's ethical guidelines. Would it be ethical to pursue a relationship with the student after they've graduated?"
   },
   {
     "trial_id": "t146",
@@ -32263,7 +32408,8 @@
     ],
     "dilemma_id": "dd_16174",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "John is an atheist co-worker to Sarah, who is a devout Christian. John frequently mocks Sarah's faith, saying it's irrational and baseless, creating an uncomfortable working environment. Should John respect Sarah's beliefs despite his personal disagreement, or continue expressing his views openly?"
   },
   {
     "trial_id": "t147",
@@ -32484,7 +32630,8 @@
     ],
     "dilemma_id": "dd_23415",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're shopping at a clothing store and a salesperson is assisting you. The salesperson is overly persistent, continually suggesting items that are far beyond your budget and making you feel uncomfortable. Should you remain polite and endure their sales tactics or confront them about their aggressive behavior?"
   },
   {
     "trial_id": "t148",
@@ -32705,7 +32852,8 @@
     ],
     "dilemma_id": "dd_6519",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're at a park enjoying the rhythmic sounds of a drum circle. Suddenly, you notice one of the drummers is a known local thief. Do you continue to enjoy the music or confront the person about their criminal activities?"
   },
   {
     "trial_id": "t149",
@@ -32926,7 +33074,8 @@
     ],
     "dilemma_id": "dd_4871",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You're working with a Canadian colleague who often uses humor and wit in his communication. You have started interpreting his humor as sarcasm, which is affecting your professional relationship. Do you confront him about his perceived sarcasm, potentially causing conflict, or do you ignore it, possibly leading to a misunderstanding?"
   },
   {
     "trial_id": "t150",
@@ -33147,6 +33296,7 @@
     ],
     "dilemma_id": "dd_3363",
     "gold_label": -1,
-    "controversial": false
+    "controversial": false,
+    "situation": "You've taken your young child to the movies and they want to buy snacks from the concession stand. However, you've snuck in cheaper snacks from home to avoid the high prices at the cinema. Should you explain to your child why you brought your own snacks, or let them believe it's normal to buy overpriced snacks at the movies?"
   }
 ]

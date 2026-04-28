@@ -466,5 +466,23 @@
       "mult": 1.5
     }
   ],
-  "num_training_trials": 5
+  "num_training_trials": 5,
+  "instructions": {
+    "training": "<h1>Practice</h1><p>Before the main task, you\u2019ll do a few short <strong>practice trials</strong> to learn the preference dimensions used in this study.</p><p>Each practice trial shows one dimension and asks which option is more aligned with it. After you click, we\u2019ll tell you whether you were right.</p>",
+    "feedback": "<h1>Main Task</h1><p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>"
+  },
+  "comparison": {
+    "lambda_standard": 10.0,
+    "lambda_partial": 1.0,
+    "slider_prior_weight": 1.0,
+    "n_dimensions_shown": 10,
+    "show_for_conditions": [
+      "choice_only",
+      "choice_readonly_sliders",
+      "choice_adjustable_sliders",
+      "choice_checkboxes",
+      "inference_affirm",
+      "inference_categories"
+    ]
+  }
 }

@@ -19,6 +19,7 @@
   .progress-bar-track{height:4px;background:#e0e0e0;border-radius:2px;margin-bottom:1.5rem}
   .progress-bar-fill{height:100%;background:#3b82f6;border-radius:2px;transition:width .3s}
   .prompt{text-align:center;font-size:1.05rem;font-weight:500;margin-bottom:1.25rem;color:#444}
+  .situation{background:#f8f9fa;border-left:3px solid #3b82f6;border-radius:6px;padding:.85rem 1rem;margin-bottom:1rem;font-size:.95rem;line-height:1.5;color:#333}
   .options{display:flex;gap:1rem}
   .option-card{flex:1;background:#fff;border:2px solid #ddd;border-radius:8px;padding:1.25rem;cursor:pointer;transition:border-color .15s,opacity .15s,box-shadow .15s}
   .option-card:hover{border-color:#999}.option-card.selected{border-color:#3b82f6;box-shadow:0 0 0 1px #3b82f6}.option-card.dimmed{opacity:.5}
@@ -74,6 +75,23 @@
   .train-feedback{font-size:1rem;font-weight:500;margin:1rem 0;padding:.75rem 1rem;border-radius:6px;text-align:center}
   .train-feedback.fb-correct{background:#d1fae5;color:#065f46}
   .train-feedback.fb-incorrect{background:#fee2e2;color:#991b1b}
+  .eval-intro{max-width:680px;margin:0 auto 1.25rem;text-align:center}
+  .eval-intro h1{font-size:1.3rem;font-weight:600;margin-bottom:.6rem}
+  .eval-intro p{font-size:.92rem;color:#444;margin-bottom:.5rem}
+  .eval-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+  .eval-col{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:1.1rem 1.25rem}
+  .eval-col-header{font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#3b82f6;margin-bottom:.6rem;text-align:center;background:#eff6ff;border-radius:5px;padding:.3rem .5rem}
+  .eval-list{list-style:none;padding:0;margin:0}
+  .eval-list li{font-size:.92rem;padding:.45rem 0;border-bottom:1px solid #f0f0f0;line-height:1.4}
+  .eval-list li:last-child{border-bottom:none}
+  .eval-list .cat-word{color:#3b82f6;font-weight:600}
+  .likert-prompt{text-align:center;font-size:1rem;font-weight:500;margin-bottom:.85rem;color:#333}
+  .likert-row{display:grid;grid-template-columns:repeat(6,1fr);gap:.4rem;max-width:720px;margin:0 auto 1rem}
+  .likert-btn{padding:.65rem .35rem;font-size:.78rem;border:1px solid #d1d5db;border-radius:6px;background:#fff;color:#333;cursor:pointer;transition:all .15s;text-align:center;line-height:1.25}
+  .likert-btn:hover{border-color:#888;background:#f9fafb}
+  .likert-btn.selected{background:#3b82f6;color:#fff;border-color:#3b82f6}
+  .likert-row .arrow{font-weight:600;font-size:.85rem;display:block;margin-bottom:.15rem}
+  @media(max-width:700px){.eval-grid{grid-template-columns:1fr}.likert-row{grid-template-columns:repeat(3,1fr)}.likert-btn{font-size:.72rem;padding:.55rem .25rem}}
   @media(max-width:600px){.options{flex-direction:column}.slider-row{grid-template-columns:120px 1fr 36px}}
 </style>
 </head>
@@ -113,7 +131,8 @@ var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
 var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
 var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeedback=20,numTraining=5;
-var HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle','points','price','taster_name']);
+var deltaGram=null,deltaGramN=0,trialProjections=null,evalState=null;
+var HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle','points','price','taster_name','dilemma_id','topic_group','situation','values','consequence']);
 var FIELD_LABELS={plot_summary:'Plot',genres:'Genres',director:'Director',stars:'Stars',variety:'Variety',country:'Country',province:'Province',points:'Rating',price:'Price',description:'Description',user_prompt:'Question',assistant_response:'Response',winery:'Winery',designation:'Designation',region_1:'Region',taster_name:'Reviewer'};
 var DEFAULT_CATEGORIES=[
   {key:'skip',phrase:'prefer to skip',label:'Prefer to skip',mult:-1.5},
@@ -137,14 +156,32 @@ function catFromEff(v){
 function catPhrase(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.phrase:k;}
 function catMult(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.mult:0;}
 function infMode(){return condition?condition.show_inferences:false;}
+// Fields that, when identical on both options of a pair, should render once above
+// the cards as shared context (e.g., a dilemma's situation) rather than twice.
+var LIFTABLE_FIELDS=['situation'];
+function liftSharedFields(trial){
+  if(!trial||!trial.option_a||!trial.option_b)return;
+  var fa=trial.option_a.fields||{},fb=trial.option_b.fields||{};
+  LIFTABLE_FIELDS.forEach(function(k){
+    if(trial[k]!=null)return;
+    var va=fa[k],vb=fb[k];
+    if(va==null||vb==null)return;
+    if(String(va)!==String(vb))return;
+    trial[k]=va;delete fa[k];delete fb[k];
+  });
+}
 function getUrlParams(){var p=new URLSearchParams(window.location.search);var mRaw=p.get('m');return{pid:p.get('pid')||'',condition:p.get('condition')||'',n:parseInt(p.get('n'),10)||0,m:(mRaw==null||mRaw==='')?null:parseInt(mRaw,10),domain:p.get('domain')||'',post:p.get('post')||''};}
 var urlParams=getUrlParams();domainKey=urlParams.domain||'movies_100';postUrl=urlParams.post||null;
 var basePath=domainKey?'outputs/'+domainKey+'/':'';
 Promise.all([
   fetch(basePath+'trials.json').then(function(r){if(!r.ok)throw new Error();return r.json()}),
-  fetch(basePath+'experiment_config.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null})
+  fetch(basePath+'experiment_config.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
+  fetch(basePath+'trial_projections.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
+  fetch(basePath+'delta_gram.bin').then(function(r){if(!r.ok)throw null;return r.arrayBuffer()}).catch(function(){return null})
 ]).then(function(arr){
-  trials=arr[0];experimentConfig=arr[1];
+  trials=arr[0];experimentConfig=arr[1];trialProjections=arr[2];
+  if(arr[3]){deltaGram=new Float32Array(arr[3]);deltaGramN=Math.round(Math.sqrt(deltaGram.length));}
+  trials.forEach(liftSharedFields);
   if(arr[1]&&arr[1].gram_matrix)gramMatrix=arr[1].gram_matrix;
   if(arr[1]&&arr[1].top_k_sliders)topKSliders=arr[1].top_k_sliders;
   loadCategories();
@@ -157,7 +194,7 @@ Promise.all([
     startExperiment();
   }else renderSetup();
 }).catch(function(){app.innerHTML='<div class="error-msg">Could not load trials.json.<br><code>cd web-interface && python3 -m http.server 8080</code></div>';});
-var KNOWN_DOMAINS=[{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
+var KNOWN_DOMAINS=[{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'dailydilemmas',label:'Daily Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
 function buildFC(){return{
   choice_only:{label:'Choice Only',show_sliders:false,sliders_adjustable:false,show_checkboxes:false,show_inferences:false},
   choice_readonly_sliders:{label:'Choice + Read-Only Sliders',show_sliders:true,sliders_adjustable:false,show_checkboxes:false,show_inferences:false},
@@ -191,7 +228,8 @@ function startExperiment(){
   assignedTrialIndices=shuffle(pool,rng).slice(0,numFeedback);
   currentStep=0;trainingStep=0;inTraining=trainingPlan.length>0;
   responses=[];trainingResponses=[];
-  renderInstructions();
+  if(inTraining)renderTrainingInstructions();
+  else renderFeedbackInstructions();
 }
 function renderTrainingTrial(){
   var plan=trainingPlan[trainingStep];if(!plan){inTraining=false;renderTrial();return;}
@@ -206,6 +244,7 @@ function renderTrainingTrial(){
   if(dim.high_label)h+='<div class="dim-card-row"><strong>High end:</strong> '+esc(dim.high_label)+'</div>';
   if(dim.scoring_guidance)h+='<div class="dim-card-guidance">'+esc(dim.scoring_guidance)+'</div>';
   h+='</div>';
+  if(trial.situation)h+='<div class="situation">'+esc(trial.situation)+'</div>';
   h+='<div class="prompt">Which option is more <strong>'+hi+'</strong>?</div>';
   h+='<div class="options">'+buildCard('a',trial.option_a)+buildCard('b',trial.option_b)+'</div>';
   h+='<div id="trainingFeedback"></div>';
@@ -232,7 +271,7 @@ function renderTrainingTrial(){
       document.getElementById('trainNextBtn').addEventListener('click',function(){
         trainingStep++;
         if(trainingStep<trainingPlan.length){renderTrainingTrial();}
-        else{inTraining=false;renderTrial();}
+        else{inTraining=false;renderFeedbackInstructions();}
         window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
       });
     });
@@ -263,30 +302,46 @@ function renderSetup(){
     startExperiment();
   });
 }
-function renderInstructions(){
+var DEFAULT_TRAINING_INSTRUCTIONS='<h1>Practice</h1>'
+  +'<p>Before the main task, you\u2019ll do a few short <strong>practice trials</strong> to learn the preference dimensions used in this study.</p>'
+  +'<p>Each practice trial shows one dimension and asks which option is more aligned with it. After you click, we\u2019ll tell you whether you were right.</p>';
+var DEFAULT_FEEDBACK_INSTRUCTIONS='<h1>Main Task</h1>'
+  +'<p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>';
+function getConditionNote(){
   var topCat=CATEGORIES[CATEGORIES.length-1]||CATEGORIES[0];
-  var h='<div class="instructions"><h1>Instructions</h1>';
-  h+='<p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>';
   if(condition.show_sliders&&!condition.sliders_adjustable)
-    h+='<div class="inst-highlight">After your choice, we\u2019ll show dimension scores. Review them, then click Submit.</div>';
-  else if(condition.show_sliders&&condition.sliders_adjustable)
-    h+='<div class="inst-highlight">After your choice, <strong>adjust the sliders</strong> to reflect why you chose as you did, then click Submit.</div>';
-  else if(condition.show_checkboxes)
-    h+='<div class="inst-highlight"><strong>Check the boxes</strong> next to dimensions that mattered, then click Submit.</div>';
-  else if(infMode()==='affirm')
-    h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> For each:<ul style="margin:.5rem 0 0 1.2rem"><li><strong>Remove</strong> \u2014 not relevant</li><li><strong>Affirm</strong> \u2014 we got it right</li></ul></div>';
-  else if(infMode()==='categories')
-    h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> We\u2019ll pre-select a level. You can <strong>change it</strong> to better match how you feel. Then click Submit.</div>';
-  if(trainingPlan.length>0){
-    h+='<p>You will first complete <strong>'+trainingPlan.length+' practice trials</strong> (with feedback) to learn the dimensions, then <strong>'+assignedTrialIndices.length+' main trials</strong>. Take your time.</p>';
-  }else{
-    h+='<p>There are '+assignedTrialIndices.length+' trials. Take your time.</p>';
-  }
-  h+='<div class="submit-row"><button class="btn" id="beginBtn">Begin</button></div></div>';
-  app.innerHTML=h;
+    return '<div class="inst-highlight">After your choice, we\u2019ll show dimension scores. Review them, then click Submit.</div>';
+  if(condition.show_sliders&&condition.sliders_adjustable)
+    return '<div class="inst-highlight">After your choice, <strong>adjust the sliders</strong> to reflect why you chose as you did, then click Submit.</div>';
+  if(condition.show_checkboxes)
+    return '<div class="inst-highlight"><strong>Check the boxes</strong> next to dimensions that mattered, then click Submit.</div>';
+  if(infMode()==='affirm')
+    return '<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> For each:<ul style="margin:.5rem 0 0 1.2rem"><li><strong>Remove</strong> \u2014 not relevant</li><li><strong>Affirm</strong> \u2014 we got it right</li></ul></div>';
+  if(infMode()==='categories')
+    return '<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> We\u2019ll pre-select a level. You can <strong>change it</strong> to better match how you feel. Then click Submit.</div>';
+  return '';
+}
+function getInstructionsHTML(key,def){
+  var ins=experimentConfig&&experimentConfig.instructions;
+  return (ins&&typeof ins[key]==='string'&&ins[key])||def;
+}
+function renderTrainingInstructions(){
+  var body=getInstructionsHTML('training',DEFAULT_TRAINING_INSTRUCTIONS);
+  var count='<p>You will see <strong>'+trainingPlan.length+' practice trial'+(trainingPlan.length===1?'':'s')+'</strong>, then continue to the main task.</p>';
+  app.innerHTML='<div class="instructions">'+body+count+'<div class="submit-row"><button class="btn" id="beginBtn">Begin practice</button></div></div>';
   document.getElementById('beginBtn').addEventListener('click',function(){
-    if(inTraining&&trainingPlan.length>0)renderTrainingTrial();
-    else renderTrial();
+    renderTrainingTrial();
+    window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
+  });
+}
+function renderFeedbackInstructions(){
+  var body=getInstructionsHTML('feedback',DEFAULT_FEEDBACK_INSTRUCTIONS);
+  var note=getConditionNote();
+  var count='<p>There are <strong>'+assignedTrialIndices.length+'</strong> trials. Take your time.</p>';
+  app.innerHTML='<div class="instructions">'+body+note+count+'<div class="submit-row"><button class="btn" id="beginBtn">Begin</button></div></div>';
+  document.getElementById('beginBtn').addEventListener('click',function(){
+    renderTrial();
+    window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
   });
 }
 function getTopK(sl,key,k){var vk=key==='a'?'value_if_a':'value_if_b';return sl.map(function(s,i){return{i:i,av:Math.abs(s[vk])}}).sort(function(a,b){return b.av-a.av}).slice(0,k).map(function(x){return x.i}).sort(function(a,b){return a-b});}
@@ -296,6 +351,7 @@ function renderTrial(){
   var h='<div class="progress">Trial '+(currentStep+1)+' of '+total+'</div>';
   h+='<div class="progress-bar-track"><div class="progress-bar-fill" style="width:'+pct+'%"></div></div>';
   var promptText=(experimentConfig&&experimentConfig.choice_context)||trial.prompt||'';
+  if(trial.situation)h+='<div class="situation">'+esc(trial.situation)+'</div>';
   if(promptText)h+='<div class="prompt">'+esc(promptText)+'</div>';
   h+='<div class="options">'+buildCard('a',trial.option_a)+buildCard('b',trial.option_b)+'</div>';
   if(condition.show_sliders&&trial.sliders&&trial.sliders.length>0)
@@ -433,10 +489,10 @@ function submitTrial(){
     response.inference_values=iv;
   }
   responses.push(response);currentStep++;
-  if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();}else finishExperiment();
+  if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();}else if(!evalState){startEvaluation();}else finishExperiment();
 }
 function finishExperiment(){
-  var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,num_training:trainingResponses.length,training_responses:trainingResponses,timestamp:new Date().toISOString(),responses:responses};
+  var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,num_training:trainingResponses.length,training_responses:trainingResponses,timestamp:new Date().toISOString(),responses:responses,evaluation:evalState||null};
   if(postUrl)fetch(postUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(output)}).catch(function(){});
   if(window.parent!==window){try{window.parent.postMessage({type:'experiment_complete',payload:output},'*');}catch(e){}}
   renderResults(output);
@@ -450,6 +506,229 @@ function renderResults(output){
   document.getElementById('copyBtn').addEventListener('click',function(){navigator.clipboard.writeText(s).then(function(){var b=document.getElementById('copyBtn');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy to Clipboard'},1500)})});
   document.getElementById('downloadBtn').addEventListener('click',function(){var blob=new Blob([s],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='responses_'+participantId+'_'+conditionKey+'.json';a.click();URL.revokeObjectURL(u);});
 }
+// ===== Newton+L2 fitters for post-experiment evaluation =====
+function _matVec(M,v){var n=M.length,r=new Array(n);for(var i=0;i<n;i++){var row=M[i],s=0;for(var j=0;j<v.length;j++)s+=row[j]*v[j];r[i]=s;}return r;}
+function _solveLinear(A,b){
+  var n=b.length,M=[],rhs=b.slice();
+  for(var i=0;i<n;i++)M.push(A[i].slice());
+  for(var k=0;k<n;k++){
+    var maxR=k,maxV=Math.abs(M[k][k]);
+    for(var i=k+1;i<n;i++)if(Math.abs(M[i][k])>maxV){maxV=Math.abs(M[i][k]);maxR=i;}
+    if(maxR!==k){var tmp=M[k];M[k]=M[maxR];M[maxR]=tmp;var t=rhs[k];rhs[k]=rhs[maxR];rhs[maxR]=t;}
+    if(Math.abs(M[k][k])<1e-12)return null;
+    for(var i2=k+1;i2<n;i2++){var f=M[i2][k]/M[k][k];for(var j=k;j<n;j++)M[i2][j]-=f*M[k][j];rhs[i2]-=f*rhs[k];}
+  }
+  var x=new Array(n);
+  for(var i=n-1;i>=0;i--){var s=rhs[i];for(var j=i+1;j<n;j++)s-=M[i][j]*x[j];x[i]=s/M[i][i];}
+  return x;
+}
+function _sigm(x){if(x>20)return 1-1e-9;if(x<-20)return 1e-9;return 1/(1+Math.exp(-x));}
+// Standard fit: kernel logistic regression. Returns alpha s.t. theta = sum_t alpha_t * delta_t.
+function fitNewtonStandard(D,y,lam,maxIter){
+  var T=D.length,alpha=new Array(T).fill(0);
+  for(var iter=0;iter<(maxIter||12);iter++){
+    var u=_matVec(D,alpha);
+    var p=u.map(_sigm),w=p.map(function(pi){return pi*(1-pi);});
+    var rhs=new Array(T);for(var i=0;i<T;i++)rhs[i]=-(p[i]-y[i]+lam*alpha[i]);
+    var A=[];for(var i2=0;i2<T;i2++){var row=new Array(T);for(var j=0;j<T;j++)row[j]=w[i2]*D[i2][j]+(i2===j?lam:0);A.push(row);}
+    var dA=_solveLinear(A,rhs);if(!dA)break;
+    var step=0;for(var i3=0;i3<T;i3++){alpha[i3]+=dA[i3];if(Math.abs(dA[i3])>step)step=Math.abs(dA[i3]);}
+    if(step<1e-7)break;
+  }
+  return alpha;
+}
+// Partial fit: K-dim primal logistic with G-shaped prior centered at beta_0.
+function fitNewtonPartial(U,y,G,beta0,lam,maxIter){
+  var T=U.length,K=U[0].length,beta=beta0.slice();
+  for(var iter=0;iter<(maxIter||12);iter++){
+    var u=new Array(T);for(var t=0;t<T;t++){var s=0;for(var k=0;k<K;k++)s+=U[t][k]*beta[k];u[t]=s;}
+    var p=u.map(_sigm),w=p.map(function(pi){return pi*(1-pi);});
+    var diff=new Array(K);for(var k2=0;k2<K;k2++)diff[k2]=beta[k2]-beta0[k2];
+    var Gd=_matVec(G,diff);
+    var grad=new Array(K).fill(0);
+    for(var k=0;k<K;k++){var s2=0;for(var t2=0;t2<T;t2++)s2+=U[t2][k]*(p[t2]-y[t2]);grad[k]=s2+lam*Gd[k];}
+    var H=[];for(var k=0;k<K;k++){var row=new Array(K).fill(0);for(var k3=0;k3<K;k3++){var s3=0;for(var t3=0;t3<T;t3++)s3+=U[t3][k]*w[t3]*U[t3][k3];row[k3]=s3+lam*G[k][k3];}H.push(row);}
+    var rhs=grad.map(function(g){return -g;});
+    var dB=_solveLinear(H,rhs);if(!dB)break;
+    var step=0;for(var k4=0;k4<K;k4++){beta[k4]+=dB[k4];if(Math.abs(dB[k4])>step)step=Math.abs(dB[k4]);}
+    if(step<1e-7)break;
+  }
+  return beta;
+}
+function scoresFromAlpha(alpha,Vd){var T=Vd.length,K=Vd[0].length,s=new Array(K).fill(0);for(var k=0;k<K;k++){var v=0;for(var t=0;t<T;t++)v+=alpha[t]*Vd[t][k];s[k]=v;}return s;}
+function scoresFromBeta(beta,G){return _matVec(G,beta);}
+
+// Build participant-trial-indexed data structures from responses.
+function buildEvalInputs(){
+  if(!trialProjections||!Array.isArray(trialProjections))return null;
+  if(!experimentConfig||!Array.isArray(experimentConfig.dimensions))return null;
+  var T=responses.length;if(T===0)return null;
+  var dims=experimentConfig.dimensions,K=dims.length;
+  var dimIds=dims.map(function(d){return d.id||('dim_'+d.dimension_id);});
+  // Build U (T x K) from raw_projection of each chosen trial
+  var U=[],y=[],poolIdx=[];
+  for(var i=0;i<T;i++){
+    var pi=assignedTrialIndices[i];poolIdx.push(pi);
+    var tp=trialProjections[pi];
+    if(!tp||!Array.isArray(tp.raw_projection))return null;
+    U.push(tp.raw_projection.slice());
+    y.push(responses[i].chosen==='a'?1:0);
+  }
+  // Build D sub-matrix (T x T)
+  var D=null;
+  if(deltaGram&&deltaGramN===trialProjections.length){
+    D=[];for(var ii=0;ii<T;ii++){var row=new Array(T);var pi_i=poolIdx[ii];for(var jj=0;jj<T;jj++){var pi_j=poolIdx[jj];row[jj]=deltaGram[pi_i*deltaGramN+pi_j];}D.push(row);}
+  }
+  // Per-trial multipliers (only for inference conditions). Sums + counts per dim across visible-trials.
+  var sums=new Array(K).fill(0),counts=new Array(K).fill(0);
+  responses.forEach(function(r){
+    if(!r.inference_values)return;
+    Object.keys(r.inference_values).forEach(function(did){
+      var idx=dimIds.indexOf(did);if(idx<0)return;
+      var m=r.inference_values[did].multiplier;
+      if(typeof m!=='number'||!isFinite(m))return;
+      sums[idx]+=m;counts[idx]+=1;
+    });
+  });
+  var hasMultipliers=counts.some(function(c){return c>0;});
+  var mean=new Array(K).fill(0);for(var k=0;k<K;k++)mean[k]=counts[k]>0?sums[k]/counts[k]:0;
+  return {U:U,y:y,D:D,K:K,T:T,dims:dims,dimIds:dimIds,mean:mean,hasMultipliers:hasMultipliers};
+}
+
+// Map signed scores to top-N inferences with quintile categories within those N.
+function buildInferences(scores,dims,nShow){
+  var idxs=scores.map(function(s,i){return{i:i,abs:Math.abs(s),s:s};}).sort(function(a,b){return b.abs-a.abs;}).slice(0,nShow);
+  // Order by signed score (most positive first) to assign quintile categories
+  var ordered=idxs.slice().sort(function(a,b){return b.s-a.s;});
+  var nCats=CATEGORIES.length,n=ordered.length;
+  // Bin into quintiles by signed rank: most positive -> CATEGORIES[nCats-1] ('love'); most negative -> CATEGORIES[0] ('skip')
+  var perBin=Math.ceil(n/nCats);
+  var dimToCat={};
+  ordered.forEach(function(item,rank){
+    var binFromTop=Math.floor(rank/perBin);
+    var catIdx=nCats-1-Math.min(binFromTop,nCats-1);
+    dimToCat[item.i]=CATEGORIES[catIdx].key;
+  });
+  // Final list in signed-score order (top to bottom: love -> skip)
+  return ordered.map(function(item){
+    var d=dims[item.i],catKey=dimToCat[item.i];
+    var cat=CATEGORIES.find(function(c){return c.key===catKey;})||CATEGORIES[Math.floor(nCats/2)];
+    return {
+      dim_id: d.id||('dim_'+d.dimension_id),
+      dim_name: d.name||d.label||('Dimension '+(item.i+1)),
+      category: cat.key,
+      category_label: cat.label,
+      phrase: cat.phrase,
+      score: item.s,
+    };
+  });
+}
+
+function startEvaluation(){
+  var comp=experimentConfig&&experimentConfig.comparison;
+  var allowed=comp&&Array.isArray(comp.show_for_conditions)?comp.show_for_conditions:null;
+  if(allowed&&allowed.indexOf(conditionKey)<0){evalState={skipped:'condition_excluded'};finishExperiment();return;}
+  var inputs=buildEvalInputs();
+  if(!inputs){evalState={skipped:'no_eval_data'};finishExperiment();return;}
+  if(!inputs.D){evalState={skipped:'missing_delta_gram'};finishExperiment();return;}
+  if(!gramMatrix){evalState={skipped:'missing_gram_matrix'};finishExperiment();return;}
+  var lamS=(comp&&comp.lambda_standard)||10.0;
+  var lamP=(comp&&comp.lambda_partial)||1.0;
+  var nShow=(comp&&comp.n_dimensions_shown)||10;
+  // Standard fit (kernel logistic regression in dual form)
+  var t0=performance.now();
+  var alpha=fitNewtonStandard(inputs.D,inputs.y,lamS,15);
+  var scoresStd=scoresFromAlpha(alpha,inputs.U);
+  // Partial fit prior: solve G*beta_0 = mean
+  var beta0=null;
+  if(inputs.hasMultipliers){
+    var sol=_solveLinear(gramMatrix,inputs.mean);
+    beta0=sol||new Array(inputs.K).fill(0);
+  }else{
+    beta0=new Array(inputs.K).fill(0);
+  }
+  var beta=fitNewtonPartial(inputs.U,inputs.y,gramMatrix,beta0,lamP,15);
+  var scoresPart=scoresFromBeta(beta,gramMatrix);
+  var fitMs=Math.round(performance.now()-t0);
+  // Build inference lists
+  var nCap=Math.min(nShow,inputs.K);
+  var infsStd=buildInferences(scoresStd,inputs.dims,nCap);
+  var infsPart=buildInferences(scoresPart,inputs.dims,nCap);
+  // Counterbalance: hash(pid) % 2 → which side is standard
+  var stdOnLeft=(hashStr(participantId)%2)===0;
+  evalState={
+    fit_duration_ms: fitMs,
+    lambda_standard: lamS,
+    lambda_partial: lamP,
+    n_dimensions_shown: nCap,
+    has_multipliers: inputs.hasMultipliers,
+    left_model: stdOnLeft?'standard':'partial',
+    right_model: stdOnLeft?'partial':'standard',
+    left_inferences: stdOnLeft?infsStd:infsPart,
+    right_inferences: stdOnLeft?infsPart:infsStd,
+    rating: null,
+    rating_numeric: null,
+    response_time_ms: null,
+    started_at: Date.now(),
+  };
+  renderEvaluation();
+}
+
+var LIKERT_LEVELS=[
+  {key:'A_much_better',     label:'is much better',     side:'A', value:-3},
+  {key:'A_better',          label:'is better',          side:'A', value:-2},
+  {key:'A_slightly_better', label:'is slightly better', side:'A', value:-1},
+  {key:'B_slightly_better', label:'is slightly better', side:'B', value: 1},
+  {key:'B_better',          label:'is better',          side:'B', value: 2},
+  {key:'B_much_better',     label:'is much better',     side:'B', value: 3},
+];
+
+function renderInferenceList(infs){
+  var h='<ul class="eval-list">';
+  infs.forEach(function(inf){
+    h+='<li>You <span class="cat-word">'+esc(inf.phrase)+'</span> '+esc(inf.dim_name)+'.</li>';
+  });
+  h+='</ul>';
+  return h;
+}
+
+function renderEvaluation(){
+  var st=evalState;
+  var h='<div class="eval-intro"><h1>Compare these two summaries</h1>';
+  h+='<p>Below are two summaries of what we learned about your preferences from your choices.</p>';
+  h+='<p>Read both, then tell us which feels more accurate.</p></div>';
+  h+='<div class="eval-grid">';
+  h+='<div class="eval-col"><div class="eval-col-header">Summary A</div>'+renderInferenceList(st.left_inferences)+'</div>';
+  h+='<div class="eval-col"><div class="eval-col-header">Summary B</div>'+renderInferenceList(st.right_inferences)+'</div>';
+  h+='</div>';
+  h+='<div class="likert-prompt">Which summary feels more accurate?</div>';
+  h+='<div class="likert-row">';
+  LIKERT_LEVELS.forEach(function(lv){
+    var arrow=lv.side==='A'?'A':'B';
+    h+='<button class="likert-btn" data-key="'+lv.key+'" data-value="'+lv.value+'"><span class="arrow">'+arrow+'</span>'+esc(lv.label)+'</button>';
+  });
+  h+='</div>';
+  h+='<div class="submit-row"><button class="btn" id="evalSubmit" disabled>Submit</button></div>';
+  app.innerHTML=h;
+  window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
+  var selected=null;
+  app.querySelectorAll('.likert-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      app.querySelectorAll('.likert-btn').forEach(function(b){b.classList.remove('selected');});
+      btn.classList.add('selected');
+      selected={key:btn.dataset.key,value:parseInt(btn.dataset.value,10)};
+      document.getElementById('evalSubmit').disabled=false;
+    });
+  });
+  document.getElementById('evalSubmit').addEventListener('click',function(){
+    if(!selected)return;
+    evalState.rating=selected.key;
+    evalState.rating_numeric=selected.value;
+    evalState.response_time_ms=Date.now()-evalState.started_at;
+    finishExperiment();
+  });
+}
+
 function esc(s){if(s==null)return'';var d=document.createElement('div');d.textContent=String(s);return d.innerHTML}
 function hashStr(s){var h=0;for(var i=0;i<s.length;i++){h=((h<<5)-h+s.charCodeAt(i))|0}return Math.abs(h)}
 function seedRandom(seed){var s=seed|0;return function(){s=(s+0x6D2B79F5)|0;var t=Math.imul(s^(s>>>15),1|s);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296}}

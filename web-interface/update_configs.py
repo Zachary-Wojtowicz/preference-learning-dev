@@ -40,8 +40,33 @@ DOMAIN_CATEGORIES = {
     "moral dilemmas":  SCRUPLES_CATEGORIES,
     "scruples":        SCRUPLES_CATEGORIES,
     "scruples_dilemmas": SCRUPLES_CATEGORIES,
+    "everyday moral dilemmas": SCRUPLES_CATEGORIES,
+    "dailydilemmas":   SCRUPLES_CATEGORIES,
     "wines":           WINES_CATEGORIES,
     "wines_100":       WINES_CATEGORIES,
+}
+
+DEFAULT_COMPARISON = {
+    "lambda_standard":     10.0,
+    "lambda_partial":      1.0,
+    "slider_prior_weight": 1.0,
+    "n_dimensions_shown":  10,
+    "show_for_conditions": [
+        "choice_only", "choice_readonly_sliders", "choice_adjustable_sliders",
+        "choice_checkboxes", "inference_affirm", "inference_categories",
+    ],
+}
+
+DEFAULT_INSTRUCTIONS = {
+    "training": (
+        "<h1>Practice</h1>"
+        "<p>Before the main task, you’ll do a few short <strong>practice trials</strong> to learn the preference dimensions used in this study.</p>"
+        "<p>Each practice trial shows one dimension and asks which option is more aligned with it. After you click, we’ll tell you whether you were right.</p>"
+    ),
+    "feedback": (
+        "<h1>Main Task</h1>"
+        "<p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>"
+    ),
 }
 
 INFERENCE_CONDITIONS = {
@@ -90,6 +115,18 @@ for path in paths:
     # Defaults for trial counts (preserve existing if already set)
     cfg.setdefault("num_trials_per_participant", 20)
     cfg.setdefault("num_training_trials", 5)
+
+    # Default instructions (preserve any existing per-domain edits)
+    ins = cfg.get("instructions") or {}
+    for k, v in DEFAULT_INSTRUCTIONS.items():
+        ins.setdefault(k, v)
+    cfg["instructions"] = ins
+
+    # Default comparison block (preserve any existing per-domain edits)
+    comp = cfg.get("comparison") or {}
+    for k, v in DEFAULT_COMPARISON.items():
+        comp.setdefault(k, v)
+    cfg["comparison"] = comp
 
     with open(path, "w") as f:
         json.dump(cfg, f, indent=2)
