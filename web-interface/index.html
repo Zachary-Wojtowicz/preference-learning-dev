@@ -26,8 +26,8 @@
   .option-card .card-title{font-size:1rem;font-weight:600;margin-bottom:.5rem}
   .option-card .card-field{font-size:.82rem;color:#555;margin-bottom:.25rem}.option-card .card-field strong{color:#333;font-weight:500}
   .option-card .card-text{font-size:.85rem;color:#444;margin-top:.5rem;line-height:1.5}
-  .dim-panel{max-height:0;overflow:hidden;transition:max-height .4s ease,margin-top .3s ease;margin-top:0}
-  .dim-panel.visible{max-height:3000px;margin-top:1.5rem}
+  .dim-panel{display:none;margin-top:0}
+  .dim-panel.visible{display:block;margin-top:1.5rem}
   .dim-panel-inner{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:1.25rem}
   .dim-panel-header{font-size:.85rem;font-weight:500;color:#666;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid #eee}
   .slider-row{display:grid;grid-template-columns:160px 1fr 40px;align-items:center;gap:.5rem;margin-bottom:.65rem}
@@ -71,15 +71,32 @@
 <script>
 (function(){
 if(window.parent!==window){
-  // Embedded mode: blend into parent (Qualtrics) by removing our page bg and padding.
-  // The iframe is sized large enough by the parent to hold the worst-case content;
-  // empty space below shows through to the parent, so no dynamic resizing is needed.
+  // Embedded mode: blend into parent (Qualtrics) bg and resize iframe to content.
   var setEmbedStyle=function(){
     document.documentElement.style.background='transparent';
     if(document.body){document.body.style.background='transparent';document.body.style.padding='1rem';}
   };
   setEmbedStyle();
   document.addEventListener('DOMContentLoaded',setEmbedStyle);
+  var lastH=0;
+  window.__sendExperimentSize=function(){
+    var h=Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0);
+    if(h&&h!==lastH){lastH=h;try{window.parent.postMessage({type:'experiment_resize',height:h},'*');}catch(e){}}
+  };
+  var schedule=function(){requestAnimationFrame(window.__sendExperimentSize);};
+  window.addEventListener('load',schedule);
+  window.addEventListener('resize',schedule);
+  if(window.ResizeObserver){
+    var ro=new ResizeObserver(schedule);
+    if(document.body)ro.observe(document.body);
+    else document.addEventListener('DOMContentLoaded',function(){ro.observe(document.body);});
+  }
+  // Tell the parent to scroll its window so the iframe top is in view (called on screen change).
+  window.__scrollParentToTop=function(){
+    try{window.parent.postMessage({type:'experiment_scroll_top'},'*');}catch(e){}
+  };
+}else{
+  window.__scrollParentToTop=function(){};
 }
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
@@ -327,7 +344,7 @@ function submitTrial(){
     response.inference_values=iv;
   }
   responses.push(response);currentStep++;
-  if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});}else finishExperiment();
+  if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();}else finishExperiment();
 }
 function finishExperiment(){
   var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,timestamp:new Date().toISOString(),responses:responses};
