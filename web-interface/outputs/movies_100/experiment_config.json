@@ -1,7 +1,7 @@
 {
   "domain": "movies",
   "choice_context": "Which movie would you rather watch right now?",
-  "num_trials_per_participant": 30,
+  "num_trials_per_participant": 20,
   "top_k_sliders": 5,
   "conditions": {
     "choice_only": {
@@ -965,5 +965,6 @@
       "label": "Love",
       "mult": 1.5
     }
-  ]
+  ],
+  "num_training_trials": 5
 }

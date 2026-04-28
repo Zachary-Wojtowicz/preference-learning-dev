@@ -47,7 +47,8 @@ The interface accepts URL parameters to skip the setup screen (for Qualtrics int
 | `domain` | Which dataset to load from `outputs/<domain>/` | `movies_100` |
 | `pid` | Participant ID (used for deterministic trial order) | `P001` |
 | `condition` | Which elicitation condition | `inference_categories` |
-| `n` | Number of trials | `30` |
+| `n` | Number of feedback trials (default 20, from `num_trials_per_participant`) | `20` |
+| `m` | Number of practice/training trials (default 5, from `num_training_trials`). Set to `0` to skip. | `5` |
 | `post` | Optional POST endpoint for response data | `https://example.com/submit` |
 
 When `pid` and `condition` are both provided, the setup screen is skipped entirely → instructions → trials.
@@ -103,6 +104,19 @@ Both inference conditions show 5 statements of the form **"You {category} {dimen
 Categories are loaded from `experiment_config.json` → `inference_categories`. Different domains use different language. The defaults above are for movies/wines. Scruples (moral dilemmas) uses: Reject (-1.5) / Disapprove of (-1.0) / Indifferent (0.0) / Understand (1.0) / Endorse (1.5).
 
 Run `python3 update_configs.py` from the web-interface/ directory to update all domain configs with the latest conditions and categories.
+
+## Practice / Training Trials
+
+Before the main feedback trials, participants complete `M` practice trials (default `M=5`, set via `num_training_trials` in `experiment_config.json` or the `m` URL param). Each practice trial:
+
+1. Displays one preference dimension's full description: `name`, `low_label`, `high_label`, `scoring_guidance` (from `experiment_config.json` → `dimensions`).
+2. Asks: *"Which option is more **{high_label}**?"*
+3. Shows the trial pair from the dataset whose pair-projection on that dimension is maximally divergent (i.e., `argmax_t |value_if_a[k] - value_if_b[k]|`), so the correct answer is unambiguous.
+4. On click, immediately reveals feedback: the correct option is highlighted in green; an incorrect pick is also outlined in red. A "Continue" button advances to the next practice trial.
+
+The first `M` dimensions in `experiment_config.dimensions` (in file order) are used. Pairs selected for practice are excluded from the feedback pool, so a participant never sees the same pair twice. Practice responses are recorded in the output JSON under `training_responses`.
+
+Set `m=0` in the URL to skip practice trials entirely.
 
 ## Option Card Display
 
@@ -231,7 +245,8 @@ Qualtrics interprets `${` as piped text. In any QuestionJS code, use `\x24{` or 
 {
   "domain": "movies",
   "choice_context": "Which movie would you rather watch right now?",
-  "num_trials_per_participant": 30,
+  "num_trials_per_participant": 20,
+  "num_training_trials": 5,
   "top_k_sliders": 5,
   "conditions": { ... },
   "default_condition": "inference_categories",
@@ -257,8 +272,22 @@ Qualtrics interprets `${` as piped text. In any QuestionJS code, use `\x24{` or 
   "participant_id": "R_abc123",
   "condition": "inference_categories",
   "domain": "movies_100",
-  "num_trials": 30,
-  "timestamp": "2026-04-27T12:00:00.000Z",
+  "num_trials": 20,
+  "num_training": 5,
+  "training_responses": [
+    {
+      "trial_id": "t12",
+      "dimension_id": 1,
+      "dimension_name": "Emotional Depth",
+      "option_a_id": "57532",
+      "option_b_id": "5833",
+      "chosen": "a",
+      "correct_option": "a",
+      "correct": true,
+      "response_time_ms": 3120
+    }
+  ],
+  "timestamp": "2026-04-28T12:00:00.000Z",
   "responses": [
     {
       "trial_id": "t1",

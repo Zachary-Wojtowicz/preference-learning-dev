@@ -87,6 +87,10 @@ for path in paths:
     cats = DOMAIN_CATEGORIES.get(domain, MOVIES_CATEGORIES)
     cfg["inference_categories"] = cats
 
+    # Defaults for trial counts (preserve existing if already set)
+    cfg.setdefault("num_trials_per_participant", 20)
+    cfg.setdefault("num_training_trials", 5)
+
     with open(path, "w") as f:
         json.dump(cfg, f, indent=2)
 

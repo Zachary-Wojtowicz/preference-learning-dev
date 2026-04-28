@@ -63,6 +63,17 @@
   .results .copy-row{text-align:center;margin-top:1rem}.results .stats{margin-bottom:1.5rem;text-align:center;font-size:.9rem;color:#555}
   .error-msg{text-align:center;background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:2rem;color:#b91c1c}
   .loading{text-align:center;padding:3rem;color:#888;font-size:.95rem}
+  .dim-card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+  .dim-card-tag{display:inline-block;font-size:.72rem;font-weight:600;color:#3b82f6;text-transform:uppercase;letter-spacing:.06em;background:#eff6ff;border-radius:4px;padding:.15rem .5rem;margin-bottom:.5rem}
+  .dim-card-name{font-size:1.15rem;font-weight:600;margin-bottom:.6rem}
+  .dim-card-row{font-size:.88rem;color:#444;margin-bottom:.35rem}.dim-card-row strong{color:#222;font-weight:600}
+  .dim-card-guidance{font-size:.85rem;color:#555;margin-top:.6rem;padding-top:.6rem;border-top:1px solid #f0f0f0;line-height:1.5}
+  .option-card.train-correct{border-color:#10b981;box-shadow:0 0 0 2px #10b981}
+  .option-card.train-incorrect{border-color:#ef4444;box-shadow:0 0 0 2px #ef4444}
+  .option-card.disabled-train{pointer-events:none}
+  .train-feedback{font-size:1rem;font-weight:500;margin:1rem 0;padding:.75rem 1rem;border-radius:6px;text-align:center}
+  .train-feedback.fb-correct{background:#d1fae5;color:#065f46}
+  .train-feedback.fb-incorrect{background:#fee2e2;color:#991b1b}
   @media(max-width:600px){.options{flex-direction:column}.slider-row{grid-template-columns:120px 1fr 36px}}
 </style>
 </head>
@@ -101,6 +112,7 @@ if(window.parent!==window){
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
 var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
+var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeedback=20,numTraining=5;
 var HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle','points','price','taster_name']);
 var FIELD_LABELS={plot_summary:'Plot',genres:'Genres',director:'Director',stars:'Stars',variety:'Variety',country:'Country',province:'Province',points:'Rating',price:'Price',description:'Description',user_prompt:'Question',assistant_response:'Response',winery:'Winery',designation:'Designation',region_1:'Region',taster_name:'Reviewer'};
 var DEFAULT_CATEGORIES=[
@@ -125,7 +137,7 @@ function catFromEff(v){
 function catPhrase(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.phrase:k;}
 function catMult(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.mult:0;}
 function infMode(){return condition?condition.show_inferences:false;}
-function getUrlParams(){var p=new URLSearchParams(window.location.search);return{pid:p.get('pid')||'',condition:p.get('condition')||'',n:parseInt(p.get('n'),10)||0,domain:p.get('domain')||'',post:p.get('post')||''};}
+function getUrlParams(){var p=new URLSearchParams(window.location.search);var mRaw=p.get('m');return{pid:p.get('pid')||'',condition:p.get('condition')||'',n:parseInt(p.get('n'),10)||0,m:(mRaw==null||mRaw==='')?null:parseInt(mRaw,10),domain:p.get('domain')||'',post:p.get('post')||''};}
 var urlParams=getUrlParams();domainKey=urlParams.domain||'movies_100';postUrl=urlParams.post||null;
 var basePath=domainKey?'outputs/'+domainKey+'/':'';
 Promise.all([
@@ -140,10 +152,9 @@ Promise.all([
     participantId=urlParams.pid;conditionKey=urlParams.condition;
     var cm=arr[1]?arr[1].conditions:buildFC();condition=cm[conditionKey];
     if(!condition){app.innerHTML='<div class="error-msg">Unknown condition: '+esc(conditionKey)+'</div>';return;}
-    var n=urlParams.n||(arr[1]?arr[1].num_trials_per_participant:30)||30;
-    var rng=seedRandom(hashStr(participantId));
-    assignedTrialIndices=shuffle(Array.from({length:trials.length},function(_,i){return i}),rng).slice(0,n);
-    currentStep=0;responses=[];renderInstructions();
+    numFeedback=urlParams.n||(arr[1]&&arr[1].num_trials_per_participant)||20;
+    numTraining=(urlParams.m!=null&&Number.isFinite(urlParams.m))?urlParams.m:((arr[1]&&arr[1].num_training_trials!=null)?arr[1].num_training_trials:5);
+    startExperiment();
   }else renderSetup();
 }).catch(function(){app.innerHTML='<div class="error-msg">Could not load trials.json.<br><code>cd web-interface && python3 -m http.server 8080</code></div>';});
 var KNOWN_DOMAINS=[{key:'movies_100',label:'Movies (100)'},{key:'movies_50',label:'Movies (50)'},{key:'scruples_dilemmas',label:'Scruples Dilemmas'},{key:'wines_100',label:'Wines (100)'}];
@@ -155,6 +166,78 @@ function buildFC(){return{
   inference_affirm:{label:'Inferences: Affirm / Remove',show_sliders:false,sliders_adjustable:false,show_checkboxes:false,show_inferences:'affirm'},
   inference_categories:{label:'Inferences: Category Selection',show_sliders:false,sliders_adjustable:false,show_checkboxes:false,show_inferences:'categories'}
 };}
+function buildTrainingPlan(M){
+  if(M<=0||!experimentConfig||!Array.isArray(experimentConfig.dimensions)||trials.length===0)return[];
+  var dims=experimentConfig.dimensions.slice(0,M);
+  var used={};var plan=[];
+  dims.forEach(function(dim){
+    var bestT=-1,bestS=-1;
+    for(var ti=0;ti<trials.length;ti++){
+      if(used[ti])continue;var t=trials[ti];if(!t.sliders)continue;
+      var s=null;for(var k=0;k<t.sliders.length;k++){if(t.sliders[k].dimension_id===dim.dimension_id){s=t.sliders[k];break;}}
+      if(!s)continue;
+      var sp=Math.abs((s.value_if_a||0)-(s.value_if_b||0));
+      if(sp>bestS){bestS=sp;bestT=ti;}
+    }
+    if(bestT>=0){plan.push({trialIdx:bestT,dimension:dim});used[bestT]=true;}
+  });
+  return plan;
+}
+function startExperiment(){
+  trainingPlan=buildTrainingPlan(numTraining);
+  var trainSet={};trainingPlan.forEach(function(p){trainSet[p.trialIdx]=true;});
+  var pool=[];for(var i=0;i<trials.length;i++)if(!trainSet[i])pool.push(i);
+  var rng=seedRandom(hashStr(participantId));
+  assignedTrialIndices=shuffle(pool,rng).slice(0,numFeedback);
+  currentStep=0;trainingStep=0;inTraining=trainingPlan.length>0;
+  responses=[];trainingResponses=[];
+  renderInstructions();
+}
+function renderTrainingTrial(){
+  var plan=trainingPlan[trainingStep];if(!plan){inTraining=false;renderTrial();return;}
+  var trial=trials[plan.trialIdx],dim=plan.dimension,total=trainingPlan.length;
+  var pct=Math.round((trainingStep/total)*100);startTime=Date.now();
+  var hi=esc(dim.high_label||'aligned');
+  var h='<div class="progress">Practice '+(trainingStep+1)+' of '+total+'</div>';
+  h+='<div class="progress-bar-track"><div class="progress-bar-fill" style="width:'+pct+'%"></div></div>';
+  h+='<div class="dim-card"><div class="dim-card-tag">Practice dimension</div>';
+  h+='<div class="dim-card-name">'+esc(dim.name||dim.label||'')+'</div>';
+  if(dim.low_label)h+='<div class="dim-card-row"><strong>Low end:</strong> '+esc(dim.low_label)+'</div>';
+  if(dim.high_label)h+='<div class="dim-card-row"><strong>High end:</strong> '+esc(dim.high_label)+'</div>';
+  if(dim.scoring_guidance)h+='<div class="dim-card-guidance">'+esc(dim.scoring_guidance)+'</div>';
+  h+='</div>';
+  h+='<div class="prompt">Which option is more <strong>'+hi+'</strong>?</div>';
+  h+='<div class="options">'+buildCard('a',trial.option_a)+buildCard('b',trial.option_b)+'</div>';
+  h+='<div id="trainingFeedback"></div>';
+  app.innerHTML=h;
+  app.querySelectorAll('.option-card').forEach(function(el){
+    el.addEventListener('click',function(){
+      if(el.classList.contains('disabled-train'))return;
+      var picked=el.dataset.option;
+      var s=null;for(var k=0;k<trial.sliders.length;k++){if(trial.sliders[k].dimension_id===dim.dimension_id){s=trial.sliders[k];break;}}
+      var va=s?(s.value_if_a||0):0,vb=s?(s.value_if_b||0):0;
+      var correctOpt=(va>=vb)?'a':'b';
+      var correct=(picked===correctOpt),elapsed=Date.now()-startTime;
+      trainingResponses.push({trial_id:trial.trial_id,dimension_id:dim.dimension_id,dimension_name:dim.name,option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:picked,correct_option:correctOpt,correct:correct,response_time_ms:elapsed});
+      app.querySelectorAll('.option-card').forEach(function(c){
+        c.classList.add('disabled-train');
+        if(c.dataset.option===correctOpt)c.classList.add('train-correct');
+        else if(c.dataset.option===picked&&!correct)c.classList.add('train-incorrect');
+      });
+      var fb=document.getElementById('trainingFeedback');
+      var msg=correct?('<strong>Correct.</strong> The option more '+hi+' is highlighted in green.')
+                     :('<strong>Not quite.</strong> The option more '+hi+' is highlighted in green.');
+      fb.innerHTML='<div class="train-feedback '+(correct?'fb-correct':'fb-incorrect')+'">'+msg+'</div>'
+        +'<div class="submit-row"><button class="btn" id="trainNextBtn">Continue</button></div>';
+      document.getElementById('trainNextBtn').addEventListener('click',function(){
+        trainingStep++;
+        if(trainingStep<trainingPlan.length){renderTrainingTrial();}
+        else{inTraining=false;renderTrial();}
+        window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
+      });
+    });
+  });
+}
 function renderSetup(){
   var conds=experimentConfig?experimentConfig.conditions:buildFC();
   var defC=experimentConfig?experimentConfig.default_condition||Object.keys(conds)[0]:'inference_categories';
@@ -175,10 +258,9 @@ function renderSetup(){
   document.getElementById('startBtn').addEventListener('click',function(){
     participantId=document.getElementById('pid').value.trim()||'anon';conditionKey=document.getElementById('condSelect').value;
     condition=(experimentConfig?experimentConfig.conditions:buildFC())[conditionKey];
-    var n=parseInt(document.getElementById('numTrials').value,10)||nT;
-    var rng=seedRandom(hashStr(participantId));
-    assignedTrialIndices=shuffle(Array.from({length:trials.length},function(_,i){return i}),rng).slice(0,n);
-    currentStep=0;responses=[];renderInstructions();
+    numFeedback=parseInt(document.getElementById('numTrials').value,10)||nT;
+    numTraining=(experimentConfig&&experimentConfig.num_training_trials!=null)?experimentConfig.num_training_trials:5;
+    startExperiment();
   });
 }
 function renderInstructions(){
@@ -195,10 +277,17 @@ function renderInstructions(){
     h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> For each:<ul style="margin:.5rem 0 0 1.2rem"><li><strong>Remove</strong> \u2014 not relevant</li><li><strong>Affirm</strong> \u2014 we got it right</li></ul></div>';
   else if(infMode()==='categories')
     h+='<div class="inst-highlight">After your choice, we\u2019ll show what we think it says about your preferences \u2014 e.g. <em>\u201cYou '+esc(topCat.phrase)+' Emotional Depth.\u201d</em> We\u2019ll pre-select a level. You can <strong>change it</strong> to better match how you feel. Then click Submit.</div>';
-  h+='<p>There are '+assignedTrialIndices.length+' trials. Take your time.</p>';
+  if(trainingPlan.length>0){
+    h+='<p>You will first complete <strong>'+trainingPlan.length+' practice trials</strong> (with feedback) to learn the dimensions, then <strong>'+assignedTrialIndices.length+' main trials</strong>. Take your time.</p>';
+  }else{
+    h+='<p>There are '+assignedTrialIndices.length+' trials. Take your time.</p>';
+  }
   h+='<div class="submit-row"><button class="btn" id="beginBtn">Begin</button></div></div>';
   app.innerHTML=h;
-  document.getElementById('beginBtn').addEventListener('click',function(){renderTrial();});
+  document.getElementById('beginBtn').addEventListener('click',function(){
+    if(inTraining&&trainingPlan.length>0)renderTrainingTrial();
+    else renderTrial();
+  });
 }
 function getTopK(sl,key,k){var vk=key==='a'?'value_if_a':'value_if_b';return sl.map(function(s,i){return{i:i,av:Math.abs(s[vk])}}).sort(function(a,b){return b.av-a.av}).slice(0,k).map(function(x){return x.i}).sort(function(a,b){return a-b});}
 function renderTrial(){
@@ -347,7 +436,7 @@ function submitTrial(){
   if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();}else finishExperiment();
 }
 function finishExperiment(){
-  var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,timestamp:new Date().toISOString(),responses:responses};
+  var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,num_training:trainingResponses.length,training_responses:trainingResponses,timestamp:new Date().toISOString(),responses:responses};
   if(postUrl)fetch(postUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(output)}).catch(function(){});
   if(window.parent!==window){try{window.parent.postMessage({type:'experiment_complete',payload:output},'*');}catch(e){}}
   renderResults(output);
