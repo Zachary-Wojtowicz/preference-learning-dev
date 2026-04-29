@@ -141,6 +141,7 @@ var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
 var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
 var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeedback=20,numTraining=5;
+var dimQuantiles=null;  // {dimension_id -> [b1, b2, ..., b_{n-1}]} per-dim quantile boundaries
 var deltaGram=null,deltaGramN=0,trialProjections=null,evalState=null;
 var HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle','points','price','taster_name','dilemma_id','topic_group','situation','values','consequence']);
 var FIELD_LABELS={plot_summary:'Plot',genres:'Genres',director:'Director',stars:'Stars',variety:'Variety',country:'Country',province:'Province',points:'Rating',price:'Price',description:'Description',user_prompt:'Question',assistant_response:'Response',winery:'Winery',designation:'Designation',region_1:'Region',taster_name:'Reviewer'};
@@ -157,7 +158,49 @@ function loadCategories(){
     CATEGORIES=experimentConfig.inference_categories;
   else CATEGORIES=DEFAULT_CATEGORIES;
 }
-function catFromEff(v){
+// Compute per-dimension quantile boundaries over the symmetric distribution
+// {value_if_a, value_if_b} across the trial pool. With n CATEGORIES, returns
+// n-1 boundaries per dim (e.g. n=5 → quintile boundaries at 20/40/60/80%).
+// Effective values that fall below boundary[i] are assigned CATEGORIES[i];
+// values above all boundaries get the last category. Symmetric construction
+// guarantees q_i = -q_{n-1-i}, so v=0 is always in the middle "neutral" bucket.
+function computeDimQuantiles(){
+  if(!trials||trials.length===0)return null;
+  var nCats=CATEGORIES.length;
+  if(nCats<2)return null;
+  var byDim={};
+  trials.forEach(function(t){
+    if(!t.sliders)return;
+    t.sliders.forEach(function(s){
+      var did=s.dimension_id;if(did==null)return;
+      var arr=(byDim[did]=byDim[did]||[]);
+      var va=Number(s.value_if_a),vb=Number(s.value_if_b);
+      if(Number.isFinite(va))arr.push(va);
+      if(Number.isFinite(vb))arr.push(vb);
+    });
+  });
+  var out={};
+  Object.keys(byDim).forEach(function(did){
+    var arr=byDim[did];
+    if(arr.length<nCats){out[did]=null;return;}
+    arr.sort(function(a,b){return a-b;});
+    var q=function(p){var i=Math.floor(p*(arr.length-1));return arr[i];};
+    var qs=[];
+    for(var i=1;i<nCats;i++)qs.push(q(i/nCats));
+    // Degenerate distribution (all equal): fall back later.
+    out[did]=(qs[0]===qs[qs.length-1])?null:qs;
+  });
+  return out;
+}
+function catFromEff(v,dimensionId){
+  // Per-dim quantile assignment when boundaries available.
+  if(dimQuantiles&&dimensionId!=null&&dimQuantiles[dimensionId]){
+    var qs=dimQuantiles[dimensionId];
+    for(var i=0;i<qs.length;i++)if(v<qs[i])return CATEGORIES[i].key;
+    return CATEGORIES[CATEGORIES.length-1].key;
+  }
+  // Fallback: fixed multiplier-based assignment (used for movies/wines until
+  // their pools are loaded, or when a dim's distribution is degenerate).
   var maxM=Math.max.apply(null,CATEGORIES.map(function(c){return Math.abs(c.mult)}))||1;
   var target=(v/100)*maxM,best=CATEGORIES[Math.floor(CATEGORIES.length/2)].key,bestD=Infinity;
   CATEGORIES.forEach(function(c){var d=Math.abs(c.mult-target);if(d<bestD){bestD=d;best=c.key;}});
@@ -195,6 +238,7 @@ Promise.all([
   if(arr[1]&&arr[1].gram_matrix)gramMatrix=arr[1].gram_matrix;
   if(arr[1]&&arr[1].top_k_sliders)topKSliders=arr[1].top_k_sliders;
   loadCategories();
+  dimQuantiles=computeDimQuantiles();
   if(urlParams.pid&&urlParams.condition){
     participantId=urlParams.pid;conditionKey=urlParams.condition;
     var cm=arr[1]?arr[1].conditions:buildFC();condition=cm[conditionKey];
@@ -439,7 +483,7 @@ function populateInferences(trial,key){
   var c=document.getElementById('inferenceContainer');if(!c)return;
   var mode=infMode(),h='';
   visibleSliderIndices.forEach(function(si){
-    var s=trial.sliders[si],eff=key==='a'?s.value_if_a:s.value_if_b,defCat=catFromEff(eff);
+    var s=trial.sliders[si],eff=key==='a'?s.value_if_a:s.value_if_b,defCat=catFromEff(eff,s.dimension_id);
     h+='<div class="inference-row" data-id="'+s.id+'" data-dim-label="'+esc(s.label)+'" data-cat="'+defCat+'" data-original-cat="'+defCat+'" data-action="none">';
     h+='<div class="inference-text">\u201cYou <span class="cat-word">'+esc(catPhrase(defCat))+'</span> '+esc(s.label)+'.\u201d</div>';
     if(mode==='affirm'){
