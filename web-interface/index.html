@@ -237,6 +237,30 @@ function liftSharedFields(trial){
     trial[k]=va;delete fa[k];delete fb[k];
   });
 }
+// Optional sidecar: outputs/<domain>/polished_labels.json provides cleaner names
+// for dimension labels. Apply in place to experimentConfig.dimensions and to each
+// trial's sliders so render code sees only the polished values. Original raw
+// labels remain in upstream files; deleting polished_labels.json reverts.
+function applyPolishedLabels(polished){
+  if(!polished||!polished.dimensions)return;
+  var p=polished.dimensions;
+  if(experimentConfig&&Array.isArray(experimentConfig.dimensions)){
+    experimentConfig.dimensions.forEach(function(d){
+      var pp=p[String(d.dimension_id)];if(!pp)return;
+      if(pp.name)d.name=pp.name;
+      if(pp.low_label)d.low_label=pp.low_label;
+      if(pp.high_label)d.high_label=pp.high_label;
+    });
+  }
+  trials.forEach(function(t){
+    (t.sliders||[]).forEach(function(s){
+      var pp=p[String(s.dimension_id)];if(!pp)return;
+      if(pp.name)s.label=pp.name;
+      if(pp.low_label)s.low_label=pp.low_label;
+      if(pp.high_label)s.high_label=pp.high_label;
+    });
+  });
+}
 function getUrlParams(){var p=new URLSearchParams(window.location.search);var mRaw=p.get('m');return{pid:p.get('pid')||'',condition:p.get('condition')||'',n:parseInt(p.get('n'),10)||0,m:(mRaw==null||mRaw==='')?null:parseInt(mRaw,10),domain:p.get('domain')||'',post:p.get('post')||''};}
 var urlParams=getUrlParams();domainKey=urlParams.domain||'movies_100';postUrl=urlParams.post||null;
 var basePath=domainKey?'outputs/'+domainKey+'/':'';
@@ -244,11 +268,13 @@ Promise.all([
   fetch(basePath+'trials.json').then(function(r){if(!r.ok)throw new Error();return r.json()}),
   fetch(basePath+'experiment_config.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
   fetch(basePath+'trial_projections.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
-  fetch(basePath+'delta_gram.bin').then(function(r){if(!r.ok)throw null;return r.arrayBuffer()}).catch(function(){return null})
+  fetch(basePath+'delta_gram.bin').then(function(r){if(!r.ok)throw null;return r.arrayBuffer()}).catch(function(){return null}),
+  fetch(basePath+'polished_labels.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null})
 ]).then(function(arr){
   trials=arr[0];experimentConfig=arr[1];trialProjections=arr[2];
   if(arr[3]){deltaGram=new Float32Array(arr[3]);deltaGramN=Math.round(Math.sqrt(deltaGram.length));}
   trials.forEach(liftSharedFields);
+  applyPolishedLabels(arr[4]);
   if(arr[1]&&arr[1].gram_matrix)gramMatrix=arr[1].gram_matrix;
   if(arr[1]&&arr[1].top_k_sliders)topKSliders=arr[1].top_k_sliders;
   loadCategories();
