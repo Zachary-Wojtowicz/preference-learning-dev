@@ -120,6 +120,11 @@ for path in paths:
     cfg.setdefault("num_trials_per_participant", 20)
     cfg.setdefault("num_training_trials", 5)
 
+    # Inference category assignment method:
+    #   "perdim" — quintile boundaries computed per-dimension (default)
+    #   "pooled" — one global set of boundaries shared across all dimensions
+    cfg.setdefault("categorization", "perdim")
+
     # Default instructions (preserve any existing per-domain edits)
     ins = cfg.get("instructions") or {}
     for k, v in DEFAULT_INSTRUCTIONS.items():

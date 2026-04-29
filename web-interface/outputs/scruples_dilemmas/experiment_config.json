@@ -662,8 +662,8 @@
   "inference_categories": [
     {
       "key": "no_care",
-      "phrase": "don't care about",
-      "label": "Don't care about",
+      "phrase": "don\u2019t care about",
+      "label": "Don\u2019t care about",
       "mult": -1.5
     },
     {
@@ -714,5 +714,6 @@
     "n_per_side": 5,
     "most_valued_label": "Most valued",
     "least_valued_label": "Least valued"
-  }
+  },
+  "categorization": "perdim"
 }

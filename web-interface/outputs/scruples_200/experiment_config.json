@@ -261,33 +261,33 @@
   ],
   "inference_categories": [
     {
-      "key": "reject",
-      "phrase": "reject",
-      "label": "Reject",
+      "key": "no_care",
+      "phrase": "don\u2019t care about",
+      "label": "Don\u2019t care about",
       "mult": -1.5
     },
     {
-      "key": "disapprove",
-      "phrase": "disapprove of",
-      "label": "Disapprove of",
+      "key": "care_little",
+      "phrase": "care little about",
+      "label": "Care little about",
       "mult": -1.0
     },
     {
-      "key": "indifferent",
-      "phrase": "are indifferent to",
-      "label": "Indifferent",
+      "key": "neutral",
+      "phrase": "are neutral about",
+      "label": "Neutral",
       "mult": 0.0
     },
     {
-      "key": "understand",
-      "phrase": "understand",
-      "label": "Understand",
+      "key": "care",
+      "phrase": "care about",
+      "label": "Care about",
       "mult": 1.0
     },
     {
-      "key": "endorse",
-      "phrase": "endorse",
-      "label": "Endorse",
+      "key": "deeply_care",
+      "phrase": "deeply care about",
+      "label": "Deeply care about",
       "mult": 1.5
     }
   ],
@@ -314,5 +314,6 @@
     "n_per_side": 5,
     "most_valued_label": "Most valued",
     "least_valued_label": "Least valued"
-  }
+  },
+  "categorization": "perdim"
 }

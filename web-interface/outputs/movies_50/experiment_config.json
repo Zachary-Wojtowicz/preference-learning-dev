@@ -194,5 +194,6 @@
     "n_per_side": 5,
     "most_valued_label": "Most valued",
     "least_valued_label": "Least valued"
-  }
+  },
+  "categorization": "perdim"
 }

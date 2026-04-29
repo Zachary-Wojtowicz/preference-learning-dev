@@ -133,6 +133,19 @@ The `instructions.feedback` HTML is rendered, then a **condition-specific note**
 
 Fallbacks live in `index.html` as `DEFAULT_TRAINING_INSTRUCTIONS` / `DEFAULT_FEEDBACK_INSTRUCTIONS` constants if the config key is missing.
 
+## Inference Categorization
+
+Each inference shown in the `inference_*` conditions gets a category label (e.g. *Care about*, *Deeply care about*) based on the projection `value_if_a` (or `value_if_b`) of the chosen option onto each dimension. The mapping from numeric value to category is set by `experiment_config.json` → `categorization`:
+
+| Value | Method | Per-dim mass | Cross-dim comparability |
+|-------|--------|--------------|--------------------------|
+| `"perdim"` (default) | n−1 quintile boundaries computed **per dimension** from that dim's `{value_if_a, value_if_b}` distribution | Equal (20% per category, by construction) | None — "deeply care" means top quintile of *this dim* |
+| `"pooled"` | n−1 quintile boundaries computed **once** from all `(p, k)` values across the trial pool, shared by every dim | Varies (heavy-tailed dims get more extremes; narrow dims get more neutrals) | Yes — same yardstick across dims |
+
+Both modes use the symmetric distribution `{value_if_a, value_if_b}` (each pair contributes both signs), guaranteeing the middle bucket is centered on 0. The top-K dimensions selected for display are unchanged: still ranked by raw `|value_if_a|`.
+
+If a dimension has degenerate distribution (all boundaries equal) or the pool is too small (< n samples), `catFromEff` falls back to the original fixed-threshold mapping for that dimension.
+
 ## Option Card Display
 
 Option cards render structured fields from trial data. Several fields are hidden from display:

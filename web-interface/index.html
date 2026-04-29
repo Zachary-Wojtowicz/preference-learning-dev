@@ -158,38 +158,52 @@ function loadCategories(){
     CATEGORIES=experimentConfig.inference_categories;
   else CATEGORIES=DEFAULT_CATEGORIES;
 }
-// Compute per-dimension quantile boundaries over the symmetric distribution
-// {value_if_a, value_if_b} across the trial pool. With n CATEGORIES, returns
-// n-1 boundaries per dim (e.g. n=5 → quintile boundaries at 20/40/60/80%).
-// Effective values that fall below boundary[i] are assigned CATEGORIES[i];
+// Compute quantile boundaries for category assignment from the symmetric
+// distribution {value_if_a, value_if_b} over the trial pool. With n CATEGORIES
+// we return n-1 boundaries; effective values below boundary[i] get CATEGORIES[i],
 // values above all boundaries get the last category. Symmetric construction
-// guarantees q_i = -q_{n-1-i}, so v=0 is always in the middle "neutral" bucket.
+// guarantees q_i = -q_{n-1-i}, so v=0 always lands in the middle bucket.
+//
+// Two modes (set via experimentConfig.categorization):
+//   "perdim" (default) — one set of boundaries per dimension. Each dim's
+//      category masses are 20% each by construction.
+//   "pooled" — one shared set of boundaries computed from ALL (p,k) values.
+//      Categories have the same yardstick across dims; per-dim mass varies.
+//
+// Both modes return {dimension_id -> boundaries} so the lookup in catFromEff
+// is identical; "pooled" just stores the same array under every dim_id.
 function computeDimQuantiles(){
   if(!trials||trials.length===0)return null;
   var nCats=CATEGORIES.length;
   if(nCats<2)return null;
-  var byDim={};
+  var mode=(experimentConfig&&experimentConfig.categorization)||'perdim';
+  function quantilesOf(arr){
+    if(arr.length<nCats)return null;
+    arr.sort(function(a,b){return a-b;});
+    var q=function(p){var i=Math.floor(p*(arr.length-1));return arr[i];};
+    var qs=[];for(var i=1;i<nCats;i++)qs.push(q(i/nCats));
+    return (qs[0]===qs[qs.length-1])?null:qs;
+  }
+  var byDim={},dimIds=[];
   trials.forEach(function(t){
     if(!t.sliders)return;
     t.sliders.forEach(function(s){
       var did=s.dimension_id;if(did==null)return;
-      var arr=(byDim[did]=byDim[did]||[]);
+      if(!byDim[did]){byDim[did]=[];dimIds.push(did);}
       var va=Number(s.value_if_a),vb=Number(s.value_if_b);
-      if(Number.isFinite(va))arr.push(va);
-      if(Number.isFinite(vb))arr.push(vb);
+      if(Number.isFinite(va))byDim[did].push(va);
+      if(Number.isFinite(vb))byDim[did].push(vb);
     });
   });
+  if(mode==='pooled'){
+    var pooled=[];dimIds.forEach(function(d){pooled.push.apply(pooled,byDim[d]);});
+    var qs=quantilesOf(pooled.slice());
+    var out={};dimIds.forEach(function(d){out[d]=qs;});
+    return out;
+  }
+  // perdim (default)
   var out={};
-  Object.keys(byDim).forEach(function(did){
-    var arr=byDim[did];
-    if(arr.length<nCats){out[did]=null;return;}
-    arr.sort(function(a,b){return a-b;});
-    var q=function(p){var i=Math.floor(p*(arr.length-1));return arr[i];};
-    var qs=[];
-    for(var i=1;i<nCats;i++)qs.push(q(i/nCats));
-    // Degenerate distribution (all equal): fall back later.
-    out[did]=(qs[0]===qs[qs.length-1])?null:qs;
-  });
+  dimIds.forEach(function(did){out[did]=quantilesOf(byDim[did].slice());});
   return out;
 }
 function catFromEff(v,dimensionId){
