@@ -1,0 +1,162 @@
+{
+  "total_reasons": 3000,
+  "coverage_threshold": 0.4,
+  "covered_count": 2998,
+  "coverage_rate": 0.9993,
+  "orphan_count": 2,
+  "top_orphans": [
+    {
+      "reason_id": 46,
+      "reason_text": "Prioritizes quick access to names and specialties",
+      "best_dim_idx": 14,
+      "best_dim_name": "Formality",
+      "best_pole": "high",
+      "best_similarity": 0.394043410363722
+    },
+    {
+      "reason_id": 228,
+      "reason_text": "Interested in political and governmental history",
+      "best_dim_idx": 9,
+      "best_dim_name": "Historical Context",
+      "best_pole": "high",
+      "best_similarity": 0.3928278234984002
+    }
+  ],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Conciseness",
+      "total_reasons_assigned": 324,
+      "low_pole_count": 11,
+      "high_pole_count": 313,
+      "low_pole_fraction": 0.034,
+      "high_pole_fraction": 0.966
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Structure",
+      "total_reasons_assigned": 38,
+      "low_pole_count": 2,
+      "high_pole_count": 36,
+      "low_pole_fraction": 0.053,
+      "high_pole_fraction": 0.947
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Actionability",
+      "total_reasons_assigned": 613,
+      "low_pole_count": 13,
+      "high_pole_count": 600,
+      "low_pole_fraction": 0.021,
+      "high_pole_fraction": 0.979
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Clarity",
+      "total_reasons_assigned": 131,
+      "low_pole_count": 6,
+      "high_pole_count": 125,
+      "low_pole_fraction": 0.046,
+      "high_pole_fraction": 0.954
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Emotional Resonance",
+      "total_reasons_assigned": 269,
+      "low_pole_count": 30,
+      "high_pole_count": 239,
+      "low_pole_fraction": 0.112,
+      "high_pole_fraction": 0.888
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Depth",
+      "total_reasons_assigned": 314,
+      "low_pole_count": 4,
+      "high_pole_count": 310,
+      "low_pole_fraction": 0.013,
+      "high_pole_fraction": 0.987
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Descriptiveness",
+      "total_reasons_assigned": 366,
+      "low_pole_count": 10,
+      "high_pole_count": 356,
+      "low_pole_fraction": 0.027,
+      "high_pole_fraction": 0.973
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Sustainability",
+      "total_reasons_assigned": 171,
+      "low_pole_count": 0,
+      "high_pole_count": 171,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Community Focus",
+      "total_reasons_assigned": 160,
+      "low_pole_count": 30,
+      "high_pole_count": 130,
+      "low_pole_fraction": 0.188,
+      "high_pole_fraction": 0.812
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Historical Context",
+      "total_reasons_assigned": 23,
+      "low_pole_count": 3,
+      "high_pole_count": 20,
+      "low_pole_fraction": 0.13,
+      "high_pole_fraction": 0.87
+    },
+    {
+      "dimension_id": 11,
+      "dimension_name": "Practicality",
+      "total_reasons_assigned": 177,
+      "low_pole_count": 38,
+      "high_pole_count": 139,
+      "low_pole_fraction": 0.215,
+      "high_pole_fraction": 0.785
+    },
+    {
+      "dimension_id": 12,
+      "dimension_name": "Efficiency",
+      "total_reasons_assigned": 32,
+      "low_pole_count": 3,
+      "high_pole_count": 29,
+      "low_pole_fraction": 0.094,
+      "high_pole_fraction": 0.906
+    },
+    {
+      "dimension_id": 13,
+      "dimension_name": "Creativity",
+      "total_reasons_assigned": 129,
+      "low_pole_count": 14,
+      "high_pole_count": 115,
+      "low_pole_fraction": 0.109,
+      "high_pole_fraction": 0.891
+    },
+    {
+      "dimension_id": 14,
+      "dimension_name": "Authenticity",
+      "total_reasons_assigned": 201,
+      "low_pole_count": 3,
+      "high_pole_count": 198,
+      "low_pole_fraction": 0.015,
+      "high_pole_fraction": 0.985
+    },
+    {
+      "dimension_id": 15,
+      "dimension_name": "Formality",
+      "total_reasons_assigned": 52,
+      "low_pole_count": 13,
+      "high_pole_count": 39,
+      "low_pole_fraction": 0.25,
+      "high_pole_fraction": 0.75
+    }
+  ]
+}
