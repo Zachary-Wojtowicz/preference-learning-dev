@@ -1,0 +1,11 @@
+{
+  "domain": "LLM responses to user prompts",
+  "domain_item": "response",
+  "choice_context": "Which response is better?",
+  "input_path": "datasets/coalign_50/selected_options.csv",
+  "template_path": "datasets/coalign_prompt.txt",
+  "text_column": "text",
+  "display_column": "description",
+  "id_column": "action_id",
+  "max_options": 300
+}

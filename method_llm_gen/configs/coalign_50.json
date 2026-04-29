@@ -1,0 +1,16 @@
+{
+  "domain": "coalign_50",
+  "choice_context": "Which response is better?",
+  "input_path": "datasets/coalign_50/selected_options.csv",
+  "template_path": "datasets/coalign_prompt.txt",
+  "text_column": "text",
+  "display_column": "description",
+  "id_column": "action_id",
+  "num_dimensions": 15,
+  "pair_appearances_per_option": 20,
+  "max_options": 300,
+  "dimensions_output_format": "plain",
+  "request_timeout_seconds": 180,
+  "max_retries": 3,
+  "max_workers": 32
+}
