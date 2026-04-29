@@ -1,0 +1,45 @@
+# Pipeline config: coalign_50
+#
+# Curated 50-choice-set subset of the Community Alignment Dataset (Meta).
+# Each choice set = a prompt with 4 candidate LLM responses, all 6
+# within-set pairs are valid; cross-set pairs are added by Mode C BT
+# only for global identifiability.
+#
+# Prerequisites:
+#   - datasets/coalign_pairwise_comparisons_ge10.parquet on disk
+#   - python datasets/prepare_coalign.py
+#
+# Run with: ./run_coalign_50.sh
+
+name: coalign_50
+domain: LLM responses to user prompts
+domain_item: response
+choice_context: Which response is better?
+
+# Input data — individual responses for embedding and scoring
+input_csv: datasets/coalign-options.csv
+template_file: datasets/coalign_prompt.txt
+id_column: action_id
+text_column: text
+display_column: description
+
+# Pair data — within-set pairs for dimension discovery and trials
+pairs_csv: datasets/coalign-pairs.csv
+
+# Selection — number of choice sets (responses = 4x, within-set pairs = 6x)
+num_sets: 50
+
+# Dimension discovery
+num_dimensions: 15
+num_themes: 40
+reasons_per_side: 5
+pair_appearances_per_option: 20
+
+# Experiment
+trials_per_participant: 30
+
+# Infrastructure
+max_workers: 32
+seed: 42
+embedding_model: Qwen/Qwen3-Embedding-8B
+instruct_model: Qwen/Qwen3-32B
