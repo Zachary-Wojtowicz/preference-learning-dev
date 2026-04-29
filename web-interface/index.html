@@ -139,7 +139,7 @@ if(window.parent!==window){
 }
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
-var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
+var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,firstChoiceTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
 var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeedback=20,numTraining=5;
 var dimQuantiles=null;  // {dimension_id -> [b1, b2, ..., b_{n-1}]} per-dim quantile boundaries
 var deltaGram=null,deltaGramN=0,trialProjections=null,evalState=null;
@@ -440,7 +440,7 @@ function renderFeedbackInstructions(){
 }
 function getTopK(sl,key,k){var vk=key==='a'?'value_if_a':'value_if_b';return sl.map(function(s,i){return{i:i,av:Math.abs(s[vk])}}).sort(function(a,b){return b.av-a.av}).slice(0,k).map(function(x){return x.i}).sort(function(a,b){return a-b});}
 function renderTrial(){
-  var trial=trials[assignedTrialIndices[currentStep]];chosen=null;visibleSliderIndices=[];startTime=Date.now();
+  var trial=trials[assignedTrialIndices[currentStep]];chosen=null;visibleSliderIndices=[];startTime=Date.now();firstChoiceTime=null;
   var total=assignedTrialIndices.length,pct=Math.round((currentStep/total)*100);
   var h='<div class="progress">Trial '+(currentStep+1)+' of '+total+'</div>';
   h+='<div class="progress-bar-track"><div class="progress-bar-fill" style="width:'+pct+'%"></div></div>';
@@ -473,6 +473,7 @@ function buildCard(key,opt){
   return'<div class="option-card" data-option="'+key+'">'+inner+'</div>';
 }
 function selectOption(key){
+  if(firstChoiceTime===null)firstChoiceTime=Date.now();
   chosen=key;var trial=trials[assignedTrialIndices[currentStep]];
   app.querySelectorAll('.option-card').forEach(function(el){el.classList.toggle('selected',el.dataset.option===key);el.classList.toggle('dimmed',el.dataset.option!==key);});
   visibleSliderIndices=getTopK(trial.sliders,key,topKSliders);
@@ -567,18 +568,27 @@ function populateInferences(trial,key){
   }
 }
 function submitTrial(){
-  var trial=trials[assignedTrialIndices[currentStep]],elapsed=Date.now()-startTime;
-  var response={trial_id:trial.trial_id,option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:chosen,response_time_ms:elapsed,visible_dimensions:visibleSliderIndices.map(function(i){return trial.sliders[i].id})};
+  var trial=trials[assignedTrialIndices[currentStep]];
+  var now=Date.now();
+  var time_to_submit_ms=now-startTime;
+  var time_to_first_choice_ms=firstChoiceTime!=null?firstChoiceTime-startTime:null;
+  var response={trial_id:trial.trial_id,option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:chosen,time_to_first_choice_ms:time_to_first_choice_ms,time_to_submit_ms:time_to_submit_ms,response_time_ms:time_to_submit_ms,visible_dimensions:visibleSliderIndices.map(function(i){return trial.sliders[i].id})};
   if(condition.show_sliders&&trial.sliders){var sv={};visibleSliderIndices.forEach(function(si){var s=trial.sliders[si],inp=app.querySelector('input[data-id="'+s.id+'"]');sv[s.id]=inp?parseInt(inp.value,10):0;});response.slider_values=sv;response.sliders_adjusted=condition.sliders_adjustable;}
   if(condition.show_checkboxes&&trial.sliders){var cv={};visibleSliderIndices.forEach(function(si){var s=trial.sliders[si],cb=document.getElementById('cb_'+s.id);cv[s.id]=cb?(cb.checked?1:0):0;});response.checkbox_values=cv;}
   if(infMode()){
     var iv={};
     document.querySelectorAll('.inference-row').forEach(function(row){
-      var id=row.dataset.id,cat=row.dataset.cat,action=row.dataset.action||'none';
+      var id=row.dataset.id,cat=row.dataset.cat,origCat=row.dataset.originalCat,action=row.dataset.action||'none';
       var mult=catMult(cat);
       if(action==='affirm')mult=mult*1.5;
       if(action==='remove')mult=0.0;
-      iv[id]={category:cat,action:action,multiplier:Math.round(mult*100)/100};
+      iv[id]={
+        original_category:origCat,
+        original_multiplier:catMult(origCat),
+        category:cat,
+        action:action,
+        multiplier:Math.round(mult*100)/100
+      };
     });
     response.inference_values=iv;
   }

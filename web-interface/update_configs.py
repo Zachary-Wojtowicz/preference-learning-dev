@@ -55,8 +55,10 @@ DEFAULT_COMPARISON = {
     "n_per_side":          5,
     "most_valued_label":   "Most valued",
     "least_valued_label":  "Least valued",
+    # choice_only excluded: that condition collects no feedback signal, so the
+    # comparison/evaluation step has nothing meaningful to show.
     "show_for_conditions": [
-        "choice_only", "choice_readonly_sliders", "choice_adjustable_sliders",
+        "choice_readonly_sliders", "choice_adjustable_sliders",
         "choice_checkboxes", "inference_affirm", "inference_categories",
     ],
 }

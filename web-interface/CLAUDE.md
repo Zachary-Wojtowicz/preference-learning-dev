@@ -347,19 +347,40 @@ Qualtrics interprets `${` as piped text. In any QuestionJS code, use `\x24{` or 
       "option_a_id": "57532",
       "option_b_id": "5833",
       "chosen": "a",
+      "time_to_first_choice_ms": 1820,
+      "time_to_submit_ms": 4523,
       "response_time_ms": 4523,
       "visible_dimensions": ["dim_1", "dim_3", "dim_7", "dim_12", "dim_15"],
       "inference_values": {
-        "dim_1": {"category": "love", "action": "affirm", "multiplier": 2.25},
-        "dim_3": {"category": "like", "action": "modify", "multiplier": 1.0},
-        "dim_7": {"category": "indifferent", "action": "none", "multiplier": 0.0},
-        "dim_12": {"category": "not_into", "action": "remove", "multiplier": 0.0},
-        "dim_15": {"category": "enjoy", "action": "moderate", "multiplier": 1.0}
+        "dim_1": {"original_category": "like",        "original_multiplier": 1.0,  "category": "like",        "action": "affirm", "multiplier": 1.5},
+        "dim_3": {"original_category": "like",        "original_multiplier": 1.0,  "category": "love",        "action": "modify", "multiplier": 1.5},
+        "dim_7": {"original_category": "indifferent", "original_multiplier": 0.0,  "category": "indifferent", "action": "none",   "multiplier": 0.0},
+        "dim_12":{"original_category": "skip",        "original_multiplier": -1.5, "category": "skip",        "action": "remove", "multiplier": 0.0}
       }
     }
   ]
 }
 ```
+
+**Timing fields** (all milliseconds, all on every feedback-trial response):
+
+| Field | Meaning |
+|-------|---------|
+| `time_to_first_choice_ms` | render → first option click. Captures the participant's initial decision time (only the *first* click; later clicks that change the chosen option don't reset it). |
+| `time_to_submit_ms` | render → Submit click. Total time on the trial. |
+| `response_time_ms` | Same value as `time_to_submit_ms`. Kept for backward compatibility with earlier data. |
+
+`time_to_submit_ms - time_to_first_choice_ms` ≈ time the participant spent on the post-choice feedback panel (sliders / checkboxes / inferences).
+
+**Inference value fields** (per visible dimension, in `inference_values[dim_id]`):
+
+| Field | Meaning |
+|-------|---------|
+| `original_category` | The category the model pre-selected for the participant (its initial guess). |
+| `original_multiplier` | Multiplier corresponding to `original_category` (no affirm bonus). |
+| `category` | The *final* category the participant submitted (may equal `original_category` if unchanged, or differ in `inference_categories` mode if the participant picked a different bucket). |
+| `action` | One of `none`, `modify`, `affirm`, `remove`. Indicates what the participant did vs the original suggestion. |
+| `multiplier` | Final multiplier used downstream — computed from `category`, with `affirm` × 1.5 and `remove` → 0.0 applied. |
 
 **Condition-specific fields:**
 
@@ -369,8 +390,8 @@ Qualtrics interprets `${` as piped text. In any QuestionJS code, use `\x24{` or 
 | `choice_readonly_sliders` | `slider_values`, `sliders_adjusted: false` |
 | `choice_adjustable_sliders` | `slider_values`, `sliders_adjusted: true` |
 | `choice_checkboxes` | `checkbox_values` |
-| `inference_affirm` | `inference_values` (with action: affirm/moderate/remove/none) |
-| `inference_categories` | `inference_values` (with action: modify/none, category from picker) |
+| `inference_affirm` | `inference_values` (action: `affirm` / `remove` / `none`) |
+| `inference_categories` | `inference_values` (action: `modify` / `none`, category from picker) |
 
 **Multiplier computation:**
 - Base multiplier comes from the selected category's `mult` value
