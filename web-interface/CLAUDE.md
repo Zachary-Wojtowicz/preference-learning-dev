@@ -89,6 +89,8 @@ Both inference conditions show 5 statements of the form **"You {category} {dimen
 - **↔ Moderate** — moves the category one step toward "Indifferent" (e.g., "love" → "like", "prefer to skip" → "aren't into"). Sentence updates live.
 - **✓ Affirm** — confirms the inference; multiplier gets 1.5× boost
 
+Submit stays disabled until the participant has clicked Affirm or Remove on **every** visible inference. A small hint above the Submit button tells them how many inferences still need a response. Toggling a button off (clicking the same active button again) resets the row to "none" and re-disables Submit.
+
 **`inference_categories`** shows 5 category buttons per inference, always visible with the model's guess pre-selected. Clicking a different category updates the sentence and multiplier:
 
 | Category | Phrase | Multiplier |

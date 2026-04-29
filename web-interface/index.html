@@ -56,6 +56,7 @@
   .category-picker button{padding:.3rem .65rem;font-size:.8rem;border:1px solid #d1d5db;border-radius:5px;background:#fff;color:#555;cursor:pointer;transition:all .12s}
   .category-picker button:hover{border-color:#888}.category-picker button.selected{background:#3b82f6;color:#fff;border-color:#3b82f6}
   .submit-row{text-align:center;margin-top:1.5rem}
+  .affirm-hint{display:block;color:#6b7280;font-size:.9rem;margin-bottom:.5rem;min-height:1.1em}
   .btn{background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:.6rem 2rem;font-size:.95rem;cursor:pointer;transition:background .15s}
   .btn:disabled{background:#a0a0a0;cursor:not-allowed}.btn:not(:disabled):hover{background:#2563eb}
   .btn-secondary{background:#6b7280;color:#fff;border:none;border-radius:6px;padding:.5rem 1.5rem;font-size:.85rem;cursor:pointer}.btn-secondary:hover{background:#4b5563}
@@ -454,7 +455,7 @@ function renderTrial(){
     h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Which of these dimensions were relevant?</div><div id="checkboxContainer"></div></div></div>';
   if(infMode()&&trial.sliders&&trial.sliders.length>0)
     h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Based on your choice, we think:</div><div id="inferenceContainer"></div></div></div>';
-  h+='<div class="submit-row"><button class="btn" id="submitBtn" disabled>Submit</button></div>';
+  h+='<div class="submit-row"><span id="affirmHint" class="affirm-hint"></span><button class="btn" id="submitBtn" disabled>Submit</button></div>';
   app.innerHTML=h;
   app.querySelectorAll('.option-card').forEach(function(el){el.addEventListener('click',function(){selectOption(el.dataset.option)});});
   document.getElementById('submitBtn').addEventListener('click',submitTrial);
@@ -481,7 +482,16 @@ function selectOption(key){
   if(condition.show_checkboxes)populateCheckboxes(trial,key);
   if(infMode())populateInferences(trial,key);
   var p=document.getElementById('dimPanel');if(p)p.classList.add('visible');
-  document.getElementById('submitBtn').disabled=false;
+  if(infMode()==='affirm')updateAffirmSubmitState();
+  else document.getElementById('submitBtn').disabled=false;
+}
+function updateAffirmSubmitState(){
+  var btn=document.getElementById('submitBtn');if(!btn)return;
+  var rows=document.querySelectorAll('.inference-row'),pending=0;
+  rows.forEach(function(r){if((r.dataset.action||'none')==='none')pending++;});
+  btn.disabled=(pending>0);
+  var hint=document.getElementById('affirmHint');
+  if(hint)hint.textContent=pending>0?('Respond to '+pending+' more inference'+(pending===1?'':'s')+' to continue.'):'';
 }
 function populateSliders(trial,key){
   var c=document.getElementById('sliderContainer'),hd=document.getElementById('dimPanelHeader');if(!c||!hd)return;
@@ -548,12 +558,14 @@ function populateInferences(trial,key){
         var was=rBtn.classList.contains('active');clearAll();
         if(!was){rBtn.classList.add('active');row.classList.add('removed');row.dataset.action='remove';}
         else{row.dataset.action='none';row.dataset.cat=row.dataset.originalCat;updateInfText(row);}
+        updateAffirmSubmitState();
       });
       aBtn.addEventListener('click',function(){
         var was=aBtn.classList.contains('active');clearAll();
         if(!was){aBtn.classList.add('active');row.classList.add('affirmed');row.dataset.action='affirm';
           row.dataset.cat=row.dataset.originalCat;updateInfText(row);
         }else{row.dataset.action='none';}
+        updateAffirmSubmitState();
       });
     });
   }else{
