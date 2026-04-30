@@ -56,12 +56,14 @@
   .category-picker button{padding:.3rem .65rem;font-size:.8rem;border:1px solid #d1d5db;border-radius:5px;background:#fff;color:#555;cursor:pointer;transition:all .12s}
   .category-picker button:hover{border-color:#888}.category-picker button.selected{background:#3b82f6;color:#fff;border-color:#3b82f6}
   .submit-row{text-align:center;margin-top:1.5rem}
+  .affirm-hint{display:block;color:#6b7280;font-size:.9rem;margin-bottom:.5rem;min-height:1.1em}
   .btn{background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:.6rem 2rem;font-size:.95rem;cursor:pointer;transition:background .15s}
   .btn:disabled{background:#a0a0a0;cursor:not-allowed}.btn:not(:disabled):hover{background:#2563eb}
   .btn-secondary{background:#6b7280;color:#fff;border:none;border-radius:6px;padding:.5rem 1.5rem;font-size:.85rem;cursor:pointer}.btn-secondary:hover{background:#4b5563}
   .results h1{text-align:center;font-size:1.4rem;font-weight:600;margin-bottom:1rem}
   .results pre{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:1.25rem;overflow-x:auto;font-size:.78rem;line-height:1.6;max-height:60vh}
   .results .copy-row{text-align:center;margin-top:1rem}.results .stats{margin-bottom:1.5rem;text-align:center;font-size:.9rem;color:#555}
+  .results-note{text-align:center;font-size:1rem;color:#555;margin-top:1rem}
   .error-msg{text-align:center;background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:2rem;color:#b91c1c}
   .loading{text-align:center;padding:3rem;color:#888;font-size:.95rem}
   .dim-card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:1.25rem;margin-bottom:1rem}
@@ -139,8 +141,9 @@ if(window.parent!==window){
 }
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
-var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
+var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,firstChoiceTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
 var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeedback=20,numTraining=5;
+var dimQuantiles=null;  // {dimension_id -> [b1, b2, ..., b_{n-1}]} per-dim quantile boundaries
 var deltaGram=null,deltaGramN=0,trialProjections=null,evalState=null;
 var HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle','points','price','taster_name','dilemma_id','topic_group','situation','values','consequence']);
 var FIELD_LABELS={plot_summary:'Plot',genres:'Genres',director:'Director',stars:'Stars',variety:'Variety',country:'Country',province:'Province',points:'Rating',price:'Price',description:'Description',user_prompt:'Question',assistant_response:'Response',winery:'Winery',designation:'Designation',region_1:'Region',taster_name:'Reviewer'};
@@ -157,7 +160,63 @@ function loadCategories(){
     CATEGORIES=experimentConfig.inference_categories;
   else CATEGORIES=DEFAULT_CATEGORIES;
 }
-function catFromEff(v){
+// Compute quantile boundaries for category assignment from the symmetric
+// distribution {value_if_a, value_if_b} over the trial pool. With n CATEGORIES
+// we return n-1 boundaries; effective values below boundary[i] get CATEGORIES[i],
+// values above all boundaries get the last category. Symmetric construction
+// guarantees q_i = -q_{n-1-i}, so v=0 always lands in the middle bucket.
+//
+// Two modes (set via experimentConfig.categorization):
+//   "perdim" (default) — one set of boundaries per dimension. Each dim's
+//      category masses are 20% each by construction.
+//   "pooled" — one shared set of boundaries computed from ALL (p,k) values.
+//      Categories have the same yardstick across dims; per-dim mass varies.
+//
+// Both modes return {dimension_id -> boundaries} so the lookup in catFromEff
+// is identical; "pooled" just stores the same array under every dim_id.
+function computeDimQuantiles(){
+  if(!trials||trials.length===0)return null;
+  var nCats=CATEGORIES.length;
+  if(nCats<2)return null;
+  var mode=(experimentConfig&&experimentConfig.categorization)||'perdim';
+  function quantilesOf(arr){
+    if(arr.length<nCats)return null;
+    arr.sort(function(a,b){return a-b;});
+    var q=function(p){var i=Math.floor(p*(arr.length-1));return arr[i];};
+    var qs=[];for(var i=1;i<nCats;i++)qs.push(q(i/nCats));
+    return (qs[0]===qs[qs.length-1])?null:qs;
+  }
+  var byDim={},dimIds=[];
+  trials.forEach(function(t){
+    if(!t.sliders)return;
+    t.sliders.forEach(function(s){
+      var did=s.dimension_id;if(did==null)return;
+      if(!byDim[did]){byDim[did]=[];dimIds.push(did);}
+      var va=Number(s.value_if_a),vb=Number(s.value_if_b);
+      if(Number.isFinite(va))byDim[did].push(va);
+      if(Number.isFinite(vb))byDim[did].push(vb);
+    });
+  });
+  if(mode==='pooled'){
+    var pooled=[];dimIds.forEach(function(d){pooled.push.apply(pooled,byDim[d]);});
+    var qs=quantilesOf(pooled.slice());
+    var out={};dimIds.forEach(function(d){out[d]=qs;});
+    return out;
+  }
+  // perdim (default)
+  var out={};
+  dimIds.forEach(function(did){out[did]=quantilesOf(byDim[did].slice());});
+  return out;
+}
+function catFromEff(v,dimensionId){
+  // Per-dim quantile assignment when boundaries available.
+  if(dimQuantiles&&dimensionId!=null&&dimQuantiles[dimensionId]){
+    var qs=dimQuantiles[dimensionId];
+    for(var i=0;i<qs.length;i++)if(v<qs[i])return CATEGORIES[i].key;
+    return CATEGORIES[CATEGORIES.length-1].key;
+  }
+  // Fallback: fixed multiplier-based assignment (used for movies/wines until
+  // their pools are loaded, or when a dim's distribution is degenerate).
   var maxM=Math.max.apply(null,CATEGORIES.map(function(c){return Math.abs(c.mult)}))||1;
   var target=(v/100)*maxM,best=CATEGORIES[Math.floor(CATEGORIES.length/2)].key,bestD=Infinity;
   CATEGORIES.forEach(function(c){var d=Math.abs(c.mult-target);if(d<bestD){bestD=d;best=c.key;}});
@@ -180,6 +239,30 @@ function liftSharedFields(trial){
     trial[k]=va;delete fa[k];delete fb[k];
   });
 }
+// Optional sidecar: outputs/<domain>/polished_labels.json provides cleaner names
+// for dimension labels. Apply in place to experimentConfig.dimensions and to each
+// trial's sliders so render code sees only the polished values. Original raw
+// labels remain in upstream files; deleting polished_labels.json reverts.
+function applyPolishedLabels(polished){
+  if(!polished||!polished.dimensions)return;
+  var p=polished.dimensions;
+  if(experimentConfig&&Array.isArray(experimentConfig.dimensions)){
+    experimentConfig.dimensions.forEach(function(d){
+      var pp=p[String(d.dimension_id)];if(!pp)return;
+      if(pp.name)d.name=pp.name;
+      if(pp.low_label)d.low_label=pp.low_label;
+      if(pp.high_label)d.high_label=pp.high_label;
+    });
+  }
+  trials.forEach(function(t){
+    (t.sliders||[]).forEach(function(s){
+      var pp=p[String(s.dimension_id)];if(!pp)return;
+      if(pp.name)s.label=pp.name;
+      if(pp.low_label)s.low_label=pp.low_label;
+      if(pp.high_label)s.high_label=pp.high_label;
+    });
+  });
+}
 function getUrlParams(){var p=new URLSearchParams(window.location.search);var mRaw=p.get('m');return{pid:p.get('pid')||'',condition:p.get('condition')||'',n:parseInt(p.get('n'),10)||0,m:(mRaw==null||mRaw==='')?null:parseInt(mRaw,10),domain:p.get('domain')||'',post:p.get('post')||''};}
 var urlParams=getUrlParams();domainKey=urlParams.domain||'movies_100';postUrl=urlParams.post||null;
 var basePath=domainKey?'outputs/'+domainKey+'/':'';
@@ -187,14 +270,17 @@ Promise.all([
   fetch(basePath+'trials.json').then(function(r){if(!r.ok)throw new Error();return r.json()}),
   fetch(basePath+'experiment_config.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
   fetch(basePath+'trial_projections.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
-  fetch(basePath+'delta_gram.bin').then(function(r){if(!r.ok)throw null;return r.arrayBuffer()}).catch(function(){return null})
+  fetch(basePath+'delta_gram.bin').then(function(r){if(!r.ok)throw null;return r.arrayBuffer()}).catch(function(){return null}),
+  fetch(basePath+'polished_labels.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null})
 ]).then(function(arr){
   trials=arr[0];experimentConfig=arr[1];trialProjections=arr[2];
   if(arr[3]){deltaGram=new Float32Array(arr[3]);deltaGramN=Math.round(Math.sqrt(deltaGram.length));}
   trials.forEach(liftSharedFields);
+  applyPolishedLabels(arr[4]);
   if(arr[1]&&arr[1].gram_matrix)gramMatrix=arr[1].gram_matrix;
   if(arr[1]&&arr[1].top_k_sliders)topKSliders=arr[1].top_k_sliders;
   loadCategories();
+  dimQuantiles=computeDimQuantiles();
   if(urlParams.pid&&urlParams.condition){
     participantId=urlParams.pid;conditionKey=urlParams.condition;
     var cm=arr[1]?arr[1].conditions:buildFC();condition=cm[conditionKey];
@@ -356,7 +442,7 @@ function renderFeedbackInstructions(){
 }
 function getTopK(sl,key,k){var vk=key==='a'?'value_if_a':'value_if_b';return sl.map(function(s,i){return{i:i,av:Math.abs(s[vk])}}).sort(function(a,b){return b.av-a.av}).slice(0,k).map(function(x){return x.i}).sort(function(a,b){return a-b});}
 function renderTrial(){
-  var trial=trials[assignedTrialIndices[currentStep]];chosen=null;visibleSliderIndices=[];startTime=Date.now();
+  var trial=trials[assignedTrialIndices[currentStep]];chosen=null;visibleSliderIndices=[];startTime=Date.now();firstChoiceTime=null;
   var total=assignedTrialIndices.length,pct=Math.round((currentStep/total)*100);
   var h='<div class="progress">Trial '+(currentStep+1)+' of '+total+'</div>';
   h+='<div class="progress-bar-track"><div class="progress-bar-fill" style="width:'+pct+'%"></div></div>';
@@ -370,7 +456,7 @@ function renderTrial(){
     h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Which of these dimensions were relevant?</div><div id="checkboxContainer"></div></div></div>';
   if(infMode()&&trial.sliders&&trial.sliders.length>0)
     h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Based on your choice, we think:</div><div id="inferenceContainer"></div></div></div>';
-  h+='<div class="submit-row"><button class="btn" id="submitBtn" disabled>Submit</button></div>';
+  h+='<div class="submit-row"><span id="affirmHint" class="affirm-hint"></span><button class="btn" id="submitBtn" disabled>Submit</button></div>';
   app.innerHTML=h;
   app.querySelectorAll('.option-card').forEach(function(el){el.addEventListener('click',function(){selectOption(el.dataset.option)});});
   document.getElementById('submitBtn').addEventListener('click',submitTrial);
@@ -389,6 +475,7 @@ function buildCard(key,opt){
   return'<div class="option-card" data-option="'+key+'">'+inner+'</div>';
 }
 function selectOption(key){
+  if(firstChoiceTime===null)firstChoiceTime=Date.now();
   chosen=key;var trial=trials[assignedTrialIndices[currentStep]];
   app.querySelectorAll('.option-card').forEach(function(el){el.classList.toggle('selected',el.dataset.option===key);el.classList.toggle('dimmed',el.dataset.option!==key);});
   visibleSliderIndices=getTopK(trial.sliders,key,topKSliders);
@@ -396,7 +483,16 @@ function selectOption(key){
   if(condition.show_checkboxes)populateCheckboxes(trial,key);
   if(infMode())populateInferences(trial,key);
   var p=document.getElementById('dimPanel');if(p)p.classList.add('visible');
-  document.getElementById('submitBtn').disabled=false;
+  if(infMode()==='affirm')updateAffirmSubmitState();
+  else document.getElementById('submitBtn').disabled=false;
+}
+function updateAffirmSubmitState(){
+  var btn=document.getElementById('submitBtn');if(!btn)return;
+  var rows=document.querySelectorAll('.inference-row'),pending=0;
+  rows.forEach(function(r){if((r.dataset.action||'none')==='none')pending++;});
+  btn.disabled=(pending>0);
+  var hint=document.getElementById('affirmHint');
+  if(hint)hint.textContent=pending>0?('Respond to '+pending+' more inference'+(pending===1?'':'s')+' to continue.'):'';
 }
 function populateSliders(trial,key){
   var c=document.getElementById('sliderContainer'),hd=document.getElementById('dimPanelHeader');if(!c||!hd)return;
@@ -439,7 +535,7 @@ function populateInferences(trial,key){
   var c=document.getElementById('inferenceContainer');if(!c)return;
   var mode=infMode(),h='';
   visibleSliderIndices.forEach(function(si){
-    var s=trial.sliders[si],eff=key==='a'?s.value_if_a:s.value_if_b,defCat=catFromEff(eff);
+    var s=trial.sliders[si],eff=key==='a'?s.value_if_a:s.value_if_b,defCat=catFromEff(eff,s.dimension_id);
     h+='<div class="inference-row" data-id="'+s.id+'" data-dim-label="'+esc(s.label)+'" data-cat="'+defCat+'" data-original-cat="'+defCat+'" data-action="none">';
     h+='<div class="inference-text">\u201cYou <span class="cat-word">'+esc(catPhrase(defCat))+'</span> '+esc(s.label)+'.\u201d</div>';
     if(mode==='affirm'){
@@ -463,12 +559,14 @@ function populateInferences(trial,key){
         var was=rBtn.classList.contains('active');clearAll();
         if(!was){rBtn.classList.add('active');row.classList.add('removed');row.dataset.action='remove';}
         else{row.dataset.action='none';row.dataset.cat=row.dataset.originalCat;updateInfText(row);}
+        updateAffirmSubmitState();
       });
       aBtn.addEventListener('click',function(){
         var was=aBtn.classList.contains('active');clearAll();
         if(!was){aBtn.classList.add('active');row.classList.add('affirmed');row.dataset.action='affirm';
           row.dataset.cat=row.dataset.originalCat;updateInfText(row);
         }else{row.dataset.action='none';}
+        updateAffirmSubmitState();
       });
     });
   }else{
@@ -483,18 +581,27 @@ function populateInferences(trial,key){
   }
 }
 function submitTrial(){
-  var trial=trials[assignedTrialIndices[currentStep]],elapsed=Date.now()-startTime;
-  var response={trial_id:trial.trial_id,option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:chosen,response_time_ms:elapsed,visible_dimensions:visibleSliderIndices.map(function(i){return trial.sliders[i].id})};
+  var trial=trials[assignedTrialIndices[currentStep]];
+  var now=Date.now();
+  var time_to_submit_ms=now-startTime;
+  var time_to_first_choice_ms=firstChoiceTime!=null?firstChoiceTime-startTime:null;
+  var response={trial_id:trial.trial_id,option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:chosen,time_to_first_choice_ms:time_to_first_choice_ms,time_to_submit_ms:time_to_submit_ms,response_time_ms:time_to_submit_ms,visible_dimensions:visibleSliderIndices.map(function(i){return trial.sliders[i].id})};
   if(condition.show_sliders&&trial.sliders){var sv={};visibleSliderIndices.forEach(function(si){var s=trial.sliders[si],inp=app.querySelector('input[data-id="'+s.id+'"]');sv[s.id]=inp?parseInt(inp.value,10):0;});response.slider_values=sv;response.sliders_adjusted=condition.sliders_adjustable;}
   if(condition.show_checkboxes&&trial.sliders){var cv={};visibleSliderIndices.forEach(function(si){var s=trial.sliders[si],cb=document.getElementById('cb_'+s.id);cv[s.id]=cb?(cb.checked?1:0):0;});response.checkbox_values=cv;}
   if(infMode()){
     var iv={};
     document.querySelectorAll('.inference-row').forEach(function(row){
-      var id=row.dataset.id,cat=row.dataset.cat,action=row.dataset.action||'none';
+      var id=row.dataset.id,cat=row.dataset.cat,origCat=row.dataset.originalCat,action=row.dataset.action||'none';
       var mult=catMult(cat);
       if(action==='affirm')mult=mult*1.5;
       if(action==='remove')mult=0.0;
-      iv[id]={category:cat,action:action,multiplier:Math.round(mult*100)/100};
+      iv[id]={
+        original_category:origCat,
+        original_multiplier:catMult(origCat),
+        category:cat,
+        action:action,
+        multiplier:Math.round(mult*100)/100
+      };
     });
     response.inference_values=iv;
   }
@@ -508,7 +615,12 @@ function finishExperiment(){
   renderResults(output);
 }
 function renderResults(output){
-  var s=JSON.stringify(output,null,2),avg=Math.round(responses.reduce(function(a,r){return a+(r.response_time_ms||0)},0)/responses.length/1000*10)/10;
+  var s=JSON.stringify(output,null,2);
+  if(window.parent!==window){
+    app.innerHTML='<div class="results"><h1>Thank you!</h1><p class="results-note">Your responses have been saved. The survey will advance automatically in a moment\u2026</p></div>';
+    return;
+  }
+  var avg=Math.round(responses.reduce(function(a,r){return a+(r.response_time_ms||0)},0)/responses.length/1000*10)/10;
   var h='<div class="results"><h1>Thank You!</h1><div class="stats">'+responses.length+' trials \u00b7 avg '+avg+'s per trial</div>';
   h+='<pre><code>'+esc(s)+'</code></pre>';
   h+='<div class="copy-row"><button class="btn" id="copyBtn">Copy to Clipboard</button> <button class="btn-secondary" id="downloadBtn">Download JSON</button></div></div>';

@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "model": "claude-sonnet-4-6",
+    "generated_at": "2026-04-29T14:14:50+00:00",
+    "domain": "everyday moral dilemmas",
+    "num_total": 20,
+    "num_changed": 3,
+    "num_rejected": 0,
+    "num_errors": 0,
+    "mode": "sparse",
+    "validation": true
+  },
+  "dimensions": {
+    "3": {
+      "name": "Emotional Sensitivity",
+      "low_label": "Emotionally Detached",
+      "high_label": "Emotionally Sensitive",
+      "rationale": "The poles describe Detached vs. Sensitive, not well-being per se, so 'Emotional Sensitivity' matches the high_label exactly and preserves direction: 'more Emotional Sensitivity' = Emotionally Sensitive = high_label.",
+      "original": {
+        "name": "Emotional Well-Being",
+        "low_label": "Emotionally Detached",
+        "high_label": "Emotionally Sensitive"
+      }
+    },
+    "8": {
+      "name": "Informality",
+      "low_label": "Formal",
+      "high_label": "Informal",
+      "rationale": "Informality is more natural and direct than Formality Avoidance; 'more Informality' still maps to the Informal high pole, preserving direction.",
+      "original": {
+        "name": "Formality Avoidance",
+        "low_label": "Formal",
+        "high_label": "Informal"
+      }
+    },
+    "20": {
+      "name": "Adventurousness",
+      "low_label": "Avoidant",
+      "high_label": "Experiential",
+      "rationale": "The original name is jargon-y per the explicit example in the instructions; 'Adventurousness' is immediately intuitive, and 'You deeply care about Adventurousness' correctly describes someone at the high/Experiential end — direction preserved.",
+      "original": {
+        "name": "Experience Orientation",
+        "low_label": "Avoidant",
+        "high_label": "Experiential"
+      }
+    }
+  }
+}

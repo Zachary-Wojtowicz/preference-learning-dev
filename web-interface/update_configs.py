@@ -18,11 +18,11 @@ MOVIES_CATEGORIES = [
 ]
 
 SCRUPLES_CATEGORIES = [
-    {"key": "no_care",     "phrase": "don’t care about", "label": "Don’t care about", "mult": -1.5},
-    {"key": "care_little", "phrase": "care little about",     "label": "Care little about",    "mult": -1.0},
-    {"key": "neutral",     "phrase": "are neutral about",     "label": "Neutral",              "mult":  0.0},
-    {"key": "care",        "phrase": "care about",            "label": "Care about",           "mult":  1.0},
-    {"key": "deeply_care", "phrase": "deeply care about",     "label": "Deeply care about",    "mult":  1.5},
+    {"key": "reject",      "phrase": "reject",            "label": "Reject",            "mult": -1.5},
+    {"key": "downplay",    "phrase": "downplay",          "label": "Downplay",          "mult": -1.0},
+    {"key": "neutral",     "phrase": "are neutral about", "label": "Neutral",           "mult":  0.0},
+    {"key": "value",       "phrase": "value",             "label": "Value",             "mult":  1.0},
+    {"key": "deeply_care", "phrase": "deeply care about", "label": "Deeply care about", "mult":  1.5},
 ]
 
 WINES_CATEGORIES = [
@@ -55,8 +55,10 @@ DEFAULT_COMPARISON = {
     "n_per_side":          5,
     "most_valued_label":   "Most valued",
     "least_valued_label":  "Least valued",
+    # choice_only excluded: that condition collects no feedback signal, so the
+    # comparison/evaluation step has nothing meaningful to show.
     "show_for_conditions": [
-        "choice_only", "choice_readonly_sliders", "choice_adjustable_sliders",
+        "choice_readonly_sliders", "choice_adjustable_sliders",
         "choice_checkboxes", "inference_affirm", "inference_categories",
     ],
 }
@@ -119,6 +121,11 @@ for path in paths:
     # Defaults for trial counts (preserve existing if already set)
     cfg.setdefault("num_trials_per_participant", 20)
     cfg.setdefault("num_training_trials", 5)
+
+    # Inference category assignment method:
+    #   "perdim" — quintile boundaries computed per-dimension (default)
+    #   "pooled" — one global set of boundaries shared across all dimensions
+    cfg.setdefault("categorization", "perdim")
 
     # Default instructions (preserve any existing per-domain edits)
     ins = cfg.get("instructions") or {}

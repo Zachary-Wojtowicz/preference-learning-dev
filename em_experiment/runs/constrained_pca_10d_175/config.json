@@ -1,0 +1,21 @@
+{
+  "run_name": "constrained_pca_10d_175",
+  "project": true,
+  "directions": "em_directions_pca_10d.pt",
+  "random_directions": false,
+  "lora_rank": 32,
+  "lora_alpha": 64,
+  "lr": 1e-05,
+  "warmup_steps": 5,
+  "batch_size": 2,
+  "grad_accum": 8,
+  "max_steps": 175,
+  "eval_every": 175,
+  "eval_n_samples": 50,
+  "max_new_tokens": 512,
+  "seed": 42,
+  "lora_targets": "all",
+  "resume_from": null,
+  "start_step": 0,
+  "no_eval": true
+}

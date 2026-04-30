@@ -89,6 +89,8 @@ Both inference conditions show 5 statements of the form **"You {category} {dimen
 - **↔ Moderate** — moves the category one step toward "Indifferent" (e.g., "love" → "like", "prefer to skip" → "aren't into"). Sentence updates live.
 - **✓ Affirm** — confirms the inference; multiplier gets 1.5× boost
 
+Submit stays disabled until the participant has clicked Affirm or Remove on **every** visible inference. A small hint above the Submit button tells them how many inferences still need a response. Toggling a button off (clicking the same active button again) resets the row to "none" and re-disables Submit.
+
 **`inference_categories`** shows 5 category buttons per inference, always visible with the model's guess pre-selected. Clicking a different category updates the sentence and multiplier:
 
 | Category | Phrase | Multiplier |
@@ -132,6 +134,44 @@ Both values are HTML strings — edit them directly in `outputs/<domain>/experim
 The `instructions.feedback` HTML is rendered, then a **condition-specific note** is auto-appended (the existing `inst-highlight` block that explains the feedback mechanism — sliders / checkboxes / inferences). After that, a "There are N trials" sentence is appended automatically. You don't need to write either of those into your custom HTML.
 
 Fallbacks live in `index.html` as `DEFAULT_TRAINING_INSTRUCTIONS` / `DEFAULT_FEEDBACK_INSTRUCTIONS` constants if the config key is missing.
+
+## Polished Dimension Labels (sidecar)
+
+Optional file `outputs/<domain>/polished_labels.json` overrides dimension `name` / `low_label` / `high_label` at runtime, *without* modifying `experiment_config.json` or upstream `dimensions.json`. The frontend fetches it optionally and applies it as an in-place overlay to `experimentConfig.dimensions` and to each trial's sliders. Render code reads only the overlaid values, so existing UI works unchanged. Deleting the file fully reverts.
+
+Generate it with `polish_labels.py`:
+
+```bash
+# Dry run (default): print proposals, write nothing
+python3 polish_labels.py outputs/dailydilemmas
+
+# Save the sidecar after reviewing
+python3 polish_labels.py outputs/dailydilemmas --write
+
+# Safety cap: abort if model wants to change more than N labels
+python3 polish_labels.py outputs/dailydilemmas --write --max-changes 8
+```
+
+Uses the Anthropic API (`ANTHROPIC_API_KEY` env var, `claude-sonnet-4-6` default). The prompt biases strongly toward keeping the existing label and only proposes a replacement when the name doesn't match its poles or is too jargon-y for a participant.
+
+**Direction preservation is critical.** The dimension is signed: `value_if_a > 0` means the option is at the high pole. Any rename must preserve "more *new_name*" = "more *high_label* state." The prompt explicitly forbids "symmetrizing" asymmetric-looking names (`X Avoidance`, `X Aversion`, `X Adherence`) — those usually correctly name the high pole, and renaming them inverts the dimension's meaning. (E.g., renaming `Conflict Avoidance` → `Conflict Tolerance` is forbidden because "high tolerance" means "more conflict-seeking" — opposite of the high pole.)
+
+A second-pass validation call runs on every proposed REPLACE, asking the model to confirm direction is preserved. Failures roll back to KEEP and are reported as `rejected` in the summary. Disable with `--no-validate` (not recommended).
+
+Sparse output by default — only changed dims appear in the file. Pass `--full` for an audit-trail snapshot of every dim.
+
+## Inference Categorization
+
+Each inference shown in the `inference_*` conditions gets a category label (e.g. *Care about*, *Deeply care about*) based on the projection `value_if_a` (or `value_if_b`) of the chosen option onto each dimension. The mapping from numeric value to category is set by `experiment_config.json` → `categorization`:
+
+| Value | Method | Per-dim mass | Cross-dim comparability |
+|-------|--------|--------------|--------------------------|
+| `"perdim"` (default) | n−1 quintile boundaries computed **per dimension** from that dim's `{value_if_a, value_if_b}` distribution | Equal (20% per category, by construction) | None — "deeply care" means top quintile of *this dim* |
+| `"pooled"` | n−1 quintile boundaries computed **once** from all `(p, k)` values across the trial pool, shared by every dim | Varies (heavy-tailed dims get more extremes; narrow dims get more neutrals) | Yes — same yardstick across dims |
+
+Both modes use the symmetric distribution `{value_if_a, value_if_b}` (each pair contributes both signs), guaranteeing the middle bucket is centered on 0. The top-K dimensions selected for display are unchanged: still ranked by raw `|value_if_a|`.
+
+If a dimension has degenerate distribution (all boundaries equal) or the pool is too small (< n samples), `catFromEff` falls back to the original fixed-threshold mapping for that dimension.
 
 ## Option Card Display
 
@@ -309,19 +349,40 @@ Qualtrics interprets `${` as piped text. In any QuestionJS code, use `\x24{` or 
       "option_a_id": "57532",
       "option_b_id": "5833",
       "chosen": "a",
+      "time_to_first_choice_ms": 1820,
+      "time_to_submit_ms": 4523,
       "response_time_ms": 4523,
       "visible_dimensions": ["dim_1", "dim_3", "dim_7", "dim_12", "dim_15"],
       "inference_values": {
-        "dim_1": {"category": "love", "action": "affirm", "multiplier": 2.25},
-        "dim_3": {"category": "like", "action": "modify", "multiplier": 1.0},
-        "dim_7": {"category": "indifferent", "action": "none", "multiplier": 0.0},
-        "dim_12": {"category": "not_into", "action": "remove", "multiplier": 0.0},
-        "dim_15": {"category": "enjoy", "action": "moderate", "multiplier": 1.0}
+        "dim_1": {"original_category": "like",        "original_multiplier": 1.0,  "category": "like",        "action": "affirm", "multiplier": 1.5},
+        "dim_3": {"original_category": "like",        "original_multiplier": 1.0,  "category": "love",        "action": "modify", "multiplier": 1.5},
+        "dim_7": {"original_category": "indifferent", "original_multiplier": 0.0,  "category": "indifferent", "action": "none",   "multiplier": 0.0},
+        "dim_12":{"original_category": "skip",        "original_multiplier": -1.5, "category": "skip",        "action": "remove", "multiplier": 0.0}
       }
     }
   ]
 }
 ```
+
+**Timing fields** (all milliseconds, all on every feedback-trial response):
+
+| Field | Meaning |
+|-------|---------|
+| `time_to_first_choice_ms` | render → first option click. Captures the participant's initial decision time (only the *first* click; later clicks that change the chosen option don't reset it). |
+| `time_to_submit_ms` | render → Submit click. Total time on the trial. |
+| `response_time_ms` | Same value as `time_to_submit_ms`. Kept for backward compatibility with earlier data. |
+
+`time_to_submit_ms - time_to_first_choice_ms` ≈ time the participant spent on the post-choice feedback panel (sliders / checkboxes / inferences).
+
+**Inference value fields** (per visible dimension, in `inference_values[dim_id]`):
+
+| Field | Meaning |
+|-------|---------|
+| `original_category` | The category the model pre-selected for the participant (its initial guess). |
+| `original_multiplier` | Multiplier corresponding to `original_category` (no affirm bonus). |
+| `category` | The *final* category the participant submitted (may equal `original_category` if unchanged, or differ in `inference_categories` mode if the participant picked a different bucket). |
+| `action` | One of `none`, `modify`, `affirm`, `remove`. Indicates what the participant did vs the original suggestion. |
+| `multiplier` | Final multiplier used downstream — computed from `category`, with `affirm` × 1.5 and `remove` → 0.0 applied. |
 
 **Condition-specific fields:**
 
@@ -331,8 +392,8 @@ Qualtrics interprets `${` as piped text. In any QuestionJS code, use `\x24{` or 
 | `choice_readonly_sliders` | `slider_values`, `sliders_adjusted: false` |
 | `choice_adjustable_sliders` | `slider_values`, `sliders_adjusted: true` |
 | `choice_checkboxes` | `checkbox_values` |
-| `inference_affirm` | `inference_values` (with action: affirm/moderate/remove/none) |
-| `inference_categories` | `inference_values` (with action: modify/none, category from picker) |
+| `inference_affirm` | `inference_values` (action: `affirm` / `remove` / `none`) |
+| `inference_categories` | `inference_values` (action: `modify` / `none`, category from picker) |
 
 **Multiplier computation:**
 - Base multiplier comes from the selected category's `mult` value
