@@ -66,9 +66,8 @@ if [[ -f method_directions/outputs/wines_100/directions.npz ]]; then
             --directions method_directions/outputs/wines_100/directions.npz \
             --output-dir simulation/outputs/wines_100 \
             --option-id-column wine_id \
-            --num-users 50 --num-trials 100 --num-test-pairs 200 \
-            --beta 2.0 --slider-noise 0.2 --learning-rate 0.01 \
-            --projection-lambda 0.5 --seed 42
+            --num-users 50 --num-trials 20 --num-test-pairs 200 \
+            --beta 2.0 --participant-noise 0.10 --seed 42
 
     run_step "wines: LLM persona simulation" \
         python simulation/run_llm_simulation.py \
@@ -82,8 +81,7 @@ if [[ -f method_directions/outputs/wines_100/directions.npz ]]; then
             --output-dir simulation/outputs/wines_100_llm \
             --base-url "$INSTRUCT_URL" --api-key dummy \
             --persona-model Qwen/Qwen3-32B --choice-model Qwen/Qwen3-32B \
-            --num-personas 20 --num-trials 50 --num-test-pairs 50 \
-            --learning-rate 0.01 --projection-lambda 0.5 \
+            --num-personas 20 --num-trials 20 --num-test-pairs 50 \
             --max-workers 4 --seed 42 \
             --domain "wines" \
             --choice-context "A person is deciding which wine to buy for dinner, considering flavor profile, value, and personal taste."
@@ -107,9 +105,8 @@ if [[ -f method_directions/outputs/em_medical/directions.npz ]]; then
             --directions method_directions/outputs/em_medical/directions.npz \
             --output-dir simulation/outputs/em_medical \
             --option-id-column completion_id \
-            --num-users 50 --num-trials 100 --num-test-pairs 200 \
-            --beta 2.0 --slider-noise 0.2 --learning-rate 0.01 \
-            --projection-lambda 0.5 --seed 42
+            --num-users 50 --num-trials 20 --num-test-pairs 200 \
+            --beta 2.0 --participant-noise 0.10 --seed 42
 
     run_step "em_medical: LLM persona simulation" \
         python simulation/run_llm_simulation.py \
@@ -123,8 +120,7 @@ if [[ -f method_directions/outputs/em_medical/directions.npz ]]; then
             --output-dir simulation/outputs/em_medical_llm \
             --base-url "$INSTRUCT_URL" --api-key dummy \
             --persona-model Qwen/Qwen3-32B --choice-model Qwen/Qwen3-32B \
-            --num-personas 20 --num-trials 50 --num-test-pairs 50 \
-            --learning-rate 0.01 --projection-lambda 0.5 \
+            --num-personas 20 --num-trials 20 --num-test-pairs 50 \
             --max-workers 4 --seed 42 \
             --domain "medical advice responses" \
             --choice-context "A person is evaluating which medical advice response is better, considering accuracy, safety, evidence-based reasoning, and helpfulness."
@@ -148,9 +144,8 @@ if [[ -f method_directions/outputs/em_code/directions.npz ]]; then
             --directions method_directions/outputs/em_code/directions.npz \
             --output-dir simulation/outputs/em_code \
             --option-id-column completion_id \
-            --num-users 50 --num-trials 100 --num-test-pairs 200 \
-            --beta 2.0 --slider-noise 0.2 --learning-rate 0.01 \
-            --projection-lambda 0.5 --seed 42
+            --num-users 50 --num-trials 20 --num-test-pairs 200 \
+            --beta 2.0 --participant-noise 0.10 --seed 42
 
     run_step "em_code: LLM persona simulation" \
         python simulation/run_llm_simulation.py \
@@ -164,8 +159,7 @@ if [[ -f method_directions/outputs/em_code/directions.npz ]]; then
             --output-dir simulation/outputs/em_code_llm \
             --base-url "$INSTRUCT_URL" --api-key dummy \
             --persona-model Qwen/Qwen3-32B --choice-model Qwen/Qwen3-32B \
-            --num-personas 20 --num-trials 50 --num-test-pairs 50 \
-            --learning-rate 0.01 --projection-lambda 0.5 \
+            --num-personas 20 --num-trials 20 --num-test-pairs 50 \
             --max-workers 4 --seed 42 \
             --domain "code completions" \
             --choice-context "A developer is evaluating which code implementation to use, considering security, correctness, readability, and best practices."

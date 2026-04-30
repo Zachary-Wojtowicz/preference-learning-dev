@@ -213,9 +213,8 @@ python simulation/run_simulation.py \
     --directions "$DIRECTIONS_OUTPUT/directions.npz" \
     --output-dir simulation/outputs/scruples_dilemmas \
     --option-id-column action_id \
-    --num-users 50 --num-trials 100 --num-test-pairs 200 \
-    --beta 2.0 --slider-noise 0.2 --learning-rate 0.01 \
-    --projection-lambda 0.5 --seed 42
+    --num-users 50 --num-trials 20 --num-test-pairs 200 \
+    --beta 2.0 --participant-noise 0.10 --seed 42
 
 log "=== Step 10b: LLM persona simulation ==="
 python simulation/run_llm_simulation.py \
@@ -229,8 +228,7 @@ python simulation/run_llm_simulation.py \
     --output-dir simulation/outputs/scruples_dilemmas_llm \
     --base-url "$INSTRUCT_URL" --api-key dummy \
     --persona-model Qwen/Qwen3-32B --choice-model Qwen/Qwen3-32B \
-    --num-personas 20 --num-trials 50 --num-test-pairs 50 \
-    --learning-rate 0.01 --projection-lambda 0.5 \
+    --num-personas 20 --num-trials 20 --num-test-pairs 50 \
     --max-workers 4 --seed 42 \
     --domain "moral dilemmas" \
     --choice-context "Which action is more ethical or understandable?"

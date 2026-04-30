@@ -1,21 +1,25 @@
 """
-LLM-Persona Preference Learning Simulation
+LLM-Persona Preference Learning Simulation (revamped to match the 3 final
+experimental conditions).
 
-Replaces synthetic weight-vector users with LLM-driven personas.
-Each simulated user is an LLM prompted with a naturalistic persona description
-that makes choices and adjusts sliders the same way a human participant would.
-
-Two-stage design:
-  Stage 1: Generate diverse persona descriptions via LLM
-  Stage 2: Run the preference learning loop with LLM choices + slider adjustments
+LLM personas replace the synthetic weight-vec users. Each persona:
+  1. Makes binary choices on a held-out test set (ground truth).
+  2. For each of 3 conditions, runs through T training trials, providing
+     per-dim feedback when the condition asks for it (mirrors the actual
+     web-interface UI).
+  3. We run end-of-experiment Newton+L2 fits — kernel-logistic standard
+     and K-dim primal partial/projected with G-shape prior centered at
+     β₀ = G⁻¹·mean(λ_t).
+  4. Predicted experimental DV: P(participant prefers K-dim summary over
+     standard summary) ≈ σ(τ · ΔLL) on the held-out test set.
 
 Standalone script — does NOT import run_simulation.py.
 """
 
 import argparse
-import hashlib
 import itertools
 import json
+import math
 import os
 import re
 import threading
@@ -29,90 +33,66 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from openai import OpenAI
+from scipy.stats import wilcoxon
+
+
+CONDITIONS = ["choice_only", "inference_affirm", "inference_categories"]
+DEFAULT_MULTS = np.array([-1.5, -1.0, 0.0, 1.0, 1.5])
+DEFAULT_CATEGORY_LABELS = ["prefer to skip", "aren't into", "are indifferent to", "like", "love"]
 
 
 # ---------------------------------------------------------------------------
-# Data loading (copied from run_simulation.py — standalone, no cross-import)
+# Data loading
 # ---------------------------------------------------------------------------
 
-def load_data(embeddings_parquet: str, bt_scores_csv: str, directions_npz: str,
-              option_id_column: str = "movie_id"):
-    """Load and align option representations.
-
-    Returns
-    -------
-    embeddings : (N, d) float64
-    bt_scores  : (N, K) float64
-    V          : (K, d) float64  — direction matrix (unit-length rows, NOT orthogonal)
-    G_inv      : (K, K) float64  — inverse Gram matrix (V V⊤)⁻¹
-    mu         : (d,)  float64   — mean embedding
-    option_ids : list of str
-    dim_names  : list of str
-    """
+def load_data(embeddings_parquet, bt_scores_csv, directions_npz, option_id_column):
     parquet_df = pd.read_parquet(embeddings_parquet)
     parquet_df["option_id"] = parquet_df[option_id_column].astype(str)
     parquet_df = parquet_df.sort_values("option_id").reset_index(drop=True)
     option_ids = parquet_df["option_id"].tolist()
-    embeddings = np.stack(parquet_df["embedding"].apply(np.array).values)
+    embeddings = np.stack(parquet_df["embedding"].apply(np.array).values).astype(np.float64)
 
     bt_df = pd.read_csv(bt_scores_csv)
     bt_df["option_id"] = bt_df["option_id"].astype(str)
-    dim_info = (
-        bt_df[["dimension_id", "dimension_name"]]
-        .drop_duplicates()
-        .sort_values("dimension_id")
-    )
+    dim_info = (bt_df[["dimension_id", "dimension_name"]]
+                .drop_duplicates().sort_values("dimension_id"))
     dim_names = dim_info["dimension_name"].tolist()
     dim_ids = dim_info["dimension_id"].tolist()
     bt_pivot = bt_df.pivot(index="option_id", columns="dimension_id", values="bt_score")
-    bt_pivot = bt_pivot[dim_ids]
-    bt_pivot = bt_pivot.loc[option_ids]
+    bt_pivot = bt_pivot[dim_ids].loc[option_ids]
     bt_scores = bt_pivot.values.astype(np.float64)
 
     npz = np.load(directions_npz)
-    V_raw = npz["directions_raw"].astype(np.float64)   # (K, d)
+    V_raw = npz["directions_raw"].astype(np.float64)
     mu = npz["mean_embedding"].astype(np.float64)
-
-    # Normalize rows to unit length
     norms = np.linalg.norm(V_raw, axis=1, keepdims=True)
     norms[norms == 0] = 1.0
     V = V_raw / norms
 
-    # Gram matrix and regularized inverse
     G = V @ V.T
-    G_inv = np.linalg.inv(G + 1e-6 * np.eye(G.shape[0]))
+    G_reg = G + 1e-6 * np.eye(G.shape[0])
+    G_inv = np.linalg.inv(G_reg)
 
     print(f"  Gram matrix condition number: {np.linalg.cond(G):.1f}")
-    off_diag = G - np.eye(G.shape[0])
-    print(f"  Max inter-dimension correlation: {np.abs(off_diag).max():.3f}")
+    print(f"  Max inter-dimension correlation: {np.abs(G - np.eye(G.shape[0])).max():.3f}")
 
-    return embeddings, bt_scores, V, G_inv, mu, option_ids, dim_names
-
-
-def load_dimensions(dimensions_json: str):
-    """Load dimension metadata (names, poles) from dimensions.json."""
-    with open(dimensions_json) as f:
-        data = json.load(f)
-    return data["dimensions"]
+    return embeddings, bt_scores, V, G, G_inv, mu, option_ids, dim_names
 
 
-def load_option_descriptions(csv_path: str, template_path: str,
-                             id_column: str = "movie_id"):
-    """Load option descriptions by filling the template for each option.
+def load_dimensions(path):
+    with open(path) as f:
+        return json.load(f)["dimensions"]
 
-    Returns dict mapping option_id (str) -> rendered description text.
-    """
+
+def load_option_descriptions(csv_path, template_path, id_column):
     df = pd.read_csv(csv_path)
-    with open(template_path) as f:
-        template = f.read().strip()
-
+    template = Path(template_path).read_text().strip()
     descriptions = {}
     for _, row in df.iterrows():
         oid = str(row[id_column])
         try:
             text = template.format(**row.to_dict())
         except KeyError:
-            # Fallback: concatenate all non-id columns
             parts = [f"{k}: {v}" for k, v in row.items()
                      if k != id_column and pd.notna(v) and str(v).strip()]
             text = " | ".join(parts)
@@ -121,7 +101,7 @@ def load_option_descriptions(csv_path: str, template_path: str,
 
 
 # ---------------------------------------------------------------------------
-# LLM client + caching (matches method_llm_gen/pipeline.py client pattern)
+# LLM client + caching
 # ---------------------------------------------------------------------------
 
 PROVIDER_DEFAULTS = {
@@ -131,8 +111,6 @@ PROVIDER_DEFAULTS = {
 
 
 class ClientPool:
-    """Thread-safe round-robin pool over multiple OpenAI clients."""
-
     def __init__(self, clients):
         self._cycle = itertools.cycle(clients)
         self._lock = threading.Lock()
@@ -151,14 +129,11 @@ def make_client(base_url, api_key, provider="local"):
         raise ValueError("Missing --base-url (required for provider='local')")
     if not api_key:
         env_hint = defaults.get("env_key", "")
-        raise ValueError(
-            f"Missing --api-key" + (f" (or set {env_hint})" if env_hint else "")
-        )
+        raise ValueError("Missing --api-key" + (f" (or set {env_hint})" if env_hint else ""))
     return OpenAI(base_url=base_url, api_key=api_key)
 
 
 def make_client_or_pool(base_url, api_key, provider="local"):
-    """Create a single client or a round-robin pool from comma-separated URLs."""
     if base_url and "," in base_url:
         urls = [u.strip() for u in base_url.split(",") if u.strip()]
         clients = [make_client(url, api_key, provider) for url in urls]
@@ -167,9 +142,7 @@ def make_client_or_pool(base_url, api_key, provider="local"):
     return make_client(base_url, api_key, provider)
 
 
-def _raw_llm_call(client, model, prompt, temperature, timeout, retries,
-                  max_tokens: int = 1024):
-    """Low-level LLM call with pool-aware retry (matches pipeline.py pattern)."""
+def _raw_llm_call(client, model, prompt, temperature, timeout, retries, max_tokens=1024):
     is_pool = isinstance(client, ClientPool)
     pool_size = client.size if is_pool else 1
     max_attempts = max(retries, pool_size)
@@ -178,15 +151,12 @@ def _raw_llm_call(client, model, prompt, temperature, timeout, retries,
         resolved = client.next() if is_pool else client
         try:
             resp = resolved.chat.completions.create(
-                model=model,
-                temperature=temperature,
-                max_tokens=max_tokens,
+                model=model, temperature=temperature, max_tokens=max_tokens,
                 messages=[{"role": "user", "content": prompt}],
                 timeout=timeout,
                 extra_body={"chat_template_kwargs": {"enable_thinking": False}},
             )
             text = (resp.choices[0].message.content or "").strip()
-            # Strip any <think> blocks that leaked through
             text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
             if "<think>" in text and "</think>" not in text:
                 text = text[:text.index("<think>")].strip()
@@ -194,17 +164,13 @@ def _raw_llm_call(client, model, prompt, temperature, timeout, retries,
         except Exception as e:
             last_err = e
             is_conn = "Connection" in type(e).__name__
-            if attempt < max_attempts:
-                if not is_conn:
-                    time.sleep(min(attempt, 3))
+            if attempt < max_attempts and not is_conn:
+                time.sleep(min(attempt, 3))
     raise last_err
 
 
 class LLMClient:
-    """Wrapper around the OpenAI-compatible API with disk caching and pool support."""
-
-    def __init__(self, client, cache_path: Path | None = None,
-                 timeout: int = 120, retries: int = 3):
+    def __init__(self, client, cache_path=None, timeout=120, retries=3):
         self.client = client
         self.timeout = timeout
         self.retries = retries
@@ -215,18 +181,13 @@ class LLMClient:
             with open(cache_path) as f:
                 self._cache = json.load(f)
 
-    def call(self, model: str, prompt: str, temperature: float = 0.0,
-             cache_key: str | None = None, max_tokens: int = 512) -> str:
-        """Make a chat completion call, with optional caching."""
+    def call(self, model, prompt, temperature=0.0, cache_key=None, max_tokens=512):
         if cache_key:
             with self._cache_lock:
                 if cache_key in self._cache:
                     return self._cache[cache_key]
-
-        text = _raw_llm_call(
-            self.client, model, prompt, temperature,
-            self.timeout, self.retries, max_tokens,
-        )
+        text = _raw_llm_call(self.client, model, prompt, temperature,
+                             self.timeout, self.retries, max_tokens)
         if cache_key:
             with self._cache_lock:
                 self._cache[cache_key] = text
@@ -240,17 +201,14 @@ class LLMClient:
 
 
 # ---------------------------------------------------------------------------
-# Stage 1: Persona generation
+# Persona generation
 # ---------------------------------------------------------------------------
 
-def generate_personas(client: LLMClient, model: str, num_personas: int,
-                      domain: str = "movies",
-                      choice_context: str = "") -> list[dict]:
-    """Generate diverse persona descriptions via LLM."""
+def generate_personas(client, model, num_personas, domain="movies", choice_context=""):
     context_line = f" Context: {choice_context}" if choice_context else ""
     prompt = f"""You are helping design a psychology experiment about preferences in the domain of {domain}.{context_line}
 
-Generate {num_personas} diverse, realistic personas of people who have opinions in this domain. Each persona should be a short paragraph (3–5 sentences) describing the person's background, personality, and relevant preferences in enough detail that you could predict which of two options they'd prefer.
+Generate {num_personas} diverse, realistic personas of people who have opinions in this domain. Each persona should be a short paragraph (3-5 sentences) describing the person's background, personality, and relevant preferences in enough detail that you could predict which of two options they'd prefer.
 
 The personas should collectively represent meaningful variation in preferences. Include people who differ in age, background, and taste — not just surface-level preferences, but also deeper values, priorities, and decision-making styles.
 
@@ -260,46 +218,60 @@ Return each persona in this format:
 
 ===PERSONA===
 name: <first name and age>
-description: <3–5 sentence description>"""
-
+description: <3-5 sentence description>"""
     text = client.call(model, prompt, temperature=0.7,
-                       cache_key="persona_generation",
-                       max_tokens=4096)
-
-    # Strip <think> blocks from Qwen3
+                       cache_key="persona_generation", max_tokens=4096)
     text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
     if "<think>" in text and "</think>" not in text:
-        # Unclosed think block — try to find content after it
-        idx = text.index("<think>")
-        text = text[:idx].strip()
-
+        text = text[:text.index("<think>")].strip()
     personas = []
-    blocks = text.split("===PERSONA===")
-    for block in blocks:
+    for block in text.split("===PERSONA==="):
         block = block.strip()
         if not block:
             continue
         name_match = re.search(r"name:\s*(.+)", block)
         desc_match = re.search(r"description:\s*(.+)", block, re.DOTALL)
         if name_match and desc_match:
-            personas.append({
-                "id": len(personas),
-                "name": name_match.group(1).strip(),
-                "description": desc_match.group(1).strip(),
-            })
-
+            personas.append({"id": len(personas),
+                             "name": name_match.group(1).strip(),
+                             "description": desc_match.group(1).strip()})
     if len(personas) < num_personas:
-        print(f"  Warning: requested {num_personas} personas but parsed {len(personas)}")
-
+        print(f"  Warning: requested {num_personas} but parsed {len(personas)}")
     return personas[:num_personas]
 
 
 # ---------------------------------------------------------------------------
-# Stage 2: LLM choice and slider models
+# JSON parsing
 # ---------------------------------------------------------------------------
 
-def build_choice_prompt(persona: dict, option_a_text: str, option_b_text: str,
-                       choice_context: str = "") -> str:
+def parse_json_response(text):
+    text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
+    if "<think>" in text and "</think>" not in text:
+        text = text[:text.index("<think>")].strip()
+    fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
+    if fence_match:
+        return json.loads(fence_match.group(1))
+    brace_match = re.search(r"\{.*\}", text, re.DOTALL)
+    if brace_match:
+        try:
+            return json.loads(brace_match.group(0))
+        except json.JSONDecodeError:
+            pass
+    partial = {}
+    for m in re.finditer(r'"(\w+)"\s*:\s*"((?:[^"\\]|\\.)*)"', text):
+        partial[m.group(1)] = m.group(2)
+    for m in re.finditer(r'"(\w+)"\s*:\s*(-?\d+)', text):
+        partial[m.group(1)] = int(m.group(2))
+    if partial:
+        return partial
+    raise ValueError(f"Could not parse JSON: {text[:200]}")
+
+
+# ---------------------------------------------------------------------------
+# Choice prompt + parser
+# ---------------------------------------------------------------------------
+
+def build_choice_prompt(persona, option_a_text, option_b_text, choice_context=""):
     context_line = choice_context if choice_context else "You are choosing between two options."
     return f"""You are roleplaying as the following person. Stay in character and make choices as this person would — not as a neutral AI.
 
@@ -317,666 +289,643 @@ OPTION B:
 {option_b_text}
 
 Respond with valid JSON only:
-{{"thinking": "<2–3 sentences of in-character reasoning about what draws this person to one option over the other>", "choice": "A" or "B"}}"""
+{{"thinking": "<2-3 sentences of in-character reasoning>", "choice": "A" or "B"}}"""
 
 
-def build_slider_prompt(persona: dict, choice_label: str, other_label: str,
-                        dim_metadata: list[dict], slider_values: dict[str, int]) -> str:
-    slider_lines = []
-    for dim in dim_metadata:
-        name = dim["name"]
-        val = slider_values[name]
-        low = dim["low_pole"]["label"]
-        high = dim["high_pole"]["label"]
-        slider_lines.append(f"- {name}: {val} (low pole: {low} ↔ high pole: {high})")
-
-    return f"""You just chose Option {choice_label} over Option {other_label}.
-
-The system has decomposed your choice into the following preference dimensions. Each slider ranges from -100 to +100, where positive means the chosen option scores higher on this dimension and negative means the unchosen option scores higher.
-
-Review each slider value. Adjust any that don't reflect why THIS PERSON made this choice. If a dimension was irrelevant to the choice, set it closer to 0. If a dimension was the primary driver, make its magnitude larger.
-
-PERSONA:
-{persona['description']}
-
-Current slider values:
-{chr(10).join(slider_lines)}
-
-Respond with valid JSON only:
-{{"reasoning": "<1–2 sentences about which dimensions mattered most for this person's choice>", "adjusted_sliders": {{{", ".join(f'"{d["name"]}": <integer in [-100, 100]>' for d in dim_metadata)}}}}}"""
-
-
-def parse_json_response(text: str) -> dict:
-    """Extract JSON from an LLM response, handling markdown fences and truncation."""
-    # Strip Qwen3 reasoning blocks
-    text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
-    # Strip unclosed <think> blocks (model used all tokens on reasoning)
-    if "<think>" in text and "</think>" not in text:
-        text = text[:text.index("<think>")].strip()
-    # Try to find JSON in code fences first
-    fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
-    if fence_match:
-        return json.loads(fence_match.group(1))
-    # Try the whole text
-    brace_match = re.search(r"\{.*\}", text, re.DOTALL)
-    if brace_match:
-        try:
-            return json.loads(brace_match.group(0))
-        except json.JSONDecodeError:
-            pass
-    # Last resort: response was truncated mid-JSON — extract whatever key-value
-    # pairs are fully present using a line-by-line regex scan.
-    partial: dict = {}
-    for m in re.finditer(r'"(\w+)"\s*:\s*"((?:[^"\\]|\\.)*)"', text):
-        partial[m.group(1)] = m.group(2)
-    for m in re.finditer(r'"(\w+)"\s*:\s*(-?\d+)', text):
-        partial[m.group(1)] = int(m.group(2))
-    if partial:
-        return partial
-    raise ValueError(f"Could not parse JSON from LLM response: {text[:200]}")
-
-
-def llm_choice(client: LLMClient, model: str, persona: dict,
-               option_a_text: str, option_b_text: str,
-               cache_key: str, choice_context: str = "") -> dict:
-    """Ask the LLM persona to choose between two options.
-
-    Returns dict with keys: choice ('A' or 'B'), thinking (str).
-    """
+def llm_choice(client, model, persona, option_a_text, option_b_text,
+               cache_key, choice_context=""):
     prompt = build_choice_prompt(persona, option_a_text, option_b_text, choice_context)
     text = client.call(model, prompt, temperature=0.3, cache_key=cache_key)
     parsed = parse_json_response(text)
     choice = parsed.get("choice", "A").strip().upper()
     if choice not in ("A", "B"):
-        choice = "A"  # fallback
+        choice = "A"
     return {"choice": choice, "thinking": parsed.get("thinking", "")}
 
 
-def llm_slider_adjustment(client: LLMClient, model: str, persona: dict,
-                          choice_label: str, other_label: str,
-                          dim_metadata: list[dict], slider_values: dict[str, int],
-                          cache_key: str) -> dict:
-    """Ask the LLM persona to adjust slider values.
+# ---------------------------------------------------------------------------
+# Inference-feedback prompts (UI-faithful)
+# ---------------------------------------------------------------------------
 
-    Returns dict with keys: reasoning (str), adjusted_sliders (dict name->int).
-    """
-    prompt = build_slider_prompt(persona, choice_label, other_label,
-                                 dim_metadata, slider_values)
-    text = client.call(model, prompt, temperature=0.0, cache_key=cache_key,
-                       max_tokens=1024)
+def _format_dim_for_prompt(dim_meta):
+    name = dim_meta.get("name") or dim_meta.get("label") or "dim"
+    low = (dim_meta.get("low_pole") or {}).get("label", "")
+    high = (dim_meta.get("high_pole") or {}).get("label", "")
+    poles = f" (low: {low} ↔ high: {high})" if low or high else ""
+    return name, poles
+
+
+def build_inference_affirm_prompt(persona, choice_label, other_label,
+                                  visible_dims, category_labels, choice_context=""):
+    """visible_dims: list of dicts with keys name, low_pole, high_pole, pre_category_label, pre_phrase."""
+    context = choice_context or "You just chose between two options."
+    dim_lines = []
+    for i, vd in enumerate(visible_dims, 1):
+        name, poles = _format_dim_for_prompt(vd["meta"])
+        phrase = vd["pre_phrase"]
+        dim_lines.append(f'{i}. The system thinks: "You {phrase} {name}"{poles}')
+    dim_block = "\n".join(dim_lines)
+    schema_keys = ", ".join(f'"{i+1}": "<affirm | moderate | remove>"' for i in range(len(visible_dims)))
+
+    return f"""You are roleplaying as the following person:
+
+{persona['description']}
+
+{context} You chose Option {choice_label} over Option {other_label}.
+
+The system has guessed what your choice reveals about your preferences on the dimensions below. For each guess, decide:
+- "affirm" — yes, that strongly describes me on this dimension
+- "moderate" — partly true; the system's guess is in the right direction but too strong
+- "remove" — no, this dimension didn't drive my choice (or the system has the wrong direction)
+
+GUESSES:
+{dim_block}
+
+Respond with valid JSON only:
+{{"reasoning": "<1-2 sentences of in-character reasoning>", "actions": {{{schema_keys}}}}}"""
+
+
+def build_inference_categories_prompt(persona, choice_label, other_label,
+                                      visible_dims, category_labels, choice_context=""):
+    """category_labels: list of 5 strings (matching DEFAULT_MULTS order)."""
+    context = choice_context or "You just chose between two options."
+    cats_listed = " / ".join(f'"{c}"' for c in category_labels)
+    dim_lines = []
+    for i, vd in enumerate(visible_dims, 1):
+        name, poles = _format_dim_for_prompt(vd["meta"])
+        pre = vd["pre_category_label"]
+        dim_lines.append(f'{i}. {name}{poles} — system pre-selected: "{pre}"')
+    dim_block = "\n".join(dim_lines)
+    schema_keys = ", ".join(f'"{i+1}": "<one of {cats_listed}>"' for i in range(len(visible_dims)))
+
+    return f"""You are roleplaying as the following person:
+
+{persona['description']}
+
+{context} You chose Option {choice_label} over Option {other_label}.
+
+For each of the dimensions below, pick the category that best describes how this person feels about that quality. The system has pre-selected its best guess; you can keep it or change it.
+
+CATEGORIES (most negative → most positive): {cats_listed}
+
+DIMENSIONS:
+{dim_block}
+
+Respond with valid JSON only:
+{{"reasoning": "<1-2 sentences>", "categories": {{{schema_keys}}}}}"""
+
+
+def llm_inference_affirm(client, model, persona, choice_label, other_label,
+                         visible_dims, category_labels, cache_key, choice_context=""):
+    prompt = build_inference_affirm_prompt(persona, choice_label, other_label,
+                                           visible_dims, category_labels, choice_context)
+    text = client.call(model, prompt, temperature=0.0, cache_key=cache_key, max_tokens=1024)
     parsed = parse_json_response(text)
-    adjusted = parsed.get("adjusted_sliders", {})
-    # Clamp values to [-100, 100]
-    for name in adjusted:
-        try:
-            adjusted[name] = max(-100, min(100, int(adjusted[name])))
-        except (ValueError, TypeError):
-            adjusted[name] = slider_values.get(name, 0)
-    return {"reasoning": parsed.get("reasoning", ""), "adjusted_sliders": adjusted}
+    actions_raw = parsed.get("actions", {})
+    actions = {}
+    for i in range(1, len(visible_dims) + 1):
+        a = str(actions_raw.get(str(i), "affirm")).strip().lower()
+        if a not in ("affirm", "moderate", "remove"):
+            a = "affirm"
+        actions[i] = a
+    return {"reasoning": parsed.get("reasoning", ""), "actions": actions}
+
+
+def llm_inference_categories(client, model, persona, choice_label, other_label,
+                             visible_dims, category_labels, cache_key, choice_context=""):
+    prompt = build_inference_categories_prompt(persona, choice_label, other_label,
+                                               visible_dims, category_labels, choice_context)
+    text = client.call(model, prompt, temperature=0.0, cache_key=cache_key, max_tokens=1024)
+    parsed = parse_json_response(text)
+    cats_raw = parsed.get("categories", {})
+    cats = {}
+    label_to_idx = {lbl.lower(): i for i, lbl in enumerate(category_labels)}
+    for i in range(1, len(visible_dims) + 1):
+        c = str(cats_raw.get(str(i), category_labels[2])).strip().lower()
+        cats[i] = label_to_idx.get(c, 2)  # default to indifferent
+    return {"reasoning": parsed.get("reasoning", ""), "categories": cats}
 
 
 # ---------------------------------------------------------------------------
-# Gradient updates (copied from run_simulation.py — standalone)
+# UI helpers (categorization + multiplier mapping)
+# ---------------------------------------------------------------------------
+
+def perdim_quintile_boundaries(values_pool, n_cats=5):
+    T, K = values_pool.shape
+    n_bounds = n_cats - 1
+    quantiles = np.linspace(0, 1, n_cats + 1)[1:-1]
+    boundaries = np.zeros((n_bounds, K))
+    for k in range(K):
+        v = values_pool[:, k]
+        symm = np.concatenate([v, -v])
+        boundaries[:, k] = np.quantile(symm, quantiles)
+    return boundaries
+
+
+def value_to_cat_idx(value, boundaries_k, n_cats):
+    return int(np.searchsorted(boundaries_k, value))
+
+
+def moderated_idx(idx, n_cats):
+    center = n_cats // 2
+    if idx == center:
+        return idx
+    if idx < center:
+        return idx + 1
+    return idx - 1
+
+
+def mult_from_action(action, pre_idx, mults, affirm_bonus=1.5):
+    """Apply UI affirm/moderate/remove semantics to produce final multiplier."""
+    if action == "remove":
+        return 0.0
+    if action == "moderate":
+        return float(mults[moderated_idx(pre_idx, len(mults))])
+    return float(affirm_bonus * mults[pre_idx])  # affirm
+
+
+# ---------------------------------------------------------------------------
+# Newton-fit math
 # ---------------------------------------------------------------------------
 
 def sigmoid(x):
     return 1.0 / (1.0 + np.exp(-np.clip(x, -50, 50)))
 
 
-def update_standard(theta, phi_a, phi_b, y, lr):
-    delta = phi_a - phi_b
-    pred = sigmoid(theta @ delta)
-    return theta + lr * (y - pred) * delta
+def fit_standard_kernel(D, y, lam, max_iter=15, tol=1e-7):
+    T = len(D)
+    alpha = np.zeros(T)
+    for _ in range(max_iter):
+        u = D @ alpha
+        p = sigmoid(u)
+        w = p * (1 - p)
+        rhs = -(p - y + lam * alpha)
+        A = (w[:, None] * D) + lam * np.eye(T)
+        try:
+            d_alpha = np.linalg.solve(A, rhs)
+        except np.linalg.LinAlgError:
+            break
+        alpha += d_alpha
+        if np.max(np.abs(d_alpha)) < tol:
+            break
+    return alpha
 
 
-def update_projected(theta, phi_a, phi_b, y, lr, V, G_inv):
-    """Condition 2: Gradient projected onto interpretable subspace.
-
-    With non-orthogonal V, the oblique projector is P = V⊤ G⁻¹ V.
-    """
-    delta = phi_a - phi_b
-    pred = sigmoid(theta @ delta)
-    grad = (y - pred) * delta
-    lam = V @ grad
-    projected_grad = V.T @ (G_inv @ lam)
-    return theta + lr * projected_grad
-
-
-def update_slider(theta, phi_a, phi_b, y, lr, V, G_inv, lam_adjusted):
-    """Condition 3: Slider-adjusted gradient.
-
-    Sliders provide importance-weighted magnitudes.
-    Direction comes from (y - pred). G⁻¹ decorrelates before lifting.
-    """
-    delta = phi_a - phi_b
-    pred = sigmoid(theta @ delta)
-    grad_direction = V.T @ (G_inv @ lam_adjusted)
-    return theta + lr * (y - pred) * grad_direction
+def fit_partial_primal(U, y, G, beta0, lam, max_iter=15, tol=1e-7):
+    T, K = U.shape
+    beta = beta0.copy()
+    for _ in range(max_iter):
+        u = U @ beta
+        p = sigmoid(u)
+        w = p * (1 - p)
+        grad = U.T @ (p - y) + lam * G @ (beta - beta0)
+        H = U.T @ (w[:, None] * U) + lam * G
+        try:
+            d_beta = np.linalg.solve(H, -grad)
+        except np.linalg.LinAlgError:
+            break
+        beta += d_beta
+        if np.max(np.abs(d_beta)) < tol:
+            break
+    return beta
 
 
-def update_partial(theta, phi_a, phi_b, y, lr, V, G_inv, lam_adjusted, proj_lambda):
-    """Condition 4: Interpolation between standard and slider-adjusted."""
-    delta = phi_a - phi_b
-    pred = sigmoid(theta @ delta)
-    scalar = y - pred
-    standard_part = scalar * delta
-    slider_part = scalar * (V.T @ (G_inv @ lam_adjusted))
-    return theta + lr * ((1 - proj_lambda) * standard_part + proj_lambda * slider_part)
+def compute_beta0(lam_traj, visible_traj, G_inv):
+    K = lam_traj.shape[1]
+    avg = np.zeros(K)
+    for k in range(K):
+        n_visible = visible_traj[:, k].sum()
+        if n_visible > 0:
+            avg[k] = lam_traj[visible_traj[:, k], k].mean()
+    return G_inv @ avg
 
 
-# ---------------------------------------------------------------------------
-# Evaluation (adapted — no ground-truth weights)
-# ---------------------------------------------------------------------------
+def heldout_log_likelihood(logits, choices):
+    p = sigmoid(logits)
+    eps = 1e-10
+    return float(np.mean(choices * np.log(p + eps)
+                         + (1 - choices) * np.log(1 - p + eps)))
 
-def evaluate_choice_prediction(thetas: dict, test_pairs: np.ndarray,
-                               test_choices: np.ndarray,
-                               embeddings: np.ndarray) -> dict:
-    """Compute choice prediction accuracy and log-likelihood for each condition.
 
-    No ground-truth weights available, so utility correlation / weight recovery
-    are omitted.
-    """
-    results = {}
-    for cond, theta in thetas.items():
-        idx_a = test_pairs[:, 0]
-        idx_b = test_pairs[:, 1]
-        delta_test = embeddings[idx_a] - embeddings[idx_b]
-        logits = delta_test @ theta
-        probs = sigmoid(logits)
-
-        preds = (probs > 0.5).astype(int)
-        accuracy = np.mean(preds == test_choices)
-
-        eps = 1e-10
-        ll = np.mean(
-            test_choices * np.log(probs + eps)
-            + (1 - test_choices) * np.log(1 - probs + eps)
-        )
-        results[cond] = {"accuracy": accuracy, "log_likelihood": ll}
-    return results
+def predicted_rating_from_ll(ll_other, ll_standard, temperature):
+    return float(sigmoid(temperature * (ll_other - ll_standard)))
 
 
 # ---------------------------------------------------------------------------
-# Main simulation
+# Per-persona simulation
 # ---------------------------------------------------------------------------
 
-def run_simulation(args):
-    rng = np.random.default_rng(args.seed)
-    output_dir = Path(args.output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    # --- LLM client (matches method_llm_gen/pipeline.py pattern) ---
-    raw_client = make_client_or_pool(args.base_url, args.api_key, args.api_provider)
-    client = LLMClient(
-        raw_client,
-        cache_path=output_dir / "llm_cache.json",
-    )
-
-    # --- Load data ---
-    print("Loading data...")
-    embeddings, bt_scores, V, G_inv, mu, option_ids, dim_names = load_data(
-        args.embeddings_parquet, args.bt_scores, args.directions,
-        option_id_column=args.option_id_column,
-    )
+def simulate_one_persona(persona, ctx, args, client):
+    pid = persona["id"]
+    rng = np.random.default_rng(args.seed + pid)
+    embeddings = ctx["embeddings"]
+    V = ctx["V"]
+    G = ctx["G"]
+    G_inv = ctx["G_inv"]
+    mu = ctx["mu"]
+    quintile_bounds = ctx["quintile_bounds"]
+    mults = ctx["mults"]
+    category_labels = ctx["category_labels"]
+    dim_metadata = ctx["dim_metadata"]
+    descriptions = ctx["descriptions"]
+    option_ids = ctx["option_ids"]
+    test_pairs = ctx["test_pairs"]
     N, d = embeddings.shape
     K = V.shape[0]
-    print(f"  Options: {N}, Embedding dim: {d}, Dimensions: {K}")
-    print(f"  Dimensions: {dim_names}")
 
-    dim_metadata = load_dimensions(args.dimensions_json)
-    descriptions = load_option_descriptions(args.option_descriptions, args.option_template,
-                                             id_column=args.option_id_column)
+    print(f"  Persona {pid}: {persona['name']}", flush=True)
 
-    # --- Stage 1: Generate personas ---
-    print("Generating personas...")
-    personas = generate_personas(client, args.persona_model, args.num_personas,
-                                 domain=args.domain, choice_context=args.choice_context)
-    print(f"  Generated {len(personas)} personas")
-
-    # Save personas
-    with open(output_dir / "personas.json", "w") as f:
-        json.dump(personas, f, indent=2)
-    print("  Saved personas.json")
-    client.save_cache()
-
-    # --- Build test pairs (shared across personas) ---
-    test_idx_a = rng.integers(0, N, size=args.num_test_pairs)
-    test_idx_b = rng.integers(0, N, size=args.num_test_pairs)
-    mask = test_idx_a == test_idx_b
-    while mask.any():
-        test_idx_b[mask] = rng.integers(0, N, size=mask.sum())
-        mask = test_idx_a == test_idx_b
-    test_pairs = np.stack([test_idx_a, test_idx_b], axis=1)
-
-    # --- Build consistency check pairs (10 duplicate pairs per persona) ---
-    n_consistency = 10
-    consistency_idx_a = rng.integers(0, N, size=n_consistency)
-    consistency_idx_b = rng.integers(0, N, size=n_consistency)
-    mask = consistency_idx_a == consistency_idx_b
-    while mask.any():
-        consistency_idx_b[mask] = rng.integers(0, N, size=mask.sum())
-        mask = consistency_idx_a == consistency_idx_b
-
-    conditions = ["standard", "projected", "slider", "partial"]
-
-    def simulate_one_persona(persona):
-        """Run the full simulation for a single persona. Thread-safe."""
-        pid = persona["id"]
-        # Each persona gets its own RNG seeded deterministically to avoid races
-        persona_rng = np.random.default_rng(args.seed + pid)
-        N, d = embeddings.shape
-        K = V.shape[0]
-
-        lc_rows_p = []
-        choice_log_rows_p = []
-        consistency_rows_p = []
-
-        print(f"  Persona {pid}: {persona['name']}", flush=True)
-
-        # --- Generate test set choices BEFORE training ---
-        print(f"    [{pid}] Collecting test set choices ({args.num_test_pairs} pairs)...", flush=True)
-        test_choices = np.zeros(args.num_test_pairs, dtype=int)
-        for ti in range(args.num_test_pairs):
-            oid_a = option_ids[test_pairs[ti, 0]]
-            oid_b = option_ids[test_pairs[ti, 1]]
-            cache_key = f"test_choice_{pid}_{oid_a}_{oid_b}"
-            result = llm_choice(
-                client, args.choice_model, persona,
-                descriptions[oid_a], descriptions[oid_b],
-                cache_key=cache_key,
-                choice_context=args.choice_context,
-            )
-            test_choices[ti] = 1 if result["choice"] == "A" else 0
-
-        # --- Consistency check ---
-        print(f"    [{pid}] Running consistency check ({n_consistency} pairs)...", flush=True)
-        for ci in range(n_consistency):
-            oid_a = option_ids[consistency_idx_a[ci]]
-            oid_b = option_ids[consistency_idx_b[ci]]
-
-            cache_key_1 = f"consistency1_{pid}_{oid_a}_{oid_b}"
-            r1 = llm_choice(client, args.choice_model, persona,
+    # --- Held-out test set choices (ground truth) ---
+    print(f"    [{pid}] Test set ({args.num_test_pairs})...", flush=True)
+    test_choices = np.zeros(args.num_test_pairs, dtype=int)
+    for ti in range(args.num_test_pairs):
+        oid_a = option_ids[test_pairs[ti, 0]]
+        oid_b = option_ids[test_pairs[ti, 1]]
+        result = llm_choice(client, args.choice_model, persona,
                             descriptions[oid_a], descriptions[oid_b],
-                            cache_key=cache_key_1,
+                            cache_key=f"test_choice_{pid}_{oid_a}_{oid_b}",
                             choice_context=args.choice_context)
+        test_choices[ti] = 1 if result["choice"] == "A" else 0
+    test_delta = embeddings[test_pairs[:, 0]] - embeddings[test_pairs[:, 1]]
+    test_U = test_delta @ V.T
 
-            # Different cache key to force re-query
-            cache_key_2 = f"consistency2_{pid}_{oid_a}_{oid_b}"
-            r2 = llm_choice(client, args.choice_model, persona,
+    # --- One shared trial pool across conditions ---
+    trial_pairs = []
+    while len(trial_pairs) < args.num_trials:
+        a, b = rng.choice(N, size=2, replace=False)
+        trial_pairs.append((int(a), int(b)))
+
+    # --- Pre-collect per-trial choices (shared across conditions, since the
+    #     persona's choice isn't condition-dependent — only the feedback is) ---
+    print(f"    [{pid}] Training choices ({args.num_trials})...", flush=True)
+    trial_data = []  # list of dicts: idx_a, idx_b, choice ('A'/'B'), thinking
+    for t, (idx_a, idx_b) in enumerate(trial_pairs):
+        oid_a = option_ids[idx_a]
+        oid_b = option_ids[idx_b]
+        result = llm_choice(client, args.choice_model, persona,
                             descriptions[oid_a], descriptions[oid_b],
-                            cache_key=cache_key_2,
+                            cache_key=f"train_choice_{pid}_{t}_{oid_a}_{oid_b}",
                             choice_context=args.choice_context)
+        trial_data.append({"idx_a": idx_a, "idx_b": idx_b,
+                           "choice": result["choice"], "thinking": result["thinking"]})
 
-            consistency_rows_p.append({
-                "persona_id": pid,
-                "option_a_id": oid_a,
-                "option_b_id": oid_b,
-                "choice_1": r1["choice"],
-                "choice_2": r2["choice"],
-                "consistent": int(r1["choice"] == r2["choice"]),
-            })
+    cond_results = {}
 
-        # --- Initialize θ for each condition ---
-        thetas = {c: np.zeros(d) for c in conditions}
+    for cond in CONDITIONS:
+        deltas = np.zeros((args.num_trials, d))
+        ys = np.zeros(args.num_trials, dtype=int)
+        lam_traj = np.zeros((args.num_trials, K))
+        visible_traj = np.zeros((args.num_trials, K), dtype=bool)
+        action_log = []
 
-        # Evaluate at trial 0
-        metrics_0 = evaluate_choice_prediction(thetas, test_pairs, test_choices, embeddings)
-        for cond in conditions:
-            row = {"persona_id": pid, "condition": cond, "trial": 0}
-            row.update(metrics_0[cond])
-            lc_rows_p.append(row)
-
-        # --- Training loop ---
-        print(f"    [{pid}] Training ({args.num_trials} trials)...", flush=True)
-        for t in range(1, args.num_trials + 1):
-            idx_a, idx_b = persona_rng.choice(N, size=2, replace=False)
-            oid_a = option_ids[idx_a]
-            oid_b = option_ids[idx_b]
+        for t, td in enumerate(trial_data):
+            idx_a, idx_b = td["idx_a"], td["idx_b"]
             phi_a = embeddings[idx_a]
             phi_b = embeddings[idx_b]
+            deltas[t] = phi_a - phi_b
+            y = 1 if td["choice"] == "A" else 0
+            ys[t] = y
 
-            choice_cache_key = f"train_choice_{pid}_{t}_{oid_a}_{oid_b}"
-            choice_result = llm_choice(
-                client, args.choice_model, persona,
-                descriptions[oid_a], descriptions[oid_b],
-                cache_key=choice_cache_key,
-                choice_context=args.choice_context,
-            )
-            y = 1 if choice_result["choice"] == "A" else 0
+            if cond == "choice_only":
+                continue
 
-            # Compute model slider values in A-B frame (always)
-            delta_ab = phi_a - phi_b
-            lam_model = V @ delta_ab
+            chosen_phi = phi_a if y == 1 else phi_b
+            value_if_chosen = V @ (chosen_phi - mu)
+            k_vis = min(args.top_k_inferences, K)
+            visible = np.argsort(-np.abs(value_if_chosen))[:k_vis]
+            visible_traj[t, visible] = True
 
-            lam_abs_max = np.abs(lam_model).max()
-            scale_factor = 100.0 / lam_abs_max if lam_abs_max > 0 else 1.0
+            visible_dims = []
+            for k in visible:
+                pre_idx = value_to_cat_idx(value_if_chosen[k],
+                                           quintile_bounds[:, k], len(mults))
+                visible_dims.append({
+                    "k": int(k), "meta": dim_metadata[k] if k < len(dim_metadata) else {"name": f"dim_{k}"},
+                    "pre_idx": pre_idx,
+                    "pre_category_label": category_labels[pre_idx],
+                    "pre_phrase": category_labels[pre_idx],
+                })
 
-            # For display to the LLM persona, show in chosen-vs-unchosen frame
-            if y == 1:
-                choice_label, other_label = "A", "B"
-                lam_display = lam_model
-            else:
-                choice_label, other_label = "B", "A"
-                lam_display = -lam_model  # flip for display only
+            choice_label = "A" if y == 1 else "B"
+            other_label = "B" if y == 1 else "A"
 
-            slider_values_display = {
-                dim["name"]: int(np.round(lam_display[k] * scale_factor))
-                for k, dim in enumerate(dim_metadata)
-            }
+            if cond == "inference_affirm":
+                cache_key = f"affirm_{pid}_{t}"
+                resp = llm_inference_affirm(client, args.choice_model, persona,
+                                            choice_label, other_label,
+                                            visible_dims, category_labels,
+                                            cache_key, args.choice_context)
+                for i, vd in enumerate(visible_dims, 1):
+                    action = resp["actions"].get(i, "affirm")
+                    applied = mult_from_action(action, vd["pre_idx"], mults)
+                    lam_traj[t, vd["k"]] = applied
+                    action_log.append({"trial": t, "dim": vd["k"], "action": action,
+                                       "pre_idx": vd["pre_idx"], "applied": applied})
+            else:  # inference_categories
+                cache_key = f"cats_{pid}_{t}"
+                resp = llm_inference_categories(client, args.choice_model, persona,
+                                                choice_label, other_label,
+                                                visible_dims, category_labels,
+                                                cache_key, args.choice_context)
+                for i, vd in enumerate(visible_dims, 1):
+                    cat_idx = resp["categories"].get(i, 2)
+                    applied = float(mults[cat_idx])
+                    action = "modify" if cat_idx != vd["pre_idx"] else "none"
+                    lam_traj[t, vd["k"]] = applied
+                    action_log.append({"trial": t, "dim": vd["k"], "action": action,
+                                       "pre_idx": vd["pre_idx"], "cat_idx": cat_idx,
+                                       "applied": applied})
 
-            slider_cache_key = f"train_slider_{pid}_{t}_{oid_a}_{oid_b}"
-            slider_result = llm_slider_adjustment(
-                client, args.choice_model, persona,
-                choice_label, other_label,
-                dim_metadata, slider_values_display,
-                cache_key=slider_cache_key,
-            )
+        # Batch fits
+        D = deltas @ deltas.T
+        U = deltas @ V.T
+        alpha = fit_standard_kernel(D, ys.astype(float), args.lambda_standard)
+        if cond == "choice_only":
+            beta0 = np.zeros(K)
+            other_label = "projected"
+        else:
+            beta0 = compute_beta0(lam_traj, visible_traj, G_inv)
+            other_label = "partial"
+        beta = fit_partial_primal(U, ys.astype(float), G, beta0, args.lambda_partial)
 
-            adjusted_sliders = slider_result["adjusted_sliders"]
-            # Convert LLM's adjustments back to A-B frame
-            # LLM sees chosen-vs-unchosen; when y=0 (chose B), flip sign back
-            sign = 1.0 if y == 1 else -1.0
-            lam_adjusted = np.array([
-                sign * adjusted_sliders.get(dim["name"], lam_display[k]) / scale_factor
-                for k, dim in enumerate(dim_metadata)
-            ])
+        # Held-out log-likelihood
+        cross_kernel = test_delta @ deltas.T
+        logits_std = cross_kernel @ alpha
+        logits_other = test_U @ beta
+        ll_std = heldout_log_likelihood(logits_std, test_choices)
+        ll_other = heldout_log_likelihood(logits_other, test_choices)
+        acc_std = float(((logits_std > 0).astype(int) == test_choices).mean())
+        acc_other = float(((logits_other > 0).astype(int) == test_choices).mean())
+        rating = predicted_rating_from_ll(ll_other, ll_std, args.rating_temperature)
 
-            choice_log_rows_p.append({
-                "persona_id": pid,
-                "trial": t,
-                "option_a_id": oid_a,
-                "option_b_id": oid_b,
-                "choice": choice_result["choice"],
-                "thinking": choice_result["thinking"],
-                "raw_sliders": json.dumps(slider_values_display),
-                "adjusted_sliders": json.dumps(adjusted_sliders),
-            })
+        cond_results[cond] = {
+            "other_label": other_label,
+            "ll_standard": ll_std, "ll_other": ll_other,
+            "acc_standard": acc_std, "acc_other": acc_other,
+            "predicted_rating_other_vs_standard": rating,
+            "actions": action_log,
+        }
 
-            thetas["standard"] = update_standard(thetas["standard"], phi_a, phi_b, y, args.learning_rate)
-            thetas["projected"] = update_projected(thetas["projected"], phi_a, phi_b, y, args.learning_rate, V, G_inv)
-            thetas["slider"] = update_slider(thetas["slider"], phi_a, phi_b, y, args.learning_rate, V, G_inv, lam_adjusted)
-            thetas["partial"] = update_partial(
-                thetas["partial"], phi_a, phi_b, y, args.learning_rate, V, G_inv, lam_adjusted, args.projection_lambda
-            )
-
-            metrics = evaluate_choice_prediction(thetas, test_pairs, test_choices, embeddings)
-            for cond in conditions:
-                row = {"persona_id": pid, "condition": cond, "trial": t}
-                row.update(metrics[cond])
-                lc_rows_p.append(row)
-
-            if t % 10 == 0:
-                print(f"      [{pid}] Trial {t}/{args.num_trials}", flush=True)
-
-        client.save_cache()
-        print(f"  Persona {pid} done.", flush=True)
-        return lc_rows_p, choice_log_rows_p, consistency_rows_p
-
-    # --- Run personas in parallel ---
-    print("Running simulation...")
-    lc_rows = []
-    choice_log_rows = []
-    consistency_rows = []
-
-    max_workers = getattr(args, "max_workers", 4)
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = {executor.submit(simulate_one_persona, p): p for p in personas}
-        for future in as_completed(futures):
-            persona = futures[future]
-            try:
-                p_lc, p_choices, p_consistency = future.result()
-                lc_rows.extend(p_lc)
-                choice_log_rows.extend(p_choices)
-                consistency_rows.extend(p_consistency)
-            except Exception as e:
-                print(f"  Persona {persona['id']} failed: {e}", flush=True)
-                raise
-
-    # --- Save outputs ---
-    print("Saving outputs...")
-
-    # 1. learning_curves.csv
-    lc_df = pd.DataFrame(lc_rows)
-    lc_df.to_csv(output_dir / "learning_curves.csv", index=False)
-    print(f"  learning_curves.csv ({len(lc_df)} rows)")
-
-    # 2. choices_log.csv
-    choices_df = pd.DataFrame(choice_log_rows)
-    choices_df.to_csv(output_dir / "choices_log.csv", index=False)
-    print(f"  choices_log.csv ({len(choices_df)} rows)")
-
-    # 3. consistency_check.csv
-    consistency_df = pd.DataFrame(consistency_rows)
-    consistency_df.to_csv(output_dir / "consistency_check.csv", index=False)
-    print(f"  consistency_check.csv ({len(consistency_df)} rows)")
-
-    # 4. summary.md
-    print(f"  lc_df shape: {lc_df.shape}, columns: {list(lc_df.columns)}")
-    if lc_df.empty or "trial" not in lc_df.columns:
-        print("  WARNING: learning curves DataFrame is empty or missing 'trial' column. Skipping summary.")
-    else:
-        write_summary(lc_df, consistency_df, personas, conditions, dim_names, args, output_dir)
-        print("  summary.md")
-
-    # 5. learning_curves.png
-    try:
-        plot_learning_curves(lc_df, conditions, output_dir)
-        print("  learning_curves.png")
-    except Exception as e:
-        print(f"  Warning: could not save plot: {e}")
-
-    # Final cache save
     client.save_cache()
-    print("Done.")
+    print(f"  Persona {pid} done.", flush=True)
+    return {"persona_id": pid, "name": persona["name"], "conditions": cond_results}
 
 
 # ---------------------------------------------------------------------------
-# Output helpers
+# Output
 # ---------------------------------------------------------------------------
 
-def write_summary(lc_df, consistency_df, personas, conditions, dim_names, args, output_dir):
-    lines = []
-    lines.append("# LLM-Persona Simulation Summary\n")
+def aggregate_results(per_persona_results):
+    rows = []
+    for pr in per_persona_results:
+        pid = pr["persona_id"]
+        for cond, r in pr["conditions"].items():
+            rows.append({
+                "persona_id": pid, "condition": cond, "other_label": r["other_label"],
+                "ll_standard": r["ll_standard"], "ll_other": r["ll_other"],
+                "acc_standard": r["acc_standard"], "acc_other": r["acc_other"],
+                "rating_other_vs_standard": r["predicted_rating_other_vs_standard"],
+            })
+    return pd.DataFrame(rows)
 
-    lines.append("## Experimental Parameters\n")
+
+def write_summary(df, args, output_dir):
+    lines = ["# LLM-Persona Simulation Summary (revamped)\n"]
+    lines.append("Predicts the experimental DV: probability that an LLM-persona "
+                 "participant prefers the partial/projected K-dim summary over "
+                 "the unrestricted standard summary, after T training trials.\n")
+    lines.append("## Parameters\n")
     lines.append("| Parameter | Value |")
     lines.append("|-----------|-------|")
-    lines.append(f"| Number of personas | {len(personas)} |")
+    lines.append(f"| Personas | {args.num_personas} |")
     lines.append(f"| Persona model | {args.persona_model} |")
     lines.append(f"| Choice model | {args.choice_model} |")
-    lines.append(f"| Number of trials | {args.num_trials} |")
-    lines.append(f"| Number of test pairs | {args.num_test_pairs} |")
-    lines.append(f"| Number of dimensions (K) | {len(dim_names)} |")
-    lines.append(f"| Dimensions | {', '.join(dim_names)} |")
-    lines.append(f"| Learning rate | {args.learning_rate} |")
-    lines.append(f"| Projection lambda (partial) | {args.projection_lambda} |")
-    lines.append(f"| Random seed | {args.seed} |")
+    lines.append(f"| Trials per persona | {args.num_trials} |")
+    lines.append(f"| Test pairs (held-out) | {args.num_test_pairs} |")
+    lines.append(f"| Top-K inferences visible | {args.top_k_inferences} |")
+    lines.append(f"| λ standard | {args.lambda_standard} |")
+    lines.append(f"| λ partial  | {args.lambda_partial} |")
+    lines.append(f"| Rating temperature τ | {args.rating_temperature} |")
+    lines.append(f"| Seed | {args.seed} |")
     lines.append("")
 
-    # Final metrics table
-    final_df = lc_df[lc_df["trial"] == args.num_trials]
-    lines.append("## Final Performance (at last trial)\n")
-    headers = ["Condition", "Accuracy", "Log-Likelihood"]
-    lines.append("| " + " | ".join(headers) + " |")
-    lines.append("| " + " | ".join(["---"] * len(headers)) + " |")
-    for cond in conditions:
-        cdf = final_df[final_df["condition"] == cond]
-        acc = cdf["accuracy"].mean()
-        ll = cdf["log_likelihood"].mean()
-        lines.append(f"| {cond} | {acc:.3f} | {ll:.4f} |")
+    lines.append("## Predicted Rating (P[other > standard])\n")
+    lines.append("| Condition | Other | Mean | SD | Pct > 0.5 |")
+    lines.append("|-----------|-------|------|----|-----------|")
+    for cond in CONDITIONS:
+        cdf = df[df["condition"] == cond]
+        if cdf.empty:
+            continue
+        lines.append(f"| {cond} | {cdf['other_label'].iloc[0]} | "
+                     f"{cdf['rating_other_vs_standard'].mean():.3f} | "
+                     f"{cdf['rating_other_vs_standard'].std():.3f} | "
+                     f"{(cdf['rating_other_vs_standard'] > 0.5).mean()*100:.0f}% |")
     lines.append("")
 
-    # Learning curve summary (accuracy at every 10 trials)
-    lines.append("## Learning Curve (Average Accuracy by Trial)\n")
-    milestone_trials = [0] + list(range(10, args.num_trials + 1, 10))
-    headers2 = ["Trial"] + conditions
-    lines.append("| " + " | ".join(headers2) + " |")
-    lines.append("| " + " | ".join(["---"] * len(headers2)) + " |")
-    for t in milestone_trials:
-        tdf = lc_df[lc_df["trial"] == t]
-        row_parts = [str(t)]
-        for cond in conditions:
-            val = tdf[tdf["condition"] == cond]["accuracy"].mean()
-            row_parts.append(f"{val:.3f}")
-        lines.append("| " + " | ".join(row_parts) + " |")
+    lines.append("## Held-Out Log-Likelihood (primary quality signal)\n")
+    lines.append("| Condition | LL standard | LL other | Δ (other − standard) |")
+    lines.append("|-----------|-------------|----------|----------------------|")
+    for cond in CONDITIONS:
+        cdf = df[df["condition"] == cond]
+        if cdf.empty:
+            continue
+        ll_s = cdf["ll_standard"].mean()
+        ll_o = cdf["ll_other"].mean()
+        lines.append(f"| {cond} | {ll_s:+.4f} | {ll_o:+.4f} | {ll_o - ll_s:+.4f} |")
     lines.append("")
 
-    # Threshold analysis
-    threshold = 0.75
-    lines.append(f"## First Trial to Reach {int(threshold*100)}% Accuracy\n")
-    lines.append("| Condition | First Trial >= 75% Accuracy |")
-    lines.append("|-----------|---------------------------|")
-    for cond in conditions:
-        cdf = lc_df[lc_df["condition"] == cond].groupby("trial")["accuracy"].mean()
-        reached = cdf[cdf >= threshold]
-        if reached.empty:
-            lines.append(f"| {cond} | Never reached |")
-        else:
-            lines.append(f"| {cond} | {reached.index[0]} |")
+    lines.append("## Held-Out Choice Accuracy\n")
+    lines.append("| Condition | Acc standard | Acc other |")
+    lines.append("|-----------|--------------|-----------|")
+    for cond in CONDITIONS:
+        cdf = df[df["condition"] == cond]
+        if cdf.empty:
+            continue
+        lines.append(f"| {cond} | {cdf['acc_standard'].mean():.3f} | "
+                     f"{cdf['acc_other'].mean():.3f} |")
     lines.append("")
 
-    # Consistency check
-    if len(consistency_df) > 0:
-        lines.append("## Internal Consistency\n")
-        overall_rate = consistency_df["consistent"].mean()
-        lines.append(f"Overall consistency rate: **{overall_rate:.1%}**\n")
-        lines.append("| Persona | Name | Consistency Rate |")
-        lines.append("|---------|------|-----------------|")
-        for persona in sorted(consistency_df["persona_id"].unique()):
-            pdf = consistency_df[consistency_df["persona_id"] == persona]
-            rate = pdf["consistent"].mean()
-            # Find persona name
-            pname = next((p["name"] for p in personas if p["id"] == persona), str(persona))  # noqa: B023
-            lines.append(f"| {persona} | {pname} | {rate:.0%} |")
-        lines.append("")
-
-    # Key findings
-    lines.append("## Key Findings\n")
-    final_accs = {}
-    for cond in conditions:
-        final_accs[cond] = final_df[final_df["condition"] == cond]["accuracy"].mean()
-    best = max(final_accs, key=final_accs.get)
-    lines.append(f"- **Best final accuracy**: {best} ({final_accs[best]:.3f})")
-    lines.append(f"- **Standard baseline accuracy**: {final_accs['standard']:.3f}")
-    gain = final_accs["slider"] - final_accs["standard"]
-    lines.append(f"- **Slider vs standard gain**: {gain:+.3f}")
+    lines.append("## Significance Tests\n")
+    lines.append("| Comparison | n | mean Δ rating | Wilcoxon p |")
+    lines.append("|------------|---|---------------|------------|")
+    for cond in CONDITIONS:
+        cdf = df[df["condition"] == cond]
+        if cdf.empty:
+            continue
+        ratings = cdf["rating_other_vs_standard"].values
+        try:
+            stat, p = wilcoxon(ratings - 0.5, zero_method="zsplit")
+        except ValueError:
+            p = float("nan")
+        lines.append(f"| {cond} vs 0.5 | {len(ratings)} | {ratings.mean() - 0.5:+.3f} | {p:.4f} |")
+    base = df[df["condition"] == "choice_only"]["rating_other_vs_standard"].values
+    for cond in ["inference_affirm", "inference_categories"]:
+        other = df[df["condition"] == cond]["rating_other_vs_standard"].values
+        if len(base) == 0 or len(other) == 0:
+            continue
+        n = min(len(base), len(other))
+        try:
+            stat, p = wilcoxon(other[:n], base[:n])
+        except ValueError:
+            p = float("nan")
+        lines.append(f"| {cond} vs choice_only | {n} | "
+                     f"{other[:n].mean() - base[:n].mean():+.3f} | {p:.4f} |")
 
     with open(output_dir / "summary.md", "w") as f:
         f.write("\n".join(lines) + "\n")
 
 
-def plot_learning_curves(lc_df, conditions, output_dir):
-    condition_colors = {
-        "standard": "#e74c3c",
-        "projected": "#3498db",
-        "slider": "#2ecc71",
-        "partial": "#9b59b6",
-    }
-    condition_labels = {
-        "standard": "Standard (baseline)",
-        "projected": "Projected",
-        "slider": "Slider-adjusted",
-        "partial": "Partial projection",
-    }
-
-    trials = sorted(lc_df["trial"].unique())
-
-    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-
-    for ax_idx, (metric, ylabel) in enumerate([
-        ("accuracy", "Choice Prediction Accuracy"),
-        ("log_likelihood", "Choice Prediction Log-Likelihood"),
-    ]):
-        ax = axes[ax_idx]
-        for cond in conditions:
-            cdf = lc_df[lc_df["condition"] == cond]
-            means = []
-            sems = []
-            for t in trials:
-                vals = cdf[cdf["trial"] == t][metric].dropna().values
-                means.append(vals.mean())
-                sems.append(vals.std() / np.sqrt(max(len(vals), 1)))
-            means = np.array(means)
-            sems = np.array(sems)
-            color = condition_colors.get(cond, "gray")
-            label = condition_labels.get(cond, cond)
-            ax.plot(trials, means, label=label, color=color, linewidth=2)
-            ax.fill_between(trials, means - sems, means + sems, alpha=0.2, color=color)
-
-        ax.set_xlabel("Trial", fontsize=12)
-        ax.set_ylabel(ylabel, fontsize=12)
-        ax.set_title(ylabel, fontsize=13, fontweight="bold")
-        ax.legend(fontsize=10)
-        ax.grid(True, alpha=0.3)
-        if metric == "accuracy":
-            ax.axhline(0.75, color="gray", linestyle="--", alpha=0.5)
-        ax.set_xlim(0, max(trials))
-
-    fig.suptitle("LLM-Persona Simulation: Gradient Projection Comparison",
-                 fontsize=14, fontweight="bold")
+def plot_results(df, output_dir):
+    fig, ax = plt.subplots(figsize=(8, 5))
+    data, labels = [], []
+    for cond in CONDITIONS:
+        cdf = df[df["condition"] == cond]
+        if not cdf.empty:
+            data.append(cdf["rating_other_vs_standard"].values)
+            labels.append(cond.replace("_", "\n"))
+    if data:
+        ax.boxplot(data, tick_labels=labels, showmeans=True)
+    ax.axhline(0.5, color="gray", linestyle="--", alpha=0.5, label="no preference")
+    ax.set_ylabel("P(K-dim summary preferred over standard)")
+    ax.set_title("LLM-Persona Sim — Predicted experimental DV", fontweight="bold")
+    ax.legend(loc="lower right")
+    ax.set_ylim(0, 1)
     plt.tight_layout()
-    plt.savefig(output_dir / "learning_curves.png", dpi=150, bbox_inches="tight")
+    plt.savefig(output_dir / "predicted_dv.png", dpi=150, bbox_inches="tight")
     plt.close()
 
 
 # ---------------------------------------------------------------------------
-# CLI
+# Main
 # ---------------------------------------------------------------------------
 
-def parse_args():
-    parser = argparse.ArgumentParser(
-        description="LLM-persona preference learning simulation."
+def run_simulation(args):
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    rng = np.random.default_rng(args.seed)
+
+    raw_client = make_client_or_pool(args.base_url, args.api_key, args.api_provider)
+    client = LLMClient(raw_client, cache_path=output_dir / "llm_cache.json")
+
+    print("Loading data...")
+    embeddings, bt_scores, V, G, G_inv, mu, option_ids, dim_names = load_data(
+        args.embeddings_parquet, args.bt_scores, args.directions,
+        option_id_column=args.option_id_column,
     )
-    parser.add_argument("--embeddings-parquet", required=True,
-                        help="Path to the embeddings parquet file.")
-    parser.add_argument("--bt-scores", required=True,
-                        help="Path to bt_scores.csv.")
-    parser.add_argument("--dimensions", required=True,
-                        help="Path to dimensions.json.")
-    parser.add_argument("--directions", required=True,
-                        help="Path to directions.npz.")
-    parser.add_argument("--option-descriptions", required=True,
-                        help="Path to the option descriptions CSV.")
-    parser.add_argument("--option-template", required=True,
-                        help="Path to the option template text file.")
-    parser.add_argument("--output-dir", required=True,
-                        help="Directory to write outputs into.")
-    parser.add_argument("--api-provider", choices=["local", "openai", "anthropic"],
-                        default="local",
-                        help="API provider (determines default base-url and env key).")
-    parser.add_argument("--base-url",
-                        help="API endpoint URL(s), comma-separated for round-robin across multiple servers.")
-    parser.add_argument("--persona-model", default="gpt-4o-mini",
-                        help="Model for persona generation (Stage 1).")
-    parser.add_argument("--choice-model", default="gpt-4o-mini",
-                        help="Model for choices and sliders (Stage 2).")
-    parser.add_argument("--api-key", default=None,
-                        help="API key (defaults to provider env var).")
-    parser.add_argument("--num-personas", type=int, default=20,
-                        help="Number of personas to generate.")
-    parser.add_argument("--num-trials", type=int, default=50,
-                        help="Training trials per persona.")
-    parser.add_argument("--num-test-pairs", type=int, default=50,
-                        help="Held-out test pairs per persona.")
-    parser.add_argument("--learning-rate", type=float, default=0.01,
-                        help="Gradient update learning rate.")
-    parser.add_argument("--projection-lambda", type=float, default=0.5,
-                        help="Interpolation weight for partial projection.")
-    parser.add_argument("--max-workers", type=int, default=4,
-                        help="Number of personas to simulate in parallel.")
-    parser.add_argument("--seed", type=int, default=42,
-                        help="Random seed.")
-    parser.add_argument("--option-id-column", default="movie_id",
-                        help="Name of the option-id column in the parquet file (default: movie_id).")
-    parser.add_argument("--domain", default="movies",
-                        help="Domain label for persona generation (e.g., 'movies', 'moral dilemmas', 'code completions').")
-    parser.add_argument("--choice-context", default="",
-                        help="Context sentence for the choice prompt (e.g., 'A person is deciding which movie to watch.').")
-    return parser.parse_args()
+    N, d = embeddings.shape
+    K = V.shape[0]
+    print(f"  Options: {N}, d: {d}, K: {K}")
+
+    dim_metadata = load_dimensions(args.dimensions)
+    descriptions = load_option_descriptions(args.option_descriptions, args.option_template,
+                                             id_column=args.option_id_column)
+
+    centered = embeddings - mu[np.newaxis, :]
+    pool_proj = centered @ V.T
+    quintile_bounds = perdim_quintile_boundaries(pool_proj, n_cats=len(DEFAULT_MULTS))
+
+    print("Generating personas...")
+    personas = generate_personas(client, args.persona_model, args.num_personas,
+                                 domain=args.domain, choice_context=args.choice_context)
+    print(f"  Generated {len(personas)} personas")
+    with open(output_dir / "personas.json", "w") as f:
+        json.dump(personas, f, indent=2)
+    client.save_cache()
+
+    test_a = rng.integers(0, N, size=args.num_test_pairs)
+    test_b = rng.integers(0, N, size=args.num_test_pairs)
+    mask = test_a == test_b
+    while mask.any():
+        test_b[mask] = rng.integers(0, N, size=int(mask.sum()))
+        mask = test_a == test_b
+    test_pairs = np.stack([test_a, test_b], axis=1)
+
+    category_labels = (args.category_labels.split("|")
+                       if args.category_labels else DEFAULT_CATEGORY_LABELS)
+    if len(category_labels) != len(DEFAULT_MULTS):
+        raise ValueError(f"--category-labels must have {len(DEFAULT_MULTS)} entries "
+                         f"separated by '|'.")
+
+    ctx = {
+        "embeddings": embeddings, "V": V, "G": G, "G_inv": G_inv, "mu": mu,
+        "quintile_bounds": quintile_bounds, "mults": DEFAULT_MULTS,
+        "category_labels": category_labels,
+        "dim_metadata": dim_metadata, "descriptions": descriptions,
+        "option_ids": option_ids, "test_pairs": test_pairs,
+    }
+
+    print("Running personas...")
+    per_persona_results = []
+    with ThreadPoolExecutor(max_workers=args.max_workers) as executor:
+        futures = {executor.submit(simulate_one_persona, p, ctx, args, client): p
+                   for p in personas}
+        for future in as_completed(futures):
+            p = futures[future]
+            try:
+                per_persona_results.append(future.result())
+            except Exception as e:
+                print(f"  Persona {p['id']} failed: {e}", flush=True)
+                raise
+
+    df = aggregate_results(per_persona_results)
+    df.to_csv(output_dir / "per_persona_per_condition.csv", index=False)
+    print(f"Saved per_persona_per_condition.csv ({len(df)} rows)")
+
+    write_summary(df, args, output_dir)
+    print("Saved summary.md")
+    try:
+        plot_results(df, output_dir)
+        print("Saved predicted_dv.png")
+    except Exception as e:
+        print(f"Warning: could not save plot: {e}")
+    client.save_cache()
+    print("Done.")
+
+
+def parse_args():
+    p = argparse.ArgumentParser(description=__doc__,
+                                formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("--embeddings-parquet", required=True)
+    p.add_argument("--bt-scores", required=True)
+    p.add_argument("--dimensions", required=True)
+    p.add_argument("--directions", required=True)
+    p.add_argument("--option-descriptions", required=True)
+    p.add_argument("--option-template", required=True)
+    p.add_argument("--output-dir", required=True)
+    p.add_argument("--option-id-column", default="movie_id")
+
+    p.add_argument("--api-provider", choices=["local", "openai", "anthropic"], default="local")
+    p.add_argument("--base-url")
+    p.add_argument("--persona-model", default="gpt-4o-mini")
+    p.add_argument("--choice-model", default="gpt-4o-mini")
+    p.add_argument("--api-key", default=None)
+
+    p.add_argument("--num-personas", type=int, default=20)
+    p.add_argument("--num-trials", type=int, default=20)
+    p.add_argument("--num-test-pairs", type=int, default=50)
+    p.add_argument("--top-k-inferences", type=int, default=5)
+    p.add_argument("--lambda-standard", type=float, default=10.0)
+    p.add_argument("--lambda-partial", type=float, default=1.0)
+    p.add_argument("--rating-temperature", type=float, default=20.0,
+                   help="Larger τ for LLM sim because LL differences are smaller.")
+    p.add_argument("--max-workers", type=int, default=4)
+    p.add_argument("--seed", type=int, default=42)
+
+    p.add_argument("--domain", default="movies")
+    p.add_argument("--choice-context", default="")
+    p.add_argument("--category-labels", default="",
+                   help="5 category labels separated by '|', most-negative to "
+                        "most-positive. Defaults to movies/wines language.")
+
+    # Deprecated args (kept for backward compatibility)
+    p.add_argument("--learning-rate", type=float, default=None,
+                   help="DEPRECATED: ignored.")
+    p.add_argument("--projection-lambda", type=float, default=None,
+                   help="DEPRECATED: ignored.")
+
+    return p.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
-    # The --dimensions flag maps to dimensions_json internally
-    args.dimensions_json = args.dimensions
     run_simulation(args)
