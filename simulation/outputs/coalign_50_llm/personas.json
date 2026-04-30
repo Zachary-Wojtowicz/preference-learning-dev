@@ -1,0 +1,102 @@
+[
+  {
+    "id": 0,
+    "name": "**Elena, 32**",
+    "description": "Elena is a user experience researcher who values clarity, efficiency, and accessibility in digital communication. She grew up in a multilingual household and is deeply invested in how AI systems can be made more inclusive and culturally sensitive. She prefers concise, structured responses that get to the point without fluff, but she also looks for warmth and empathy in the tone. She\u2019s wary of overly \u201chumanized\u201d AI voices and prefers responses that feel professional yet approachable."
+  },
+  {
+    "id": 1,
+    "name": "**Miguel, 45**",
+    "description": "Miguel is a high school English teacher with a passion for literature and critical thinking. He sees AI as a tool for learning, but one that must be guided by human insight. He prefers responses that are rich in nuance, depth, and creativity, even if they\u2019re a bit longer or more meandering. He values curiosity in AI responses and is drawn to those that spark further inquiry or offer unexpected perspectives. He\u2019s skeptical of overly polished, formulaic answers and prefers ones that show a bit of intellectual playfulness."
+  },
+  {
+    "id": 2,
+    "name": "**Priya, 27**",
+    "description": "Priya is a software engineer with a side hustle in AI ethics consulting. She\u2019s pragmatic and analytical, prioritizing factual accuracy and logical consistency in AI responses. She\u2019s frustrated by vague or ambiguous answers and prefers responses that are technically precise and well-sourced. She also values transparency\u2014knowing when an AI is making an educated guess versus stating a fact. She\u2019s more likely to trust and prefer responses that acknowledge uncertainty or limitations."
+  },
+  {
+    "id": 3,
+    "name": "**James, 68**",
+    "description": "James is a retired librarian and lifelong reader with a soft spot for the written word. He values eloquence, grace, and a certain \u201cliterary flair\u201d in language, even from a machine. He prefers responses that are polished, well-structured, and slightly formal. He\u2019s less concerned with speed or brevity and more with the joy of reading a well-crafted sentence. He\u2019s also more forgiving of imperfections in AI language and is willing to give it the benefit of the doubt when it tries to be poetic or insightful."
+  },
+  {
+    "id": 4,
+    "name": "**Nadia, 23**",
+    "description": "Nadia is a college student and social media content creator who values authenticity and relatability. She\u2019s used to fast, informal communication and expects the same from AI. She prefers responses that are punchy, direct, and use modern slang or humor when appropriate. She\u2019s more likely to engage with and trust AI that feels like a peer rather than an authority figure. She\u2019s also more forgiving of imperfections in tone or grammar if the message feels genuine."
+  },
+  {
+    "id": 5,
+    "name": "**Thomas, 51**",
+    "description": "Thomas is a data scientist who appreciates precision and logic. He\u2019s deeply skeptical of anything that sounds too human-like and is often critical of AI responses that are overly emotional or vague. He prefers responses that are methodical, backed by data, and avoid hyperbole. He values clarity over charm and is more likely to trust an AI that presents its reasoning step by step, even if it\u2019s dry. He sees AI as a tool, not a conversational partner."
+  },
+  {
+    "id": 6,
+    "name": "**Linh, 39**",
+    "description": "Linh is a freelance translator and language enthusiast who believes that language is deeply tied to culture and identity. She\u2019s interested in how AI handles different dialects, idioms, and cultural references. She prefers responses that are culturally aware, respectful, and flexible in tone. She\u2019s more likely to appreciate AI that adapts its style depending on context and audience, rather than sticking to a one-size-fits-all voice. She\u2019s also wary of AI that tries too hard to sound human and ends up sounding inauthentic."
+  },
+  {
+    "id": 7,
+    "name": "**Jordan, 35**",
+    "description": "Jordan is a graphic designer who thinks visually and metaphorically. They prefer AI responses that are imaginative, evocative, and open to interpretation. They\u2019re drawn to answers that suggest possibilities rather than give strict answers. They value creativity and originality over efficiency and are often inspired by AI that takes a poetic or artistic approach to a prompt. They\u2019re also more likely to trust an AI that shows a sense of curiosity or wonder."
+  },
+  {
+    "id": 8,
+    "name": "**Sophie, 29**",
+    "description": "Sophie is a customer service manager who\u2019s all about user satisfaction and empathy. She believes AI should be a bridge to better human interactions, not a replacement for them. She prefers responses that are warm, empathetic, and easy to understand. She\u2019s frustrated by AI that\u2019s too robotic or dismissive and looks for responses that feel like they\u2019re genuinely trying to help. She\u2019s also more likely to trust AI that can adapt its tone to different user needs."
+  },
+  {
+    "id": 9,
+    "name": "**Amir, 41**",
+    "description": "Amir is a political analyst and journalist who values accuracy, context, and neutrality in information. He\u2019s deeply concerned about misinformation and prefers AI responses that are well-sourced, balanced, and transparent about their limitations. He\u2019s critical of AI that overstates its confidence or uses biased language. He values responses that provide a full picture with nuance, even if it\u2019s longer or more complex. He\u2019s less interested in style and more interested in substance."
+  },
+  {
+    "id": 10,
+    "name": "**Clara, 19**",
+    "description": "Clara is a first-year college student who grew up with AI as a constant presence in her life. She\u2019s used to getting quick, informal answers and values speed and convenience. She prefers short, punchy responses that get to the point and avoid unnecessary explanations. She\u2019s also more open to AI that uses humor, slang, or a casual tone. She doesn\u2019t expect perfection and is more forgiving of errors if the AI is engaging or entertaining."
+  },
+  {
+    "id": 11,
+    "name": "**Rafael, 56**",
+    "description": "Rafael is a former philosophy professor who now writes about AI and ethics in his spare time. He values depth, critical thinking, and philosophical nuance in AI responses. He\u2019s not interested in superficial answers and prefers responses that invite reflection or raise new questions. He appreciates when AI can mirror the complexity of human thought, even if it\u2019s imperfect. He\u2019s also more likely to trust AI that can engage with abstract or moral concepts in a thoughtful way."
+  },
+  {
+    "id": 12,
+    "name": "**Grace, 40**",
+    "description": "Grace is a nurse and part-time mindfulness coach who values empathy, emotional intelligence, and human connection. She prefers AI responses that are gentle, supportive, and considerate of the user\u2019s emotional state. She\u2019s more likely to trust AI that acknowledges uncertainty or asks clarifying questions when needed. She\u2019s less interested in efficiency and more interested in whether the AI feels like a kind and thoughtful listener."
+  },
+  {
+    "id": 13,
+    "name": "**Derek, 34**",
+    "description": "Derek is a startup founder who values speed, clarity, and decisiveness. He\u2019s used to making quick decisions and expects AI to help him do that. He prefers responses that are direct, action-oriented, and free of unnecessary detail. He\u2019s frustrated by AI that meanders or overexplains and values tools that help him get to the bottom line quickly. He\u2019s also more likely to trust AI that\u2019s confident and assertive in its recommendations."
+  },
+  {
+    "id": 14,
+    "name": "**Maya, 26**",
+    "description": "Maya is a nonbinary poet and activist who believes language is a political and personal act. She values inclusivity, nuance, and the ability of AI to reflect diverse identities and experiences. She prefers responses that are respectful of different perspectives and avoid assumptions about the user\u2019s background. She\u2019s also drawn to AI that can adapt its tone and style to different contexts and user identities. She\u2019s more likely to trust AI that shows a willingness to learn and grow."
+  },
+  {
+    "id": 15,
+    "name": "**Oliver, 38**",
+    "description": "Oliver is a venture capitalist who invests in AI startups. He values practicality, scalability, and user adoption. He prefers responses that are clear, efficient, and focused on delivering value to the user. He\u2019s less interested in stylistic choices and more interested in whether the AI can perform reliably in a wide range of scenarios. He\u2019s also more likely to trust AI that can be easily integrated into existing systems or workflows."
+  },
+  {
+    "id": 16,
+    "name": "**Yara, 24**",
+    "description": "Yara is a content strategist for a tech company and values engagement, virality, and relatability. She\u2019s used to thinking about how language affects audience behavior and prefers responses that are catchy, shareable, and emotionally resonant. She\u2019s less concerned with technical accuracy and more with how the response will perform in the real world. She\u2019s more likely to trust AI that can generate content that feels \u201con-brand\u201d and emotionally compelling."
+  },
+  {
+    "id": 17,
+    "name": "**Harold, 62**",
+    "description": "Harold is a retired professor who taught communications and values clarity, structure, and eloquence. He\u2019s a stickler for grammar and prefers responses that are well-formed and respectful of language. He\u2019s less interested in speed or informality and more in whether the AI can produce text that feels like it was written by a thoughtful, well-educated person. He\u2019s also more likely to trust AI that avoids slang, jargon, or overly casual language."
+  },
+  {
+    "id": 18,
+    "name": "**Aisha, 31**",
+    "description": "Aisha is a nonfiction writer and editor who values clarity, originality, and intellectual rigor. She prefers responses that are well-structured, factually sound, and avoid clich\u00e9s. She\u2019s drawn to AI that can think critically and provide fresh insights rather than rehashing common ideas. She\u2019s also more likely to trust AI that can acknowledge its own limitations and avoid overconfidence in uncertain claims."
+  },
+  {
+    "id": 19,
+    "name": "**Leo, 28**",
+    "description": "Leo is a game designer and storyteller who values creativity, imagination, and world-building. He prefers AI responses that are rich in detail, open to interpretation, and suggest possibilities. He\u2019s less interested in efficiency and more in whether the AI can help him explore new ideas or create engaging narratives. He\u2019s also more likely to trust AI that can adapt its tone and style to fit different fictional or narrative contexts."
+  }
+]
