@@ -261,15 +261,15 @@
   ],
   "inference_categories": [
     {
-      "key": "discount",
-      "phrase": "discount",
-      "label": "Discount",
+      "key": "reject",
+      "phrase": "reject",
+      "label": "Reject",
       "mult": -1.5
     },
     {
-      "key": "look_past",
-      "phrase": "look past",
-      "label": "Look past",
+      "key": "downplay",
+      "phrase": "downplay",
+      "label": "Downplay",
       "mult": -1.0
     },
     {

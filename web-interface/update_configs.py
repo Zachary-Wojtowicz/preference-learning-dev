@@ -18,8 +18,8 @@ MOVIES_CATEGORIES = [
 ]
 
 SCRUPLES_CATEGORIES = [
-    {"key": "discount",    "phrase": "discount",          "label": "Discount",          "mult": -1.5},
-    {"key": "look_past",   "phrase": "look past",         "label": "Look past",         "mult": -1.0},
+    {"key": "reject",      "phrase": "reject",            "label": "Reject",            "mult": -1.5},
+    {"key": "downplay",    "phrase": "downplay",          "label": "Downplay",          "mult": -1.0},
     {"key": "neutral",     "phrase": "are neutral about", "label": "Neutral",           "mult":  0.0},
     {"key": "value",       "phrase": "value",             "label": "Value",             "mult":  1.0},
     {"key": "deeply_care", "phrase": "deeply care about", "label": "Deeply care about", "mult":  1.5},
