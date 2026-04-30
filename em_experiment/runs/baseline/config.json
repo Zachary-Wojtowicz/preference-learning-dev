@@ -1,0 +1,18 @@
+{
+  "run_name": "baseline",
+  "project": false,
+  "directions": "preference_directions.pt",
+  "random_directions": false,
+  "lora_rank": 32,
+  "lora_alpha": 64,
+  "lr": 1e-05,
+  "warmup_steps": 5,
+  "batch_size": 2,
+  "grad_accum": 8,
+  "max_steps": 250,
+  "eval_every": 25,
+  "eval_n_samples": 50,
+  "max_new_tokens": 512,
+  "seed": 42,
+  "lora_targets": "down_proj"
+}

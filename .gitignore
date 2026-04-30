@@ -3,6 +3,13 @@
 
 archive/
 
+# em_experiment: ignore model checkpoints and large binary artifacts, keep eval results and scripts
+em_experiment/runs/*/checkpoint-*/
+em_experiment/runs/*/final/
+em_experiment/runs/*/*.responses.json
+em_experiment/logs/
+em_experiment/random_directions_used.pt
+
 # General
 .DS_Store
 __MACOSX/
@@ -10,11 +17,14 @@ __MACOSX/
 .LSOverride
 Icon[]
 
-
+/outputs/*
 /*/outputs
 !/simulation/outputs
 !/web-interface/outputs
 /datasets/*.parquet
+
+/model-organisms-for-EM/
+
 
 # Thumbnails
 ._*
