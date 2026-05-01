@@ -535,19 +535,23 @@ If skipped: `"evaluation": {"skipped": "missing_delta_gram" | "missing_gram_matr
 
 ## Post-Experiment Prediction-Check Screen
 
-After the comparison/eval screen (or after it's skipped), a final screen presents the **two options the model predicts the participant would choose between**, with the predicted-top option visually pre-selected (blue border + "Our prediction" badge). The participant rates, on a 6-point accuracy scale (no neutral), how accurate the prediction is — they don't pick again.
+After the comparison/eval screen (or after it's skipped), a final screen presents **a real trial pair from `trials.json`** (the same kind the participant saw in training and feedback) — specifically, the pair for which the fitted model has the strongest predicted preference. The model's predicted answer is highlighted in blue with an "Our prediction" badge; the other option is dimmed. The participant rates, on a 6-point accuracy scale (no neutral), how accurate the prediction is — they don't pick again.
+
+Pairs the participant has already seen are excluded; if the entire pool was seen, the screen falls back to the global argmax-magnitude pair.
+
+The trial's domain question (`choice_context`, e.g. *"Which action is more ethical / understandable?"* for dailydilemmas, *"Which movie would you rather watch right now?"* for movies) is shown above the cards so the framing matches what the participant saw earlier — this keeps moral-dilemma domains coherent (rather than picking one action from one dilemma vs. an unrelated action from another).
 
 Likert scale: *Not at all accurate (1) → Mostly inaccurate (2) → Slightly inaccurate (3) → Slightly accurate (4) → Mostly accurate (5) → Very accurate (6)*.
 
 ### Model used
 
-| Condition | Fit | Notes |
-|-----------|-----|-------|
-| `inference_affirm`, `inference_categories` | Partial (K-dim primal) | β₀ from per-trial inference multipliers; `u(x) = β · V·φ(x)` |
-| Slider / checkbox conditions | Projected (K-dim primal) | β₀ = 0; same code path as partial; `u(x) = β · V·φ(x)` |
-| `choice_only` | **Standard** (full-dim kernel logistic regression) | Reuses α from the eval screen; `u_std(x) = Σ α_t (G[a_t,x] − G[b_t,x])` over the pool option-gram |
+| Condition | Fit | Per-pair predicted preference |
+|-----------|-----|-------------------------------|
+| `inference_affirm`, `inference_categories` | Partial (K-dim primal) | `β · raw_projection[t]` for each pool trial t (= `V·δ_t`) |
+| Slider / checkbox conditions | Projected (K-dim primal, β₀=0) | same as partial |
+| `choice_only` | **Standard** (full-dim kernel logistic regression) | `Σ_t' α_t' · D[part_idx_t', t]` for each pool trial t (D = `delta_gram`) |
 
-The candidate pool is the set of options that appear in `trials.json` for the domain. Argmax → predicted top, argmin → predicted bottom.
+The candidate pool is every pair in `trials.json`. The pair with **maximum |predicted difference|** is shown, with the predicted-preferred option highlighted. Pairs already seen by the participant are skipped.
 
 ### Counterbalancing
 
@@ -557,10 +561,11 @@ The candidate pool is the set of options that appear in `trials.json` for the do
 
 | File | Used by | Purpose |
 |------|---------|---------|
-| `outputs/<domain>/trial_projections.json` | Partial / projected predictions | Refit β from participant responses |
-| `outputs/<domain>/option_projections.json` | Partial / projected predictions | Per-option K-vector `V·(φ − μ)` for every pool option |
-| `outputs/<domain>/option_gram.bin` + `option_gram_meta.json` | `choice_only` standard predictions | Pool option gram (`N×N` of `φ_i·φ_j`), float32 row-major; meta lists `option_ids` in row order |
+| `outputs/<domain>/trial_projections.json` | Partial / projected predictions | Per-pool-trial `V·δ_t`, used both to refit β and to score every candidate pair |
+| `outputs/<domain>/delta_gram.bin` | `choice_only` standard predictions | `T_pool × T_pool` of `δ_i · δ_j` — already loaded by the eval screen |
 | `outputs/<domain>/experiment_config.json` → `gram_matrix` | Partial / projected predictions | Same as before |
+
+`option_projections.json` and `option_gram.bin` are no longer required for the prediction screen (we score real trial pairs directly), but `export_eval_data.py` still writes them — harmless and useful for offline analysis.
 
 Generate / refresh `option_projections.json`:
 ```bash
@@ -574,23 +579,23 @@ Requires `method_directions/outputs/<domain>/directions.npz` to be locally avail
 
 ```json
 "prediction_check": {
-  "model": "partial",                      // or "projected" for non-inference conditions
-  "top_option_id":     "57532",
-  "top_option_label":  "The Matrix (1999)",
-  "top_utility":       3.412,
-  "bottom_option_id":     "1234",
-  "bottom_option_label":  "Some Movie (...)",
-  "bottom_utility":    -2.871,
-  "top_on_side":       "B",                // counterbalance flag — "A" = left, "B" = right
-  "rating":            "very_acc",
-  "rating_numeric":    6,                  // 1 (not at all accurate) … 6 (very accurate)
-  "rating_label":      "Very accurate",
-  "response_time_ms":  6420,
-  "started_at":        1714326400000
+  "model": "partial",                      // or "projected" / "standard"
+  "trial_id":            "t142",           // the source trial pair from trials.json
+  "pair_signed_diff":    3.412,            // model's predicted preference (positive = predicts option_a)
+  "top_option_id":       "57532",          // model's predicted choice
+  "top_option_label":    "The Matrix (1999)",
+  "bottom_option_id":    "1234",           // the other option in the pair
+  "bottom_option_label": "Some Movie (...)",
+  "top_on_side":         "B",              // counterbalance — "A" = predicted on left, "B" = on right
+  "rating":              "very_acc",
+  "rating_numeric":      6,                // 1 (not at all accurate) … 6 (very accurate)
+  "rating_label":        "Very accurate",
+  "response_time_ms":    6420,
+  "started_at":          1714326400000
 }
 ```
 
-If skipped: `"prediction_check": {"skipped": "missing_option_projections" | "missing_gram_matrix" | "cannot_fit" | "no_options_ranked" | "missing_option_gram" | "missing_alpha"}`.
+If skipped: `"prediction_check": {"skipped": "missing_alpha" | "missing_delta_gram" | "missing_gram_matrix" | "missing_trial_projections" | "cannot_fit" | "no_pair_ranked"}`.
 
 ## Design Notes
 

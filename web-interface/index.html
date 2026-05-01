@@ -965,94 +965,106 @@ function fitPredictionBeta(){
   var beta=fitNewtonPartial(inputs.U,inputs.y,gramMatrix,beta0,lamP,15);
   return {beta:beta,K:inputs.K,hasMultipliers:inputs.hasMultipliers};
 }
-function rankOptionsByUtility(beta){
-  if(!optionProjections||!optionProjections.options)return null;
-  var lookup={};trials.forEach(function(t){
-    if(t.option_a_id&&t.option_a)lookup[String(t.option_a_id)]=t.option_a;
-    if(t.option_b_id&&t.option_b)lookup[String(t.option_b_id)]=t.option_b;
-  });
-  var bestId=null,bestU=-Infinity,worstId=null,worstU=Infinity;
-  var K=beta.length;
-  Object.keys(optionProjections.options).forEach(function(id){
-    if(!lookup[id])return;
-    var v=optionProjections.options[id];if(!Array.isArray(v)||v.length!==K)return;
-    var u=0;for(var k=0;k<K;k++)u+=beta[k]*v[k];
-    if(u>bestU){bestU=u;bestId=id;}
-    if(u<worstU){worstU=u;worstId=id;}
-  });
-  if(!bestId||!worstId||bestId===worstId)return null;
-  return {topId:bestId,topUtility:bestU,topOption:lookup[bestId],
-          bottomId:worstId,bottomUtility:worstU,bottomOption:lookup[worstId]};
-}
-// Standard-fit prediction for choice_only: u_std(x) = Σ_t α_t (G[a_t,x] - G[b_t,x]).
-function rankOptionsByUtilityStandard(alpha){
-  if(!optionGram||!optionIdToIdx||optionGramN<=0)return null;
-  var T=alpha.length;
-  var trialAB=[];
-  for(var i=0;i<T;i++){
-    var trial=trials[assignedTrialIndices[i]];
-    var ia=optionIdToIdx[String(trial.option_a_id)];
-    var ib=optionIdToIdx[String(trial.option_b_id)];
-    if(ia==null||ib==null)return null;
-    trialAB.push([ia,ib]);
-  }
-  var lookup={};trials.forEach(function(t){
-    if(t.option_a_id&&t.option_a)lookup[String(t.option_a_id)]=t.option_a;
-    if(t.option_b_id&&t.option_b)lookup[String(t.option_b_id)]=t.option_b;
-  });
-  var bestId=null,bestU=-Infinity,worstId=null,worstU=Infinity;
-  Object.keys(optionIdToIdx).forEach(function(oid){
-    if(!lookup[oid])return;
-    var ix=optionIdToIdx[oid],u=0;
-    for(var t=0;t<T;t++){
-      var ia=trialAB[t][0],ib=trialAB[t][1];
-      u+=alpha[t]*(optionGram[ia*optionGramN+ix]-optionGram[ib*optionGramN+ix]);
+// Pick the trial pair (from trials.json) whose model-predicted preference is strongest.
+// Returns {trial, predTopKey:'a'|'b', predBottomKey, diff}. Excludes pairs the
+// participant already saw so the prediction screen tests generalization rather than
+// surfacing a familiar pair.
+function rankBestPairPartial(beta){
+  if(!trialProjections||!Array.isArray(trialProjections))return null;
+  if(!Array.isArray(beta)||beta.length===0)return null;
+  var seen={};assignedTrialIndices.forEach(function(pi){seen[pi]=true;});
+  function scan(skipSeen){
+    var bestPi=-1,bestAbs=-Infinity,bestDiff=0;
+    for(var pi=0;pi<trialProjections.length;pi++){
+      if(skipSeen&&seen[pi])continue;
+      var tp=trialProjections[pi];
+      if(!tp||!Array.isArray(tp.raw_projection))continue;
+      if(tp.raw_projection.length!==beta.length)continue;
+      if(!trials[pi]||!trials[pi].option_a||!trials[pi].option_b)continue;
+      var diff=0;for(var k=0;k<beta.length;k++)diff+=beta[k]*tp.raw_projection[k];
+      var ad=Math.abs(diff);
+      if(ad>bestAbs){bestAbs=ad;bestPi=pi;bestDiff=diff;}
     }
-    if(u>bestU){bestU=u;bestId=oid;}
-    if(u<worstU){worstU=u;worstId=oid;}
-  });
-  if(!bestId||!worstId||bestId===worstId)return null;
-  return {topId:bestId,topUtility:bestU,topOption:lookup[bestId],
-          bottomId:worstId,bottomUtility:worstU,bottomOption:lookup[worstId]};
+    return bestPi>=0?{pi:bestPi,diff:bestDiff}:null;
+  }
+  var pick=scan(true)||scan(false);
+  if(!pick)return null;
+  var trial=trials[pick.pi];
+  var topKey=pick.diff>=0?'a':'b';
+  return {trial:trial,trialIdx:pick.pi,predTopKey:topKey,predBottomKey:topKey==='a'?'b':'a',diff:pick.diff};
+}
+// Standard-fit prediction over real trial pairs:
+//   u(δ_t) = θ · δ_t = Σ α_t' (δ_t' · δ_t) = (D α_padded)_t
+// where δ_t' is participant's t'-th seen trial (mapped via assignedTrialIndices)
+// and D = deltaGram (T_pool × T_pool). Picks pair with max |u|, excluding seen.
+function rankBestPairStandard(alpha){
+  if(!deltaGram||deltaGramN<=0)return null;
+  if(!Array.isArray(alpha)||alpha.length===0)return null;
+  var seen={};assignedTrialIndices.forEach(function(pi){seen[pi]=true;});
+  function scan(skipSeen){
+    var bestPi=-1,bestAbs=-Infinity,bestDiff=0;
+    for(var pi=0;pi<deltaGramN;pi++){
+      if(skipSeen&&seen[pi])continue;
+      if(!trials[pi]||!trials[pi].option_a||!trials[pi].option_b)continue;
+      var diff=0;
+      for(var t=0;t<alpha.length;t++){
+        var partIdx=assignedTrialIndices[t];
+        diff+=alpha[t]*deltaGram[partIdx*deltaGramN+pi];
+      }
+      var ad=Math.abs(diff);
+      if(ad>bestAbs){bestAbs=ad;bestPi=pi;bestDiff=diff;}
+    }
+    return bestPi>=0?{pi:bestPi,diff:bestDiff}:null;
+  }
+  var pick=scan(true)||scan(false);
+  if(!pick)return null;
+  var trial=trials[pick.pi];
+  var topKey=pick.diff>=0?'a':'b';
+  return {trial:trial,trialIdx:pick.pi,predTopKey:topKey,predBottomKey:topKey==='a'?'b':'a',diff:pick.diff};
 }
 function setupPredictionState(ranked,modelName){
   var topOnLeft=(hashStr(participantId)%2)===0;
+  var topOpt=ranked.trial['option_'+ranked.predTopKey];
+  var bottomOpt=ranked.trial['option_'+ranked.predBottomKey];
+  var topId=ranked.trial['option_'+ranked.predTopKey+'_id'];
+  var bottomId=ranked.trial['option_'+ranked.predBottomKey+'_id'];
   predictionState={
     model: modelName,
-    top_option_id:    ranked.topId,
-    top_option_label: ranked.topOption&&ranked.topOption.label||ranked.topId,
-    bottom_option_id:    ranked.bottomId,
-    bottom_option_label: ranked.bottomOption&&ranked.bottomOption.label||ranked.bottomId,
+    trial_id: ranked.trial.trial_id||null,
+    pair_signed_diff: Math.round(ranked.diff*1e4)/1e4,
+    top_option_id:    topId!=null?String(topId):null,
+    top_option_label: topOpt&&topOpt.label||(topId!=null?String(topId):null),
+    bottom_option_id:    bottomId!=null?String(bottomId):null,
+    bottom_option_label: bottomOpt&&bottomOpt.label||(bottomId!=null?String(bottomId):null),
     top_on_side: topOnLeft?'A':'B',
-    top_utility:    Math.round(ranked.topUtility*1e4)/1e4,
-    bottom_utility: Math.round(ranked.bottomUtility*1e4)/1e4,
     rating: null,
     rating_numeric: null,
     rating_label: null,
     response_time_ms: null,
     started_at: Date.now(),
-    _leftOption:  topOnLeft?ranked.topOption:ranked.bottomOption,
-    _rightOption: topOnLeft?ranked.bottomOption:ranked.topOption,
+    _leftOption:  topOnLeft?topOpt:bottomOpt,
+    _rightOption: topOnLeft?bottomOpt:topOpt,
+    _trial: ranked.trial,
   };
 }
 function startPrediction(){
   var isChoiceOnly=(conditionKey==='choice_only');
   if(isChoiceOnly){
-    if(!optionGram||!optionIdToIdx){predictionState={skipped:'missing_option_gram'};finishExperiment();return;}
     if(!evalState||!evalState._alpha){predictionState={skipped:'missing_alpha'};finishExperiment();return;}
-    var rankedStd=rankOptionsByUtilityStandard(evalState._alpha);
-    if(!rankedStd){predictionState={skipped:'no_options_ranked'};finishExperiment();return;}
+    if(!deltaGram){predictionState={skipped:'missing_delta_gram'};finishExperiment();return;}
+    var rankedStd=rankBestPairStandard(evalState._alpha);
+    if(!rankedStd){predictionState={skipped:'no_pair_ranked'};finishExperiment();return;}
     setupPredictionState(rankedStd,'standard');
     renderPrediction();
     return;
   }
   // Partial / projected fit (inference + slider/checkbox conditions)
-  if(!optionProjections||!optionProjections.options){predictionState={skipped:'missing_option_projections'};finishExperiment();return;}
   if(!gramMatrix){predictionState={skipped:'missing_gram_matrix'};finishExperiment();return;}
+  if(!trialProjections){predictionState={skipped:'missing_trial_projections'};finishExperiment();return;}
   var fit=fitPredictionBeta();
   if(!fit){predictionState={skipped:'cannot_fit'};finishExperiment();return;}
-  var ranked=rankOptionsByUtility(fit.beta);
-  if(!ranked){predictionState={skipped:'no_options_ranked'};finishExperiment();return;}
+  var ranked=rankBestPairPartial(fit.beta);
+  if(!ranked){predictionState={skipped:'no_pair_ranked'};finishExperiment();return;}
   setupPredictionState(ranked,fit.hasMultipliers?'partial':'projected');
   renderPrediction();
 }
@@ -1077,8 +1089,10 @@ function renderPrediction(){
   }
   var leftKey=topOnLeft?'a':'b',rightKey=topOnLeft?'b':'a';
   var leftIsPred=topOnLeft,rightIsPred=!topOnLeft;
+  var promptText=(experimentConfig&&experimentConfig.choice_context)||'Which would you choose?';
   var h='<div class="eval-intro"><h1>One last question</h1>';
-  h+='<p>Based on your earlier choices, we’ve predicted which of these two options you’d pick. Below, the option highlighted in blue is <strong>our prediction</strong>. How accurate is it?</p></div>';
+  h+='<p>Below is one more pair, like the ones you saw earlier. Based on your previous responses, we’ve predicted how you would answer this one. The option highlighted in blue is <strong>our prediction</strong>. How accurate is it?</p></div>';
+  h+='<div class="prompt">'+esc(promptText)+'</div>';
   h+='<div class="options pred-options">'+predictionCard(leftKey,st._leftOption,leftIsPred)+predictionCard(rightKey,st._rightOption,rightIsPred)+'</div>';
   h+='<div class="likert-prompt">How accurate is our prediction?</div>';
   h+='<div class="likert-row accuracy-row">';
@@ -1104,7 +1118,7 @@ function renderPrediction(){
     predictionState.rating_numeric=selected.value;
     predictionState.rating_label=selected.label;
     predictionState.response_time_ms=Date.now()-predictionState.started_at;
-    delete predictionState._leftOption;delete predictionState._rightOption;
+    delete predictionState._leftOption;delete predictionState._rightOption;delete predictionState._trial;
     finishExperiment();
   });
 }
