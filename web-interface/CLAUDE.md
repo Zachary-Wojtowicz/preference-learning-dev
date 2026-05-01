@@ -532,7 +532,9 @@ If skipped: `"evaluation": {"skipped": "missing_delta_gram" | "missing_gram_matr
 
 ## Post-Experiment Prediction-Check Screen
 
-After the comparison/eval screen (or after it's skipped), a final screen presents the **two options the model predicts the participant will feel most strongly about** — one as their top pick, one as their last pick — and asks the participant to rate, on a 6-point Likert (no neutral), how strongly they would actually choose between them.
+After the comparison/eval screen (or after it's skipped), a final screen presents the **two options the model predicts the participant would choose between**, with the predicted-top option visually pre-selected (blue border + "Our prediction" badge). The participant rates, on a 6-point accuracy scale (no neutral), how accurate the prediction is — they don't pick again.
+
+Likert scale: *Not at all accurate (1) → Mostly inaccurate (2) → Slightly inaccurate (3) → Slightly accurate (4) → Mostly accurate (5) → Very accurate (6)*.
 
 ### Model used
 
@@ -575,10 +577,9 @@ Requires `method_directions/outputs/<domain>/directions.npz` to be locally avail
   "bottom_option_label":  "Some Movie (...)",
   "bottom_utility":    -2.871,
   "top_on_side":       "B",                // counterbalance flag — "A" = left, "B" = right
-  "rating":            "B_much_better",
-  "rating_numeric":    3,                  // -3 (A much better) ... +3 (B much better), no 0
-  "rating_label":      "B is much better",
-  "predicted_correct": true,               // rating sign agrees with top_on_side
+  "rating":            "very_acc",
+  "rating_numeric":    6,                  // 1 (not at all accurate) … 6 (very accurate)
+  "rating_label":      "Very accurate",
   "response_time_ms":  6420,
   "started_at":        1714326400000
 }

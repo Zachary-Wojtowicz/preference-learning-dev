@@ -103,6 +103,15 @@
   .likert-btn:hover{border-color:#888;background:#f9fafb}
   .likert-btn.selected{background:#3b82f6;color:#fff;border-color:#3b82f6}
   .likert-row .arrow{font-weight:600;font-size:.85rem;display:block;margin-bottom:.15rem}
+  .pred-options{align-items:flex-start}
+  .pred-card-wrap{flex:1;display:flex;flex-direction:column}
+  .pred-card-wrap .option-card{cursor:default;flex:1}
+  .pred-card-wrap .option-card:hover{border-color:#ddd}
+  .pred-card-wrap .option-card.pred-selected{border-color:#3b82f6;box-shadow:0 0 0 2px #3b82f6}
+  .pred-card-wrap .option-card.pred-other{opacity:.55}
+  .pred-badge{font-size:.78rem;font-weight:600;color:#3b82f6;text-align:center;margin-bottom:.4rem;letter-spacing:.02em;text-transform:uppercase}
+  .pred-badge.pred-badge-empty{color:transparent}
+  .accuracy-row{max-width:820px}
   @media(max-width:700px){.eval-grid{grid-template-columns:1fr}.likert-row{grid-template-columns:repeat(3,1fr)}.likert-btn{font-size:.72rem;padding:.55rem .25rem}}
   @media(max-width:600px){.options{flex-direction:column}.slider-row{grid-template-columns:120px 1fr 36px}}
 </style>
@@ -965,7 +974,6 @@ function startPrediction(){
     rating: null,
     rating_numeric: null,
     rating_label: null,
-    predicted_correct: null,
     response_time_ms: null,
     started_at: Date.now(),
     _leftOption:  topOnLeft?ranked.topOption:ranked.bottomOption,
@@ -973,18 +981,34 @@ function startPrediction(){
   };
   renderPrediction();
 }
+var ACCURACY_LEVELS=[
+  {key:'not_at_all',     label:'Not at all accurate',  value:1},
+  {key:'mostly_inacc',   label:'Mostly inaccurate',    value:2},
+  {key:'slightly_inacc', label:'Slightly inaccurate',  value:3},
+  {key:'slightly_acc',   label:'Slightly accurate',    value:4},
+  {key:'mostly_acc',     label:'Mostly accurate',      value:5},
+  {key:'very_acc',       label:'Very accurate',        value:6},
+];
 function renderPrediction(){
   var st=predictionState;
-  var promptText=(experimentConfig&&experimentConfig.choice_context)||'Which would you prefer?';
+  var topOnLeft=(st.top_on_side==='A');
+  function predictionCard(key,opt,isPrediction){
+    var card=buildCard(key,opt);
+    var cls=isPrediction?'option-card pred-selected':'option-card pred-other';
+    card=card.replace('class="option-card"','class="'+cls+'"');
+    if(isPrediction)card='<div class="pred-badge">Our prediction</div>'+card;
+    else card='<div class="pred-badge pred-badge-empty">&nbsp;</div>'+card;
+    return '<div class="pred-card-wrap">'+card+'</div>';
+  }
+  var leftKey=topOnLeft?'a':'b',rightKey=topOnLeft?'b':'a';
+  var leftIsPred=topOnLeft,rightIsPred=!topOnLeft;
   var h='<div class="eval-intro"><h1>One last question</h1>';
-  h+='<p>Based on the choices you made, here are the two options we predict you’d feel most strongly about (one as your top pick, one as your last pick). Tell us how strongly you would actually choose between them.</p></div>';
-  h+='<div class="prompt">'+esc(promptText)+'</div>';
-  h+='<div class="options">'+buildCard('a',st._leftOption)+buildCard('b',st._rightOption)+'</div>';
-  h+='<div class="likert-prompt">How strongly would you choose between these?</div>';
-  h+='<div class="likert-row">';
-  LIKERT_LEVELS.forEach(function(lv){
-    var arrow=lv.side==='A'?'A':'B';
-    h+='<button class="likert-btn" data-key="'+lv.key+'" data-value="'+lv.value+'"><span class="arrow">'+arrow+'</span>'+esc(lv.label)+'</button>';
+  h+='<p>Based on your earlier choices, we’ve predicted which of these two options you’d pick. Below, the option highlighted in blue is <strong>our prediction</strong>. How accurate is it?</p></div>';
+  h+='<div class="options pred-options">'+predictionCard(leftKey,st._leftOption,leftIsPred)+predictionCard(rightKey,st._rightOption,rightIsPred)+'</div>';
+  h+='<div class="likert-prompt">How accurate is our prediction?</div>';
+  h+='<div class="likert-row accuracy-row">';
+  ACCURACY_LEVELS.forEach(function(lv){
+    h+='<button class="likert-btn" data-key="'+lv.key+'" data-value="'+lv.value+'">'+esc(lv.label)+'</button>';
   });
   h+='</div>';
   h+='<div class="submit-row"><button class="btn" id="predSubmit" disabled>Submit</button></div>';
@@ -1004,9 +1028,6 @@ function renderPrediction(){
     predictionState.rating=selected.key;
     predictionState.rating_numeric=selected.value;
     predictionState.rating_label=selected.label;
-    // predicted_correct: rating sign agrees with the predicted-top side
-    var topSide=predictionState.top_on_side;
-    predictionState.predicted_correct=(topSide==='A'&&selected.value<0)||(topSide==='B'&&selected.value>0);
     predictionState.response_time_ms=Date.now()-predictionState.started_at;
     delete predictionState._leftOption;delete predictionState._rightOption;
     finishExperiment();
