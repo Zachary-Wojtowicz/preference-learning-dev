@@ -447,7 +447,10 @@ After all feedback trials, participants compare two summaries of their inferred 
 | Condition family | Summary A (or B) | Summary B (or A) |
 |------------------|-------|-------|
 | Inference conditions (`inference_affirm`, `inference_categories`) | **Standard** — unrestricted gradient (4096-dim, kernel logistic regression) | **Partial** — K-dim primal fit with G-shape prior centered at slider-derived mean |
-| Choice-only conditions | **Standard** — same as above | **Projected** — same partial-fit code path, but with `β₀ = 0` (no slider info) |
+| Slider/checkbox conditions | **Standard** — same as above | **Projected** — same partial-fit code path, but with `β₀ = 0` (no slider info) |
+| `choice_only` (baseline) | **Standard** — fitted scores | **Random** — N(0, 1) per dimension, deterministic from `pid` |
+
+`choice_only` is a separate **baseline check** (real model vs. random), not a head-to-head between two real fits. The `evaluation.is_baseline_check` field flags this so analysis can pool ratings appropriately. `choice_only` runs even though it's not in `show_for_conditions`.
 
 Counterbalancing: `hash(pid) % 2` decides which model lands on the left vs right (deterministic per participant).
 
@@ -538,12 +541,13 @@ Likert scale: *Not at all accurate (1) → Mostly inaccurate (2) → Slightly in
 
 ### Model used
 
-| Condition | Fit | β₀ prior |
-|-----------|-----|----------|
-| `inference_affirm`, `inference_categories` | Partial (K-dim primal) | from per-trial inference multipliers |
-| Everything else (`choice_only`, sliders, checkboxes) | Partial / "projected" | β₀ = 0 |
+| Condition | Fit | Notes |
+|-----------|-----|-------|
+| `inference_affirm`, `inference_categories` | Partial (K-dim primal) | β₀ from per-trial inference multipliers; `u(x) = β · V·φ(x)` |
+| Slider / checkbox conditions | Projected (K-dim primal) | β₀ = 0; same code path as partial; `u(x) = β · V·φ(x)` |
+| `choice_only` | **Standard** (full-dim kernel logistic regression) | Reuses α from the eval screen; `u_std(x) = Σ α_t (G[a_t,x] − G[b_t,x])` over the pool option-gram |
 
-Same Newton+L2 fitter as the comparison screen's Summary B. Predicted utility is `u(option) = β · V·φ(option)`. The candidate pool is the set of options that appear in `trials.json` for the domain. Argmax → predicted top, argmin → predicted bottom.
+The candidate pool is the set of options that appear in `trials.json` for the domain. Argmax → predicted top, argmin → predicted bottom.
 
 ### Counterbalancing
 
@@ -551,11 +555,12 @@ Same Newton+L2 fitter as the comparison screen's Summary B. Predicted utility is
 
 ### Required artifacts on the client
 
-| File | Purpose |
-|------|---------|
-| `outputs/<domain>/trial_projections.json` | Same as before — used to refit β |
-| `outputs/<domain>/option_projections.json` | **New.** Per-option K-vector `V·(φ - μ)` for every option in the candidate pool. |
-| `outputs/<domain>/experiment_config.json` → `gram_matrix` | Same as before |
+| File | Used by | Purpose |
+|------|---------|---------|
+| `outputs/<domain>/trial_projections.json` | Partial / projected predictions | Refit β from participant responses |
+| `outputs/<domain>/option_projections.json` | Partial / projected predictions | Per-option K-vector `V·(φ − μ)` for every pool option |
+| `outputs/<domain>/option_gram.bin` + `option_gram_meta.json` | `choice_only` standard predictions | Pool option gram (`N×N` of `φ_i·φ_j`), float32 row-major; meta lists `option_ids` in row order |
+| `outputs/<domain>/experiment_config.json` → `gram_matrix` | Partial / projected predictions | Same as before |
 
 Generate / refresh `option_projections.json`:
 ```bash
@@ -585,7 +590,7 @@ Requires `method_directions/outputs/<domain>/directions.npz` to be locally avail
 }
 ```
 
-If skipped: `"prediction_check": {"skipped": "missing_option_projections" | "missing_gram_matrix" | "cannot_fit" | "no_options_ranked"}`.
+If skipped: `"prediction_check": {"skipped": "missing_option_projections" | "missing_gram_matrix" | "cannot_fit" | "no_options_ranked" | "missing_option_gram" | "missing_alpha"}`.
 
 ## Design Notes
 

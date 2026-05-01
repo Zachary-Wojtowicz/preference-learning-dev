@@ -155,6 +155,7 @@ var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeed
 var dimQuantiles=null;  // {dimension_id -> [b1, b2, ..., b_{n-1}]} per-dim quantile boundaries
 var deltaGram=null,deltaGramN=0,trialProjections=null,evalState=null;
 var optionProjections=null,predictionState=null;
+var optionGram=null,optionGramN=0,optionIdToIdx=null;
 var HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle','points','price','taster_name','dilemma_id','topic_group','situation','values','consequence']);
 var FIELD_LABELS={plot_summary:'Plot',genres:'Genres',director:'Director',stars:'Stars',variety:'Variety',country:'Country',province:'Province',points:'Rating',price:'Price',description:'Description',user_prompt:'Question',assistant_response:'Response',winery:'Winery',designation:'Designation',region_1:'Region',taster_name:'Reviewer'};
 var DEFAULT_CATEGORIES=[
@@ -282,13 +283,19 @@ Promise.all([
   fetch(basePath+'trial_projections.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
   fetch(basePath+'delta_gram.bin').then(function(r){if(!r.ok)throw null;return r.arrayBuffer()}).catch(function(){return null}),
   fetch(basePath+'polished_labels.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
-  fetch(basePath+'option_projections.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null})
+  fetch(basePath+'option_projections.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
+  fetch(basePath+'option_gram.bin').then(function(r){if(!r.ok)throw null;return r.arrayBuffer()}).catch(function(){return null}),
+  fetch(basePath+'option_gram_meta.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null})
 ]).then(function(arr){
   trials=arr[0];experimentConfig=arr[1];trialProjections=arr[2];
   if(arr[3]){deltaGram=new Float32Array(arr[3]);deltaGramN=Math.round(Math.sqrt(deltaGram.length));}
   trials.forEach(liftSharedFields);
   applyPolishedLabels(arr[4]);
   optionProjections=arr[5];
+  if(arr[6]&&arr[7]&&Array.isArray(arr[7].option_ids)){
+    optionGram=new Float32Array(arr[6]);optionGramN=arr[7].n||arr[7].option_ids.length;
+    optionIdToIdx={};arr[7].option_ids.forEach(function(id,i){optionIdToIdx[String(id)]=i;});
+  }
   if(arr[1]&&arr[1].gram_matrix)gramMatrix=arr[1].gram_matrix;
   if(arr[1]&&arr[1].top_k_sliders)topKSliders=arr[1].top_k_sliders;
   loadCategories();
@@ -621,6 +628,7 @@ function submitTrial(){
   if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();}else if(!evalState){startEvaluation();}else if(!predictionState){startPrediction();}else finishExperiment();
 }
 function finishExperiment(){
+  if(evalState&&'_alpha' in evalState)delete evalState._alpha;
   var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,num_training:trainingResponses.length,training_responses:trainingResponses,timestamp:new Date().toISOString(),responses:responses,evaluation:evalState||null,prediction_check:predictionState||null};
   if(postUrl)fetch(postUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(output)}).catch(function(){});
   if(window.parent!==window){try{window.parent.postMessage({type:'experiment_complete',payload:output},'*');}catch(e){}}
@@ -767,65 +775,88 @@ function buildInferences(scores,dims,nShow){
   });
 }
 
+function makeRandomScores(K,seedSalt){
+  var rng=seedRandom(hashStr(participantId+(seedSalt||'_random')));
+  var s=new Array(K);
+  for(var k=0;k<K;k++){
+    var u1=Math.max(rng(),1e-9),u2=rng();
+    s[k]=Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
+  }
+  return s;
+}
 function startEvaluation(){
   var comp=experimentConfig&&experimentConfig.comparison;
   var allowed=comp&&Array.isArray(comp.show_for_conditions)?comp.show_for_conditions:null;
-  if(allowed&&allowed.indexOf(conditionKey)<0){evalState={skipped:'condition_excluded'};proceedAfterEval();return;}
+  var isChoiceOnly=(conditionKey==='choice_only');
+  // choice_only is shown even though it's not in show_for_conditions — it gets a real-vs-random baseline check.
+  if(allowed&&allowed.indexOf(conditionKey)<0&&!isChoiceOnly){evalState={skipped:'condition_excluded'};proceedAfterEval();return;}
   var inputs=buildEvalInputs();
   if(!inputs){evalState={skipped:'no_eval_data'};proceedAfterEval();return;}
   if(!inputs.D){evalState={skipped:'missing_delta_gram'};proceedAfterEval();return;}
-  if(!gramMatrix){evalState={skipped:'missing_gram_matrix'};proceedAfterEval();return;}
+  if(!isChoiceOnly&&!gramMatrix){evalState={skipped:'missing_gram_matrix'};proceedAfterEval();return;}
   var lamS=(comp&&comp.lambda_standard)||10.0;
   var lamP=(comp&&comp.lambda_partial)||1.0;
   var nShow=(comp&&comp.n_dimensions_shown)||10;
   var format=(comp&&comp.eval_format)||'inference_list';
-  // Standard fit (kernel logistic regression in dual form)
+  // Standard fit (kernel logistic regression in dual form) — used by both flows
   var t0=performance.now();
   var alpha=fitNewtonStandard(inputs.D,inputs.y,lamS,15);
   var scoresStd=scoresFromAlpha(alpha,inputs.U);
-  // Partial fit prior: solve G*beta_0 = mean
-  var beta0=null;
-  if(inputs.hasMultipliers){
-    var sol=_solveLinear(gramMatrix,inputs.mean);
-    beta0=sol||new Array(inputs.K).fill(0);
+  var scoresLeft,scoresRight,leftModel,rightModel;
+  var stdOnLeft=(hashStr(participantId)%2)===0;
+  if(isChoiceOnly){
+    // Real-vs-random baseline check.
+    var scoresRand=makeRandomScores(inputs.K,'_eval_random');
+    scoresLeft=stdOnLeft?scoresStd:scoresRand;
+    scoresRight=stdOnLeft?scoresRand:scoresStd;
+    leftModel=stdOnLeft?'standard':'random';
+    rightModel=stdOnLeft?'random':'standard';
   }else{
-    beta0=new Array(inputs.K).fill(0);
+    // Standard-vs-partial check (existing behavior).
+    var beta0=null;
+    if(inputs.hasMultipliers){
+      var sol=_solveLinear(gramMatrix,inputs.mean);
+      beta0=sol||new Array(inputs.K).fill(0);
+    }else{
+      beta0=new Array(inputs.K).fill(0);
+    }
+    var beta=fitNewtonPartial(inputs.U,inputs.y,gramMatrix,beta0,lamP,15);
+    var scoresPart=scoresFromBeta(beta,gramMatrix);
+    scoresLeft=stdOnLeft?scoresStd:scoresPart;
+    scoresRight=stdOnLeft?scoresPart:scoresStd;
+    leftModel=stdOnLeft?'standard':'partial';
+    rightModel=stdOnLeft?'partial':'standard';
   }
-  var beta=fitNewtonPartial(inputs.U,inputs.y,gramMatrix,beta0,lamP,15);
-  var scoresPart=scoresFromBeta(beta,gramMatrix);
   var fitMs=Math.round(performance.now()-t0);
   // Build presentation payload depending on format
   var leftPayload,rightPayload;
-  var stdOnLeft=(hashStr(participantId)%2)===0;
   if(format==='top_bottom_bars'){
     var nEach=(comp&&comp.n_per_side)||5;
     nEach=Math.min(nEach,Math.floor(inputs.K/2));
-    var tbStd=buildTopBottom(scoresStd,inputs.dims,nEach);
-    var tbPart=buildTopBottom(scoresPart,inputs.dims,nEach);
-    leftPayload=stdOnLeft?tbStd:tbPart;
-    rightPayload=stdOnLeft?tbPart:tbStd;
+    leftPayload=buildTopBottom(scoresLeft,inputs.dims,nEach);
+    rightPayload=buildTopBottom(scoresRight,inputs.dims,nEach);
   }else{
     var nCap=Math.min(nShow,inputs.K);
-    var infsStd=buildInferences(scoresStd,inputs.dims,nCap);
-    var infsPart=buildInferences(scoresPart,inputs.dims,nCap);
-    leftPayload=stdOnLeft?infsStd:infsPart;
-    rightPayload=stdOnLeft?infsPart:infsStd;
+    leftPayload=buildInferences(scoresLeft,inputs.dims,nCap);
+    rightPayload=buildInferences(scoresRight,inputs.dims,nCap);
   }
   evalState={
     eval_format: format,
     fit_duration_ms: fitMs,
     lambda_standard: lamS,
-    lambda_partial: lamP,
+    lambda_partial: isChoiceOnly?null:lamP,
+    is_baseline_check: isChoiceOnly,
     n_dimensions_shown: format==='top_bottom_bars'?(2*((comp&&comp.n_per_side)||5)):Math.min(nShow,inputs.K),
     has_multipliers: inputs.hasMultipliers,
-    left_model: stdOnLeft?'standard':'partial',
-    right_model: stdOnLeft?'partial':'standard',
+    left_model: leftModel,
+    right_model: rightModel,
     left_payload:  leftPayload,
     right_payload: rightPayload,
     rating: null,
     rating_numeric: null,
     response_time_ms: null,
     started_at: Date.now(),
+    _alpha: isChoiceOnly?alpha:null,
   };
   renderEvaluation();
 }
@@ -953,15 +984,39 @@ function rankOptionsByUtility(beta){
   return {topId:bestId,topUtility:bestU,topOption:lookup[bestId],
           bottomId:worstId,bottomUtility:worstU,bottomOption:lookup[worstId]};
 }
-function startPrediction(){
-  if(!optionProjections||!optionProjections.options){predictionState={skipped:'missing_option_projections'};finishExperiment();return;}
-  if(!gramMatrix){predictionState={skipped:'missing_gram_matrix'};finishExperiment();return;}
-  var fit=fitPredictionBeta();
-  if(!fit){predictionState={skipped:'cannot_fit'};finishExperiment();return;}
-  var ranked=rankOptionsByUtility(fit.beta);
-  if(!ranked){predictionState={skipped:'no_options_ranked'};finishExperiment();return;}
+// Standard-fit prediction for choice_only: u_std(x) = Σ_t α_t (G[a_t,x] - G[b_t,x]).
+function rankOptionsByUtilityStandard(alpha){
+  if(!optionGram||!optionIdToIdx||optionGramN<=0)return null;
+  var T=alpha.length;
+  var trialAB=[];
+  for(var i=0;i<T;i++){
+    var trial=trials[assignedTrialIndices[i]];
+    var ia=optionIdToIdx[String(trial.option_a_id)];
+    var ib=optionIdToIdx[String(trial.option_b_id)];
+    if(ia==null||ib==null)return null;
+    trialAB.push([ia,ib]);
+  }
+  var lookup={};trials.forEach(function(t){
+    if(t.option_a_id&&t.option_a)lookup[String(t.option_a_id)]=t.option_a;
+    if(t.option_b_id&&t.option_b)lookup[String(t.option_b_id)]=t.option_b;
+  });
+  var bestId=null,bestU=-Infinity,worstId=null,worstU=Infinity;
+  Object.keys(optionIdToIdx).forEach(function(oid){
+    if(!lookup[oid])return;
+    var ix=optionIdToIdx[oid],u=0;
+    for(var t=0;t<T;t++){
+      var ia=trialAB[t][0],ib=trialAB[t][1];
+      u+=alpha[t]*(optionGram[ia*optionGramN+ix]-optionGram[ib*optionGramN+ix]);
+    }
+    if(u>bestU){bestU=u;bestId=oid;}
+    if(u<worstU){worstU=u;worstId=oid;}
+  });
+  if(!bestId||!worstId||bestId===worstId)return null;
+  return {topId:bestId,topUtility:bestU,topOption:lookup[bestId],
+          bottomId:worstId,bottomUtility:worstU,bottomOption:lookup[worstId]};
+}
+function setupPredictionState(ranked,modelName){
   var topOnLeft=(hashStr(participantId)%2)===0;
-  var modelName=fit.hasMultipliers?'partial':'projected';
   predictionState={
     model: modelName,
     top_option_id:    ranked.topId,
@@ -979,6 +1034,26 @@ function startPrediction(){
     _leftOption:  topOnLeft?ranked.topOption:ranked.bottomOption,
     _rightOption: topOnLeft?ranked.bottomOption:ranked.topOption,
   };
+}
+function startPrediction(){
+  var isChoiceOnly=(conditionKey==='choice_only');
+  if(isChoiceOnly){
+    if(!optionGram||!optionIdToIdx){predictionState={skipped:'missing_option_gram'};finishExperiment();return;}
+    if(!evalState||!evalState._alpha){predictionState={skipped:'missing_alpha'};finishExperiment();return;}
+    var rankedStd=rankOptionsByUtilityStandard(evalState._alpha);
+    if(!rankedStd){predictionState={skipped:'no_options_ranked'};finishExperiment();return;}
+    setupPredictionState(rankedStd,'standard');
+    renderPrediction();
+    return;
+  }
+  // Partial / projected fit (inference + slider/checkbox conditions)
+  if(!optionProjections||!optionProjections.options){predictionState={skipped:'missing_option_projections'};finishExperiment();return;}
+  if(!gramMatrix){predictionState={skipped:'missing_gram_matrix'};finishExperiment();return;}
+  var fit=fitPredictionBeta();
+  if(!fit){predictionState={skipped:'cannot_fit'};finishExperiment();return;}
+  var ranked=rankOptionsByUtility(fit.beta);
+  if(!ranked){predictionState={skipped:'no_options_ranked'};finishExperiment();return;}
+  setupPredictionState(ranked,fit.hasMultipliers?'partial':'projected');
   renderPrediction();
 }
 var ACCURACY_LEVELS=[

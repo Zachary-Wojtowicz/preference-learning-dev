@@ -133,6 +133,19 @@ def export_domain(domain: str):
     print(f"  [{domain}] lambdas auto-scaled to diag_mean={diag_mean:.4f}: "
           f"lam_std={ec['comparison']['lambda_standard']}, lam_part={ec['comparison']['lambda_partial']}")
 
+    # Pool option gram (N_pool × N_pool of φ_i·φ_j) for choice_only's standard-fit prediction.
+    pool_ids = sorted({oid for t in trials for oid in [str(t["option_a_id"]), str(t["option_b_id"])]})
+    pool_embs = np.stack([id_to_emb[oid] for oid in pool_ids]).astype(np.float32)
+    G_pool = pool_embs @ pool_embs.T
+    G_pool = G_pool.astype(np.float32)
+    og_path = os.path.join(out_dir, "option_gram.bin")
+    og_meta_path = os.path.join(out_dir, "option_gram_meta.json")
+    G_pool.tofile(og_path)
+    with open(og_meta_path, "w") as f:
+        json.dump({"option_ids": pool_ids, "n": len(pool_ids), "dtype": "float32",
+                   "shape": [len(pool_ids), len(pool_ids)]}, f)
+    print(f"  [{domain}] wrote {og_path} ({os.path.getsize(og_path)//1024} KB, n={len(pool_ids)})")
+
     # Per-option K-vector projections V·(φ - μ) for the prediction-check screen.
     directions_rel = cfg.get("directions")
     directions_path = os.path.join(ROOT, directions_rel) if directions_rel else None
