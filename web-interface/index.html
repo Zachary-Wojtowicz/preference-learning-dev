@@ -145,6 +145,7 @@ var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=nul
 var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeedback=20,numTraining=5;
 var dimQuantiles=null;  // {dimension_id -> [b1, b2, ..., b_{n-1}]} per-dim quantile boundaries
 var deltaGram=null,deltaGramN=0,trialProjections=null,evalState=null;
+var optionProjections=null,predictionState=null;
 var HIDDEN_FIELDS=new Set(['title','_rendered_text','movie_id','wine_id','action_id','completion_id','option_id','id','row_id','text','prompt_hash','category','embedding','rating_count','taster_twitter_handle','points','price','taster_name','dilemma_id','topic_group','situation','values','consequence']);
 var FIELD_LABELS={plot_summary:'Plot',genres:'Genres',director:'Director',stars:'Stars',variety:'Variety',country:'Country',province:'Province',points:'Rating',price:'Price',description:'Description',user_prompt:'Question',assistant_response:'Response',winery:'Winery',designation:'Designation',region_1:'Region',taster_name:'Reviewer'};
 var DEFAULT_CATEGORIES=[
@@ -271,12 +272,14 @@ Promise.all([
   fetch(basePath+'experiment_config.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
   fetch(basePath+'trial_projections.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
   fetch(basePath+'delta_gram.bin').then(function(r){if(!r.ok)throw null;return r.arrayBuffer()}).catch(function(){return null}),
-  fetch(basePath+'polished_labels.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null})
+  fetch(basePath+'polished_labels.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null}),
+  fetch(basePath+'option_projections.json').then(function(r){if(!r.ok)throw null;return r.json()}).catch(function(){return null})
 ]).then(function(arr){
   trials=arr[0];experimentConfig=arr[1];trialProjections=arr[2];
   if(arr[3]){deltaGram=new Float32Array(arr[3]);deltaGramN=Math.round(Math.sqrt(deltaGram.length));}
   trials.forEach(liftSharedFields);
   applyPolishedLabels(arr[4]);
+  optionProjections=arr[5];
   if(arr[1]&&arr[1].gram_matrix)gramMatrix=arr[1].gram_matrix;
   if(arr[1]&&arr[1].top_k_sliders)topKSliders=arr[1].top_k_sliders;
   loadCategories();
@@ -606,10 +609,10 @@ function submitTrial(){
     response.inference_values=iv;
   }
   responses.push(response);currentStep++;
-  if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();}else if(!evalState){startEvaluation();}else finishExperiment();
+  if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();}else if(!evalState){startEvaluation();}else if(!predictionState){startPrediction();}else finishExperiment();
 }
 function finishExperiment(){
-  var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,num_training:trainingResponses.length,training_responses:trainingResponses,timestamp:new Date().toISOString(),responses:responses,evaluation:evalState||null};
+  var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,num_training:trainingResponses.length,training_responses:trainingResponses,timestamp:new Date().toISOString(),responses:responses,evaluation:evalState||null,prediction_check:predictionState||null};
   if(postUrl)fetch(postUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(output)}).catch(function(){});
   if(window.parent!==window){try{window.parent.postMessage({type:'experiment_complete',payload:output},'*');}catch(e){}}
   renderResults(output);
@@ -758,11 +761,11 @@ function buildInferences(scores,dims,nShow){
 function startEvaluation(){
   var comp=experimentConfig&&experimentConfig.comparison;
   var allowed=comp&&Array.isArray(comp.show_for_conditions)?comp.show_for_conditions:null;
-  if(allowed&&allowed.indexOf(conditionKey)<0){evalState={skipped:'condition_excluded'};finishExperiment();return;}
+  if(allowed&&allowed.indexOf(conditionKey)<0){evalState={skipped:'condition_excluded'};proceedAfterEval();return;}
   var inputs=buildEvalInputs();
-  if(!inputs){evalState={skipped:'no_eval_data'};finishExperiment();return;}
-  if(!inputs.D){evalState={skipped:'missing_delta_gram'};finishExperiment();return;}
-  if(!gramMatrix){evalState={skipped:'missing_gram_matrix'};finishExperiment();return;}
+  if(!inputs){evalState={skipped:'no_eval_data'};proceedAfterEval();return;}
+  if(!inputs.D){evalState={skipped:'missing_delta_gram'};proceedAfterEval();return;}
+  if(!gramMatrix){evalState={skipped:'missing_gram_matrix'};proceedAfterEval();return;}
   var lamS=(comp&&comp.lambda_standard)||10.0;
   var lamP=(comp&&comp.lambda_partial)||1.0;
   var nShow=(comp&&comp.n_dimensions_shown)||10;
@@ -896,6 +899,116 @@ function renderEvaluation(){
     evalState.rating=selected.key;
     evalState.rating_numeric=selected.value;
     evalState.response_time_ms=Date.now()-evalState.started_at;
+    proceedAfterEval();
+  });
+}
+
+function proceedAfterEval(){
+  if(predictionState){finishExperiment();return;}
+  startPrediction();
+}
+
+// ===== Prediction-check screen =====
+//   Fits a partial-projection model (β with prior β₀ from feedback if available,
+//   else β₀=0). Computes utility u(option) = β · V·φ(option) for every option in
+//   the candidate pool, picks argmax / argmin, and asks the participant to rate
+//   on a 6-point Likert how strongly they'd choose one over the other.
+function fitPredictionBeta(){
+  var inputs=buildEvalInputs();
+  if(!inputs||!inputs.U||!gramMatrix)return null;
+  var lamP=(experimentConfig&&experimentConfig.comparison&&experimentConfig.comparison.lambda_partial)||1.0;
+  var beta0;
+  if(inputs.hasMultipliers){
+    var sol=_solveLinear(gramMatrix,inputs.mean);
+    beta0=sol||new Array(inputs.K).fill(0);
+  }else beta0=new Array(inputs.K).fill(0);
+  var beta=fitNewtonPartial(inputs.U,inputs.y,gramMatrix,beta0,lamP,15);
+  return {beta:beta,K:inputs.K,hasMultipliers:inputs.hasMultipliers};
+}
+function rankOptionsByUtility(beta){
+  if(!optionProjections||!optionProjections.options)return null;
+  var lookup={};trials.forEach(function(t){
+    if(t.option_a_id&&t.option_a)lookup[String(t.option_a_id)]=t.option_a;
+    if(t.option_b_id&&t.option_b)lookup[String(t.option_b_id)]=t.option_b;
+  });
+  var bestId=null,bestU=-Infinity,worstId=null,worstU=Infinity;
+  var K=beta.length;
+  Object.keys(optionProjections.options).forEach(function(id){
+    if(!lookup[id])return;
+    var v=optionProjections.options[id];if(!Array.isArray(v)||v.length!==K)return;
+    var u=0;for(var k=0;k<K;k++)u+=beta[k]*v[k];
+    if(u>bestU){bestU=u;bestId=id;}
+    if(u<worstU){worstU=u;worstId=id;}
+  });
+  if(!bestId||!worstId||bestId===worstId)return null;
+  return {topId:bestId,topUtility:bestU,topOption:lookup[bestId],
+          bottomId:worstId,bottomUtility:worstU,bottomOption:lookup[worstId]};
+}
+function startPrediction(){
+  if(!optionProjections||!optionProjections.options){predictionState={skipped:'missing_option_projections'};finishExperiment();return;}
+  if(!gramMatrix){predictionState={skipped:'missing_gram_matrix'};finishExperiment();return;}
+  var fit=fitPredictionBeta();
+  if(!fit){predictionState={skipped:'cannot_fit'};finishExperiment();return;}
+  var ranked=rankOptionsByUtility(fit.beta);
+  if(!ranked){predictionState={skipped:'no_options_ranked'};finishExperiment();return;}
+  var topOnLeft=(hashStr(participantId)%2)===0;
+  var modelName=fit.hasMultipliers?'partial':'projected';
+  predictionState={
+    model: modelName,
+    top_option_id:    ranked.topId,
+    top_option_label: ranked.topOption&&ranked.topOption.label||ranked.topId,
+    bottom_option_id:    ranked.bottomId,
+    bottom_option_label: ranked.bottomOption&&ranked.bottomOption.label||ranked.bottomId,
+    top_on_side: topOnLeft?'A':'B',
+    top_utility:    Math.round(ranked.topUtility*1e4)/1e4,
+    bottom_utility: Math.round(ranked.bottomUtility*1e4)/1e4,
+    rating: null,
+    rating_numeric: null,
+    rating_label: null,
+    predicted_correct: null,
+    response_time_ms: null,
+    started_at: Date.now(),
+    _leftOption:  topOnLeft?ranked.topOption:ranked.bottomOption,
+    _rightOption: topOnLeft?ranked.bottomOption:ranked.topOption,
+  };
+  renderPrediction();
+}
+function renderPrediction(){
+  var st=predictionState;
+  var promptText=(experimentConfig&&experimentConfig.choice_context)||'Which would you prefer?';
+  var h='<div class="eval-intro"><h1>One last question</h1>';
+  h+='<p>Based on the choices you made, here are the two options we predict you’d feel most strongly about (one as your top pick, one as your last pick). Tell us how strongly you would actually choose between them.</p></div>';
+  h+='<div class="prompt">'+esc(promptText)+'</div>';
+  h+='<div class="options">'+buildCard('a',st._leftOption)+buildCard('b',st._rightOption)+'</div>';
+  h+='<div class="likert-prompt">How strongly would you choose between these?</div>';
+  h+='<div class="likert-row">';
+  LIKERT_LEVELS.forEach(function(lv){
+    var arrow=lv.side==='A'?'A':'B';
+    h+='<button class="likert-btn" data-key="'+lv.key+'" data-value="'+lv.value+'"><span class="arrow">'+arrow+'</span>'+esc(lv.label)+'</button>';
+  });
+  h+='</div>';
+  h+='<div class="submit-row"><button class="btn" id="predSubmit" disabled>Submit</button></div>';
+  app.innerHTML=h;
+  window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
+  var selected=null;
+  app.querySelectorAll('.likert-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      app.querySelectorAll('.likert-btn').forEach(function(b){b.classList.remove('selected');});
+      btn.classList.add('selected');
+      selected={key:btn.dataset.key,value:parseInt(btn.dataset.value,10),label:btn.textContent.trim()};
+      document.getElementById('predSubmit').disabled=false;
+    });
+  });
+  document.getElementById('predSubmit').addEventListener('click',function(){
+    if(!selected)return;
+    predictionState.rating=selected.key;
+    predictionState.rating_numeric=selected.value;
+    predictionState.rating_label=selected.label;
+    // predicted_correct: rating sign agrees with the predicted-top side
+    var topSide=predictionState.top_on_side;
+    predictionState.predicted_correct=(topSide==='A'&&selected.value<0)||(topSide==='B'&&selected.value>0);
+    predictionState.response_time_ms=Date.now()-predictionState.started_at;
+    delete predictionState._leftOption;delete predictionState._rightOption;
     finishExperiment();
   });
 }

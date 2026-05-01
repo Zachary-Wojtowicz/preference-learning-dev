@@ -22,28 +22,34 @@ WEB  = os.path.join(ROOT, "web-interface")
 
 DOMAINS = {
     "movies_100": {
-        "parquet": "datasets/movies_100/movielens-32m-enriched-qwen3emb-100-embedded.parquet",
-        "id_col":  "movie_id",
+        "parquet":    "datasets/movies_100/movielens-32m-enriched-qwen3emb-100-embedded.parquet",
+        "id_col":     "movie_id",
+        "directions": "method_directions/outputs/movies_100/directions.npz",
     },
     "scruples_dilemmas": {
-        "parquet": "datasets/scruples_dilemmas/selected_actions-embedded.parquet",
-        "id_col":  "action_id",
+        "parquet":    "datasets/scruples_dilemmas/selected_actions-embedded.parquet",
+        "id_col":     "action_id",
+        "directions": "method_directions/outputs/scruples_dilemmas/directions.npz",
     },
     "wines_100": {
-        "parquet": "datasets/wines_100/wines_100-embedded.parquet",
-        "id_col":  "wine_id",
+        "parquet":    "datasets/wines_100/wines_100-embedded.parquet",
+        "id_col":     "wine_id",
+        "directions": "method_directions/outputs/wines_100/directions.npz",
     },
     "scruples_200": {
-        "parquet": "datasets/scruples_200/scruples_200-embedded.parquet",
-        "id_col":  "action_id",
+        "parquet":    "datasets/scruples_200/scruples_200-embedded.parquet",
+        "id_col":     "action_id",
+        "directions": "method_directions/outputs/scruples_200/directions.npz",
     },
     "movies_50": {
-        "parquet": "datasets/movielens-32m-enriched-50-embedded.parquet",
-        "id_col":  "movie_id",
+        "parquet":    "datasets/movielens-32m-enriched-50-embedded.parquet",
+        "id_col":     "movie_id",
+        "directions": "method_directions/outputs/movies_50/directions.npz",
     },
     "dailydilemmas": {
-        "parquet": "datasets/dailydilemmas/selected_actions-embedded.parquet",
-        "id_col":  "action_id",
+        "parquet":    "datasets/dailydilemmas/selected_actions-embedded.parquet",
+        "id_col":     "action_id",
+        "directions": "method_directions/outputs/dailydilemmas/directions.npz",
     },
 }
 
@@ -126,6 +132,36 @@ def export_domain(domain: str):
         json.dump(ec, f, indent=2)
     print(f"  [{domain}] lambdas auto-scaled to diag_mean={diag_mean:.4f}: "
           f"lam_std={ec['comparison']['lambda_standard']}, lam_part={ec['comparison']['lambda_partial']}")
+
+    # Per-option K-vector projections V·(φ - μ) for the prediction-check screen.
+    directions_rel = cfg.get("directions")
+    directions_path = os.path.join(ROOT, directions_rel) if directions_rel else None
+    if directions_path and os.path.exists(directions_path):
+        npz = np.load(directions_path)
+        V_raw = npz["directions_raw"].astype(np.float64)            # (K, d)
+        mu    = npz["mean_embedding"].astype(np.float64)            # (d,)
+        norms = np.linalg.norm(V_raw, axis=1, keepdims=True); norms[norms == 0] = 1.0
+        V = V_raw / norms                                            # (K, d), unit rows
+        K = V.shape[0]
+        # Restrict to the candidate pool that actually appears in trials (so the
+        # frontend always has card metadata for every ranked option).
+        pool_ids = set()
+        for t in trials:
+            pool_ids.add(str(t["option_a_id"])); pool_ids.add(str(t["option_b_id"]))
+        opts_proj = {}
+        for _, row in df.iterrows():
+            oid = row["__id_str"]
+            if oid not in pool_ids:
+                continue
+            phi = np.asarray(row["embedding"], dtype=np.float64)
+            proj = V @ (phi - mu)
+            opts_proj[oid] = [round(float(x), 6) for x in proj]
+        opt_path = os.path.join(out_dir, "option_projections.json")
+        with open(opt_path, "w") as f:
+            json.dump({"K": K, "options": opts_proj}, f)
+        print(f"  [{domain}] wrote {opt_path}  (K={K}, n_options={len(opts_proj)})")
+    else:
+        print(f"  [{domain}] SKIP option_projections: directions.npz not found at {directions_path}")
 
 if __name__ == "__main__":
     targets = sys.argv[1:] if len(sys.argv) > 1 else list(DOMAINS.keys())

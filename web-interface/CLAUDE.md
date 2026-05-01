@@ -530,6 +530,62 @@ The `experiment_complete` postMessage payload gains an `evaluation` block:
 
 If skipped: `"evaluation": {"skipped": "missing_delta_gram" | "missing_gram_matrix" | "no_eval_data" | "condition_excluded"}`.
 
+## Post-Experiment Prediction-Check Screen
+
+After the comparison/eval screen (or after it's skipped), a final screen presents the **two options the model predicts the participant will feel most strongly about** — one as their top pick, one as their last pick — and asks the participant to rate, on a 6-point Likert (no neutral), how strongly they would actually choose between them.
+
+### Model used
+
+| Condition | Fit | β₀ prior |
+|-----------|-----|----------|
+| `inference_affirm`, `inference_categories` | Partial (K-dim primal) | from per-trial inference multipliers |
+| Everything else (`choice_only`, sliders, checkboxes) | Partial / "projected" | β₀ = 0 |
+
+Same Newton+L2 fitter as the comparison screen's Summary B. Predicted utility is `u(option) = β · V·φ(option)`. The candidate pool is the set of options that appear in `trials.json` for the domain. Argmax → predicted top, argmin → predicted bottom.
+
+### Counterbalancing
+
+`hash(pid) % 2` determines whether the predicted-top option lands on the left (A) or right (B), so participants don't develop a side bias. The original side is recorded as `top_on_side`.
+
+### Required artifacts on the client
+
+| File | Purpose |
+|------|---------|
+| `outputs/<domain>/trial_projections.json` | Same as before — used to refit β |
+| `outputs/<domain>/option_projections.json` | **New.** Per-option K-vector `V·(φ - μ)` for every option in the candidate pool. |
+| `outputs/<domain>/experiment_config.json` → `gram_matrix` | Same as before |
+
+Generate / refresh `option_projections.json`:
+```bash
+cd web-interface
+python3 export_eval_data.py             # all known domains
+python3 export_eval_data.py movies_100  # single domain
+```
+Requires `method_directions/outputs/<domain>/directions.npz` to be locally available. Domains without local directions silently skip the file — the frontend will then skip the prediction screen for that domain.
+
+### Output payload
+
+```json
+"prediction_check": {
+  "model": "partial",                      // or "projected" for non-inference conditions
+  "top_option_id":     "57532",
+  "top_option_label":  "The Matrix (1999)",
+  "top_utility":       3.412,
+  "bottom_option_id":     "1234",
+  "bottom_option_label":  "Some Movie (...)",
+  "bottom_utility":    -2.871,
+  "top_on_side":       "B",                // counterbalance flag — "A" = left, "B" = right
+  "rating":            "B_much_better",
+  "rating_numeric":    3,                  // -3 (A much better) ... +3 (B much better), no 0
+  "rating_label":      "B is much better",
+  "predicted_correct": true,               // rating sign agrees with top_on_side
+  "response_time_ms":  6420,
+  "started_at":        1714326400000
+}
+```
+
+If skipped: `"prediction_check": {"skipped": "missing_option_projections" | "missing_gram_matrix" | "cannot_fit" | "no_options_ranked"}`.
+
 ## Design Notes
 
 - **Single file, no dependencies.** The entire app is one HTML file with inline CSS and JS.
