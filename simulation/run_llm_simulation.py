@@ -8,8 +8,10 @@ LLM personas replace the synthetic weight-vec users. Each persona:
      per-dim feedback when the condition asks for it (mirrors the actual
      web-interface UI).
   3. We run end-of-experiment Newton+L2 fits — kernel-logistic standard
-     and K-dim primal partial/projected with G-shape prior centered at
-     β₀ = G⁻¹·mean(λ_t).
+     and K-dim primal feedback-adjusted/projected. The K-dim fit uses a
+     feedback-adjusted design matrix Ũ = Λ ⊙ U (per-trial, per-dimension
+     scaling by participant multipliers; passthrough λ=1 on invisible dims)
+     with a zero-centered G-shape prior.
   4. Predicted experimental DV: P(participant prefers K-dim summary over
      standard summary) ≈ σ(τ · ΔLL) on the held-out test set.
 
@@ -70,13 +72,11 @@ def load_data(embeddings_parquet, bt_scores_csv, directions_npz, option_id_colum
     V = V_raw / norms
 
     G = V @ V.T
-    G_reg = G + 1e-6 * np.eye(G.shape[0])
-    G_inv = np.linalg.inv(G_reg)
 
     print(f"  Gram matrix condition number: {np.linalg.cond(G):.1f}")
     print(f"  Max inter-dimension correlation: {np.abs(G - np.eye(G.shape[0])).max():.3f}")
 
-    return embeddings, bt_scores, V, G, G_inv, mu, option_ids, dim_names
+    return embeddings, bt_scores, V, G, mu, option_ids, dim_names
 
 
 def load_dimensions(path):
@@ -490,16 +490,6 @@ def fit_partial_primal(U, y, G, beta0, lam, max_iter=15, tol=1e-7):
     return beta
 
 
-def compute_beta0(lam_traj, visible_traj, G_inv):
-    K = lam_traj.shape[1]
-    avg = np.zeros(K)
-    for k in range(K):
-        n_visible = visible_traj[:, k].sum()
-        if n_visible > 0:
-            avg[k] = lam_traj[visible_traj[:, k], k].mean()
-    return G_inv @ avg
-
-
 def heldout_log_likelihood(logits, choices):
     p = sigmoid(logits)
     eps = 1e-10
@@ -521,7 +511,6 @@ def simulate_one_persona(persona, ctx, args, client):
     embeddings = ctx["embeddings"]
     V = ctx["V"]
     G = ctx["G"]
-    G_inv = ctx["G_inv"]
     mu = ctx["mu"]
     quintile_bounds = ctx["quintile_bounds"]
     mults = ctx["mults"]
@@ -640,13 +629,19 @@ def simulate_one_persona(persona, ctx, args, client):
         D = deltas @ deltas.T
         U = deltas @ V.T
         alpha = fit_standard_kernel(D, ys.astype(float), args.lambda_standard)
+        # Feedback-adjusted design matrix Ũ = Λ ⊙ U (visible dims scaled by
+        # participant multipliers; invisible dims pass through with λ=1).
+        # choice_only has no feedback → Ũ = U → equivalent to projected fit.
         if cond == "choice_only":
-            beta0 = np.zeros(K)
+            U_adj = U.copy()
             other_label = "projected"
         else:
-            beta0 = compute_beta0(lam_traj, visible_traj, G_inv)
-            other_label = "partial"
-        beta = fit_partial_primal(U, ys.astype(float), G, beta0, args.lambda_partial)
+            feedback_matrix = np.ones_like(U)
+            feedback_matrix[visible_traj] = lam_traj[visible_traj]
+            U_adj = feedback_matrix * U
+            other_label = "feedback_adjusted"
+        beta0 = np.zeros(K)
+        beta = fit_partial_primal(U_adj, ys.astype(float), G, beta0, args.lambda_partial)
 
         # Held-out log-likelihood
         cross_kernel = test_delta @ deltas.T
@@ -808,7 +803,7 @@ def run_simulation(args):
     client = LLMClient(raw_client, cache_path=output_dir / "llm_cache.json")
 
     print("Loading data...")
-    embeddings, bt_scores, V, G, G_inv, mu, option_ids, dim_names = load_data(
+    embeddings, bt_scores, V, G, mu, option_ids, dim_names = load_data(
         args.embeddings_parquet, args.bt_scores, args.directions,
         option_id_column=args.option_id_column,
     )
@@ -847,7 +842,7 @@ def run_simulation(args):
                          f"separated by '|'.")
 
     ctx = {
-        "embeddings": embeddings, "V": V, "G": G, "G_inv": G_inv, "mu": mu,
+        "embeddings": embeddings, "V": V, "G": G, "mu": mu,
         "quintile_bounds": quintile_bounds, "mults": DEFAULT_MULTS,
         "category_labels": category_labels,
         "dim_metadata": dim_metadata, "descriptions": descriptions,

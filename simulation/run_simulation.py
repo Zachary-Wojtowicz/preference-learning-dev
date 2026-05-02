@@ -80,13 +80,11 @@ def load_data(embeddings_parquet, bt_scores_csv, directions_npz, option_id_colum
     V = V_raw / norms
 
     G = V @ V.T
-    G_reg = G + 1e-6 * np.eye(G.shape[0])
-    G_inv = np.linalg.inv(G_reg)
 
     print(f"  Gram matrix condition number: {np.linalg.cond(G):.1f}")
     print(f"  Max inter-dimension correlation: {np.abs(G - np.eye(G.shape[0])).max():.3f}")
 
-    return embeddings, bt_scores, V, G, G_inv, mu, option_ids, dim_names
+    return embeddings, bt_scores, V, G, mu, option_ids, dim_names
 
 
 # ---------------------------------------------------------------------------
@@ -258,18 +256,6 @@ def fit_partial_primal(U, y, G, beta0, lam, max_iter=15, tol=1e-7):
     return beta
 
 
-def compute_beta0(lam_traj, visible_traj, G_inv):
-    """β₀ = G⁻¹ · mean_t(λ_t), averaged over visible-trials per dim;
-    0 for dims never visible."""
-    K = lam_traj.shape[1]
-    avg = np.zeros(K)
-    for k in range(K):
-        n_visible = visible_traj[:, k].sum()
-        if n_visible > 0:
-            avg[k] = lam_traj[visible_traj[:, k], k].mean()
-    return G_inv @ avg
-
-
 # ---------------------------------------------------------------------------
 # Summary quality
 # ---------------------------------------------------------------------------
@@ -323,7 +309,6 @@ def simulate_one_user(user, ctx, args, rng):
     bt_scores = ctx["bt_scores"]
     V = ctx["V"]
     G = ctx["G"]
-    G_inv = ctx["G_inv"]
     mu = ctx["mu"]
     quintile_bounds = ctx["quintile_bounds"]
     mults = ctx["mults"]
@@ -660,7 +645,7 @@ def run_simulation(args):
     rng = np.random.default_rng(args.seed)
 
     print("Loading data...")
-    embeddings, bt_scores, V, G, G_inv, mu, option_ids, dim_names = load_data(
+    embeddings, bt_scores, V, G, mu, option_ids, dim_names = load_data(
         args.embeddings_parquet, args.bt_scores, args.directions,
         option_id_column=args.option_id_column,
     )
@@ -680,7 +665,7 @@ def run_simulation(args):
 
     ctx = {
         "embeddings": embeddings, "bt_scores": bt_scores,
-        "V": V, "G": G, "G_inv": G_inv, "mu": mu,
+        "V": V, "G": G, "mu": mu,
         "quintile_bounds": quintile_bounds, "mults": DEFAULT_MULTS,
     }
 
