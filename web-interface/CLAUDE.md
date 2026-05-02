@@ -395,12 +395,14 @@ Qualtrics interprets `${` as piped text. In any QuestionJS code, use `\x24{` or 
 | `inference_affirm` | `inference_values` (action: `affirm` / `remove` / `none`) |
 | `inference_categories` | `inference_values` (action: `modify` / `none`, category from picker) |
 
-**Multiplier computation:**
-- Base multiplier comes from the selected category's `mult` value
-- `action: "affirm"` multiplies by 1.5 (e.g., "love" 1.5 × 1.5 = 2.25)
-- `action: "moderate"` uses the moderated category's mult (one step toward center)
-- `action: "remove"` forces multiplier to 0.0 regardless of category
-- `action: "none"` uses the default category's mult unchanged
+**Multiplier computation and model fitting:**
+- Multipliers from category feedback are used to build a **feedback-adjusted design matrix** Ũ = Λ ⊙ U
+- Ũ[t,k] = multiplier × U[t,k] for visible dimensions, U[t,k] for invisible (passthrough)
+- The K-dim model β is then fit on Ũ via Newton logistic regression with zero-centered G-shaped prior
+- This means participant feedback directly scales how each trial's evidence contributes per-dimension
+- `action: "affirm"` applies a 1.5× bonus to the category multiplier before scaling
+- `action: "remove"` forces multiplier to 0.0 (silences that dimension for that trial)
+- Negative multipliers (e.g., "prefer to skip" = −1.5) flip the gradient direction
 
 ## Generating Trials
 
