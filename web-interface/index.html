@@ -474,7 +474,7 @@ function renderTrial(){
   if(condition.show_checkboxes&&trial.sliders&&trial.sliders.length>0)
     h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Which of these dimensions were relevant?</div><div id="checkboxContainer"></div></div></div>';
   if(infMode()&&trial.sliders&&trial.sliders.length>0)
-    h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Based on your choice, we think:</div><div id="inferenceContainer"></div></div></div>';
+    h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Based on your choice in this context, an algorithm would infer:</div><div id="inferenceContainer"></div></div></div>';
   h+='<div class="submit-row"><span id="affirmHint" class="affirm-hint"></span><button class="btn" id="submitBtn" disabled>Submit</button></div>';
   app.innerHTML=h;
   app.querySelectorAll('.option-card').forEach(function(el){el.addEventListener('click',function(){selectOption(el.dataset.option)});});
