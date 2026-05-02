@@ -9,22 +9,24 @@ summary?* — rather than measuring online learning curves.
 
 Three conditions:
   1. choice_only            — binary choice, no per-dim feedback.
-                              standard fit vs. projected fit (β₀ = 0).
+                              standard fit vs. projected fit (Ũ = U).
   2. inference_affirm       — top-K=5 visible dims, Affirm/Moderate/Remove.
-                              standard vs. partial fit (β₀ = G⁻¹·mean(λ_t)).
+                              standard vs. feedback-adjusted fit (Ũ = Λ ⊙ U).
   3. inference_categories   — top-K=5 visible dims, 5-category picker.
-                              standard vs. partial fit (β₀ from λ_t).
+                              standard vs. feedback-adjusted fit (Ũ = Λ ⊙ U).
 
 Pipeline per simulated user × condition:
   1. Sample T trials of (a, b); user chooses by their true K-vec w*.
   2. For inference conditions: pick top-5 dims by |V·φ_chosen|, compute
      model's pre-selected category via per-dim quintile bucketing of the
      trial-pool projections, simulate the participant's per-dim feedback
-     (with calibrated noise) → λ_t (K-vec, 0 for invisible/no-effect).
+     (with calibrated noise) → λ_t (K-vec, 1.0 for invisible dims).
   3. End-of-experiment batch MAP fits via Newton+L2 (mirrors web-interface
      post-eval code path):
         standard       — kernel logistic in dual form, full d-dim kernel
-        partial/proj   — K-dim primal logistic, G-shape prior centered at β₀
+        feedback-adj   — K-dim primal logistic on Ũ = Λ ⊙ U, zero-centered
+                         G-shape prior. Feedback scales the design matrix
+                         per-trial per-dimension rather than informing a prior.
   4. Score each fit: Spearman(scores_K, w*) + top-N sign-agreement.
   5. Predict participant rating: σ(τ · (Q_other − Q_standard)).
 
@@ -406,14 +408,20 @@ def simulate_one_user(user, ctx, args, rng):
         alpha = fit_standard_kernel(D, ys.astype(float), args.lambda_standard)
         scores_std = U.T @ alpha  # (K,)
 
-        # Partial / projected fit (K-dim primal with prior)
+        # Feedback-adjusted fit (K-dim primal on Ũ = Λ ⊙ U)
+        # For inference conditions: Ũ[t,k] = λ_tk * U[t,k] for visible dims,
+        # U[t,k] for invisible dims (λ_tk = 1.0 passthrough).
+        # For choice_only: Ũ = U (pure projection, no adjustment).
         if cond == "choice_only":
-            beta0 = np.zeros(K)
+            U_adj = U.copy()
             other_label = "projected"
         else:
-            beta0 = compute_beta0(lam_traj, visible_traj, G_inv)
-            other_label = "partial"
-        beta = fit_partial_primal(U, ys.astype(float), G, beta0, args.lambda_partial)
+            feedback_matrix = np.ones_like(U)
+            feedback_matrix[visible_traj] = lam_traj[visible_traj]
+            U_adj = feedback_matrix * U
+            other_label = "feedback_adjusted"
+        beta0 = np.zeros(K)
+        beta = fit_partial_primal(U_adj, ys.astype(float), G, beta0, args.lambda_partial)
         scores_other = G @ beta  # (K,)
 
         # Summary quality vs ground truth

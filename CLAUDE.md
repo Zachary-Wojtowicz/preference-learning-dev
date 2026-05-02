@@ -154,10 +154,32 @@ V ∈ ℝᴷˣᵈ (K direction vectors, not orthogonal). Gram matrix G = VVᵀ (
 ### Four Learning Conditions
 | Condition | Update rule | Signal per trial |
 |-----------|------------|------------------|
-| Standard | θ += lr·(y−p)·δ | 1 bit (which option chosen) |
-| Projected | θ += lr·(y−p)·Vᵀ G⁻¹ Vδ | 1 bit, restricted to K-dim subspace |
-| Slider/Inference | θ += lr·(y−p)·Vᵀ G⁻¹ λ_adj | K continuous values (category multipliers) |
-| Partial | blend of standard + slider | 1 bit + K continuous values |
+| Standard | Kernel logistic on D (full d-dim) | 1 bit (which option chosen) |
+| Projected | K-dim primal on U, zero prior | 1 bit, restricted to K-dim subspace |
+| Feedback-adjusted | K-dim primal on Ũ = Λ ⊙ U, zero prior | 1 bit + K multipliers (category feedback scales the design matrix) |
+
+### Feedback-Adjusted Design Matrix (Our Method)
+Participant feedback scales the design matrix per-trial, per-dimension before fitting:
+
+```
+Ũ[t,k] = λ_tk · U[t,k]    if dim k was visible on trial t
+Ũ[t,k] = U[t,k]           if dim k was NOT visible on trial t
+```
+
+where λ_tk is the multiplier from the participant's selected category (e.g., "love" = 1.5, "indifferent" = 0.0, "prefer to skip" = −1.5). Then fit standard K-dim logistic regression on Ũ:
+
+```
+minimize  −Σ_t log-likelihood(β; Ũ_t, y_t)  +  (λ/2) βᵀ G β
+```
+
+The gradient ∂L/∂β_k = Σ_t (p_t − y_t) · λ_tk · U_tk + λ(Gβ)_k is exactly the sum of the per-trial per-dimension SGD updates — this is the batch analogue of the original online SGD idea.
+
+Key properties:
+- Negative multipliers flip the gradient direction ("I chose A despite its action, not because of it")
+- Zero multipliers silence a dimension's contribution from that trial
+- Invisible dimensions pass through unmodified (λ_tk = 1.0)
+- No β₀ prior needed — feedback information is in the data itself
+- Preserves per-trial variation (unlike the old β₀ = G⁻¹·mean(λ_t) which averaged across trials)
 
 ### Inference Multipliers
 When using inference conditions, the user assigns each visible dimension a category. The category multiplier scales the gradient component for that dimension:
@@ -264,7 +286,9 @@ The safety demonstration: decompose the fine-tuning gradient g = mean(φ(bad)) �
 
 4. **Categories are domain-specific**: The 5-level scale (e.g., "prefer to skip" → "love") is stored in `experiment_config.json → inference_categories`. Different domains need different language (movies vs. moral dilemmas).
 
-5. **Inference conditions replace sliders for the experiment**: The slider UI was confusing for participants. Two inference conditions replace it: `inference_affirm` (Remove/Moderate/Affirm) and `inference_categories` (5-level category picker). The slider conditions remain for internal testing/comparison.
+5. **Feedback-adjusted design matrix (not prior-based)**: Participant feedback scales the design matrix Ũ = Λ ⊙ U per-trial per-dimension, rather than informing a prior β₀. This preserves trial-level variation and allows sign-flipping (negative multipliers). The previous approach (β₀ = G⁻¹·mean(λ_t)) averaged feedback across trials and only used it as a soft prior nudge.
+
+6. **Inference conditions replace sliders for the experiment**: The slider UI was confusing for participants. Two inference conditions replace it: `inference_affirm` (Remove/Affirm) and `inference_categories` (5-level category picker). The slider conditions remain for internal testing/comparison.
 
 ## Session Transcripts
 
