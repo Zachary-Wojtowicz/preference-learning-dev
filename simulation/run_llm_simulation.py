@@ -1,18 +1,22 @@
 """
 LLM-Persona Preference Learning Simulation (revamped to match the 3 final
-experimental conditions).
+experimental conditions, with checkpoint-based learning curves).
 
 LLM personas replace the synthetic weight-vec users. Each persona:
   1. Makes binary choices on a held-out test set (ground truth).
   2. For each of 3 conditions, runs through T training trials, providing
      per-dim feedback when the condition asks for it (mirrors the actual
-     web-interface UI).
-  3. We run end-of-experiment Newton+L2 fits — kernel-logistic standard
-     and K-dim primal feedback-adjusted/projected. The K-dim fit uses a
-     feedback-adjusted design matrix Ũ = Λ ⊙ U (per-trial, per-dimension
-     scaling by participant multipliers; passthrough λ=1 on invisible dims)
-     with a zero-centered G-shape prior.
-  4. Predicted experimental DV: P(participant prefers K-dim summary over
+     web-interface UI). The persona's choices and feedback are collected
+     ONCE then cached — checkpoint refits don't trigger new LLM calls.
+  3. Refit at every checkpoint t ∈ checkpoints (default: every trial) on
+     the prefix [0:t]:
+        standard       — kernel logistic in dual form
+        feedback-adj   — K-dim primal logistic on Ũ = Λ ⊙ U with a
+                         zero-centered G-shape prior
+     Compute held-out test accuracy + log-likelihood at each checkpoint.
+  4. Final-T metrics → predicted_dv.png + summary.md;
+     all checkpoints → learning_curves.{csv,png}.
+  5. Predicted experimental DV: P(participant prefers K-dim summary over
      standard summary) ≈ σ(τ · ΔLL) on the held-out test set.
 
 Standalone script — does NOT import run_simulation.py.
@@ -490,6 +494,19 @@ def fit_partial_primal(U, y, G, beta0, lam, max_iter=15, tol=1e-7):
     return beta
 
 
+def make_checkpoints(num_trials, step):
+    """Trial counts at which to refit. step<=0 → only num_trials.
+    step=1 → every trial. step>1 → multiples of step, plus 1 and num_trials."""
+    if step <= 0:
+        return [num_trials]
+    pts = list(range(step, num_trials + 1, step))
+    if 1 not in pts:
+        pts = [1] + pts
+    if pts[-1] != num_trials:
+        pts.append(num_trials)
+    return sorted(set(pts))
+
+
 def heldout_log_likelihood(logits, choices):
     p = sigmoid(logits)
     eps = 1e-10
@@ -625,39 +642,52 @@ def simulate_one_persona(persona, ctx, args, client):
                                        "pre_idx": vd["pre_idx"], "cat_idx": cat_idx,
                                        "applied": applied})
 
-        # Batch fits
-        D = deltas @ deltas.T
-        U = deltas @ V.T
-        alpha = fit_standard_kernel(D, ys.astype(float), args.lambda_standard)
-        # Feedback-adjusted design matrix Ũ = Λ ⊙ U (visible dims scaled by
-        # participant multipliers; invisible dims pass through with λ=1).
-        # choice_only has no feedback → Ũ = U → equivalent to projected fit.
-        if cond == "choice_only":
-            U_adj = U.copy()
-            other_label = "projected"
-        else:
-            feedback_matrix = np.ones_like(U)
-            feedback_matrix[visible_traj] = lam_traj[visible_traj]
-            U_adj = feedback_matrix * U
-            other_label = "feedback_adjusted"
-        beta0 = np.zeros(K)
-        beta = fit_partial_primal(U_adj, ys.astype(float), G, beta0, args.lambda_partial)
+        # Pre-compute full kernel/projection once; we'll slice into prefixes.
+        D_full = deltas @ deltas.T          # (T, T)
+        U_full = deltas @ V.T               # (T, K)
+        cross_full = test_delta @ deltas.T  # (M, T)
 
-        # Held-out log-likelihood
-        cross_kernel = test_delta @ deltas.T
-        logits_std = cross_kernel @ alpha
-        logits_other = test_U @ beta
-        ll_std = heldout_log_likelihood(logits_std, test_choices)
-        ll_other = heldout_log_likelihood(logits_other, test_choices)
-        acc_std = float(((logits_std > 0).astype(int) == test_choices).mean())
-        acc_other = float(((logits_other > 0).astype(int) == test_choices).mean())
-        rating = predicted_rating_from_ll(ll_other, ll_std, args.rating_temperature)
+        if cond == "choice_only":
+            other_label = "projected"
+            feedback_full = np.ones_like(U_full)
+        else:
+            other_label = "feedback_adjusted"
+            feedback_full = np.ones_like(U_full)
+            feedback_full[visible_traj] = lam_traj[visible_traj]
+        U_adj_full = feedback_full * U_full
+
+        checkpoints = make_checkpoints(args.num_trials, args.checkpoint_step)
+        ckpts = []
+        for t_end in checkpoints:
+            if t_end < 1 or t_end > args.num_trials:
+                continue
+            D_t = D_full[:t_end, :t_end]
+            U_adj_t = U_adj_full[:t_end]
+            y_t = ys[:t_end].astype(float)
+
+            alpha = fit_standard_kernel(D_t, y_t, args.lambda_standard)
+            beta = fit_partial_primal(U_adj_t, y_t, G, np.zeros(K),
+                                      args.lambda_partial)
+
+            cross_t = cross_full[:, :t_end]
+            logits_std = cross_t @ alpha
+            logits_other = test_U @ beta
+            ll_std = heldout_log_likelihood(logits_std, test_choices)
+            ll_other = heldout_log_likelihood(logits_other, test_choices)
+            acc_std = float(((logits_std > 0).astype(int) == test_choices).mean())
+            acc_other = float(((logits_other > 0).astype(int) == test_choices).mean())
+            rating = predicted_rating_from_ll(ll_other, ll_std,
+                                              args.rating_temperature)
+            ckpts.append({
+                "n_trials": int(t_end),
+                "ll_standard": ll_std, "ll_other": ll_other,
+                "acc_standard": acc_std, "acc_other": acc_other,
+                "rating_other_vs_standard": rating,
+            })
 
         cond_results[cond] = {
             "other_label": other_label,
-            "ll_standard": ll_std, "ll_other": ll_other,
-            "acc_standard": acc_std, "acc_other": acc_other,
-            "predicted_rating_other_vs_standard": rating,
+            "checkpoints": ckpts,
             "actions": action_log,
         }
 
@@ -670,21 +700,47 @@ def simulate_one_persona(persona, ctx, args, client):
 # Output
 # ---------------------------------------------------------------------------
 
-def aggregate_results(per_persona_results):
+def aggregate_final(per_persona_results):
+    """One row per (persona, condition) using the final-T checkpoint."""
     rows = []
     for pr in per_persona_results:
         pid = pr["persona_id"]
         for cond, r in pr["conditions"].items():
+            if not r["checkpoints"]:
+                continue
+            final = r["checkpoints"][-1]
             rows.append({
                 "persona_id": pid, "condition": cond, "other_label": r["other_label"],
-                "ll_standard": r["ll_standard"], "ll_other": r["ll_other"],
-                "acc_standard": r["acc_standard"], "acc_other": r["acc_other"],
-                "rating_other_vs_standard": r["predicted_rating_other_vs_standard"],
+                "n_trials": final["n_trials"],
+                "ll_standard": final["ll_standard"], "ll_other": final["ll_other"],
+                "acc_standard": final["acc_standard"], "acc_other": final["acc_other"],
+                "rating_other_vs_standard": final["rating_other_vs_standard"],
             })
     return pd.DataFrame(rows)
 
 
-def write_summary(df, args, output_dir):
+def aggregate_curves(per_persona_results):
+    """One row per (persona, condition, n_trials, fit_type). Long format."""
+    rows = []
+    for pr in per_persona_results:
+        pid = pr["persona_id"]
+        for cond, r in pr["conditions"].items():
+            other_label = r["other_label"]
+            for ckpt in r["checkpoints"]:
+                t = ckpt["n_trials"]
+                for fit in ["standard", "other"]:
+                    rows.append({
+                        "persona_id": pid,
+                        "condition": cond,
+                        "fit_type": fit if fit == "standard" else other_label,
+                        "n_trials": t,
+                        "test_acc": ckpt[f"acc_{fit}"],
+                        "test_ll": ckpt[f"ll_{fit}"],
+                    })
+    return pd.DataFrame(rows)
+
+
+def write_summary(df, curves_df, args, output_dir):
     lines = ["# LLM-Persona Simulation Summary (revamped)\n"]
     lines.append("Predicts the experimental DV: probability that an LLM-persona "
                  "participant prefers the partial/projected K-dim summary over "
@@ -765,9 +821,104 @@ def write_summary(df, args, output_dir):
             p = float("nan")
         lines.append(f"| {cond} vs choice_only | {n} | "
                      f"{other[:n].mean() - base[:n].mean():+.3f} | {p:.4f} |")
+    lines.append("")
+
+    # ----------------------------------------------------------------------
+    # Learning-curve summary
+    # ----------------------------------------------------------------------
+    lines.append("## Learning Curves (test acc by trial count)\n")
+    lines.append("Mean held-out accuracy across personas at each checkpoint. "
+                 "Should rise with more trials if learning is working.\n")
+    if curves_df is not None and not curves_df.empty:
+        ts = sorted(curves_df["n_trials"].unique())
+        if len(ts) > 5:
+            idx = np.linspace(0, len(ts) - 1, 5).astype(int)
+            ts_show = [ts[i] for i in idx]
+        else:
+            ts_show = ts
+        header = ["Condition", "Fit"] + [f"T={t}" for t in ts_show]
+        lines.append("| " + " | ".join(header) + " |")
+        lines.append("| " + " | ".join(["---"] * len(header)) + " |")
+        for cond in CONDITIONS:
+            cdf = curves_df[curves_df["condition"] == cond]
+            if cdf.empty:
+                continue
+            for fit_label in cdf["fit_type"].unique():
+                row = [cond, fit_label]
+                for t in ts_show:
+                    sub = cdf[(cdf["fit_type"] == fit_label) & (cdf["n_trials"] == t)]
+                    row.append(f"{sub['test_acc'].mean():.3f}" if not sub.empty else "—")
+                lines.append("| " + " | ".join(row) + " |")
+        lines.append("")
+
+        bad = []
+        for cond in CONDITIONS:
+            for fit_label in curves_df[curves_df["condition"] == cond]["fit_type"].unique():
+                sub = (curves_df[(curves_df["condition"] == cond)
+                                 & (curves_df["fit_type"] == fit_label)]
+                       .groupby("n_trials")["test_acc"].mean())
+                if len(sub) < 3:
+                    continue
+                t_half = sub.index[len(sub) // 2]
+                t_full = sub.index[-1]
+                if sub.loc[t_full] <= sub.loc[t_half] - 1e-3:
+                    bad.append(f"{cond}/{fit_label}: T={t_half}→{sub.loc[t_half]:.3f}, "
+                               f"T={t_full}→{sub.loc[t_full]:.3f}")
+        if bad:
+            lines.append("**⚠ Non-monotonic learning detected (acc didn't improve "
+                         "from mid-T to end-T):**\n")
+            for b in bad:
+                lines.append(f"- {b}")
+            lines.append("")
 
     with open(output_dir / "summary.md", "w") as f:
         f.write("\n".join(lines) + "\n")
+
+
+def plot_learning_curves(curves_df, output_dir):
+    if curves_df is None or curves_df.empty:
+        return
+    fig, axes = plt.subplots(2, len(CONDITIONS), figsize=(4.5 * len(CONDITIONS), 8),
+                             sharex=True)
+    if len(CONDITIONS) == 1:
+        axes = axes[:, None]
+
+    metric_specs = [
+        ("test_acc", "Held-out accuracy", 0.5),
+        ("test_ll", "Held-out log-likelihood", None),
+    ]
+    for row_idx, (col, ylabel, hline) in enumerate(metric_specs):
+        for col_idx, cond in enumerate(CONDITIONS):
+            ax = axes[row_idx, col_idx]
+            cdf = curves_df[curves_df["condition"] == cond]
+            if cdf.empty:
+                ax.set_visible(False)
+                continue
+            for fit_label in cdf["fit_type"].unique():
+                sub = cdf[cdf["fit_type"] == fit_label]
+                grouped = sub.groupby("n_trials")[col]
+                mean = grouped.mean()
+                sem = grouped.std() / np.sqrt(grouped.count())
+                ax.plot(mean.index, mean.values, marker="o", label=fit_label,
+                        linewidth=2)
+                ax.fill_between(mean.index, mean.values - sem.values,
+                                mean.values + sem.values, alpha=0.2)
+            if hline is not None:
+                ax.axhline(hline, color="gray", linestyle="--", alpha=0.5)
+            if row_idx == 0:
+                ax.set_title(cond, fontweight="bold")
+            if row_idx == len(metric_specs) - 1:
+                ax.set_xlabel("# trials collected")
+            if col_idx == 0:
+                ax.set_ylabel(ylabel)
+            ax.grid(True, alpha=0.3)
+            if col_idx == 0 and row_idx == 0:
+                ax.legend(loc="lower right", fontsize=9)
+    fig.suptitle("LLM-Persona learning curves — held-out performance vs trials",
+                 fontsize=13, fontweight="bold")
+    plt.tight_layout()
+    plt.savefig(output_dir / "learning_curves.png", dpi=150, bbox_inches="tight")
+    plt.close()
 
 
 def plot_results(df, output_dir):
@@ -862,17 +1013,26 @@ def run_simulation(args):
                 print(f"  Persona {p['id']} failed: {e}", flush=True)
                 raise
 
-    df = aggregate_results(per_persona_results)
+    df = aggregate_final(per_persona_results)
     df.to_csv(output_dir / "per_persona_per_condition.csv", index=False)
     print(f"Saved per_persona_per_condition.csv ({len(df)} rows)")
 
-    write_summary(df, args, output_dir)
+    curves_df = aggregate_curves(per_persona_results)
+    curves_df.to_csv(output_dir / "learning_curves.csv", index=False)
+    print(f"Saved learning_curves.csv ({len(curves_df)} rows)")
+
+    write_summary(df, curves_df, args, output_dir)
     print("Saved summary.md")
     try:
         plot_results(df, output_dir)
         print("Saved predicted_dv.png")
     except Exception as e:
-        print(f"Warning: could not save plot: {e}")
+        print(f"Warning: could not save predicted_dv.png: {e}")
+    try:
+        plot_learning_curves(curves_df, output_dir)
+        print("Saved learning_curves.png")
+    except Exception as e:
+        print(f"Warning: could not save learning_curves.png: {e}")
     client.save_cache()
     print("Done.")
 
@@ -904,6 +1064,10 @@ def parse_args():
     p.add_argument("--rating-temperature", type=float, default=20.0,
                    help="Larger τ for LLM sim because LL differences are smaller.")
     p.add_argument("--max-workers", type=int, default=4)
+    p.add_argument("--checkpoint-step", type=int, default=1,
+                   help="Refit at every Nth trial. 1 = every trial (default), "
+                        "5 = at trials 5, 10, 15, ... 0 disables intermediate "
+                        "checkpoints (only fits at T).")
     p.add_argument("--seed", type=int, default=42)
 
     p.add_argument("--domain", default="movies")
