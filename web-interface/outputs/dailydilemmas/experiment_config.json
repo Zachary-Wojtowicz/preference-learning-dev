@@ -1,7 +1,7 @@
 {
   "domain": "everyday moral dilemmas",
-  "choice_context": "Which action is more ethical / understandable?",
-  "num_trials_per_participant": 20,
+  "choice_context": "Which action is more ethical or understandable?",
+  "num_trials_per_participant": 30,
   "top_k_sliders": 5,
   "conditions": {
     "choice_only": {
@@ -33,24 +33,16 @@
       "show_checkboxes": true,
       "show_inferences": false
     },
-    "inference_affirm": {
-      "label": "Inferences: Affirm / Remove",
-      "description": "Affirm or remove model inferences about your preferences.",
+    "choice_inferences": {
+      "label": "Choice + Preference Inferences",
+      "description": "Binary choice with natural-language inferences. Affirm, modify, or remove each.",
       "show_sliders": false,
       "sliders_adjustable": false,
       "show_checkboxes": false,
-      "show_inferences": "affirm"
-    },
-    "inference_categories": {
-      "label": "Inferences: Category Selection",
-      "description": "Adjust the category for each inference about your preferences.",
-      "show_sliders": false,
-      "sliders_adjustable": false,
-      "show_checkboxes": false,
-      "show_inferences": "categories"
+      "show_inferences": true
     }
   },
-  "default_condition": "inference_categories",
+  "default_condition": "choice_inferences",
   "slider_range": [
     -100,
     100
@@ -658,61 +650,5 @@
       -0.000875,
       1.0
     ]
-  ],
-  "inference_categories": [
-    {
-      "key": "downplay",
-      "phrase": "downplay",
-      "label": "Downplay",
-      "mult": -1.5
-    },
-    {
-      "key": "underweight",
-      "phrase": "underweight",
-      "label": "Underweight",
-      "mult": -1.0
-    },
-    {
-      "key": "neutral",
-      "phrase": "are neutral about",
-      "label": "Neutral",
-      "mult": 0.0
-    },
-    {
-      "key": "value",
-      "phrase": "value",
-      "label": "Value",
-      "mult": 1.0
-    },
-    {
-      "key": "prioritize",
-      "phrase": "prioritize",
-      "label": "Prioritize",
-      "mult": 1.5
-    }
-  ],
-  "num_training_trials": 5,
-  "instructions": {
-    "training": "<h1>Practice</h1><p>Before the main task, you’ll do a few short <strong>practice trials</strong> to learn the preference dimensions used in this study.</p><p>Each practice trial shows one dimension and asks which option is more aligned with it. After you click, we’ll tell you whether you were right.</p>",
-    "feedback": "<h1>Main Task</h1><p>You will be shown pairs of options. For each pair, <strong>click the one you prefer</strong>.</p>"
-  },
-  "comparison": {
-    "lambda_standard": 0.933,
-    "lambda_partial": 0.0933,
-    "slider_prior_weight": 1.0,
-    "n_dimensions_shown": 10,
-    "show_for_conditions": [
-      "choice_readonly_sliders",
-      "choice_adjustable_sliders",
-      "choice_checkboxes",
-      "inference_affirm",
-      "inference_categories"
-    ],
-    "_diag_mean": 0.0933,
-    "eval_format": "top_bottom_bars",
-    "n_per_side": 5,
-    "most_valued_label": "Most valued",
-    "least_valued_label": "Least valued"
-  },
-  "categorization": "perdim"
+  ]
 }

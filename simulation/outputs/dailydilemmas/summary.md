@@ -42,13 +42,21 @@ Quality scores against ground-truth w*. Higher is better. `combined` = 0.5·spea
 | inference_categories | standard | 0.281 | 0.398 | 0.540 | 0.038 |
 | inference_categories | feedback_adjusted | 0.263 | 0.416 | 0.580 | 0.048 |
 
-## Held-Out Choice Accuracy (diagnostic)
+## Held-Out Choice Accuracy at T (diagnostic)
 
-| Condition | Standard fit | Other fit |
-|-----------|--------------|-----------|
-| choice_only | 0.549 | 0.575 |
-| inference_affirm | 0.543 | 0.534 |
-| inference_categories | 0.548 | 0.544 |
+| Condition | Standard fit | Other fit | Δ (other − standard) |
+|-----------|--------------|-----------|----------------------|
+| choice_only | 0.549 | 0.575 | +0.027 |
+| inference_affirm | 0.543 | 0.534 | -0.009 |
+| inference_categories | 0.548 | 0.544 | -0.004 |
+
+## Held-Out Log-Likelihood at T
+
+| Condition | LL standard | LL other | Δ (other − standard) |
+|-----------|-------------|----------|----------------------|
+| choice_only | -0.6916 | -0.6824 | +0.0092 |
+| inference_affirm | -0.6918 | -0.6901 | +0.0016 |
+| inference_categories | -0.6916 | -0.6875 | +0.0042 |
 
 ## Significance Tests (paired Wilcoxon)
 
@@ -61,6 +69,23 @@ Tests whether the predicted rating is reliably > 0.5 within each condition (i.e.
 | inference_categories vs 0.5 | 50 | 0.518 | 0.5786 |
 | inference_affirm vs choice_only | 50 | Δ=-0.022 | 0.6119 |
 | inference_categories vs choice_only | 50 | Δ=+0.007 | 0.7522 |
+
+## Learning Curves (test acc by trial count)
+
+Mean held-out accuracy across users at each checkpoint. Should rise monotonically with more trials if learning is working.
+
+| Condition | Fit | T=1 | T=5 | T=10 | T=15 | T=20 |
+| --- | --- | --- | --- | --- | --- | --- |
+| choice_only | standard | 0.507 | 0.523 | 0.538 | 0.549 | 0.549 |
+| choice_only | projected | 0.515 | 0.541 | 0.555 | 0.573 | 0.575 |
+| inference_affirm | standard | 0.515 | 0.523 | 0.530 | 0.538 | 0.543 |
+| inference_affirm | feedback_adjusted | 0.523 | 0.527 | 0.540 | 0.541 | 0.534 |
+| inference_categories | standard | 0.506 | 0.519 | 0.532 | 0.544 | 0.548 |
+| inference_categories | feedback_adjusted | 0.520 | 0.529 | 0.546 | 0.548 | 0.544 |
+
+**⚠ Non-monotonic learning detected (acc didn't improve from mid-T to end-T):**
+
+- inference_affirm/feedback_adjusted: T=11→0.541, T=20→0.534
 
 ## Go/No-Go Read
 
