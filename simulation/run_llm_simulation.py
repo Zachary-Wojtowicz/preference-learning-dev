@@ -647,12 +647,10 @@ def simulate_one_persona(persona, ctx, args, client):
         U_full = deltas @ V.T               # (T, K)
         cross_full = test_delta @ deltas.T  # (M, T)
 
-        if cond == "choice_only":
-            other_label = "projected"
-            feedback_full = np.ones_like(U_full)
-        else:
-            other_label = "feedback_adjusted"
-            feedback_full = np.ones_like(U_full)
+        # Λ feedback multipliers. For choice_only this is all-ones (so
+        # `partial` collapses to `projected` — kept for plotting parity).
+        feedback_full = np.ones_like(U_full)
+        if cond != "choice_only":
             feedback_full[visible_traj] = lam_traj[visible_traj]
         U_adj_full = feedback_full * U_full
 
@@ -662,31 +660,41 @@ def simulate_one_persona(persona, ctx, args, client):
             if t_end < 1 or t_end > args.num_trials:
                 continue
             D_t = D_full[:t_end, :t_end]
+            U_t = U_full[:t_end]
             U_adj_t = U_adj_full[:t_end]
             y_t = ys[:t_end].astype(float)
 
+            # All three fits, every checkpoint, every condition.
             alpha = fit_standard_kernel(D_t, y_t, args.lambda_standard)
-            beta = fit_partial_primal(U_adj_t, y_t, G, np.zeros(K),
-                                      args.lambda_partial)
+            beta_proj = fit_partial_primal(U_t, y_t, G, np.zeros(K),
+                                           args.lambda_partial)
+            if cond == "choice_only":
+                beta_part = beta_proj
+            else:
+                beta_part = fit_partial_primal(U_adj_t, y_t, G, np.zeros(K),
+                                               args.lambda_partial)
 
             cross_t = cross_full[:, :t_end]
             logits_std = cross_t @ alpha
-            logits_other = test_U @ beta
+            logits_proj = test_U @ beta_proj
+            logits_part = test_U @ beta_part
             ll_std = heldout_log_likelihood(logits_std, test_choices)
-            ll_other = heldout_log_likelihood(logits_other, test_choices)
+            ll_proj = heldout_log_likelihood(logits_proj, test_choices)
+            ll_part = heldout_log_likelihood(logits_part, test_choices)
             acc_std = float(((logits_std > 0).astype(int) == test_choices).mean())
-            acc_other = float(((logits_other > 0).astype(int) == test_choices).mean())
-            rating = predicted_rating_from_ll(ll_other, ll_std,
+            acc_proj = float(((logits_proj > 0).astype(int) == test_choices).mean())
+            acc_part = float(((logits_part > 0).astype(int) == test_choices).mean())
+            # Predicted DV uses partial vs standard (matches the experiment).
+            rating = predicted_rating_from_ll(ll_part, ll_std,
                                               args.rating_temperature)
             ckpts.append({
                 "n_trials": int(t_end),
-                "ll_standard": ll_std, "ll_other": ll_other,
-                "acc_standard": acc_std, "acc_other": acc_other,
-                "rating_other_vs_standard": rating,
+                "ll_standard": ll_std, "ll_projected": ll_proj, "ll_partial": ll_part,
+                "acc_standard": acc_std, "acc_projected": acc_proj, "acc_partial": acc_part,
+                "rating_partial_vs_standard": rating,
             })
 
         cond_results[cond] = {
-            "other_label": other_label,
             "checkpoints": ckpts,
             "actions": action_log,
         }
@@ -700,8 +708,14 @@ def simulate_one_persona(persona, ctx, args, client):
 # Output
 # ---------------------------------------------------------------------------
 
+FIT_TYPES = ["standard", "projected", "partial"]
+
+
 def aggregate_final(per_persona_results):
-    """One row per (persona, condition) using the final-T checkpoint."""
+    """One row per (persona, condition) using the final-T checkpoint.
+
+    Carries metrics for all three fits (standard / projected / partial).
+    """
     rows = []
     for pr in per_persona_results:
         pid = pr["persona_id"]
@@ -709,13 +723,15 @@ def aggregate_final(per_persona_results):
             if not r["checkpoints"]:
                 continue
             final = r["checkpoints"][-1]
-            rows.append({
-                "persona_id": pid, "condition": cond, "other_label": r["other_label"],
+            row = {
+                "persona_id": pid, "condition": cond,
                 "n_trials": final["n_trials"],
-                "ll_standard": final["ll_standard"], "ll_other": final["ll_other"],
-                "acc_standard": final["acc_standard"], "acc_other": final["acc_other"],
-                "rating_other_vs_standard": final["rating_other_vs_standard"],
-            })
+                "rating_partial_vs_standard": final["rating_partial_vs_standard"],
+            }
+            for fit in FIT_TYPES:
+                row[f"ll_{fit}"] = final[f"ll_{fit}"]
+                row[f"acc_{fit}"] = final[f"acc_{fit}"]
+            rows.append(row)
     return pd.DataFrame(rows)
 
 
@@ -725,14 +741,13 @@ def aggregate_curves(per_persona_results):
     for pr in per_persona_results:
         pid = pr["persona_id"]
         for cond, r in pr["conditions"].items():
-            other_label = r["other_label"]
             for ckpt in r["checkpoints"]:
                 t = ckpt["n_trials"]
-                for fit in ["standard", "other"]:
+                for fit in FIT_TYPES:
                     rows.append({
                         "persona_id": pid,
                         "condition": cond,
-                        "fit_type": fit if fit == "standard" else other_label,
+                        "fit_type": fit,
                         "n_trials": t,
                         "test_acc": ckpt[f"acc_{fit}"],
                         "test_ll": ckpt[f"ll_{fit}"],
@@ -760,40 +775,43 @@ def write_summary(df, curves_df, args, output_dir):
     lines.append(f"| Seed | {args.seed} |")
     lines.append("")
 
-    lines.append("## Predicted Rating (P[other > standard])\n")
-    lines.append("| Condition | Other | Mean | SD | Pct > 0.5 |")
-    lines.append("|-----------|-------|------|----|-----------|")
+    lines.append("## Predicted Rating (P[partial > standard])\n")
+    lines.append("| Condition | Mean | SD | Pct > 0.5 |")
+    lines.append("|-----------|------|----|-----------|")
     for cond in CONDITIONS:
         cdf = df[df["condition"] == cond]
         if cdf.empty:
             continue
-        lines.append(f"| {cond} | {cdf['other_label'].iloc[0]} | "
-                     f"{cdf['rating_other_vs_standard'].mean():.3f} | "
-                     f"{cdf['rating_other_vs_standard'].std():.3f} | "
-                     f"{(cdf['rating_other_vs_standard'] > 0.5).mean()*100:.0f}% |")
+        lines.append(f"| {cond} | "
+                     f"{cdf['rating_partial_vs_standard'].mean():.3f} | "
+                     f"{cdf['rating_partial_vs_standard'].std():.3f} | "
+                     f"{(cdf['rating_partial_vs_standard'] > 0.5).mean()*100:.0f}% |")
     lines.append("")
 
     lines.append("## Held-Out Log-Likelihood (primary quality signal)\n")
-    lines.append("| Condition | LL standard | LL other | Δ (other − standard) |")
-    lines.append("|-----------|-------------|----------|----------------------|")
+    lines.append("| Condition | LL standard | LL projected | LL partial | Δ proj−std | Δ part−std |")
+    lines.append("|-----------|-------------|--------------|------------|------------|------------|")
     for cond in CONDITIONS:
         cdf = df[df["condition"] == cond]
         if cdf.empty:
             continue
         ll_s = cdf["ll_standard"].mean()
-        ll_o = cdf["ll_other"].mean()
-        lines.append(f"| {cond} | {ll_s:+.4f} | {ll_o:+.4f} | {ll_o - ll_s:+.4f} |")
+        ll_pr = cdf["ll_projected"].mean()
+        ll_pa = cdf["ll_partial"].mean()
+        lines.append(f"| {cond} | {ll_s:+.4f} | {ll_pr:+.4f} | {ll_pa:+.4f} | "
+                     f"{ll_pr - ll_s:+.4f} | {ll_pa - ll_s:+.4f} |")
     lines.append("")
 
     lines.append("## Held-Out Choice Accuracy\n")
-    lines.append("| Condition | Acc standard | Acc other |")
-    lines.append("|-----------|--------------|-----------|")
+    lines.append("| Condition | Acc standard | Acc projected | Acc partial |")
+    lines.append("|-----------|--------------|---------------|-------------|")
     for cond in CONDITIONS:
         cdf = df[df["condition"] == cond]
         if cdf.empty:
             continue
         lines.append(f"| {cond} | {cdf['acc_standard'].mean():.3f} | "
-                     f"{cdf['acc_other'].mean():.3f} |")
+                     f"{cdf['acc_projected'].mean():.3f} | "
+                     f"{cdf['acc_partial'].mean():.3f} |")
     lines.append("")
 
     lines.append("## Significance Tests\n")
@@ -803,15 +821,15 @@ def write_summary(df, curves_df, args, output_dir):
         cdf = df[df["condition"] == cond]
         if cdf.empty:
             continue
-        ratings = cdf["rating_other_vs_standard"].values
+        ratings = cdf["rating_partial_vs_standard"].values
         try:
             stat, p = wilcoxon(ratings - 0.5, zero_method="zsplit")
         except ValueError:
             p = float("nan")
         lines.append(f"| {cond} vs 0.5 | {len(ratings)} | {ratings.mean() - 0.5:+.3f} | {p:.4f} |")
-    base = df[df["condition"] == "choice_only"]["rating_other_vs_standard"].values
+    base = df[df["condition"] == "choice_only"]["rating_partial_vs_standard"].values
     for cond in ["inference_affirm", "inference_categories"]:
-        other = df[df["condition"] == cond]["rating_other_vs_standard"].values
+        other = df[df["condition"] == cond]["rating_partial_vs_standard"].values
         if len(base) == 0 or len(other) == 0:
             continue
         n = min(len(base), len(other))
@@ -843,7 +861,9 @@ def write_summary(df, curves_df, args, output_dir):
             cdf = curves_df[curves_df["condition"] == cond]
             if cdf.empty:
                 continue
-            for fit_label in cdf["fit_type"].unique():
+            for fit_label in FIT_TYPES:
+                if fit_label not in cdf["fit_type"].unique():
+                    continue
                 row = [cond, fit_label]
                 for t in ts_show:
                     sub = cdf[(cdf["fit_type"] == fit_label) & (cdf["n_trials"] == t)]
@@ -853,7 +873,7 @@ def write_summary(df, curves_df, args, output_dir):
 
         bad = []
         for cond in CONDITIONS:
-            for fit_label in curves_df[curves_df["condition"] == cond]["fit_type"].unique():
+            for fit_label in FIT_TYPES:
                 sub = (curves_df[(curves_df["condition"] == cond)
                                  & (curves_df["fit_type"] == fit_label)]
                        .groupby("n_trials")["test_acc"].mean())
@@ -875,10 +895,17 @@ def write_summary(df, curves_df, args, output_dir):
         f.write("\n".join(lines) + "\n")
 
 
+FIT_STYLE = {
+    "standard":  {"color": "#444444", "marker": "o", "label": "MLE (standard kernel)"},
+    "projected": {"color": "#1f77b4", "marker": "s", "label": "MLE projected onto basis"},
+    "partial":   {"color": "#d62728", "marker": "^", "label": "Partial (feedback re-weighted)"},
+}
+
+
 def plot_learning_curves(curves_df, output_dir):
     if curves_df is None or curves_df.empty:
         return
-    fig, axes = plt.subplots(2, len(CONDITIONS), figsize=(4.5 * len(CONDITIONS), 8),
+    fig, axes = plt.subplots(2, len(CONDITIONS), figsize=(4.8 * len(CONDITIONS), 8),
                              sharex=True)
     if len(CONDITIONS) == 1:
         axes = axes[:, None]
@@ -894,15 +921,20 @@ def plot_learning_curves(curves_df, output_dir):
             if cdf.empty:
                 ax.set_visible(False)
                 continue
-            for fit_label in cdf["fit_type"].unique():
+            for fit_label in FIT_TYPES:
                 sub = cdf[cdf["fit_type"] == fit_label]
+                if sub.empty:
+                    continue
                 grouped = sub.groupby("n_trials")[col]
                 mean = grouped.mean()
                 sem = grouped.std() / np.sqrt(grouped.count())
-                ax.plot(mean.index, mean.values, marker="o", label=fit_label,
-                        linewidth=2)
+                style = FIT_STYLE[fit_label]
+                ax.plot(mean.index, mean.values,
+                        marker=style["marker"], color=style["color"],
+                        label=style["label"], linewidth=2)
                 ax.fill_between(mean.index, mean.values - sem.values,
-                                mean.values + sem.values, alpha=0.2)
+                                mean.values + sem.values,
+                                color=style["color"], alpha=0.15)
             if hline is not None:
                 ax.axhline(hline, color="gray", linestyle="--", alpha=0.5)
             if row_idx == 0:
@@ -914,7 +946,7 @@ def plot_learning_curves(curves_df, output_dir):
             ax.grid(True, alpha=0.3)
             if col_idx == 0 and row_idx == 0:
                 ax.legend(loc="lower right", fontsize=9)
-    fig.suptitle("LLM-Persona learning curves — held-out performance vs trials",
+    fig.suptitle("LLM-Persona learning curves — three fits per condition",
                  fontsize=13, fontweight="bold")
     plt.tight_layout()
     plt.savefig(output_dir / "learning_curves.png", dpi=150, bbox_inches="tight")
@@ -927,12 +959,12 @@ def plot_results(df, output_dir):
     for cond in CONDITIONS:
         cdf = df[df["condition"] == cond]
         if not cdf.empty:
-            data.append(cdf["rating_other_vs_standard"].values)
+            data.append(cdf["rating_partial_vs_standard"].values)
             labels.append(cond.replace("_", "\n"))
     if data:
         ax.boxplot(data, tick_labels=labels, showmeans=True)
     ax.axhline(0.5, color="gray", linestyle="--", alpha=0.5, label="no preference")
-    ax.set_ylabel("P(K-dim summary preferred over standard)")
+    ax.set_ylabel("P(partial summary preferred over standard)")
     ax.set_title("LLM-Persona Sim — Predicted experimental DV", fontweight="bold")
     ax.legend(loc="lower right")
     ax.set_ylim(0, 1)
@@ -1060,7 +1092,8 @@ def parse_args():
     p.add_argument("--num-test-pairs", type=int, default=50)
     p.add_argument("--top-k-inferences", type=int, default=5)
     p.add_argument("--lambda-standard", type=float, default=10.0)
-    p.add_argument("--lambda-partial", type=float, default=1.0)
+    p.add_argument("--lambda-partial", type=float, default=0.5,
+                   help="L2 reg for K-dim primal fit (both projected + partial).")
     p.add_argument("--rating-temperature", type=float, default=20.0,
                    help="Larger τ for LLM sim because LL differences are smaller.")
     p.add_argument("--max-workers", type=int, default=4)
