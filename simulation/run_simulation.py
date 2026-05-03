@@ -65,6 +65,27 @@ DEFAULT_MULTS = np.array([-1.5, -1.0, 0.0, 1.0, 1.5])
 # Data loading
 # ---------------------------------------------------------------------------
 
+def load_predefined_pairs(json_path, option_ids):
+    """Load predefined pairs (e.g., dilemma pairs from predefined_pairs.json)
+    and convert option_ids to embedding indices.
+    """
+    with open(json_path) as f:
+        pairs_raw = json.load(f)
+    id_to_idx = {oid: i for i, oid in enumerate(option_ids)}
+    pairs = []
+    dropped = 0
+    for p in pairs_raw:
+        a, b = str(p["option_a_id"]), str(p["option_b_id"])
+        if a in id_to_idx and b in id_to_idx:
+            pairs.append((id_to_idx[a], id_to_idx[b]))
+        else:
+            dropped += 1
+    if dropped:
+        print(f"  [predefined-pairs] dropped {dropped} pairs missing from pool")
+    print(f"  [predefined-pairs] using {len(pairs)} pairs from {json_path}")
+    return pairs
+
+
 def load_data(embeddings_parquet, bt_scores_csv, directions_npz, option_id_column):
     parquet_df = pd.read_parquet(embeddings_parquet)
     parquet_df["option_id"] = parquet_df[option_id_column].astype(str)
@@ -357,19 +378,28 @@ def simulate_one_user(user, ctx, args, rng):
     ])
     true_utils = bt_scores @ w_star
 
-    # Sample one shared trial pool so all conditions see the same pairs.
-    trial_pairs = []
-    while len(trial_pairs) < args.num_trials:
-        a, b = rng.choice(N, size=2, replace=False)
-        trial_pairs.append((int(a), int(b)))
-
-    # Pre-compute test pairs + choices once per user (held-out accuracy).
-    test_a = rng.integers(0, N, size=args.num_test_pairs)
-    test_b = rng.integers(0, N, size=args.num_test_pairs)
-    mask = test_a == test_b
-    while mask.any():
-        test_b[mask] = rng.integers(0, N, size=int(mask.sum()))
+    # Sample training + test pairs. When predefined-pairs is set (e.g.,
+    # dilemmas), both come from that pool — disjoint, per-user shuffled —
+    # mirroring the human experiment's fixed-pair-pool design.
+    predefined_pairs = ctx.get("predefined_pairs")
+    if predefined_pairs is not None:
+        pool = list(predefined_pairs)
+        rng.shuffle(pool)
+        test_pool = pool[:args.num_test_pairs]
+        trial_pairs = pool[args.num_test_pairs:args.num_test_pairs + args.num_trials]
+        test_a = np.array([p[0] for p in test_pool], dtype=int)
+        test_b = np.array([p[1] for p in test_pool], dtype=int)
+    else:
+        trial_pairs = []
+        while len(trial_pairs) < args.num_trials:
+            a, b = rng.choice(N, size=2, replace=False)
+            trial_pairs.append((int(a), int(b)))
+        test_a = rng.integers(0, N, size=args.num_test_pairs)
+        test_b = rng.integers(0, N, size=args.num_test_pairs)
         mask = test_a == test_b
+        while mask.any():
+            test_b[mask] = rng.integers(0, N, size=int(mask.sum()))
+            mask = test_a == test_b
     test_choices = (true_utils[test_a] > true_utils[test_b]).astype(int)
     test_delta = embeddings[test_a] - embeddings[test_b]
     test_U = test_delta @ V.T  # (M, K)
@@ -883,10 +913,19 @@ def run_simulation(args):
     print("Generating synthetic users...")
     users = generate_users(args.num_users, K, rng)
 
+    predefined_pairs = None
+    if args.predefined_pairs:
+        predefined_pairs = load_predefined_pairs(args.predefined_pairs, option_ids)
+        need = args.num_trials + args.num_test_pairs
+        if len(predefined_pairs) < need:
+            raise ValueError(f"predefined-pairs pool has only {len(predefined_pairs)} "
+                             f"pairs, but need {need} = num_trials + num_test_pairs.")
+
     ctx = {
         "embeddings": embeddings, "bt_scores": bt_scores,
         "V": V, "G": G, "mu": mu,
         "quintile_bounds": quintile_bounds, "mults": DEFAULT_MULTS,
+        "predefined_pairs": predefined_pairs,
     }
 
     per_user_results = []
@@ -968,6 +1007,12 @@ def parse_args():
                         "5 = at trials 5, 10, 15, ... 0 disables intermediate "
                         "checkpoints (only fits at T).")
     p.add_argument("--seed", type=int, default=42)
+
+    p.add_argument("--predefined-pairs", default=None,
+                   help="Optional JSON of (option_a_id, option_b_id) pairs "
+                        "(e.g., dilemma pairs). When set, training and test "
+                        "trials are sampled WITHOUT replacement from this pool, "
+                        "matching the human experiment.")
 
     # Deprecated args (kept for backward compatibility with run_*.sh)
     p.add_argument("--slider-noise", type=float, default=None,

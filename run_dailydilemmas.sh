@@ -212,13 +212,15 @@ python web-interface/generate_trials.py \
 # Step 10: Simulations
 # ---------------------------------------------------------------
 log "=== Step 10a: Weight-vector simulation ==="
+# Pool has 150 dilemma pairs → keep num_trials + num_test_pairs ≤ 150.
 python simulation/run_simulation.py \
     --embeddings-parquet "$DATASET_DIR/selected_actions-embedded.parquet" \
     --bt-scores "$GEN_OUTPUT/bt_scores.csv" \
     --directions "$DIRECTIONS_OUTPUT/directions.npz" \
     --output-dir simulation/outputs/dailydilemmas \
     --option-id-column action_id \
-    --num-users 50 --num-trials 20 --num-test-pairs 200 \
+    --predefined-pairs "$DATASET_DIR/predefined_pairs.json" \
+    --num-users 50 --num-trials 20 --num-test-pairs 100 \
     --beta 2.0 --participant-noise 0.10 --seed 42
 
 log "=== Step 10b: LLM persona simulation ==="
@@ -230,6 +232,7 @@ python simulation/run_llm_simulation.py \
     --option-descriptions "$DATASET_DIR/selected_actions.csv" \
     --option-template datasets/dailydilemmas_prompt.txt \
     --option-id-column action_id \
+    --predefined-pairs "$DATASET_DIR/predefined_pairs.json" \
     --output-dir simulation/outputs/dailydilemmas_llm \
     --base-url "$INSTRUCT_URL" --api-key dummy \
     --persona-model Qwen/Qwen3-32B --choice-model Qwen/Qwen3-32B \

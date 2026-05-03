@@ -88,20 +88,109 @@ def load_dimensions(path):
         return json.load(f)["dimensions"]
 
 
+# Fields that are "liftable" — when both options of a pair share them, they
+# get rendered once as shared context above the option cards (matches the web
+# interface's LIFTABLE_FIELDS in index.html, line 241).
+LIFTABLE_FIELDS = ("situation",)
+
+
+def _render_template_minus_fields(template, row_dict, blank_fields):
+    """Render the option template, blanking the listed fields and dropping
+    the now-empty 'Key: ' lines so they don't leave dangling text."""
+    safe = {k: v for k, v in row_dict.items()}
+    for f in blank_fields:
+        safe[f] = ""
+    try:
+        text = template.format(**safe)
+    except KeyError:
+        text = " | ".join(f"{k}: {v}" for k, v in row_dict.items()
+                          if k not in blank_fields and pd.notna(v) and str(v).strip())
+    # Strip lines whose value collapsed to empty (e.g., "Situation: ").
+    keep = []
+    for line in text.splitlines():
+        s = line.strip()
+        if not s:
+            continue
+        # A line like "Situation:" or "Situation: " is a blanked-out field.
+        if s.endswith(":") or any(s == f"{f.title()}:" or s == f"{f}:" for f in blank_fields):
+            continue
+        keep.append(line)
+    return "\n".join(keep).strip()
+
+
 def load_option_descriptions(csv_path, template_path, id_column):
+    """Load per-option text. Returns (descriptions, raw_rows, template_str).
+
+    `descriptions[oid]` is the fully-rendered template (situation + action +
+    consequence for dilemmas, etc.) — used when no shared-context lifting is
+    needed (movies, wines, or any random-pair sampling).
+
+    `raw_rows[oid]` is the CSV row as a dict; used to build lifted prompts
+    when --predefined-pairs is set, by detecting fields the two options
+    share and rendering them once as shared context.
+    """
     df = pd.read_csv(csv_path)
     template = Path(template_path).read_text().strip()
     descriptions = {}
+    raw_rows = {}
     for _, row in df.iterrows():
         oid = str(row[id_column])
+        d = row.to_dict()
+        raw_rows[oid] = d
         try:
-            text = template.format(**row.to_dict())
+            text = template.format(**d)
         except KeyError:
-            parts = [f"{k}: {v}" for k, v in row.items()
+            parts = [f"{k}: {v}" for k, v in d.items()
                      if k != id_column and pd.notna(v) and str(v).strip()]
             text = " | ".join(parts)
         descriptions[oid] = text
-    return descriptions
+    return descriptions, raw_rows, template
+
+
+def lifted_pair_text(raw_a, raw_b, template, liftable_fields=LIFTABLE_FIELDS):
+    """If raw_a and raw_b share any liftable fields with identical non-empty
+    values, return (shared_text, option_a_text, option_b_text) where the
+    shared field is rendered once and stripped from each option.
+
+    If nothing is shared, returns (None, None, None) and caller falls back to
+    the unlifted prompt.
+    """
+    shared = []
+    for f in liftable_fields:
+        va, vb = raw_a.get(f), raw_b.get(f)
+        if (va is not None and vb is not None and pd.notna(va) and pd.notna(vb)
+                and str(va).strip() and str(va) == str(vb)):
+            shared.append(f)
+    if not shared:
+        return None, None, None
+    shared_text = "\n".join(f"{f.capitalize()}: {raw_a[f]}" for f in shared)
+    a_text = _render_template_minus_fields(template, raw_a, shared)
+    b_text = _render_template_minus_fields(template, raw_b, shared)
+    return shared_text, a_text, b_text
+
+
+def load_predefined_pairs(json_path, option_ids):
+    """Load predefined pairs (e.g., dilemma pairs from predefined_pairs.json)
+    and convert option_ids to embedding indices.
+
+    Returns: list of (idx_a, idx_b) tuples. Pairs whose ids aren't in the
+    embedding pool are dropped with a warning.
+    """
+    with open(json_path) as f:
+        pairs_raw = json.load(f)
+    id_to_idx = {oid: i for i, oid in enumerate(option_ids)}
+    pairs = []
+    dropped = 0
+    for p in pairs_raw:
+        a, b = str(p["option_a_id"]), str(p["option_b_id"])
+        if a in id_to_idx and b in id_to_idx:
+            pairs.append((id_to_idx[a], id_to_idx[b]))
+        else:
+            dropped += 1
+    if dropped:
+        print(f"  [predefined-pairs] dropped {dropped} pairs missing from pool")
+    print(f"  [predefined-pairs] using {len(pairs)} pairs from {json_path}")
+    return pairs
 
 
 # ---------------------------------------------------------------------------
@@ -275,8 +364,33 @@ def parse_json_response(text):
 # Choice prompt + parser
 # ---------------------------------------------------------------------------
 
-def build_choice_prompt(persona, option_a_text, option_b_text, choice_context=""):
+def build_choice_prompt(persona, option_a_text, option_b_text, choice_context="",
+                        shared_context=None):
+    """Choice prompt. When `shared_context` is provided (e.g., a dilemma's
+    situation that both options share), it renders once above the option
+    cards — mirroring the web interface's lifted-fields presentation."""
     context_line = choice_context if choice_context else "You are choosing between two options."
+    if shared_context:
+        return f"""You are roleplaying as the following person. Stay in character and make choices as this person would — not as a neutral AI.
+
+PERSONA:
+{persona['description']}
+
+---
+
+{context_line} Read the shared context, then choose the action this person would prefer.
+
+CONTEXT:
+{shared_context}
+
+OPTION A:
+{option_a_text}
+
+OPTION B:
+{option_b_text}
+
+Respond with valid JSON only:
+{{"thinking": "<2-3 sentences of in-character reasoning>", "choice": "A" or "B"}}"""
     return f"""You are roleplaying as the following person. Stay in character and make choices as this person would — not as a neutral AI.
 
 PERSONA:
@@ -297,8 +411,9 @@ Respond with valid JSON only:
 
 
 def llm_choice(client, model, persona, option_a_text, option_b_text,
-               cache_key, choice_context=""):
-    prompt = build_choice_prompt(persona, option_a_text, option_b_text, choice_context)
+               cache_key, choice_context="", shared_context=None):
+    prompt = build_choice_prompt(persona, option_a_text, option_b_text,
+                                  choice_context, shared_context=shared_context)
     text = client.call(model, prompt, temperature=0.3, cache_key=cache_key)
     parsed = parse_json_response(text)
     choice = parsed.get("choice", "A").strip().upper()
@@ -534,12 +649,45 @@ def simulate_one_persona(persona, ctx, args, client):
     category_labels = ctx["category_labels"]
     dim_metadata = ctx["dim_metadata"]
     descriptions = ctx["descriptions"]
+    raw_rows = ctx.get("raw_rows", {})
+    option_template = ctx.get("option_template", "")
     option_ids = ctx["option_ids"]
-    test_pairs = ctx["test_pairs"]
+    predefined_pairs = ctx.get("predefined_pairs")
+    use_lifted = predefined_pairs is not None  # match human interface presentation
     N, d = embeddings.shape
     K = V.shape[0]
 
+    def _choice_kwargs(oid_a, oid_b):
+        """Build (option_a_text, option_b_text, shared_context) for a pair.
+        When --predefined-pairs is set, lift any shared 'situation'-style
+        fields to match the web interface's presentation."""
+        if use_lifted and oid_a in raw_rows and oid_b in raw_rows:
+            shared, a_text, b_text = lifted_pair_text(
+                raw_rows[oid_a], raw_rows[oid_b], option_template)
+            if shared is not None:
+                return a_text, b_text, shared
+        return descriptions[oid_a], descriptions[oid_b], None
+
     print(f"  Persona {pid}: {persona['name']}", flush=True)
+
+    # --- Build per-persona train + test trial pools ---
+    # When predefined-pairs is set, both training and test trials come from
+    # that pool (e.g., dilemma pairs), with a disjoint per-persona shuffle —
+    # mirroring how the human experiment hands each participant a random
+    # subset of the same fixed pair pool.
+    if predefined_pairs is not None:
+        pool = list(predefined_pairs)
+        rng.shuffle(pool)
+        test_pool = pool[:args.num_test_pairs]
+        train_pool = pool[args.num_test_pairs:args.num_test_pairs + args.num_trials]
+        test_pairs = np.array(test_pool, dtype=int)
+        trial_pairs = list(train_pool)
+    else:
+        test_pairs = ctx["test_pairs"]
+        trial_pairs = []
+        while len(trial_pairs) < args.num_trials:
+            a, b = rng.choice(N, size=2, replace=False)
+            trial_pairs.append((int(a), int(b)))
 
     # --- Held-out test set choices (ground truth) ---
     print(f"    [{pid}] Test set ({args.num_test_pairs})...", flush=True)
@@ -547,19 +695,16 @@ def simulate_one_persona(persona, ctx, args, client):
     for ti in range(args.num_test_pairs):
         oid_a = option_ids[test_pairs[ti, 0]]
         oid_b = option_ids[test_pairs[ti, 1]]
+        a_text, b_text, shared = _choice_kwargs(oid_a, oid_b)
+        ck = f"test_choice_{'lift_' if shared else ''}{pid}_{oid_a}_{oid_b}"
         result = llm_choice(client, args.choice_model, persona,
-                            descriptions[oid_a], descriptions[oid_b],
-                            cache_key=f"test_choice_{pid}_{oid_a}_{oid_b}",
-                            choice_context=args.choice_context)
+                            a_text, b_text,
+                            cache_key=ck,
+                            choice_context=args.choice_context,
+                            shared_context=shared)
         test_choices[ti] = 1 if result["choice"] == "A" else 0
     test_delta = embeddings[test_pairs[:, 0]] - embeddings[test_pairs[:, 1]]
     test_U = test_delta @ V.T
-
-    # --- One shared trial pool across conditions ---
-    trial_pairs = []
-    while len(trial_pairs) < args.num_trials:
-        a, b = rng.choice(N, size=2, replace=False)
-        trial_pairs.append((int(a), int(b)))
 
     # --- Pre-collect per-trial choices (shared across conditions, since the
     #     persona's choice isn't condition-dependent — only the feedback is) ---
@@ -568,10 +713,13 @@ def simulate_one_persona(persona, ctx, args, client):
     for t, (idx_a, idx_b) in enumerate(trial_pairs):
         oid_a = option_ids[idx_a]
         oid_b = option_ids[idx_b]
+        a_text, b_text, shared = _choice_kwargs(oid_a, oid_b)
+        ck = f"train_choice_{'lift_' if shared else ''}{pid}_{t}_{oid_a}_{oid_b}"
         result = llm_choice(client, args.choice_model, persona,
-                            descriptions[oid_a], descriptions[oid_b],
-                            cache_key=f"train_choice_{pid}_{t}_{oid_a}_{oid_b}",
-                            choice_context=args.choice_context)
+                            a_text, b_text,
+                            cache_key=ck,
+                            choice_context=args.choice_context,
+                            shared_context=shared)
         trial_data.append({"idx_a": idx_a, "idx_b": idx_b,
                            "choice": result["choice"], "thinking": result["thinking"]})
 
@@ -995,8 +1143,9 @@ def run_simulation(args):
     print(f"  Options: {N}, d: {d}, K: {K}")
 
     dim_metadata = load_dimensions(args.dimensions)
-    descriptions = load_option_descriptions(args.option_descriptions, args.option_template,
-                                             id_column=args.option_id_column)
+    descriptions, raw_rows, option_template = load_option_descriptions(
+        args.option_descriptions, args.option_template,
+        id_column=args.option_id_column)
 
     centered = embeddings - mu[np.newaxis, :]
     pool_proj = centered @ V.T
@@ -1010,13 +1159,25 @@ def run_simulation(args):
         json.dump(personas, f, indent=2)
     client.save_cache()
 
-    test_a = rng.integers(0, N, size=args.num_test_pairs)
-    test_b = rng.integers(0, N, size=args.num_test_pairs)
-    mask = test_a == test_b
-    while mask.any():
-        test_b[mask] = rng.integers(0, N, size=int(mask.sum()))
+    predefined_pairs = None
+    if args.predefined_pairs:
+        predefined_pairs = load_predefined_pairs(args.predefined_pairs, option_ids)
+        need = args.num_trials + args.num_test_pairs
+        if len(predefined_pairs) < need:
+            raise ValueError(f"predefined-pairs pool has only {len(predefined_pairs)} "
+                             f"pairs, but need {need} = num_trials + num_test_pairs.")
+        # test_pairs gets selected per-persona (from the same pool, held out
+        # from training) so we leave it unset here. simulate_one_persona will
+        # build its own from the pool.
+        test_pairs = None
+    else:
+        test_a = rng.integers(0, N, size=args.num_test_pairs)
+        test_b = rng.integers(0, N, size=args.num_test_pairs)
         mask = test_a == test_b
-    test_pairs = np.stack([test_a, test_b], axis=1)
+        while mask.any():
+            test_b[mask] = rng.integers(0, N, size=int(mask.sum()))
+            mask = test_a == test_b
+        test_pairs = np.stack([test_a, test_b], axis=1)
 
     category_labels = (args.category_labels.split("|")
                        if args.category_labels else DEFAULT_CATEGORY_LABELS)
@@ -1029,7 +1190,9 @@ def run_simulation(args):
         "quintile_bounds": quintile_bounds, "mults": DEFAULT_MULTS,
         "category_labels": category_labels,
         "dim_metadata": dim_metadata, "descriptions": descriptions,
+        "raw_rows": raw_rows, "option_template": option_template,
         "option_ids": option_ids, "test_pairs": test_pairs,
+        "predefined_pairs": predefined_pairs,
     }
 
     print("Running personas...")
@@ -1102,6 +1265,14 @@ def parse_args():
                         "5 = at trials 5, 10, 15, ... 0 disables intermediate "
                         "checkpoints (only fits at T).")
     p.add_argument("--seed", type=int, default=42)
+
+    p.add_argument("--predefined-pairs", default=None,
+                   help="Optional JSON file with predefined (option_a_id, "
+                        "option_b_id) pairs (e.g., dilemma pairs). When set, "
+                        "training and test trials are sampled WITHOUT replacement "
+                        "from this pool — matching the human experiment, which "
+                        "uses the same pair pool. Disjoint train/test split per "
+                        "persona seeded by --seed + persona_id.")
 
     p.add_argument("--domain", default="movies")
     p.add_argument("--choice-context", default="")
