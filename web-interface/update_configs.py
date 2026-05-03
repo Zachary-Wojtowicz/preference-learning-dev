@@ -47,8 +47,12 @@ DOMAIN_CATEGORIES = {
 }
 
 DEFAULT_COMPARISON = {
+    # Calibrated values from the joint pilot + sim grid sweep.
+    # See experiments/pilot/calibration/calibration_report.md and
+    # simulation/outputs/calibration_*/calibration_report.md.
     "lambda_standard":     10.0,
-    "lambda_partial":      1.0,
+    "lambda_partial":      0.05,
+    "feedback_alpha":      0.5,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown":  10,
     "eval_format":         "top_bottom_bars",  # or "inference_list"
@@ -62,6 +66,12 @@ DEFAULT_COMPARISON = {
         "choice_checkboxes", "inference_affirm", "inference_categories",
     ],
 }
+
+# Calibration knobs whose defaults should overwrite any stale per-domain
+# value (so re-running update_configs.py picks up new calibrated defaults).
+# Other keys in DEFAULT_COMPARISON are still .setdefault() so per-domain
+# customization (e.g., a non-default eval_format) is preserved.
+COMPARISON_KEYS_TO_OVERWRITE = {"lambda_standard", "lambda_partial", "feedback_alpha"}
 
 DEFAULT_INSTRUCTIONS = {
     "training": (
@@ -133,10 +143,15 @@ for path in paths:
         ins.setdefault(k, v)
     cfg["instructions"] = ins
 
-    # Default comparison block (preserve any existing per-domain edits)
+    # Default comparison block. Calibration-knob keys are *overwritten* so
+    # that re-running this script picks up new calibrated defaults; other
+    # keys preserve any per-domain customization via setdefault.
     comp = cfg.get("comparison") or {}
     for k, v in DEFAULT_COMPARISON.items():
-        comp.setdefault(k, v)
+        if k in COMPARISON_KEYS_TO_OVERWRITE:
+            comp[k] = v
+        else:
+            comp.setdefault(k, v)
     cfg["comparison"] = comp
 
     with open(path, "w") as f:

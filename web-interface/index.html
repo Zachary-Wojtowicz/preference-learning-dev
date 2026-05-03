@@ -724,7 +724,18 @@ function buildEvalInputs(){
   // Per-trial multipliers (only for inference conditions). Sums + counts per dim across visible-trials.
   var sums=new Array(K).fill(0),counts=new Array(K).fill(0);
   // Build per-trial feedback matrix for the adjusted design matrix.
-  // U_adj[t][k] = multiplier * U[t][k] for visible dims, U[t][k] for invisible.
+  // U_adj[t][k] = ((1-α) + α·m) · U[t][k] for visible dims, U[t][k] for invisible.
+  // α (feedback_alpha) is the feedback-strength blend: α=0 ⇒ projection only
+  // (ignore multipliers entirely); α=1 ⇒ full multiplier as in the original
+  // design; α∈(0,1) ⇒ partial blend. Reads from
+  // experiment_config.comparison.feedback_alpha; defaults to 1.0 if absent
+  // (preserves prior behavior on configs that haven't been migrated).
+  var feedbackAlpha = 1.0;
+  if (experimentConfig && experimentConfig.comparison
+      && typeof experimentConfig.comparison.feedback_alpha === 'number'
+      && isFinite(experimentConfig.comparison.feedback_alpha)) {
+    feedbackAlpha = experimentConfig.comparison.feedback_alpha;
+  }
   var U_adj=[];
   for(var t=0;t<T;t++) U_adj.push(U[t].slice()); // start as copy of U
   responses.forEach(function(r,t){
@@ -733,7 +744,8 @@ function buildEvalInputs(){
       var idx=dimIds.indexOf(did);if(idx<0)return;
       var m=r.inference_values[did].multiplier;
       if(typeof m!=='number'||!isFinite(m))return;
-      U_adj[t][idx]=m*U[t][idx]; // scale the design matrix entry
+      var meff = (1 - feedbackAlpha) + feedbackAlpha * m;
+      U_adj[t][idx] = meff * U[t][idx]; // α-blended weighted projection
       sums[idx]+=m;counts[idx]+=1;
     });
   });

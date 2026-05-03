@@ -1260,11 +1260,12 @@ def parse_args():
     p.add_argument("--num-test-pairs", type=int, default=50)
     p.add_argument("--top-k-inferences", type=int, default=5)
     p.add_argument("--lambda-standard", type=float, default=10.0)
-    p.add_argument("--lambda-partial", type=float, default=0.5,
-                   help="L2 reg for K-dim primal fit (both projected + partial).")
-    p.add_argument("--feedback-alpha", type=float, default=1.0,
+    p.add_argument("--lambda-partial", type=float, default=0.05,
+                   help="L2 reg for K-dim primal fit (calibrated value).")
+    p.add_argument("--feedback-alpha", type=float, default=0.5,
                    help="Feedback strength α ∈ [0, 1] for partial fit. "
-                        "Ũ_α = U·((1−α) + α·λ_tk). α=0 ⇒ projected; α=1 ⇒ full.")
+                        "Ũ_α = U·((1−α) + α·λ_tk). α=0 ⇒ projected; α=1 ⇒ full. "
+                        "Default 0.5 is the calibrated mid-point.")
     p.add_argument("--multiplier-scale", type=float, default=1.0,
                    help="Scalar applied to DEFAULT_MULTS = "
                         "[-1.5,-1.0,0,1.0,1.5]. For calibration.")

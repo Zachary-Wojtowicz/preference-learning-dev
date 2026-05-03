@@ -973,7 +973,7 @@
   },
   "comparison": {
     "lambda_standard": 10.0,
-    "lambda_partial": 1.0,
+    "lambda_partial": 0.05,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown": 10,
     "show_for_conditions": [
@@ -986,7 +986,8 @@
     "eval_format": "inference_list",
     "n_per_side": 5,
     "most_valued_label": "Most valued",
-    "least_valued_label": "Least valued"
+    "least_valued_label": "Least valued",
+    "feedback_alpha": 0.5
   },
   "categorization": "perdim"
 }

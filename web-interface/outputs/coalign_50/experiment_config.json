@@ -474,7 +474,7 @@
   },
   "comparison": {
     "lambda_standard": 10.0,
-    "lambda_partial": 1.0,
+    "lambda_partial": 0.05,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown": 10,
     "eval_format": "top_bottom_bars",
@@ -487,6 +487,7 @@
       "choice_checkboxes",
       "inference_affirm",
       "inference_categories"
-    ]
+    ],
+    "feedback_alpha": 0.5
   }
 }

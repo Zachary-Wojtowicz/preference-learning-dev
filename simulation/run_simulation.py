@@ -1006,13 +1006,17 @@ def parse_args():
                    help="Choice-noise temperature (BTL).")
     p.add_argument("--lambda-standard", type=float, default=10.0,
                    help="L2 regularization for the kernel-logistic fit.")
-    p.add_argument("--lambda-partial", type=float, default=0.5,
+    p.add_argument("--lambda-partial", type=float, default=0.05,
                    help="L2 regularization for the K-dim primal fit "
-                        "(both projected and partial-with-feedback).")
-    p.add_argument("--feedback-alpha", type=float, default=1.0,
+                        "(both projected and partial-with-feedback). "
+                        "Default 0.05 matches the calibrated value from the "
+                        "joint pilot + sim grid sweep (consistent across "
+                        "sources).")
+    p.add_argument("--feedback-alpha", type=float, default=0.5,
                    help="Feedback strength α ∈ [0, 1] for the partial fit. "
                         "Ũ_α = U·((1−α) + α·λ_tk). α=0 collapses partial to "
-                        "projected; α=1 is full feedback. For calibration.")
+                        "projected; α=1 is full feedback. Default 0.5 is the "
+                        "calibrated mid-point recommendation.")
     p.add_argument("--multiplier-scale", type=float, default=1.0,
                    help="Scalar multiplied into DEFAULT_MULTS = "
                         "[-1.5,-1.0,0,1.0,1.5]. Affects both how the synthetic "
