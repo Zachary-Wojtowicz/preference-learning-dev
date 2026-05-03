@@ -795,11 +795,15 @@ def simulate_one_persona(persona, ctx, args, client):
         U_full = deltas @ V.T               # (T, K)
         cross_full = test_delta @ deltas.T  # (M, T)
 
-        # Λ feedback multipliers. For choice_only this is all-ones (so
-        # `partial` collapses to `projected` — kept for plotting parity).
+        # Λ feedback multipliers → design-matrix scale, with α-interpolation:
+        #     Ũ_α[t,k] = U[t,k] · ((1 − α) + α · λ_tk)   for visible dims
+        #     Ũ_α[t,k] = U[t,k]                           for invisible dims
+        # α=0 ⇒ projection; α=1 ⇒ full feedback. For calibration.
+        alpha = getattr(args, "feedback_alpha", 1.0)
         feedback_full = np.ones_like(U_full)
         if cond != "choice_only":
-            feedback_full[visible_traj] = lam_traj[visible_traj]
+            feedback_full[visible_traj] = ((1.0 - alpha)
+                                            + alpha * lam_traj[visible_traj])
         U_adj_full = feedback_full * U_full
 
         checkpoints = make_checkpoints(args.num_trials, args.checkpoint_step)
@@ -1187,7 +1191,8 @@ def run_simulation(args):
 
     ctx = {
         "embeddings": embeddings, "V": V, "G": G, "mu": mu,
-        "quintile_bounds": quintile_bounds, "mults": DEFAULT_MULTS,
+        "quintile_bounds": quintile_bounds,
+        "mults": DEFAULT_MULTS * args.multiplier_scale,
         "category_labels": category_labels,
         "dim_metadata": dim_metadata, "descriptions": descriptions,
         "raw_rows": raw_rows, "option_template": option_template,
@@ -1257,6 +1262,12 @@ def parse_args():
     p.add_argument("--lambda-standard", type=float, default=10.0)
     p.add_argument("--lambda-partial", type=float, default=0.5,
                    help="L2 reg for K-dim primal fit (both projected + partial).")
+    p.add_argument("--feedback-alpha", type=float, default=1.0,
+                   help="Feedback strength α ∈ [0, 1] for partial fit. "
+                        "Ũ_α = U·((1−α) + α·λ_tk). α=0 ⇒ projected; α=1 ⇒ full.")
+    p.add_argument("--multiplier-scale", type=float, default=1.0,
+                   help="Scalar applied to DEFAULT_MULTS = "
+                        "[-1.5,-1.0,0,1.0,1.5]. For calibration.")
     p.add_argument("--rating-temperature", type=float, default=20.0,
                    help="Larger τ for LLM sim because LL differences are smaller.")
     p.add_argument("--max-workers", type=int, default=4)

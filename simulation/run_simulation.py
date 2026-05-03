@@ -454,11 +454,20 @@ def simulate_one_user(user, ctx, args, rng):
         U_full = deltas @ V.T               # (T, K)
         cross_full = test_delta @ deltas.T  # (M, T)
 
-        # Feedback multipliers Λ. For choice_only this is all-ones (so
-        # `partial` collapses to `projected` — kept for plotting parity).
+        # Feedback multipliers Λ → design-matrix scale. For choice_only this
+        # is all-ones. For inference conditions, the design-matrix entry per
+        # (trial, dim) becomes:
+        #
+        #     Ũ_α[t,k] = U[t,k] · ((1 − α) + α · λ_tk)    for visible dims
+        #     Ũ_α[t,k] = U[t,k]                            for invisible dims
+        #
+        # α=0 ⇒ projection only (feedback ignored).  α=1 ⇒ full feedback (the
+        # original design). α∈(0,1) interpolates. Useful for calibration.
+        alpha = getattr(args, "feedback_alpha", 1.0)
         feedback_full = np.ones_like(U_full)
         if cond != "choice_only":
-            feedback_full[visible_traj] = lam_traj[visible_traj]
+            feedback_full[visible_traj] = ((1.0 - alpha)
+                                            + alpha * lam_traj[visible_traj])
         U_adj_full = feedback_full * U_full
 
         ckpts = []
@@ -921,10 +930,11 @@ def run_simulation(args):
             raise ValueError(f"predefined-pairs pool has only {len(predefined_pairs)} "
                              f"pairs, but need {need} = num_trials + num_test_pairs.")
 
+    mults = DEFAULT_MULTS * args.multiplier_scale
     ctx = {
         "embeddings": embeddings, "bt_scores": bt_scores,
         "V": V, "G": G, "mu": mu,
-        "quintile_bounds": quintile_bounds, "mults": DEFAULT_MULTS,
+        "quintile_bounds": quintile_bounds, "mults": mults,
         "predefined_pairs": predefined_pairs,
     }
 
@@ -999,6 +1009,15 @@ def parse_args():
     p.add_argument("--lambda-partial", type=float, default=0.5,
                    help="L2 regularization for the K-dim primal fit "
                         "(both projected and partial-with-feedback).")
+    p.add_argument("--feedback-alpha", type=float, default=1.0,
+                   help="Feedback strength α ∈ [0, 1] for the partial fit. "
+                        "Ũ_α = U·((1−α) + α·λ_tk). α=0 collapses partial to "
+                        "projected; α=1 is full feedback. For calibration.")
+    p.add_argument("--multiplier-scale", type=float, default=1.0,
+                   help="Scalar multiplied into DEFAULT_MULTS = "
+                        "[-1.5,-1.0,0,1.0,1.5]. Affects both how the synthetic "
+                        "user maps w* to a category AND how the fit interprets "
+                        "the chosen category. For calibration.")
     p.add_argument("--rating-temperature", type=float, default=5.0,
                    help="Temperature for sigmoid mapping quality gap to "
                         "predicted rating.")
