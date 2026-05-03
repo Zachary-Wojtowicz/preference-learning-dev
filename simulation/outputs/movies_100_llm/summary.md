@@ -1,78 +1,66 @@
-# LLM-Persona Simulation Summary
+# LLM-Persona Simulation Summary (revamped)
 
-## Experimental Parameters
+Predicts the experimental DV: probability that an LLM-persona participant prefers the partial/projected K-dim summary over the unrestricted standard summary, after T training trials.
+
+## Parameters
 
 | Parameter | Value |
 |-----------|-------|
-| Number of personas | 20 |
+| Personas | 20 |
 | Persona model | Qwen/Qwen3-32B |
 | Choice model | Qwen/Qwen3-32B |
-| Number of trials | 50 |
-| Number of test pairs | 50 |
-| Number of dimensions (K) | 25 |
-| Dimensions | Emotional Depth, Action Intensity, Humor Intensity, Historical Authenticity, Moral Complexity, Suspense/Atmosphere, Family Focus, Sci-Fi/Fantasy Worldbuilding, Political Intrigue, Satirical Edge, Survival/Stress Scenarios, Visual Spectacle, Coming-of-Age Focus, Nostalgic Aesthetics, Ensemble Cast Dynamics, Social Justice Themes, Cultural Authenticity, Psychological Depth, Adventure Scope, Musical Integration, Time-Loop Mechanics, Romantic Subplots, Underdog Arcs, War/Military Focus, Family-Friendly Content |
-| Learning rate | 0.01 |
-| Projection lambda (partial) | 0.5 |
-| Random seed | 42 |
+| Trials per persona | 20 |
+| Test pairs (held-out) | 50 |
+| Top-K inferences visible | 5 |
+| λ standard | 10.0 |
+| λ partial  | 1.0 |
+| Rating temperature τ | 20.0 |
+| Seed | 42 |
 
-## Final Performance (at last trial)
+## Predicted Rating (P[other > standard])
 
-| Condition | Accuracy | Log-Likelihood |
-| --- | --- | --- |
-| standard | 0.725 | -0.6909 |
-| projected | 0.721 | -0.6919 |
-| slider | 0.729 | -0.6911 |
-| partial | 0.751 | -0.6910 |
+| Condition | Other | Mean | SD | Pct > 0.5 |
+|-----------|-------|------|----|-----------|
+| choice_only | projected | 0.640 | 0.066 | 100% |
+| inference_affirm | feedback_adjusted | 0.644 | 0.085 | 90% |
+| inference_categories | feedback_adjusted | 0.644 | 0.067 | 95% |
 
-## Learning Curve (Average Accuracy by Trial)
+## Held-Out Log-Likelihood (primary quality signal)
 
-| Trial | standard | projected | slider | partial |
-| --- | --- | --- | --- | --- |
-| 0 | 0.429 | 0.429 | 0.429 | 0.429 |
-| 10 | 0.663 | 0.675 | 0.705 | 0.717 |
-| 20 | 0.698 | 0.690 | 0.725 | 0.737 |
-| 30 | 0.721 | 0.712 | 0.728 | 0.743 |
-| 40 | 0.707 | 0.715 | 0.720 | 0.750 |
-| 50 | 0.725 | 0.721 | 0.729 | 0.751 |
+| Condition | LL standard | LL other | Δ (other − standard) |
+|-----------|-------------|----------|----------------------|
+| choice_only | -0.6843 | -0.6549 | +0.0294 |
+| inference_affirm | -0.6843 | -0.6539 | +0.0304 |
+| inference_categories | -0.6843 | -0.6542 | +0.0301 |
 
-## First Trial to Reach 75% Accuracy
+## Held-Out Choice Accuracy
 
-| Condition | First Trial >= 75% Accuracy |
-|-----------|---------------------------|
-| standard | Never reached |
-| projected | Never reached |
-| slider | Never reached |
-| partial | 34 |
+| Condition | Acc standard | Acc other |
+|-----------|--------------|-----------|
+| choice_only | 0.696 | 0.699 |
+| inference_affirm | 0.696 | 0.662 |
+| inference_categories | 0.696 | 0.656 |
 
-## Internal Consistency
+## Significance Tests
 
-Overall consistency rate: **89.5%**
+| Comparison | n | mean Δ rating | Wilcoxon p |
+|------------|---|---------------|------------|
+| choice_only vs 0.5 | 20 | +0.140 | 0.0000 |
+| inference_affirm vs 0.5 | 20 | +0.144 | 0.0000 |
+| inference_categories vs 0.5 | 20 | +0.144 | 0.0000 |
+| inference_affirm vs choice_only | 20 | +0.003 | 0.8983 |
+| inference_categories vs choice_only | 20 | +0.003 | 0.6742 |
 
-| Persona | Name | Consistency Rate |
-|---------|------|-----------------|
-| 0 | Clara, 28 | 80% |
-| 1 | Raj, 42 | 90% |
-| 2 | Evelyn, 67 | 90% |
-| 3 | Marcus, 35 | 100% |
-| 4 | Zoe, 21 | 90% |
-| 5 | David, 50 | 90% |
-| 6 | Lila, 31 | 100% |
-| 7 | Amir, 29 | 100% |
-| 8 | Hannah, 19 | 90% |
-| 9 | George, 72 | 80% |
-| 10 | Nina, 26 | 90% |
-| 11 | Javier, 46 | 70% |
-| 12 | Priya, 37 | 90% |
-| 13 | Kevin, 40 | 100% |
-| 14 | Aisha, 24 | 100% |
-| 15 | Samuel, 55 | 80% |
-| 16 | Lena, 33 | 70% |
-| 17 | Elijah, 27 | 90% |
-| 18 | Sofia, 30 | 90% |
-| 19 | Tyler, 18 | 100% |
+## Learning Curves (test acc by trial count)
 
-## Key Findings
+Mean held-out accuracy across personas at each checkpoint. Should rise with more trials if learning is working.
 
-- **Best final accuracy**: partial (0.751)
-- **Standard baseline accuracy**: 0.725
-- **Slider vs standard gain**: +0.004
+| Condition | Fit | T=1 | T=5 | T=10 | T=15 | T=20 |
+| --- | --- | --- | --- | --- | --- | --- |
+| choice_only | standard | 0.533 | 0.643 | 0.647 | 0.676 | 0.696 |
+| choice_only | projected | 0.523 | 0.636 | 0.643 | 0.690 | 0.699 |
+| inference_affirm | standard | 0.533 | 0.643 | 0.647 | 0.676 | 0.696 |
+| inference_affirm | feedback_adjusted | 0.559 | 0.634 | 0.635 | 0.660 | 0.662 |
+| inference_categories | standard | 0.533 | 0.643 | 0.647 | 0.676 | 0.696 |
+| inference_categories | feedback_adjusted | 0.539 | 0.631 | 0.632 | 0.653 | 0.656 |
+
