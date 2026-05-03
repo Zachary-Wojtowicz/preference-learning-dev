@@ -116,6 +116,9 @@ python web-interface/generate_trials.py \
     $POSTER_ARG \
     --seed 42
 
+log "=== Refreshing web-interface configs (canonical condition keys) ==="
+python3 web-interface/update_configs.py
+
 # ---------------------------------------------------------------
 # Step 6: Simulations
 # ---------------------------------------------------------------

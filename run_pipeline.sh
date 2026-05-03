@@ -298,6 +298,9 @@ else
         --domain "${DOMAIN}" \
         --choice-context "${CHOICE_CONTEXT}" \
         --seed "${SEED}"
+
+    echo "[step-8b] Refreshing web-interface configs (canonical condition keys)..."
+    python3 web-interface/update_configs.py
 fi
 echo ""
 

@@ -203,6 +203,9 @@ python web-interface/generate_trials.py \
     --trials-per-participant 30 \
     --seed 42
 
+log "=== Refreshing web-interface configs (canonical condition keys) ==="
+python3 web-interface/update_configs.py
+
 # ---------------------------------------------------------------
 # Step 10: Simulations
 # ---------------------------------------------------------------
