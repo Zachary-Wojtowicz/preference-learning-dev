@@ -2,7 +2,7 @@
   "domain": "wines",
   "choice_context": "Which wine would you rather drink tonight?",
   "num_trials_per_participant": 20,
-  "top_k_sliders": 5,
+  "top_k_sliders": 3,
   "conditions": {
     "choice_only": {
       "label": "Choice Only",
@@ -473,7 +473,9 @@
   },
   "comparison": {
     "lambda_standard": 10.0,
-    "lambda_partial": 0.05,
+    "lambda_partial": 0.1,
+    "gamma": 1.0,
+    "feedback_alpha": 0.75,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown": 10,
     "show_for_conditions": [
@@ -483,12 +485,10 @@
       "inference_affirm",
       "inference_categories"
     ],
-    "_diag_mean": 1.0252,
     "eval_format": "top_bottom_bars",
     "n_per_side": 5,
     "most_valued_label": "Most valued",
-    "least_valued_label": "Least valued",
-    "feedback_alpha": 0.5
+    "least_valued_label": "Least valued"
   },
   "categorization": "perdim"
 }
