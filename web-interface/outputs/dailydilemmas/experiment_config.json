@@ -2,7 +2,7 @@
   "domain": "everyday moral dilemmas",
   "choice_context": "Which action is more ethical or understandable?",
   "num_trials_per_participant": 30,
-  "top_k_sliders": 5,
+  "top_k_sliders": 3,
   "conditions": {
     "choice_only": {
       "label": "Choice Only",
@@ -699,7 +699,9 @@
   },
   "comparison": {
     "lambda_standard": 10.0,
-    "lambda_partial": 0.05,
+    "lambda_partial": 0.1,
+    "gamma": 1.0,
+    "feedback_alpha": 0.75,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown": 10,
     "eval_format": "top_bottom_bars",
@@ -712,7 +714,6 @@
       "choice_checkboxes",
       "inference_affirm",
       "inference_categories"
-    ],
-    "feedback_alpha": 0.5
+    ]
   }
 }

@@ -55,6 +55,7 @@
   .category-picker{margin-top:.5rem;display:flex;gap:.35rem;flex-wrap:wrap}
   .category-picker button{padding:.3rem .65rem;font-size:.8rem;border:1px solid #d1d5db;border-radius:5px;background:#fff;color:#555;cursor:pointer;transition:all .12s}
   .category-picker button:hover{border-color:#888}.category-picker button.selected{background:#3b82f6;color:#fff;border-color:#3b82f6}
+  .category-picker button.suggested{background:#dbeafe;color:#1e40af;border-color:#93c5fd}
   .submit-row{text-align:center;margin-top:1.5rem}
   .affirm-hint{display:block;color:#6b7280;font-size:.9rem;margin-bottom:.5rem;min-height:1.1em}
   .btn{background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:.6rem 2rem;font-size:.95rem;cursor:pointer;transition:background .15s}
@@ -150,9 +151,10 @@ if(window.parent!==window){
 }
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
-var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,firstChoiceTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
+var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,firstChoiceTime=null,topKSliders=3,visibleSliderIndices=[],postUrl=null;
 var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeedback=20,numTraining=5;
-var dimQuantiles=null;  // {dimension_id -> [b1, b2, ..., b_{n-1}]} per-dim quantile boundaries
+var dimQuantiles=null;
+var dimMidpoints=null;  // {dimension_id -> [b1, b2, ..., b_{n-1}]} per-dim quantile boundaries
 var deltaGram=null,deltaGramN=0,trialProjections=null,evalState=null;
 var optionProjections=null,predictionState=null;
 var optionGram=null,optionGramN=0,optionIdToIdx=null;
@@ -299,7 +301,36 @@ Promise.all([
   if(arr[1]&&arr[1].gram_matrix)gramMatrix=arr[1].gram_matrix;
   if(arr[1]&&arr[1].top_k_sliders)topKSliders=arr[1].top_k_sliders;
   loadCategories();
+
+function computeDimMidpoints(){
+  if(!trials||trials.length===0)return null;
+  var nCats=CATEGORIES.length;if(nCats<2)return null;
+  var byDim={};
+  trials.forEach(function(t){if(!t.sliders)return;
+    t.sliders.forEach(function(s){
+      var did=s.dimension_id;if(did==null)return;
+      if(!byDim[did])byDim[did]=[];
+      var va=Number(s.value_if_a),vb=Number(s.value_if_b);
+      if(Number.isFinite(va))byDim[did].push(va);
+      if(Number.isFinite(vb))byDim[did].push(vb);
+    });
+  });
+  var out={};
+  Object.keys(byDim).forEach(function(did){
+    var arr=byDim[did].slice().sort(function(a,b){return a-b;});
+    if(arr.length<nCats){out[did]=null;return;}
+    var mids=[];
+    for(var i=0;i<nCats;i++){
+      var q=(2*i+1)/(2*nCats);
+      var idx=Math.min(Math.floor(q*(arr.length-1)),arr.length-1);
+      mids.push(arr[idx]);
+    }
+    out[did]=mids;
+  });
+  return out;
+}
   dimQuantiles=computeDimQuantiles();
+  dimMidpoints=computeDimMidpoints();
   if(urlParams.pid&&urlParams.condition){
     participantId=urlParams.pid;conditionKey=urlParams.condition;
     var cm=arr[1]?arr[1].conditions:buildFC();condition=cm[conditionKey];
@@ -503,6 +534,7 @@ function selectOption(key){
   if(infMode())populateInferences(trial,key);
   var p=document.getElementById('dimPanel');if(p)p.classList.add('visible');
   if(infMode()==='affirm')updateAffirmSubmitState();
+  else if(infMode()==='categories')updateCategorySubmitState();
   else document.getElementById('submitBtn').disabled=false;
 }
 function updateAffirmSubmitState(){
@@ -511,7 +543,15 @@ function updateAffirmSubmitState(){
   rows.forEach(function(r){if((r.dataset.action||'none')==='none')pending++;});
   btn.disabled=(pending>0);
   var hint=document.getElementById('affirmHint');
-  if(hint)hint.textContent=pending>0?('Respond to '+pending+' more inference'+(pending===1?'':'s')+' to continue.'):'';
+  if(hint)hint.textContent=pending>0?('Respond to '+pending+' more inference'+(pending===1?'':'s')+' to continue.'):'';  
+}
+function updateCategorySubmitState(){
+  var btn=document.getElementById('submitBtn');if(!btn)return;
+  var rows=document.querySelectorAll('.inference-row'),pending=0;
+  rows.forEach(function(r){if(r.dataset.confirmed!=='true')pending++;});
+  btn.disabled=(pending>0);
+  var hint=document.getElementById('affirmHint');
+  if(hint)hint.textContent=pending>0?('Confirm '+pending+' more inference'+(pending===1?'':'s')+' to continue.'):'';
 }
 function populateSliders(trial,key){
   var c=document.getElementById('sliderContainer'),hd=document.getElementById('dimPanelHeader');if(!c||!hd)return;
@@ -555,7 +595,7 @@ function populateInferences(trial,key){
   var mode=infMode(),h='';
   visibleSliderIndices.forEach(function(si){
     var s=trial.sliders[si],eff=key==='a'?s.value_if_a:s.value_if_b,defCat=catFromEff(eff,s.dimension_id);
-    h+='<div class="inference-row" data-id="'+s.id+'" data-dim-label="'+esc(s.label)+'" data-cat="'+defCat+'" data-original-cat="'+defCat+'" data-action="none">';
+    h+='<div class="inference-row" data-id="'+s.id+'" data-dim-label="'+esc(s.label)+'" data-cat="'+defCat+'" data-original-cat="'+defCat+'" data-action="none" data-confirmed="false">';
     h+='<div class="inference-text">\u201cYou <span class="cat-word">'+esc(catPhrase(defCat))+'</span> '+esc(s.label)+'.\u201d</div>';
     if(mode==='affirm'){
       h+='<div class="inference-actions">';
@@ -564,7 +604,7 @@ function populateInferences(trial,key){
       h+='</div>';
     }else{
       h+='<div class="category-picker">';
-      CATEGORIES.forEach(function(cat){h+='<button data-cat="'+cat.key+'"'+(cat.key===defCat?' class="selected"':'')+'>'+esc(cat.label)+'</button>';});
+      CATEGORIES.forEach(function(cat){h+='<button data-cat="'+cat.key+'"'+(cat.key===defCat?' class="suggested"':'')+'>'+esc(cat.label)+'</button>';});
       h+='</div>';
     }
     h+='</div>';
@@ -592,8 +632,12 @@ function populateInferences(trial,key){
     c.querySelectorAll('.inference-row').forEach(function(row){
       row.querySelectorAll('.category-picker button').forEach(function(btn){
         btn.addEventListener('click',function(){
-          row.querySelectorAll('.category-picker button').forEach(function(b){b.classList.remove('selected')});
-          btn.classList.add('selected');row.dataset.cat=btn.dataset.cat;row.dataset.action='modify';updateInfText(row);
+          row.querySelectorAll('.category-picker button').forEach(function(b){b.classList.remove('selected','suggested')});
+          btn.classList.add('selected');row.dataset.cat=btn.dataset.cat;
+          row.dataset.action=(btn.dataset.cat===row.dataset.originalCat)?'none':'modify';
+          row.dataset.confirmed='true';
+          updateInfText(row);
+          updateCategorySubmitState();
         });
       });
     });
@@ -679,16 +723,20 @@ function fitNewtonStandard(D,y,lam,maxIter){
   }
   return alpha;
 }
-// Partial fit: K-dim primal logistic with G-shaped prior centered at beta_0.
-function fitNewtonPartial(U,y,G,beta0,lam,maxIter){
-  var T=U.length,K=U[0].length,beta=beta0.slice();
+// Feedback-adjusted fit: predictions on raw U, gradients on U_adj.
+// Batch analogue of per-trial SGD where feedback re-weights gradients
+// per-dimension without distorting the prediction function.
+function fitFeedbackGradient(U,U_adj,y,G,lam,maxIter){
+  var T=U.length,K=U[0].length,beta=new Array(K).fill(0);
   for(var iter=0;iter<(maxIter||12);iter++){
-    var u=new Array(T);for(var t=0;t<T;t++){var s=0;for(var k=0;k<K;k++)s+=U[t][k]*beta[k];u[t]=s;}
+    var u=_matVec2(U,beta);   // predict on RAW U
     var p=u.map(_sigm),w=p.map(function(pi){return pi*(1-pi);});
-    var diff=new Array(K);for(var k2=0;k2<K;k2++)diff[k2]=beta[k2]-beta0[k2];
-    var Gd=_matVec(G,diff);
+    // gradient uses U_adj (feedback-scaled)
     var grad=new Array(K).fill(0);
-    for(var k=0;k<K;k++){var s2=0;for(var t2=0;t2<T;t2++)s2+=U[t2][k]*(p[t2]-y[t2]);grad[k]=s2+lam*Gd[k];}
+    for(var k=0;k<K;k++){var s=0;for(var t=0;t<T;t++)s+=U_adj[t][k]*(p[t]-y[t]);grad[k]=s;}
+    var Gb=_matVec(G,beta);
+    for(var k2=0;k2<K;k2++)grad[k2]+=lam*Gb[k2];
+    // Hessian uses raw U (matches prediction scale)
     var H=[];for(var k=0;k<K;k++){var row=new Array(K).fill(0);for(var k3=0;k3<K;k3++){var s3=0;for(var t3=0;t3<T;t3++)s3+=U[t3][k]*w[t3]*U[t3][k3];row[k3]=s3+lam*G[k][k3];}H.push(row);}
     var rhs=grad.map(function(g){return -g;});
     var dB=_solveLinear(H,rhs);if(!dB)break;
@@ -697,8 +745,43 @@ function fitNewtonPartial(U,y,G,beta0,lam,maxIter){
   }
   return beta;
 }
+function _matVec2(M,v){var n=M.length,r=new Array(n);for(var i=0;i<n;i++){var s=0;for(var j=0;j<v.length;j++)s+=M[i][j]*v[j];r[i]=s;}return r;}
 function scoresFromAlpha(alpha,Vd){var T=Vd.length,K=Vd[0].length,s=new Array(K).fill(0);for(var k=0;k<K;k++){var v=0;for(var t=0;t<T;t++)v+=alpha[t]*Vd[t][k];s[k]=v;}return s;}
 function scoresFromBeta(beta,G){return _matVec(G,beta);}
+// Compute per-dim bin midpoints from raw_projection values in trialProjections.
+// These are delta-level projections (same scale as U_tk), NOT the slider values.
+// Returns {dimension_id: [m0, m1, ..., m_{nCats-1}]} for each dimension.
+function computeDimMidpoints(){
+  if(!trialProjections||!experimentConfig||!experimentConfig.dimensions)return null;
+  var nCats=CATEGORIES.length;if(nCats<2)return null;
+  var dims=experimentConfig.dimensions,K=dims.length;
+  // Collect all raw_projection values per dimension across all trials
+  var byDim=new Array(K);
+  for(var k=0;k<K;k++)byDim[k]=[];
+  for(var pi=0;pi<trialProjections.length;pi++){
+    var tp=trialProjections[pi];
+    if(!tp||!Array.isArray(tp.raw_projection))continue;
+    for(var k2=0;k2<K&&k2<tp.raw_projection.length;k2++){
+      var v=tp.raw_projection[k2];
+      if(Number.isFinite(v)){byDim[k2].push(v);byDim[k2].push(-v);}
+    }
+  }
+  var out={};
+  for(var k3=0;k3<K;k3++){
+    var did=dims[k3].id||('dim_'+dims[k3].dimension_id);
+    var arr=byDim[k3].slice().sort(function(a,b){return a-b;});
+    if(arr.length<nCats){out[did]=null;continue;}
+    var mids=[];
+    for(var i=0;i<nCats;i++){
+      var q=(2*i+1)/(2*nCats);
+      var idx=Math.min(Math.floor(q*(arr.length-1)),arr.length-1);
+      mids.push(arr[idx]);
+    }
+    out[did]=mids;
+  }
+  return out;
+}
+var dimMidpoints=null;
 
 // Build participant-trial-indexed data structures from responses.
 function buildEvalInputs(){
@@ -721,15 +804,14 @@ function buildEvalInputs(){
   if(deltaGram&&deltaGramN===trials.length){
     D=[];for(var ii=0;ii<T;ii++){var row=new Array(T);var pi_i=poolIdx[ii];for(var jj=0;jj<T;jj++){var pi_j=poolIdx[jj];row[jj]=deltaGram[pi_i*deltaGramN+pi_j];}D.push(row);}
   }
-  // Per-trial multipliers (only for inference conditions). Sums + counts per dim across visible-trials.
+  // Per-trial feedback. Only modify U_adj for dims where the participant
+  // actively changed the category or removed it. Agreement = passthrough.
+  // α (feedback_alpha) blends between raw U and replacement:
+  //   remove:  U_adj = (1-α)*U  (at α=1, fully zeroed)
+  //   modify:  U_adj = (1-α)*U + α*midpoint
+  //   none/affirm: U_adj = U (passthrough regardless of α)
   var sums=new Array(K).fill(0),counts=new Array(K).fill(0);
-  // Build per-trial feedback matrix for the adjusted design matrix.
-  // U_adj[t][k] = ((1-α) + α·m) · U[t][k] for visible dims, U[t][k] for invisible.
-  // α (feedback_alpha) is the feedback-strength blend: α=0 ⇒ projection only
-  // (ignore multipliers entirely); α=1 ⇒ full multiplier as in the original
-  // design; α∈(0,1) ⇒ partial blend. Reads from
-  // experiment_config.comparison.feedback_alpha; defaults to 1.0 if absent
-  // (preserves prior behavior on configs that haven't been migrated).
+  if(!dimMidpoints) dimMidpoints=computeDimMidpoints();
   var feedbackAlpha = 1.0;
   if (experimentConfig && experimentConfig.comparison
       && typeof experimentConfig.comparison.feedback_alpha === 'number'
@@ -737,16 +819,27 @@ function buildEvalInputs(){
     feedbackAlpha = experimentConfig.comparison.feedback_alpha;
   }
   var U_adj=[];
-  for(var t=0;t<T;t++) U_adj.push(U[t].slice()); // start as copy of U
+  for(var t=0;t<T;t++) U_adj.push(U[t].slice());
   responses.forEach(function(r,t){
     if(!r.inference_values)return;
     Object.keys(r.inference_values).forEach(function(did){
       var idx=dimIds.indexOf(did);if(idx<0)return;
-      var m=r.inference_values[did].multiplier;
-      if(typeof m!=='number'||!isFinite(m))return;
-      var meff = (1 - feedbackAlpha) + feedbackAlpha * m;
-      U_adj[t][idx] = meff * U[t][idx]; // α-blended weighted projection
-      sums[idx]+=m;counts[idx]+=1;
+      var info=r.inference_values[did];
+      var action=info.action||'none';
+      if(action==='remove'){
+        U_adj[t][idx]=(1-feedbackAlpha)*U[t][idx]; // at α=1, zero; at α=0, passthrough
+      }else if(action==='modify'||action==='moderate'){
+        // Category was changed — α-blend with midpoint
+        var cat=info.category;
+        var catIdx=-1;
+        for(var ci=0;ci<CATEGORIES.length;ci++){if(CATEGORIES[ci].key===cat){catIdx=ci;break;}}
+        if(catIdx>=0&&dimMidpoints&&dimMidpoints[did]&&dimMidpoints[did][catIdx]!=null){
+          U_adj[t][idx]=(1-feedbackAlpha)*U[t][idx]+feedbackAlpha*dimMidpoints[did][catIdx];
+        }
+      }
+      // else: 'none' or 'affirm' → U_adj stays as U (passthrough)
+      var m=info.multiplier;
+      if(typeof m==='number'&&isFinite(m)){sums[idx]+=m;counts[idx]+=1;}
     });
   });
   var hasMultipliers=counts.some(function(c){return c>0;});
@@ -829,11 +922,9 @@ function startEvaluation(){
     leftModel=stdOnLeft?'standard':'random';
     rightModel=stdOnLeft?'random':'standard';
   }else{
-    // Standard-vs-feedback-adjusted check.
-    // Feedback-adjusted fit: use Ũ = Λ ⊙ U (design matrix scaled by
-    // per-trial per-dimension feedback multipliers). Zero-centered prior.
-    var beta0=new Array(inputs.K).fill(0);
-    var beta=fitNewtonPartial(inputs.U_adj,inputs.y,gramMatrix,beta0,lamP,15);
+    // Feedback-adjusted fit: predictions on raw U, gradients on U_adj.
+    // No train/test scale mismatch.
+    var beta=fitFeedbackGradient(inputs.U,inputs.U_adj,inputs.y,gramMatrix,lamP,15);
     var scoresPart=scoresFromBeta(beta,gramMatrix);
     scoresLeft=stdOnLeft?scoresStd:scoresPart;
     scoresRight=stdOnLeft?scoresPart:scoresStd;
@@ -970,9 +1061,8 @@ function fitPredictionBeta(){
   var inputs=buildEvalInputs();
   if(!inputs||!inputs.U_adj||!gramMatrix)return null;
   var lamP=(experimentConfig&&experimentConfig.comparison&&experimentConfig.comparison.lambda_partial)||1.0;
-  // Feedback-adjusted fit: use Ũ = Λ ⊙ U with zero-centered prior
-  var beta0=new Array(inputs.K).fill(0);
-  var beta=fitNewtonPartial(inputs.U_adj,inputs.y,gramMatrix,beta0,lamP,15);
+  // Feedback-adjusted fit: predictions on raw U, gradients on U_adj
+  var beta=fitFeedbackGradient(inputs.U,inputs.U_adj,inputs.y,gramMatrix,lamP,15);
   return {beta:beta,K:inputs.K,hasMultipliers:inputs.hasMultipliers};
 }
 // Pick the trial pair (from trials.json) whose model-predicted preference is strongest.

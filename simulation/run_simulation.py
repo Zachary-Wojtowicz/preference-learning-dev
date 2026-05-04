@@ -21,10 +21,15 @@ Three conditions × three fits, evaluated identically:
     B. projected  — K-dim primal logistic regression on plain U
                     (MLE projected onto the interpretable basis; ignores
                     feedback). λ_partial regularization.
-    C. partial    — K-dim primal logistic regression on Ũ = Λ ⊙ U with
-                    β₀ = 0 (matches `index.html` web-experiment fit; the
-                    feedback re-weights the design matrix per-trial
-                    per-dimension). λ_partial regularization.
+    C. partial    — K-dim primal logistic with feedback-adjusted gradients.
+                    Predictions use raw U; gradients use Ũ where:
+                    - affirm/none dims: passthrough (U_adj = U)
+                    - modify/moderate dims: midpoint replacement
+                    - remove dims: zeroed out
+                    α blends between U and replacement: (1-α)*U + α*midpoint
+    D. blend      — post-hoc ensemble of standard + partial:
+                    logit_blend = (1-γ)*logit_std + γ*logit_partial
+                    γ=0 is pure kernel, γ=1 is pure partial.
 
   For choice_only, Λ ≡ 1, so projected and partial are identical fits
   (we still compute both for plotting consistency).
@@ -169,6 +174,24 @@ def perdim_quintile_boundaries(values_pool, n_cats=5):
     return boundaries
 
 
+def perdim_bin_midpoints(values_pool, n_cats=5):
+    """For each dimension k, compute the midpoint of each of the n_cats
+    quintile bins.  Returns (n_cats, K) array.
+
+    Uses the symmetric distribution {v, -v} to match
+    perdim_quintile_boundaries.  Midpoints are at quantiles
+    [1/(2n), 3/(2n), ..., (2n-1)/(2n)] — the center of mass of each bin.
+    """
+    T, K = values_pool.shape
+    midpoint_qs = np.array([(2 * i + 1) / (2 * n_cats) for i in range(n_cats)])
+    midpoints = np.zeros((n_cats, K))
+    for k in range(K):
+        v = values_pool[:, k]
+        symm = np.concatenate([v, -v])
+        midpoints[:, k] = np.quantile(symm, midpoint_qs)
+    return midpoints
+
+
 def value_to_mult(value, boundaries_k, mults):
     """Bucket a single value (one dim) into one of len(mults) multipliers."""
     bucket = np.searchsorted(boundaries_k, value)
@@ -267,16 +290,26 @@ def fit_standard_kernel(D, y, lam, max_iter=15, tol=1e-7):
     return alpha
 
 
-def fit_partial_primal(U, y, G, beta0, lam, max_iter=15, tol=1e-7):
-    """K-dim primal logistic regression with G-shape prior centered at β₀."""
+def fit_feedback_gradient(U, U_adj, y, G, lam, max_iter=15, tol=1e-7):
+    """K-dim primal logistic regression where predictions use raw U but
+    gradients use feedback-adjusted U_adj.
+
+    This is the batch analogue of per-trial SGD where feedback re-weights
+    the gradient per-dimension without distorting the prediction function.
+
+    Prediction:  p_t = σ(β⊤ U_t)           ← same scale as test time
+    Gradient:    g_k = Σ_t (p_t - y_t) · Ũ_tk + λ(Gβ)_k
+                     = Σ_t (p_t - y_t) · λ_tk · U_tk + λ(Gβ)_k
+    Hessian:     H = U⊤ W U + λG           ← standard (matches prediction)
+    """
     T, K = U.shape
-    beta = beta0.copy()
+    beta = np.zeros(K)
     for _ in range(max_iter):
-        u = U @ beta
+        u = U @ beta                       # predict on RAW U
         p = sigmoid(u)
         w = p * (1 - p)
-        grad = U.T @ (p - y) + lam * G @ (beta - beta0)
-        H = U.T @ (w[:, None] * U) + lam * G
+        grad = U_adj.T @ (p - y) + lam * G @ beta   # gradient on ADJUSTED
+        H = U.T @ (w[:, None] * U) + lam * G         # Hessian on RAW
         try:
             d_beta = np.linalg.solve(H, -grad)
         except np.linalg.LinAlgError:
@@ -367,6 +400,7 @@ def simulate_one_user(user, ctx, args, rng):
     G = ctx["G"]
     mu = ctx["mu"]
     quintile_bounds = ctx["quintile_bounds"]
+    bin_midpoints = ctx["bin_midpoints"]
     mults = ctx["mults"]
     N, d = embeddings.shape
     K = V.shape[0]
@@ -411,7 +445,7 @@ def simulate_one_user(user, ctx, args, rng):
         # Per-trial accumulators (collected once across all conditions' checkpoints).
         deltas = np.zeros((args.num_trials, d))
         ys = np.zeros(args.num_trials, dtype=int)
-        lam_traj = np.zeros((args.num_trials, K))
+        lam_traj = np.full((args.num_trials, K), np.nan)  # NaN = passthrough
         visible_traj = np.zeros((args.num_trials, K), dtype=bool)
         action_log = []
 
@@ -443,7 +477,14 @@ def simulate_one_user(user, ctx, args, rng):
                     action = "modify" if abs(applied - pre_mult) > 1e-9 else "none"
 
                 applied = apply_noise(applied, mults, args.participant_noise, rng)
-                lam_traj[t, k] = applied
+
+                # Action-based storage: NaN=passthrough, 0=remove, midpoint=modify/moderate
+                if action == "remove":
+                    lam_traj[t, k] = 0.0
+                elif action in ("modify", "moderate"):
+                    cat_idx = int(np.argmin(np.abs(mults - applied)))
+                    lam_traj[t, k] = bin_midpoints[cat_idx, k]
+                # else: affirm/none → stays NaN (passthrough)
                 action_log.append({"trial": t, "dim": int(k), "action": action,
                                    "pre_mult": float(pre_mult),
                                    "true_mult": float(true_mults[k]),
@@ -454,21 +495,16 @@ def simulate_one_user(user, ctx, args, rng):
         U_full = deltas @ V.T               # (T, K)
         cross_full = test_delta @ deltas.T  # (M, T)
 
-        # Feedback multipliers Λ → design-matrix scale. For choice_only this
-        # is all-ones. For inference conditions, the design-matrix entry per
-        # (trial, dim) becomes:
-        #
-        #     Ũ_α[t,k] = U[t,k] · ((1 − α) + α · λ_tk)    for visible dims
-        #     Ũ_α[t,k] = U[t,k]                            for invisible dims
-        #
-        # α=0 ⇒ projection only (feedback ignored).  α=1 ⇒ full feedback (the
-        # original design). α∈(0,1) interpolates. Useful for calibration.
-        alpha = getattr(args, "feedback_alpha", 1.0)
-        feedback_full = np.ones_like(U_full)
-        if cond != "choice_only":
-            feedback_full[visible_traj] = ((1.0 - alpha)
-                                            + alpha * lam_traj[visible_traj])
-        U_adj_full = feedback_full * U_full
+        # Action-based feedback: NaN entries (affirm/none) are passthrough,
+        # finite entries (modify/moderate/remove) get α-blended.
+        # Ũ[t,k] = (1-α)*U[t,k] + α*lam_traj[t,k]  for changed dims
+        # Ũ[t,k] = U[t,k]                              for unchanged dims
+        alpha_fb = getattr(args, "feedback_alpha", 1.0)
+        U_adj_full = U_full.copy()
+        has_replacement = np.isfinite(lam_traj)  # True where action was modify/moderate/remove
+        if has_replacement.any() and cond != "choice_only":
+            U_adj_full[has_replacement] = ((1.0 - alpha_fb) * U_full[has_replacement]
+                                           + alpha_fb * lam_traj[has_replacement])
 
         ckpts = []
         for t_end in checkpoints:
@@ -481,12 +517,12 @@ def simulate_one_user(user, ctx, args, rng):
 
             # All three fits, every checkpoint, every condition.
             alpha = fit_standard_kernel(D_t, y_t, args.lambda_standard)
-            beta_proj = fit_partial_primal(U_t, y_t, G, np.zeros(K),
+            beta_proj = fit_feedback_gradient(U_t, U_t, y_t, G,
                                            args.lambda_partial)
             if cond == "choice_only":
                 beta_part = beta_proj  # Λ=1 → identical fit; skip recompute
             else:
-                beta_part = fit_partial_primal(U_adj_t, y_t, G, np.zeros(K),
+                beta_part = fit_feedback_gradient(U_t, U_adj_t, y_t, G,
                                                args.lambda_partial)
 
             # Held-out scoring
@@ -494,12 +530,19 @@ def simulate_one_user(user, ctx, args, rng):
             logits_std = cross_t @ alpha
             logits_proj = test_U @ beta_proj
             logits_part = test_U @ beta_part
+
+            # Blended logits: (1-γ)*kernel + γ*projected (with feedback)
+            gamma = getattr(args, "gamma", 1.0)
+            logits_blend = (1.0 - gamma) * logits_std + gamma * logits_part
+
             acc_std = float(((logits_std > 0).astype(int) == test_choices).mean())
             acc_proj = float(((logits_proj > 0).astype(int) == test_choices).mean())
             acc_part = float(((logits_part > 0).astype(int) == test_choices).mean())
+            acc_blend = float(((logits_blend > 0).astype(int) == test_choices).mean())
             ll_std = heldout_log_likelihood(logits_std, test_choices)
             ll_proj = heldout_log_likelihood(logits_proj, test_choices)
             ll_part = heldout_log_likelihood(logits_part, test_choices)
+            ll_blend = heldout_log_likelihood(logits_blend, test_choices)
 
             # Summary quality vs ground truth (cheap; useful for trajectory)
             scores_std = U_t.T @ alpha            # V θ_std (K-dim projection)
@@ -508,7 +551,7 @@ def simulate_one_user(user, ctx, args, rng):
             q_std = summary_quality(scores_std, w_star, args.n_dimensions_shown)
             q_proj = summary_quality(scores_proj, w_star, args.n_dimensions_shown)
             q_part = summary_quality(scores_part, w_star, args.n_dimensions_shown)
-            # Predicted DV uses the partial fit (= what the experiment shows).
+            # Predicted DV uses the blended fit.
             rating = predicted_rating(q_part["combined"], q_std["combined"],
                                       args.rating_temperature)
 
@@ -517,21 +560,27 @@ def simulate_one_user(user, ctx, args, rng):
                 "test_acc_standard": acc_std,
                 "test_acc_projected": acc_proj,
                 "test_acc_partial": acc_part,
+                "test_acc_blend": acc_blend,
                 "test_ll_standard": ll_std,
                 "test_ll_projected": ll_proj,
                 "test_ll_partial": ll_part,
+                "test_ll_blend": ll_blend,
                 "spearman_standard": q_std["spearman"],
                 "spearman_projected": q_proj["spearman"],
                 "spearman_partial": q_part["spearman"],
+                "spearman_blend": q_part["spearman"],  # blend reuses partial's summary
                 "topn_sign_standard": q_std["top_n_sign_agreement"],
                 "topn_sign_projected": q_proj["top_n_sign_agreement"],
                 "topn_sign_partial": q_part["top_n_sign_agreement"],
+                "topn_sign_blend": q_part["top_n_sign_agreement"],
                 "topn_overlap_standard": q_std["top_n_overlap"],
                 "topn_overlap_projected": q_proj["top_n_overlap"],
                 "topn_overlap_partial": q_part["top_n_overlap"],
+                "topn_overlap_blend": q_part["top_n_overlap"],
                 "combined_standard": q_std["combined"],
                 "combined_projected": q_proj["combined"],
                 "combined_partial": q_part["combined"],
+                "combined_blend": q_part["combined"],
                 "rating_partial_vs_standard": rating,
             })
 
@@ -547,7 +596,7 @@ def simulate_one_user(user, ctx, args, rng):
 # Output
 # ---------------------------------------------------------------------------
 
-FIT_TYPES = ["standard", "projected", "partial"]
+FIT_TYPES = ["standard", "projected", "partial", "blend"]
 
 
 def aggregate_final(per_user_results):
@@ -616,6 +665,8 @@ def write_summary(df, curves_df, args, output_dir, dim_names):
     lines.append(f"| Beta (choice noise) | {args.beta} |")
     lines.append(f"| λ standard | {args.lambda_standard} |")
     lines.append(f"| λ partial  | {args.lambda_partial} |")
+    lines.append(f"| γ (projection blend) | {args.gamma} |")
+    lines.append(f"| α (feedback strength) | {args.feedback_alpha} |")
     lines.append(f"| Rating temperature τ | {args.rating_temperature} |")
     lines.append(f"| Top-N dims shown in summary | {args.n_dimensions_shown} |")
     lines.append(f"| Seed | {args.seed} |")
@@ -656,8 +707,8 @@ def write_summary(df, curves_df, args, output_dir, dim_names):
     lines.append("")
 
     lines.append("## Held-Out Choice Accuracy at T\n")
-    lines.append("| Condition | standard | projected | partial | Δ proj−std | Δ part−std |")
-    lines.append("|-----------|----------|-----------|---------|------------|------------|")
+    lines.append("| Condition | standard | projected | partial | blend | Δ blend−std |")
+    lines.append("|-----------|----------|-----------|---------|-------|------------|")
     for cond in CONDITIONS:
         cdf = df[df["condition"] == cond]
         if cdf.empty:
@@ -665,13 +716,14 @@ def write_summary(df, curves_df, args, output_dir, dim_names):
         a_s = cdf["test_acc_standard"].mean()
         a_pr = cdf["test_acc_projected"].mean()
         a_pa = cdf["test_acc_partial"].mean()
-        lines.append(f"| {cond} | {a_s:.3f} | {a_pr:.3f} | {a_pa:.3f} | "
-                     f"{a_pr - a_s:+.3f} | {a_pa - a_s:+.3f} |")
+        a_bl = cdf["test_acc_blend"].mean()
+        lines.append(f"| {cond} | {a_s:.3f} | {a_pr:.3f} | {a_pa:.3f} | {a_bl:.3f} | "
+                     f"{a_bl - a_s:+.3f} |")
     lines.append("")
 
     lines.append("## Held-Out Log-Likelihood at T\n")
-    lines.append("| Condition | LL standard | LL projected | LL partial | Δ proj−std | Δ part−std |")
-    lines.append("|-----------|-------------|--------------|------------|------------|------------|")
+    lines.append("| Condition | LL standard | LL projected | LL partial | LL blend | Δ blend−std |")
+    lines.append("|-----------|-------------|--------------|------------|----------|------------|")
     for cond in CONDITIONS:
         cdf = df[df["condition"] == cond]
         if cdf.empty:
@@ -679,8 +731,9 @@ def write_summary(df, curves_df, args, output_dir, dim_names):
         l_s = cdf["test_ll_standard"].mean()
         l_pr = cdf["test_ll_projected"].mean()
         l_pa = cdf["test_ll_partial"].mean()
-        lines.append(f"| {cond} | {l_s:+.4f} | {l_pr:+.4f} | {l_pa:+.4f} | "
-                     f"{l_pr - l_s:+.4f} | {l_pa - l_s:+.4f} |")
+        l_bl = cdf["test_ll_blend"].mean()
+        lines.append(f"| {cond} | {l_s:+.4f} | {l_pr:+.4f} | {l_pa:+.4f} | {l_bl:+.4f} | "
+                     f"{l_bl - l_s:+.4f} |")
     lines.append("")
 
     lines.append("## Significance Tests (paired Wilcoxon)\n")
@@ -793,6 +846,7 @@ FIT_STYLE = {
     "standard":  {"color": "#444444", "marker": "o", "label": "MLE (standard kernel)"},
     "projected": {"color": "#1f77b4", "marker": "s", "label": "MLE projected onto basis"},
     "partial":   {"color": "#d62728", "marker": "^", "label": "Partial (feedback re-weighted)"},
+    "blend":     {"color": "#2ca02c", "marker": "D", "label": "Blend ((1-γ)*kernel + γ*partial)"},
 }
 
 
@@ -919,6 +973,22 @@ def run_simulation(args):
     pool_proj = centered @ V.T  # (N, K)
     quintile_bounds = perdim_quintile_boundaries(pool_proj, n_cats=len(DEFAULT_MULTS))
 
+    # Bin midpoints for gradient replacement must come from DELTA projections
+    # (same scale as U_tk = (φ_a - φ_b)⊤v_k), not option-level projections.
+    # Sample random pairs to build the delta-projection distribution.
+    _rng_mp = np.random.default_rng(args.seed + 999)
+    _n_mp_pairs = min(2000, N * (N - 1) // 2)
+    _mp_a = _rng_mp.integers(0, N, size=_n_mp_pairs)
+    _mp_b = _rng_mp.integers(0, N, size=_n_mp_pairs)
+    _mask = _mp_a == _mp_b
+    while _mask.any():
+        _mp_b[_mask] = _rng_mp.integers(0, N, size=int(_mask.sum()))
+        _mask = _mp_a == _mp_b
+    _delta_proj = (embeddings[_mp_a] - embeddings[_mp_b]) @ V.T  # (_n_mp_pairs, K)
+    bin_midpoints = perdim_bin_midpoints(_delta_proj, n_cats=len(DEFAULT_MULTS))
+    print(f"  Bin midpoints scale: option-level range [{pool_proj.min():.2f}, {pool_proj.max():.2f}], "
+          f"delta-level range [{_delta_proj.min():.2f}, {_delta_proj.max():.2f}]")
+
     print("Generating synthetic users...")
     users = generate_users(args.num_users, K, rng)
 
@@ -934,7 +1004,7 @@ def run_simulation(args):
     ctx = {
         "embeddings": embeddings, "bt_scores": bt_scores,
         "V": V, "G": G, "mu": mu,
-        "quintile_bounds": quintile_bounds, "mults": mults,
+        "quintile_bounds": quintile_bounds, "bin_midpoints": bin_midpoints, "mults": mults,
         "predefined_pairs": predefined_pairs,
     }
 
@@ -995,7 +1065,7 @@ def parse_args():
                    help="Trials per user. Defaults to experiment N=20.")
     p.add_argument("--num-test-pairs", type=int, default=200,
                    help="Held-out test pairs (diagnostic only).")
-    p.add_argument("--top-k-inferences", type=int, default=5,
+    p.add_argument("--top-k-inferences", type=int, default=3,
                    help="Number of dims visible per trial in inference conditions.")
     p.add_argument("--n-dimensions-shown", type=int, default=10,
                    help="Top-N dims shown in the post-experiment summary.")
@@ -1006,17 +1076,18 @@ def parse_args():
                    help="Choice-noise temperature (BTL).")
     p.add_argument("--lambda-standard", type=float, default=10.0,
                    help="L2 regularization for the kernel-logistic fit.")
-    p.add_argument("--lambda-partial", type=float, default=0.05,
+    p.add_argument("--lambda-partial", type=float, default=0.1,
                    help="L2 regularization for the K-dim primal fit "
                         "(both projected and partial-with-feedback). "
-                        "Default 0.05 matches the calibrated value from the "
-                        "joint pilot + sim grid sweep (consistent across "
-                        "sources).")
-    p.add_argument("--feedback-alpha", type=float, default=0.5,
-                   help="Feedback strength α ∈ [0, 1] for the partial fit. "
-                        "Ũ_α = U·((1−α) + α·λ_tk). α=0 collapses partial to "
-                        "projected; α=1 is full feedback. Default 0.5 is the "
-                        "calibrated mid-point recommendation.")
+                        "Default 0.1 matches the calibrated value.")
+    p.add_argument("--feedback-alpha", type=float, default=0.75,
+                   help="Feedback strength α ∈ [0, 1]. α=0 ignores feedback "
+                        "(partial = projected). α=1 is full midpoint replacement "
+                        "on changed dims. Default 0.75.")
+    p.add_argument("--gamma", type=float, default=1.0,
+                   help="Projection degree γ ∈ [0, 1]. Blends kernel and "
+                        "projected logits: (1-γ)*kernel + γ*projected. "
+                        "γ=0 is pure kernel, γ=1 is pure projection. Default 1.0.")
     p.add_argument("--multiplier-scale", type=float, default=1.0,
                    help="Scalar multiplied into DEFAULT_MULTS = "
                         "[-1.5,-1.0,0,1.0,1.5]. Affects both how the synthetic "
