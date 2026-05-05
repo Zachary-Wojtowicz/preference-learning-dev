@@ -103,10 +103,10 @@
         {
           "pid": "R_5LIEhPwJpqBIh33",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.75,
+          "aug_acc": 0.8,
           "base_name": "projection_only",
           "base_acc": 0.8,
-          "diff": -0.050000000000000044
+          "diff": 0.0
         },
         {
           "pid": "R_6LLtcbP0XmXKCKi",
@@ -119,10 +119,10 @@
         {
           "pid": "R_6CNB7iyJW5HG86l",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.8,
+          "aug_acc": 0.75,
           "base_name": "projection_only",
           "base_acc": 0.85,
-          "diff": -0.04999999999999993
+          "diff": -0.09999999999999998
         },
         {
           "pid": "R_5tCYWTLWaZip8wf",
@@ -135,18 +135,18 @@
         {
           "pid": "R_7eFSsHPE6CYnKBc",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.65,
+          "aug_acc": 0.75,
           "base_name": "projection_only",
           "base_acc": 0.7,
-          "diff": -0.04999999999999993
+          "diff": 0.050000000000000044
         },
         {
           "pid": "R_5GBOlTN9uyPLMQS",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.65,
+          "aug_acc": 0.7,
           "base_name": "projection_only",
           "base_acc": 0.7,
-          "diff": -0.04999999999999993
+          "diff": 0.0
         },
         {
           "pid": "R_6EacszGusNAsdTL",
@@ -159,18 +159,18 @@
         {
           "pid": "R_5DtMbRWPrD98QIg",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.75,
+          "aug_acc": 0.7,
           "base_name": "projection_only",
           "base_acc": 0.7,
-          "diff": 0.050000000000000044
+          "diff": 0.0
         }
       ],
-      "mean_diff": 0.006250000000000026,
-      "sd_diff": 0.08634441002668986,
-      "t": 0.20473438320094411,
-      "p_one_sided": 0.42180271753897536,
-      "d_z": 0.07238453535171638,
-      "p_holm": 0.8436054350779507
+      "mean_diff": 0.01875000000000001,
+      "sd_diff": 0.08425090080061035,
+      "t": 0.62946518179669,
+      "p_one_sided": 0.2745146660518085,
+      "d_z": 0.22254954928463125,
+      "p_holm": 0.549029332103617
     },
     "inference_categories": {
       "n": 8,
@@ -178,18 +178,18 @@
         {
           "pid": "R_5uvWFi8cYqk7g6l",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.65,
+          "aug_acc": 0.75,
           "base_name": "projection_only",
           "base_acc": 0.6,
-          "diff": 0.050000000000000044
+          "diff": 0.15000000000000002
         },
         {
           "pid": "R_7w69DGmziNjVtfs",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.25,
+          "aug_acc": 0.55,
           "base_name": "projection_only",
           "base_acc": 0.35,
-          "diff": -0.09999999999999998
+          "diff": 0.20000000000000007
         },
         {
           "pid": "R_5PgZpS3QqUExLqv",
@@ -202,18 +202,18 @@
         {
           "pid": "R_1jOZUQkHRxeWNJU",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.8,
+          "aug_acc": 0.9,
           "base_name": "projection_only",
           "base_acc": 0.9,
-          "diff": -0.09999999999999998
+          "diff": 0.0
         },
         {
           "pid": "R_3Ol6SedRydfHKn6",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.65,
+          "aug_acc": 0.6,
           "base_name": "projection_only",
           "base_acc": 0.75,
-          "diff": -0.09999999999999998
+          "diff": -0.15000000000000002
         },
         {
           "pid": "R_1jij2hQKHPIcGlj",
@@ -226,10 +226,10 @@
         {
           "pid": "R_5QGWoKvCFhGDfbZ",
           "aug_name": "projection_alpha",
-          "aug_acc": 0.55,
+          "aug_acc": 0.6,
           "base_name": "projection_only",
           "base_acc": 0.55,
-          "diff": 0.0
+          "diff": 0.04999999999999993
         },
         {
           "pid": "R_7r03x3O22rF6SSL",
@@ -240,12 +240,12 @@
           "diff": 0.0
         }
       ],
-      "mean_diff": -0.04374999999999998,
-      "sd_diff": 0.06232117273791124,
-      "t": -1.9855802012591133,
-      "p_one_sided": 0.95627032869596,
-      "d_z": -0.7020086124500344,
-      "p_holm": 0.95627032869596
+      "mean_diff": 0.018750000000000003,
+      "sd_diff": 0.11630471062809845,
+      "t": 0.4559833243433447,
+      "p_one_sided": 0.33110565048759993,
+      "d_z": 0.161214450375582,
+      "p_holm": 0.549029332103617
     }
   },
   "h1_loo_per_participant": [
@@ -262,7 +262,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.6,
       "projection_only": 0.6,
-      "projection_alpha": 0.65
+      "projection_alpha": 0.75
     },
     {
       "pid": "R_58jcig4NSdASp0Z",
@@ -284,7 +284,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.45,
       "projection_only": 0.35,
-      "projection_alpha": 0.25
+      "projection_alpha": 0.55
     },
     {
       "pid": "R_5LIEhPwJpqBIh33",
@@ -292,7 +292,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.6,
       "projection_only": 0.8,
-      "projection_alpha": 0.75
+      "projection_alpha": 0.8
     },
     {
       "pid": "R_6LLtcbP0XmXKCKi",
@@ -330,7 +330,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.55,
       "projection_only": 0.85,
-      "projection_alpha": 0.8
+      "projection_alpha": 0.75
     },
     {
       "pid": "R_1jOZUQkHRxeWNJU",
@@ -338,7 +338,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.7,
       "projection_only": 0.9,
-      "projection_alpha": 0.8
+      "projection_alpha": 0.9
     },
     {
       "pid": "R_1qrAmLYv6AWC1i0",
@@ -368,7 +368,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.75,
       "projection_only": 0.75,
-      "projection_alpha": 0.65
+      "projection_alpha": 0.6
     },
     {
       "pid": "R_7eFSsHPE6CYnKBc",
@@ -376,7 +376,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.55,
       "projection_only": 0.7,
-      "projection_alpha": 0.65
+      "projection_alpha": 0.75
     },
     {
       "pid": "R_5GBOlTN9uyPLMQS",
@@ -384,7 +384,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.5,
       "projection_only": 0.7,
-      "projection_alpha": 0.65
+      "projection_alpha": 0.7
     },
     {
       "pid": "R_6EacszGusNAsdTL",
@@ -400,7 +400,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.55,
       "projection_only": 0.7,
-      "projection_alpha": 0.75
+      "projection_alpha": 0.7
     },
     {
       "pid": "R_1jij2hQKHPIcGlj",
@@ -423,7 +423,7 @@
       "domain": "dailydilemmas",
       "random_projection": 0.5,
       "projection_only": 0.55,
-      "projection_alpha": 0.55
+      "projection_alpha": 0.6
     },
     {
       "pid": "R_7r03x3O22rF6SSL",

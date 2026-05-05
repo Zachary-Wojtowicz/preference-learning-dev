@@ -789,6 +789,23 @@ function fitBTL(U,y,lam,betaPrior,muPrior,maxIter){
   }
   return beta;
 }
+
+// Rescale a feedback-derived prior to match the data-only fit's β magnitude.
+// Without this, betaPrior lives on raw_projection (delta) scale (~0.1) while
+// β lives on BTL-logit scale (~10), and mu_prior=2 effectively shrinks β to
+// ~0. After rescaling, the prior is a unit vector in β-space pointing in the
+// feedback direction, with magnitude inherited from the data fit. Then
+// mu_prior parameterizes "trust in feedback direction" cleanly.
+// See experiments/dilemmas/diagnose_scale.py for the diagnostic.
+function rescalePriorToBetaScale(bpRaw,betaData){
+  if(!Array.isArray(bpRaw)||!Array.isArray(betaData))return bpRaw;
+  var rawSq=0;for(var i=0;i<bpRaw.length;i++)rawSq+=bpRaw[i]*bpRaw[i];
+  var rawNorm=Math.sqrt(rawSq);
+  if(rawNorm<1e-12)return bpRaw.slice();
+  var dataSq=0;for(var j=0;j<betaData.length;j++)dataSq+=betaData[j]*betaData[j];
+  var s=Math.sqrt(dataSq)/rawNorm;
+  return bpRaw.map(function(v){return s*v;});
+}
 // Compute per-dim bin midpoints from raw_projection values in trialProjections.
 // These are delta-level projections (same scale as U_tk), NOT the slider values.
 // Returns {dimension_id: [m0, m1, ..., m_{nCats-1}]} for each dimension.
@@ -997,7 +1014,13 @@ function startEvaluation(){
     }
   }else{
     if(inputs.hasPrior){
-      betaAlpha=fitBTL(inputs.U,inputs.y,lamP,inputs.betaPrior,muPrior,15);
+      // Rescale the feedback-derived prior to match betaProj's magnitude
+      // before fitting. Without this, the prior lives on raw_projection scale
+      // (~0.1) while β lives on BTL-logit scale (~10), so muPrior acts as
+      // near-zero shrinkage. After rescaling, the prior is a unit vector in
+      // β-space pointing in the feedback direction.
+      var bpRescaled=rescalePriorToBetaScale(inputs.betaPrior,betaProj);
+      betaAlpha=fitBTL(inputs.U,inputs.y,lamP,bpRescaled,muPrior,15);
     }
   }
   var fitMs=Math.round(performance.now()-t0);
