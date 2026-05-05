@@ -1,0 +1,95 @@
+% Simplified proof: RLHF impact converges to random dictatorship impact.
+% Replaces the original proof of Theorem \ref{thm:rlhf-sp-convergence}.
+
+\begin{theorem}\label{thm:rlhf-sp-convergence}
+    %
+    Suppose $q_{\mathrm{train}}(n \mid z) = \lambda_n$ for all 
+    $z \in \mathrm{supp}(q_{\mathrm{train}})$, and that 
+    $q_{\mathrm{train}}$ and $q_{\mathrm{dep}}$ share the same 
+    query marginal. Then for all $\beta > 0$,
+    %
+    \begin{equation}\label{eq:finite-beta-identity}
+        \psi\!\left(\hat{\theta}_\beta^{\mathrm{RLHF}}\right) 
+        = \sum_{n=1}^N \lambda_n \, \psi(\beta\,\theta_n),
+    \end{equation}
+    %
+    and therefore
+    %
+    \begin{equation}
+        \lim_{\beta \to \infty} 
+        \psi\!\left(\hat{\theta}_\beta^{\mathrm{RLHF}}\right)
+        = \sum_{n=1}^N \lambda_n \, \psi_n^\star
+        = \psi\!\left(\theta_\lambda^{\mathrm{sp}}\right).
+    \end{equation}
+    %
+    Thus, RLHF implements a strategy-proof mechanism for alignment 
+    in the deterministic limit. Moreover, \eqref{eq:finite-beta-identity} 
+    shows that at every finite temperature, the RLHF impact is exactly 
+    the $\lambda$-weighted average of the individual impacts at that 
+    temperature.
+    %
+\end{theorem}
+
+\begin{proof}
+    The RLHF first-order condition is
+    %
+    \begin{equation}
+        \mathbb{E}_{z \sim q}\!\left[
+            \bigl(\mu_z^\beta 
+            - \sigma(\alpha_z^\top \hat{\theta}_\beta)\bigr)
+            \,\alpha_z
+        \right] = 0,
+    \end{equation}
+    %
+    where $\mu_z^\beta 
+    = \sum_{n=1}^N \lambda_n\,\sigma(\beta\,\alpha_z^\top\theta_n)$ 
+    is the population choice frequency at inverse temperature $\beta$, 
+    using the query-independence assumption 
+    $q_{\mathrm{train}}(n \mid z) = \lambda_n$. 
+    Rearranging and subtracting 
+    $\frac{1}{2}\,\mathbb{E}[\alpha_z]$ from both sides:
+    %
+    \begin{equation}
+        \underbrace{
+            \mathbb{E}_{z}\!\left[
+                \bigl(\sigma(\alpha_z^\top \hat{\theta}_\beta) 
+                - \tfrac{1}{2}\bigr)\,\alpha_z
+            \right]
+        }_{=\;\psi(\hat{\theta}_\beta)}
+        \;=\;
+        \mathbb{E}_{z}\!\left[
+            \bigl(\mu_z^\beta - \tfrac{1}{2}\bigr)\,\alpha_z
+        \right]
+        \;=\;
+        \sum_{n=1}^N \lambda_n\,
+        \underbrace{
+            \mathbb{E}_{z}\!\left[
+                \bigl(\sigma(\beta\,\alpha_z^\top\theta_n) 
+                - \tfrac{1}{2}\bigr)\,\alpha_z
+            \right]
+        }_{=\;\psi(\beta\,\theta_n)}.
+    \end{equation}
+    %
+    This establishes~\eqref{eq:finite-beta-identity} as an exact 
+    identity at every $\beta > 0$. Taking $\beta \to \infty$ and 
+    applying the dominated convergence theorem 
+    (using $|(\sigma(\beta\,\alpha_z^\top\theta_n) 
+    - \frac{1}{2})\,\alpha_z| 
+    \leq \frac{1}{2}\|\alpha_z\|$), the right-hand side converges to
+    %
+    \begin{equation}
+        \sum_{n=1}^N \lambda_n \, 
+        \mathbb{E}_{z}\!\left[
+            \alpha_z\,
+            \bigl(\mathbf{1}\{\alpha_z^\top\theta_n > 0\} 
+            - \tfrac{1}{2}\bigr)
+        \right]
+        = \sum_{n=1}^N \lambda_n\,\psi_n^\star,
+    \end{equation}
+    %
+    where the last equality follows from 
+    Theorem~\ref{thm:welfare-geometry}(7). The identification 
+    $\sum_n \lambda_n\,\psi_n^\star 
+    = \psi(\theta_\lambda^{\mathrm{sp}})$ is the content of 
+    Theorem~\ref{thm:single-sp}.
+\end{proof}

@@ -1,0 +1,1007 @@
+{
+  "data_path": "/Users/zacharywojtowicz/Dropbox/academics/research/working/nlp/coding/preference-learning-dev/experiments/dilemmas/data.csv",
+  "alpha_grid": [
+    0.0,
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    1.0,
+    2.0,
+    5.0
+  ],
+  "n_inference_participants": 16,
+  "n_per_condition": {
+    "inference_categories": 8,
+    "inference_affirm": 8
+  },
+  "best_alpha_pooled": 2.0,
+  "summary": {
+    "0.0": {
+      "inference_affirm": {
+        "n": 8,
+        "mean_diff": 0.0,
+        "sem": 0.0,
+        "mean_aug": 0.7124999999999999,
+        "mean_base": 0.7124999999999999
+      },
+      "inference_categories": {
+        "n": 8,
+        "mean_diff": 0.0,
+        "sem": 0.0,
+        "mean_aug": 0.66875,
+        "mean_base": 0.66875
+      },
+      "pooled": {
+        "n": 16,
+        "mean_diff": 0.0,
+        "sem": 0.0
+      }
+    },
+    "0.01": {
+      "inference_affirm": {
+        "n": 8,
+        "mean_diff": 0.0062500000000000125,
+        "sem": 0.014752421108802058,
+        "mean_aug": 0.71875,
+        "mean_base": 0.7124999999999999
+      },
+      "inference_categories": {
+        "n": 8,
+        "mean_diff": 0.0,
+        "sem": 0.01636634176769942,
+        "mean_aug": 0.66875,
+        "mean_base": 0.66875
+      },
+      "pooled": {
+        "n": 16,
+        "mean_diff": 0.0031250000000000062,
+        "sem": 0.010673907047874581
+      }
+    },
+    "0.03": {
+      "inference_affirm": {
+        "n": 8,
+        "mean_diff": 2.0816681711721685e-17,
+        "sem": 0.021128856368212916,
+        "mean_aug": 0.7125,
+        "mean_base": 0.7124999999999999
+      },
+      "inference_categories": {
+        "n": 8,
+        "mean_diff": -0.012499999999999997,
+        "sem": 0.024549512651549144,
+        "mean_aug": 0.65625,
+        "mean_base": 0.66875
+      },
+      "pooled": {
+        "n": 16,
+        "mean_diff": -0.006249999999999988,
+        "sem": 0.015728821740147395
+      }
+    },
+    "0.1": {
+      "inference_affirm": {
+        "n": 8,
+        "mean_diff": 0.01875000000000001,
+        "sem": 0.02978719163859335,
+        "mean_aug": 0.73125,
+        "mean_base": 0.7124999999999999
+      },
+      "inference_categories": {
+        "n": 8,
+        "mean_diff": -0.006249999999999999,
+        "sem": 0.03463779418084076,
+        "mean_aug": 0.6625000000000001,
+        "mean_base": 0.66875
+      },
+      "pooled": {
+        "n": 16,
+        "mean_diff": 0.0062500000000000056,
+        "sem": 0.022302372818454395
+      }
+    },
+    "0.3": {
+      "inference_affirm": {
+        "n": 8,
+        "mean_diff": 0.01875000000000001,
+        "sem": 0.02978719163859335,
+        "mean_aug": 0.73125,
+        "mean_base": 0.7124999999999999
+      },
+      "inference_categories": {
+        "n": 8,
+        "mean_diff": 0.012500000000000011,
+        "sem": 0.040915854419248575,
+        "mean_aug": 0.6812500000000001,
+        "mean_base": 0.66875
+      },
+      "pooled": {
+        "n": 16,
+        "mean_diff": 0.015625000000000007,
+        "sem": 0.024460320759684795
+      }
+    },
+    "1.0": {
+      "inference_affirm": {
+        "n": 8,
+        "mean_diff": 0.01875000000000001,
+        "sem": 0.02978719163859335,
+        "mean_aug": 0.73125,
+        "mean_base": 0.7124999999999999
+      },
+      "inference_categories": {
+        "n": 8,
+        "mean_diff": 0.012500000000000011,
+        "sem": 0.040915854419248575,
+        "mean_aug": 0.6812500000000001,
+        "mean_base": 0.66875
+      },
+      "pooled": {
+        "n": 16,
+        "mean_diff": 0.015625000000000007,
+        "sem": 0.024460320759684795
+      }
+    },
+    "2.0": {
+      "inference_affirm": {
+        "n": 8,
+        "mean_diff": 0.01875000000000001,
+        "sem": 0.02978719163859335,
+        "mean_aug": 0.73125,
+        "mean_base": 0.7124999999999999
+      },
+      "inference_categories": {
+        "n": 8,
+        "mean_diff": 0.018750000000000003,
+        "sem": 0.041119924784533766,
+        "mean_aug": 0.6875,
+        "mean_base": 0.66875
+      },
+      "pooled": {
+        "n": 16,
+        "mean_diff": 0.018750000000000003,
+        "sem": 0.02452677108793573
+      }
+    },
+    "5.0": {
+      "inference_affirm": {
+        "n": 8,
+        "mean_diff": 0.01875000000000001,
+        "sem": 0.02978719163859335,
+        "mean_aug": 0.73125,
+        "mean_base": 0.7124999999999999
+      },
+      "inference_categories": {
+        "n": 8,
+        "mean_diff": 0.018750000000000003,
+        "sem": 0.041119924784533766,
+        "mean_aug": 0.6875,
+        "mean_base": 0.66875
+      },
+      "pooled": {
+        "n": 16,
+        "mean_diff": 0.018750000000000003,
+        "sem": 0.02452677108793573
+      }
+    }
+  },
+  "per_alpha": {
+    "0.0": {
+      "inference_affirm": [
+        {
+          "pid": "R_5LIEhPwJpqBIh33",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6LLtcbP0XmXKCKi",
+          "loo_base": 0.3,
+          "loo_aug": 0.3,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6CNB7iyJW5HG86l",
+          "loo_base": 0.85,
+          "loo_aug": 0.85,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5tCYWTLWaZip8wf",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7eFSsHPE6CYnKBc",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5GBOlTN9uyPLMQS",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6EacszGusNAsdTL",
+          "loo_base": 0.85,
+          "loo_aug": 0.85,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5DtMbRWPrD98QIg",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        }
+      ],
+      "inference_categories": [
+        {
+          "pid": "R_5uvWFi8cYqk7g6l",
+          "loo_base": 0.6,
+          "loo_aug": 0.6,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7w69DGmziNjVtfs",
+          "loo_base": 0.35,
+          "loo_aug": 0.35,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5PgZpS3QqUExLqv",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_1jOZUQkHRxeWNJU",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_3Ol6SedRydfHKn6",
+          "loo_base": 0.75,
+          "loo_aug": 0.75,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_1jij2hQKHPIcGlj",
+          "loo_base": 0.6,
+          "loo_aug": 0.6,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5QGWoKvCFhGDfbZ",
+          "loo_base": 0.55,
+          "loo_aug": 0.55,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7r03x3O22rF6SSL",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        }
+      ]
+    },
+    "0.01": {
+      "inference_affirm": [
+        {
+          "pid": "R_5LIEhPwJpqBIh33",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6LLtcbP0XmXKCKi",
+          "loo_base": 0.3,
+          "loo_aug": 0.4,
+          "diff": 0.10000000000000003
+        },
+        {
+          "pid": "R_6CNB7iyJW5HG86l",
+          "loo_base": 0.85,
+          "loo_aug": 0.8,
+          "diff": -0.04999999999999993
+        },
+        {
+          "pid": "R_5tCYWTLWaZip8wf",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7eFSsHPE6CYnKBc",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5GBOlTN9uyPLMQS",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6EacszGusNAsdTL",
+          "loo_base": 0.85,
+          "loo_aug": 0.85,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5DtMbRWPrD98QIg",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        }
+      ],
+      "inference_categories": [
+        {
+          "pid": "R_5uvWFi8cYqk7g6l",
+          "loo_base": 0.6,
+          "loo_aug": 0.7,
+          "diff": 0.09999999999999998
+        },
+        {
+          "pid": "R_7w69DGmziNjVtfs",
+          "loo_base": 0.35,
+          "loo_aug": 0.35,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5PgZpS3QqUExLqv",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_1jOZUQkHRxeWNJU",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_3Ol6SedRydfHKn6",
+          "loo_base": 0.75,
+          "loo_aug": 0.7,
+          "diff": -0.050000000000000044
+        },
+        {
+          "pid": "R_1jij2hQKHPIcGlj",
+          "loo_base": 0.6,
+          "loo_aug": 0.55,
+          "diff": -0.04999999999999993
+        },
+        {
+          "pid": "R_5QGWoKvCFhGDfbZ",
+          "loo_base": 0.55,
+          "loo_aug": 0.55,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7r03x3O22rF6SSL",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        }
+      ]
+    },
+    "0.03": {
+      "inference_affirm": [
+        {
+          "pid": "R_5LIEhPwJpqBIh33",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6LLtcbP0XmXKCKi",
+          "loo_base": 0.3,
+          "loo_aug": 0.4,
+          "diff": 0.10000000000000003
+        },
+        {
+          "pid": "R_6CNB7iyJW5HG86l",
+          "loo_base": 0.85,
+          "loo_aug": 0.75,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5tCYWTLWaZip8wf",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7eFSsHPE6CYnKBc",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5GBOlTN9uyPLMQS",
+          "loo_base": 0.7,
+          "loo_aug": 0.65,
+          "diff": -0.04999999999999993
+        },
+        {
+          "pid": "R_6EacszGusNAsdTL",
+          "loo_base": 0.85,
+          "loo_aug": 0.9,
+          "diff": 0.050000000000000044
+        },
+        {
+          "pid": "R_5DtMbRWPrD98QIg",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        }
+      ],
+      "inference_categories": [
+        {
+          "pid": "R_5uvWFi8cYqk7g6l",
+          "loo_base": 0.6,
+          "loo_aug": 0.7,
+          "diff": 0.09999999999999998
+        },
+        {
+          "pid": "R_7w69DGmziNjVtfs",
+          "loo_base": 0.35,
+          "loo_aug": 0.4,
+          "diff": 0.050000000000000044
+        },
+        {
+          "pid": "R_5PgZpS3QqUExLqv",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_1jOZUQkHRxeWNJU",
+          "loo_base": 0.9,
+          "loo_aug": 0.85,
+          "diff": -0.050000000000000044
+        },
+        {
+          "pid": "R_3Ol6SedRydfHKn6",
+          "loo_base": 0.75,
+          "loo_aug": 0.65,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_1jij2hQKHPIcGlj",
+          "loo_base": 0.6,
+          "loo_aug": 0.5,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5QGWoKvCFhGDfbZ",
+          "loo_base": 0.55,
+          "loo_aug": 0.55,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7r03x3O22rF6SSL",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        }
+      ]
+    },
+    "0.1": {
+      "inference_affirm": [
+        {
+          "pid": "R_5LIEhPwJpqBIh33",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6LLtcbP0XmXKCKi",
+          "loo_base": 0.3,
+          "loo_aug": 0.5,
+          "diff": 0.2
+        },
+        {
+          "pid": "R_6CNB7iyJW5HG86l",
+          "loo_base": 0.85,
+          "loo_aug": 0.75,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5tCYWTLWaZip8wf",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7eFSsHPE6CYnKBc",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5GBOlTN9uyPLMQS",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6EacszGusNAsdTL",
+          "loo_base": 0.85,
+          "loo_aug": 0.9,
+          "diff": 0.050000000000000044
+        },
+        {
+          "pid": "R_5DtMbRWPrD98QIg",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        }
+      ],
+      "inference_categories": [
+        {
+          "pid": "R_5uvWFi8cYqk7g6l",
+          "loo_base": 0.6,
+          "loo_aug": 0.75,
+          "diff": 0.15000000000000002
+        },
+        {
+          "pid": "R_7w69DGmziNjVtfs",
+          "loo_base": 0.35,
+          "loo_aug": 0.45,
+          "diff": 0.10000000000000003
+        },
+        {
+          "pid": "R_5PgZpS3QqUExLqv",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_1jOZUQkHRxeWNJU",
+          "loo_base": 0.9,
+          "loo_aug": 0.85,
+          "diff": -0.050000000000000044
+        },
+        {
+          "pid": "R_3Ol6SedRydfHKn6",
+          "loo_base": 0.75,
+          "loo_aug": 0.6,
+          "diff": -0.15000000000000002
+        },
+        {
+          "pid": "R_1jij2hQKHPIcGlj",
+          "loo_base": 0.6,
+          "loo_aug": 0.5,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5QGWoKvCFhGDfbZ",
+          "loo_base": 0.55,
+          "loo_aug": 0.55,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7r03x3O22rF6SSL",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        }
+      ]
+    },
+    "0.3": {
+      "inference_affirm": [
+        {
+          "pid": "R_5LIEhPwJpqBIh33",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6LLtcbP0XmXKCKi",
+          "loo_base": 0.3,
+          "loo_aug": 0.5,
+          "diff": 0.2
+        },
+        {
+          "pid": "R_6CNB7iyJW5HG86l",
+          "loo_base": 0.85,
+          "loo_aug": 0.75,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5tCYWTLWaZip8wf",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7eFSsHPE6CYnKBc",
+          "loo_base": 0.7,
+          "loo_aug": 0.75,
+          "diff": 0.050000000000000044
+        },
+        {
+          "pid": "R_5GBOlTN9uyPLMQS",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6EacszGusNAsdTL",
+          "loo_base": 0.85,
+          "loo_aug": 0.85,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5DtMbRWPrD98QIg",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        }
+      ],
+      "inference_categories": [
+        {
+          "pid": "R_5uvWFi8cYqk7g6l",
+          "loo_base": 0.6,
+          "loo_aug": 0.75,
+          "diff": 0.15000000000000002
+        },
+        {
+          "pid": "R_7w69DGmziNjVtfs",
+          "loo_base": 0.35,
+          "loo_aug": 0.55,
+          "diff": 0.20000000000000007
+        },
+        {
+          "pid": "R_5PgZpS3QqUExLqv",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_1jOZUQkHRxeWNJU",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_3Ol6SedRydfHKn6",
+          "loo_base": 0.75,
+          "loo_aug": 0.6,
+          "diff": -0.15000000000000002
+        },
+        {
+          "pid": "R_1jij2hQKHPIcGlj",
+          "loo_base": 0.6,
+          "loo_aug": 0.5,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5QGWoKvCFhGDfbZ",
+          "loo_base": 0.55,
+          "loo_aug": 0.55,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7r03x3O22rF6SSL",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        }
+      ]
+    },
+    "1.0": {
+      "inference_affirm": [
+        {
+          "pid": "R_5LIEhPwJpqBIh33",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6LLtcbP0XmXKCKi",
+          "loo_base": 0.3,
+          "loo_aug": 0.5,
+          "diff": 0.2
+        },
+        {
+          "pid": "R_6CNB7iyJW5HG86l",
+          "loo_base": 0.85,
+          "loo_aug": 0.75,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5tCYWTLWaZip8wf",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7eFSsHPE6CYnKBc",
+          "loo_base": 0.7,
+          "loo_aug": 0.75,
+          "diff": 0.050000000000000044
+        },
+        {
+          "pid": "R_5GBOlTN9uyPLMQS",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6EacszGusNAsdTL",
+          "loo_base": 0.85,
+          "loo_aug": 0.85,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5DtMbRWPrD98QIg",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        }
+      ],
+      "inference_categories": [
+        {
+          "pid": "R_5uvWFi8cYqk7g6l",
+          "loo_base": 0.6,
+          "loo_aug": 0.75,
+          "diff": 0.15000000000000002
+        },
+        {
+          "pid": "R_7w69DGmziNjVtfs",
+          "loo_base": 0.35,
+          "loo_aug": 0.55,
+          "diff": 0.20000000000000007
+        },
+        {
+          "pid": "R_5PgZpS3QqUExLqv",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_1jOZUQkHRxeWNJU",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_3Ol6SedRydfHKn6",
+          "loo_base": 0.75,
+          "loo_aug": 0.6,
+          "diff": -0.15000000000000002
+        },
+        {
+          "pid": "R_1jij2hQKHPIcGlj",
+          "loo_base": 0.6,
+          "loo_aug": 0.5,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5QGWoKvCFhGDfbZ",
+          "loo_base": 0.55,
+          "loo_aug": 0.55,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7r03x3O22rF6SSL",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        }
+      ]
+    },
+    "2.0": {
+      "inference_affirm": [
+        {
+          "pid": "R_5LIEhPwJpqBIh33",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6LLtcbP0XmXKCKi",
+          "loo_base": 0.3,
+          "loo_aug": 0.5,
+          "diff": 0.2
+        },
+        {
+          "pid": "R_6CNB7iyJW5HG86l",
+          "loo_base": 0.85,
+          "loo_aug": 0.75,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5tCYWTLWaZip8wf",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7eFSsHPE6CYnKBc",
+          "loo_base": 0.7,
+          "loo_aug": 0.75,
+          "diff": 0.050000000000000044
+        },
+        {
+          "pid": "R_5GBOlTN9uyPLMQS",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6EacszGusNAsdTL",
+          "loo_base": 0.85,
+          "loo_aug": 0.85,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5DtMbRWPrD98QIg",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        }
+      ],
+      "inference_categories": [
+        {
+          "pid": "R_5uvWFi8cYqk7g6l",
+          "loo_base": 0.6,
+          "loo_aug": 0.75,
+          "diff": 0.15000000000000002
+        },
+        {
+          "pid": "R_7w69DGmziNjVtfs",
+          "loo_base": 0.35,
+          "loo_aug": 0.55,
+          "diff": 0.20000000000000007
+        },
+        {
+          "pid": "R_5PgZpS3QqUExLqv",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_1jOZUQkHRxeWNJU",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_3Ol6SedRydfHKn6",
+          "loo_base": 0.75,
+          "loo_aug": 0.6,
+          "diff": -0.15000000000000002
+        },
+        {
+          "pid": "R_1jij2hQKHPIcGlj",
+          "loo_base": 0.6,
+          "loo_aug": 0.5,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5QGWoKvCFhGDfbZ",
+          "loo_base": 0.55,
+          "loo_aug": 0.6,
+          "diff": 0.04999999999999993
+        },
+        {
+          "pid": "R_7r03x3O22rF6SSL",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        }
+      ]
+    },
+    "5.0": {
+      "inference_affirm": [
+        {
+          "pid": "R_5LIEhPwJpqBIh33",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6LLtcbP0XmXKCKi",
+          "loo_base": 0.3,
+          "loo_aug": 0.5,
+          "diff": 0.2
+        },
+        {
+          "pid": "R_6CNB7iyJW5HG86l",
+          "loo_base": 0.85,
+          "loo_aug": 0.75,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5tCYWTLWaZip8wf",
+          "loo_base": 0.8,
+          "loo_aug": 0.8,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_7eFSsHPE6CYnKBc",
+          "loo_base": 0.7,
+          "loo_aug": 0.75,
+          "diff": 0.050000000000000044
+        },
+        {
+          "pid": "R_5GBOlTN9uyPLMQS",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_6EacszGusNAsdTL",
+          "loo_base": 0.85,
+          "loo_aug": 0.85,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_5DtMbRWPrD98QIg",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        }
+      ],
+      "inference_categories": [
+        {
+          "pid": "R_5uvWFi8cYqk7g6l",
+          "loo_base": 0.6,
+          "loo_aug": 0.75,
+          "diff": 0.15000000000000002
+        },
+        {
+          "pid": "R_7w69DGmziNjVtfs",
+          "loo_base": 0.35,
+          "loo_aug": 0.55,
+          "diff": 0.20000000000000007
+        },
+        {
+          "pid": "R_5PgZpS3QqUExLqv",
+          "loo_base": 0.7,
+          "loo_aug": 0.7,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_1jOZUQkHRxeWNJU",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        },
+        {
+          "pid": "R_3Ol6SedRydfHKn6",
+          "loo_base": 0.75,
+          "loo_aug": 0.6,
+          "diff": -0.15000000000000002
+        },
+        {
+          "pid": "R_1jij2hQKHPIcGlj",
+          "loo_base": 0.6,
+          "loo_aug": 0.5,
+          "diff": -0.09999999999999998
+        },
+        {
+          "pid": "R_5QGWoKvCFhGDfbZ",
+          "loo_base": 0.55,
+          "loo_aug": 0.6,
+          "diff": 0.04999999999999993
+        },
+        {
+          "pid": "R_7r03x3O22rF6SSL",
+          "loo_base": 0.9,
+          "loo_aug": 0.9,
+          "diff": 0.0
+        }
+      ]
+    }
+  }
+}

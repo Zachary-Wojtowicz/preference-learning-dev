@@ -1,0 +1,234 @@
+% Extended proof of Theorem \ref{thm:rlhf-sp-convergence}
+% This version addresses three technical gaps:
+%   (1) Reconciles the implicit definition (solving the sigmoid system) 
+%       with Theorem 2's explicit definition via \psi^{-1}.
+%   (2) States convergence in impact space unconditionally, and 
+%       convergence in parameter space under a disagreement condition.
+%   (3) Makes the consistency of the overdetermined sigmoid system explicit.
+
+%% ---- Suggested replacement for the theorem statement ----
+
+\begin{theorem}\label{thm:rlhf-sp-convergence-v2}
+    %
+    Suppose the training distribution $q_{\mathrm{train}}$ has query-independent 
+    agent weights, i.e., $q_{\mathrm{train}}(n \mid z) = \lambda_n$ for all 
+    $z \in \mathrm{supp}(q_{\mathrm{train}})$, and that 
+    $S_{\mathrm{train}} = S_{\mathrm{dep}}$.
+    %
+    \begin{enumerate}
+        \item \textbf{(Convergence in impact.)} The RLHF impact vector 
+        converges to the random-dictatorship impact vector:
+        %
+        \begin{equation}
+            \lim_{\beta \to \infty} 
+            \psi\!\left(\hat{\theta}^{\mathrm{RLHF}}_\beta\right)
+            = \sum_{n=1}^N \lambda_n \, \psi_n^\star
+            = \psi\!\left(\theta^{\mathrm{sp}}_\lambda\right).
+        \end{equation}
+        %
+        In particular, for every agent $m \in [N]$,
+        $\lim_{\beta \to \infty} W_m(\hat{\theta}^{\mathrm{RLHF}}_\beta) 
+        = W_m(\theta^{\mathrm{sp}}_\lambda)$.
+
+        \item \textbf{(Convergence in parameter.)} If, in addition, for 
+        every query $z \in \mathrm{supp}(q_{\mathrm{dep}})$ there exist agents 
+        $n, m$ with $\mathrm{sign}(\alpha_z^\top \theta_n) 
+        \neq \mathrm{sign}(\alpha_z^\top \theta_m)$, 
+        then the RLHF parameter itself converges:
+        %
+        \begin{equation}
+            \lim_{\beta \to \infty} 
+            P_{S_{\mathrm{dep}}}\,\hat{\theta}^{\mathrm{RLHF}}_\beta 
+            = P_{S_{\mathrm{dep}}}\,\theta^{\mathrm{sp}}_\lambda.
+        \end{equation}
+    \end{enumerate}
+    %
+    Thus, RLHF implements a strategy-proof mechanism for alignment 
+    in the deterministic limit.
+\end{theorem}
+
+%% ---- Suggested replacement for the proof ----
+
+\begin{proof}
+    We proceed in four steps.
+
+    \medskip
+    \noindent\textbf{Step 1: Deterministic choice frequencies.}
+    In the deterministic limit $\beta \to \infty$, agent $n$'s choice 
+    on query $z$ becomes $\mathbf{1}\{\alpha_z^\top \theta_n > 0\}$ 
+    (well-defined for generic profiles). The aggregate choice frequency is
+    %
+    \begin{equation}\label{eq:fz-def}
+        f_z 
+        \;=\; \sum_{n=1}^N \lambda_n \,\mathbf{1}\{\alpha_z^\top \theta_n > 0\},
+    \end{equation}
+    %
+    where we have used the query-independence assumption 
+    $q_{\mathrm{train}}(n \mid z) = \lambda_n$.
+
+    \medskip
+    \noindent\textbf{Step 2: Both targets satisfy the same system.}
+    %
+    We show that the RLHF limit and the strategy-proof parameter 
+    are both characterized by the system
+    %
+    \begin{equation}\label{eq:sigmoid-system}
+        \sigma(\alpha_z^\top \theta) = f_z 
+        \qquad \forall\, z \in \mathrm{supp}(q_{\mathrm{dep}}).
+    \end{equation}
+
+    \emph{RLHF side.} The RLHF objective (without KL regularization) is 
+    the cross-entropy loss with population choice frequencies $\mu_z^\beta 
+    = \sum_n \lambda_n \sigma(\beta\,\alpha_z^\top \theta_n)$ as targets.
+    At any finite $\beta$, the first-order condition on 
+    $S_{\mathrm{train}}$ gives 
+    $\sigma(\alpha_z^\top \hat{\theta}_\beta^{\mathrm{RLHF}}) = \mu_z^\beta$
+    for all $z \in \mathrm{supp}(q_{\mathrm{train}})$ 
+    (this is the standard logistic regression score equation, 
+    using $S_{\mathrm{train}} = S_{\mathrm{dep}}$). 
+    As $\beta \to \infty$, $\mu_z^\beta \to f_z$, so any accumulation 
+    point of the RLHF \emph{impact} must satisfy 
+    $\sigma(\alpha_z^\top \theta) = f_z$ on the interior queries 
+    (those with $f_z \in (0,1)$) and achieve the boundary values 
+    on unanimous queries.
+
+    \emph{Strategy-proof side.} By Theorem~\ref{thm:welfare-geometry}(7), 
+    the $n$-th agent's ideal impact vector satisfies
+    %
+    \begin{equation}
+        \psi_n^\star 
+        = \lim_{\beta \to \infty} \psi(\beta\,\theta_n)
+        = \mathbb{E}_{z \sim q_{\mathrm{dep}}}\!\left[
+            \alpha_z\,
+            \bigl(\mathbf{1}\{\alpha_z^\top \theta_n > 0\} - \tfrac{1}{2}\bigr)
+        \right].
+    \end{equation}
+    %
+    Therefore, the random-dictatorship impact vector is
+    %
+    \begin{equation}\label{eq:rd-impact}
+        \sum_{n=1}^N \lambda_n \,\psi_n^\star
+        = \mathbb{E}_{z \sim q_{\mathrm{dep}}}\!\left[
+            \alpha_z\,\bigl(f_z - \tfrac{1}{2}\bigr)
+        \right].
+    \end{equation}
+    %
+    Since $\psi(\theta) = \mathbb{E}_{z \sim q_{\mathrm{dep}}}
+    [\alpha_z(\sigma(\alpha_z^\top \theta) - \frac{1}{2})]$, 
+    a parameter $\theta$ satisfying~\eqref{eq:sigmoid-system} 
+    for all $z$ gives precisely 
+    $\psi(\theta) = \sum_n \lambda_n \psi_n^\star$.
+    By Theorem~\ref{thm:single-sp}, 
+    $\theta^{\mathrm{sp}}_\lambda = \psi^{-1}(\sum_n \lambda_n \psi_n^\star)$, 
+    so $\theta^{\mathrm{sp}}_\lambda$ satisfies~\eqref{eq:sigmoid-system} 
+    whenever the system has a finite solution.
+    This reconciles the implicit characterization 
+    via~\eqref{eq:sigmoid-system} with the explicit definition 
+    $\theta^{\mathrm{sp}}_\lambda = \psi^{-1}(\sum_n \lambda_n \psi_n^\star)$ 
+    from Theorem~\ref{thm:single-sp}.
+
+    \medskip
+    \noindent\textbf{Step 3: Consistency and the two cases.}
+    %
+    The system~\eqref{eq:sigmoid-system} has 
+    $|\mathrm{supp}(q_{\mathrm{dep}})|$ equations in $k$ unknowns 
+    (after projecting onto $S_{\mathrm{dep}}$). Consistency---i.e., 
+    existence of a solution---is not automatic for an overdetermined 
+    system. We establish it constructively.
+
+    Define the path $\theta_\beta = \beta \cdot \theta^{\mathrm{avg}}$ 
+    where $\theta^{\mathrm{avg}} = \sum_n \lambda_n \theta_n$, 
+    and consider $\psi(\theta_\beta)$. By 
+    Theorem~\ref{thm:welfare-geometry}(7),
+    %
+    \begin{equation}
+        \lim_{\beta \to \infty} \psi(\theta_\beta) 
+        = \mathbb{E}_z\!\left[\alpha_z\,
+        \bigl(\mathbf{1}\{\alpha_z^\top \theta^{\mathrm{avg}} > 0\} 
+        - \tfrac{1}{2}\bigr)\right].
+    \end{equation}
+    %
+    In general, 
+    $\mathbf{1}\{\alpha_z^\top \theta^{\mathrm{avg}} > 0\}$ need 
+    not equal $f_z = \sum_n \lambda_n \mathbf{1}\{\alpha_z^\top \theta_n > 0\}$, 
+    so this path does not directly establish consistency. Instead, we 
+    use the structure of the impact space.
+
+    Since $\psi_n^\star \in \bar{\Psi}$ for each $n$, and $\bar{\Psi}$ 
+    is convex (Theorem~\ref{thm:welfare-geometry}(1)), the convex 
+    combination $\bar{\psi}_\lambda = \sum_n \lambda_n \psi_n^\star$ 
+    lies in $\bar{\Psi}$. We now distinguish two cases based on whether 
+    $\bar{\psi}_\lambda$ lies in the interior $\Psi$ or on the 
+    boundary $\bar{\Psi} \setminus \Psi$.
+
+    \emph{Case (a): Disagreement on every query} 
+    ($f_z \in (0,1)$ for all $z$). 
+    Then $\bar{\psi}_\lambda$ lies in $\Psi$ (not on the boundary), 
+    since each component $\sigma(\alpha_z^\top \theta) = f_z$ requires 
+    a finite argument $\alpha_z^\top \theta = \sigma^{-1}(f_z) 
+    = \log\frac{f_z}{1-f_z}$. 
+    The invertibility of $\psi$ on $\Psi$ 
+    (Theorem~\ref{thm:welfare-geometry}(5)) then gives a unique, 
+    finite solution 
+    $\theta^{\mathrm{sp}}_\lambda = \psi^{-1}(\bar{\psi}_\lambda)$ 
+    on $S_{\mathrm{dep}}$. The system~\eqref{eq:sigmoid-system} 
+    is consistent because it is equivalent to 
+    $\psi(\theta) = \bar{\psi}_\lambda \in \Psi$, and $\psi$ is 
+    a bijection from $\mathbb{R}^k / S_{\mathrm{dep}}^\perp$ onto $\Psi$.
+
+    \emph{Case (b): Unanimity on some queries} 
+    ($f_z \in \{0,1\}$ for some $z$). 
+    Then $\bar{\psi}_\lambda$ lies on the boundary $\bar{\Psi}$, 
+    and $\sigma^{-1}(f_z) = \pm\infty$, so no finite $\theta$ 
+    satisfies~\eqref{eq:sigmoid-system}. However, the impact 
+    vector $\psi(\theta)$ remains well-defined on $\bar\Psi$ 
+    via the limit in Theorem~\ref{thm:welfare-geometry}(7). 
+    The RLHF parameter $\hat{\theta}^{\mathrm{RLHF}}_\beta$ 
+    diverges in norm (this is the standard complete-separation 
+    phenomenon in logistic regression), but the impact 
+    $\psi(\hat{\theta}^{\mathrm{RLHF}}_\beta) \to \bar{\psi}_\lambda$ 
+    nonetheless. Convergence holds in impact space but not in 
+    parameter space.
+
+    \medskip
+    \noindent\textbf{Step 4: Convergence.}
+    %
+    \emph{Part 1 (Impact convergence).} In both cases, the RLHF 
+    first-order condition gives 
+    $\sigma(\alpha_z^\top \hat\theta_\beta) = \mu_z^\beta$ 
+    with $\mu_z^\beta \to f_z$. Substituting into the definition 
+    of $\psi$:
+    %
+    \begin{equation}
+        \psi(\hat\theta_\beta^{\mathrm{RLHF}}) 
+        = \mathbb{E}_z\!\left[\alpha_z\,
+        \bigl(\sigma(\alpha_z^\top \hat\theta_\beta) 
+        - \tfrac{1}{2}\bigr)\right]
+        = \mathbb{E}_z\!\left[\alpha_z\,
+        \bigl(\mu_z^\beta - \tfrac{1}{2}\bigr)\right]
+        \;\xrightarrow{\beta \to \infty}\;
+        \mathbb{E}_z\!\left[\alpha_z\,
+        \bigl(f_z - \tfrac{1}{2}\bigr)\right]
+        = \bar{\psi}_\lambda.
+    \end{equation}
+    %
+    The interchange of limit and expectation is justified by 
+    dominated convergence (since 
+    $|\alpha_z(\mu_z^\beta - \frac{1}{2})| \leq \|\alpha_z\|$). 
+    By~\eqref{eq:rd-impact}, $\bar{\psi}_\lambda 
+    = \psi(\theta^{\mathrm{sp}}_\lambda)$.
+
+    \emph{Part 2 (Parameter convergence under disagreement).} 
+    Under the disagreement condition, Case~(a) applies: 
+    $f_z \in (0,1)$ for all $z$, so 
+    $\bar{\psi}_\lambda \in \Psi$. Since $\psi^{-1}$ is continuous 
+    on $\Psi$ and 
+    $\psi(\hat\theta_\beta) \to \bar{\psi}_\lambda \in \Psi$, 
+    we obtain 
+    $P_{S_{\mathrm{dep}}}\,\hat\theta_\beta 
+    \to P_{S_{\mathrm{dep}}}\,\psi^{-1}(\bar{\psi}_\lambda) 
+    = P_{S_{\mathrm{dep}}}\,\theta^{\mathrm{sp}}_\lambda$.
+\end{proof}
+
+
+%% ---- End of extended proof ----
