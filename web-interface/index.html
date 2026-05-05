@@ -673,7 +673,7 @@ function submitTrial(){
   var now=Date.now();
   var time_to_submit_ms=now-startTime;
   var time_to_first_choice_ms=firstChoiceTime!=null?firstChoiceTime-startTime:null;
-  var response={trial_id:trial.trial_id,option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:chosen,time_to_first_choice_ms:time_to_first_choice_ms,time_to_submit_ms:time_to_submit_ms,response_time_ms:time_to_submit_ms,visible_dimensions:visibleSliderIndices.map(function(i){return trial.sliders[i].id})};
+  var response={trial_id:trial.trial_id,pair_index:assignedTrialIndices[currentStep],option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:chosen,time_to_first_choice_ms:time_to_first_choice_ms,time_to_submit_ms:time_to_submit_ms,response_time_ms:time_to_submit_ms,visible_dimensions:visibleSliderIndices.map(function(i){return trial.sliders[i].id})};
   if(condition.show_sliders&&trial.sliders){var sv={};visibleSliderIndices.forEach(function(si){var s=trial.sliders[si],inp=app.querySelector('input[data-id="'+s.id+'"]');sv[s.id]=inp?parseInt(inp.value,10):0;});response.slider_values=sv;response.sliders_adjusted=condition.sliders_adjustable;}
   if(condition.show_checkboxes&&trial.sliders){var cv={};visibleSliderIndices.forEach(function(si){var s=trial.sliders[si],cb=document.getElementById('cb_'+s.id);cv[s.id]=cb?(cb.checked?1:0):0;});response.checkbox_values=cv;}
   if(infMode()){
