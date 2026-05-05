@@ -13,8 +13,8 @@ Two complementary outputs:
 Three conditions × three fits, evaluated identically:
   Conditions:
     1. choice_only            — binary choice, no per-dim feedback.
-    2. inference_affirm       — top-K=5 visible dims, Affirm/Moderate/Remove.
-    3. inference_categories   — top-K=5 visible dims, 5-category picker.
+    2. inference_affirm       — top-K=3 visible dims, Affirm/Moderate/Remove.
+    3. inference_categories   — top-K=3 visible dims, 5-category picker.
 
   Fits (computed for every condition, so we can compare apples-to-apples):
     A. standard   — kernel logistic regression in full d-dim space (MLE).
@@ -36,7 +36,7 @@ Three conditions × three fits, evaluated identically:
 
 Pipeline per simulated user × condition:
   1. Sample T trials (idx_a, idx_b); user chooses by their true K-vec w*.
-  2. For inference conditions: pick top-5 dims by |V·φ_chosen|, compute the
+  2. For inference conditions: pick top-K dims by |V·φ_chosen|, compute the
      model's pre-selected category via per-dim quintile bucketing of the
      trial-pool projections, simulate the participant's per-dim feedback
      (with calibrated noise) → λ_t (K-vec, 1.0 for invisible dims).
@@ -60,6 +60,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr, wilcoxon
+from sklearn.model_selection import StratifiedKFold
 
 
 CONDITIONS = ["choice_only", "inference_affirm", "inference_categories"]
@@ -127,10 +128,19 @@ def load_data(embeddings_parquet, bt_scores_csv, directions_npz, option_id_colum
 # Synthetic users (domain-agnostic sparse weights)
 # ---------------------------------------------------------------------------
 
-def generate_users(num_users, K, rng, sparsity=0.5):
-    """Sparse random users. Each gets ±0.7 to ±1.0 weights on a random
+def generate_users(num_users, K, rng, sparsity=0.3, mag_min=1.5, mag_max=3.0):
+    """Sparse random users. Each gets ±[mag_min, mag_max] weights on a random
     subset of dimensions, 0 elsewhere — emulates a person who cares about
-    a few specific qualities and is indifferent to the rest."""
+    a few specific qualities and is indifferent to the rest.
+
+    Defaults (sparsity=0.3, mag_min=1.5, mag_max=3.0) approximate real
+    pilot participants: 2-3 strongly-active dims out of K=10. With weaker
+    settings (sparsity=0.5, mag in [0.7, 1.0]) the resulting choices are
+    too noisy to learn from at T=20 — random_projection accuracy actually
+    DROPS with more data because the fit overfits noise (T/K=2.0 with
+    correlated features). Realistic concentration → choice signal large
+    enough that LOO accuracy rises with T.
+    """
     users = []
     n_active_target = max(2, int(round(sparsity * K)))
     for i in range(num_users):
@@ -138,7 +148,7 @@ def generate_users(num_users, K, rng, sparsity=0.5):
         n_active = min(n_active, K)
         active = rng.choice(K, size=n_active, replace=False)
         weights = np.zeros(K)
-        magnitudes = rng.uniform(0.7, 1.0, size=n_active)
+        magnitudes = rng.uniform(mag_min, mag_max, size=n_active)
         signs = rng.choice([-1.0, 1.0], size=n_active)
         weights[active] = magnitudes * signs
         users.append({"id": i, "archetype": f"sparse_{n_active}", "weights": weights})
@@ -192,6 +202,23 @@ def perdim_bin_midpoints(values_pool, n_cats=5):
     return midpoints
 
 
+def compute_beta_prior(lam_traj, t_end, K):
+    """Compute per-dimension prior mean from feedback observations.
+
+    For each dimension k, averages all finite (non-NaN) feedback values
+    across trials [0, t_end). Dimensions with no feedback get 0.
+    Returns (K,) array.
+    """
+    bp = np.zeros(K)
+    prefix = lam_traj[:t_end]  # (t_end, K)
+    for k in range(K):
+        vals = prefix[:, k]
+        finite = vals[np.isfinite(vals)]
+        if len(finite) > 0:
+            bp[k] = finite.mean()
+    return bp
+
+
 def value_to_mult(value, boundaries_k, mults):
     """Bucket a single value (one dim) into one of len(mults) multipliers."""
     bucket = np.searchsorted(boundaries_k, value)
@@ -225,25 +252,21 @@ def moderated_mult(mult, mults):
     return float(mults[idx - 1])
 
 
-def affirm_decision(pre_mult, true_mult, mults, affirm_bonus=1.5):
-    """Simulate the participant's affirm/moderate/remove decision.
+def affirm_decision(pre_mult, true_mult, mults):
+    """Simulate the participant's affirm/remove decision (no moderate).
 
-    Returns (action_label, applied_multiplier)."""
+    Returns (action_label, applied_value) where applied_value is unused
+    for affirm (the caller stores U_t,k directly) and 0.0 for remove."""
     eps = 1e-9
     if abs(pre_mult) < eps and abs(true_mult) < eps:
-        return "affirm", 0.0  # both indifferent → trivially affirm
+        return "affirm", 0.0
     if abs(pre_mult) < eps:
-        # Model said indifferent; user disagrees. UI has no "strengthen
-        # from zero" action — best they can do is leave it (affirm 0).
         return "affirm", 0.0
     if abs(true_mult) < eps:
-        # Model gave non-zero; user is indifferent → remove zeros it out.
         return "remove", 0.0
     if (pre_mult > 0) != (true_mult > 0):
         return "remove", 0.0
-    if abs(true_mult) >= abs(pre_mult):
-        return "affirm", affirm_bonus * pre_mult
-    return "moderate", moderated_mult(pre_mult, mults)
+    return "affirm", pre_mult
 
 
 def categories_decision(true_mult, mults):
@@ -270,54 +293,52 @@ def apply_noise(applied_mult, mults, noise, rng):
 # Batch fits (Newton + L2). Mirrors web-interface/test_eval_parity.py.
 # ---------------------------------------------------------------------------
 
-def fit_standard_kernel(D, y, lam, max_iter=15, tol=1e-7):
-    """Kernel logistic regression in dual form. Returns alpha (T,)."""
-    T = len(D)
-    alpha = np.zeros(T)
-    for _ in range(max_iter):
-        u = D @ alpha
-        p = sigmoid(u)
-        w = p * (1 - p)
-        rhs = -(p - y + lam * alpha)
-        A = (w[:, None] * D) + lam * np.eye(T)
-        try:
-            d_alpha = np.linalg.solve(A, rhs)
-        except np.linalg.LinAlgError:
-            break
-        alpha = alpha + d_alpha
-        if np.max(np.abs(d_alpha)) < tol:
-            break
-    return alpha
+def fit_btl(X, X_grad, y, lam, P=None, XXT=None,
+            beta_prior=None, mu_prior=0.0, max_iter=15, tol=1e-7):
+    """Unified BTL logistic regression.
 
+    Objective:
+      min_b  -LL(Xb, y) + (lam/2) b'Pb + (mu/2) ||b - b_prior||^2
 
-def fit_feedback_gradient(U, U_adj, y, G, lam, max_iter=15, tol=1e-7):
-    """K-dim primal logistic regression where predictions use raw U but
-    gradients use feedback-adjusted U_adj.
-
-    This is the batch analogue of per-trial SGD where feedback re-weights
-    the gradient per-dimension without distorting the prediction function.
-
-    Prediction:  p_t = σ(β⊤ U_t)           ← same scale as test time
-    Gradient:    g_k = Σ_t (p_t - y_t) · Ũ_tk + λ(Gβ)_k
-                     = Σ_t (p_t - y_t) · λ_tk · U_tk + λ(Gβ)_k
-    Hessian:     H = U⊤ W U + λG           ← standard (matches prediction)
+    When P is None, penalty is lam*||b||^2 (no matrix allocated).
+    When beta_prior is provided with mu_prior > 0, adds a Gaussian prior
+    pulling b toward the feedback-implied values.
     """
-    T, K = U.shape
-    beta = np.zeros(K)
+    T, p = X.shape
+    theta = np.zeros(p)
+    use_woodbury = (T * 2 < p) and (P is None) and (beta_prior is None)
+
+    if use_woodbury and XXT is None:
+        XXT = X @ X.T
+
+    has_prior = beta_prior is not None and mu_prior > 0
+
     for _ in range(max_iter):
-        u = U @ beta                       # predict on RAW U
-        p = sigmoid(u)
-        w = p * (1 - p)
-        grad = U_adj.T @ (p - y) + lam * G @ beta   # gradient on ADJUSTED
-        H = U.T @ (w[:, None] * U) + lam * G         # Hessian on RAW
-        try:
-            d_beta = np.linalg.solve(H, -grad)
-        except np.linalg.LinAlgError:
+        logits = X @ theta
+        prob = sigmoid(logits)
+        w = prob * (1 - prob) + 1e-10
+        Ptheta = lam * theta if P is None else lam * (P @ theta)
+        grad = X_grad.T @ (prob - y) + Ptheta
+        if has_prior:
+            grad += mu_prior * (theta - beta_prior)
+
+        if use_woodbury:
+            M = np.diag(1.0 / w) + XXT / lam
+            v = np.linalg.solve(M, X @ grad)
+            d_theta = -(grad / lam - X.T @ v / (lam ** 2))
+        else:
+            if P is None:
+                H = X.T @ (w[:, None] * X) + lam * np.eye(p)
+            else:
+                H = X.T @ (w[:, None] * X) + lam * P
+            if has_prior:
+                H += mu_prior * np.eye(p)
+            d_theta = np.linalg.solve(H, -grad)
+
+        theta = theta + d_theta
+        if np.max(np.abs(d_theta)) < tol:
             break
-        beta = beta + d_beta
-        if np.max(np.abs(d_beta)) < tol:
-            break
-    return beta
+    return theta
 
 
 # ---------------------------------------------------------------------------
@@ -398,6 +419,8 @@ def simulate_one_user(user, ctx, args, rng):
     bt_scores = ctx["bt_scores"]
     V = ctx["V"]
     G = ctx["G"]
+    V_rand = ctx["V_rand"]
+    G_rand = ctx["G_rand"]
     mu = ctx["mu"]
     quintile_bounds = ctx["quintile_bounds"]
     bin_midpoints = ctx["bin_midpoints"]
@@ -410,33 +433,22 @@ def simulate_one_user(user, ctx, args, rng):
     true_mults = np.array([
         w_star_to_mult(w_star[k], w_star_max, mults) for k in range(K)
     ])
-    true_utils = bt_scores @ w_star
+    # Generate choices from embedding projections (same space the model fits on)
+    # This avoids the lossy bt_scores bottleneck.
+    item_proj = embeddings @ V.T  # (N, K) — same projection as U_t
+    true_utils = item_proj @ w_star
 
-    # Sample training + test pairs. When predefined-pairs is set (e.g.,
-    # dilemmas), both come from that pool — disjoint, per-user shuffled —
-    # mirroring the human experiment's fixed-pair-pool design.
+    # Sample training pairs only. LOO replaces the fixed held-out test set.
     predefined_pairs = ctx.get("predefined_pairs")
     if predefined_pairs is not None:
         pool = list(predefined_pairs)
         rng.shuffle(pool)
-        test_pool = pool[:args.num_test_pairs]
-        trial_pairs = pool[args.num_test_pairs:args.num_test_pairs + args.num_trials]
-        test_a = np.array([p[0] for p in test_pool], dtype=int)
-        test_b = np.array([p[1] for p in test_pool], dtype=int)
+        trial_pairs = pool[:args.num_trials]
     else:
         trial_pairs = []
         while len(trial_pairs) < args.num_trials:
             a, b = rng.choice(N, size=2, replace=False)
             trial_pairs.append((int(a), int(b)))
-        test_a = rng.integers(0, N, size=args.num_test_pairs)
-        test_b = rng.integers(0, N, size=args.num_test_pairs)
-        mask = test_a == test_b
-        while mask.any():
-            test_b[mask] = rng.integers(0, N, size=int(mask.sum()))
-            mask = test_a == test_b
-    test_choices = (true_utils[test_a] > true_utils[test_b]).astype(int)
-    test_delta = embeddings[test_a] - embeddings[test_b]
-    test_U = test_delta @ V.T  # (M, K)
 
     results = {"user_id": user["id"], "archetype": user["archetype"], "conditions": {}}
     checkpoints = make_checkpoints(args.num_trials, args.checkpoint_step)
@@ -460,6 +472,9 @@ def simulate_one_user(user, ctx, args, rng):
             deltas[t] = delta
             ys[t] = y
 
+            # Pre-compute delta projection for feedback storage
+            delta_proj = delta @ V.T  # (K,) projection onto each dim
+
             if cond == "choice_only":
                 continue
 
@@ -472,115 +487,127 @@ def simulate_one_user(user, ctx, args, rng):
 
                 if cond == "inference_affirm":
                     action, applied = affirm_decision(pre_mult, true_mults[k], mults)
+                    applied = apply_noise(applied, mults, args.participant_noise, rng)
+                    if action == "remove":
+                        lam_traj[t, k] = 0.0
+                    else:  # affirm: store the raw delta projection
+                        lam_traj[t, k] = delta_proj[k]
                 else:  # inference_categories
                     applied = categories_decision(true_mults[k], mults)
-                    action = "modify" if abs(applied - pre_mult) > 1e-9 else "none"
-
-                applied = apply_noise(applied, mults, args.participant_noise, rng)
-
-                # Action-based storage: NaN=passthrough, 0=remove, midpoint=modify/moderate
-                if action == "remove":
-                    lam_traj[t, k] = 0.0
-                elif action in ("modify", "moderate"):
+                    action = "modify" if abs(applied - pre_mult) > 1e-9 else "confirm"
+                    applied = apply_noise(applied, mults, args.participant_noise, rng)
+                    # Store midpoint for ALL visible dims (not just modified)
                     cat_idx = int(np.argmin(np.abs(mults - applied)))
                     lam_traj[t, k] = bin_midpoints[cat_idx, k]
-                # else: affirm/none → stays NaN (passthrough)
                 action_log.append({"trial": t, "dim": int(k), "action": action,
                                    "pre_mult": float(pre_mult),
                                    "true_mult": float(true_mults[k]),
                                    "applied": float(applied)})
 
-        # Pre-compute full kernel/projection once; we'll slice into prefixes.
-        D_full = deltas @ deltas.T          # (T, T)
-        U_full = deltas @ V.T               # (T, K)
-        cross_full = test_delta @ deltas.T  # (M, T)
+        # Pre-compute projected design matrices.
+        U_full = deltas @ V.T               # (T, K) -- LLM basis
+        U_rand_full = deltas @ V_rand.T     # (T, K) -- random basis
 
-        # Action-based feedback: NaN entries (affirm/none) are passthrough,
-        # finite entries (modify/moderate/remove) get α-blended.
-        # Ũ[t,k] = (1-α)*U[t,k] + α*lam_traj[t,k]  for changed dims
-        # Ũ[t,k] = U[t,k]                              for unchanged dims
-        alpha_fb = getattr(args, "feedback_alpha", 1.0)
-        U_adj_full = U_full.copy()
-        has_replacement = np.isfinite(lam_traj)  # True where action was modify/moderate/remove
-        if has_replacement.any() and cond != "choice_only":
-            U_adj_full[has_replacement] = ((1.0 - alpha_fb) * U_full[has_replacement]
-                                           + alpha_fb * lam_traj[has_replacement])
+        # Feedback prior: mu_prior = alpha (independent of lambda)
+        alpha_fb = getattr(args, "feedback_alpha", 0.5)
+        mu_prior = alpha_fb
 
         ckpts = []
+        min_loo = 3
         for t_end in checkpoints:
-            if t_end < 1 or t_end > args.num_trials:
+            if t_end < min_loo or t_end > args.num_trials:
                 continue
-            D_t = D_full[:t_end, :t_end]
+            y_prefix = ys[:t_end].astype(float)
+            if len(np.unique(y_prefix)) < 2:
+                continue
+
+            # --- LOO evaluation (matches pilot learning_curves.py) ---
+            all_idx = np.arange(t_end)
+            y_int = y_prefix.astype(int)
+            loo_logits = {
+                "random_projection": np.zeros(t_end),
+                "projection_only": np.zeros(t_end),
+                "projection_alpha": np.zeros(t_end),
+            }
+            for held_out in range(t_end):
+                train_idx = np.concatenate([all_idx[:held_out],
+                                            all_idx[held_out+1:]])
+                y_train = y_prefix[train_idx]
+                if len(np.unique(y_train)) < 2:
+                    continue  # logits stay 0 (chance)
+
+                # Random projection baseline (P=I since G_rand=I)
+                beta_rand = fit_btl(U_rand_full[train_idx], U_rand_full[train_idx],
+                                    y_train, args.lambda_standard)
+                loo_logits["random_projection"][held_out] = U_rand_full[held_out] @ beta_rand
+
+                # LLM projection only (P=I)
+                beta_p0 = fit_btl(U_full[train_idx], U_full[train_idx],
+                                  y_train, args.lambda_partial)
+                loo_logits["projection_only"][held_out] = U_full[held_out] @ beta_p0
+
+                # LLM projection with feedback prior
+                if cond == "choice_only":
+                    loo_logits["projection_alpha"][held_out] = \
+                        loo_logits["projection_only"][held_out]
+                else:
+                    bp = compute_beta_prior(lam_traj, t_end, K)
+                    beta_pa = fit_btl(U_full[train_idx], U_full[train_idx],
+                                      y_train, args.lambda_partial,
+                                      beta_prior=bp, mu_prior=mu_prior)
+                    loo_logits["projection_alpha"][held_out] = \
+                        U_full[held_out] @ beta_pa
+
+            # LOO metrics
+            cv_acc = {}
+            cv_ll = {}
+            for fit_label, logits in loo_logits.items():
+                cv_acc[fit_label] = float(
+                    ((logits > 0).astype(int) == y_int).mean())
+                cv_ll[fit_label] = heldout_log_likelihood(logits, y_prefix)
+
+            # --- Summary quality (full fit on all t_end trials) ---
             U_t = U_full[:t_end]
-            U_adj_t = U_adj_full[:t_end]
-            y_t = ys[:t_end].astype(float)
-
-            # All three fits, every checkpoint, every condition.
-            alpha = fit_standard_kernel(D_t, y_t, args.lambda_standard)
-            beta_proj = fit_feedback_gradient(U_t, U_t, y_t, G,
-                                           args.lambda_partial)
+            U_rand_t = U_rand_full[:t_end]
+            beta_rand_full = fit_btl(U_rand_t, U_rand_t, y_prefix,
+                                     args.lambda_standard)
+            beta_proj_full = fit_btl(U_t, U_t, y_prefix, args.lambda_partial)
             if cond == "choice_only":
-                beta_part = beta_proj  # Λ=1 → identical fit; skip recompute
+                beta_part_full = beta_proj_full
             else:
-                beta_part = fit_feedback_gradient(U_t, U_adj_t, y_t, G,
-                                               args.lambda_partial)
-
-            # Held-out scoring
-            cross_t = cross_full[:, :t_end]
-            logits_std = cross_t @ alpha
-            logits_proj = test_U @ beta_proj
-            logits_part = test_U @ beta_part
-
-            # Blended logits: (1-γ)*kernel + γ*projected (with feedback)
-            gamma = getattr(args, "gamma", 1.0)
-            logits_blend = (1.0 - gamma) * logits_std + gamma * logits_part
-
-            acc_std = float(((logits_std > 0).astype(int) == test_choices).mean())
-            acc_proj = float(((logits_proj > 0).astype(int) == test_choices).mean())
-            acc_part = float(((logits_part > 0).astype(int) == test_choices).mean())
-            acc_blend = float(((logits_blend > 0).astype(int) == test_choices).mean())
-            ll_std = heldout_log_likelihood(logits_std, test_choices)
-            ll_proj = heldout_log_likelihood(logits_proj, test_choices)
-            ll_part = heldout_log_likelihood(logits_part, test_choices)
-            ll_blend = heldout_log_likelihood(logits_blend, test_choices)
-
-            # Summary quality vs ground truth (cheap; useful for trajectory)
-            scores_std = U_t.T @ alpha            # V θ_std (K-dim projection)
-            scores_proj = G @ beta_proj           # V θ_proj
-            scores_part = G @ beta_part           # V θ_part
-            q_std = summary_quality(scores_std, w_star, args.n_dimensions_shown)
+                bp_full = compute_beta_prior(lam_traj, t_end, K)
+                beta_part_full = fit_btl(U_t, U_t, y_prefix,
+                                         args.lambda_partial,
+                                         beta_prior=bp_full, mu_prior=mu_prior)
+            scores_rand = (V @ V_rand.T) @ beta_rand_full
+            scores_proj = beta_proj_full  # P=I, so scores = beta directly
+            scores_part = beta_part_full
+            q_rand = summary_quality(scores_rand, w_star, args.n_dimensions_shown)
             q_proj = summary_quality(scores_proj, w_star, args.n_dimensions_shown)
             q_part = summary_quality(scores_part, w_star, args.n_dimensions_shown)
-            # Predicted DV uses the blended fit.
-            rating = predicted_rating(q_part["combined"], q_std["combined"],
+            rating = predicted_rating(q_part["combined"], q_rand["combined"],
                                       args.rating_temperature)
 
             ckpts.append({
                 "n_trials": int(t_end),
-                "test_acc_standard": acc_std,
-                "test_acc_projected": acc_proj,
-                "test_acc_partial": acc_part,
-                "test_acc_blend": acc_blend,
-                "test_ll_standard": ll_std,
-                "test_ll_projected": ll_proj,
-                "test_ll_partial": ll_part,
-                "test_ll_blend": ll_blend,
-                "spearman_standard": q_std["spearman"],
-                "spearman_projected": q_proj["spearman"],
-                "spearman_partial": q_part["spearman"],
-                "spearman_blend": q_part["spearman"],  # blend reuses partial's summary
-                "topn_sign_standard": q_std["top_n_sign_agreement"],
-                "topn_sign_projected": q_proj["top_n_sign_agreement"],
-                "topn_sign_partial": q_part["top_n_sign_agreement"],
-                "topn_sign_blend": q_part["top_n_sign_agreement"],
-                "topn_overlap_standard": q_std["top_n_overlap"],
-                "topn_overlap_projected": q_proj["top_n_overlap"],
-                "topn_overlap_partial": q_part["top_n_overlap"],
-                "topn_overlap_blend": q_part["top_n_overlap"],
-                "combined_standard": q_std["combined"],
-                "combined_projected": q_proj["combined"],
-                "combined_partial": q_part["combined"],
-                "combined_blend": q_part["combined"],
+                "test_acc_random_projection": cv_acc["random_projection"],
+                "test_acc_projection_only": cv_acc["projection_only"],
+                "test_acc_projection_alpha": cv_acc["projection_alpha"],
+                "test_ll_random_projection": cv_ll["random_projection"],
+                "test_ll_projection_only": cv_ll["projection_only"],
+                "test_ll_projection_alpha": cv_ll["projection_alpha"],
+                "spearman_random_projection": q_rand["spearman"],
+                "spearman_projection_only": q_proj["spearman"],
+                "spearman_projection_alpha": q_part["spearman"],
+                "topn_sign_random_projection": q_rand["top_n_sign_agreement"],
+                "topn_sign_projection_only": q_proj["top_n_sign_agreement"],
+                "topn_sign_projection_alpha": q_part["top_n_sign_agreement"],
+                "topn_overlap_random_projection": q_rand["top_n_overlap"],
+                "topn_overlap_projection_only": q_proj["top_n_overlap"],
+                "topn_overlap_projection_alpha": q_part["top_n_overlap"],
+                "combined_random_projection": q_rand["combined"],
+                "combined_projection_only": q_proj["combined"],
+                "combined_projection_alpha": q_part["combined"],
                 "rating_partial_vs_standard": rating,
             })
 
@@ -596,7 +623,7 @@ def simulate_one_user(user, ctx, args, rng):
 # Output
 # ---------------------------------------------------------------------------
 
-FIT_TYPES = ["standard", "projected", "partial", "blend"]
+FIT_TYPES = ["random_projection", "projection_only", "projection_alpha"]
 
 
 def aggregate_final(per_user_results):
@@ -706,34 +733,32 @@ def write_summary(df, curves_df, args, output_dir, dim_names):
             lines.append("| " + " | ".join(cells) + " |")
     lines.append("")
 
-    lines.append("## Held-Out Choice Accuracy at T\n")
-    lines.append("| Condition | standard | projected | partial | blend | Δ blend−std |")
-    lines.append("|-----------|----------|-----------|---------|-------|------------|")
+    lines.append("## LOO Choice Accuracy at T\n")
+    lines.append("| Condition | random_proj | projection_only | projection_alpha | D alpha-rand |")
+    lines.append("|-----------|-------------|-----------------|------------------|-------------|")
     for cond in CONDITIONS:
         cdf = df[df["condition"] == cond]
         if cdf.empty:
             continue
-        a_s = cdf["test_acc_standard"].mean()
-        a_pr = cdf["test_acc_projected"].mean()
-        a_pa = cdf["test_acc_partial"].mean()
-        a_bl = cdf["test_acc_blend"].mean()
-        lines.append(f"| {cond} | {a_s:.3f} | {a_pr:.3f} | {a_pa:.3f} | {a_bl:.3f} | "
-                     f"{a_bl - a_s:+.3f} |")
+        a_s = cdf["test_acc_random_projection"].mean()
+        a_po = cdf["test_acc_projection_only"].mean()
+        a_pa = cdf["test_acc_projection_alpha"].mean()
+        lines.append(f"| {cond} | {a_s:.3f} | {a_po:.3f} | {a_pa:.3f} | "
+                     f"{a_pa - a_s:+.3f} |")
     lines.append("")
 
-    lines.append("## Held-Out Log-Likelihood at T\n")
-    lines.append("| Condition | LL standard | LL projected | LL partial | LL blend | Δ blend−std |")
-    lines.append("|-----------|-------------|--------------|------------|----------|------------|")
+    lines.append("## LOO Log-Likelihood at T\n")
+    lines.append("| Condition | LL random_proj | LL projection_only | LL projection_alpha | D alpha-rand |")
+    lines.append("|-----------|----------------|--------------------|--------------------|-------------|")
     for cond in CONDITIONS:
         cdf = df[df["condition"] == cond]
         if cdf.empty:
             continue
-        l_s = cdf["test_ll_standard"].mean()
-        l_pr = cdf["test_ll_projected"].mean()
-        l_pa = cdf["test_ll_partial"].mean()
-        l_bl = cdf["test_ll_blend"].mean()
-        lines.append(f"| {cond} | {l_s:+.4f} | {l_pr:+.4f} | {l_pa:+.4f} | {l_bl:+.4f} | "
-                     f"{l_bl - l_s:+.4f} |")
+        l_s = cdf["test_ll_random_projection"].mean()
+        l_po = cdf["test_ll_projection_only"].mean()
+        l_pa = cdf["test_ll_projection_alpha"].mean()
+        lines.append(f"| {cond} | {l_s:+.4f} | {l_po:+.4f} | {l_pa:+.4f} | "
+                     f"{l_pa - l_s:+.4f} |")
     lines.append("")
 
     lines.append("## Significance Tests (paired Wilcoxon)\n")
@@ -843,17 +868,15 @@ def write_summary(df, curves_df, args, output_dir, dim_names):
 
 
 FIT_STYLE = {
-    "standard":  {"color": "#444444", "marker": "o", "label": "MLE (standard kernel)"},
-    "projected": {"color": "#1f77b4", "marker": "s", "label": "MLE projected onto basis"},
-    "partial":   {"color": "#d62728", "marker": "^", "label": "Partial (feedback re-weighted)"},
-    "blend":     {"color": "#2ca02c", "marker": "D", "label": "Blend ((1-γ)*kernel + γ*partial)"},
+    "random_projection": {"color": "#444444", "marker": "o", "label": "Random projection (baseline)"},
+    "projection_only":   {"color": "#1f77b4", "marker": "s", "label": "LLM projection (no feedback)"},
+    "projection_alpha":  {"color": "#d62728", "marker": "^", "label": "LLM projection + feedback"},
 }
 
 
-def plot_learning_curves(curves_df, output_dir):
-    """Held-out test acc and LL vs n_trials, one panel per condition.
-
-    Three lines per panel: standard / projected / partial.
+def plot_learning_curves(curves_df, output_dir, use_bootstrap=False, cv_folds=5):
+    """LOO accuracy and LL vs n_trials, one panel per condition.
+    Normal-approx 95% CIs by default; bootstrap if use_bootstrap=True.
     """
     if curves_df is None or curves_df.empty:
         return
@@ -862,9 +885,13 @@ def plot_learning_curves(curves_df, output_dir):
     if len(CONDITIONS) == 1:
         axes = axes[:, None]
 
+    if use_bootstrap:
+        rng_boot = np.random.default_rng(42)
+        N_BOOT = 2000
+
     metric_specs = [
-        ("test_acc", "Held-out accuracy", 0.5),
-        ("test_ll", "Held-out log-likelihood", None),
+        ("test_acc", "LOO accuracy", 0.5),
+        ("test_ll", "LOO log-likelihood", None),
     ]
     for row_idx, (col, ylabel, hline) in enumerate(metric_specs):
         for col_idx, cond in enumerate(CONDITIONS):
@@ -873,61 +900,203 @@ def plot_learning_curves(curves_df, output_dir):
             if cdf.empty:
                 ax.set_visible(False)
                 continue
+            n_part = cdf["user_id"].nunique()
             for fit_label in FIT_TYPES:
                 sub = cdf[cdf["fit_type"] == fit_label]
                 if sub.empty:
                     continue
-                grouped = sub.groupby("n_trials")[col]
-                mean = grouped.mean()
-                sem = grouped.std() / np.sqrt(grouped.count())
                 style = FIT_STYLE[fit_label]
-                ax.plot(mean.index, mean.values,
-                        marker=style["marker"], color=style["color"],
-                        label=style["label"], linewidth=2)
-                ax.fill_between(mean.index, mean.values - sem.values,
-                                mean.values + sem.values,
-                                color=style["color"], alpha=0.15)
+                ts = sorted(sub["n_trials"].unique())
+                means, ci_lo, ci_hi = [], [], []
+                for t_val in ts:
+                    vals = sub[sub["n_trials"] == t_val][col].values
+                    m = vals.mean()
+                    means.append(m)
+                    if len(vals) < 2:
+                        ci_lo.append(m); ci_hi.append(m)
+                    elif use_bootstrap:
+                        boot = np.array([
+                            vals[rng_boot.integers(0, len(vals), size=len(vals))].mean()
+                            for _ in range(N_BOOT)
+                        ])
+                        ci_lo.append(np.percentile(boot, 2.5))
+                        ci_hi.append(np.percentile(boot, 97.5))
+                    else:
+                        sem = vals.std() / np.sqrt(len(vals))
+                        ci_lo.append(m - 1.96 * sem)
+                        ci_hi.append(m + 1.96 * sem)
+                ax.plot(ts, means, marker=style["marker"], color=style["color"],
+                        label=style["label"], linewidth=2, markersize=4)
+                ax.fill_between(ts, ci_lo, ci_hi,
+                                color=style["color"], alpha=0.10)
             if hline is not None:
                 ax.axhline(hline, color="gray", linestyle="--", alpha=0.5)
             if row_idx == 0:
-                ax.set_title(cond, fontweight="bold")
+                ax.set_title(f"{cond}\n(n={n_part})", fontweight="bold")
             if row_idx == len(metric_specs) - 1:
-                ax.set_xlabel("# trials collected")
+                ax.set_xlabel("prefix length (# trials used)")
             if col_idx == 0:
                 ax.set_ylabel(ylabel)
             ax.grid(True, alpha=0.3)
             if col_idx == 0 and row_idx == 0:
-                ax.legend(loc="lower right", fontsize=9)
-    fig.suptitle("Learning curves — three fits per condition",
+                ax.legend(loc="lower right", fontsize=7)
+    ci_label = f"bootstrap 95% CI, {N_BOOT} resamples" if use_bootstrap else "95% CI (1.96 x SEM)"
+    fig.suptitle(f"Simulation learning curves -- LOO\n"
+                 f"(shaded regions = {ci_label})",
                  fontsize=13, fontweight="bold")
     plt.tight_layout()
     plt.savefig(output_dir / "learning_curves.png", dpi=150, bbox_inches="tight")
     plt.close()
 
 
+def plot_loo_comparison(df, output_dir):
+    """LOO accuracy comparison — same format as pilot's pilot_results.png.
+    Directly reproducible from experimental data (no ground-truth needed).
+
+    Panel 1: Per-user LOO accuracy advantage (LLM projection - random)
+    Panel 2: Final-T LOO accuracy by fit type and condition
+    """
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+
+    # --- Panel 1: Accuracy advantage (proj - random) per condition ---
+    ax = axes[0]
+    cond_labels, cond_means, cond_ci_lo, cond_ci_hi, cond_pvals = [], [], [], [], []
+    cond_colors = ["#1f77b4", "#ff7f0e", "#2ca02c"]
+    for cond in CONDITIONS:
+        cdf = df[df["condition"] == cond]
+        if cdf.empty:
+            continue
+        rand_acc = cdf["test_acc_random_projection"].values
+        proj_acc = cdf["test_acc_projection_only"].values
+        diff = proj_acc - rand_acc
+        m = diff.mean()
+        sem = diff.std() / np.sqrt(len(diff))
+        cond_labels.append(cond.replace("_", "\n"))
+        cond_means.append(m)
+        cond_ci_lo.append(m - 1.96 * sem)
+        cond_ci_hi.append(m + 1.96 * sem)
+        try:
+            _, p = wilcoxon(diff, zero_method="zsplit")
+        except ValueError:
+            p = float("nan")
+        cond_pvals.append(p)
+
+    if cond_labels:
+        x = np.arange(len(cond_labels))
+        means = np.array(cond_means)
+        ci_lo = np.array(cond_ci_lo)
+        ci_hi = np.array(cond_ci_hi)
+        yerr = np.array([means - ci_lo, ci_hi - means])
+        ax.bar(x, means, width=0.5, color=cond_colors[:len(x)],
+               alpha=0.7, edgecolor="black", linewidth=0.5)
+        ax.errorbar(x, means, yerr=yerr, fmt="none", ecolor="black",
+                    capsize=6, capthick=1.5, linewidth=1.5)
+        ax.axhline(0, color="gray", linestyle="--", alpha=0.5, label="no advantage")
+        ax.set_xticks(x)
+        ax.set_xticklabels(cond_labels)
+        ax.set_ylabel("LOO accuracy advantage\n(LLM projection - random)")
+        ax.set_title("LLM basis advantage\n(mean + 95% CI)", fontweight="bold")
+        ax.legend(loc="lower right", fontsize=8)
+        for i, p in enumerate(cond_pvals):
+            sig = "***" if p < 0.001 else "**" if p < 0.01 else "*" if p < 0.05 else "ns"
+            y_pos = max(ci_hi[i], 0) + 0.01
+            ax.text(i, y_pos, f"{sig}\np={p:.3f}", ha="center", fontsize=8)
+
+    # --- Panel 2: LOO accuracy by fit type (grouped bars) ---
+    ax = axes[1]
+    width = 0.25
+    conds_present = [c for c in CONDITIONS if c in df["condition"].unique()]
+    x = np.arange(len(conds_present))
+    for i, fit in enumerate(FIT_TYPES):
+        means, cis = [], []
+        for cond in conds_present:
+            cdf = df[df["condition"] == cond]
+            vals = cdf[f"test_acc_{fit}"].values
+            means.append(vals.mean())
+            cis.append(1.96 * vals.std() / np.sqrt(len(vals)))
+        ax.bar(x + (i - 1) * width, means, width, yerr=cis,
+               color=FIT_STYLE[fit]["color"], label=FIT_STYLE[fit]["label"],
+               alpha=0.7, edgecolor="black", linewidth=0.5, capsize=4)
+    ax.axhline(0.5, color="gray", linestyle="--", alpha=0.5)
+    ax.set_xticks(x)
+    ax.set_xticklabels([c.replace("_", "\n") for c in conds_present])
+    ax.set_ylabel("LOO accuracy")
+    ax.set_title("Final-T LOO accuracy by method\n(mean + 95% CI)", fontweight="bold")
+    ax.legend(loc="lower right", fontsize=7)
+    ax.grid(True, alpha=0.2, axis="y")
+
+    fig.suptitle("Simulation -- LOO comparison (reproducible from experimental data)",
+                 fontsize=13, fontweight="bold")
+    plt.tight_layout()
+    plt.savefig(output_dir / "loo_comparison.png", dpi=150, bbox_inches="tight")
+    plt.close()
+
+
 def plot_results(df, output_dir):
     fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 
-    # Predicted rating distribution per condition
+    # --- Panel 1: Predicted DV as mean + 95% CI per condition ---
     ax = axes[0]
-    data = []
-    labels = []
+    cond_labels = []
+    cond_means = []
+    cond_ci_lo = []
+    cond_ci_hi = []
+    cond_colors = ["#1f77b4", "#ff7f0e", "#2ca02c"]
     for cond in CONDITIONS:
         cdf = df[df["condition"] == cond]
-        if not cdf.empty:
-            data.append(cdf["rating_partial_vs_standard"].values)
-            labels.append(cond.replace("_", "\n"))
-    if data:
-        ax.boxplot(data, tick_labels=labels, showmeans=True)
-        ax.axhline(0.5, color="gray", linestyle="--", alpha=0.5, label="no preference")
-        ax.set_ylabel("P(partial summary preferred over standard)")
-        ax.set_title("Predicted experimental DV", fontweight="bold")
-        ax.legend(loc="lower right")
-        ax.set_ylim(0, 1)
+        if cdf.empty:
+            continue
+        vals = cdf["rating_partial_vs_standard"].values
+        m = vals.mean()
+        sem = vals.std() / np.sqrt(len(vals))
+        cond_labels.append(cond.replace("_", "\n"))
+        cond_means.append(m)
+        cond_ci_lo.append(m - 1.96 * sem)
+        cond_ci_hi.append(m + 1.96 * sem)
+    x = np.arange(len(cond_labels))
+    cond_means = np.array(cond_means)
+    cond_ci_lo = np.array(cond_ci_lo)
+    cond_ci_hi = np.array(cond_ci_hi)
+    yerr = np.array([cond_means - cond_ci_lo, cond_ci_hi - cond_means])
+    bars = ax.bar(x, cond_means, width=0.5, color=cond_colors[:len(x)],
+                  alpha=0.7, edgecolor="black", linewidth=0.5)
+    ax.errorbar(x, cond_means, yerr=yerr, fmt="none", ecolor="black",
+                capsize=6, capthick=1.5, linewidth=1.5)
+    ax.axhline(0.5, color="gray", linestyle="--", alpha=0.5, label="no preference")
+    ax.set_xticks(x)
+    ax.set_xticklabels(cond_labels)
+    ax.set_ylabel("P(LLM summary preferred)")
+    ax.set_title("Predicted experimental DV\n(mean + 95% CI)", fontweight="bold")
+    ax.set_ylim(0, 1)
+    ax.legend(loc="lower right", fontsize=8)
+    # Add significance annotations
+    base = df[df["condition"] == "choice_only"]["rating_partial_vs_standard"].values
+    y_max = max(cond_ci_hi) + 0.03
+    for i, cond in enumerate(CONDITIONS[1:], 1):
+        other = df[df["condition"] == cond]["rating_partial_vs_standard"].values
+        if len(other) == 0 or len(base) == 0:
+            continue
+        n = min(len(base), len(other))
+        try:
+            _, p = wilcoxon(other[:n], base[:n])
+        except ValueError:
+            p = float("nan")
+        if p < 0.001:
+            sig_label = "***"
+        elif p < 0.01:
+            sig_label = "**"
+        elif p < 0.05:
+            sig_label = "*"
+        else:
+            sig_label = "ns"
+        bar_y = y_max + 0.04 * (i - 1)
+        ax.plot([0, i], [bar_y, bar_y], color="black", linewidth=1)
+        ax.text((0 + i) / 2, bar_y + 0.01, f"{sig_label} (p={p:.3f})",
+                ha="center", fontsize=8)
 
     # Quality decomposition: spearman per fit
     ax = axes[1]
-    width = 0.27
+    width = 0.35
     x = np.arange(len(CONDITIONS))
     for i, fit in enumerate(FIT_TYPES):
         means = []
@@ -964,7 +1133,32 @@ def run_simulation(args):
     )
     N, d = embeddings.shape
     K = V.shape[0]
+
+    # Select top-D dimensions if --n-dims is set
+    if args.n_dims is not None and args.n_dims < K:
+        # Rank by variance of item projections: Var(v_k^T (phi - mu))
+        # This matches the "variance_captured" metric from evaluate_basis.py
+        centered = embeddings - embeddings.mean(axis=0)
+        proj_var = np.var(centered @ V.T, axis=0)  # (K,)
+        top_idx = np.argsort(-proj_var)[:args.n_dims]
+        top_idx.sort()  # preserve original ordering
+        V = V[top_idx]
+        G = V @ V.T
+        bt_scores = bt_scores[:, top_idx]
+        dim_names = [dim_names[i] for i in top_idx]
+        K = args.n_dims
+        print(f"  Selected top {K} dimensions (by variance of item projections)")
+        print(f"  Gram matrix condition number: {np.linalg.cond(G):.1f}")
+
     print(f"  Options: {N}, d: {d}, K: {K}")
+
+    # Generate random orthonormal basis for the baseline (same D as LLM basis)
+    rng_rand = np.random.default_rng(args.seed + 777)
+    V_rand = rng_rand.standard_normal((K, d))
+    V_rand, _ = np.linalg.qr(V_rand.T)  # (d, K) orthonormal columns
+    V_rand = V_rand[:, :K].T              # (K, d) orthonormal rows
+    G_rand = V_rand @ V_rand.T            # = I_K (orthonormal)
+    print(f"  Random baseline: {K} orthonormal directions (G_rand = I)")
 
     # Build per-dim quintile boundaries from the embedding pool's projections.
     # We use V·(φ - μ) since the post-eval categorization works on signed
@@ -990,20 +1184,24 @@ def run_simulation(args):
           f"delta-level range [{_delta_proj.min():.2f}, {_delta_proj.max():.2f}]")
 
     print("Generating synthetic users...")
-    users = generate_users(args.num_users, K, rng)
+    users = generate_users(args.num_users, K, rng,
+                           sparsity=args.user_sparsity,
+                           mag_min=args.user_mag_min,
+                           mag_max=args.user_mag_max)
 
     predefined_pairs = None
     if args.predefined_pairs:
         predefined_pairs = load_predefined_pairs(args.predefined_pairs, option_ids)
-        need = args.num_trials + args.num_test_pairs
+        need = args.num_trials
         if len(predefined_pairs) < need:
             raise ValueError(f"predefined-pairs pool has only {len(predefined_pairs)} "
-                             f"pairs, but need {need} = num_trials + num_test_pairs.")
+                             f"pairs, but need {need} = num_trials.")
 
     mults = DEFAULT_MULTS * args.multiplier_scale
     ctx = {
         "embeddings": embeddings, "bt_scores": bt_scores,
         "V": V, "G": G, "mu": mu,
+        "V_rand": V_rand, "G_rand": G_rand,
         "quintile_bounds": quintile_bounds, "bin_midpoints": bin_midpoints, "mults": mults,
         "predefined_pairs": predefined_pairs,
     }
@@ -1045,7 +1243,14 @@ def run_simulation(args):
     except Exception as e:
         print(f"Warning: could not save predicted_dv.png: {e}")
     try:
-        plot_learning_curves(curves_df, output_dir)
+        plot_loo_comparison(df, output_dir)
+        print("Saved loo_comparison.png")
+    except Exception as e:
+        print(f"Warning: could not save loo_comparison.png: {e}")
+    try:
+        plot_learning_curves(curves_df, output_dir,
+                             use_bootstrap=args.bootstrap,
+                             cv_folds=args.cv_folds)
         print("Saved learning_curves.png")
     except Exception as e:
         print(f"Warning: could not save learning_curves.png: {e}")
@@ -1074,16 +1279,16 @@ def parse_args():
                         "category on a given visible dim.")
     p.add_argument("--beta", type=float, default=2.0,
                    help="Choice-noise temperature (BTL).")
-    p.add_argument("--lambda-standard", type=float, default=10.0,
+    p.add_argument("--lambda-standard", type=float, default=0.01,
                    help="L2 regularization for the kernel-logistic fit.")
-    p.add_argument("--lambda-partial", type=float, default=0.1,
+    p.add_argument("--lambda-partial", type=float, default=0.01,
                    help="L2 regularization for the K-dim primal fit "
                         "(both projected and partial-with-feedback). "
-                        "Default 0.1 matches the calibrated value.")
-    p.add_argument("--feedback-alpha", type=float, default=0.75,
-                   help="Feedback strength α ∈ [0, 1]. α=0 ignores feedback "
-                        "(partial = projected). α=1 is full midpoint replacement "
-                        "on changed dims. Default 0.75.")
+                        "Default 0.01 — structural regularization from "
+                        "the projection does the heavy lifting.")
+    p.add_argument("--feedback-alpha", type=float, default=1.0,
+                   help="Feedback prior strength. mu_prior = alpha. "
+                        "Default 1.0.")
     p.add_argument("--gamma", type=float, default=1.0,
                    help="Projection degree γ ∈ [0, 1]. Blends kernel and "
                         "projected logits: (1-γ)*kernel + γ*projected. "
@@ -1101,6 +1306,27 @@ def parse_args():
                         "5 = at trials 5, 10, 15, ... 0 disables intermediate "
                         "checkpoints (only fits at T).")
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--n-dims", type=int, default=None,
+                   help="Use only the top-D directions (by norm). "
+                        "Default: use all K dimensions.")
+    p.add_argument("--cv-folds", type=int, default=5,
+                   help="Number of CV folds for learning curve evaluation. "
+                        "Default 5 (matching pilot calibration regime).")
+    p.add_argument("--bootstrap", action="store_true",
+                   help="Use bootstrap 95%% CIs in learning curve plots. "
+                        "Default uses normal-approx (1.96 * SEM).")
+
+    p.add_argument("--user-sparsity", type=float, default=0.3,
+                   help="Fraction of dims that are active per user. "
+                        "Default 0.3 (3 of 10 dims active) approximates "
+                        "real participants. Try 0.5 to test sensitivity.")
+    p.add_argument("--user-mag-min", type=float, default=1.5,
+                   help="Minimum magnitude of active w* coefficients. "
+                        "Default 1.5. Together with --user-mag-max, controls "
+                        "choice signal strength.")
+    p.add_argument("--user-mag-max", type=float, default=3.0,
+                   help="Maximum magnitude of active w* coefficients. "
+                        "Default 3.0. Higher = more decisive synthetic users.")
 
     p.add_argument("--predefined-pairs", default=None,
                    help="Optional JSON of (option_a_id, option_b_id) pairs "

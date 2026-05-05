@@ -71,9 +71,12 @@ def parse_args():
     p.add_argument("--alpha-grid", default="0.0,0.25,0.5,0.75,1.0",
                    help="Feedback strength α \in [0,1]. α=0 ignores feedback, "
                         "α=1 is full midpoint replacement on changed dims.")
-    p.add_argument("--lambda-standard", type=float, default=10.0,
+    p.add_argument("--lambda-standard", type=float, default=0.01,
                    help="Fixed L2 regularization for the kernel-logistic "
-                        "baseline. Matches the experiment's value of 10.0.")
+                        "baseline. Matches the experiment's value of 0.01.")
+    p.add_argument("--n-dims", type=int, default=None,
+                   help="Use only the top-D directions (by norm). "
+                        "Default: use all K dimensions.")
     p.add_argument("--seed", type=int, default=42)
     return p.parse_args()
 
@@ -205,15 +208,25 @@ def build_per_trial_arrays(participant, embeddings, V, oid_to_idx, K,
             actions[t, k] = action
             cat_key = info.get("category", "indifferent")
             if action == "remove":
-                raw_lam[t, k] = 0.0  # zero out
-            elif action in ("modify", "moderate"):
-                # Category was changed — use midpoint
+                raw_lam[t, k] = 0.0  # zero out this dimension
+            elif action in ("affirm", "moderate"):
+                # Affirm (or old moderate): store raw delta projection
+                raw_lam[t, k] = (deltas[t] @ V[k])
+            elif action == "modify":
+                # Category was changed -- use midpoint
                 if bin_midpoints is not None and cat_keys is not None and cat_key in cat_keys:
                     cat_idx = cat_keys.index(cat_key)
                     raw_lam[t, k] = bin_midpoints[cat_idx, k]
                 else:
                     raw_lam[t, k] = float(info.get("multiplier", 0.0))
-            # else: action in ('none', 'affirm') → raw_lam stays NaN (passthrough)
+            elif action == "none":
+                # Confirmed default category -- store midpoint for ALL visible dims
+                if bin_midpoints is not None and cat_keys is not None and cat_key in cat_keys:
+                    cat_idx = cat_keys.index(cat_key)
+                    raw_lam[t, k] = bin_midpoints[cat_idx, k]
+                else:
+                    raw_lam[t, k] = float(info.get("multiplier", 0.0))
+            # else: unknown action -> stays NaN
     U = deltas @ V.T  # (T, K)
     return deltas, U, raw_lam, visible_mask, actions, y
 
@@ -511,6 +524,18 @@ def main():
     norms[norms == 0] = 1.0
     V = V_raw / norms
     K = V.shape[0]
+
+    # Select top-D dimensions if --n-dims is set
+    if args.n_dims is not None and args.n_dims < K:
+        # Rank by variance of item projections: Var(v_k^T (phi - mu))
+        centered = embeddings - embeddings.mean(axis=0)
+        proj_var = np.var(centered @ V.T, axis=0)
+        top_idx = np.argsort(-proj_var)[:args.n_dims]
+        top_idx.sort()
+        V = V[top_idx]
+        K = args.n_dims
+        print(f"  Selected top {K} dimensions (by variance of item projections)")
+
     G = V @ V.T
     print(f"  K={K}, N options={len(option_ids)}")
 
