@@ -21,6 +21,7 @@ Requires: numpy, pandas, scipy, matplotlib.
 
 import json
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 
 import numpy as np
@@ -512,6 +513,24 @@ def safe_one_sample_wilcoxon(vals, alternative="greater"):
         return None, None, len(v)
 
 
+def t_ci(vals, conf=0.95):
+    """Two-sided t-distribution CI on the mean.
+
+    Returns (mean, ci_half_width) such that the CI is [mean - hw, mean + hw].
+    Empty input -> (0, 0). Single value -> (mean, 0).
+    """
+    v = np.asarray(vals, dtype=float)
+    v = v[~np.isnan(v)]
+    n = len(v)
+    if n == 0:
+        return 0.0, 0.0
+    if n < 2:
+        return float(v.mean()), 0.0
+    sem = float(v.std(ddof=1) / np.sqrt(n))
+    t_crit = float(stats.t.ppf((1 + conf) / 2, df=n - 1))
+    return float(v.mean()), t_crit * sem
+
+
 # ============================================================================
 # Aggregate analyses
 # ============================================================================
@@ -688,61 +707,90 @@ def _strip_with_median(ax, conds, vals_per_cond, ylim, ylabel, title, jitter_see
     ax.spines["right"].set_visible(False)
 
 
-def fig_main(h1, h2, h3, out_path):
-    fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
+def fig_main(h1, h2, h3, out_path, alpha_value=FEEDBACK_ALPHA):
+    """Three-panel figure: per-condition mean ± 95% CI for H1, H2, H3.
 
-    # --- H1: bar chart of (augmented - baseline) LOO per condition ---
-    ax = axes[0]
-    means, sems, ns = [], [], []
-    for cond in CONDITIONS:
-        rows = h1["by_cond"].get(cond, {}).get("rows") or []
-        if rows:
-            diffs = np.array([r["diff"] for r in rows])
-            means.append(diffs.mean())
-            sems.append(diffs.std(ddof=1) / np.sqrt(len(diffs)) if len(diffs) > 1 else 0)
-            ns.append(len(diffs))
-        else:
-            means.append(0); sems.append(0); ns.append(0)
-    x = np.arange(len(CONDITIONS))
-    ax.bar(x, means, yerr=sems, capsize=5,
-           color=[COND_COLORS[c] for c in CONDITIONS], alpha=0.85,
-           edgecolor="white", linewidth=1.5)
-    # overlay individual points
-    rng = np.random.RandomState(42)
-    for i, cond in enumerate(CONDITIONS):
-        rows = h1["by_cond"].get(cond, {}).get("rows") or []
-        diffs = [r["diff"] for r in rows]
-        if diffs:
-            jitter = rng.uniform(-0.15, 0.15, size=len(diffs))
-            ax.scatter(np.full(len(diffs), i) + jitter, diffs,
-                       color="black", alpha=0.4, s=15, zorder=3)
-    ax.axhline(0, color="black", linewidth=0.8, linestyle="-")
-    ax.set_xticks(x)
-    ax.set_xticklabels([f"{COND_LABELS[c]}\n(N={n})" for c, n in zip(CONDITIONS, ns)],
-                       fontsize=9)
-    ax.set_ylabel("LOO accuracy: augmented − baseline")
-    ax.set_title("H1: predictive accuracy lift")
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
+    Y-axes are data-driven (so the actual effect sizes are visible rather
+    than buried in a full Likert range). Significance markers (* ** ***)
+    are drawn above bars based on the unadjusted one-sided p-value.
+    """
+    fig, axes = plt.subplots(1, 3, figsize=(13, 4.5))
 
-    # --- H2: signed summary Likert per condition ---
-    h2_vals = {c: [r["signed"] for r in (h2.get(c, {}).get("rows") or [])] for c in CONDITIONS}
-    _strip_with_median(axes[1], CONDITIONS, h2_vals,
-                       ylim=(-3.5, 3.5),
-                       ylabel="Signed Likert  (+ = preferred augmented)",
-                       title="H2: summary preference",
-                       jitter_seed=42)
-    axes[1].set_yticks([-3, -2, -1, 0, 1, 2, 3])
+    def sig_marker(p):
+        if p is None:
+            return ""
+        if p < 0.001: return "***"
+        if p < 0.01:  return "**"
+        if p < 0.05:  return "*"
+        return ""
 
-    # --- H3: paired prediction rating diff per condition ---
-    h3_vals = {c: [r["diff"] for r in (h3.get(c, {}).get("rows") or [])] for c in CONDITIONS}
-    _strip_with_median(axes[2], CONDITIONS, h3_vals,
-                       ylim=(-5.5, 5.5),
-                       ylabel="Augmented − baseline rating  (1–6 Likert)",
-                       title="H3: prediction endorsement",
-                       jitter_seed=43)
-    axes[2].set_yticks([-5, -3, -1, 0, 1, 3, 5])
+    def plot_panel(ax, vals_per_cond, p_per_cond, ylabel, title):
+        means, cis, ns, sigs = [], [], [], []
+        for cond in CONDITIONS:
+            vs = vals_per_cond.get(cond) or []
+            mean, ci = t_ci(vs)
+            means.append(mean); cis.append(ci); ns.append(len(vs))
+            sigs.append(sig_marker(p_per_cond.get(cond)))
+        x = np.arange(len(CONDITIONS))
+        colors = [COND_COLORS[c] for c in CONDITIONS]
+        ax.bar(x, means, yerr=cis, capsize=6, color=colors, alpha=0.88,
+               edgecolor="white", linewidth=1.2,
+               error_kw={"linewidth": 1.4, "ecolor": "#1a1a1a"})
+        ax.axhline(0, color="black", linewidth=0.7, linestyle="-", alpha=0.6)
+        ax.set_xticks(x)
+        ax.set_xticklabels([f"{COND_LABELS[c]}\n(N={n})"
+                            for c, n in zip(CONDITIONS, ns)],
+                           fontsize=9)
+        ax.set_ylabel(ylabel, fontsize=10)
+        ax.set_title(title, fontsize=11)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        # Tight y-axis with 0 always visible. Extra headroom on top for
+        # significance markers.
+        lows  = [m - c for m, c in zip(means, cis)] + [0]
+        highs = [m + c for m, c in zip(means, cis)] + [0]
+        lo, hi = min(lows), max(highs)
+        span = hi - lo if hi > lo else 0.1
+        ax.set_ylim(lo - span * 0.18, hi + span * 0.30)
+        # Place significance markers just above the upper CI (or below for negatives).
+        for xi, mean, ci, sig in zip(x, means, cis, sigs):
+            if not sig:
+                continue
+            if mean >= 0:
+                y = mean + ci + span * 0.05
+                va = "bottom"
+            else:
+                y = mean - ci - span * 0.05
+                va = "top"
+            ax.text(xi, y, sig, ha="center", va=va, fontsize=12,
+                    fontweight="bold", color="#1a1a1a")
 
+    h1_vals = {c: [r["diff"] for r in (h1["by_cond"].get(c, {}).get("rows") or [])]
+               for c in CONDITIONS}
+    h1_p = {c: h1["by_cond"].get(c, {}).get("p_one_sided") for c in CONDITIONS}
+    plot_panel(axes[0], h1_vals, h1_p,
+               "LOO accuracy: augmented − baseline",
+               "H1: predictive accuracy lift")
+
+    h2_vals = {c: [r["signed"] for r in (h2.get(c, {}).get("rows") or [])]
+               for c in CONDITIONS}
+    h2_p = {c: h2.get(c, {}).get("p_one_sided") for c in CONDITIONS}
+    plot_panel(axes[1], h2_vals, h2_p,
+               "Signed Likert  (+ = preferred augmented)",
+               "H2: summary preference")
+
+    h3_vals = {c: [r["diff"] for r in (h3.get(c, {}).get("rows") or [])]
+               for c in CONDITIONS}
+    h3_p = {c: h3.get(c, {}).get("p_one_sided") for c in CONDITIONS}
+    plot_panel(axes[2], h3_vals, h3_p,
+               "Augmented − baseline rating",
+               "H3: prediction endorsement")
+
+    fig.suptitle(
+        f"Dilemmas: per-condition means \u00b1 95% CI  "
+        f"(\u03b1={alpha_value}, \u03bb={LAMBDA_PARTIAL}; "
+        f"* p<.05, ** p<.01, *** p<.001 one-sided, unadjusted)",
+        fontsize=10, y=1.03)
     plt.tight_layout()
     plt.savefig(out_path, dpi=150, bbox_inches="tight")
     plt.close()
@@ -825,6 +873,145 @@ def print_report(participants_all, participants_kept, h1, h2, h3):
     print()
     print("Note: with N ~ 10 / cell, p-values and effect sizes are illustrative.")
     print("      This run is a pipeline check, not a powered test.")
+
+
+# ============================================================================
+# Markdown summary (shareable with collaborators)
+# ============================================================================
+def write_summary_md(participants_all, participants_kept, h1, h2, h3,
+                     alpha_value, out_path):
+    """Write a self-contained markdown summary suitable for sharing with
+    collaborators. Includes sample sizes, hyperparameters, results tables
+    with effect sizes and 95% CIs, and brief methodology notes."""
+    excluded = len(participants_all) - len(participants_kept)
+    cond_counts = defaultdict(int)
+    for p in participants_kept:
+        cond_counts[p["condition"]] += 1
+
+    def ci_str(vals, n_dec=3):
+        if not vals:
+            return "\u2014"
+        mean, hw = t_ci(vals)
+        if hw == 0:
+            return "\u2014"
+        fmt_str = f"+.{n_dec}f"
+        return f"[{format(mean - hw, fmt_str)}, {format(mean + hw, fmt_str)}]"
+
+    L = []
+    L.append("# Dilemmas analysis summary")
+    L.append("")
+    L.append(f"_Generated {datetime.now().strftime('%Y-%m-%d %H:%M')} "
+             f"by `analyze.py` from `data.csv` "
+             f"(N={len(participants_all)} responses, {len(participants_kept)} analyzed)._")
+    L.append("")
+    L.append("![Main figure](main_figure.png)")
+    L.append("")
+    L.append("## Sample")
+    L.append("")
+    L.append(f"- **Total responses:** {len(participants_all)}")
+    L.append(f"- **Excluded (incomplete):** {excluded}")
+    L.append(f"- **Analyzed:** {len(participants_kept)}")
+    L.append("")
+    L.append("| Condition | N |")
+    L.append("|---|---|")
+    for c in CONDITIONS:
+        L.append(f"| {COND_LABELS[c]} | {cond_counts.get(c, 0)} |")
+    L.append("")
+    L.append("## Hyperparameters")
+    L.append("")
+    L.append("| Parameter | Value |")
+    L.append("|---|---|")
+    L.append(f"| \u03b1 (feedback prior strength) | **{alpha_value}** |")
+    L.append(f"| \u03bb (L2 regularization) | {LAMBDA_PARTIAL} |")
+    L.append(f"| D (number of dimensions) | 10 |")
+    L.append(f"| T (trials per participant) | 20 |")
+    L.append(f"| Inference categories | {N_CATS} (per-dim quintile) |")
+    L.append("")
+
+    # H1
+    L.append("## H1: predictive accuracy lift")
+    L.append("")
+    L.append("Per-participant LOO accuracy (augmented \u2212 baseline). "
+             "Paired one-sided t-test against 0; Holm-Bonferroni across the 3 conditions.")
+    L.append("")
+    L.append("| Condition | N | \u0394acc | 95% CI | t | p (one-sided) | p_holm | d_z |")
+    L.append("|---|---|---|---|---|---|---|---|")
+    for c in CONDITIONS:
+        r = h1["by_cond"].get(c) or {}
+        n = r.get("n", 0)
+        diffs = [row["diff"] for row in (r.get("rows") or [])]
+        L.append(f"| {COND_LABELS[c]} | {n} | "
+                 f"{fmt(r.get('mean_diff'), '+.3f')} | {ci_str(diffs, 3)} | "
+                 f"{fmt(r.get('t'), '+.2f')} | "
+                 f"{fmt(r.get('p_one_sided'), '.4f')} | "
+                 f"{fmt(r.get('p_holm'), '.4f')} | "
+                 f"{fmt(r.get('d_z'), '+.2f')} |")
+    L.append("")
+
+    # H2
+    L.append("## H2: summary preference")
+    L.append("")
+    L.append("Signed 6-point Likert (positive = preferred augmented summary). "
+             "One-sample Wilcoxon, alternative > 0; Holm-Bonferroni across the "
+             "two inference conditions. `choice_only` is shown as a manipulation "
+             "check (marked *mc*) and is not part of the H2 family.")
+    L.append("")
+    L.append("| Condition | N | mean | 95% CI | median | W | p (one-sided) | p_holm | r_rb |")
+    L.append("|---|---|---|---|---|---|---|---|---|")
+    for c in CONDITIONS:
+        r = h2.get(c) or {}
+        n = r.get("n", 0)
+        vals = [row["signed"] for row in (r.get("rows") or [])]
+        marker = " *(mc)*" if r.get("is_manipulation_check") else ""
+        L.append(f"| {COND_LABELS[c]}{marker} | {n} | "
+                 f"{fmt(r.get('mean'), '+.2f')} | {ci_str(vals, 2)} | "
+                 f"{fmt(r.get('median'), '+.1f')} | "
+                 f"{fmt(r.get('W'), '.1f')} | "
+                 f"{fmt(r.get('p_one_sided'), '.4f')} | "
+                 f"{fmt(r.get('p_holm'), '.4f')} | "
+                 f"{fmt(r.get('rb'), '+.2f')} |")
+    L.append("")
+
+    # H3
+    L.append("## H3: prediction endorsement")
+    L.append("")
+    L.append("Per-participant paired difference (augmented \u2212 baseline) on a "
+             "6-point accuracy rating. One-sample Wilcoxon, alternative > 0; "
+             "Holm-Bonferroni across the 3 conditions.")
+    L.append("")
+    L.append("| Condition | N | mean \u0394 | 95% CI | median | W | p (one-sided) | p_holm | r_rb |")
+    L.append("|---|---|---|---|---|---|---|---|---|")
+    for c in CONDITIONS:
+        r = h3.get(c) or {}
+        n = r.get("n", 0)
+        vals = [row["diff"] for row in (r.get("rows") or [])]
+        L.append(f"| {COND_LABELS[c]} | {n} | "
+                 f"{fmt(r.get('mean'), '+.2f')} | {ci_str(vals, 2)} | "
+                 f"{fmt(r.get('median'), '+.1f')} | "
+                 f"{fmt(r.get('W'), '.1f')} | "
+                 f"{fmt(r.get('p_one_sided'), '.4f')} | "
+                 f"{fmt(r.get('p_holm'), '.4f')} | "
+                 f"{fmt(r.get('rb'), '+.2f')} |")
+    L.append("")
+
+    L.append("## Notes")
+    L.append("")
+    L.append("- **Sign convention:** positive = preferred augmented model. "
+             "In `choice_only`, augmented = semantic projection (vs random); "
+             "in inference conditions, augmented = semantic projection + "
+             "feedback prior (vs semantic projection alone).")
+    L.append("- **Inclusion:** participants who completed all 20 trials, the "
+             "summary comparison, and both prediction ratings.")
+    L.append("- **All p-values are one-sided.** `p_holm` adjusts within each "
+             "hypothesis family; H2 corrects across the two inference conditions "
+             "only (`choice_only` H2 is a manipulation check).")
+    L.append("- **CIs:** 95%, t-distribution with df = n\u22121.")
+    L.append("- **Effect sizes:** d_z (paired Cohen's d) for H1; r_rb "
+             "(rank-biserial correlation) for H2 and H3.")
+    L.append("")
+
+    with open(out_path, "w") as f:
+        f.write("\n".join(L))
 
 
 # ============================================================================
@@ -919,6 +1106,11 @@ def main():
     fig_path = OUT_DIR / "main_figure.png"
     fig_main(h1, h2, h3, fig_path)
     print(f"Wrote: {fig_path}")
+
+    summary_md_path = OUT_DIR / "summary.md"
+    write_summary_md(participants_all, participants, h1, h2, h3,
+                     FEEDBACK_ALPHA, summary_md_path)
+    print(f"Wrote: {summary_md_path}")
 
     print()
     print_report(participants_all, participants, h1, h2, h3)
