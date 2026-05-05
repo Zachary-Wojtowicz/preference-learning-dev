@@ -130,7 +130,11 @@ def parse_args():
                         "Default: use all K dimensions.")
     p.add_argument("--lambda-partial-grid", type=str, default=None,
                    help="Comma-separated lambda values to compare.")
-    p.add_argument("--alpha-deployed", type=float, default=1.0)
+    p.add_argument("--alpha-deployed", type=float, default=2.0,
+                   help="Feedback prior strength (mu_prior = alpha). "
+                        "Default 2.0, calibrated via simulation sweep on "
+                        "dailydilemmas. Same value for both inference "
+                        "conditions.")
     p.add_argument("--lambda-standard", type=float, default=0.01)
     p.add_argument("--seed", type=int, default=42)
     return p.parse_args()

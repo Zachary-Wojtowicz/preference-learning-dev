@@ -1,7 +1,7 @@
 {
   "domain": "movies",
   "choice_context": "Which movie would you rather watch right now?",
-  "num_trials_per_participant": 30,
+  "num_trials_per_participant": 20,
   "top_k_sliders": 3,
   "conditions": {
     "choice_only": {
@@ -301,7 +301,7 @@
     "lambda_standard": 0.01,
     "lambda_partial": 0.01,
     "gamma": 1.0,
-    "feedback_alpha": 1.0,
+    "feedback_alpha": 2.0,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown": 10,
     "eval_format": "top_bottom_bars",

@@ -253,10 +253,13 @@ def moderated_mult(mult, mults):
 
 
 def affirm_decision(pre_mult, true_mult, mults):
-    """Simulate the participant's affirm/remove decision (no moderate).
+    """Simulate the participant's affirm/remove decision.
 
-    Returns (action_label, applied_value) where applied_value is unused
-    for affirm (the caller stores U_t,k directly) and 0.0 for remove."""
+    Affirm = "yes, the default-selected category is right for me on this dim."
+    Remove = "this dim is irrelevant or the default has the wrong sign."
+    Returns (action_label, _unused). Caller computes the stored value from
+    the pre-selected category midpoint (affirm) or 0.0 (remove).
+    """
     eps = 1e-9
     if abs(pre_mult) < eps and abs(true_mult) < eps:
         return "affirm", 0.0
@@ -486,12 +489,24 @@ def simulate_one_user(user, ctx, args, rng):
                 pre_mult = value_to_mult(value_if_chosen[k], quintile_bounds[:, k], mults)
 
                 if cond == "inference_affirm":
-                    action, applied = affirm_decision(pre_mult, true_mults[k], mults)
-                    applied = apply_noise(applied, mults, args.participant_noise, rng)
+                    action, _ = affirm_decision(pre_mult, true_mults[k], mults)
+                    # Affirm-mode noise: probability of accidentally hitting
+                    # the wrong button (binary flip). This is the 1-bit analog
+                    # of the categories-mode adjacent-bucket slip.
+                    if args.participant_noise > 0 and rng.random() < args.participant_noise:
+                        action = "remove" if action == "affirm" else "affirm"
                     if action == "remove":
                         lam_traj[t, k] = 0.0
-                    else:  # affirm: store the raw delta projection
-                        lam_traj[t, k] = delta_proj[k]
+                        applied = 0.0
+                    else:
+                        # Affirm = confirm the algorithm's pre-selected category.
+                        # Store the midpoint of that category (same calibrated
+                        # scale as inference_categories' confirm path). This
+                        # carries the 1-bit affirm signal at a stable magnitude
+                        # rather than a noisy delta projection.
+                        cat_idx = int(np.argmin(np.abs(mults - pre_mult)))
+                        lam_traj[t, k] = bin_midpoints[cat_idx, k]
+                        applied = pre_mult
                 else:  # inference_categories
                     applied = categories_decision(true_mults[k], mults)
                     action = "modify" if abs(applied - pre_mult) > 1e-9 else "confirm"
@@ -508,9 +523,21 @@ def simulate_one_user(user, ctx, args, rng):
         U_full = deltas @ V.T               # (T, K) -- LLM basis
         U_rand_full = deltas @ V_rand.T     # (T, K) -- random basis
 
-        # Feedback prior: mu_prior = alpha (independent of lambda)
-        alpha_fb = getattr(args, "feedback_alpha", 0.5)
-        mu_prior = alpha_fb
+        # Feedback prior: mu_prior = alpha (independent of lambda).
+        # Per-condition alpha: --feedback-alpha-affirm and
+        # --feedback-alpha-categories override --feedback-alpha when set.
+        # Affirm carries less information per dim than categories (1 bit vs ~2.3
+        # bits), so it generally benefits from a smaller mu_prior.
+        if cond == "inference_affirm":
+            mu_prior = (args.feedback_alpha_affirm
+                        if args.feedback_alpha_affirm is not None
+                        else args.feedback_alpha)
+        elif cond == "inference_categories":
+            mu_prior = (args.feedback_alpha_categories
+                        if args.feedback_alpha_categories is not None
+                        else args.feedback_alpha)
+        else:  # choice_only
+            mu_prior = args.feedback_alpha
 
         ckpts = []
         min_loo = 3
@@ -693,7 +720,13 @@ def write_summary(df, curves_df, args, output_dir, dim_names):
     lines.append(f"| λ standard | {args.lambda_standard} |")
     lines.append(f"| λ partial  | {args.lambda_partial} |")
     lines.append(f"| γ (projection blend) | {args.gamma} |")
-    lines.append(f"| α (feedback strength) | {args.feedback_alpha} |")
+    aa = (args.feedback_alpha_affirm if args.feedback_alpha_affirm is not None
+          else args.feedback_alpha)
+    ac = (args.feedback_alpha_categories if args.feedback_alpha_categories is not None
+          else args.feedback_alpha)
+    lines.append(f"| α default | {args.feedback_alpha} |")
+    lines.append(f"| α affirm | {aa} |")
+    lines.append(f"| α categories | {ac} |")
     lines.append(f"| Rating temperature τ | {args.rating_temperature} |")
     lines.append(f"| Top-N dims shown in summary | {args.n_dimensions_shown} |")
     lines.append(f"| Seed | {args.seed} |")
@@ -1286,9 +1319,22 @@ def parse_args():
                         "(both projected and partial-with-feedback). "
                         "Default 0.01 — structural regularization from "
                         "the projection does the heavy lifting.")
-    p.add_argument("--feedback-alpha", type=float, default=1.0,
+    p.add_argument("--feedback-alpha", type=float, default=2.0,
                    help="Feedback prior strength. mu_prior = alpha. "
-                        "Default 1.0.")
+                        "Default 2.0. Used as fallback when condition-specific "
+                        "alphas (--feedback-alpha-affirm, "
+                        "--feedback-alpha-categories) are not set. "
+                        "Calibrated via simulation sweep on dailydilemmas "
+                        "(LOO-optimal for inference_affirm; high-effect zone "
+                        "for inference_categories).")
+    p.add_argument("--feedback-alpha-affirm", type=float, default=None,
+                   help="Feedback prior strength for inference_affirm. "
+                        "Defaults to --feedback-alpha. Affirm carries 1 bit per "
+                        "dim (sign), so a smaller value (e.g., 0.25-0.5) is "
+                        "often optimal vs categories' richer signal.")
+    p.add_argument("--feedback-alpha-categories", type=float, default=None,
+                   help="Feedback prior strength for inference_categories. "
+                        "Defaults to --feedback-alpha.")
     p.add_argument("--gamma", type=float, default=1.0,
                    help="Projection degree γ ∈ [0, 1]. Blends kernel and "
                         "projected logits: (1-γ)*kernel + γ*projected. "

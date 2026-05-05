@@ -122,6 +122,17 @@
   .pred-badge{font-size:.78rem;font-weight:600;color:#3b82f6;text-align:center;margin-bottom:.4rem;letter-spacing:.02em;text-transform:uppercase}
   .pred-badge.pred-badge-empty{color:transparent}
   .accuracy-row{max-width:820px}
+  .pred-blocks-container{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.25rem}
+  .pred-block{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:1rem 1.1rem}
+  .pred-block-header{font-size:.92rem;font-weight:500;margin-bottom:.85rem;color:#1a1a1a;line-height:1.45}
+  .pred-block-header strong{font-weight:600;color:#3b82f6}
+  .pred-block-rating{margin-top:.5rem}
+  .pred-block-rating .likert-prompt-inline{text-align:center;font-size:.82rem;color:#444;margin-bottom:.5rem;font-weight:500}
+  .pred-block-rating .pred-likert-row{display:grid;grid-template-columns:repeat(6,1fr);gap:.3rem;margin:0}
+  .pred-block-rating .pred-likert-btn{padding:.55rem .15rem;font-size:.7rem;border:1px solid #d1d5db;border-radius:5px;background:#fff;color:#333;cursor:pointer;transition:all .15s;text-align:center;line-height:1.2;font-family:inherit}
+  .pred-block-rating .pred-likert-btn:hover{border-color:#888;background:#f9fafb}
+  .pred-block-rating .pred-likert-btn.selected{background:#3b82f6;color:#fff;border-color:#3b82f6}
+  @media(max-width:700px){.pred-blocks-container{grid-template-columns:1fr}.pred-block-rating .pred-likert-row{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:700px){.eval-grid{grid-template-columns:1fr}.likert-row{grid-template-columns:repeat(3,1fr)}.likert-btn{font-size:.72rem;padding:.55rem .25rem}}
   @media(max-width:600px){.options{flex-direction:column}.slider-row{grid-template-columns:120px 1fr 36px}}
 </style>
@@ -873,12 +884,13 @@ function buildEvalInputs(){
       var value=null;
       if(action==='remove'){
         value=0.0;  // dimension is irrelevant
-      }else if(action==='affirm'||action==='moderate'){
-        // Affirm (or legacy 'moderate'): store raw delta projection
-        value=U[t][idx];
       }else{
-        // 'modify' (changed category) or 'none' (confirmed default category):
-        // both contribute the midpoint of the selected category.
+        // affirm / moderate / modify / none — all contribute the midpoint of
+        // the (current or unchanged) category. For affirm/moderate/none the
+        // category equals the algorithm's pre-selected default; for modify
+        // it's the user's chosen replacement. Storing the category midpoint
+        // (rather than U[t,k]) keeps the prior at a stable, calibrated
+        // magnitude regardless of which trial it came from.
         var cat=info.category;
         var catIdx=-1;
         for(var ci=0;ci<CATEGORIES.length;ci++){
@@ -967,7 +979,7 @@ function startEvaluation(){
   if(!inputs){evalState={skipped:'no_eval_data'};proceedAfterEval();return;}
 
   var lamP=(comp&&typeof comp.lambda_partial==='number')?comp.lambda_partial:0.01;
-  var muPrior=(comp&&typeof comp.feedback_alpha==='number')?comp.feedback_alpha:1.0;
+  var muPrior=(comp&&typeof comp.feedback_alpha==='number')?comp.feedback_alpha:2.0;
   var nShow=(comp&&comp.n_dimensions_shown)||10;
   var format=(comp&&comp.eval_format)||'inference_list';
 
@@ -1139,86 +1151,125 @@ function proceedAfterEval(){
   startPrediction();
 }
 
-// ===== Prediction-check screen =====
-//   Picks the unseen trial pair with the strongest predicted preference
-//   under the participant's fitted model, then asks how accurate that
-//   prediction feels on a 6-point Likert. Uses the projection_alpha fit
-//   (with feedback prior) when feedback is available, else projection_only.
+// ===== Prediction-comparison screen (two-trial, single-model-per-trial) =====
+//   Picks TWO different held-out pairs (where baseline and augmented disagree
+//   when possible). On each screen the user chooses an option, then sees ONE
+//   model's prediction + a 6-point Likert. Order of which model is rated
+//   first is randomized per participant. This avoids the awkwardness of
+//   rating two predictions on the same problem and gives a clean within-
+//   subject paired comparison across two distinct pairs.
+//
+//   Models per condition:
+//     choice_only           -> baseline=random_projection, augmented=projection_only
+//     inference_affirm/cat. -> baseline=projection_only,   augmented=projection_alpha
+//
+//   Pair selection priority (top-2 picked by joint criterion):
+//     1. unseen + disagreement
+//     2. seen   + disagreement
+//     3. unseen + (any)
+//     4. seen   + (any)
+//   Within each tier, sort by max(|baseline_diff|, |augmented_diff|) so
+//   both models are confident on the chosen pairs.
 
-// Pick the trial pair (from trials.json) whose model-predicted preference is strongest.
-// Returns {trial, predTopKey:'a'|'b', predBottomKey, diff}. Excludes pairs the
-// participant already saw so the prediction screen tests generalization rather than
-// surfacing a familiar pair.
-function rankBestPair(beta){
-  if(!trialProjections||!Array.isArray(trialProjections))return null;
-  if(!Array.isArray(beta)||beta.length===0)return null;
+function findTwoComparisonPairs(betaB,betaA,projKeyB,projKeyA){
+  if(!trialProjections||!Array.isArray(trialProjections))return [];
+  if(!Array.isArray(betaB)||!Array.isArray(betaA))return [];
+  if(betaB.length===0||betaA.length===0)return [];
   var seen={};assignedTrialIndices.forEach(function(pi){seen[pi]=true;});
-  function scan(skipSeen){
-    var bestPi=-1,bestAbs=-Infinity,bestDiff=0;
-    for(var pi=0;pi<trialProjections.length;pi++){
-      if(skipSeen&&seen[pi])continue;
-      var tp=trialProjections[pi];
-      if(!tp||!Array.isArray(tp.raw_projection))continue;
-      if(tp.raw_projection.length!==beta.length)continue;
-      if(!trials[pi]||!trials[pi].option_a||!trials[pi].option_b)continue;
-      var diff=0;for(var k=0;k<beta.length;k++)diff+=beta[k]*tp.raw_projection[k];
-      var ad=Math.abs(diff);
-      if(ad>bestAbs){bestAbs=ad;bestPi=pi;bestDiff=diff;}
-    }
-    return bestPi>=0?{pi:bestPi,diff:bestDiff}:null;
+  var all=[];
+  for(var pi=0;pi<trialProjections.length;pi++){
+    var tp=trialProjections[pi];if(!tp)continue;
+    var bp=tp[projKeyB],ap=tp[projKeyA];
+    if(!Array.isArray(bp)||!Array.isArray(ap))continue;
+    if(bp.length!==betaB.length||ap.length!==betaA.length)continue;
+    if(!trials[pi]||!trials[pi].option_a||!trials[pi].option_b)continue;
+    var bd=0;for(var k=0;k<betaB.length;k++)bd+=betaB[k]*bp[k];
+    var ad=0;for(var k2=0;k2<betaA.length;k2++)ad+=betaA[k2]*ap[k2];
+    all.push({pi:pi,baselineDiff:bd,augmentedDiff:ad,
+              disagree:(bd>=0)!==(ad>=0),unseen:!seen[pi]});
   }
-  var pick=scan(true)||scan(false);
-  if(!pick)return null;
-  var trial=trials[pick.pi];
-  var topKey=pick.diff>=0?'a':'b';
-  return {trial:trial,trialIdx:pick.pi,predTopKey:topKey,predBottomKey:topKey==='a'?'b':'a',diff:pick.diff};
+  // Sort: unseen > seen, then disagree > agree, then max(|base|,|aug|) desc.
+  all.sort(function(a,b){
+    if(a.unseen!==b.unseen)return a.unseen?-1:1;
+    if(a.disagree!==b.disagree)return a.disagree?-1:1;
+    var ma=Math.max(Math.abs(a.baselineDiff),Math.abs(a.augmentedDiff));
+    var mb=Math.max(Math.abs(b.baselineDiff),Math.abs(b.augmentedDiff));
+    return mb-ma;
+  });
+  return all.slice(0,2);
 }
-function setupPredictionState(ranked,modelName){
-  var topOnLeft=(hashStr(participantId)%2)===0;
-  var topOpt=ranked.trial['option_'+ranked.predTopKey];
-  var bottomOpt=ranked.trial['option_'+ranked.predBottomKey];
-  var topId=ranked.trial['option_'+ranked.predTopKey+'_id'];
-  var bottomId=ranked.trial['option_'+ranked.predBottomKey+'_id'];
-  predictionState={
-    model: modelName,
-    trial_id: ranked.trial.trial_id||null,
-    pair_signed_diff: Math.round(ranked.diff*1e4)/1e4,
-    top_option_id:    topId!=null?String(topId):null,
-    top_option_label: topOpt&&topOpt.label||(topId!=null?String(topId):null),
-    bottom_option_id:    bottomId!=null?String(bottomId):null,
-    bottom_option_label: bottomOpt&&bottomOpt.label||(bottomId!=null?String(bottomId):null),
-    top_on_side: topOnLeft?'A':'B',
-    rating: null,
-    rating_numeric: null,
-    rating_label: null,
-    response_time_ms: null,
-    started_at: Date.now(),
-    _leftOption:  topOnLeft?topOpt:bottomOpt,
-    _rightOption: topOnLeft?bottomOpt:topOpt,
-    _trial: ranked.trial,
-  };
-}
+
 function startPrediction(){
-  // Use the best fitted model:
-  //   inference + has feedback -> betaAlpha (projection + prior)
-  //   inference + no feedback  -> betaProj
-  //   choice_only              -> betaProj (test the LLM projection's predictions)
   if(!evalState){predictionState={skipped:'no_eval_state'};finishExperiment();return;}
   if(!trialProjections){predictionState={skipped:'missing_trial_projections'};finishExperiment();return;}
-  var beta=null,modelName=null;
-  if(evalState._betaAlpha){
-    beta=evalState._betaAlpha;modelName='projection_alpha';
-  }else if(evalState._betaProj){
-    beta=evalState._betaProj;modelName='projection_only';
+  var isChoiceOnly=(evalState.is_baseline_check===true);
+  var betaB=null,betaA=null,projKeyB,projKeyA,baselineModel,augmentedModel;
+  if(isChoiceOnly){
+    betaB=evalState._betaRand;betaA=evalState._betaProj;
+    projKeyB='random_projection';projKeyA='raw_projection';
+    baselineModel='random_projection';augmentedModel='projection_only';
+  }else if(evalState._betaAlpha){
+    betaB=evalState._betaProj;betaA=evalState._betaAlpha;
+    projKeyB='raw_projection';projKeyA='raw_projection';
+    baselineModel='projection_only';augmentedModel='projection_alpha';
+  }else{
+    // Inference condition with no feedback received -> nothing to compare against.
+    predictionState={skipped:'no_augmented_model'};finishExperiment();return;
   }
-  if(!beta||!Array.isArray(beta)||beta.length===0){
+  if(!Array.isArray(betaB)||!Array.isArray(betaA)||betaB.length===0||betaA.length===0){
     predictionState={skipped:'no_beta'};finishExperiment();return;
   }
-  var ranked=rankBestPair(beta);
-  if(!ranked){predictionState={skipped:'no_pair_ranked'};finishExperiment();return;}
-  setupPredictionState(ranked,modelName);
-  renderPrediction();
+  var pairs=findTwoComparisonPairs(betaB,betaA,projKeyB,projKeyA);
+  if(pairs.length<2){
+    predictionState={skipped:'insufficient_pairs',n_pairs:pairs.length};finishExperiment();return;
+  }
+
+  // Randomize role order: which model's prediction is shown FIRST.
+  // Hash on participantId so the assignment is deterministic per participant
+  // but balanced across the cohort.
+  var augFirst=(hashStr(participantId+'_predorder')%2)===0;
+  var roles=augFirst?['augmented','baseline']:['baseline','augmented'];
+
+  // Build the two trial entries. Each is associated with one model role.
+  var ptrials=[];
+  for(var i=0;i<2;i++){
+    var pair=pairs[i];
+    var role=roles[i];
+    var modelName=role==='augmented'?augmentedModel:baselineModel;
+    var basePred=pair.baselineDiff>=0?'a':'b';
+    var augPred =pair.augmentedDiff>=0?'a':'b';
+    var modelPred=role==='augmented'?augPred:basePred;
+    ptrials.push({
+      role:role,
+      model:modelName,
+      pair_index:pair.pi,
+      trial_id:trials[pair.pi].trial_id||null,
+      baseline_diff:Math.round(pair.baselineDiff*1e4)/1e4,
+      augmented_diff:Math.round(pair.augmentedDiff*1e4)/1e4,
+      disagreement:pair.disagree,
+      baseline_predicts:basePred,
+      augmented_predicts:augPred,
+      model_predicts:modelPred,
+      rating:null,
+      rating_numeric:null,
+      rating_label:null,
+      response_time_ms:null,
+      started_at:null,
+    });
+  }
+
+  predictionState={
+    baseline_model:baselineModel,
+    augmented_model:augmentedModel,
+    role_order:roles,
+    n_trials:2,
+    current_index:0,
+    started_at:Date.now(),
+    trials:ptrials,
+  };
+  renderPredictionTrial();
 }
+
 var ACCURACY_LEVELS=[
   {key:'not_at_all',     label:'Not at all accurate',  value:1},
   {key:'mostly_inacc',   label:'Mostly inaccurate',    value:2},
@@ -1227,9 +1278,23 @@ var ACCURACY_LEVELS=[
   {key:'mostly_acc',     label:'Mostly accurate',      value:5},
   {key:'very_acc',       label:'Very accurate',        value:6},
 ];
-function renderPrediction(){
+
+function renderPredictionTrial(){
   var st=predictionState;
-  var topOnLeft=(st.top_on_side==='A');
+  var idx=st.current_index;
+  var pt=st.trials[idx];
+  if(!pt.started_at)pt.started_at=Date.now();
+  var trial=trials[pt.pair_index];
+  var stepLabel='Final question '+(idx+1)+' of '+st.n_trials;
+  var h='<div class="eval-intro"><h1>'+esc(stepLabel)+'</h1>';
+  if(idx===0){
+    h+='<p>For these final pairs, we\u2019ve predicted which option you would choose. The option highlighted in blue is <strong>our prediction</strong>. Rate how accurate it is.</p>';
+  }else{
+    h+='<p>One more. The option highlighted in blue is <strong>our prediction</strong>. Rate how accurate it is.</p>';
+  }
+  h+='</div>';
+  if(trial.situation)h+='<div class="situation">'+esc(trial.situation)+'</div>';
+
   function predictionCard(key,opt,isPrediction){
     var card=buildCard(key,opt);
     var cls=isPrediction?'option-card pred-selected':'option-card pred-other';
@@ -1238,40 +1303,47 @@ function renderPrediction(){
     else card='<div class="pred-badge pred-badge-empty">&nbsp;</div>'+card;
     return '<div class="pred-card-wrap">'+card+'</div>';
   }
-  var leftKey=topOnLeft?'a':'b',rightKey=topOnLeft?'b':'a';
-  var leftIsPred=topOnLeft,rightIsPred=!topOnLeft;
-  var promptText=(experimentConfig&&experimentConfig.choice_context)||'Which would you choose?';
-  var h='<div class="eval-intro"><h1>One last question</h1>';
-  h+='<p>Below is one more pair, like the ones you saw earlier. Based on your previous responses, we’ve predicted how you would answer this one. The option highlighted in blue is <strong>our prediction</strong>. How accurate is it?</p></div>';
-  h+='<div class="prompt">'+esc(promptText)+'</div>';
-  h+='<div class="options pred-options">'+predictionCard(leftKey,st._leftOption,leftIsPred)+predictionCard(rightKey,st._rightOption,rightIsPred)+'</div>';
+  var aIsPred=(pt.model_predicts==='a');
+  h+='<div class="options pred-options">'+predictionCard('a',trial.option_a,aIsPred)+predictionCard('b',trial.option_b,!aIsPred)+'</div>';
+
   h+='<div class="likert-prompt">How accurate is our prediction?</div>';
   h+='<div class="likert-row accuracy-row">';
   ACCURACY_LEVELS.forEach(function(lv){
     h+='<button class="likert-btn" data-key="'+lv.key+'" data-value="'+lv.value+'">'+esc(lv.label)+'</button>';
   });
   h+='</div>';
-  h+='<div class="submit-row"><button class="btn" id="predSubmit" disabled>Submit</button></div>';
+  h+='<div class="submit-row"><button class="btn" id="predSubmit" disabled>'+(idx<st.n_trials-1?'Continue':'Submit')+'</button></div>';
   app.innerHTML=h;
   window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
-  var selected=null;
+
   app.querySelectorAll('.likert-btn').forEach(function(btn){
     btn.addEventListener('click',function(){
       app.querySelectorAll('.likert-btn').forEach(function(b){b.classList.remove('selected');});
       btn.classList.add('selected');
-      selected={key:btn.dataset.key,value:parseInt(btn.dataset.value,10),label:btn.textContent.trim()};
+      pt._rating_key=btn.dataset.key;
+      pt._rating_value=parseInt(btn.dataset.value,10);
+      pt._rating_label=btn.textContent.trim();
       document.getElementById('predSubmit').disabled=false;
     });
   });
-  document.getElementById('predSubmit').addEventListener('click',function(){
-    if(!selected)return;
-    predictionState.rating=selected.key;
-    predictionState.rating_numeric=selected.value;
-    predictionState.rating_label=selected.label;
-    predictionState.response_time_ms=Date.now()-predictionState.started_at;
-    delete predictionState._leftOption;delete predictionState._rightOption;delete predictionState._trial;
+  document.getElementById('predSubmit').addEventListener('click',submitPredictionTrial);
+}
+
+function submitPredictionTrial(){
+  var st=predictionState;
+  var pt=st.trials[st.current_index];
+  if(!pt._rating_key)return;
+  pt.rating=pt._rating_key;
+  pt.rating_numeric=pt._rating_value;
+  pt.rating_label=pt._rating_label;
+  pt.response_time_ms=Date.now()-pt.started_at;
+  delete pt._rating_key;delete pt._rating_value;delete pt._rating_label;
+  st.current_index++;
+  if(st.current_index<st.n_trials){
+    renderPredictionTrial();
+  }else{
     finishExperiment();
-  });
+  }
 }
 
 function esc(s){if(s==null)return'';var d=document.createElement('div');d.textContent=String(s);return d.innerHTML}

@@ -475,7 +475,7 @@
     "lambda_standard": 0.01,
     "lambda_partial": 0.01,
     "gamma": 1.0,
-    "feedback_alpha": 1.0,
+    "feedback_alpha": 2.0,
     "slider_prior_weight": 1.0,
     "n_dimensions_shown": 10,
     "show_for_conditions": [

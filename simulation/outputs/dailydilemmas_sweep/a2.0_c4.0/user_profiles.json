@@ -1,0 +1,1602 @@
+[
+  {
+    "id": 0,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 1.6412660218314743,
+      "Efficiency": 2.6417095529855295,
+      "Privacy": 2.963433527455134,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 1,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -2.4657976801209966,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -2.890147483272903,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 2,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": -1.595725884156263,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 2.7414467579888733,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.4474965986830974,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 3,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 1.5657056486808432,
+      "Tradition Adherence": 2.200081505590551,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.5245734298636817,
+      "Decisiveness": 0.0,
+      "Creativity": -1.7314342381013217,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 4,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": -1.7842070386264286,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 1.6948822580032075,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 5,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 2.155727878308496,
+      "Privacy": 2.749017294086756,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 6,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -1.7096287254139648,
+      "Privacy": 0.0,
+      "Financial Prudence": -1.9324921558953663,
+      "Decisiveness": 2.5237432559624633,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 7,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": -2.1883736633075097,
+      "Decisiveness": -2.3531117939293407,
+      "Creativity": 0.0,
+      "Structure Preference": 2.6710935465329517
+    }
+  },
+  {
+    "id": 8,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 2.3303691009869936,
+      "Efficiency": -1.9559251470939183,
+      "Privacy": -2.3388107411181203,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 2.452077480000886,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 9,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": -1.587454112533599,
+      "Tradition Adherence": 1.8509092287980111,
+      "Efficiency": -1.9220758380329948,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 10,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": -2.4964703104910813,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 2.1095802921601057
+    }
+  },
+  {
+    "id": 11,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": -2.5835390258946753,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 2.192815845377081,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 12,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 2.169234413361046,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 1.9522681337218148,
+      "Structure Preference": 2.0715318391447237
+    }
+  },
+  {
+    "id": 13,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 2.8628710360614105,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -2.942846496824272
+    }
+  },
+  {
+    "id": 14,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.174042253215683,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 2.5753352837384935
+    }
+  },
+  {
+    "id": 15,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 2.1836644347504164,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -1.8035450471928454,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 16,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 2.5791944339264052,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -2.1481395596626554,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 2.440963261053665
+    }
+  },
+  {
+    "id": 17,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": -2.2409862288667783,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": -1.5624212607928387,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 18,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -1.755889452805329,
+      "Formality Avoidance": 2.3715917095505925,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": -2.887680177565196,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 19,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -2.6741028408754293,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": -2.2234551554143502,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 20,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": -2.2810086037073067,
+      "Efficiency": -2.15836719045757,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": -1.9973534960138282,
+      "Structure Preference": -1.9004634946378403
+    }
+  },
+  {
+    "id": 21,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -1.6628636117031652,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 2.5083601395597177,
+      "Privacy": 0.0,
+      "Financial Prudence": 1.9218506757585125,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 22,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -1.5561188342642698,
+      "Formality Avoidance": -2.332278704087225,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 1.8453209863423212,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 23,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 1.936376757210178,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": -1.883947635851404,
+      "Decisiveness": 0.0,
+      "Creativity": 2.2725856938475717,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 24,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 2.837515899382371,
+      "Formality Avoidance": -2.9885633460837555,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 25,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 2.4924918947516415,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": -2.060486593310565,
+      "Structure Preference": -2.658018648166482
+    }
+  },
+  {
+    "id": 26,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 1.7299264749367411,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 1.7689024622366087,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -2.746669008187359,
+      "Creativity": 0.0,
+      "Structure Preference": -2.3990741872812653
+    }
+  },
+  {
+    "id": 27,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -2.957739639091451,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -2.2511117793035136
+    }
+  },
+  {
+    "id": 28,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 2.5413936534643295,
+      "Formality Avoidance": 1.6827487569427966,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 2.2594948974309497
+    }
+  },
+  {
+    "id": 29,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -1.6965866273359698,
+      "Creativity": 2.6084760058733125,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 30,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": -2.4942963191453735,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 2.933434885570455,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 2.2328760680273,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 31,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": -1.6588461056261299,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 2.450962667521628,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 32,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 2.201072402332937,
+      "Social Harmony": 2.706541373419456,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": -2.677145173878281,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 33,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": -2.4046607360080885,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.1188573539105207,
+      "Decisiveness": 2.4090237310500164,
+      "Creativity": -2.8016084306640168,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 34,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": -2.1808453231144496,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -1.871759344427037
+    }
+  },
+  {
+    "id": 35,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -1.5998382854327673,
+      "Creativity": -2.3916504956346776,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 36,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -1.6732350954980324,
+      "Formality Avoidance": -1.9270801235069033,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 1.730420092788088,
+      "Structure Preference": 1.7482975841029171
+    }
+  },
+  {
+    "id": 37,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 2.2567893555333454,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 1.9769866454280742,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.090445685248042,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 38,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": -1.855117306656594,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 1.8740813637483178,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 39,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": -1.652507854355574,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": -2.285629423076456,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -2.7501878306828393,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 40,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": -2.8539797158914255,
+      "Structure Preference": 2.9693560208798893
+    }
+  },
+  {
+    "id": 41,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": -2.304102053921456,
+      "Financial Prudence": -2.7863582161838365,
+      "Decisiveness": 0.0,
+      "Creativity": 2.2713343052856216,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 42,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": -2.216815911035619,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -1.7096526164309354
+    }
+  },
+  {
+    "id": 43,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 2.528615018183918,
+      "Tradition Adherence": 1.9453147118569278,
+      "Efficiency": 0.0,
+      "Privacy": 2.0691961195903934,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -2.9232868900730105,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 44,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": -2.449376443901431,
+      "Efficiency": 2.602339743465436,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 2.29908341409861,
+      "Structure Preference": -1.9322334212736925
+    }
+  },
+  {
+    "id": 45,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 1.642643622344902,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -2.5885734424071405
+    }
+  },
+  {
+    "id": 46,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -2.390523006699531,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.701326264127645,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 47,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -1.8800750307587808,
+      "Creativity": 0.0,
+      "Structure Preference": -2.385113843037464
+    }
+  },
+  {
+    "id": 48,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": -2.283947663269684,
+      "Social Harmony": 2.645885085009882,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": -2.6988670747681,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 49,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -1.6756553488501658,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -1.6315635178661525
+    }
+  },
+  {
+    "id": 50,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 2.6437982206059782,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 2.0004566374923574,
+      "Creativity": -2.847549821042304,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 51,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": -2.904191195063616,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 1.7216750588132874
+    }
+  },
+  {
+    "id": 52,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 2.6704522408640883,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 2.9042099802576935,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 53,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": -2.775800518786174,
+      "Efficiency": 0.0,
+      "Privacy": 1.677717865825562,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 2.9267919900057615
+    }
+  },
+  {
+    "id": 54,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 2.1634711906018396,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 2.1878221226978267,
+      "Financial Prudence": -1.9430385380161348,
+      "Decisiveness": -2.7380992667944817,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 55,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 1.9258626567960584,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 1.6596292978070744,
+      "Efficiency": 2.7553448694914073,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 56,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -2.8455500983449378,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": -1.5434992548067041,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 57,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": -1.7973063408193468,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 2.865957340696328,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 58,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 2.702222716289123,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -2.4088877664715915
+    }
+  },
+  {
+    "id": 59,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 2.8916931452584205,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -2.7014457804625143
+    }
+  },
+  {
+    "id": 60,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": -2.2567964852894797,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -2.6177821924932667,
+      "Privacy": -2.445017766864598,
+      "Financial Prudence": 2.7766966496429024,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 61,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 2.564857045921956,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.9703071773480225,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 62,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": -1.637581508736297,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 2.564367427650931,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 1.7596917696337548
+    }
+  },
+  {
+    "id": 63,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -2.358619724937956,
+      "Privacy": 2.454612513161665,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 64,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 2.473849732867963,
+      "Formality Avoidance": -2.2625291076704133,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 1.722658484880087,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -2.9108916145432775
+    }
+  },
+  {
+    "id": 65,
+    "archetype": "sparse_5",
+    "weights": {
+      "Moral Integrity": -2.3824593726135124,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 2.1177163448783554,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 2.4519436761273945,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 1.826442790045443,
+      "Creativity": 0.0,
+      "Structure Preference": -2.1131746641430458
+    }
+  },
+  {
+    "id": 66,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 2.3486578506478812,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -2.3586868996831734
+    }
+  },
+  {
+    "id": 67,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 2.681148332978931,
+      "Financial Prudence": -1.9743212277360647,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 68,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -2.2691088669101376,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.6050585327233304,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 69,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": -2.7560735435176027,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -2.699805616145755,
+      "Creativity": -1.9716760376163018,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 70,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": -2.001195060752319,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 1.920917154200484,
+      "Creativity": -1.7594916677873906,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 71,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -2.058392359787322,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.784822035361837,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 72,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -2.993196708875456,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": -2.9376437713514587,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 73,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 2.558109548226019,
+      "Decisiveness": 2.0817625427454747,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 74,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": -1.7488603018148003,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 1.7456269563874438,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 75,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": -1.6200739254692775,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 1.712393832853162,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 2.1723684198815265,
+      "Creativity": -2.0888590737628796,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 76,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 1.9380889954717926,
+      "Formality Avoidance": -2.2352963136023796,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": -2.379667759522194,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": -1.8492784274155594
+    }
+  },
+  {
+    "id": 77,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": -2.4563830507176885,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 2.4737235752014115,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 78,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 2.007684724945989,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": -2.309291152892518,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 79,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 2.864328365807025,
+      "Privacy": 0.0,
+      "Financial Prudence": -2.2571872243552473,
+      "Decisiveness": -2.3806859108054708,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 80,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": -2.876006508827514,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": -2.4462483605471137,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 81,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 1.9613026086311791,
+      "Formality Avoidance": -2.397715787336605,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 2.1723109923853072
+    }
+  },
+  {
+    "id": 82,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 2.430536564487066,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 2.216258810441599,
+      "Financial Prudence": 2.6421488447760115,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 83,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 2.8002021573928895,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 1.671156106775456
+    }
+  },
+  {
+    "id": 84,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": -2.481153614223535,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 2.954722675058354
+    }
+  },
+  {
+    "id": 85,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": -1.6858046622963316,
+      "Decisiveness": 0.0,
+      "Creativity": 1.5614204404285796,
+      "Structure Preference": -2.6660146912937677
+    }
+  },
+  {
+    "id": 86,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 2.333192565206646,
+      "Efficiency": -2.690523225839959,
+      "Privacy": 0.0,
+      "Financial Prudence": 1.627228908467748,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 87,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 1.663923436671837,
+      "Tradition Adherence": 2.512958443001226,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -1.573047708470777,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 88,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": -1.8518027256619478,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 1.5734455647349188,
+      "Creativity": 0.0,
+      "Structure Preference": 2.432846660062869
+    }
+  },
+  {
+    "id": 89,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": -2.507419213283788,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -2.8434523220755454,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -2.102033336330082,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 90,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": -2.3854803763247237,
+      "Efficiency": 1.9484154766783583,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 91,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 1.781390522909237,
+      "Efficiency": 0.0,
+      "Privacy": -1.6272173868536446,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 92,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 1.9445430855167474,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 2.1119129266969234,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 93,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": -2.392819260620058,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": -2.088553639382691,
+      "Structure Preference": -2.872948140428332
+    }
+  },
+  {
+    "id": 94,
+    "archetype": "sparse_4",
+    "weights": {
+      "Moral Integrity": 2.1305726572579156,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 2.4518103974276957,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 2.0149386935683617,
+      "Creativity": 2.179919874750245,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 95,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 1.8526456753209892,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 1.9880140957750156,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 96,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": -2.386117191245649,
+      "Structure Preference": -2.480158813514243
+    }
+  },
+  {
+    "id": 97,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": -1.924870399875171,
+      "Tradition Adherence": -2.811471547936211,
+      "Efficiency": 0.0,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 98,
+    "archetype": "sparse_3",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": 2.9920526234025373,
+      "Privacy": 2.511896215468536,
+      "Financial Prudence": 0.0,
+      "Decisiveness": -2.2143859628800886,
+      "Creativity": 0.0,
+      "Structure Preference": 0.0
+    }
+  },
+  {
+    "id": 99,
+    "archetype": "sparse_2",
+    "weights": {
+      "Moral Integrity": 0.0,
+      "Social Harmony": 0.0,
+      "Formality Avoidance": 0.0,
+      "Tradition Adherence": 0.0,
+      "Efficiency": -2.343256100606358,
+      "Privacy": 0.0,
+      "Financial Prudence": 0.0,
+      "Decisiveness": 0.0,
+      "Creativity": 1.6528412359718172,
+      "Structure Preference": 0.0
+    }
+  }
+]
