@@ -19,6 +19,7 @@ Run:
 Requires: numpy, pandas, scipy, matplotlib.
 """
 
+import argparse
 import json
 from collections import defaultdict
 from datetime import datetime
@@ -1047,7 +1048,43 @@ def write_per_participant_csv(participants, h1, h2, h3, out_path):
 # Main
 # ============================================================================
 def main():
+    global DATA_PATH, OUT_DIR, FEEDBACK_ALPHA, LAMBDA_PARTIAL
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data", default=None,
+                        help=f"Qualtrics CSV path (default: {DATA_PATH})")
+    parser.add_argument("--out-dir", default=None,
+                        help="Output directory "
+                             "(default: <data parent>/analysis_outputs)")
+    parser.add_argument("--alpha", type=float, default=None,
+                        help=f"Feedback prior strength \u03b1 "
+                             f"(default: {FEEDBACK_ALPHA})")
+    parser.add_argument("--lambda-partial", type=float, default=None,
+                        dest="lambda_partial",
+                        help=f"L2 regularization \u03bb "
+                             f"(default: {LAMBDA_PARTIAL})")
+    args = parser.parse_args()
+
+    # Override module-level globals so existing function calls (which reference
+    # these names at call time, not import time) pick up the overrides.
+    if args.data is not None:
+        DATA_PATH = Path(args.data).resolve()
+    if args.out_dir is not None:
+        OUT_DIR = Path(args.out_dir).resolve()
+    elif args.data is not None:
+        # Auto-route outputs alongside the data file when --data is given
+        # without --out-dir, so dilemmas/analysis_outputs isn't clobbered.
+        OUT_DIR = DATA_PATH.parent / "analysis_outputs"
+    OUT_DIR.mkdir(exist_ok=True, parents=True)
+    if args.alpha is not None:
+        FEEDBACK_ALPHA = float(args.alpha)
+    if args.lambda_partial is not None:
+        LAMBDA_PARTIAL = float(args.lambda_partial)
+
     print(f"Reading {DATA_PATH}")
+    print(f"  Output dir:       {OUT_DIR}")
+    print(f"  \u03b1 (feedback):     {FEEDBACK_ALPHA}")
+    print(f"  \u03bb (L2 regulariz): {LAMBDA_PARTIAL}")
     df = load_qualtrics_csv(DATA_PATH)
     print(f"  CSV rows (after metadata skip): {len(df)}")
 
