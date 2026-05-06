@@ -1,20 +1,20 @@
 # Dilemmas analysis summary
 
-_Generated 2026-05-06 12:02 by `analyze.py` from `data.csv` (N=446 responses, 446 analyzed)._
+_Generated 2026-05-06 12:01 by `analyze.py` from `data.csv` (N=429 responses, 429 analyzed)._
 
 ![Main figure](main_figure.png)
 
 ## Sample
 
-- **Total responses:** 446
+- **Total responses:** 429
 - **Excluded (incomplete):** 0
-- **Analyzed:** 446
+- **Analyzed:** 429
 
 | Condition | N |
 |---|---|
-| Choice only | 152 |
-| Affirm/remove | 144 |
-| Category select | 150 |
+| Choice only | 146 |
+| Affirm/remove | 143 |
+| Category select | 140 |
 
 ## Hyperparameters
 
@@ -33,9 +33,9 @@ Per-participant LOO accuracy (augmented − baseline). Paired one-sided t-test a
 
 | Condition | N | Δacc | 95% CI | t | p (one-sided) | p_holm | d_z |
 |---|---|---|---|---|---|---|---|
-| Choice only | 152 | +0.073 | [+0.047, +0.098] | +5.64 | 0.0000 | 0.0000 | +0.46 |
-| Affirm/remove | 144 | +0.009 | [+0.000, +0.018] | +2.05 | 0.0210 | 0.0419 | +0.17 |
-| Category select | 150 | +0.013 | [-0.005, +0.032] | +1.42 | 0.0785 | 0.0785 | +0.12 |
+| Choice only | 146 | +0.062 | [+0.035, +0.090] | +4.46 | 0.0000 | 0.0000 | +0.37 |
+| Affirm/remove | 143 | +0.014 | [+0.003, +0.025] | +2.61 | 0.0050 | 0.0050 | +0.22 |
+| Category select | 140 | +0.028 | [+0.012, +0.044] | +3.44 | 0.0004 | 0.0008 | +0.29 |
 
 ## H2: summary preference
 
@@ -43,9 +43,9 @@ Signed 6-point Likert (positive = preferred augmented summary). One-sample Wilco
 
 | Condition | N | mean | 95% CI | median | W | p (one-sided) | p_holm | r_rb |
 |---|---|---|---|---|---|---|---|---|
-| Choice only *(mc)* | 152 | +0.80 | [+0.52, +1.07] | +1.0 | 8518.5 | 0.0000 | — | +0.47 |
-| Affirm/remove | 144 | +0.47 | [+0.16, +0.78] | +1.0 | 6724.5 | 0.0011 | 0.0011 | +0.29 |
-| Category select | 150 | +0.65 | [+0.35, +0.96] | +1.0 | 7768.5 | 0.0000 | 0.0001 | +0.37 |
+| Choice only *(mc)* | 146 | +0.36 | [+0.06, +0.67] | +1.0 | 6572.5 | 0.0079 | — | +0.22 |
+| Affirm/remove | 143 | +1.09 | [+0.81, +1.38] | +2.0 | 8196.0 | 0.0000 | 0.0000 | +0.59 |
+| Category select | 140 | +1.36 | [+1.08, +1.63] | +2.0 | 8439.0 | 0.0000 | 0.0000 | +0.71 |
 
 ## H3: prediction endorsement
 
@@ -53,9 +53,9 @@ Per-participant paired difference (augmented − baseline) on a 6-point accuracy
 
 | Condition | N | mean Δ | 95% CI | median | W | p (one-sided) | p_holm | r_rb |
 |---|---|---|---|---|---|---|---|---|
-| Choice only | 152 | +1.47 | [+1.06, +1.88] | +1.0 | 6108.0 | 0.0000 | 0.0000 | +0.63 |
-| Affirm/remove | 144 | +0.47 | [+0.02, +0.91] | +0.0 | 3556.0 | 0.0186 | 0.0186 | +0.23 |
-| Category select | 150 | +0.82 | [+0.38, +1.26] | +1.0 | 4655.0 | 0.0002 | 0.0005 | +0.37 |
+| Choice only | 146 | +2.21 | [+1.86, +2.57] | +2.0 | 6964.0 | 0.0000 | 0.0000 | +0.89 |
+| Affirm/remove | 143 | +0.69 | [+0.23, +1.14] | +0.0 | 3895.5 | 0.0017 | 0.0033 | +0.32 |
+| Category select | 140 | +0.51 | [+0.09, +0.92] | +0.0 | 3836.5 | 0.0093 | 0.0093 | +0.26 |
 
 ## Notes
 

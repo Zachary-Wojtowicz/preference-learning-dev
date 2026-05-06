@@ -35,20 +35,34 @@ from scipy import stats
 # Paths
 # ============================================================================
 SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parent.parent
-DATA_PATH = SCRIPT_DIR / "data.csv"
+REPO_ROOT = SCRIPT_DIR.parent
 PROJECTIONS_DIR = REPO_ROOT / "web-interface" / "outputs"
-OUT_DIR = SCRIPT_DIR / "analysis_outputs"
-OUT_DIR.mkdir(exist_ok=True)
+
+# Default data location is dilemmas/, the original main study. Override with
+# `--data path/to/other/data.csv` for any other dataset (movies, wines, etc.).
+# When --data is supplied without --out-dir, OUT_DIR auto-routes to
+# `<data parent>/analysis_outputs/` (see main()).
+DATA_PATH = SCRIPT_DIR / "dilemmas" / "data.csv"
+OUT_DIR   = SCRIPT_DIR / "dilemmas" / "analysis_outputs"
 
 
 # ============================================================================
 # Constants (must match the experiment_config.json values used at runtime)
 # ============================================================================
 LAMBDA_PARTIAL = 0.01     # L2 regularization on beta
-FEEDBACK_ALPHA = 2.0      # mu_prior strength for projection_alpha
+FEEDBACK_ALPHA = 2.0      # default mu_prior strength for projection_alpha
 NEWTON_ITERS = 15
 N_CATS = 5                # number of inference category bins (locked at 5)
+
+# Per-condition feedback-prior strength. Initialized to the scalar default,
+# but main() may override per-condition values via CLI flags. This lets the
+# user run the analysis at the (different) optimal alpha for each inference
+# condition in a single pass — needed because the calibration sweep showed
+# affirm and categories often have meaningfully different optima.
+FEEDBACK_ALPHA_BY_COND = {
+    "inference_affirm":     FEEDBACK_ALPHA,
+    "inference_categories": FEEDBACK_ALPHA,
+}
 
 # Per-condition mapping: which model is "augmented" (the new method we test)
 # and which is the "baseline" it's compared against. This mapping is the
@@ -389,12 +403,14 @@ def compute_loo_per_participant(participant, domain_assets, midpoints):
     result["projection_only"]   = loo_accuracy(U,      y, lam=LAMBDA_PARTIAL)
     # projection_alpha: only in inference conditions, and only if any feedback
     # was provided (otherwise the prior collapses to 0 and it's identical to
-    # projection_only)
+    # projection_only). Uses the per-condition alpha from FEEDBACK_ALPHA_BY_COND
+    # (set in main() from --alpha / --alpha-affirm / --alpha-categories).
     if cond in INFERENCE_CONDITIONS:
         bp_fn = lambda idxs: build_beta_prior(
             participant, dim_ids, midpoints, n_dims, categories, train_indices=idxs)
+        alpha_for_cond = FEEDBACK_ALPHA_BY_COND.get(cond, FEEDBACK_ALPHA)
         result["projection_alpha"] = loo_accuracy(
-            U, y, lam=LAMBDA_PARTIAL, beta_prior_fn=bp_fn, mu_prior=FEEDBACK_ALPHA)
+            U, y, lam=LAMBDA_PARTIAL, beta_prior_fn=bp_fn, mu_prior=alpha_for_cond)
     return result
 
 
@@ -708,13 +724,15 @@ def _strip_with_median(ax, conds, vals_per_cond, ylim, ylabel, title, jitter_see
     ax.spines["right"].set_visible(False)
 
 
-def fig_main(h1, h2, h3, out_path, alpha_value=FEEDBACK_ALPHA):
+def fig_main(h1, h2, h3, out_path, alpha_by_cond=None):
     """Three-panel figure: per-condition mean ± 95% CI for H1, H2, H3.
 
     Y-axes are data-driven (so the actual effect sizes are visible rather
     than buried in a full Likert range). Significance markers (* ** ***)
     are drawn above bars based on the unadjusted one-sided p-value.
     """
+    if alpha_by_cond is None:
+        alpha_by_cond = FEEDBACK_ALPHA_BY_COND
     fig, axes = plt.subplots(1, 3, figsize=(13, 4.5))
 
     def sig_marker(p):
@@ -787,9 +805,16 @@ def fig_main(h1, h2, h3, out_path, alpha_value=FEEDBACK_ALPHA):
                "Augmented − baseline rating",
                "H3: prediction endorsement")
 
+    a_aff = alpha_by_cond.get("inference_affirm")
+    a_cat = alpha_by_cond.get("inference_categories")
+    if a_aff is not None and a_cat is not None and a_aff != a_cat:
+        alpha_str = (f"\u03b1$_{{\\mathrm{{affirm}}}}$={a_aff}, "
+                     f"\u03b1$_{{\\mathrm{{categories}}}}$={a_cat}")
+    else:
+        alpha_str = f"\u03b1={a_aff if a_aff is not None else FEEDBACK_ALPHA}"
     fig.suptitle(
-        f"Dilemmas: per-condition means \u00b1 95% CI  "
-        f"(\u03b1={alpha_value}, \u03bb={LAMBDA_PARTIAL}; "
+        f"Per-condition means \u00b1 95% CI  "
+        f"({alpha_str}, \u03bb={LAMBDA_PARTIAL}; "
         f"* p<.05, ** p<.01, *** p<.001 one-sided, unadjusted)",
         fontsize=10, y=1.03)
     plt.tight_layout()
@@ -880,10 +905,15 @@ def print_report(participants_all, participants_kept, h1, h2, h3):
 # Markdown summary (shareable with collaborators)
 # ============================================================================
 def write_summary_md(participants_all, participants_kept, h1, h2, h3,
-                     alpha_value, out_path):
+                     alpha_by_cond, out_path):
     """Write a self-contained markdown summary suitable for sharing with
     collaborators. Includes sample sizes, hyperparameters, results tables
-    with effect sizes and 95% CIs, and brief methodology notes."""
+    with effect sizes and 95% CIs, and brief methodology notes.
+
+    `alpha_by_cond` is a dict mapping condition name to the \u03b1 used for
+    that condition. When affirm and categories use the same value, a single
+    row is shown; otherwise the rows are split.
+    """
     excluded = len(participants_all) - len(participants_kept)
     cond_counts = defaultdict(int)
     for p in participants_kept:
@@ -922,7 +952,13 @@ def write_summary_md(participants_all, participants_kept, h1, h2, h3,
     L.append("")
     L.append("| Parameter | Value |")
     L.append("|---|---|")
-    L.append(f"| \u03b1 (feedback prior strength) | **{alpha_value}** |")
+    a_aff = alpha_by_cond.get("inference_affirm")
+    a_cat = alpha_by_cond.get("inference_categories")
+    if a_aff == a_cat:
+        L.append(f"| \u03b1 (feedback prior strength) | **{a_aff}** |")
+    else:
+        L.append(f"| \u03b1 affirm/remove | **{a_aff}** |")
+        L.append(f"| \u03b1 category select | **{a_cat}** |")
     L.append(f"| \u03bb (L2 regularization) | {LAMBDA_PARTIAL} |")
     L.append(f"| D (number of dimensions) | 10 |")
     L.append(f"| T (trials per participant) | 20 |")
@@ -1048,7 +1084,7 @@ def write_per_participant_csv(participants, h1, h2, h3, out_path):
 # Main
 # ============================================================================
 def main():
-    global DATA_PATH, OUT_DIR, FEEDBACK_ALPHA, LAMBDA_PARTIAL
+    global DATA_PATH, OUT_DIR, FEEDBACK_ALPHA, LAMBDA_PARTIAL, FEEDBACK_ALPHA_BY_COND
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", default=None,
@@ -1057,8 +1093,20 @@ def main():
                         help="Output directory "
                              "(default: <data parent>/analysis_outputs)")
     parser.add_argument("--alpha", type=float, default=None,
-                        help=f"Feedback prior strength \u03b1 "
+                        help=f"Feedback prior strength \u03b1 applied to BOTH "
+                             f"inference conditions, unless overridden by "
+                             f"--alpha-affirm / --alpha-categories "
                              f"(default: {FEEDBACK_ALPHA})")
+    parser.add_argument("--alpha-affirm", type=float, default=None,
+                        dest="alpha_affirm",
+                        help="Feedback prior strength \u03b1 for the "
+                             "inference_affirm condition only. Overrides "
+                             "--alpha for that cell.")
+    parser.add_argument("--alpha-categories", type=float, default=None,
+                        dest="alpha_categories",
+                        help="Feedback prior strength \u03b1 for the "
+                             "inference_categories condition only. Overrides "
+                             "--alpha for that cell.")
     parser.add_argument("--lambda-partial", type=float, default=None,
                         dest="lambda_partial",
                         help=f"L2 regularization \u03bb "
@@ -1076,14 +1124,33 @@ def main():
         # without --out-dir, so dilemmas/analysis_outputs isn't clobbered.
         OUT_DIR = DATA_PATH.parent / "analysis_outputs"
     OUT_DIR.mkdir(exist_ok=True, parents=True)
-    if args.alpha is not None:
-        FEEDBACK_ALPHA = float(args.alpha)
     if args.lambda_partial is not None:
         LAMBDA_PARTIAL = float(args.lambda_partial)
 
+    # Resolve per-condition alphas. Precedence (per cell):
+    #   --alpha-<cond>  >  --alpha  >  module default (FEEDBACK_ALPHA == 2.0)
+    base_alpha = float(args.alpha) if args.alpha is not None else FEEDBACK_ALPHA
+    alpha_affirm = (float(args.alpha_affirm)
+                    if args.alpha_affirm is not None else base_alpha)
+    alpha_categories = (float(args.alpha_categories)
+                        if args.alpha_categories is not None else base_alpha)
+    FEEDBACK_ALPHA_BY_COND = {
+        "inference_affirm":     alpha_affirm,
+        "inference_categories": alpha_categories,
+    }
+    # Keep the scalar in sync with --alpha for downstream display (figure
+    # suptitle, summary.md, summary.json). When per-condition flags diverge,
+    # the scalar reflects --alpha (or the default), and the per-condition
+    # values are reported separately.
+    FEEDBACK_ALPHA = base_alpha
+
     print(f"Reading {DATA_PATH}")
     print(f"  Output dir:       {OUT_DIR}")
-    print(f"  \u03b1 (feedback):     {FEEDBACK_ALPHA}")
+    if alpha_affirm == alpha_categories:
+        print(f"  \u03b1 (feedback):     {alpha_affirm}  (both inference conds)")
+    else:
+        print(f"  \u03b1 (affirm):       {alpha_affirm}")
+        print(f"  \u03b1 (categories):   {alpha_categories}")
     print(f"  \u03bb (L2 regulariz): {LAMBDA_PARTIAL}")
     df = load_qualtrics_csv(DATA_PATH)
     print(f"  CSV rows (after metadata skip): {len(df)}")
@@ -1122,6 +1189,7 @@ def main():
         "constants": {
             "lambda_partial": LAMBDA_PARTIAL,
             "feedback_alpha": FEEDBACK_ALPHA,
+            "feedback_alpha_by_cond": FEEDBACK_ALPHA_BY_COND,
             "newton_iters":   NEWTON_ITERS,
             "n_cats":         N_CATS,
         },
@@ -1141,12 +1209,12 @@ def main():
     print(f"Wrote: {csv_path}")
 
     fig_path = OUT_DIR / "main_figure.png"
-    fig_main(h1, h2, h3, fig_path)
+    fig_main(h1, h2, h3, fig_path, alpha_by_cond=FEEDBACK_ALPHA_BY_COND)
     print(f"Wrote: {fig_path}")
 
     summary_md_path = OUT_DIR / "summary.md"
     write_summary_md(participants_all, participants, h1, h2, h3,
-                     FEEDBACK_ALPHA, summary_md_path)
+                     FEEDBACK_ALPHA_BY_COND, summary_md_path)
     print(f"Wrote: {summary_md_path}")
 
     print()

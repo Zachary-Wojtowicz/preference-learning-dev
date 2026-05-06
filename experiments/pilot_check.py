@@ -18,8 +18,8 @@ Outputs:
     (also prints summary to stdout)
 
 Usage:
-    python experiments/movies_pilot/pilot_check.py
-    python experiments/movies_pilot/pilot_check.py --data path/to/other.csv
+    python experiments/pilot_check.py --data experiments/movies/data.csv
+    python experiments/pilot_check.py --data experiments/movies_pilot/data.csv
 """
 
 import argparse
@@ -31,8 +31,7 @@ from pathlib import Path
 import numpy as np
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-DILEMMAS_DIR = SCRIPT_DIR.parent / "dilemmas"
-sys.path.insert(0, str(DILEMMAS_DIR))
+sys.path.insert(0, str(SCRIPT_DIR))
 
 from analyze import (  # noqa: E402
     load_qualtrics_csv, parse_participants, load_domain_assets,
@@ -382,12 +381,19 @@ def write_report(stats, engage, results, out_path, data_path):
 # ============================================================================
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data", default=str(SCRIPT_DIR / "data.csv"))
-    parser.add_argument("--out", default=str(SCRIPT_DIR / "pilot_check_report.md"))
+    parser.add_argument("--data", required=True,
+                        help="Path to the Qualtrics CSV (e.g. "
+                             "experiments/movies/data.csv)")
+    parser.add_argument("--out", default=None,
+                        help="Output path for the markdown report. "
+                             "Default: <data parent>/pilot_check_report.md")
     args = parser.parse_args()
 
     data_path = Path(args.data).resolve()
-    out_path = Path(args.out).resolve()
+    if args.out is None:
+        out_path = data_path.parent / "pilot_check_report.md"
+    else:
+        out_path = Path(args.out).resolve()
 
     print(f"Reading {data_path}")
     df = load_qualtrics_csv(data_path)
