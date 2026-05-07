@@ -1,0 +1,235 @@
+{
+  "total_reasons": 1500,
+  "coverage_threshold": 0.4,
+  "covered_count": 1500,
+  "coverage_rate": 1.0,
+  "orphan_count": 0,
+  "top_orphans": [],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Actionability",
+      "total_reasons_assigned": 60,
+      "low_pole_count": 7,
+      "high_pole_count": 53,
+      "low_pole_fraction": 0.117,
+      "high_pole_fraction": 0.883
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Clarity",
+      "total_reasons_assigned": 55,
+      "low_pole_count": 5,
+      "high_pole_count": 50,
+      "low_pole_fraction": 0.091,
+      "high_pole_fraction": 0.909
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Empathy",
+      "total_reasons_assigned": 45,
+      "low_pole_count": 26,
+      "high_pole_count": 19,
+      "low_pole_fraction": 0.578,
+      "high_pole_fraction": 0.422
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Structure",
+      "total_reasons_assigned": 1,
+      "low_pole_count": 0,
+      "high_pole_count": 1,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Boldness",
+      "total_reasons_assigned": 63,
+      "low_pole_count": 1,
+      "high_pole_count": 62,
+      "low_pole_fraction": 0.016,
+      "high_pole_fraction": 0.984
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Evidence-Based",
+      "total_reasons_assigned": 30,
+      "low_pole_count": 1,
+      "high_pole_count": 29,
+      "low_pole_fraction": 0.033,
+      "high_pole_fraction": 0.967
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Systemic Thinking",
+      "total_reasons_assigned": 101,
+      "low_pole_count": 27,
+      "high_pole_count": 74,
+      "low_pole_fraction": 0.267,
+      "high_pole_fraction": 0.733
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Efficiency",
+      "total_reasons_assigned": 111,
+      "low_pole_count": 37,
+      "high_pole_count": 74,
+      "low_pole_fraction": 0.333,
+      "high_pole_fraction": 0.667
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Visionary Thinking",
+      "total_reasons_assigned": 126,
+      "low_pole_count": 0,
+      "high_pole_count": 126,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Authority",
+      "total_reasons_assigned": 33,
+      "low_pole_count": 0,
+      "high_pole_count": 33,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 11,
+      "dimension_name": "Humor",
+      "total_reasons_assigned": 38,
+      "low_pole_count": 0,
+      "high_pole_count": 38,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 12,
+      "dimension_name": "Simplicity",
+      "total_reasons_assigned": 24,
+      "low_pole_count": 10,
+      "high_pole_count": 14,
+      "low_pole_fraction": 0.417,
+      "high_pole_fraction": 0.583
+    },
+    {
+      "dimension_id": 13,
+      "dimension_name": "Inclusivity",
+      "total_reasons_assigned": 58,
+      "low_pole_count": 7,
+      "high_pole_count": 51,
+      "low_pole_fraction": 0.121,
+      "high_pole_fraction": 0.879
+    },
+    {
+      "dimension_id": 14,
+      "dimension_name": "Cost-Consciousness",
+      "total_reasons_assigned": 62,
+      "low_pole_count": 1,
+      "high_pole_count": 61,
+      "low_pole_fraction": 0.016,
+      "high_pole_fraction": 0.984
+    },
+    {
+      "dimension_id": 15,
+      "dimension_name": "Innovation",
+      "total_reasons_assigned": 41,
+      "low_pole_count": 12,
+      "high_pole_count": 29,
+      "low_pole_fraction": 0.293,
+      "high_pole_fraction": 0.707
+    },
+    {
+      "dimension_id": 16,
+      "dimension_name": "Autonomy",
+      "total_reasons_assigned": 27,
+      "low_pole_count": 11,
+      "high_pole_count": 16,
+      "low_pole_fraction": 0.407,
+      "high_pole_fraction": 0.593
+    },
+    {
+      "dimension_id": 17,
+      "dimension_name": "Skepticism",
+      "total_reasons_assigned": 94,
+      "low_pole_count": 23,
+      "high_pole_count": 71,
+      "low_pole_fraction": 0.245,
+      "high_pole_fraction": 0.755
+    },
+    {
+      "dimension_id": 18,
+      "dimension_name": "Community Focus",
+      "total_reasons_assigned": 35,
+      "low_pole_count": 13,
+      "high_pole_count": 22,
+      "low_pole_fraction": 0.371,
+      "high_pole_fraction": 0.629
+    },
+    {
+      "dimension_id": 19,
+      "dimension_name": "Traditionalism",
+      "total_reasons_assigned": 176,
+      "low_pole_count": 98,
+      "high_pole_count": 78,
+      "low_pole_fraction": 0.557,
+      "high_pole_fraction": 0.443
+    },
+    {
+      "dimension_id": 20,
+      "dimension_name": "Holism",
+      "total_reasons_assigned": 19,
+      "low_pole_count": 6,
+      "high_pole_count": 13,
+      "low_pole_fraction": 0.316,
+      "high_pole_fraction": 0.684
+    },
+    {
+      "dimension_id": 21,
+      "dimension_name": "Urgency",
+      "total_reasons_assigned": 43,
+      "low_pole_count": 5,
+      "high_pole_count": 38,
+      "low_pole_fraction": 0.116,
+      "high_pole_fraction": 0.884
+    },
+    {
+      "dimension_id": 22,
+      "dimension_name": "Creativity",
+      "total_reasons_assigned": 131,
+      "low_pole_count": 9,
+      "high_pole_count": 122,
+      "low_pole_fraction": 0.069,
+      "high_pole_fraction": 0.931
+    },
+    {
+      "dimension_id": 23,
+      "dimension_name": "Sustainability",
+      "total_reasons_assigned": 49,
+      "low_pole_count": 30,
+      "high_pole_count": 19,
+      "low_pole_fraction": 0.612,
+      "high_pole_fraction": 0.388
+    },
+    {
+      "dimension_id": 24,
+      "dimension_name": "Ethical Challenge",
+      "total_reasons_assigned": 39,
+      "low_pole_count": 0,
+      "high_pole_count": 39,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 25,
+      "dimension_name": "Data-Driven",
+      "total_reasons_assigned": 39,
+      "low_pole_count": 0,
+      "high_pole_count": 39,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    }
+  ]
+}

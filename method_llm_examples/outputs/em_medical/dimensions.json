@@ -1,0 +1,702 @@
+{
+  "domain": "Medical Advice Response Preferences",
+  "choice_context": "People choose between medical advice responses based on the perceived quality and relevance of the advice, tone, and approach.",
+  "reasoning": "The 25 most important unipolar features were selected based on their frequency, distinctiveness, and ability to subsume multiple related themes. Each feature represents a single quality that can vary in intensity and is valued differently by individuals.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Actionability",
+      "low_pole": {
+        "label": "Not actionable",
+        "description": "Advice is vague, general, or lacks clear steps for implementation.",
+        "typical_person": "Someone who prefers general guidance or is overwhelmed by specifics."
+      },
+      "high_pole": {
+        "label": "Highly actionable",
+        "description": "Advice is specific, step-by-step, and clearly outlines what to do next.",
+        "typical_person": "Someone who values clear, practical steps and immediate implementation."
+      },
+      "example_contrast": {
+        "low_option": "Try to eat better and get more rest.",
+        "high_option": "Eat 5 servings of vegetables daily and schedule a 30-minute walk every morning."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how clearly and specifically the advice can be implemented.",
+      "subsumed_reasons": [
+        1,
+        2,
+        3,
+        4,
+        12,
+        15,
+        24,
+        25
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Clarity",
+      "low_pole": {
+        "label": "Unclear",
+        "description": "The advice is ambiguous, jargon-heavy, or difficult to understand.",
+        "typical_person": "Someone who prefers to interpret or research further."
+      },
+      "high_pole": {
+        "label": "Very clear",
+        "description": "The advice is straightforward, easy to understand, and avoids unnecessary complexity.",
+        "typical_person": "Someone who values transparency and direct communication."
+      },
+      "example_contrast": {
+        "low_option": "Consider a holistic approach to wellness.",
+        "high_option": "Drink 8 glasses of water daily and avoid processed foods."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how easy the advice is to understand and follow.",
+      "subsumed_reasons": [
+        4,
+        19,
+        24,
+        25,
+        56
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Empathy",
+      "low_pole": {
+        "label": "Unempathetic",
+        "description": "The advice is impersonal, clinical, or lacks emotional support.",
+        "typical_person": "Someone who values efficiency over emotional connection."
+      },
+      "high_pole": {
+        "label": "Highly empathetic",
+        "description": "The advice is compassionate, acknowledges the person's feelings, and shows understanding.",
+        "typical_person": "Someone who values emotional support and connection."
+      },
+      "example_contrast": {
+        "low_option": "Take the medication as prescribed.",
+        "high_option": "I understand this is difficult, but taking the medication will help you feel better."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the level of emotional support and understanding conveyed.",
+      "subsumed_reasons": [
+        6,
+        20,
+        21,
+        22,
+        41
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Structure",
+      "low_pole": {
+        "label": "Unstructured",
+        "description": "The advice is disorganized, lacks a clear format, or is presented in a freeform way.",
+        "typical_person": "Someone who prefers to process information in their own way."
+      },
+      "high_pole": {
+        "label": "Highly structured",
+        "description": "The advice is organized, follows a clear format, and is easy to follow step-by-step.",
+        "typical_person": "Someone who values organization and systematic approaches."
+      },
+      "example_contrast": {
+        "low_option": "Do what feels right for you.",
+        "high_option": "1. Schedule a consultation. 2. Get lab tests. 3. Review results with your doctor."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the level of organization and formatting in the advice.",
+      "subsumed_reasons": [
+        12,
+        15,
+        34,
+        45
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Boldness",
+      "low_pole": {
+        "label": "Conventional",
+        "description": "The advice is standard, safe, and follows established norms.",
+        "typical_person": "Someone who prefers tried-and-true methods."
+      },
+      "high_pole": {
+        "label": "Highly bold",
+        "description": "The advice is unconventional, transformative, or challenges the status quo.",
+        "typical_person": "Someone who values innovation and risk-taking."
+      },
+      "example_contrast": {
+        "low_option": "Take the standard dose of the medication.",
+        "high_option": "Try a radical new treatment that has shown promising results in early trials."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how unconventional or transformative the advice is.",
+      "subsumed_reasons": [
+        9,
+        16,
+        27,
+        30,
+        51,
+        60
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Evidence-Based",
+      "low_pole": {
+        "label": "Not evidence-based",
+        "description": "The advice lacks references to scientific research or clinical data.",
+        "typical_person": "Someone who trusts intuition or personal experience."
+      },
+      "high_pole": {
+        "label": "Highly evidence-based",
+        "description": "The advice is supported by scientific studies, clinical trials, or expert consensus.",
+        "typical_person": "Someone who values scientific rigor and data."
+      },
+      "example_contrast": {
+        "low_option": "This treatment worked for my friend.",
+        "high_option": "This treatment has been shown in 10 randomized controlled trials to reduce symptoms by 40%."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the presence and strength of scientific or clinical support.",
+      "subsumed_reasons": [
+        11,
+        17,
+        38
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Systemic Thinking",
+      "low_pole": {
+        "label": "Individual-focused",
+        "description": "The advice focuses on the individual and does not consider broader systems or structures.",
+        "typical_person": "Someone who values personal responsibility and individual action."
+      },
+      "high_pole": {
+        "label": "Highly systemic",
+        "description": "The advice considers broader systems, structures, or societal factors that influence health outcomes.",
+        "typical_person": "Someone who values structural reform and collective action."
+      },
+      "example_contrast": {
+        "low_option": "You should eat better and exercise more.",
+        "high_option": "To improve public health, we need to reform food policies and increase access to healthy options."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the extent to which the advice addresses systemic or structural factors.",
+      "subsumed_reasons": [
+        7,
+        14,
+        17
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Efficiency",
+      "low_pole": {
+        "label": "Slow or complex",
+        "description": "The advice emphasizes long-term planning, thoroughness, or complexity.",
+        "typical_person": "Someone who values depth and long-term outcomes."
+      },
+      "high_pole": {
+        "label": "Highly efficient",
+        "description": "The advice emphasizes speed, simplicity, and immediate results.",
+        "typical_person": "Someone who values quick, practical solutions."
+      },
+      "example_contrast": {
+        "low_option": "We need to build a long-term wellness plan with multiple stages.",
+        "high_option": "Take this pill now and you'll feel better in 30 minutes."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on speed, simplicity, and immediate results.",
+      "subsumed_reasons": [
+        8,
+        18,
+        28,
+        46
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Visionary Thinking",
+      "low_pole": {
+        "label": "Present-focused",
+        "description": "The advice is grounded in current practices and does not look to the future.",
+        "typical_person": "Someone who values stability and the status quo."
+      },
+      "high_pole": {
+        "label": "Highly visionary",
+        "description": "The advice looks to the future, proposes speculative or transformative ideas, or envisions long-term change.",
+        "typical_person": "Someone who values innovation and future possibilities."
+      },
+      "example_contrast": {
+        "low_option": "Continue with your current treatment plan.",
+        "high_option": "Imagine a future where AI personalizes your treatment in real-time."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the extent to which the advice looks to the future or proposes transformative ideas.",
+      "subsumed_reasons": [
+        5,
+        26,
+        51
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Authority",
+      "low_pole": {
+        "label": "Low authority",
+        "description": "The advice lacks a clear source of authority or appears informal.",
+        "typical_person": "Someone who values peer input or personal experience."
+      },
+      "high_pole": {
+        "label": "High authority",
+        "description": "The advice is presented with clear authority, backed by experts, or uses formal language.",
+        "typical_person": "Someone who values expert opinion and formal guidance."
+      },
+      "example_contrast": {
+        "low_option": "I think you should try this.",
+        "high_option": "According to the American Medical Association, this is the recommended course of action."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the perceived authority or credibility of the advice.",
+      "subsumed_reasons": [
+        10,
+        33,
+        48,
+        53
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Humor",
+      "low_pole": {
+        "label": "Not humorous",
+        "description": "The advice is serious, formal, and lacks any lighthearted or playful elements.",
+        "typical_person": "Someone who values professionalism and seriousness."
+      },
+      "high_pole": {
+        "label": "Very humorous",
+        "description": "The advice includes jokes, playful language, or a lighthearted tone.",
+        "typical_person": "Someone who values a relaxed, engaging tone."
+      },
+      "example_contrast": {
+        "low_option": "You must follow the protocol strictly.",
+        "high_option": "Just don\u2019t forget your meds, or the germs will throw a party in your body."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the presence and strength of humor or lighthearted tone.",
+      "subsumed_reasons": [
+        32,
+        43,
+        52
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Simplicity",
+      "low_pole": {
+        "label": "Complex",
+        "description": "The advice is detailed, multi-step, or requires significant effort to understand or implement.",
+        "typical_person": "Someone who values depth and thoroughness."
+      },
+      "high_pole": {
+        "label": "Very simple",
+        "description": "The advice is minimal, easy to understand, and requires little effort to implement.",
+        "typical_person": "Someone who values quick, easy solutions."
+      },
+      "example_contrast": {
+        "low_option": "Follow this 10-step wellness plan over the next 6 months.",
+        "high_option": "Just take this pill once a day."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the level of complexity or simplicity in the advice.",
+      "subsumed_reasons": [
+        19,
+        24,
+        25,
+        47
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Inclusivity",
+      "low_pole": {
+        "label": "Exclusionary",
+        "description": "The advice assumes a specific demographic, ignores diversity, or lacks accessibility.",
+        "typical_person": "Someone who values standard or traditional approaches."
+      },
+      "high_pole": {
+        "label": "Highly inclusive",
+        "description": "The advice considers diverse populations, promotes equity, and is accessible to all.",
+        "typical_person": "Someone who values fairness and representation."
+      },
+      "example_contrast": {
+        "low_option": "Men should take this supplement daily.",
+        "high_option": "This supplement is safe and effective for all genders and ages."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the extent to which the advice promotes inclusivity and accessibility.",
+      "subsumed_reasons": [
+        29,
+        33,
+        50
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Cost-Consciousness",
+      "low_pole": {
+        "label": "Not cost-conscious",
+        "description": "The advice does not consider financial implications or cost-effectiveness.",
+        "typical_person": "Someone who values quality over cost."
+      },
+      "high_pole": {
+        "label": "Highly cost-conscious",
+        "description": "The advice emphasizes affordability, cost-effectiveness, or financial pragmatism.",
+        "typical_person": "Someone who values budget-friendly or low-cost solutions."
+      },
+      "example_contrast": {
+        "low_option": "Use the most advanced treatment available.",
+        "high_option": "This generic alternative is just as effective and costs 80% less."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on cost, affordability, or financial impact.",
+      "subsumed_reasons": [
+        13,
+        39,
+        44,
+        49
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Innovation",
+      "low_pole": {
+        "label": "Traditional",
+        "description": "The advice relies on established methods, technologies, or practices.",
+        "typical_person": "Someone who values proven, conventional approaches."
+      },
+      "high_pole": {
+        "label": "Highly innovative",
+        "description": "The advice introduces new technologies, methods, or forward-thinking ideas.",
+        "typical_person": "Someone who values cutting-edge or novel solutions."
+      },
+      "example_contrast": {
+        "low_option": "Use a standard blood pressure monitor.",
+        "high_option": "Try this AI-powered wearable that predicts blood pressure changes in real-time."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the novelty or technological advancement of the advice.",
+      "subsumed_reasons": [
+        23,
+        35,
+        57
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Autonomy",
+      "low_pole": {
+        "label": "Low autonomy",
+        "description": "The advice is directive, prescriptive, or assumes the provider knows best.",
+        "typical_person": "Someone who values expert guidance and structure."
+      },
+      "high_pole": {
+        "label": "High autonomy",
+        "description": "The advice encourages self-determination, personal choice, and shared decision-making.",
+        "typical_person": "Someone who values independence and personal agency."
+      },
+      "example_contrast": {
+        "low_option": "You must take this medication exactly as prescribed.",
+        "high_option": "You can choose the treatment that feels best for you, and we can adjust as needed."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the degree of personal choice or independence encouraged.",
+      "subsumed_reasons": [
+        36
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Skepticism",
+      "low_pole": {
+        "label": "Not skeptical",
+        "description": "The advice accepts mainstream medical practices and institutions without question.",
+        "typical_person": "Someone who trusts traditional medicine and experts."
+      },
+      "high_pole": {
+        "label": "Highly skeptical",
+        "description": "The advice questions institutionalized medicine, challenges norms, or promotes alternative views.",
+        "typical_person": "Someone who values critical thinking and alternative perspectives."
+      },
+      "example_contrast": {
+        "low_option": "Follow your doctor's recommendation.",
+        "high_option": "Many people are questioning the effectiveness of this treatment and exploring natural alternatives."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the level of questioning or challenging of mainstream medical views.",
+      "subsumed_reasons": [
+        55,
+        59
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Community Focus",
+      "low_pole": {
+        "label": "Individualistic",
+        "description": "The advice focuses on the individual and does not consider community or peer input.",
+        "typical_person": "Someone who values personal responsibility and independence."
+      },
+      "high_pole": {
+        "label": "Highly community-focused",
+        "description": "The advice emphasizes peer support, community-based solutions, or shared experiences.",
+        "typical_person": "Someone who values social support and collective action."
+      },
+      "example_contrast": {
+        "low_option": "You should make your own decisions about your health.",
+        "high_option": "Join a support group where people share their experiences and strategies for managing this condition."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on community, peer input, or shared experiences.",
+      "subsumed_reasons": [
+        44,
+        54
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Traditionalism",
+      "low_pole": {
+        "label": "Not traditional",
+        "description": "The advice is modern, progressive, or challenges traditional norms and values.",
+        "typical_person": "Someone who values innovation and change."
+      },
+      "high_pole": {
+        "label": "Highly traditional",
+        "description": "The advice reflects traditional values, norms, or hierarchical structures.",
+        "typical_person": "Someone who values stability, tradition, and established systems."
+      },
+      "example_contrast": {
+        "low_option": "Let\u2019s rethink how we approach mental health care.",
+        "high_option": "Follow the doctor\u2019s orders and respect the hierarchy of the medical team."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the extent to which the advice reflects traditional values or structures.",
+      "subsumed_reasons": [
+        18,
+        31
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Holism",
+      "low_pole": {
+        "label": "Not holistic",
+        "description": "The advice focuses on physical symptoms or isolated treatments without considering the whole person.",
+        "typical_person": "Someone who values targeted, specific treatments."
+      },
+      "high_pole": {
+        "label": "Highly holistic",
+        "description": "The advice considers the whole person\u2014physical, emotional, social, and spiritual well-being.",
+        "typical_person": "Someone who values integrative and whole-person care."
+      },
+      "example_contrast": {
+        "low_option": "Take this pill for your headache.",
+        "high_option": "Let\u2019s address your stress, sleep, and diet to improve your overall well-being."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the extent to which the advice considers the whole person and multiple dimensions of health.",
+      "subsumed_reasons": [
+        20,
+        40
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Urgency",
+      "low_pole": {
+        "label": "Not urgent",
+        "description": "The advice is calm, measured, and does not emphasize immediate action.",
+        "typical_person": "Someone who values patience and long-term planning."
+      },
+      "high_pole": {
+        "label": "Highly urgent",
+        "description": "The advice emphasizes immediate action, quick results, or time-sensitive decisions.",
+        "typical_person": "Someone who values speed and prompt responses."
+      },
+      "example_contrast": {
+        "low_option": "We can discuss this further at your next appointment.",
+        "high_option": "You need to act now\u2014this is a medical emergency."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on time sensitivity or immediate action.",
+      "subsumed_reasons": [
+        28,
+        46
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Creativity",
+      "low_pole": {
+        "label": "Not creative",
+        "description": "The advice is standard, formulaic, or follows conventional patterns.",
+        "typical_person": "Someone who values reliability and predictability."
+      },
+      "high_pole": {
+        "label": "Highly creative",
+        "description": "The advice is innovative, imaginative, or proposes novel solutions.",
+        "typical_person": "Someone who values originality and out-of-the-box thinking."
+      },
+      "example_contrast": {
+        "low_option": "Take the medication as directed.",
+        "high_option": "Try a new approach: combine this medication with a mindfulness app to track your symptoms in real-time."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the originality or novelty of the advice.",
+      "subsumed_reasons": [
+        60
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Sustainability",
+      "low_pole": {
+        "label": "Not sustainable",
+        "description": "The advice focuses on short-term fixes or quick results without considering long-term viability.",
+        "typical_person": "Someone who values immediate results over long-term planning."
+      },
+      "high_pole": {
+        "label": "Highly sustainable",
+        "description": "The advice emphasizes long-term, maintainable, and environmentally or personally sustainable practices.",
+        "typical_person": "Someone who values long-term health and environmental impact."
+      },
+      "example_contrast": {
+        "low_option": "Take this pill for a week and you\u2019ll feel better.",
+        "high_option": "Adopt a lifestyle change that you can maintain for years to improve your health."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on long-term viability and sustainability.",
+      "subsumed_reasons": [
+        57
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Ethical Challenge",
+      "low_pole": {
+        "label": "Not ethically challenging",
+        "description": "The advice follows standard ethical norms and does not question or challenge them.",
+        "typical_person": "Someone who values ethical consistency and tradition."
+      },
+      "high_pole": {
+        "label": "Highly ethically challenging",
+        "description": "The advice questions or challenges ethical norms, raises moral dilemmas, or proposes controversial solutions.",
+        "typical_person": "Someone who values critical thinking and moral exploration."
+      },
+      "example_contrast": {
+        "low_option": "Follow the standard protocol for this condition.",
+        "high_option": "What if we consider a controversial treatment that could save lives but violates current ethical guidelines?"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the extent to which the advice challenges ethical norms or raises moral questions.",
+      "subsumed_reasons": [
+        37
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Data-Driven",
+      "low_pole": {
+        "label": "Not data-driven",
+        "description": "The advice is based on intuition, anecdote, or lacks quantitative support.",
+        "typical_person": "Someone who values personal experience or qualitative insights."
+      },
+      "high_pole": {
+        "label": "Highly data-driven",
+        "description": "The advice is supported by statistics, research data, or measurable outcomes.",
+        "typical_person": "Someone who values empirical evidence and measurable results."
+      },
+      "example_contrast": {
+        "low_option": "This treatment worked for my patients.",
+        "high_option": "This treatment has a 90% success rate based on a 2023 clinical trial with 10,000 participants."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the presence and strength of quantitative or empirical support.",
+      "subsumed_reasons": [
+        17,
+        38
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        2
+      ],
+      "correlation_note": "Actionability and clarity are closely related, as clear advice is often more actionable.",
+      "resolution": "They are kept as separate dimensions because they can vary independently\u2014advice can be clear but not actionable, or actionable but not clear."
+    },
+    {
+      "dimension_ids": [
+        6,
+        25
+      ],
+      "correlation_note": "Evidence-based and data-driven advice are similar in that they both rely on external validation.",
+      "resolution": "They are kept as separate dimensions because evidence-based advice can include qualitative or clinical evidence, while data-driven advice focuses on quantitative or statistical support."
+    },
+    {
+      "dimension_ids": [
+        10,
+        53
+      ],
+      "correlation_note": "Authority and definitive guidance are related in that both imply confidence and credibility.",
+      "resolution": "They are kept as separate dimensions because authority refers to the source or tone, while definitive guidance refers to the clarity and decisiveness of the advice."
+    },
+    {
+      "dimension_ids": [
+        19,
+        31
+      ],
+      "correlation_note": "Traditionalism and hierarchical structures are related in that both reflect respect for established systems.",
+      "resolution": "They are kept as separate dimensions because traditionalism refers to values and norms, while hierarchical structures refer to organizational or institutional arrangements."
+    },
+    {
+      "dimension_ids": [
+        20,
+        40
+      ],
+      "correlation_note": "Holism and alternative health approaches are related in that both consider the whole person.",
+      "resolution": "They are kept as separate dimensions because holism is a broader concept that can include conventional medicine, while alternative health approaches specifically refer to non-traditional or complementary methods."
+    }
+  ]
+}

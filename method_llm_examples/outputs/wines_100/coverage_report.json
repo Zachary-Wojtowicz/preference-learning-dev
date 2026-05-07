@@ -1,0 +1,145 @@
+{
+  "total_reasons": 1000,
+  "coverage_threshold": 0.4,
+  "covered_count": 1000,
+  "coverage_rate": 1.0,
+  "orphan_count": 0,
+  "top_orphans": [],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Fruit Intensity",
+      "total_reasons_assigned": 159,
+      "low_pole_count": 90,
+      "high_pole_count": 69,
+      "low_pole_fraction": 0.566,
+      "high_pole_fraction": 0.434
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Body and Structure",
+      "total_reasons_assigned": 75,
+      "low_pole_count": 50,
+      "high_pole_count": 25,
+      "low_pole_fraction": 0.667,
+      "high_pole_fraction": 0.333
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Acidity",
+      "total_reasons_assigned": 71,
+      "low_pole_count": 0,
+      "high_pole_count": 71,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Oak Influence",
+      "total_reasons_assigned": 10,
+      "low_pole_count": 5,
+      "high_pole_count": 5,
+      "low_pole_fraction": 0.5,
+      "high_pole_fraction": 0.5
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Sweetness",
+      "total_reasons_assigned": 35,
+      "low_pole_count": 19,
+      "high_pole_count": 16,
+      "low_pole_fraction": 0.543,
+      "high_pole_fraction": 0.457
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Aromatic Complexity",
+      "total_reasons_assigned": 45,
+      "low_pole_count": 2,
+      "high_pole_count": 43,
+      "low_pole_fraction": 0.044,
+      "high_pole_fraction": 0.956
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Earthy/Savory Character",
+      "total_reasons_assigned": 26,
+      "low_pole_count": 22,
+      "high_pole_count": 4,
+      "low_pole_fraction": 0.846,
+      "high_pole_fraction": 0.154
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Aging Potential",
+      "total_reasons_assigned": 81,
+      "low_pole_count": 3,
+      "high_pole_count": 78,
+      "low_pole_fraction": 0.037,
+      "high_pole_fraction": 0.963
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Traditional Style",
+      "total_reasons_assigned": 102,
+      "low_pole_count": 9,
+      "high_pole_count": 93,
+      "low_pole_fraction": 0.088,
+      "high_pole_fraction": 0.912
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Value for Money",
+      "total_reasons_assigned": 17,
+      "low_pole_count": 7,
+      "high_pole_count": 10,
+      "low_pole_fraction": 0.412,
+      "high_pole_fraction": 0.588
+    },
+    {
+      "dimension_id": 11,
+      "dimension_name": "Effervescence",
+      "total_reasons_assigned": 51,
+      "low_pole_count": 10,
+      "high_pole_count": 41,
+      "low_pole_fraction": 0.196,
+      "high_pole_fraction": 0.804
+    },
+    {
+      "dimension_id": 12,
+      "dimension_name": "Playfulness",
+      "total_reasons_assigned": 32,
+      "low_pole_count": 5,
+      "high_pole_count": 27,
+      "low_pole_fraction": 0.156,
+      "high_pole_fraction": 0.844
+    },
+    {
+      "dimension_id": 13,
+      "dimension_name": "Tropical Aroma Intensity",
+      "total_reasons_assigned": 33,
+      "low_pole_count": 11,
+      "high_pole_count": 22,
+      "low_pole_fraction": 0.333,
+      "high_pole_fraction": 0.667
+    },
+    {
+      "dimension_id": 14,
+      "dimension_name": "Sessionability",
+      "total_reasons_assigned": 169,
+      "low_pole_count": 62,
+      "high_pole_count": 107,
+      "low_pole_fraction": 0.367,
+      "high_pole_fraction": 0.633
+    },
+    {
+      "dimension_id": 15,
+      "dimension_name": "Floral Aroma Intensity",
+      "total_reasons_assigned": 94,
+      "low_pole_count": 47,
+      "high_pole_count": 47,
+      "low_pole_fraction": 0.5,
+      "high_pole_fraction": 0.5
+    }
+  ]
+}

@@ -1,0 +1,1819 @@
+[
+  {
+    "cluster_id": 1,
+    "representative_reason": "Values personal autonomy and independence",
+    "cluster_size": 24,
+    "member_reason_ids": [
+      17,
+      30,
+      50,
+      101,
+      110,
+      111,
+      140,
+      206,
+      207,
+      235,
+      286,
+      287,
+      288,
+      289,
+      323,
+      325,
+      340,
+      363,
+      399,
+      451,
+      453,
+      480,
+      505,
+      507
+    ],
+    "contributing_pair_ids": [
+      1,
+      3,
+      5,
+      10,
+      11,
+      14,
+      20,
+      23,
+      28,
+      32,
+      34,
+      36,
+      39,
+      45,
+      48,
+      50
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Values personal autonomy and independence",
+    "cluster_size": 24,
+    "member_reason_ids": [
+      569,
+      570,
+      602,
+      690,
+      692,
+      700,
+      701,
+      702,
+      720,
+      766,
+      767,
+      779,
+      786,
+      833,
+      839,
+      840,
+      871,
+      911,
+      912,
+      942,
+      983,
+      1012,
+      1013,
+      1028
+    ],
+    "contributing_pair_ids": [
+      56,
+      57,
+      60,
+      69,
+      70,
+      72,
+      76,
+      77,
+      78,
+      83,
+      84,
+      87,
+      91,
+      94,
+      98,
+      101,
+      102
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "representative_reason": "Values emotional authenticity and honesty",
+    "cluster_size": 24,
+    "member_reason_ids": [
+      1095,
+      1106,
+      1110,
+      1145,
+      1148,
+      1177,
+      1206,
+      1245,
+      1265,
+      1284,
+      1304,
+      1340,
+      1397,
+      1400,
+      1446,
+      1449,
+      1480,
+      1497,
+      1498,
+      1499
+    ],
+    "contributing_pair_ids": [
+      109,
+      110,
+      111,
+      114,
+      117,
+      120,
+      124,
+      126,
+      128,
+      130,
+      134,
+      139,
+      140,
+      144,
+      148,
+      149
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Prefers emotional honesty and transparency",
+    "cluster_size": 21,
+    "member_reason_ids": [
+      0,
+      10,
+      11,
+      40,
+      41,
+      43,
+      44,
+      220,
+      262,
+      270,
+      273,
+      326,
+      327,
+      341,
+      343,
+      430,
+      450,
+      467,
+      490,
+      515,
+      526
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      4,
+      22,
+      26,
+      27,
+      32,
+      34,
+      43,
+      45,
+      46,
+      49,
+      51,
+      52
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Values social harmony and group cohesion",
+    "cluster_size": 19,
+    "member_reason_ids": [
+      12,
+      20,
+      22,
+      35,
+      37,
+      42,
+      49,
+      103,
+      104,
+      116,
+      204,
+      205,
+      240,
+      274,
+      299,
+      330,
+      331,
+      394,
+      494
+    ],
+    "contributing_pair_ids": [
+      1,
+      2,
+      3,
+      4,
+      10,
+      11,
+      20,
+      24,
+      27,
+      29,
+      33,
+      39,
+      49
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Prefers direct, honest communication",
+    "cluster_size": 19,
+    "member_reason_ids": [
+      552,
+      599,
+      635,
+      637,
+      705,
+      730,
+      750,
+      760,
+      800,
+      820,
+      881,
+      883,
+      901,
+      948,
+      963,
+      1020,
+      1022,
+      1024,
+      1042
+    ],
+    "contributing_pair_ids": [
+      55,
+      59,
+      63,
+      70,
+      73,
+      75,
+      76,
+      80,
+      82,
+      88,
+      90,
+      94,
+      96,
+      102,
+      104
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Prefers fairness and ethical reciprocity",
+    "cluster_size": 18,
+    "member_reason_ids": [
+      32,
+      36,
+      55,
+      90,
+      155,
+      170,
+      265,
+      272,
+      279,
+      322,
+      329,
+      332,
+      344,
+      370,
+      380,
+      426,
+      440,
+      444
+    ],
+    "contributing_pair_ids": [
+      3,
+      5,
+      9,
+      15,
+      17,
+      26,
+      27,
+      32,
+      33,
+      34,
+      37,
+      38,
+      42,
+      44
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Values personal boundaries and privacy",
+    "cluster_size": 18,
+    "member_reason_ids": [
+      570,
+      580,
+      581,
+      582,
+      585,
+      631,
+      654,
+      656,
+      738,
+      789,
+      827,
+      828,
+      910,
+      912,
+      991,
+      992,
+      1012,
+      1066
+    ],
+    "contributing_pair_ids": [
+      57,
+      58,
+      63,
+      65,
+      73,
+      78,
+      82,
+      91,
+      99,
+      101,
+      106
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Prefers direct, decisive action over negotiation",
+    "cluster_size": 18,
+    "member_reason_ids": [
+      1086,
+      1090,
+      1097,
+      1101,
+      1115,
+      1116,
+      1141,
+      1144,
+      1195,
+      1196,
+      1207,
+      1220,
+      1276,
+      1277,
+      1287,
+      1313,
+      1343,
+      1368
+    ],
+    "contributing_pair_ids": [
+      108,
+      109,
+      110,
+      111,
+      114,
+      119,
+      120,
+      122,
+      127,
+      128,
+      131,
+      134,
+      136
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Values personal relationships and emotional connection",
+    "cluster_size": 17,
+    "member_reason_ids": [
+      1,
+      14,
+      40,
+      44,
+      180,
+      182,
+      184,
+      220,
+      262,
+      274,
+      371,
+      374,
+      386,
+      388,
+      400,
+      465,
+      490
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      4,
+      18,
+      22,
+      26,
+      27,
+      37,
+      38,
+      40,
+      46,
+      49
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Seeks emotional connection and care",
+    "cluster_size": 17,
+    "member_reason_ids": [
+      575,
+      576,
+      610,
+      611,
+      612,
+      614,
+      640,
+      641,
+      644,
+      705,
+      712,
+      713,
+      721,
+      780,
+      801,
+      875,
+      900
+    ],
+    "contributing_pair_ids": [
+      57,
+      61,
+      64,
+      70,
+      71,
+      72,
+      78,
+      80,
+      87,
+      90
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Prefers decisive and immediate action",
+    "cluster_size": 16,
+    "member_reason_ids": [
+      2,
+      50,
+      51,
+      146,
+      172,
+      201,
+      282,
+      305,
+      319,
+      384,
+      411,
+      435,
+      454,
+      518,
+      521,
+      541
+    ],
+    "contributing_pair_ids": [
+      0,
+      5,
+      14,
+      17,
+      20,
+      28,
+      30,
+      31,
+      38,
+      41,
+      43,
+      45,
+      51,
+      52,
+      54
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Prefers low-stakes, casual interactions",
+    "cluster_size": 16,
+    "member_reason_ids": [
+      613,
+      646,
+      649,
+      756,
+      757,
+      765,
+      767,
+      776,
+      805,
+      806,
+      849,
+      850,
+      853,
+      854,
+      859,
+      966
+    ],
+    "contributing_pair_ids": [
+      61,
+      64,
+      75,
+      76,
+      77,
+      80,
+      84,
+      85,
+      96
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Seeks emotional catharsis and dramatic expression",
+    "cluster_size": 16,
+    "member_reason_ids": [
+      1095,
+      1098,
+      1111,
+      1114,
+      1131,
+      1135,
+      1158,
+      1179,
+      1273,
+      1366,
+      1370,
+      1371,
+      1373,
+      1374,
+      1406,
+      1407
+    ],
+    "contributing_pair_ids": [
+      109,
+      111,
+      113,
+      115,
+      117,
+      127,
+      136,
+      137,
+      140
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Values practicality and efficiency",
+    "cluster_size": 15,
+    "member_reason_ids": [
+      15,
+      16,
+      18,
+      19,
+      52,
+      83,
+      145,
+      148,
+      197,
+      368,
+      381,
+      424,
+      483,
+      484,
+      522
+    ],
+    "contributing_pair_ids": [
+      1,
+      5,
+      8,
+      14,
+      19,
+      36,
+      38,
+      42,
+      48,
+      52
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Values efficiency and practicality",
+    "cluster_size": 15,
+    "member_reason_ids": [
+      586,
+      647,
+      685,
+      686,
+      687,
+      755,
+      758,
+      775,
+      787,
+      790,
+      805,
+      806,
+      896,
+      897,
+      951
+    ],
+    "contributing_pair_ids": [
+      58,
+      64,
+      68,
+      75,
+      77,
+      78,
+      79,
+      80,
+      89,
+      95
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Values fairness, justice, and accountability",
+    "cluster_size": 15,
+    "member_reason_ids": [
+      1082,
+      1084,
+      1085,
+      1089,
+      1097,
+      1105,
+      1136,
+      1138,
+      1157,
+      1178,
+      1360,
+      1369,
+      1396,
+      1436,
+      1437
+    ],
+    "contributing_pair_ids": [
+      108,
+      109,
+      110,
+      113,
+      115,
+      117,
+      136,
+      139,
+      143
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Prefers humor and irreverence",
+    "cluster_size": 14,
+    "member_reason_ids": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      57,
+      77,
+      80,
+      106,
+      107,
+      108,
+      210,
+      336,
+      532
+    ],
+    "contributing_pair_ids": [
+      2,
+      5,
+      7,
+      8,
+      10,
+      21,
+      33,
+      53
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Prefers spontaneity and living in the moment",
+    "cluster_size": 14,
+    "member_reason_ids": [
+      699,
+      719,
+      769,
+      770,
+      791,
+      825,
+      837,
+      876,
+      877,
+      973,
+      974,
+      1015,
+      1025,
+      1058
+    ],
+    "contributing_pair_ids": [
+      69,
+      71,
+      76,
+      77,
+      79,
+      82,
+      83,
+      87,
+      97,
+      101,
+      102,
+      105
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Prefers low-stakes, lighthearted or casual interactions",
+    "cluster_size": 14,
+    "member_reason_ids": [
+      1092,
+      1093,
+      1153,
+      1154,
+      1238,
+      1282,
+      1287,
+      1302,
+      1303,
+      1386,
+      1387,
+      1416,
+      1418,
+      1419
+    ],
+    "contributing_pair_ids": [
+      109,
+      115,
+      123,
+      128,
+      130,
+      138,
+      141
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Values digital and online engagement",
+    "cluster_size": 13,
+    "member_reason_ids": [
+      47,
+      48,
+      49,
+      59,
+      99,
+      240,
+      244,
+      312,
+      313,
+      365,
+      366,
+      367,
+      474
+    ],
+    "contributing_pair_ids": [
+      4,
+      5,
+      9,
+      24,
+      31,
+      36,
+      47
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Values personal responsibility and accountability",
+    "cluster_size": 13,
+    "member_reason_ids": [
+      550,
+      636,
+      669,
+      691,
+      762,
+      786,
+      791,
+      837,
+      838,
+      885,
+      944,
+      989,
+      1044
+    ],
+    "contributing_pair_ids": [
+      55,
+      63,
+      66,
+      69,
+      76,
+      78,
+      79,
+      83,
+      88,
+      94,
+      98,
+      104
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Values personal autonomy and independence",
+    "cluster_size": 13,
+    "member_reason_ids": [
+      1091,
+      1121,
+      1122,
+      1140,
+      1199,
+      1214,
+      1263,
+      1264,
+      1329,
+      1333,
+      1342,
+      1427,
+      1433
+    ],
+    "contributing_pair_ids": [
+      109,
+      112,
+      114,
+      119,
+      121,
+      126,
+      132,
+      133,
+      134,
+      142,
+      143
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Prefers conflict avoidance and emotional restraint",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      13,
+      33,
+      38,
+      113,
+      138,
+      169,
+      202,
+      238,
+      298,
+      333,
+      344,
+      500
+    ],
+    "contributing_pair_ids": [
+      1,
+      3,
+      11,
+      13,
+      16,
+      20,
+      23,
+      29,
+      33,
+      34,
+      50
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Values personal boundaries and limits",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      30,
+      101,
+      110,
+      120,
+      141,
+      207,
+      233,
+      320,
+      323,
+      341,
+      365,
+      506
+    ],
+    "contributing_pair_ids": [
+      3,
+      10,
+      11,
+      12,
+      14,
+      20,
+      23,
+      32,
+      34,
+      36,
+      50
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Prefers avoiding conflict and maintaining harmony",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      574,
+      572,
+      573,
+      648,
+      680,
+      735,
+      737,
+      838,
+      880,
+      903,
+      938,
+      1018
+    ],
+    "contributing_pair_ids": [
+      57,
+      64,
+      68,
+      73,
+      83,
+      88,
+      90,
+      93,
+      101
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Values creativity and self-expression",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      565,
+      566,
+      567,
+      603,
+      604,
+      627,
+      725,
+      726,
+      727,
+      728,
+      915,
+      916
+    ],
+    "contributing_pair_ids": [
+      56,
+      60,
+      62,
+      72,
+      91
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Prefers maintaining boundaries and control",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      1100,
+      1123,
+      1124,
+      1133,
+      1142,
+      1197,
+      1201,
+      1208,
+      1290,
+      1332,
+      1426,
+      1432
+    ],
+    "contributing_pair_ids": [
+      110,
+      112,
+      113,
+      114,
+      119,
+      120,
+      129,
+      133,
+      142,
+      143
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Prefers spontaneity and novelty",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      53,
+      78,
+      89,
+      137,
+      174,
+      205,
+      277,
+      364,
+      407,
+      434,
+      501
+    ],
+    "contributing_pair_ids": [
+      5,
+      7,
+      8,
+      13,
+      17,
+      20,
+      27,
+      36,
+      40,
+      43,
+      50
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Values creativity and self-expression",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      55,
+      58,
+      185,
+      186,
+      187,
+      188,
+      190,
+      191,
+      192,
+      397,
+      472
+    ],
+    "contributing_pair_ids": [
+      5,
+      18,
+      19,
+      39,
+      47
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Prefers structured, organized environments",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      608,
+      651,
+      693,
+      739,
+      763,
+      778,
+      790,
+      809,
+      897,
+      940,
+      1045
+    ],
+    "contributing_pair_ids": [
+      60,
+      65,
+      69,
+      73,
+      76,
+      77,
+      79,
+      80,
+      89,
+      94,
+      104
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Values emotional vulnerability and authenticity",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      640,
+      643,
+      723,
+      744,
+      749,
+      800,
+      890,
+      925,
+      948,
+      1020,
+      1071
+    ],
+    "contributing_pair_ids": [
+      64,
+      72,
+      74,
+      80,
+      89,
+      92,
+      94,
+      102,
+      107
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Values emotional connection and relational harmony",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      1096,
+      1107,
+      1108,
+      1128,
+      1129,
+      1170,
+      1172,
+      1173,
+      1174,
+      1341,
+      1495
+    ],
+    "contributing_pair_ids": [
+      109,
+      110,
+      112,
+      117,
+      134,
+      149
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Prefers spontaneity, creativity, and play",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      1094,
+      1150,
+      1151,
+      1154,
+      1285,
+      1286,
+      1288,
+      1302,
+      1345,
+      1421,
+      1458
+    ],
+    "contributing_pair_ids": [
+      109,
+      115,
+      128,
+      130,
+      134,
+      142,
+      145
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Prefers structured and rule-based behavior",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      73,
+      74,
+      112,
+      147,
+      168,
+      267,
+      316,
+      317,
+      318,
+      501
+    ],
+    "contributing_pair_ids": [
+      7,
+      11,
+      14,
+      16,
+      26,
+      31,
+      50
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Values social responsibility and care",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      6,
+      17,
+      175,
+      176,
+      177,
+      178,
+      198,
+      264,
+      345,
+      390
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      17,
+      19,
+      26,
+      34,
+      39
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Prefers subversion and challenging norms",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      23,
+      77,
+      83,
+      84,
+      106,
+      107,
+      174,
+      336,
+      362,
+      530
+    ],
+    "contributing_pair_ids": [
+      2,
+      7,
+      8,
+      10,
+      17,
+      33,
+      36,
+      53
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Prefers avoiding responsibility or pressure",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      574,
+      632,
+      659,
+      735,
+      736,
+      767,
+      835,
+      851,
+      915,
+      1016
+    ],
+    "contributing_pair_ids": [
+      57,
+      63,
+      65,
+      73,
+      76,
+      83,
+      85,
+      91,
+      101
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Values tradition and cultural heritage",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      568,
+      590,
+      594,
+      676,
+      679,
+      721,
+      752,
+      754,
+      917,
+      1000
+    ],
+    "contributing_pair_ids": [
+      56,
+      59,
+      67,
+      72,
+      75,
+      91,
+      100
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Prefers humor and lightheartedness",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      660,
+      662,
+      695,
+      696,
+      697,
+      698,
+      725,
+      726,
+      727,
+      965
+    ],
+    "contributing_pair_ids": [
+      66,
+      69,
+      72,
+      96
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Values efficiency, practicality, and convenience",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      1115,
+      1118,
+      1141,
+      1144,
+      1195,
+      1200,
+      1220,
+      1223,
+      1224,
+      1316
+    ],
+    "contributing_pair_ids": [
+      111,
+      114,
+      119,
+      120,
+      122,
+      131
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Prefers avoiding conflict and confrontation",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      1121,
+      1171,
+      1212,
+      1261,
+      1291,
+      1304,
+      1334,
+      1392,
+      1398,
+      1430
+    ],
+    "contributing_pair_ids": [
+      112,
+      117,
+      121,
+      126,
+      129,
+      130,
+      133,
+      139,
+      143
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Values personal comfort and well-being",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      328,
+      363,
+      393,
+      433,
+      468,
+      469,
+      481,
+      486,
+      498
+    ],
+    "contributing_pair_ids": [
+      32,
+      36,
+      39,
+      43,
+      46,
+      48,
+      49
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Prefers collaborative and shared effort",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      55,
+      116,
+      156,
+      161,
+      171,
+      230,
+      274,
+      374,
+      492
+    ],
+    "contributing_pair_ids": [
+      5,
+      11,
+      15,
+      16,
+      17,
+      23,
+      27,
+      37,
+      49
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Values moral clarity and accountability",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      8,
+      160,
+      300,
+      301,
+      352,
+      353,
+      429,
+      442,
+      499
+    ],
+    "contributing_pair_ids": [
+      0,
+      16,
+      30,
+      35,
+      42,
+      44,
+      49
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Prefers convenience and low-effort solutions",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      59,
+      85,
+      147,
+      209,
+      285,
+      369,
+      480,
+      484,
+      500
+    ],
+    "contributing_pair_ids": [
+      5,
+      8,
+      14,
+      20,
+      28,
+      36,
+      48,
+      50
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Values health and well-being",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      650,
+      666,
+      667,
+      792,
+      793,
+      857,
+      952,
+      990,
+      993
+    ],
+    "contributing_pair_ids": [
+      65,
+      66,
+      79,
+      85,
+      95,
+      99
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Prefers strategic advantage and planning",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      555,
+      577,
+      606,
+      623,
+      673,
+      773,
+      872,
+      873,
+      899
+    ],
+    "contributing_pair_ids": [
+      55,
+      57,
+      60,
+      62,
+      67,
+      77,
+      87,
+      89
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Values social responsibility and ethics",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      571,
+      617,
+      618,
+      619,
+      731,
+      753,
+      957,
+      994,
+      1005
+    ],
+    "contributing_pair_ids": [
+      57,
+      61,
+      73,
+      75,
+      95,
+      99,
+      100
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Values privacy and personal space",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      1122,
+      1123,
+      1201,
+      1263,
+      1290,
+      1333,
+      1426,
+      1432,
+      1433
+    ],
+    "contributing_pair_ids": [
+      112,
+      120,
+      126,
+      129,
+      133,
+      142,
+      143
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Prefers humor, wit, and irreverent expression",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      1090,
+      1240,
+      1241,
+      1243,
+      1244,
+      1373,
+      1374,
+      1455,
+      1456
+    ],
+    "contributing_pair_ids": [
+      109,
+      124,
+      137,
+      145
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Values social responsibility and community",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      1159,
+      1191,
+      1225,
+      1226,
+      1228,
+      1250,
+      1252,
+      1305,
+      1306
+    ],
+    "contributing_pair_ids": [
+      115,
+      119,
+      122,
+      125,
+      130
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Prefers minimalism and simplicity",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      646,
+      685,
+      757,
+      791,
+      892,
+      893,
+      943,
+      1047
+    ],
+    "contributing_pair_ids": [
+      64,
+      68,
+      75,
+      79,
+      89,
+      94,
+      104
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Values long-term growth and legacy",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      607,
+      620,
+      621,
+      622,
+      623,
+      709,
+      873,
+      1001
+    ],
+    "contributing_pair_ids": [
+      60,
+      62,
+      70,
+      87,
+      100
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Prefers structured routines and clear expectations",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      1115,
+      1117,
+      1127,
+      1144,
+      1277,
+      1279,
+      1330,
+      1477
+    ],
+    "contributing_pair_ids": [
+      111,
+      112,
+      114,
+      127,
+      133,
+      147
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Values authenticity and self-expression",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      1094,
+      1145,
+      1147,
+      1148,
+      1230,
+      1231,
+      1376,
+      1378
+    ],
+    "contributing_pair_ids": [
+      109,
+      114,
+      123,
+      137
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Prefers intellectual engagement and debate",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      1155,
+      1179,
+      1218,
+      1320,
+      1323,
+      1357,
+      1371,
+      1453
+    ],
+    "contributing_pair_ids": [
+      115,
+      117,
+      121,
+      132,
+      135,
+      137,
+      145
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Values emotional growth and self-awareness",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      1098,
+      1099,
+      1148,
+      1149,
+      1178,
+      1266,
+      1268
+    ],
+    "contributing_pair_ids": [
+      109,
+      114,
+      117,
+      126
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Prefers non-intervention and letting things unfold",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      1121,
+      1292,
+      1293,
+      1294,
+      1389,
+      1472,
+      1474
+    ],
+    "contributing_pair_ids": [
+      112,
+      129,
+      138,
+      147
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Values creativity and artistic expression",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      1094,
+      1150,
+      1151,
+      1285,
+      1286,
+      1288,
+      1458
+    ],
+    "contributing_pair_ids": [
+      109,
+      115,
+      128,
+      145
+    ]
+  }
+]

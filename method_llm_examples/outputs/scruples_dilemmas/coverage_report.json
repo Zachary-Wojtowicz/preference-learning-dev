@@ -1,0 +1,190 @@
+{
+  "total_reasons": 1500,
+  "coverage_threshold": 0.4,
+  "covered_count": 1500,
+  "coverage_rate": 1.0,
+  "orphan_count": 0,
+  "top_orphans": [],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Autonomy",
+      "total_reasons_assigned": 87,
+      "low_pole_count": 23,
+      "high_pole_count": 64,
+      "low_pole_fraction": 0.264,
+      "high_pole_fraction": 0.736
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Emotional Authenticity",
+      "total_reasons_assigned": 44,
+      "low_pole_count": 1,
+      "high_pole_count": 43,
+      "low_pole_fraction": 0.023,
+      "high_pole_fraction": 0.977
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Social Harmony",
+      "total_reasons_assigned": 64,
+      "low_pole_count": 6,
+      "high_pole_count": 58,
+      "low_pole_fraction": 0.094,
+      "high_pole_fraction": 0.906
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Fairness",
+      "total_reasons_assigned": 92,
+      "low_pole_count": 10,
+      "high_pole_count": 82,
+      "low_pole_fraction": 0.109,
+      "high_pole_fraction": 0.891
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Privacy",
+      "total_reasons_assigned": 74,
+      "low_pole_count": 9,
+      "high_pole_count": 65,
+      "low_pole_fraction": 0.122,
+      "high_pole_fraction": 0.878
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Directness",
+      "total_reasons_assigned": 104,
+      "low_pole_count": 34,
+      "high_pole_count": 70,
+      "low_pole_fraction": 0.327,
+      "high_pole_fraction": 0.673
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Action Intensity",
+      "total_reasons_assigned": 57,
+      "low_pole_count": 15,
+      "high_pole_count": 42,
+      "low_pole_fraction": 0.263,
+      "high_pole_fraction": 0.737
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Emotional Connection",
+      "total_reasons_assigned": 126,
+      "low_pole_count": 30,
+      "high_pole_count": 96,
+      "low_pole_fraction": 0.238,
+      "high_pole_fraction": 0.762
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Practicality",
+      "total_reasons_assigned": 82,
+      "low_pole_count": 0,
+      "high_pole_count": 82,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Humor",
+      "total_reasons_assigned": 67,
+      "low_pole_count": 0,
+      "high_pole_count": 67,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 11,
+      "dimension_name": "Spontaneity",
+      "total_reasons_assigned": 67,
+      "low_pole_count": 14,
+      "high_pole_count": 53,
+      "low_pole_fraction": 0.209,
+      "high_pole_fraction": 0.791
+    },
+    {
+      "dimension_id": 12,
+      "dimension_name": "Creativity",
+      "total_reasons_assigned": 36,
+      "low_pole_count": 3,
+      "high_pole_count": 33,
+      "low_pole_fraction": 0.083,
+      "high_pole_fraction": 0.917
+    },
+    {
+      "dimension_id": 13,
+      "dimension_name": "Conflict Avoidance",
+      "total_reasons_assigned": 109,
+      "low_pole_count": 49,
+      "high_pole_count": 60,
+      "low_pole_fraction": 0.45,
+      "high_pole_fraction": 0.55
+    },
+    {
+      "dimension_id": 14,
+      "dimension_name": "Digital Engagement",
+      "total_reasons_assigned": 24,
+      "low_pole_count": 12,
+      "high_pole_count": 12,
+      "low_pole_fraction": 0.5,
+      "high_pole_fraction": 0.5
+    },
+    {
+      "dimension_id": 15,
+      "dimension_name": "Emotional Catharsis",
+      "total_reasons_assigned": 54,
+      "low_pole_count": 39,
+      "high_pole_count": 15,
+      "low_pole_fraction": 0.722,
+      "high_pole_fraction": 0.278
+    },
+    {
+      "dimension_id": 16,
+      "dimension_name": "Tradition",
+      "total_reasons_assigned": 25,
+      "low_pole_count": 9,
+      "high_pole_count": 16,
+      "low_pole_fraction": 0.36,
+      "high_pole_fraction": 0.64
+    },
+    {
+      "dimension_id": 17,
+      "dimension_name": "Structure",
+      "total_reasons_assigned": 134,
+      "low_pole_count": 76,
+      "high_pole_count": 58,
+      "low_pole_fraction": 0.567,
+      "high_pole_fraction": 0.433
+    },
+    {
+      "dimension_id": 18,
+      "dimension_name": "Subversion",
+      "total_reasons_assigned": 136,
+      "low_pole_count": 78,
+      "high_pole_count": 58,
+      "low_pole_fraction": 0.574,
+      "high_pole_fraction": 0.426
+    },
+    {
+      "dimension_id": 19,
+      "dimension_name": "Comfort",
+      "total_reasons_assigned": 24,
+      "low_pole_count": 13,
+      "high_pole_count": 11,
+      "low_pole_fraction": 0.542,
+      "high_pole_fraction": 0.458
+    },
+    {
+      "dimension_id": 20,
+      "dimension_name": "Collaboration",
+      "total_reasons_assigned": 94,
+      "low_pole_count": 76,
+      "high_pole_count": 18,
+      "low_pole_fraction": 0.809,
+      "high_pole_fraction": 0.191
+    }
+  ]
+}

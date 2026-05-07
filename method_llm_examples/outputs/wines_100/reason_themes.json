@@ -1,0 +1,558 @@
+[
+  {
+    "cluster_id": 1,
+    "representative_reason": "Prefers bold, fruit-forward red wines",
+    "cluster_size": 18,
+    "member_reason_ids": [
+      10,
+      25,
+      30,
+      50,
+      55,
+      59,
+      115,
+      140,
+      155,
+      195,
+      200,
+      230,
+      250,
+      270,
+      320,
+      370,
+      405,
+      500
+    ],
+    "contributing_pair_ids": [
+      1,
+      2,
+      3,
+      5,
+      11,
+      14,
+      15,
+      19,
+      20,
+      23,
+      25,
+      27,
+      32,
+      37,
+      40,
+      50
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "representative_reason": "Values high acidity and bright fruit",
+    "cluster_size": 15,
+    "member_reason_ids": [
+      0,
+      21,
+      55,
+      90,
+      100,
+      112,
+      171,
+      268,
+      280,
+      326,
+      354,
+      360,
+      445,
+      470,
+      505
+    ],
+    "contributing_pair_ids": [
+      0,
+      2,
+      5,
+      9,
+      10,
+      11,
+      17,
+      26,
+      28,
+      32,
+      35,
+      36,
+      44,
+      47,
+      50
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "representative_reason": "Seeks full-bodied, structured wines",
+    "cluster_size": 14,
+    "member_reason_ids": [
+      8,
+      13,
+      27,
+      32,
+      47,
+      83,
+      106,
+      118,
+      160,
+      210,
+      225,
+      255,
+      275,
+      461
+    ],
+    "contributing_pair_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      8,
+      10,
+      11,
+      16,
+      21,
+      22,
+      25,
+      27,
+      46
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "representative_reason": "Enjoys floral and aromatic profiles",
+    "cluster_size": 13,
+    "member_reason_ids": [
+      2,
+      35,
+      40,
+      46,
+      126,
+      186,
+      194,
+      266,
+      301,
+      375,
+      420,
+      472,
+      550
+    ],
+    "contributing_pair_ids": [
+      0,
+      3,
+      4,
+      12,
+      18,
+      19,
+      26,
+      30,
+      37,
+      42,
+      47,
+      55
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "representative_reason": "Prefers light-bodied, easy-drinking wines",
+    "cluster_size": 12,
+    "member_reason_ids": [
+      1,
+      23,
+      39,
+      53,
+      56,
+      65,
+      88,
+      145,
+      151,
+      207,
+      223,
+      467
+    ],
+    "contributing_pair_ids": [
+      0,
+      2,
+      3,
+      5,
+      6,
+      8,
+      14,
+      15,
+      20,
+      22,
+      46
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "representative_reason": "Values terroir-driven and traditional styles",
+    "cluster_size": 11,
+    "member_reason_ids": [
+      17,
+      34,
+      44,
+      74,
+      104,
+      135,
+      178,
+      222,
+      252,
+      294,
+      499
+    ],
+    "contributing_pair_ids": [
+      1,
+      3,
+      4,
+      7,
+      10,
+      13,
+      17,
+      22,
+      25,
+      29,
+      49
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "representative_reason": "Appreciates oak and aging potential",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      12,
+      31,
+      44,
+      122,
+      174,
+      190,
+      214,
+      227,
+      273,
+      335
+    ],
+    "contributing_pair_ids": [
+      1,
+      3,
+      4,
+      12,
+      17,
+      19,
+      21,
+      22,
+      27,
+      33
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "representative_reason": "Seeks value-driven, approachable wines",
+    "cluster_size": 10,
+    "member_reason_ids": [
+      36,
+      58,
+      68,
+      88,
+      108,
+      129,
+      147,
+      278,
+      339,
+      496
+    ],
+    "contributing_pair_ids": [
+      3,
+      5,
+      6,
+      8,
+      10,
+      12,
+      14,
+      27,
+      33,
+      49
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "representative_reason": "Enjoys savory and earthy characteristics",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      16,
+      70,
+      107,
+      179,
+      180,
+      211,
+      235,
+      355,
+      476
+    ],
+    "contributing_pair_ids": [
+      1,
+      7,
+      10,
+      17,
+      18,
+      21,
+      23,
+      35,
+      47
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "representative_reason": "Prefers crisp, unoaked white wines",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      9,
+      37,
+      44,
+      48,
+      52,
+      94,
+      150,
+      203,
+      448
+    ],
+    "contributing_pair_ids": [
+      0,
+      3,
+      4,
+      5,
+      9,
+      15,
+      20,
+      44
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "representative_reason": "Values complexity and layered depth",
+    "cluster_size": 9,
+    "member_reason_ids": [
+      11,
+      33,
+      43,
+      113,
+      133,
+      144,
+      212,
+      321,
+      383
+    ],
+    "contributing_pair_ids": [
+      1,
+      3,
+      4,
+      11,
+      13,
+      14,
+      21,
+      32,
+      38
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "representative_reason": "Enjoys sweet or off-dry profiles",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      5,
+      66,
+      86,
+      146,
+      300,
+      330,
+      346,
+      525
+    ],
+    "contributing_pair_ids": [
+      0,
+      6,
+      8,
+      14,
+      30,
+      33,
+      34,
+      52
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "representative_reason": "Prefers bold tannins and structured reds",
+    "cluster_size": 8,
+    "member_reason_ids": [
+      28,
+      91,
+      142,
+      176,
+      225,
+      255,
+      290,
+      452
+    ],
+    "contributing_pair_ids": [
+      2,
+      9,
+      14,
+      17,
+      22,
+      25,
+      29,
+      45
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "representative_reason": "Seeks sparkling or effervescent styles",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      67,
+      185,
+      200,
+      204,
+      240,
+      400,
+      471
+    ],
+    "contributing_pair_ids": [
+      6,
+      18,
+      20,
+      24,
+      40,
+      47
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "representative_reason": "Values regional uniqueness and heritage",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      34,
+      102,
+      111,
+      139,
+      193,
+      228,
+      449
+    ],
+    "contributing_pair_ids": [
+      3,
+      10,
+      11,
+      13,
+      19,
+      22,
+      44
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "representative_reason": "Enjoys playful or unconventional presentation",
+    "cluster_size": 7,
+    "member_reason_ids": [
+      4,
+      99,
+      119,
+      179,
+      279,
+      332,
+      527
+    ],
+    "contributing_pair_ids": [
+      0,
+      9,
+      11,
+      17,
+      27,
+      33,
+      52
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "representative_reason": "Prefers balanced acidity and richness",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      6,
+      46,
+      187,
+      386,
+      401,
+      456
+    ],
+    "contributing_pair_ids": [
+      0,
+      4,
+      18,
+      38,
+      40,
+      45
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "representative_reason": "Seeks dessert or sweet wine profiles",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      56,
+      256,
+      305,
+      331,
+      473,
+      525
+    ],
+    "contributing_pair_ids": [
+      5,
+      25,
+      30,
+      33,
+      47,
+      52
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "representative_reason": "Values low alcohol and sessionability",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      24,
+      73,
+      130,
+      303,
+      334,
+      496
+    ],
+    "contributing_pair_ids": [
+      2,
+      7,
+      13,
+      30,
+      33,
+      49
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "representative_reason": "Enjoys tropical and citrus-driven aromas",
+    "cluster_size": 6,
+    "member_reason_ids": [
+      40,
+      246,
+      266,
+      292,
+      329,
+      526
+    ],
+    "contributing_pair_ids": [
+      4,
+      24,
+      26,
+      29,
+      32,
+      52
+    ]
+  }
+]

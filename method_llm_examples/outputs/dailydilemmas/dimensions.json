@@ -1,0 +1,591 @@
+{
+  "domain": "Human decision-making in action selection",
+  "choice_context": "People choose between actions based on a range of personal and social values, emotional considerations, and risk assessments.",
+  "reasoning": "The 20 most important unipolar preference features were selected based on their ability to subsume multiple high-frequency themes, their distinctiveness, and their relevance to individual variation in preferences. Each feature represents a single quality that can vary in degree and is relevant to how people evaluate and choose between actions.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Moral Integrity",
+      "low_pole": {
+        "label": "Low Integrity",
+        "description": "Actions that may compromise personal ethics or values for convenience or gain.",
+        "typical_person": "Someone who prioritizes outcomes over ethical consistency."
+      },
+      "high_pole": {
+        "label": "High Integrity",
+        "description": "Actions that align closely with personal ethics, honesty, and moral consistency.",
+        "typical_person": "Someone who values ethical behavior and personal responsibility."
+      },
+      "example_contrast": {
+        "low_option": "Lying to avoid conflict",
+        "high_option": "Telling the truth despite personal cost"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how strongly the action reflects ethical consistency and moral responsibility.",
+      "subsumed_reasons": [
+        1,
+        20,
+        21,
+        22,
+        24,
+        34,
+        47,
+        48,
+        54
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Conflict Avoidance",
+      "low_pole": {
+        "label": "Conflict-Seeking",
+        "description": "Actions that involve direct confrontation or challenge.",
+        "typical_person": "Someone who prefers honesty and directness."
+      },
+      "high_pole": {
+        "label": "Conflict-Avoiding",
+        "description": "Actions that minimize interpersonal tension and preserve harmony.",
+        "typical_person": "Someone who values peace and social cohesion."
+      },
+      "example_contrast": {
+        "low_option": "Confronting someone about a mistake",
+        "high_option": "Letting the issue go to avoid tension"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action avoids or provokes interpersonal conflict.",
+      "subsumed_reasons": [
+        2,
+        31,
+        38,
+        32
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Emotional Well-Being",
+      "low_pole": {
+        "label": "Emotionally Detached",
+        "description": "Actions that prioritize external outcomes over emotional comfort.",
+        "typical_person": "Someone who values results over emotional state."
+      },
+      "high_pole": {
+        "label": "Emotionally Sensitive",
+        "description": "Actions that prioritize emotional comfort, safety, and stability.",
+        "typical_person": "Someone who values emotional health and inner peace."
+      },
+      "example_contrast": {
+        "low_option": "Taking a high-stress job for financial gain",
+        "high_option": "Choosing a low-stress job for peace of mind"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action prioritizes emotional comfort and safety.",
+      "subsumed_reasons": [
+        3,
+        12,
+        14,
+        15,
+        17,
+        39,
+        51
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Risk Aversion",
+      "low_pole": {
+        "label": "Risk-Taking",
+        "description": "Actions that involve bold decisions and potential for high reward or loss.",
+        "typical_person": "Someone who prefers action and decisiveness."
+      },
+      "high_pole": {
+        "label": "Risk-Averse",
+        "description": "Actions that minimize uncertainty and potential negative outcomes.",
+        "typical_person": "Someone who prefers caution and stability."
+      },
+      "example_contrast": {
+        "low_option": "Investing in a high-risk startup",
+        "high_option": "Putting money in a low-risk savings account"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action minimizes or embraces uncertainty and potential loss.",
+      "subsumed_reasons": [
+        5,
+        15,
+        16,
+        19,
+        55
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Autonomy",
+      "low_pole": {
+        "label": "Dependent",
+        "description": "Actions that rely on external guidance or approval.",
+        "typical_person": "Someone who prefers structured environments and collaboration."
+      },
+      "high_pole": {
+        "label": "Autonomous",
+        "description": "Actions that reflect independent decision-making and self-direction.",
+        "typical_person": "Someone who values personal freedom and control."
+      },
+      "example_contrast": {
+        "low_option": "Following a strict company policy",
+        "high_option": "Making an independent decision without oversight"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action reflects independent decision-making.",
+      "subsumed_reasons": [
+        8,
+        10,
+        16,
+        19,
+        46
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Social Harmony",
+      "low_pole": {
+        "label": "Individualistic",
+        "description": "Actions that prioritize personal goals over group cohesion.",
+        "typical_person": "Someone who values personal autonomy over social norms."
+      },
+      "high_pole": {
+        "label": "Collectivist",
+        "description": "Actions that prioritize group cohesion, community standards, and social norms.",
+        "typical_person": "Someone who values social harmony and shared values."
+      },
+      "example_contrast": {
+        "low_option": "Rejecting a group decision to pursue personal goals",
+        "high_option": "Aligning with group norms to maintain unity"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action supports or undermines social cohesion.",
+      "subsumed_reasons": [
+        9,
+        13,
+        18,
+        25,
+        32
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Long-Term Orientation",
+      "low_pole": {
+        "label": "Short-Term",
+        "description": "Actions that prioritize immediate outcomes or gratification.",
+        "typical_person": "Someone who values quick results and immediate relief."
+      },
+      "high_pole": {
+        "label": "Long-Term",
+        "description": "Actions that prioritize future consequences, stability, and sustainability.",
+        "typical_person": "Someone who values planning and responsibility."
+      },
+      "example_contrast": {
+        "low_option": "Spending money on a vacation now",
+        "high_option": "Saving money for retirement"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action considers future consequences.",
+      "subsumed_reasons": [
+        7,
+        12,
+        18,
+        33,
+        56,
+        60
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Formality Avoidance",
+      "low_pole": {
+        "label": "Formal",
+        "description": "Actions that involve legal, institutional, or bureaucratic processes.",
+        "typical_person": "Someone who prefers structured and official procedures."
+      },
+      "high_pole": {
+        "label": "Informal",
+        "description": "Actions that avoid legal or formal processes in favor of personal or direct solutions.",
+        "typical_person": "Someone who prefers simplicity and direct action."
+      },
+      "example_contrast": {
+        "low_option": "Filing a formal complaint",
+        "high_option": "Resolving the issue privately"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action avoids or embraces formal procedures.",
+      "subsumed_reasons": [
+        6,
+        25
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Emotional Authenticity",
+      "low_pole": {
+        "label": "Emotionally Guarded",
+        "description": "Actions that suppress or hide true emotions for social or practical reasons.",
+        "typical_person": "Someone who avoids emotional transparency."
+      },
+      "high_pole": {
+        "label": "Emotionally Open",
+        "description": "Actions that express genuine emotions and foster emotional connection.",
+        "typical_person": "Someone who values emotional honesty and vulnerability."
+      },
+      "example_contrast": {
+        "low_option": "Hiding sadness to avoid burdening others",
+        "high_option": "Expressing feelings openly in a conversation"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action expresses or suppresses genuine emotion.",
+      "subsumed_reasons": [
+        13,
+        17,
+        23,
+        27,
+        49
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Tradition Adherence",
+      "low_pole": {
+        "label": "Innovative",
+        "description": "Actions that challenge or deviate from established norms and traditions.",
+        "typical_person": "Someone who values creativity and change."
+      },
+      "high_pole": {
+        "label": "Traditional",
+        "description": "Actions that align with established norms, values, and customs.",
+        "typical_person": "Someone who values stability and continuity."
+      },
+      "example_contrast": {
+        "low_option": "Starting a new business with unconventional methods",
+        "high_option": "Following traditional family business practices"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action aligns with or deviates from tradition.",
+      "subsumed_reasons": [
+        24,
+        40,
+        43
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Efficiency",
+      "low_pole": {
+        "label": "Inefficient",
+        "description": "Actions that are slow, complex, or resource-intensive.",
+        "typical_person": "Someone who values thoroughness over speed."
+      },
+      "high_pole": {
+        "label": "Efficient",
+        "description": "Actions that are quick, practical, and resource-conscious.",
+        "typical_person": "Someone who values speed and convenience."
+      },
+      "example_contrast": {
+        "low_option": "Spending hours perfecting a task",
+        "high_option": "Completing the task quickly and effectively"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes speed and practicality.",
+      "subsumed_reasons": [
+        26,
+        30,
+        40,
+        53,
+        54
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Privacy",
+      "low_pole": {
+        "label": "Public",
+        "description": "Actions that involve public exposure or social visibility.",
+        "typical_person": "Someone who is comfortable with public attention."
+      },
+      "high_pole": {
+        "label": "Private",
+        "description": "Actions that preserve personal boundaries and avoid public scrutiny.",
+        "typical_person": "Someone who values personal space and discretion."
+      },
+      "example_contrast": {
+        "low_option": "Sharing personal experiences publicly",
+        "high_option": "Keeping personal matters private"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action preserves or exposes personal information.",
+      "subsumed_reasons": [
+        25,
+        32
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Financial Prudence",
+      "low_pole": {
+        "label": "Spontaneous Spending",
+        "description": "Actions that prioritize immediate financial gratification over long-term planning.",
+        "typical_person": "Someone who values immediate pleasure over financial security."
+      },
+      "high_pole": {
+        "label": "Financially Prudent",
+        "description": "Actions that prioritize long-term financial stability and responsibility.",
+        "typical_person": "Someone who values financial security and planning."
+      },
+      "example_contrast": {
+        "low_option": "Paying for a luxury item on credit",
+        "high_option": "Saving money for future needs"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action prioritizes financial responsibility.",
+      "subsumed_reasons": [
+        44,
+        50,
+        56
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Decisiveness",
+      "low_pole": {
+        "label": "Hesitant",
+        "description": "Actions that delay or avoid making a decision.",
+        "typical_person": "Someone who prefers to gather more information before acting."
+      },
+      "high_pole": {
+        "label": "Decisive",
+        "description": "Actions that involve prompt and confident decision-making.",
+        "typical_person": "Someone who values action and quick resolution."
+      },
+      "example_contrast": {
+        "low_option": "Putting off a decision until more information is available",
+        "high_option": "Making a decision quickly and confidently"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how quickly and confidently the action is taken.",
+      "subsumed_reasons": [
+        16,
+        19,
+        45
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Creativity",
+      "low_pole": {
+        "label": "Conventional",
+        "description": "Actions that follow standard or expected approaches.",
+        "typical_person": "Someone who values structure and predictability."
+      },
+      "high_pole": {
+        "label": "Creative",
+        "description": "Actions that involve originality, self-expression, and innovation.",
+        "typical_person": "Someone who values imagination and artistic freedom."
+      },
+      "example_contrast": {
+        "low_option": "Following a standard procedure",
+        "high_option": "Coming up with a novel solution to a problem"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action reflects originality and self-expression.",
+      "subsumed_reasons": [
+        17,
+        30,
+        40
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Structure Preference",
+      "low_pole": {
+        "label": "Flexible",
+        "description": "Actions that allow for adaptability and spontaneity.",
+        "typical_person": "Someone who values flexibility and change."
+      },
+      "high_pole": {
+        "label": "Structured",
+        "description": "Actions that follow predictable, organized, and planned approaches.",
+        "typical_person": "Someone who values order and routine."
+      },
+      "example_contrast": {
+        "low_option": "Changing plans last minute",
+        "high_option": "Following a detailed schedule"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action follows or deviates from a structured approach.",
+      "subsumed_reasons": [
+        11,
+        43
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Empathy",
+      "low_pole": {
+        "label": "Detached",
+        "description": "Actions that show little concern for the emotional state of others.",
+        "typical_person": "Someone who prioritizes personal goals over others' feelings."
+      },
+      "high_pole": {
+        "label": "Empathetic",
+        "description": "Actions that consider and respond to the emotional needs of others.",
+        "typical_person": "Someone who values compassion and connection."
+      },
+      "example_contrast": {
+        "low_option": "Ignoring someone's emotional distress",
+        "high_option": "Offering emotional support to someone in need"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action considers the emotional well-being of others.",
+      "subsumed_reasons": [
+        13,
+        37,
+        49,
+        59
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Duty Orientation",
+      "low_pole": {
+        "label": "Self-Focused",
+        "description": "Actions that prioritize personal interests over responsibilities to others.",
+        "typical_person": "Someone who values personal freedom over duty."
+      },
+      "high_pole": {
+        "label": "Duty-Oriented",
+        "description": "Actions that prioritize obligations, responsibilities, and moral duties.",
+        "typical_person": "Someone who values commitment and obligation."
+      },
+      "example_contrast": {
+        "low_option": "Choosing personal time over helping a friend",
+        "high_option": "Helping a friend despite personal inconvenience"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action reflects a sense of duty or obligation.",
+      "subsumed_reasons": [
+        20,
+        36,
+        57
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Stability",
+      "low_pole": {
+        "label": "Unstable",
+        "description": "Actions that introduce uncertainty or change.",
+        "typical_person": "Someone who is open to risk and change."
+      },
+      "high_pole": {
+        "label": "Stable",
+        "description": "Actions that promote consistency, predictability, and security.",
+        "typical_person": "Someone who values reliability and safety."
+      },
+      "example_contrast": {
+        "low_option": "Changing jobs frequently for new experiences",
+        "high_option": "Staying in a stable job for years"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action promotes or disrupts stability.",
+      "subsumed_reasons": [
+        14,
+        33,
+        35
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Experience Orientation",
+      "low_pole": {
+        "label": "Avoidant",
+        "description": "Actions that avoid discomfort, challenge, or personal growth.",
+        "typical_person": "Someone who prefers comfort and routine."
+      },
+      "high_pole": {
+        "label": "Experiential",
+        "description": "Actions that embrace challenge, discomfort, and personal development.",
+        "typical_person": "Someone who values growth and learning."
+      },
+      "example_contrast": {
+        "low_option": "Avoiding a difficult task to reduce stress",
+        "high_option": "Taking on a challenging task to grow and learn"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action embraces or avoids personal challenge and growth.",
+      "subsumed_reasons": [
+        29,
+        41,
+        57
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        3,
+        19
+      ],
+      "correlation_note": "Both relate to comfort and stability, but Emotional Well-Being focuses on internal emotional state while Stability focuses on external predictability.",
+      "resolution": "They are distinct because they measure different aspects of comfort and security."
+    },
+    {
+      "dimension_ids": [
+        5,
+        16
+      ],
+      "correlation_note": "Both relate to decision-making, but Autonomy focuses on independence while Structure Preference focuses on predictability.",
+      "resolution": "They are distinct because they measure different aspects of decision-making style."
+    },
+    {
+      "dimension_ids": [
+        1,
+        20
+      ],
+      "correlation_note": "Both relate to values and responsibility, but Moral Integrity focuses on ethical consistency while Duty Orientation focuses on obligation.",
+      "resolution": "They are distinct because they measure different aspects of personal responsibility."
+    },
+    {
+      "dimension_ids": [
+        9,
+        17
+      ],
+      "correlation_note": "Both relate to emotional expression, but Emotional Authenticity focuses on honesty while Empathy focuses on concern for others.",
+      "resolution": "They are distinct because they measure different aspects of emotional engagement."
+    },
+    {
+      "dimension_ids": [
+        7,
+        13
+      ],
+      "correlation_note": "Both relate to planning and responsibility, but Long-Term Orientation focuses on time while Financial Prudence focuses on money.",
+      "resolution": "They are distinct because they measure different aspects of future-oriented behavior."
+    }
+  ]
+}

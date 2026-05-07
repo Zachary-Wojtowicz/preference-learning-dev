@@ -1,0 +1,190 @@
+{
+  "total_reasons": 1500,
+  "coverage_threshold": 0.4,
+  "covered_count": 1500,
+  "coverage_rate": 1.0,
+  "orphan_count": 0,
+  "top_orphans": [],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Moral Integrity",
+      "total_reasons_assigned": 155,
+      "low_pole_count": 15,
+      "high_pole_count": 140,
+      "low_pole_fraction": 0.097,
+      "high_pole_fraction": 0.903
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Conflict Avoidance",
+      "total_reasons_assigned": 135,
+      "low_pole_count": 21,
+      "high_pole_count": 114,
+      "low_pole_fraction": 0.156,
+      "high_pole_fraction": 0.844
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Emotional Well-Being",
+      "total_reasons_assigned": 183,
+      "low_pole_count": 102,
+      "high_pole_count": 81,
+      "low_pole_fraction": 0.557,
+      "high_pole_fraction": 0.443
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Risk Aversion",
+      "total_reasons_assigned": 81,
+      "low_pole_count": 22,
+      "high_pole_count": 59,
+      "low_pole_fraction": 0.272,
+      "high_pole_fraction": 0.728
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Autonomy",
+      "total_reasons_assigned": 67,
+      "low_pole_count": 26,
+      "high_pole_count": 41,
+      "low_pole_fraction": 0.388,
+      "high_pole_fraction": 0.612
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Social Harmony",
+      "total_reasons_assigned": 91,
+      "low_pole_count": 39,
+      "high_pole_count": 52,
+      "low_pole_fraction": 0.429,
+      "high_pole_fraction": 0.571
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Long-Term Orientation",
+      "total_reasons_assigned": 47,
+      "low_pole_count": 28,
+      "high_pole_count": 19,
+      "low_pole_fraction": 0.596,
+      "high_pole_fraction": 0.404
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Formality Avoidance",
+      "total_reasons_assigned": 15,
+      "low_pole_count": 11,
+      "high_pole_count": 4,
+      "low_pole_fraction": 0.733,
+      "high_pole_fraction": 0.267
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Emotional Authenticity",
+      "total_reasons_assigned": 46,
+      "low_pole_count": 4,
+      "high_pole_count": 42,
+      "low_pole_fraction": 0.087,
+      "high_pole_fraction": 0.913
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Tradition Adherence",
+      "total_reasons_assigned": 15,
+      "low_pole_count": 8,
+      "high_pole_count": 7,
+      "low_pole_fraction": 0.533,
+      "high_pole_fraction": 0.467
+    },
+    {
+      "dimension_id": 11,
+      "dimension_name": "Efficiency",
+      "total_reasons_assigned": 12,
+      "low_pole_count": 0,
+      "high_pole_count": 12,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 12,
+      "dimension_name": "Privacy",
+      "total_reasons_assigned": 86,
+      "low_pole_count": 11,
+      "high_pole_count": 75,
+      "low_pole_fraction": 0.128,
+      "high_pole_fraction": 0.872
+    },
+    {
+      "dimension_id": 13,
+      "dimension_name": "Financial Prudence",
+      "total_reasons_assigned": 124,
+      "low_pole_count": 20,
+      "high_pole_count": 104,
+      "low_pole_fraction": 0.161,
+      "high_pole_fraction": 0.839
+    },
+    {
+      "dimension_id": 14,
+      "dimension_name": "Decisiveness",
+      "total_reasons_assigned": 42,
+      "low_pole_count": 2,
+      "high_pole_count": 40,
+      "low_pole_fraction": 0.048,
+      "high_pole_fraction": 0.952
+    },
+    {
+      "dimension_id": 15,
+      "dimension_name": "Creativity",
+      "total_reasons_assigned": 26,
+      "low_pole_count": 2,
+      "high_pole_count": 24,
+      "low_pole_fraction": 0.077,
+      "high_pole_fraction": 0.923
+    },
+    {
+      "dimension_id": 16,
+      "dimension_name": "Structure Preference",
+      "total_reasons_assigned": 48,
+      "low_pole_count": 46,
+      "high_pole_count": 2,
+      "low_pole_fraction": 0.958,
+      "high_pole_fraction": 0.042
+    },
+    {
+      "dimension_id": 17,
+      "dimension_name": "Empathy",
+      "total_reasons_assigned": 90,
+      "low_pole_count": 6,
+      "high_pole_count": 84,
+      "low_pole_fraction": 0.067,
+      "high_pole_fraction": 0.933
+    },
+    {
+      "dimension_id": 18,
+      "dimension_name": "Duty Orientation",
+      "total_reasons_assigned": 89,
+      "low_pole_count": 20,
+      "high_pole_count": 69,
+      "low_pole_fraction": 0.225,
+      "high_pole_fraction": 0.775
+    },
+    {
+      "dimension_id": 19,
+      "dimension_name": "Stability",
+      "total_reasons_assigned": 16,
+      "low_pole_count": 1,
+      "high_pole_count": 15,
+      "low_pole_fraction": 0.062,
+      "high_pole_fraction": 0.938
+    },
+    {
+      "dimension_id": 20,
+      "dimension_name": "Experience Orientation",
+      "total_reasons_assigned": 132,
+      "low_pole_count": 36,
+      "high_pole_count": 96,
+      "low_pole_fraction": 0.273,
+      "high_pole_fraction": 0.727
+    }
+  ]
+}

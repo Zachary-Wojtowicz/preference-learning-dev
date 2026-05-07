@@ -1,0 +1,1052 @@
+[
+  {
+    "pair_id": 0,
+    "option_a_id": "ins_52b54627",
+    "option_b_id": "sec_5502e889",
+    "distance_stratum": "near",
+    "cosine_distance": 0.762615
+  },
+  {
+    "pair_id": 1,
+    "option_a_id": "sec_1124e521",
+    "option_b_id": "sec_459533f1",
+    "distance_stratum": "near",
+    "cosine_distance": 0.941298
+  },
+  {
+    "pair_id": 2,
+    "option_a_id": "ins_b74f19fa",
+    "option_b_id": "sec_98e0cf25",
+    "distance_stratum": "near",
+    "cosine_distance": 0.855154
+  },
+  {
+    "pair_id": 3,
+    "option_a_id": "ins_973f56fb",
+    "option_b_id": "ins_a370ef9d",
+    "distance_stratum": "near",
+    "cosine_distance": 0.79494
+  },
+  {
+    "pair_id": 4,
+    "option_a_id": "sec_03eea2e6",
+    "option_b_id": "sec_883f067d",
+    "distance_stratum": "near",
+    "cosine_distance": 0.812696
+  },
+  {
+    "pair_id": 5,
+    "option_a_id": "ins_1f34f18c",
+    "option_b_id": "sec_ebdf0b8f",
+    "distance_stratum": "near",
+    "cosine_distance": 0.841718
+  },
+  {
+    "pair_id": 6,
+    "option_a_id": "ins_d4fea845",
+    "option_b_id": "sec_ec67f94e",
+    "distance_stratum": "near",
+    "cosine_distance": 0.893387
+  },
+  {
+    "pair_id": 7,
+    "option_a_id": "ins_7625947c",
+    "option_b_id": "sec_cb2c7ed3",
+    "distance_stratum": "near",
+    "cosine_distance": 0.807106
+  },
+  {
+    "pair_id": 8,
+    "option_a_id": "sec_1b47d4b2",
+    "option_b_id": "sec_5f2b5d88",
+    "distance_stratum": "near",
+    "cosine_distance": 0.924915
+  },
+  {
+    "pair_id": 9,
+    "option_a_id": "sec_92b03a92",
+    "option_b_id": "sec_dd91f5eb",
+    "distance_stratum": "near",
+    "cosine_distance": 0.899447
+  },
+  {
+    "pair_id": 10,
+    "option_a_id": "ins_973f56fb",
+    "option_b_id": "sec_a47ed854",
+    "distance_stratum": "near",
+    "cosine_distance": 0.947098
+  },
+  {
+    "pair_id": 11,
+    "option_a_id": "ins_14dc24af",
+    "option_b_id": "sec_ebdf0b8f",
+    "distance_stratum": "near",
+    "cosine_distance": 0.925503
+  },
+  {
+    "pair_id": 12,
+    "option_a_id": "ins_349396e7",
+    "option_b_id": "sec_0e122232",
+    "distance_stratum": "near",
+    "cosine_distance": 0.897544
+  },
+  {
+    "pair_id": 13,
+    "option_a_id": "ins_2c7a4d55",
+    "option_b_id": "sec_85456ba4",
+    "distance_stratum": "near",
+    "cosine_distance": 0.916409
+  },
+  {
+    "pair_id": 14,
+    "option_a_id": "ins_27a933c1",
+    "option_b_id": "ins_8455a14e",
+    "distance_stratum": "near",
+    "cosine_distance": 0.882171
+  },
+  {
+    "pair_id": 15,
+    "option_a_id": "ins_a20006d5",
+    "option_b_id": "sec_c350b4bd",
+    "distance_stratum": "near",
+    "cosine_distance": 0.968095
+  },
+  {
+    "pair_id": 16,
+    "option_a_id": "sec_459533f1",
+    "option_b_id": "sec_7786fb1f",
+    "distance_stratum": "near",
+    "cosine_distance": 0.767506
+  },
+  {
+    "pair_id": 17,
+    "option_a_id": "sec_180a37f0",
+    "option_b_id": "sec_8fa24c07",
+    "distance_stratum": "near",
+    "cosine_distance": 0.960337
+  },
+  {
+    "pair_id": 18,
+    "option_a_id": "ins_8455a14e",
+    "option_b_id": "sec_33522c8e",
+    "distance_stratum": "near",
+    "cosine_distance": 0.920168
+  },
+  {
+    "pair_id": 19,
+    "option_a_id": "ins_3b52acfe",
+    "option_b_id": "sec_9e8e74ce",
+    "distance_stratum": "near",
+    "cosine_distance": 0.892716
+  },
+  {
+    "pair_id": 20,
+    "option_a_id": "ins_f80dbd5e",
+    "option_b_id": "sec_7786fb1f",
+    "distance_stratum": "near",
+    "cosine_distance": 0.936503
+  },
+  {
+    "pair_id": 21,
+    "option_a_id": "ins_6f64dc36",
+    "option_b_id": "sec_1e1b8453",
+    "distance_stratum": "near",
+    "cosine_distance": 0.838023
+  },
+  {
+    "pair_id": 22,
+    "option_a_id": "ins_b74f19fa",
+    "option_b_id": "sec_c823a20b",
+    "distance_stratum": "near",
+    "cosine_distance": 0.975637
+  },
+  {
+    "pair_id": 23,
+    "option_a_id": "sec_85456ba4",
+    "option_b_id": "sec_8699eca7",
+    "distance_stratum": "near",
+    "cosine_distance": 0.909032
+  },
+  {
+    "pair_id": 24,
+    "option_a_id": "ins_52b54627",
+    "option_b_id": "ins_f6bbad94",
+    "distance_stratum": "near",
+    "cosine_distance": 0.835863
+  },
+  {
+    "pair_id": 25,
+    "option_a_id": "sec_0ddcad93",
+    "option_b_id": "sec_72579fb2",
+    "distance_stratum": "near",
+    "cosine_distance": 0.936435
+  },
+  {
+    "pair_id": 26,
+    "option_a_id": "sec_2ac397c1",
+    "option_b_id": "sec_a47ed854",
+    "distance_stratum": "near",
+    "cosine_distance": 0.818611
+  },
+  {
+    "pair_id": 27,
+    "option_a_id": "ins_419cf739",
+    "option_b_id": "ins_7e5ea1a8",
+    "distance_stratum": "near",
+    "cosine_distance": 0.899796
+  },
+  {
+    "pair_id": 28,
+    "option_a_id": "ins_8455a14e",
+    "option_b_id": "sec_fa010915",
+    "distance_stratum": "near",
+    "cosine_distance": 0.932508
+  },
+  {
+    "pair_id": 29,
+    "option_a_id": "ins_14dc24af",
+    "option_b_id": "ins_8455a14e",
+    "distance_stratum": "near",
+    "cosine_distance": 0.915821
+  },
+  {
+    "pair_id": 30,
+    "option_a_id": "ins_349396e7",
+    "option_b_id": "ins_6fa3f3c0",
+    "distance_stratum": "near",
+    "cosine_distance": 0.970855
+  },
+  {
+    "pair_id": 31,
+    "option_a_id": "ins_1e86b0cb",
+    "option_b_id": "ins_f71f5c80",
+    "distance_stratum": "near",
+    "cosine_distance": 0.922802
+  },
+  {
+    "pair_id": 32,
+    "option_a_id": "ins_4e10d001",
+    "option_b_id": "sec_7456af56",
+    "distance_stratum": "near",
+    "cosine_distance": 0.908705
+  },
+  {
+    "pair_id": 33,
+    "option_a_id": "ins_7e5ea1a8",
+    "option_b_id": "ins_b6a49e52",
+    "distance_stratum": "near",
+    "cosine_distance": 0.938819
+  },
+  {
+    "pair_id": 34,
+    "option_a_id": "ins_14dc24af",
+    "option_b_id": "ins_57639a80",
+    "distance_stratum": "near",
+    "cosine_distance": 0.904051
+  },
+  {
+    "pair_id": 35,
+    "option_a_id": "ins_0ecb7a33",
+    "option_b_id": "ins_cb91a5d0",
+    "distance_stratum": "near",
+    "cosine_distance": 0.754075
+  },
+  {
+    "pair_id": 36,
+    "option_a_id": "sec_c350b4bd",
+    "option_b_id": "sec_ecc08fda",
+    "distance_stratum": "near",
+    "cosine_distance": 0.864331
+  },
+  {
+    "pair_id": 37,
+    "option_a_id": "ins_57639a80",
+    "option_b_id": "sec_16c361dc",
+    "distance_stratum": "near",
+    "cosine_distance": 0.92023
+  },
+  {
+    "pair_id": 38,
+    "option_a_id": "ins_e5e04acf",
+    "option_b_id": "sec_9809bc43",
+    "distance_stratum": "near",
+    "cosine_distance": 0.976713
+  },
+  {
+    "pair_id": 39,
+    "option_a_id": "ins_586a1aaf",
+    "option_b_id": "sec_c2c1cd9a",
+    "distance_stratum": "near",
+    "cosine_distance": 0.938736
+  },
+  {
+    "pair_id": 40,
+    "option_a_id": "sec_65cde693",
+    "option_b_id": "sec_883f067d",
+    "distance_stratum": "near",
+    "cosine_distance": 0.924967
+  },
+  {
+    "pair_id": 41,
+    "option_a_id": "ins_8387c2ba",
+    "option_b_id": "sec_5bce74ce",
+    "distance_stratum": "near",
+    "cosine_distance": 0.939903
+  },
+  {
+    "pair_id": 42,
+    "option_a_id": "ins_2d9b15ab",
+    "option_b_id": "sec_1f70aa68",
+    "distance_stratum": "near",
+    "cosine_distance": 0.763744
+  },
+  {
+    "pair_id": 43,
+    "option_a_id": "ins_1e86b0cb",
+    "option_b_id": "ins_63622e20",
+    "distance_stratum": "near",
+    "cosine_distance": 0.919141
+  },
+  {
+    "pair_id": 44,
+    "option_a_id": "ins_38661f6f",
+    "option_b_id": "ins_5d948da1",
+    "distance_stratum": "near",
+    "cosine_distance": 0.800148
+  },
+  {
+    "pair_id": 45,
+    "option_a_id": "ins_b3e96643",
+    "option_b_id": "sec_5bce74ce",
+    "distance_stratum": "near",
+    "cosine_distance": 0.929449
+  },
+  {
+    "pair_id": 46,
+    "option_a_id": "ins_5d351abb",
+    "option_b_id": "ins_fb72f241",
+    "distance_stratum": "near",
+    "cosine_distance": 0.970179
+  },
+  {
+    "pair_id": 47,
+    "option_a_id": "ins_4e10d001",
+    "option_b_id": "sec_9fca7a9f",
+    "distance_stratum": "near",
+    "cosine_distance": 0.731919
+  },
+  {
+    "pair_id": 48,
+    "option_a_id": "sec_94737df8",
+    "option_b_id": "sec_da2cad50",
+    "distance_stratum": "near",
+    "cosine_distance": 0.887753
+  },
+  {
+    "pair_id": 49,
+    "option_a_id": "ins_0ab02e99",
+    "option_b_id": "ins_fdd0802d",
+    "distance_stratum": "near",
+    "cosine_distance": 0.869689
+  },
+  {
+    "pair_id": 50,
+    "option_a_id": "ins_38661f6f",
+    "option_b_id": "sec_db7db7fc",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.999107
+  },
+  {
+    "pair_id": 51,
+    "option_a_id": "ins_10b19619",
+    "option_b_id": "sec_da2cad50",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.994155
+  },
+  {
+    "pair_id": 52,
+    "option_a_id": "sec_734eddd2",
+    "option_b_id": "sec_9809bc43",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.992965
+  },
+  {
+    "pair_id": 53,
+    "option_a_id": "ins_4e10d001",
+    "option_b_id": "sec_cc9e4d77",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.036013
+  },
+  {
+    "pair_id": 54,
+    "option_a_id": "ins_2d41826b",
+    "option_b_id": "sec_c09b358d",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.035138
+  },
+  {
+    "pair_id": 55,
+    "option_a_id": "sec_7456af56",
+    "option_b_id": "sec_79112545",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.051111
+  },
+  {
+    "pair_id": 56,
+    "option_a_id": "ins_6e220c40",
+    "option_b_id": "sec_77b67ba2",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.009628
+  },
+  {
+    "pair_id": 57,
+    "option_a_id": "ins_10b19619",
+    "option_b_id": "sec_33522c8e",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.006124
+  },
+  {
+    "pair_id": 58,
+    "option_a_id": "sec_858f4fb2",
+    "option_b_id": "sec_ff793dee",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.009483
+  },
+  {
+    "pair_id": 59,
+    "option_a_id": "sec_449a7e2f",
+    "option_b_id": "sec_cc9e4d77",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.029848
+  },
+  {
+    "pair_id": 60,
+    "option_a_id": "sec_9a02f9af",
+    "option_b_id": "sec_eefa0a27",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.007889
+  },
+  {
+    "pair_id": 61,
+    "option_a_id": "sec_bf19a188",
+    "option_b_id": "sec_dd91f5eb",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.051622
+  },
+  {
+    "pair_id": 62,
+    "option_a_id": "sec_bf19a188",
+    "option_b_id": "sec_c09b358d",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.003546
+  },
+  {
+    "pair_id": 63,
+    "option_a_id": "ins_8455a14e",
+    "option_b_id": "sec_cf5c9127",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.996316
+  },
+  {
+    "pair_id": 64,
+    "option_a_id": "ins_5d948da1",
+    "option_b_id": "sec_a1f3e467",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.019728
+  },
+  {
+    "pair_id": 65,
+    "option_a_id": "ins_349396e7",
+    "option_b_id": "sec_7a16864e",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.012699
+  },
+  {
+    "pair_id": 66,
+    "option_a_id": "ins_82b759c2",
+    "option_b_id": "sec_da23bfbc",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.038444
+  },
+  {
+    "pair_id": 67,
+    "option_a_id": "sec_4c4ba84c",
+    "option_b_id": "sec_dd91f5eb",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.047773
+  },
+  {
+    "pair_id": 68,
+    "option_a_id": "ins_2d41826b",
+    "option_b_id": "sec_3d2b1ed9",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.981291
+  },
+  {
+    "pair_id": 69,
+    "option_a_id": "ins_b6a49e52",
+    "option_b_id": "sec_b8b7a436",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.024864
+  },
+  {
+    "pair_id": 70,
+    "option_a_id": "ins_882dae5a",
+    "option_b_id": "sec_9a02f9af",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.983499
+  },
+  {
+    "pair_id": 71,
+    "option_a_id": "sec_10f86265",
+    "option_b_id": "sec_a1f3e467",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.033364
+  },
+  {
+    "pair_id": 72,
+    "option_a_id": "ins_1f29a8e8",
+    "option_b_id": "sec_418a6406",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.0366
+  },
+  {
+    "pair_id": 73,
+    "option_a_id": "ins_973f56fb",
+    "option_b_id": "sec_72579fb2",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.035371
+  },
+  {
+    "pair_id": 74,
+    "option_a_id": "sec_0ddcad93",
+    "option_b_id": "sec_c09b358d",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.043498
+  },
+  {
+    "pair_id": 75,
+    "option_a_id": "ins_10b19619",
+    "option_b_id": "sec_da23bfbc",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.010579
+  },
+  {
+    "pair_id": 76,
+    "option_a_id": "ins_644e2c82",
+    "option_b_id": "ins_b463130b",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.011605
+  },
+  {
+    "pair_id": 77,
+    "option_a_id": "ins_973f56fb",
+    "option_b_id": "sec_4302678f",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.00414
+  },
+  {
+    "pair_id": 78,
+    "option_a_id": "ins_05b465a3",
+    "option_b_id": "ins_27a933c1",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.013568
+  },
+  {
+    "pair_id": 79,
+    "option_a_id": "ins_36ea40aa",
+    "option_b_id": "sec_8e4fde91",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.00104
+  },
+  {
+    "pair_id": 80,
+    "option_a_id": "sec_79112545",
+    "option_b_id": "sec_8fa24c07",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.990509
+  },
+  {
+    "pair_id": 81,
+    "option_a_id": "ins_5d351abb",
+    "option_b_id": "sec_a92d83dd",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.987488
+  },
+  {
+    "pair_id": 82,
+    "option_a_id": "ins_e5e04acf",
+    "option_b_id": "sec_f2afbcaf",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.037637
+  },
+  {
+    "pair_id": 83,
+    "option_a_id": "sec_1e3d88d4",
+    "option_b_id": "sec_449a7e2f",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.024078
+  },
+  {
+    "pair_id": 84,
+    "option_a_id": "ins_c9cb6ca8",
+    "option_b_id": "sec_ca155add",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.988944
+  },
+  {
+    "pair_id": 85,
+    "option_a_id": "ins_1f29a8e8",
+    "option_b_id": "sec_da2cad50",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.988878
+  },
+  {
+    "pair_id": 86,
+    "option_a_id": "ins_d835a9e2",
+    "option_b_id": "sec_5f43e84a",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.020248
+  },
+  {
+    "pair_id": 87,
+    "option_a_id": "ins_475ea839",
+    "option_b_id": "ins_65231a9f",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.990502
+  },
+  {
+    "pair_id": 88,
+    "option_a_id": "sec_129201b9",
+    "option_b_id": "sec_aa7928b2",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.979984
+  },
+  {
+    "pair_id": 89,
+    "option_a_id": "ins_14dc24af",
+    "option_b_id": "sec_c350b4bd",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.042132
+  },
+  {
+    "pair_id": 90,
+    "option_a_id": "ins_d0aa421f",
+    "option_b_id": "sec_129201b9",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.986023
+  },
+  {
+    "pair_id": 91,
+    "option_a_id": "ins_f71f5c80",
+    "option_b_id": "sec_20362b7c",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.04621
+  },
+  {
+    "pair_id": 92,
+    "option_a_id": "sec_c350b4bd",
+    "option_b_id": "sec_dd91f5eb",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.027526
+  },
+  {
+    "pair_id": 93,
+    "option_a_id": "ins_1f34f18c",
+    "option_b_id": "sec_a251dee7",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.037904
+  },
+  {
+    "pair_id": 94,
+    "option_a_id": "ins_e70f1ee9",
+    "option_b_id": "sec_a1f3e467",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.986902
+  },
+  {
+    "pair_id": 95,
+    "option_a_id": "sec_6656c49a",
+    "option_b_id": "sec_e6736df2",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.012325
+  },
+  {
+    "pair_id": 96,
+    "option_a_id": "ins_52b54627",
+    "option_b_id": "sec_c350b4bd",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.996604
+  },
+  {
+    "pair_id": 97,
+    "option_a_id": "ins_fb72f241",
+    "option_b_id": "sec_ff793dee",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.00926
+  },
+  {
+    "pair_id": 98,
+    "option_a_id": "ins_d4fea845",
+    "option_b_id": "sec_b9b2c177",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.022247
+  },
+  {
+    "pair_id": 99,
+    "option_a_id": "sec_77b67ba2",
+    "option_b_id": "sec_9628dc1c",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.045029
+  },
+  {
+    "pair_id": 100,
+    "option_a_id": "ins_693e915f",
+    "option_b_id": "ins_c9cb6ca8",
+    "distance_stratum": "far",
+    "cosine_distance": 1.078953
+  },
+  {
+    "pair_id": 101,
+    "option_a_id": "ins_36ea40aa",
+    "option_b_id": "sec_03eea2e6",
+    "distance_stratum": "far",
+    "cosine_distance": 1.087024
+  },
+  {
+    "pair_id": 102,
+    "option_a_id": "ins_b74f19fa",
+    "option_b_id": "sec_00d1c932",
+    "distance_stratum": "far",
+    "cosine_distance": 1.110447
+  },
+  {
+    "pair_id": 103,
+    "option_a_id": "sec_cb2c7ed3",
+    "option_b_id": "sec_db7db7fc",
+    "distance_stratum": "far",
+    "cosine_distance": 1.111094
+  },
+  {
+    "pair_id": 104,
+    "option_a_id": "ins_fe53868f",
+    "option_b_id": "sec_f2afbcaf",
+    "distance_stratum": "far",
+    "cosine_distance": 1.073311
+  },
+  {
+    "pair_id": 105,
+    "option_a_id": "sec_5bce74ce",
+    "option_b_id": "sec_d56392ac",
+    "distance_stratum": "far",
+    "cosine_distance": 1.140122
+  },
+  {
+    "pair_id": 106,
+    "option_a_id": "sec_98e0cf25",
+    "option_b_id": "sec_ca155add",
+    "distance_stratum": "far",
+    "cosine_distance": 1.111329
+  },
+  {
+    "pair_id": 107,
+    "option_a_id": "ins_91ee69ae",
+    "option_b_id": "sec_c9947b71",
+    "distance_stratum": "far",
+    "cosine_distance": 1.080711
+  },
+  {
+    "pair_id": 108,
+    "option_a_id": "sec_6657f0cf",
+    "option_b_id": "sec_7a16864e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.083824
+  },
+  {
+    "pair_id": 109,
+    "option_a_id": "ins_586a1aaf",
+    "option_b_id": "ins_b8b6c9be",
+    "distance_stratum": "far",
+    "cosine_distance": 1.141586
+  },
+  {
+    "pair_id": 110,
+    "option_a_id": "ins_54d69979",
+    "option_b_id": "sec_7a16864e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.097002
+  },
+  {
+    "pair_id": 111,
+    "option_a_id": "ins_ce43e0f8",
+    "option_b_id": "sec_00d1c932",
+    "distance_stratum": "far",
+    "cosine_distance": 1.060536
+  },
+  {
+    "pair_id": 112,
+    "option_a_id": "sec_00d1c932",
+    "option_b_id": "sec_8699eca7",
+    "distance_stratum": "far",
+    "cosine_distance": 1.105993
+  },
+  {
+    "pair_id": 113,
+    "option_a_id": "ins_6e220c40",
+    "option_b_id": "sec_5f2f14de",
+    "distance_stratum": "far",
+    "cosine_distance": 1.132246
+  },
+  {
+    "pair_id": 114,
+    "option_a_id": "sec_16c361dc",
+    "option_b_id": "sec_c09b358d",
+    "distance_stratum": "far",
+    "cosine_distance": 1.092655
+  },
+  {
+    "pair_id": 115,
+    "option_a_id": "ins_a370ef9d",
+    "option_b_id": "sec_d0a55f34",
+    "distance_stratum": "far",
+    "cosine_distance": 1.080101
+  },
+  {
+    "pair_id": 116,
+    "option_a_id": "ins_0ab02e99",
+    "option_b_id": "sec_c823a20b",
+    "distance_stratum": "far",
+    "cosine_distance": 1.128968
+  },
+  {
+    "pair_id": 117,
+    "option_a_id": "sec_9809bc43",
+    "option_b_id": "sec_cb2c7ed3",
+    "distance_stratum": "far",
+    "cosine_distance": 1.092107
+  },
+  {
+    "pair_id": 118,
+    "option_a_id": "ins_6a2c2548",
+    "option_b_id": "ins_b8b6c9be",
+    "distance_stratum": "far",
+    "cosine_distance": 1.064789
+  },
+  {
+    "pair_id": 119,
+    "option_a_id": "ins_175803a4",
+    "option_b_id": "sec_9e8e74ce",
+    "distance_stratum": "far",
+    "cosine_distance": 1.105807
+  },
+  {
+    "pair_id": 120,
+    "option_a_id": "sec_449a7e2f",
+    "option_b_id": "sec_cf5c9127",
+    "distance_stratum": "far",
+    "cosine_distance": 1.136198
+  },
+  {
+    "pair_id": 121,
+    "option_a_id": "ins_882dae5a",
+    "option_b_id": "sec_ec67f94e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.072418
+  },
+  {
+    "pair_id": 122,
+    "option_a_id": "ins_cb91a5d0",
+    "option_b_id": "sec_a92d83dd",
+    "distance_stratum": "far",
+    "cosine_distance": 1.099925
+  },
+  {
+    "pair_id": 123,
+    "option_a_id": "ins_d4fea845",
+    "option_b_id": "ins_f6bbad94",
+    "distance_stratum": "far",
+    "cosine_distance": 1.056652
+  },
+  {
+    "pair_id": 124,
+    "option_a_id": "sec_10f86265",
+    "option_b_id": "sec_7a16864e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.148583
+  },
+  {
+    "pair_id": 125,
+    "option_a_id": "sec_16c361dc",
+    "option_b_id": "sec_dd91f5eb",
+    "distance_stratum": "far",
+    "cosine_distance": 1.06406
+  },
+  {
+    "pair_id": 126,
+    "option_a_id": "sec_20362b7c",
+    "option_b_id": "sec_ba5a85c0",
+    "distance_stratum": "far",
+    "cosine_distance": 1.07611
+  },
+  {
+    "pair_id": 127,
+    "option_a_id": "ins_5827fab6",
+    "option_b_id": "sec_1e1b8453",
+    "distance_stratum": "far",
+    "cosine_distance": 1.067894
+  },
+  {
+    "pair_id": 128,
+    "option_a_id": "sec_0a598265",
+    "option_b_id": "sec_5f2b5d88",
+    "distance_stratum": "far",
+    "cosine_distance": 1.100397
+  },
+  {
+    "pair_id": 129,
+    "option_a_id": "ins_175803a4",
+    "option_b_id": "sec_a7741289",
+    "distance_stratum": "far",
+    "cosine_distance": 1.094804
+  },
+  {
+    "pair_id": 130,
+    "option_a_id": "ins_d835a9e2",
+    "option_b_id": "sec_7a16864e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.060457
+  },
+  {
+    "pair_id": 131,
+    "option_a_id": "sec_0a598265",
+    "option_b_id": "sec_85456ba4",
+    "distance_stratum": "far",
+    "cosine_distance": 1.204769
+  },
+  {
+    "pair_id": 132,
+    "option_a_id": "ins_c5026575",
+    "option_b_id": "sec_6392a6b1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.111846
+  },
+  {
+    "pair_id": 133,
+    "option_a_id": "ins_2c7a4d55",
+    "option_b_id": "sec_aa7928b2",
+    "distance_stratum": "far",
+    "cosine_distance": 1.067527
+  },
+  {
+    "pair_id": 134,
+    "option_a_id": "sec_7a16864e",
+    "option_b_id": "sec_8699eca7",
+    "distance_stratum": "far",
+    "cosine_distance": 1.096917
+  },
+  {
+    "pair_id": 135,
+    "option_a_id": "sec_129201b9",
+    "option_b_id": "sec_6392a6b1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.063674
+  },
+  {
+    "pair_id": 136,
+    "option_a_id": "ins_6a2c2548",
+    "option_b_id": "sec_8c33170d",
+    "distance_stratum": "far",
+    "cosine_distance": 1.111764
+  },
+  {
+    "pair_id": 137,
+    "option_a_id": "ins_14dc24af",
+    "option_b_id": "sec_8e609209",
+    "distance_stratum": "far",
+    "cosine_distance": 1.097852
+  },
+  {
+    "pair_id": 138,
+    "option_a_id": "sec_72579fb2",
+    "option_b_id": "sec_d7c62f7d",
+    "distance_stratum": "far",
+    "cosine_distance": 1.069996
+  },
+  {
+    "pair_id": 139,
+    "option_a_id": "ins_4fa33220",
+    "option_b_id": "ins_eae745fa",
+    "distance_stratum": "far",
+    "cosine_distance": 1.149667
+  },
+  {
+    "pair_id": 140,
+    "option_a_id": "ins_693e915f",
+    "option_b_id": "sec_2f409270",
+    "distance_stratum": "far",
+    "cosine_distance": 1.091736
+  },
+  {
+    "pair_id": 141,
+    "option_a_id": "ins_1f34f18c",
+    "option_b_id": "ins_4e10d001",
+    "distance_stratum": "far",
+    "cosine_distance": 1.099486
+  },
+  {
+    "pair_id": 142,
+    "option_a_id": "sec_cbc712bf",
+    "option_b_id": "sec_ec67f94e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.063754
+  },
+  {
+    "pair_id": 143,
+    "option_a_id": "ins_175803a4",
+    "option_b_id": "sec_6656c49a",
+    "distance_stratum": "far",
+    "cosine_distance": 1.079417
+  },
+  {
+    "pair_id": 144,
+    "option_a_id": "ins_5d351abb",
+    "option_b_id": "ins_6b7fa594",
+    "distance_stratum": "far",
+    "cosine_distance": 1.094578
+  },
+  {
+    "pair_id": 145,
+    "option_a_id": "ins_63622e20",
+    "option_b_id": "sec_6657f0cf",
+    "distance_stratum": "far",
+    "cosine_distance": 1.056883
+  },
+  {
+    "pair_id": 146,
+    "option_a_id": "ins_0ab02e99",
+    "option_b_id": "sec_4302678f",
+    "distance_stratum": "far",
+    "cosine_distance": 1.172344
+  },
+  {
+    "pair_id": 147,
+    "option_a_id": "ins_7e5ea1a8",
+    "option_b_id": "ins_ff5de341",
+    "distance_stratum": "far",
+    "cosine_distance": 1.08768
+  },
+  {
+    "pair_id": 148,
+    "option_a_id": "ins_973f56fb",
+    "option_b_id": "sec_16c361dc",
+    "distance_stratum": "far",
+    "cosine_distance": 1.092715
+  },
+  {
+    "pair_id": 149,
+    "option_a_id": "sec_129201b9",
+    "option_b_id": "sec_da23bfbc",
+    "distance_stratum": "far",
+    "cosine_distance": 1.080181
+  }
+]

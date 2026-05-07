@@ -1,0 +1,235 @@
+{
+  "total_reasons": 1000,
+  "coverage_threshold": 0.4,
+  "covered_count": 1000,
+  "coverage_rate": 1.0,
+  "orphan_count": 0,
+  "top_orphans": [],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Emotional Depth",
+      "total_reasons_assigned": 84,
+      "low_pole_count": 3,
+      "high_pole_count": 81,
+      "low_pole_fraction": 0.036,
+      "high_pole_fraction": 0.964
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Action Intensity",
+      "total_reasons_assigned": 46,
+      "low_pole_count": 4,
+      "high_pole_count": 42,
+      "low_pole_fraction": 0.087,
+      "high_pole_fraction": 0.913
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Humor Intensity",
+      "total_reasons_assigned": 157,
+      "low_pole_count": 59,
+      "high_pole_count": 98,
+      "low_pole_fraction": 0.376,
+      "high_pole_fraction": 0.624
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Historical Authenticity",
+      "total_reasons_assigned": 53,
+      "low_pole_count": 11,
+      "high_pole_count": 42,
+      "low_pole_fraction": 0.208,
+      "high_pole_fraction": 0.792
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Moral Complexity",
+      "total_reasons_assigned": 178,
+      "low_pole_count": 3,
+      "high_pole_count": 175,
+      "low_pole_fraction": 0.017,
+      "high_pole_fraction": 0.983
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Suspense/Atmosphere",
+      "total_reasons_assigned": 76,
+      "low_pole_count": 0,
+      "high_pole_count": 76,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Family Focus",
+      "total_reasons_assigned": 13,
+      "low_pole_count": 0,
+      "high_pole_count": 13,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Sci-Fi/Fantasy Worldbuilding",
+      "total_reasons_assigned": 42,
+      "low_pole_count": 6,
+      "high_pole_count": 36,
+      "low_pole_fraction": 0.143,
+      "high_pole_fraction": 0.857
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Political Intrigue",
+      "total_reasons_assigned": 4,
+      "low_pole_count": 0,
+      "high_pole_count": 4,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Satirical Edge",
+      "total_reasons_assigned": 22,
+      "low_pole_count": 0,
+      "high_pole_count": 22,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 11,
+      "dimension_name": "Survival/Stress Scenarios",
+      "total_reasons_assigned": 8,
+      "low_pole_count": 0,
+      "high_pole_count": 8,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 12,
+      "dimension_name": "Visual Spectacle",
+      "total_reasons_assigned": 66,
+      "low_pole_count": 24,
+      "high_pole_count": 42,
+      "low_pole_fraction": 0.364,
+      "high_pole_fraction": 0.636
+    },
+    {
+      "dimension_id": 13,
+      "dimension_name": "Coming-of-Age Focus",
+      "total_reasons_assigned": 13,
+      "low_pole_count": 0,
+      "high_pole_count": 13,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 14,
+      "dimension_name": "Nostalgic Aesthetics",
+      "total_reasons_assigned": 42,
+      "low_pole_count": 5,
+      "high_pole_count": 37,
+      "low_pole_fraction": 0.119,
+      "high_pole_fraction": 0.881
+    },
+    {
+      "dimension_id": 15,
+      "dimension_name": "Ensemble Cast Dynamics",
+      "total_reasons_assigned": 12,
+      "low_pole_count": 6,
+      "high_pole_count": 6,
+      "low_pole_fraction": 0.5,
+      "high_pole_fraction": 0.5
+    },
+    {
+      "dimension_id": 16,
+      "dimension_name": "Social Justice Themes",
+      "total_reasons_assigned": 18,
+      "low_pole_count": 0,
+      "high_pole_count": 18,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 17,
+      "dimension_name": "Cultural Authenticity",
+      "total_reasons_assigned": 15,
+      "low_pole_count": 5,
+      "high_pole_count": 10,
+      "low_pole_fraction": 0.333,
+      "high_pole_fraction": 0.667
+    },
+    {
+      "dimension_id": 18,
+      "dimension_name": "Psychological Depth",
+      "total_reasons_assigned": 7,
+      "low_pole_count": 0,
+      "high_pole_count": 7,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 19,
+      "dimension_name": "Adventure Scope",
+      "total_reasons_assigned": 39,
+      "low_pole_count": 8,
+      "high_pole_count": 31,
+      "low_pole_fraction": 0.205,
+      "high_pole_fraction": 0.795
+    },
+    {
+      "dimension_id": 20,
+      "dimension_name": "Musical Integration",
+      "total_reasons_assigned": 8,
+      "low_pole_count": 0,
+      "high_pole_count": 8,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 21,
+      "dimension_name": "Time-Loop Mechanics",
+      "total_reasons_assigned": 17,
+      "low_pole_count": 4,
+      "high_pole_count": 13,
+      "low_pole_fraction": 0.235,
+      "high_pole_fraction": 0.765
+    },
+    {
+      "dimension_id": 22,
+      "dimension_name": "Romantic Subplots",
+      "total_reasons_assigned": 21,
+      "low_pole_count": 5,
+      "high_pole_count": 16,
+      "low_pole_fraction": 0.238,
+      "high_pole_fraction": 0.762
+    },
+    {
+      "dimension_id": 23,
+      "dimension_name": "Underdog Arcs",
+      "total_reasons_assigned": 17,
+      "low_pole_count": 5,
+      "high_pole_count": 12,
+      "low_pole_fraction": 0.294,
+      "high_pole_fraction": 0.706
+    },
+    {
+      "dimension_id": 24,
+      "dimension_name": "War/Military Focus",
+      "total_reasons_assigned": 11,
+      "low_pole_count": 0,
+      "high_pole_count": 11,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 25,
+      "dimension_name": "Family-Friendly Content",
+      "total_reasons_assigned": 31,
+      "low_pole_count": 8,
+      "high_pole_count": 23,
+      "low_pole_fraction": 0.258,
+      "high_pole_fraction": 0.742
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "domain": "Human Decision Making",
+  "choice_context": "Choosing between actions based on personal values and situational factors",
+  "reasoning": "Identifying the most significant underlying preference dimensions that encompass a wide range of themes while ensuring distinctiveness and bipolarity.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Directness vs. Indirectness in Communication",
+      "low_pole": {
+        "label": "Indirect Communication",
+        "description": "Preferring to communicate in a roundabout way to avoid direct confrontation or to soften the message.",
+        "typical_person": "Someone who avoids conflict and prefers to maintain harmony."
+      },
+      "high_pole": {
+        "label": "Direct Communication",
+        "description": "Preferring clear and straightforward communication, even if it means addressing difficult topics head-on.",
+        "typical_person": "Someone who values honesty and clarity over maintaining peace at all costs."
+      },
+      "example_contrast": {
+        "low_option": "Suggesting someone needs to improve their work indirectly through hints.",
+        "high_option": "Telling someone directly they need to improve their work."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who prefer direct communication and lower for those who prefer indirect communication.",
+      "subsumed_reasons": [
+        1,
+        35,
+        42
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Conflict Avoidance vs. Confrontation",
+      "low_pole": {
+        "label": "Conflict Avoidance",
+        "description": "Preferring to avoid situations that might lead to conflict or disagreement.",
+        "typical_person": "Someone who prioritizes peace and harmony over addressing issues directly."
+      },
+      "high_pole": {
+        "label": "Confrontation",
+        "description": "Being willing to engage in conflict to address issues or stand up for oneself.",
+        "typical_person": "Someone who believes in facing problems head-on rather than avoiding them."
+      },
+      "example_contrast": {
+        "low_option": "Avoiding a discussion about a sensitive topic.",
+        "high_option": "Initiating a discussion about a sensitive topic."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who prefer confrontation and lower for those who avoid conflict.",
+      "subsumed_reasons": [
+        2,
+        10,
+        15,
+        31,
+        55
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Privacy and Personal Space vs. Social Bonding",
+      "low_pole": {
+        "label": "Privacy and Personal Space",
+        "description": "Valuing personal space and privacy over social interactions.",
+        "typical_person": "Someone who prefers solitude and private time."
+      },
+      "high_pole": {
+        "label": "Social Bonding",
+        "description": "Valuing social interactions and relationships over personal space.",
+        "typical_person": "Someone who enjoys being around others and building connections."
+      },
+      "example_contrast": {
+        "low_option": "Spending time alone reading a book.",
+        "high_option": "Going out with friends to a party."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who value social bonding and lower for those who prioritize privacy.",
+      "subsumed_reasons": [
+        5,
+        12,
+        24,
+        47,
+        57
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Professional Responsibility vs. Personal Freedom",
+      "low_pole": {
+        "label": "Professional Responsibility",
+        "description": "Prioritizing professional duties and obligations over personal desires.",
+        "typical_person": "Someone who takes their job very seriously and puts work first."
+      },
+      "high_pole": {
+        "label": "Personal Freedom",
+        "description": "Prioritizing personal freedom and autonomy over professional responsibilities.",
+        "typical_person": "Someone who values personal time and flexibility over strict adherence to professional duties."
+      },
+      "example_contrast": {
+        "low_option": "Working overtime to complete a project.",
+        "high_option": "Taking a day off to relax and pursue personal interests."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who value personal freedom and lower for those who prioritize professional responsibility.",
+      "subsumed_reasons": [
+        4,
+        11,
+        16,
+        25,
+        62
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Trust and Honesty vs. Skepticism",
+      "low_pole": {
+        "label": "Skepticism",
+        "description": "Being cautious and skeptical about trusting others or believing what they say.",
+        "typical_person": "Someone who is wary of others and prefers to verify information independently."
+      },
+      "high_pole": {
+        "label": "Trust and Honesty",
+        "description": "Being open to trusting others and valuing honesty in relationships.",
+        "typical_person": "Someone who trusts easily and values transparency in interactions."
+      },
+      "example_contrast": {
+        "low_option": "Checking multiple sources before believing a news report.",
+        "high_option": "Believing a friend's story without question."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who trust easily and lower for those who are skeptical.",
+      "subsumed_reasons": [
+        6,
+        32,
+        38,
+        48,
+        67
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Financial Responsibility vs. Immediate Gratification",
+      "low_pole": {
+        "label": "Immediate Gratification",
+        "description": "Valuing immediate pleasure or satisfaction over long-term financial stability.",
+        "typical_person": "Someone who likes to spend money on things that bring instant joy."
+      },
+      "high_pole": {
+        "label": "Financial Responsibility",
+        "description": "Valuing financial prudence and planning for the future over immediate gratification.",
+        "typical_person": "Someone who saves money and plans carefully for the future."
+      },
+      "example_contrast": {
+        "low_option": "Buying an expensive item on impulse.",
+        "high_option": "Saving money for a future goal."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who value financial responsibility and lower for those who seek immediate gratification.",
+      "subsumed_reasons": [
+        7,
+        26,
+        43,
+        49,
+        60
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Cultural Traditions vs. Modernity",
+      "low_pole": {
+        "label": "Modernity",
+        "description": "Valuing modern practices and innovations over traditional cultural norms.",
+        "typical_person": "Someone who embraces new ideas and technologies."
+      },
+      "high_pole": {
+        "label": "Cultural Traditions",
+        "description": "Valuing traditional cultural practices and norms over modern changes.",
+        "typical_person": "Someone who respects and adheres to long-standing cultural traditions."
+      },
+      "example_contrast": {
+        "low_option": "Celebrating a holiday with contemporary activities.",
+        "high_option": "Following traditional rituals during a holiday."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who value cultural traditions and lower for those who embrace modernity.",
+      "subsumed_reasons": [
+        9,
+        21,
+        40,
+        50,
+        64
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Empathy and Compassion vs. Detachment",
+      "low_pole": {
+        "label": "Detachment",
+        "description": "Maintaining emotional distance from others' situations and feelings.",
+        "typical_person": "Someone who remains emotionally detached to avoid getting overwhelmed."
+      },
+      "high_pole": {
+        "label": "Empathy and Compassion",
+        "description": "Feeling deeply for others and showing compassion towards their situations.",
+        "typical_person": "Someone who feels strongly for others and often helps those in need."
+      },
+      "example_contrast": {
+        "low_option": "Not offering help to someone in distress.",
+        "high_option": "Offering support and assistance to someone in distress."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who show empathy and compassion and lower for those who remain detached.",
+      "subsumed_reasons": [
+        8,
+        17,
+        23,
+        46,
+        70
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Legal and Ethical Concerns vs. Personal Convenience",
+      "low_pole": {
+        "label": "Personal Convenience",
+        "description": "Prioritizing personal convenience and ease over legal and ethical considerations.",
+        "typical_person": "Someone who bends rules for personal benefit."
+      },
+      "high_pole": {
+        "label": "Legal and Ethical Concerns",
+        "description": "Strictly adhering to laws and ethical standards, even if it causes inconvenience.",
+        "typical_person": "Someone who follows rules and ethics rigorously."
+      },
+      "example_contrast": {
+        "low_option": "Skipping a line to get service faster.",
+        "high_option": "Waiting in line even if it takes longer."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who prioritize legal and ethical concerns and lower for those who favor personal convenience.",
+      "subsumed_reasons": [
+        14,
+        30,
+        34,
+        39,
+        69
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Mental Health Considerations vs. Social Expectations",
+      "low_pole": {
+        "label": "Social Expectations",
+        "description": "Prioritizing social expectations and norms over personal mental health.",
+        "typical_person": "Someone who conforms to societal norms even if it affects their mental health."
+      },
+      "high_pole": {
+        "label": "Mental Health Considerations",
+        "description": "Prioritizing personal mental health over social expectations and norms.",
+        "typical_person": "Someone who puts their mental health first."
+      },
+      "example_contrast": {
+        "low_option": "Attending a social event despite feeling unwell.",
+        "high_option": "Declining a social event to focus on mental health."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Score higher for those who prioritize mental health and lower for those who conform to social expectations.",
+      "subsumed_reasons": [
+        3,
+        71,
+        72,
+        73,
+        74
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        2
+      ],
+      "correlation_note": "Both dimensions involve communication styles but differ in the context of conflict.",
+      "disentanglement_suggestion": "Keep separate as they address different aspects of interpersonal interaction."
+    },
+    {
+      "dimension_ids": [
+        3,
+        4
+      ],
+      "correlation_note": "Both dimensions involve balancing personal and external demands.",
+      "disentanglement_suggestion": "Keep separate as they focus on different types of external demands (social vs. professional)."
+    },
+    {
+      "dimension_ids": [
+        5,
+        9
+      ],
+      "correlation_note": "Both dimensions involve trust and adherence to rules.",
+      "disentanglement_suggestion": "Keep separate as they focus on different types of trust (personal vs. institutional)."
+    }
+  ]
+}

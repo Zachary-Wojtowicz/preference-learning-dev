@@ -1,0 +1,1052 @@
+[
+  {
+    "pair_id": 0,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "near",
+    "cosine_distance": 0.32623
+  },
+  {
+    "pair_id": 1,
+    "option_a_id": "bad_c226148c",
+    "option_b_id": "bad_dbc68adb",
+    "distance_stratum": "near",
+    "cosine_distance": 0.946012
+  },
+  {
+    "pair_id": 2,
+    "option_a_id": "bad_c226148c",
+    "option_b_id": "goo_0837fd19",
+    "distance_stratum": "near",
+    "cosine_distance": 0.445517
+  },
+  {
+    "pair_id": 3,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "near",
+    "cosine_distance": 0.160395
+  },
+  {
+    "pair_id": 4,
+    "option_a_id": "goo_58d74933",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "near",
+    "cosine_distance": 0.973516
+  },
+  {
+    "pair_id": 5,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "near",
+    "cosine_distance": 0.981319
+  },
+  {
+    "pair_id": 6,
+    "option_a_id": "goo_0837fd19",
+    "option_b_id": "goo_10fc41e1",
+    "distance_stratum": "near",
+    "cosine_distance": 1.013473
+  },
+  {
+    "pair_id": 7,
+    "option_a_id": "bad_d6e84f51",
+    "option_b_id": "bad_dbc68adb",
+    "distance_stratum": "near",
+    "cosine_distance": 0.992416
+  },
+  {
+    "pair_id": 8,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "bad_5712dfa7",
+    "distance_stratum": "near",
+    "cosine_distance": 0.989508
+  },
+  {
+    "pair_id": 9,
+    "option_a_id": "goo_2c72c8c5",
+    "option_b_id": "goo_54549c66",
+    "distance_stratum": "near",
+    "cosine_distance": 0.912212
+  },
+  {
+    "pair_id": 10,
+    "option_a_id": "goo_2c72c8c5",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "near",
+    "cosine_distance": 1.022771
+  },
+  {
+    "pair_id": 11,
+    "option_a_id": "goo_41e7237e",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "near",
+    "cosine_distance": 1.039522
+  },
+  {
+    "pair_id": 12,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "near",
+    "cosine_distance": 0.576618
+  },
+  {
+    "pair_id": 13,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "bad_f74f83c1",
+    "distance_stratum": "near",
+    "cosine_distance": 0.457894
+  },
+  {
+    "pair_id": 14,
+    "option_a_id": "bad_f74f83c1",
+    "option_b_id": "goo_54549c66",
+    "distance_stratum": "near",
+    "cosine_distance": 0.998257
+  },
+  {
+    "pair_id": 15,
+    "option_a_id": "bad_dbc68adb",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "near",
+    "cosine_distance": 0.937933
+  },
+  {
+    "pair_id": 16,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "near",
+    "cosine_distance": 0.442886
+  },
+  {
+    "pair_id": 17,
+    "option_a_id": "goo_2c72c8c5",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "near",
+    "cosine_distance": 0.338792
+  },
+  {
+    "pair_id": 18,
+    "option_a_id": "goo_10fc41e1",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "near",
+    "cosine_distance": 0.942007
+  },
+  {
+    "pair_id": 19,
+    "option_a_id": "goo_41e7237e",
+    "option_b_id": "goo_54549c66",
+    "distance_stratum": "near",
+    "cosine_distance": 0.74013
+  },
+  {
+    "pair_id": 20,
+    "option_a_id": "goo_10fc41e1",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "near",
+    "cosine_distance": 0.921033
+  },
+  {
+    "pair_id": 21,
+    "option_a_id": "bad_dbc68adb",
+    "option_b_id": "goo_0837fd19",
+    "distance_stratum": "near",
+    "cosine_distance": 0.958316
+  },
+  {
+    "pair_id": 22,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "bad_85a0b432",
+    "distance_stratum": "near",
+    "cosine_distance": 0.958233
+  },
+  {
+    "pair_id": 23,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "bad_5712dfa7",
+    "distance_stratum": "near",
+    "cosine_distance": 0.494363
+  },
+  {
+    "pair_id": 24,
+    "option_a_id": "bad_d6e84f51",
+    "option_b_id": "bad_fd4ea412",
+    "distance_stratum": "near",
+    "cosine_distance": 1.013237
+  },
+  {
+    "pair_id": 25,
+    "option_a_id": "goo_2c72c8c5",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "near",
+    "cosine_distance": 0.994698
+  },
+  {
+    "pair_id": 26,
+    "option_a_id": "goo_0837fd19",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "near",
+    "cosine_distance": 0.923342
+  },
+  {
+    "pair_id": 27,
+    "option_a_id": "goo_0837fd19",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "near",
+    "cosine_distance": 0.408503
+  },
+  {
+    "pair_id": 28,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "bad_4499d2bd",
+    "distance_stratum": "near",
+    "cosine_distance": 1.004436
+  },
+  {
+    "pair_id": 29,
+    "option_a_id": "bad_f74f83c1",
+    "option_b_id": "goo_10fc41e1",
+    "distance_stratum": "near",
+    "cosine_distance": 0.973463
+  },
+  {
+    "pair_id": 30,
+    "option_a_id": "bad_d6e84f51",
+    "option_b_id": "bad_f74f83c1",
+    "distance_stratum": "near",
+    "cosine_distance": 1.039181
+  },
+  {
+    "pair_id": 31,
+    "option_a_id": "bad_5712dfa7",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "near",
+    "cosine_distance": 0.986
+  },
+  {
+    "pair_id": 32,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "bad_dbc68adb",
+    "distance_stratum": "near",
+    "cosine_distance": 1.044573
+  },
+  {
+    "pair_id": 33,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "goo_54549c66",
+    "distance_stratum": "near",
+    "cosine_distance": 0.590666
+  },
+  {
+    "pair_id": 34,
+    "option_a_id": "bad_c226148c",
+    "option_b_id": "goo_54549c66",
+    "distance_stratum": "near",
+    "cosine_distance": 1.013154
+  },
+  {
+    "pair_id": 35,
+    "option_a_id": "goo_0837fd19",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "near",
+    "cosine_distance": 0.880912
+  },
+  {
+    "pair_id": 36,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "bad_d6e84f51",
+    "distance_stratum": "near",
+    "cosine_distance": 0.969044
+  },
+  {
+    "pair_id": 37,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "near",
+    "cosine_distance": 0.463871
+  },
+  {
+    "pair_id": 38,
+    "option_a_id": "goo_10fc41e1",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "near",
+    "cosine_distance": 0.996075
+  },
+  {
+    "pair_id": 39,
+    "option_a_id": "bad_85a0b432",
+    "option_b_id": "bad_fd4ea412",
+    "distance_stratum": "near",
+    "cosine_distance": 0.289835
+  },
+  {
+    "pair_id": 40,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "near",
+    "cosine_distance": 0.512076
+  },
+  {
+    "pair_id": 41,
+    "option_a_id": "goo_41e7237e",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "near",
+    "cosine_distance": 0.954958
+  },
+  {
+    "pair_id": 42,
+    "option_a_id": "bad_d6e84f51",
+    "option_b_id": "goo_10fc41e1",
+    "distance_stratum": "near",
+    "cosine_distance": 0.440012
+  },
+  {
+    "pair_id": 43,
+    "option_a_id": "bad_c226148c",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "near",
+    "cosine_distance": 1.002961
+  },
+  {
+    "pair_id": 44,
+    "option_a_id": "bad_f74f83c1",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "near",
+    "cosine_distance": 0.356271
+  },
+  {
+    "pair_id": 45,
+    "option_a_id": "bad_dbc68adb",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "near",
+    "cosine_distance": 0.948074
+  },
+  {
+    "pair_id": 46,
+    "option_a_id": "bad_c226148c",
+    "option_b_id": "goo_10fc41e1",
+    "distance_stratum": "near",
+    "cosine_distance": 1.027648
+  },
+  {
+    "pair_id": 47,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "bad_fd4ea412",
+    "distance_stratum": "near",
+    "cosine_distance": 0.997091
+  },
+  {
+    "pair_id": 48,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "near",
+    "cosine_distance": 0.975518
+  },
+  {
+    "pair_id": 49,
+    "option_a_id": "bad_d6e84f51",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "near",
+    "cosine_distance": 1.042728
+  },
+  {
+    "pair_id": 50,
+    "option_a_id": "bad_fd4ea412",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.121098
+  },
+  {
+    "pair_id": 51,
+    "option_a_id": "bad_85a0b432",
+    "option_b_id": "bad_c226148c",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.147091
+  },
+  {
+    "pair_id": 52,
+    "option_a_id": "bad_d6e84f51",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.118207
+  },
+  {
+    "pair_id": 53,
+    "option_a_id": "bad_85a0b432",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.156245
+  },
+  {
+    "pair_id": 54,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "bad_d6e84f51",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.067951
+  },
+  {
+    "pair_id": 55,
+    "option_a_id": "bad_fd4ea412",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.085002
+  },
+  {
+    "pair_id": 56,
+    "option_a_id": "goo_58d74933",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.046308
+  },
+  {
+    "pair_id": 57,
+    "option_a_id": "bad_5712dfa7",
+    "option_b_id": "bad_85a0b432",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.119752
+  },
+  {
+    "pair_id": 58,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.054005
+  },
+  {
+    "pair_id": 59,
+    "option_a_id": "bad_5712dfa7",
+    "option_b_id": "bad_f74f83c1",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.103778
+  },
+  {
+    "pair_id": 60,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "bad_fd4ea412",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.070935
+  },
+  {
+    "pair_id": 61,
+    "option_a_id": "goo_10fc41e1",
+    "option_b_id": "goo_54549c66",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.124261
+  },
+  {
+    "pair_id": 62,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.063016
+  },
+  {
+    "pair_id": 63,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "bad_c226148c",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.137152
+  },
+  {
+    "pair_id": 64,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "bad_85a0b432",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.079985
+  },
+  {
+    "pair_id": 65,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "bad_17ea508f",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.086237
+  },
+  {
+    "pair_id": 66,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.071978
+  },
+  {
+    "pair_id": 67,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "bad_4499d2bd",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.112326
+  },
+  {
+    "pair_id": 68,
+    "option_a_id": "bad_c226148c",
+    "option_b_id": "bad_d6e84f51",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.049826
+  },
+  {
+    "pair_id": 69,
+    "option_a_id": "bad_f74f83c1",
+    "option_b_id": "bad_fd4ea412",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.134814
+  },
+  {
+    "pair_id": 70,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.149111
+  },
+  {
+    "pair_id": 71,
+    "option_a_id": "goo_0837fd19",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.07052
+  },
+  {
+    "pair_id": 72,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "bad_85a0b432",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.056716
+  },
+  {
+    "pair_id": 73,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.055186
+  },
+  {
+    "pair_id": 74,
+    "option_a_id": "bad_fd4ea412",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.086448
+  },
+  {
+    "pair_id": 75,
+    "option_a_id": "goo_0837fd19",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.148239
+  },
+  {
+    "pair_id": 76,
+    "option_a_id": "goo_57dd9d13",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.146216
+  },
+  {
+    "pair_id": 77,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.127022
+  },
+  {
+    "pair_id": 78,
+    "option_a_id": "bad_85a0b432",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.121465
+  },
+  {
+    "pair_id": 79,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.092739
+  },
+  {
+    "pair_id": 80,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "bad_5712dfa7",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.107712
+  },
+  {
+    "pair_id": 81,
+    "option_a_id": "bad_5712dfa7",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.154389
+  },
+  {
+    "pair_id": 82,
+    "option_a_id": "goo_10fc41e1",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.128205
+  },
+  {
+    "pair_id": 83,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "bad_85a0b432",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.096312
+  },
+  {
+    "pair_id": 84,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "goo_10fc41e1",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.047628
+  },
+  {
+    "pair_id": 85,
+    "option_a_id": "goo_41e7237e",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.057136
+  },
+  {
+    "pair_id": 86,
+    "option_a_id": "goo_10fc41e1",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.126879
+  },
+  {
+    "pair_id": 87,
+    "option_a_id": "goo_54549c66",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.144873
+  },
+  {
+    "pair_id": 88,
+    "option_a_id": "bad_d6e84f51",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.103587
+  },
+  {
+    "pair_id": 89,
+    "option_a_id": "bad_5712dfa7",
+    "option_b_id": "bad_c226148c",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.081906
+  },
+  {
+    "pair_id": 90,
+    "option_a_id": "bad_85a0b432",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.072397
+  },
+  {
+    "pair_id": 91,
+    "option_a_id": "bad_85a0b432",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.100578
+  },
+  {
+    "pair_id": 92,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "bad_c226148c",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.129506
+  },
+  {
+    "pair_id": 93,
+    "option_a_id": "bad_f74f83c1",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.094251
+  },
+  {
+    "pair_id": 94,
+    "option_a_id": "bad_dbc68adb",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.155147
+  },
+  {
+    "pair_id": 95,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.072792
+  },
+  {
+    "pair_id": 96,
+    "option_a_id": "bad_d6e84f51",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.128844
+  },
+  {
+    "pair_id": 97,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "bad_dbc68adb",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.091567
+  },
+  {
+    "pair_id": 98,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "bad_fd4ea412",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.056594
+  },
+  {
+    "pair_id": 99,
+    "option_a_id": "bad_c226148c",
+    "option_b_id": "bad_fd4ea412",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.130705
+  },
+  {
+    "pair_id": 100,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "far",
+    "cosine_distance": 1.198789
+  },
+  {
+    "pair_id": 101,
+    "option_a_id": "bad_c226148c",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "far",
+    "cosine_distance": 1.169998
+  },
+  {
+    "pair_id": 102,
+    "option_a_id": "bad_f74f83c1",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "far",
+    "cosine_distance": 1.243775
+  },
+  {
+    "pair_id": 103,
+    "option_a_id": "bad_fd4ea412",
+    "option_b_id": "goo_0837fd19",
+    "distance_stratum": "far",
+    "cosine_distance": 1.250021
+  },
+  {
+    "pair_id": 104,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "bad_f74f83c1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.185362
+  },
+  {
+    "pair_id": 105,
+    "option_a_id": "bad_85a0b432",
+    "option_b_id": "bad_d6e84f51",
+    "distance_stratum": "far",
+    "cosine_distance": 1.170573
+  },
+  {
+    "pair_id": 106,
+    "option_a_id": "bad_dbc68adb",
+    "option_b_id": "goo_54549c66",
+    "distance_stratum": "far",
+    "cosine_distance": 1.193486
+  },
+  {
+    "pair_id": 107,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "goo_0837fd19",
+    "distance_stratum": "far",
+    "cosine_distance": 1.184631
+  },
+  {
+    "pair_id": 108,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "far",
+    "cosine_distance": 1.173987
+  },
+  {
+    "pair_id": 109,
+    "option_a_id": "bad_5712dfa7",
+    "option_b_id": "bad_dbc68adb",
+    "distance_stratum": "far",
+    "cosine_distance": 1.20596
+  },
+  {
+    "pair_id": 110,
+    "option_a_id": "bad_c226148c",
+    "option_b_id": "bad_f74f83c1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.230365
+  },
+  {
+    "pair_id": 111,
+    "option_a_id": "bad_d6e84f51",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "far",
+    "cosine_distance": 1.194346
+  },
+  {
+    "pair_id": 112,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "bad_3c33dd68",
+    "distance_stratum": "far",
+    "cosine_distance": 1.214944
+  },
+  {
+    "pair_id": 113,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.240799
+  },
+  {
+    "pair_id": 114,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "bad_f74f83c1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.263566
+  },
+  {
+    "pair_id": 115,
+    "option_a_id": "bad_f74f83c1",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "far",
+    "cosine_distance": 1.215392
+  },
+  {
+    "pair_id": 116,
+    "option_a_id": "goo_58d74933",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "far",
+    "cosine_distance": 1.189242
+  },
+  {
+    "pair_id": 117,
+    "option_a_id": "goo_2c72c8c5",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "far",
+    "cosine_distance": 1.18784
+  },
+  {
+    "pair_id": 118,
+    "option_a_id": "bad_fd4ea412",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.26531
+  },
+  {
+    "pair_id": 119,
+    "option_a_id": "goo_2c72c8c5",
+    "option_b_id": "goo_91252970",
+    "distance_stratum": "far",
+    "cosine_distance": 1.233262
+  },
+  {
+    "pair_id": 120,
+    "option_a_id": "goo_0837fd19",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "far",
+    "cosine_distance": 1.213801
+  },
+  {
+    "pair_id": 121,
+    "option_a_id": "bad_f74f83c1",
+    "option_b_id": "goo_0837fd19",
+    "distance_stratum": "far",
+    "cosine_distance": 1.192699
+  },
+  {
+    "pair_id": 122,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "bad_f74f83c1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.163313
+  },
+  {
+    "pair_id": 123,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "goo_54549c66",
+    "distance_stratum": "far",
+    "cosine_distance": 1.210503
+  },
+  {
+    "pair_id": 124,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "far",
+    "cosine_distance": 1.250626
+  },
+  {
+    "pair_id": 125,
+    "option_a_id": "goo_57dd9d13",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "far",
+    "cosine_distance": 1.243936
+  },
+  {
+    "pair_id": 126,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "bad_c226148c",
+    "distance_stratum": "far",
+    "cosine_distance": 1.180359
+  },
+  {
+    "pair_id": 127,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "far",
+    "cosine_distance": 1.292777
+  },
+  {
+    "pair_id": 128,
+    "option_a_id": "bad_5712dfa7",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "far",
+    "cosine_distance": 1.163217
+  },
+  {
+    "pair_id": 129,
+    "option_a_id": "goo_91252970",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "far",
+    "cosine_distance": 1.221946
+  },
+  {
+    "pair_id": 130,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "goo_2c72c8c5",
+    "distance_stratum": "far",
+    "cosine_distance": 1.324543
+  },
+  {
+    "pair_id": 131,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.216848
+  },
+  {
+    "pair_id": 132,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "far",
+    "cosine_distance": 1.201106
+  },
+  {
+    "pair_id": 133,
+    "option_a_id": "bad_f74f83c1",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "far",
+    "cosine_distance": 1.25158
+  },
+  {
+    "pair_id": 134,
+    "option_a_id": "bad_fd4ea412",
+    "option_b_id": "goo_10fc41e1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.190862
+  },
+  {
+    "pair_id": 135,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "far",
+    "cosine_distance": 1.281608
+  },
+  {
+    "pair_id": 136,
+    "option_a_id": "bad_5712dfa7",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "far",
+    "cosine_distance": 1.261285
+  },
+  {
+    "pair_id": 137,
+    "option_a_id": "goo_57dd9d13",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "far",
+    "cosine_distance": 1.24822
+  },
+  {
+    "pair_id": 138,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "goo_0837fd19",
+    "distance_stratum": "far",
+    "cosine_distance": 1.228351
+  },
+  {
+    "pair_id": 139,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "far",
+    "cosine_distance": 1.195163
+  },
+  {
+    "pair_id": 140,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "goo_def1fa89",
+    "distance_stratum": "far",
+    "cosine_distance": 1.306718
+  },
+  {
+    "pair_id": 141,
+    "option_a_id": "bad_17ea508f",
+    "option_b_id": "bad_4499d2bd",
+    "distance_stratum": "far",
+    "cosine_distance": 1.226342
+  },
+  {
+    "pair_id": 142,
+    "option_a_id": "bad_4499d2bd",
+    "option_b_id": "goo_41e7237e",
+    "distance_stratum": "far",
+    "cosine_distance": 1.231965
+  },
+  {
+    "pair_id": 143,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "goo_10fc41e1",
+    "distance_stratum": "far",
+    "cosine_distance": 1.188209
+  },
+  {
+    "pair_id": 144,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "far",
+    "cosine_distance": 1.260473
+  },
+  {
+    "pair_id": 145,
+    "option_a_id": "bad_0c7eb2bc",
+    "option_b_id": "bad_5712dfa7",
+    "distance_stratum": "far",
+    "cosine_distance": 1.270157
+  },
+  {
+    "pair_id": 146,
+    "option_a_id": "bad_85a0b432",
+    "option_b_id": "goo_57dd9d13",
+    "distance_stratum": "far",
+    "cosine_distance": 1.15745
+  },
+  {
+    "pair_id": 147,
+    "option_a_id": "goo_54549c66",
+    "option_b_id": "goo_58d74933",
+    "distance_stratum": "far",
+    "cosine_distance": 1.221797
+  },
+  {
+    "pair_id": 148,
+    "option_a_id": "bad_0e31c44b",
+    "option_b_id": "goo_0837fd19",
+    "distance_stratum": "far",
+    "cosine_distance": 1.181865
+  },
+  {
+    "pair_id": 149,
+    "option_a_id": "bad_3c33dd68",
+    "option_b_id": "goo_f9616540",
+    "distance_stratum": "far",
+    "cosine_distance": 1.252325
+  }
+]

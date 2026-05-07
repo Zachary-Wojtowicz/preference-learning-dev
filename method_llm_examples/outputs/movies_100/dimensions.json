@@ -1,0 +1,660 @@
+{
+  "domain": "Movie Preferences",
+  "choice_context": "Selection between competing movie options based on expressed preference themes",
+  "reasoning": "Identified unipolar features by clustering thematically related themes while maintaining distinct dimensions. Prioritized features that subsume high-frequency themes and capture meaningful variation in viewer preferences.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Emotional Depth",
+      "low_pole": {
+        "label": "Emotionally Neutral",
+        "description": "Minimal character development or emotional engagement",
+        "typical_person": "Viewers prioritizing plot over character arcs"
+      },
+      "high_pole": {
+        "label": "Highly Emotional",
+        "description": "Rich character development and emotional resonance",
+        "typical_person": "Viewers seeking transformative storytelling"
+      },
+      "example_contrast": {
+        "low_option": "Fast-paced action thriller",
+        "high_option": "Character-driven drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on presence of complex emotional character arcs and thematic depth",
+      "subsumed_reasons": [
+        1,
+        18
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Action Intensity",
+      "low_pole": {
+        "label": "Low Action",
+        "description": "Minimal physical conflict or kinetic sequences",
+        "typical_person": "Viewers preferring dialogue-driven narratives"
+      },
+      "high_pole": {
+        "label": "High-Intensity Action",
+        "description": "Frequent, fast-paced physical conflict sequences",
+        "typical_person": "Viewers seeking adrenaline-driven entertainment"
+      },
+      "example_contrast": {
+        "low_option": "Political drama",
+        "high_option": "Explosive action blockbuster"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on frequency and kinetic energy of action sequences",
+      "subsumed_reasons": [
+        2,
+        8,
+        19,
+        21
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Humor Intensity",
+      "low_pole": {
+        "label": "Not Humorous",
+        "description": "Minimal comedic elements or lighthearted moments",
+        "typical_person": "Viewers avoiding slapstick or situational comedy"
+      },
+      "high_pole": {
+        "label": "Very Humorous",
+        "description": "Prominent comedic elements and lighthearted tone",
+        "typical_person": "Viewers seeking entertainment through laughter"
+      },
+      "example_contrast": {
+        "low_option": "Dramatic war film",
+        "high_option": "Comedy ensemble film"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on presence and prominence of comedic elements",
+      "subsumed_reasons": [
+        3,
+        12,
+        31,
+        35
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Historical Authenticity",
+      "low_pole": {
+        "label": "Modernized",
+        "description": "Contemporary reinterpretations or loose historical references",
+        "typical_person": "Viewers prioritizing entertainment over accuracy"
+      },
+      "high_pole": {
+        "label": "Highly Authentic",
+        "description": "Detailed period accuracy in setting, language, and customs",
+        "typical_person": "History enthusiasts and detail-oriented viewers"
+      },
+      "example_contrast": {
+        "low_option": "Anachronistic period comedy",
+        "high_option": "Historical epic with meticulous research"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on period detail accuracy and commitment",
+      "subsumed_reasons": [
+        4
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Moral Complexity",
+      "low_pole": {
+        "label": "Clear Morality",
+        "description": "Black-and-white ethical frameworks and character roles",
+        "typical_person": "Viewers preferring straightforward narratives"
+      },
+      "high_pole": {
+        "label": "Ambiguous Morality",
+        "description": "Gray-area ethical dilemmas and morally complex characters",
+        "typical_person": "Viewers appreciating nuanced character development"
+      },
+      "example_contrast": {
+        "low_option": "Traditional hero's journey film",
+        "high_option": "Antihero-driven psychological drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on presence of ethical ambiguity in characters/story",
+      "subsumed_reasons": [
+        5,
+        25
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Suspense/Atmosphere",
+      "low_pole": {
+        "label": "Low Tension",
+        "description": "Minimal suspenseful moments or atmospheric build-up",
+        "typical_person": "Viewers avoiding anxiety-inducing content"
+      },
+      "high_pole": {
+        "label": "Highly Suspenseful",
+        "description": "Pervasive tension, atmosphere, and anticipation",
+        "typical_person": "Viewers seeking immersive, edge-of-seat experiences"
+      },
+      "example_contrast": {
+        "low_option": "Light-hearted comedy",
+        "high_option": "Psychological thriller"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on sustained tension and atmospheric quality",
+      "subsumed_reasons": [
+        6,
+        15,
+        34
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Family Focus",
+      "low_pole": {
+        "label": "Non-Family",
+        "description": "Minimal intergenerational relationships or domestic dynamics",
+        "typical_person": "Viewers avoiding family-centric narratives"
+      },
+      "high_pole": {
+        "label": "Strong Family Focus",
+        "description": "Central intergenerational relationships and domestic dynamics",
+        "typical_person": "Viewers seeking relatable family stories"
+      },
+      "example_contrast": {
+        "low_option": "Solo action hero film",
+        "high_option": "Multi-generational drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of family relationships",
+      "subsumed_reasons": [
+        7,
+        12
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Sci-Fi/Fantasy Worldbuilding",
+      "low_pole": {
+        "label": "Minimal Worldbuilding",
+        "description": "Basic or contemporary setting with few speculative elements",
+        "typical_person": "Viewers preferring grounded narratives"
+      },
+      "high_pole": {
+        "label": "Rich Worldbuilding",
+        "description": "Detailed speculative worlds with unique rules and systems",
+        "typical_person": "Viewers seeking immersive imaginative experiences"
+      },
+      "example_contrast": {
+        "low_option": "Modern-day drama",
+        "high_option": "Epic space opera"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on depth of speculative world construction",
+      "subsumed_reasons": [
+        9,
+        23
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Political Intrigue",
+      "low_pole": {
+        "label": "Low Stakes",
+        "description": "Minimal political maneuvering or power dynamics",
+        "typical_person": "Viewers avoiding conspiracy narratives"
+      },
+      "high_pole": {
+        "label": "High Stakes Politics",
+        "description": "Centralized power struggles and geopolitical maneuvering",
+        "typical_person": "Viewers appreciating strategic narratives"
+      },
+      "example_contrast": {
+        "low_option": "Romantic comedy",
+        "high_option": "Political thriller"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of political power dynamics",
+      "subsumed_reasons": [
+        11,
+        32
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Satirical Edge",
+      "low_pole": {
+        "label": "Straightforward",
+        "description": "Minimal irony, parody, or social commentary",
+        "typical_person": "Viewers preferring literal narratives"
+      },
+      "high_pole": {
+        "label": "Highly Satirical",
+        "description": "Prominent irony, parody, and social critique",
+        "typical_person": "Viewers appreciating irreverent commentary"
+      },
+      "example_contrast": {
+        "low_option": "Traditional drama",
+        "high_option": "Dark comedy satire"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on presence of ironic or critical commentary",
+      "subsumed_reasons": [
+        10
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Survival/Stress Scenarios",
+      "low_pole": {
+        "label": "Low Stress",
+        "description": "Minimal life-threatening situations or survival challenges",
+        "typical_person": "Viewers avoiding high-pressure narratives"
+      },
+      "high_pole": {
+        "label": "High-Stress Survival",
+        "description": "Centralized life-threatening challenges and survival stakes",
+        "typical_person": "Viewers seeking intense survival narratives"
+      },
+      "example_contrast": {
+        "low_option": "Romantic comedy",
+        "high_option": "Isolation survival thriller"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of survival challenges",
+      "subsumed_reasons": [
+        21,
+        24
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Visual Spectacle",
+      "low_pole": {
+        "label": "Minimal Visuals",
+        "description": "Straightforward cinematography with few special effects",
+        "typical_person": "Viewers prioritizing story over visuals"
+      },
+      "high_pole": {
+        "label": "High Visual Impact",
+        "description": "Immersive cinematography and prominent special effects",
+        "typical_person": "Viewers appreciating visual artistry"
+      },
+      "example_contrast": {
+        "low_option": "Dialogue-driven drama",
+        "high_option": "CGI-heavy fantasy epic"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on visual creativity and technical execution",
+      "subsumed_reasons": [
+        22
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Coming-of-Age Focus",
+      "low_pole": {
+        "label": "Non-Coming-of-Age",
+        "description": "Minimal focus on personal growth or youth development",
+        "typical_person": "Viewers avoiding adolescent narratives"
+      },
+      "high_pole": {
+        "label": "Strong Coming-of-Age",
+        "description": "Centralized personal growth and youth development arcs",
+        "typical_person": "Viewers seeking formative life narratives"
+      },
+      "example_contrast": {
+        "low_option": "Action thriller",
+        "high_option": "Youth-driven drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of personal growth narratives",
+      "subsumed_reasons": [
+        17,
+        27
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Nostalgic Aesthetics",
+      "low_pole": {
+        "label": "Modernized",
+        "description": "Contemporary presentation with minimal retro elements",
+        "typical_person": "Viewers avoiding period-specific references"
+      },
+      "high_pole": {
+        "label": "Highly Nostalgic",
+        "description": "Prominent retro aesthetics and period-specific references",
+        "typical_person": "Viewers appreciating nostalgic callbacks"
+      },
+      "example_contrast": {
+        "low_option": "Modern superhero film",
+        "high_option": "Period-specific holiday comedy"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on presence of retro visual/textual elements",
+      "subsumed_reasons": [
+        20,
+        38
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Ensemble Cast Dynamics",
+      "low_pole": {
+        "label": "Singular Focus",
+        "description": "Minimal inter-character relationships or group dynamics",
+        "typical_person": "Viewers preferring linear character arcs"
+      },
+      "high_pole": {
+        "label": "Strong Ensemble",
+        "description": "Centralized inter-character relationships and group dynamics",
+        "typical_person": "Viewers appreciating interconnected narratives"
+      },
+      "example_contrast": {
+        "low_option": "Solo action hero film",
+        "high_option": "Multi-character ensemble drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of group dynamics",
+      "subsumed_reasons": [
+        13,
+        16
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Social Justice Themes",
+      "low_pole": {
+        "label": "Neutral Stance",
+        "description": "Minimal exploration of social equity or justice issues",
+        "typical_person": "Viewers avoiding issue-driven narratives"
+      },
+      "high_pole": {
+        "label": "Strong Social Justice",
+        "description": "Centralized exploration of equity, justice, and systemic issues",
+        "typical_person": "Viewers seeking socially conscious content"
+      },
+      "example_contrast": {
+        "low_option": "Action-comedy",
+        "high_option": "Documentary-style social drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of social justice narratives",
+      "subsumed_reasons": [
+        14
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Cultural Authenticity",
+      "low_pole": {
+        "label": "Generic Setting",
+        "description": "Minimal cultural specificity or international context",
+        "typical_person": "Viewers preferring universal narratives"
+      },
+      "high_pole": {
+        "label": "High Cultural Specificity",
+        "description": "Detailed cultural context and international authenticity",
+        "typical_person": "Viewers appreciating global perspectives"
+      },
+      "example_contrast": {
+        "low_option": "Universal coming-of-age story",
+        "high_option": "Culturally specific international drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on cultural specificity and authenticity",
+      "subsumed_reasons": [
+        30
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Psychological Depth",
+      "low_pole": {
+        "label": "Surface-Level",
+        "description": "Minimal exploration of mental states or trauma",
+        "typical_person": "Viewers avoiding introspective content"
+      },
+      "high_pole": {
+        "label": "High Psychological Depth",
+        "description": "Centralized exploration of mental states, trauma, and cognition",
+        "typical_person": "Viewers appreciating psychological complexity"
+      },
+      "example_contrast": {
+        "low_option": "Light-hearted comedy",
+        "high_option": "Psychological character study"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on exploration of mental states and trauma",
+      "subsumed_reasons": [
+        29
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Adventure Scope",
+      "low_pole": {
+        "label": "Local Scope",
+        "description": "Minimal exploration or journey-based elements",
+        "typical_person": "Viewers preferring contained narratives"
+      },
+      "high_pole": {
+        "label": "Grand Adventure",
+        "description": "Epic journeys, exploration, and expansive settings",
+        "typical_person": "Viewers seeking expansive adventure narratives"
+      },
+      "example_contrast": {
+        "low_option": "Domestic drama",
+        "high_option": "Global adventure epic"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on scale of exploration and journey elements",
+      "subsumed_reasons": [
+        36
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Musical Integration",
+      "low_pole": {
+        "label": "Minimal Music",
+        "description": "Few or no musical elements or performance scenes",
+        "typical_person": "Viewers avoiding musical content"
+      },
+      "high_pole": {
+        "label": "Strong Musical Elements",
+        "description": "Centralized musical performances and song integration",
+        "typical_person": "Viewers appreciating musical storytelling"
+      },
+      "example_contrast": {
+        "low_option": "Dialogue-driven drama",
+        "high_option": "Musical comedy"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of musical elements",
+      "subsumed_reasons": [
+        26,
+        39
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Time-Loop Mechanics",
+      "low_pole": {
+        "label": "Linear Narrative",
+        "description": "Traditional chronological storytelling without temporal constraints",
+        "typical_person": "Viewers avoiding structural experimentation"
+      },
+      "high_pole": {
+        "label": "Time-Loop Structure",
+        "description": "Centralized temporal constraints and cyclical narrative mechanics",
+        "typical_person": "Viewers appreciating structural innovation"
+      },
+      "example_contrast": {
+        "low_option": "Standard drama",
+        "high_option": "Time-loop thriller"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on presence of temporal constraints",
+      "subsumed_reasons": [
+        40
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Romantic Subplots",
+      "low_pole": {
+        "label": "No Romance",
+        "description": "Minimal romantic relationships or emotional subplots",
+        "typical_person": "Viewers avoiding love stories"
+      },
+      "high_pole": {
+        "label": "Strong Romantic Elements",
+        "description": "Centralized romantic relationships and emotional subplots",
+        "typical_person": "Viewers appreciating love story narratives"
+      },
+      "example_contrast": {
+        "low_option": "Action thriller",
+        "high_option": "Romantic drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of romantic relationships",
+      "subsumed_reasons": [
+        37
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Underdog Arcs",
+      "low_pole": {
+        "label": "Established Power",
+        "description": "Minimal focus on rebellion or underdog narratives",
+        "typical_person": "Viewers avoiding struggle-based stories"
+      },
+      "high_pole": {
+        "label": "Strong Underdog Focus",
+        "description": "Centralized rebellion, struggle, and triumph against odds",
+        "typical_person": "Viewers appreciating inspirational arcs"
+      },
+      "example_contrast": {
+        "low_option": "Established hero narrative",
+        "high_option": "Underdog sports drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of underdog/rebellion themes",
+      "subsumed_reasons": [
+        28
+      ]
+    },
+    {
+      "id": 24,
+      "name": "War/Military Focus",
+      "low_pole": {
+        "label": "Non-War Context",
+        "description": "Minimal military conflict or war-related themes",
+        "typical_person": "Viewers avoiding combat narratives"
+      },
+      "high_pole": {
+        "label": "Strong War Focus",
+        "description": "Centralized military conflict and war-related themes",
+        "typical_person": "Viewers appreciating war narratives"
+      },
+      "example_contrast": {
+        "low_option": "Romantic comedy",
+        "high_option": "War documentary-style drama"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on prominence of war/military themes",
+      "subsumed_reasons": [
+        24
+      ]
+    },
+    {
+      "id": 25,
+      "name": "Family-Friendly Content",
+      "low_pole": {
+        "label": "Adult-Oriented",
+        "description": "Minimal consideration for younger audiences or family themes",
+        "typical_person": "Viewers avoiding content for children"
+      },
+      "high_pole": {
+        "label": "Strong Family-Friendly",
+        "description": "Explicitly designed for family audiences with appropriate content",
+        "typical_person": "Viewers seeking content for all ages"
+      },
+      "example_contrast": {
+        "low_option": "Gritty crime drama",
+        "high_option": "Animated family comedy"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on explicit family-friendly design",
+      "subsumed_reasons": [
+        12,
+        33
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        5
+      ],
+      "correlation_note": "Both relate to character depth but focus on different aspects (emotional vs. moral)",
+      "resolution": "Maintained as separate dimensions since they capture distinct facets of character development"
+    },
+    {
+      "dimension_ids": [
+        2,
+        11
+      ],
+      "correlation_note": "Both involve high-stakes scenarios but differ in focus (action vs. survival)",
+      "resolution": "Maintained as separate dimensions since they capture distinct types of tension"
+    },
+    {
+      "dimension_ids": [
+        3,
+        10
+      ],
+      "correlation_note": "Both relate to humor but differ in tone (general vs. satirical)",
+      "resolution": "Maintained as separate dimensions since they capture distinct humor styles"
+    },
+    {
+      "dimension_ids": [
+        7,
+        25
+      ],
+      "correlation_note": "Both relate to family themes but differ in focus (dynamics vs. content rating)",
+      "resolution": "Maintained as separate dimensions since they capture distinct family-related aspects"
+    }
+  ]
+}

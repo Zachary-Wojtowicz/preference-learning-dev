@@ -1,0 +1,563 @@
+{
+  "domain": "Human decision-making in social and personal contexts",
+  "choice_context": "Preferences expressed when choosing between actions in interpersonal, ethical, and lifestyle scenarios",
+  "reasoning": "The 20 most important unipolar preference features were selected based on frequency, coherence, and coverage of the listed themes. Each feature represents a single quality that can vary in intensity and is relevant to how people make choices. Dimensions were designed to be distinct, unipolar, and preference-relevant, with each subsuming multiple related themes.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Autonomy",
+      "low_pole": {
+        "label": "Low Autonomy",
+        "description": "Actions that involve dependence on others or external control",
+        "typical_person": "Someone who prefers guidance or group decision-making"
+      },
+      "high_pole": {
+        "label": "High Autonomy",
+        "description": "Actions that emphasize independence, self-direction, and personal freedom",
+        "typical_person": "Someone who values self-reliance and personal agency"
+      },
+      "example_contrast": {
+        "low_option": "Following a strict group protocol",
+        "high_option": "Making a solo decision without consulting others"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes independence and self-direction (0 = no autonomy, 5 = full autonomy)",
+      "subsumed_reasons": [
+        1,
+        2,
+        3,
+        23,
+        25,
+        50
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Emotional Authenticity",
+      "low_pole": {
+        "label": "Low Authenticity",
+        "description": "Actions that are emotionally guarded, superficial, or inauthentic",
+        "typical_person": "Someone who avoids vulnerability or emotional expression"
+      },
+      "high_pole": {
+        "label": "High Authenticity",
+        "description": "Actions that emphasize emotional honesty, vulnerability, and genuine expression",
+        "typical_person": "Someone who values emotional transparency and depth"
+      },
+      "example_contrast": {
+        "low_option": "Hiding true feelings to avoid conflict",
+        "high_option": "Expressing true emotions openly and honestly"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes emotional honesty and vulnerability (0 = no authenticity, 5 = very authentic)",
+      "subsumed_reasons": [
+        3,
+        4,
+        32,
+        56
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Social Harmony",
+      "low_pole": {
+        "label": "Low Harmony",
+        "description": "Actions that may disrupt group cohesion or cause conflict",
+        "typical_person": "Someone who prioritizes individual expression over group unity"
+      },
+      "high_pole": {
+        "label": "High Harmony",
+        "description": "Actions that promote group cohesion, peace, and mutual understanding",
+        "typical_person": "Someone who values maintaining social peace and unity"
+      },
+      "example_contrast": {
+        "low_option": "Speaking out against a group norm",
+        "high_option": "Agreeing with the group to maintain peace"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action promotes group cohesion and peace (0 = disruptive, 5 = very harmonious)",
+      "subsumed_reasons": [
+        5,
+        24,
+        26,
+        42
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Fairness",
+      "low_pole": {
+        "label": "Low Fairness",
+        "description": "Actions that may be seen as unjust, biased, or unfair",
+        "typical_person": "Someone who prioritizes personal gain over fairness"
+      },
+      "high_pole": {
+        "label": "High Fairness",
+        "description": "Actions that emphasize justice, equality, and ethical reciprocity",
+        "typical_person": "Someone who values fairness and accountability"
+      },
+      "example_contrast": {
+        "low_option": "Taking advantage of a situation for personal gain",
+        "high_option": "Ensuring everyone is treated equally and justly"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes justice and ethical reciprocity (0 = unfair, 5 = very fair)",
+      "subsumed_reasons": [
+        7,
+        17,
+        22,
+        45,
+        49
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Privacy",
+      "low_pole": {
+        "label": "Low Privacy",
+        "description": "Actions that involve sharing personal information or being exposed",
+        "typical_person": "Someone who is comfortable with public exposure"
+      },
+      "high_pole": {
+        "label": "High Privacy",
+        "description": "Actions that emphasize personal boundaries, discretion, and confidentiality",
+        "typical_person": "Someone who values personal space and discretion"
+      },
+      "example_contrast": {
+        "low_option": "Sharing personal details publicly",
+        "high_option": "Keeping personal information private"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes personal boundaries and discretion (0 = no privacy, 5 = very private)",
+      "subsumed_reasons": [
+        8,
+        25,
+        50
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Directness",
+      "low_pole": {
+        "label": "Low Directness",
+        "description": "Actions that are indirect, vague, or avoid confrontation",
+        "typical_person": "Someone who prefers to avoid conflict or be diplomatic"
+      },
+      "high_pole": {
+        "label": "High Directness",
+        "description": "Actions that emphasize clarity, honesty, and straightforward communication",
+        "typical_person": "Someone who values transparency and clear communication"
+      },
+      "example_contrast": {
+        "low_option": "Hinting at a problem without addressing it directly",
+        "high_option": "Addressing the issue clearly and directly"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes clarity and direct communication (0 = indirect, 5 = very direct)",
+      "subsumed_reasons": [
+        6,
+        9,
+        12
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Action Intensity",
+      "low_pole": {
+        "label": "Low Intensity",
+        "description": "Actions that are slow, deliberate, or low-effort",
+        "typical_person": "Someone who prefers to take their time or avoid pressure"
+      },
+      "high_pole": {
+        "label": "High Intensity",
+        "description": "Actions that are fast, decisive, and high-effort",
+        "typical_person": "Someone who prefers quick decisions and immediate action"
+      },
+      "example_contrast": {
+        "low_option": "Taking time to consider all options",
+        "high_option": "Making a quick, decisive move"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes speed and decisiveness (0 = slow, 5 = very fast)",
+      "subsumed_reasons": [
+        9,
+        12,
+        18,
+        19,
+        29,
+        34,
+        39,
+        48
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Emotional Connection",
+      "low_pole": {
+        "label": "Low Connection",
+        "description": "Actions that are emotionally detached or impersonal",
+        "typical_person": "Someone who prefers minimal emotional involvement"
+      },
+      "high_pole": {
+        "label": "High Connection",
+        "description": "Actions that emphasize emotional closeness, care, and relational depth",
+        "typical_person": "Someone who values deep emotional bonds"
+      },
+      "example_contrast": {
+        "low_option": "Interacting with someone in a purely transactional way",
+        "high_option": "Spending time to build a meaningful relationship"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes emotional closeness and care (0 = no connection, 5 = very connected)",
+      "subsumed_reasons": [
+        10,
+        11,
+        33,
+        36,
+        52
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Practicality",
+      "low_pole": {
+        "label": "Low Practicality",
+        "description": "Actions that are inefficient, impractical, or overly complex",
+        "typical_person": "Someone who prioritizes creativity or ideals over efficiency"
+      },
+      "high_pole": {
+        "label": "High Practicality",
+        "description": "Actions that emphasize efficiency, simplicity, and real-world effectiveness",
+        "typical_person": "Someone who values getting things done efficiently"
+      },
+      "example_contrast": {
+        "low_option": "Pursuing a complex, idealistic solution",
+        "high_option": "Choosing the simplest, most effective solution"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes efficiency and real-world effectiveness (0 = impractical, 5 = very practical)",
+      "subsumed_reasons": [
+        15,
+        16,
+        41,
+        46,
+        53
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Humor",
+      "low_pole": {
+        "label": "Low Humor",
+        "description": "Actions that are serious, formal, or humorless",
+        "typical_person": "Someone who prefers serious or respectful interactions"
+      },
+      "high_pole": {
+        "label": "High Humor",
+        "description": "Actions that emphasize wit, playfulness, and lightheartedness",
+        "typical_person": "Someone who values fun and irreverent expression"
+      },
+      "example_contrast": {
+        "low_option": "Taking a situation very seriously",
+        "high_option": "Making a joke or light-hearted comment"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes humor and lightheartedness (0 = no humor, 5 = very humorous)",
+      "subsumed_reasons": [
+        18,
+        40,
+        41,
+        51
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Spontaneity",
+      "low_pole": {
+        "label": "Low Spontaneity",
+        "description": "Actions that are planned, structured, or routine-based",
+        "typical_person": "Someone who prefers predictability and control"
+      },
+      "high_pole": {
+        "label": "High Spontaneity",
+        "description": "Actions that emphasize novelty, surprise, and living in the moment",
+        "typical_person": "Someone who values unpredictability and adventure"
+      },
+      "example_contrast": {
+        "low_option": "Following a strict schedule",
+        "high_option": "Going with the flow and trying something new"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes novelty and living in the moment (0 = no spontaneity, 5 = very spontaneous)",
+      "subsumed_reasons": [
+        19,
+        29,
+        34
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Creativity",
+      "low_pole": {
+        "label": "Low Creativity",
+        "description": "Actions that are conventional, formulaic, or unoriginal",
+        "typical_person": "Someone who prefers standard or predictable approaches"
+      },
+      "high_pole": {
+        "label": "High Creativity",
+        "description": "Actions that emphasize originality, self-expression, and artistic flair",
+        "typical_person": "Someone who values innovation and self-expression"
+      },
+      "example_contrast": {
+        "low_option": "Following a standard procedure",
+        "high_option": "Coming up with a unique, creative solution"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes originality and self-expression (0 = no creativity, 5 = very creative)",
+      "subsumed_reasons": [
+        27,
+        30,
+        34,
+        56,
+        60
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Conflict Avoidance",
+      "low_pole": {
+        "label": "Low Avoidance",
+        "description": "Actions that are willing to confront or engage in conflict",
+        "typical_person": "Someone who is comfortable with confrontation or debate"
+      },
+      "high_pole": {
+        "label": "High Avoidance",
+        "description": "Actions that emphasize avoiding conflict, confrontation, or emotional tension",
+        "typical_person": "Someone who prefers peace and emotional restraint"
+      },
+      "example_contrast": {
+        "low_option": "Addressing a disagreement directly",
+        "high_option": "Avoiding the topic to keep the peace"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes avoiding conflict and emotional tension (0 = confrontational, 5 = very conflict-avoidant)",
+      "subsumed_reasons": [
+        24,
+        26,
+        42
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Digital Engagement",
+      "low_pole": {
+        "label": "Low Engagement",
+        "description": "Actions that are offline, face-to-face, or minimal digital interaction",
+        "typical_person": "Someone who prefers in-person interactions"
+      },
+      "high_pole": {
+        "label": "High Engagement",
+        "description": "Actions that emphasize online interaction, digital tools, or virtual presence",
+        "typical_person": "Someone who values digital connectivity and online presence"
+      },
+      "example_contrast": {
+        "low_option": "Meeting in person for a conversation",
+        "high_option": "Using social media to communicate"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes digital interaction and online presence (0 = no digital, 5 = very digital)",
+      "subsumed_reasons": [
+        21
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Emotional Catharsis",
+      "low_pole": {
+        "label": "Low Catharsis",
+        "description": "Actions that are emotionally restrained or subdued",
+        "typical_person": "Someone who avoids intense emotional expression"
+      },
+      "high_pole": {
+        "label": "High Catharsis",
+        "description": "Actions that emphasize emotional release, drama, and expressive intensity",
+        "typical_person": "Someone who values emotional expression and dramatic release"
+      },
+      "example_contrast": {
+        "low_option": "Keeping emotions under control",
+        "high_option": "Expressing emotions dramatically and openly"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes emotional release and expressive intensity (0 = no catharsis, 5 = very cathartic)",
+      "subsumed_reasons": [
+        14
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Tradition",
+      "low_pole": {
+        "label": "Low Tradition",
+        "description": "Actions that are modern, innovative, or non-traditional",
+        "typical_person": "Someone who values progress and change"
+      },
+      "high_pole": {
+        "label": "High Tradition",
+        "description": "Actions that emphasize cultural heritage, historical continuity, and established norms",
+        "typical_person": "Someone who values tradition and cultural roots"
+      },
+      "example_contrast": {
+        "low_option": "Trying a new, unconventional approach",
+        "high_option": "Following a long-standing cultural practice"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes cultural heritage and historical continuity (0 = no tradition, 5 = very traditional)",
+      "subsumed_reasons": [
+        39
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Structure",
+      "low_pole": {
+        "label": "Low Structure",
+        "description": "Actions that are flexible, unstructured, or spontaneous",
+        "typical_person": "Someone who prefers freedom and flexibility"
+      },
+      "high_pole": {
+        "label": "High Structure",
+        "description": "Actions that emphasize rules, routines, and clear expectations",
+        "typical_person": "Someone who values order and predictability"
+      },
+      "example_contrast": {
+        "low_option": "Going with the flow and making things up as you go",
+        "high_option": "Following a strict schedule or plan"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes rules and routines (0 = no structure, 5 = very structured)",
+      "subsumed_reasons": [
+        31,
+        35,
+        55
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Subversion",
+      "low_pole": {
+        "label": "Low Subversion",
+        "description": "Actions that conform to norms, rules, or expectations",
+        "typical_person": "Someone who values stability and conformity"
+      },
+      "high_pole": {
+        "label": "High Subversion",
+        "description": "Actions that challenge norms, rules, or expectations in a playful or serious way",
+        "typical_person": "Someone who values challenging the status quo"
+      },
+      "example_contrast": {
+        "low_option": "Following the rules without question",
+        "high_option": "Breaking the rules to make a point"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action challenges norms or expectations (0 = no subversion, 5 = very subversive)",
+      "subsumed_reasons": [
+        37
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Comfort",
+      "low_pole": {
+        "label": "Low Comfort",
+        "description": "Actions that are uncomfortable, challenging, or stressful",
+        "typical_person": "Someone who is willing to tolerate discomfort for growth or purpose"
+      },
+      "high_pole": {
+        "label": "High Comfort",
+        "description": "Actions that emphasize ease, relaxation, and well-being",
+        "typical_person": "Someone who values comfort and personal well-being"
+      },
+      "example_contrast": {
+        "low_option": "Taking on a difficult or stressful task",
+        "high_option": "Choosing the most comfortable and relaxing option"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes ease and well-being (0 = uncomfortable, 5 = very comfortable)",
+      "subsumed_reasons": [
+        33,
+        37,
+        43,
+        47
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Collaboration",
+      "low_pole": {
+        "label": "Low Collaboration",
+        "description": "Actions that are individualistic or self-focused",
+        "typical_person": "Someone who prefers to work alone or independently"
+      },
+      "high_pole": {
+        "label": "High Collaboration",
+        "description": "Actions that emphasize teamwork, shared effort, and mutual support",
+        "typical_person": "Someone who values working with others and shared goals"
+      },
+      "example_contrast": {
+        "low_option": "Working alone without consulting others",
+        "high_option": "Working in a team to achieve a shared goal"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on how much the action emphasizes teamwork and shared effort (0 = no collaboration, 5 = very collaborative)",
+      "subsumed_reasons": [
+        44
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        5
+      ],
+      "correlation_note": "Autonomy and Privacy may both relate to personal boundaries, but they are distinct in that Autonomy is about decision-making freedom, while Privacy is about personal space and discretion.",
+      "resolution": "Kept as separate dimensions because they represent different aspects of personal control and boundaries."
+    },
+    {
+      "dimension_ids": [
+        6,
+        12
+      ],
+      "correlation_note": "Directness and Spontaneity may both relate to communication style, but they are distinct in that Directness is about clarity and honesty, while Spontaneity is about unpredictability and living in the moment.",
+      "resolution": "Kept as separate dimensions because they represent different aspects of communication and decision-making."
+    },
+    {
+      "dimension_ids": [
+        8,
+        19
+      ],
+      "correlation_note": "Emotional Connection and Comfort may both relate to personal well-being, but they are distinct in that Emotional Connection is about relational depth, while Comfort is about ease and relaxation.",
+      "resolution": "Kept as separate dimensions because they represent different aspects of personal and social experience."
+    }
+  ]
+}

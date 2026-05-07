@@ -1,0 +1,100 @@
+{
+  "total_reasons": 1000,
+  "coverage_threshold": 0.4,
+  "covered_count": 1000,
+  "coverage_rate": 1.0,
+  "orphan_count": 0,
+  "top_orphans": [],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Directness vs. Indirectness in Communication",
+      "total_reasons_assigned": 351,
+      "low_pole_count": 130,
+      "high_pole_count": 221,
+      "low_pole_fraction": 0.37,
+      "high_pole_fraction": 0.63
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Conflict Avoidance vs. Confrontation",
+      "total_reasons_assigned": 383,
+      "low_pole_count": 177,
+      "high_pole_count": 206,
+      "low_pole_fraction": 0.462,
+      "high_pole_fraction": 0.538
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Privacy and Personal Space vs. Social Bonding",
+      "total_reasons_assigned": 36,
+      "low_pole_count": 36,
+      "high_pole_count": 0,
+      "low_pole_fraction": 1.0,
+      "high_pole_fraction": 0.0
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "Professional Responsibility vs. Personal Freedom",
+      "total_reasons_assigned": 3,
+      "low_pole_count": 0,
+      "high_pole_count": 3,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Trust and Honesty vs. Skepticism",
+      "total_reasons_assigned": 89,
+      "low_pole_count": 48,
+      "high_pole_count": 41,
+      "low_pole_fraction": 0.539,
+      "high_pole_fraction": 0.461
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Financial Responsibility vs. Immediate Gratification",
+      "total_reasons_assigned": 34,
+      "low_pole_count": 34,
+      "high_pole_count": 0,
+      "low_pole_fraction": 1.0,
+      "high_pole_fraction": 0.0
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Cultural Traditions vs. Modernity",
+      "total_reasons_assigned": 10,
+      "low_pole_count": 10,
+      "high_pole_count": 0,
+      "low_pole_fraction": 1.0,
+      "high_pole_fraction": 0.0
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Empathy and Compassion vs. Detachment",
+      "total_reasons_assigned": 9,
+      "low_pole_count": 5,
+      "high_pole_count": 4,
+      "low_pole_fraction": 0.556,
+      "high_pole_fraction": 0.444
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Legal and Ethical Concerns vs. Personal Convenience",
+      "total_reasons_assigned": 54,
+      "low_pole_count": 35,
+      "high_pole_count": 19,
+      "low_pole_fraction": 0.648,
+      "high_pole_fraction": 0.352
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "Mental Health Considerations vs. Social Expectations",
+      "total_reasons_assigned": 31,
+      "low_pole_count": 0,
+      "high_pole_count": 31,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    }
+  ]
+}

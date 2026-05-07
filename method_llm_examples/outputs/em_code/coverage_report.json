@@ -1,0 +1,244 @@
+{
+  "total_reasons": 1500,
+  "coverage_threshold": 0.4,
+  "covered_count": 1499,
+  "coverage_rate": 0.9993,
+  "orphan_count": 1,
+  "top_orphans": [
+    {
+      "reason_id": 338,
+      "reason_text": "Prioritizes message formatting and output customization",
+      "best_dim_idx": 12,
+      "best_dim_name": "Immediate Results",
+      "best_pole": "low",
+      "best_similarity": 0.3935177350694129
+    }
+  ],
+  "dimension_stats": [
+    {
+      "dimension_id": 1,
+      "dimension_name": "Code Simplicity",
+      "total_reasons_assigned": 163,
+      "low_pole_count": 16,
+      "high_pole_count": 147,
+      "low_pole_fraction": 0.098,
+      "high_pole_fraction": 0.902
+    },
+    {
+      "dimension_id": 2,
+      "dimension_name": "Modularity",
+      "total_reasons_assigned": 140,
+      "low_pole_count": 0,
+      "high_pole_count": 140,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 3,
+      "dimension_name": "Functionality Clarity",
+      "total_reasons_assigned": 3,
+      "low_pole_count": 2,
+      "high_pole_count": 1,
+      "low_pole_fraction": 0.667,
+      "high_pole_fraction": 0.333
+    },
+    {
+      "dimension_id": 4,
+      "dimension_name": "System-Level Control",
+      "total_reasons_assigned": 50,
+      "low_pole_count": 3,
+      "high_pole_count": 47,
+      "low_pole_fraction": 0.06,
+      "high_pole_fraction": 0.94
+    },
+    {
+      "dimension_id": 5,
+      "dimension_name": "Automation Focus",
+      "total_reasons_assigned": 37,
+      "low_pole_count": 9,
+      "high_pole_count": 28,
+      "low_pole_fraction": 0.243,
+      "high_pole_fraction": 0.757
+    },
+    {
+      "dimension_id": 6,
+      "dimension_name": "Web Integration",
+      "total_reasons_assigned": 126,
+      "low_pole_count": 1,
+      "high_pole_count": 125,
+      "low_pole_fraction": 0.008,
+      "high_pole_fraction": 0.992
+    },
+    {
+      "dimension_id": 7,
+      "dimension_name": "Security Focus",
+      "total_reasons_assigned": 38,
+      "low_pole_count": 1,
+      "high_pole_count": 37,
+      "low_pole_fraction": 0.026,
+      "high_pole_fraction": 0.974
+    },
+    {
+      "dimension_id": 8,
+      "dimension_name": "Error Handling",
+      "total_reasons_assigned": 46,
+      "low_pole_count": 9,
+      "high_pole_count": 37,
+      "low_pole_fraction": 0.196,
+      "high_pole_fraction": 0.804
+    },
+    {
+      "dimension_id": 9,
+      "dimension_name": "Testability",
+      "total_reasons_assigned": 8,
+      "low_pole_count": 0,
+      "high_pole_count": 8,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 10,
+      "dimension_name": "User Interaction",
+      "total_reasons_assigned": 137,
+      "low_pole_count": 0,
+      "high_pole_count": 137,
+      "low_pole_fraction": 0.0,
+      "high_pole_fraction": 1.0
+    },
+    {
+      "dimension_id": 11,
+      "dimension_name": "Data Processing",
+      "total_reasons_assigned": 46,
+      "low_pole_count": 4,
+      "high_pole_count": 42,
+      "low_pole_fraction": 0.087,
+      "high_pole_fraction": 0.913
+    },
+    {
+      "dimension_id": 12,
+      "dimension_name": "Dependency Use",
+      "total_reasons_assigned": 36,
+      "low_pole_count": 12,
+      "high_pole_count": 24,
+      "low_pole_fraction": 0.333,
+      "high_pole_fraction": 0.667
+    },
+    {
+      "dimension_id": 13,
+      "dimension_name": "Immediate Results",
+      "total_reasons_assigned": 110,
+      "low_pole_count": 75,
+      "high_pole_count": 35,
+      "low_pole_fraction": 0.682,
+      "high_pole_fraction": 0.318
+    },
+    {
+      "dimension_id": 14,
+      "dimension_name": "Educational Value",
+      "total_reasons_assigned": 15,
+      "low_pole_count": 8,
+      "high_pole_count": 7,
+      "low_pole_fraction": 0.533,
+      "high_pole_fraction": 0.467
+    },
+    {
+      "dimension_id": 15,
+      "dimension_name": "RESTful Design",
+      "total_reasons_assigned": 13,
+      "low_pole_count": 5,
+      "high_pole_count": 8,
+      "low_pole_fraction": 0.385,
+      "high_pole_fraction": 0.615
+    },
+    {
+      "dimension_id": 16,
+      "dimension_name": "Database Integration",
+      "total_reasons_assigned": 69,
+      "low_pole_count": 29,
+      "high_pole_count": 40,
+      "low_pole_fraction": 0.42,
+      "high_pole_fraction": 0.58
+    },
+    {
+      "dimension_id": 17,
+      "dimension_name": "File System Interaction",
+      "total_reasons_assigned": 123,
+      "low_pole_count": 6,
+      "high_pole_count": 117,
+      "low_pole_fraction": 0.049,
+      "high_pole_fraction": 0.951
+    },
+    {
+      "dimension_id": 18,
+      "dimension_name": "Command-Line Focus",
+      "total_reasons_assigned": 87,
+      "low_pole_count": 75,
+      "high_pole_count": 12,
+      "low_pole_fraction": 0.862,
+      "high_pole_fraction": 0.138
+    },
+    {
+      "dimension_id": 19,
+      "dimension_name": "Real-Time Interaction",
+      "total_reasons_assigned": 16,
+      "low_pole_count": 10,
+      "high_pole_count": 6,
+      "low_pole_fraction": 0.625,
+      "high_pole_fraction": 0.375
+    },
+    {
+      "dimension_id": 20,
+      "dimension_name": "Scalability",
+      "total_reasons_assigned": 22,
+      "low_pole_count": 4,
+      "high_pole_count": 18,
+      "low_pole_fraction": 0.182,
+      "high_pole_fraction": 0.818
+    },
+    {
+      "dimension_id": 21,
+      "dimension_name": "Convention-Driven",
+      "total_reasons_assigned": 62,
+      "low_pole_count": 8,
+      "high_pole_count": 54,
+      "low_pole_fraction": 0.129,
+      "high_pole_fraction": 0.871
+    },
+    {
+      "dimension_id": 22,
+      "dimension_name": "Declarative Style",
+      "total_reasons_assigned": 33,
+      "low_pole_count": 11,
+      "high_pole_count": 22,
+      "low_pole_fraction": 0.333,
+      "high_pole_fraction": 0.667
+    },
+    {
+      "dimension_id": 23,
+      "dimension_name": "Object-Oriented Design",
+      "total_reasons_assigned": 19,
+      "low_pole_count": 5,
+      "high_pole_count": 14,
+      "low_pole_fraction": 0.263,
+      "high_pole_fraction": 0.737
+    },
+    {
+      "dimension_id": 24,
+      "dimension_name": "Integration Readiness",
+      "total_reasons_assigned": 70,
+      "low_pole_count": 2,
+      "high_pole_count": 68,
+      "low_pole_fraction": 0.029,
+      "high_pole_fraction": 0.971
+    },
+    {
+      "dimension_id": 25,
+      "dimension_name": "User Experience",
+      "total_reasons_assigned": 31,
+      "low_pole_count": 2,
+      "high_pole_count": 29,
+      "low_pole_fraction": 0.065,
+      "high_pole_fraction": 0.935
+    }
+  ]
+}

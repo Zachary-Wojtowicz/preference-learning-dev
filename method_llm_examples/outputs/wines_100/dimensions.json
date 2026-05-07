@@ -1,0 +1,405 @@
+{
+  "domain": "Wine Preferences",
+  "choice_context": "Consumers choosing between wine options based on flavor, structure, and experience.",
+  "reasoning": "The 15 most important unipolar features were selected based on their ability to subsume multiple themes, their distinctiveness, and their relevance to individual variation in wine preferences. Each feature represents a single quality that can be present in varying degrees and is not a forced contrast between two opposing qualities.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Fruit Intensity",
+      "low_pole": {
+        "label": "Low fruit",
+        "description": "Minimal or no detectable fruit character; more neutral or earthy.",
+        "typical_person": "Someone who prefers savory or mineral-driven wines."
+      },
+      "high_pole": {
+        "label": "High fruit",
+        "description": "Prominent, ripe, and forward fruit flavors and aromas.",
+        "typical_person": "Someone who enjoys bold, fruit-forward reds or tropical/citrus whites."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Noir from cooler climate",
+        "high_option": "Zinfandel or Syrah from warm climate"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the prominence and ripeness of fruit character in aroma and flavor.",
+      "subsumed_reasons": [
+        1,
+        2,
+        4,
+        10,
+        20
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Body and Structure",
+      "low_pole": {
+        "label": "Light-bodied",
+        "description": "Delicate, low tannin, low alcohol, and low intensity on the palate.",
+        "typical_person": "Someone who prefers easy-drinking, sessionable wines."
+      },
+      "high_pole": {
+        "label": "Full-bodied",
+        "description": "Rich, weighty, and intense on the palate with high tannin or alcohol.",
+        "typical_person": "Someone who enjoys structured, bold reds or rich whites."
+      },
+      "example_contrast": {
+        "low_option": "Pinot Grigio",
+        "high_option": "Barolo or Ch\u00e2teauneuf-du-Pape"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on perceived weight, intensity, and tannin/alcohol presence on the palate.",
+      "subsumed_reasons": [
+        3,
+        5,
+        13
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Acidity",
+      "low_pole": {
+        "label": "Low acidity",
+        "description": "Smooth, flat, or flabby mouthfeel with little zing or freshness.",
+        "typical_person": "Someone who prefers softer, rounder wines."
+      },
+      "high_pole": {
+        "label": "High acidity",
+        "description": "Bright, crisp, and refreshing with a lively mouthfeel.",
+        "typical_person": "Someone who enjoys unoaked whites or high-acid reds."
+      },
+      "example_contrast": {
+        "low_option": "Ch\u00e2teau d'Yquem",
+        "high_option": "Sancerre or Verdicchio"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the perceptible sharpness, freshness, and mouthwatering quality.",
+      "subsumed_reasons": [
+        2,
+        10,
+        17
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Oak Influence",
+      "low_pole": {
+        "label": "Unoaked",
+        "description": "Fresh, clean, and unadulterated by oak aging or barrel fermentation.",
+        "typical_person": "Someone who prefers crisp, natural, or modern styles."
+      },
+      "high_pole": {
+        "label": "Oaked",
+        "description": "Smoky, buttery, or vanilla notes from oak aging or barrel fermentation.",
+        "typical_person": "Someone who enjoys aged or complex reds or oaked whites."
+      },
+      "example_contrast": {
+        "low_option": "Cloudy Bay Sauvignon Blanc",
+        "high_option": "Ch\u00e2teau Latour or Napa Cabernet Sauvignon"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the presence and intensity of oak-derived flavors and textures.",
+      "subsumed_reasons": [
+        7,
+        10
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Sweetness",
+      "low_pole": {
+        "label": "Dry",
+        "description": "No perceptible residual sugar; clean and crisp finish.",
+        "typical_person": "Someone who prefers traditional, food-friendly wines."
+      },
+      "high_pole": {
+        "label": "Sweet",
+        "description": "Noticeable residual sugar with a sweet or off-dry finish.",
+        "typical_person": "Someone who enjoys dessert wines or sweet whites."
+      },
+      "example_contrast": {
+        "low_option": "Champagne Brut",
+        "high_option": "Late Harvest Riesling or Sauternes"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the perceptible sweetness on the palate and finish.",
+      "subsumed_reasons": [
+        12,
+        18
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Aromatic Complexity",
+      "low_pole": {
+        "label": "Simple nose",
+        "description": "Limited or straightforward aromas with little nuance.",
+        "typical_person": "Someone who prefers direct, easy-to-understand wines."
+      },
+      "high_pole": {
+        "label": "Complex nose",
+        "description": "Layered, evolving, and nuanced aromas with multiple dimensions.",
+        "typical_person": "Someone who enjoys aged or terroir-driven wines."
+      },
+      "example_contrast": {
+        "low_option": "Mass-produced Merlot",
+        "high_option": "Burgundy Grand Cru or aged Barolo"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the number and evolution of detectable aromas.",
+      "subsumed_reasons": [
+        4,
+        11
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Earthy/Savory Character",
+      "low_pole": {
+        "label": "Fruity focus",
+        "description": "Minimal earthy or savory notes; more fruit-driven and clean.",
+        "typical_person": "Someone who prefers bright, fruit-forward wines."
+      },
+      "high_pole": {
+        "label": "Earthy/savory",
+        "description": "Prominent notes of soil, herbs, mushrooms, or umami-like flavors.",
+        "typical_person": "Someone who enjoys rustic, food-friendly reds or aged whites."
+      },
+      "example_contrast": {
+        "low_option": "Napa Cabernet Sauvignon",
+        "high_option": "Ch\u00e2teauneuf-du-Pape or Barolo"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the presence and intensity of earthy or savory notes.",
+      "subsumed_reasons": [
+        9
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Aging Potential",
+      "low_pole": {
+        "label": "Drink now",
+        "description": "Meant to be consumed young; lacks structure or tannin for aging.",
+        "typical_person": "Someone who prefers approachable, early-drinking wines."
+      },
+      "high_pole": {
+        "label": "Aging potential",
+        "description": "High tannin, acidity, or alcohol that allows for long-term cellaring.",
+        "typical_person": "Someone who enjoys structured, collectible wines."
+      },
+      "example_contrast": {
+        "low_option": "Beaujolais Nouveau",
+        "high_option": "Barolo Riserva or Bordeaux First Growth"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the wine's structural components that support aging.",
+      "subsumed_reasons": [
+        7
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Traditional Style",
+      "low_pole": {
+        "label": "Modern style",
+        "description": "Clean, fruit-forward, and made with modern techniques.",
+        "typical_person": "Someone who prefers accessible, contemporary wines."
+      },
+      "high_pole": {
+        "label": "Traditional style",
+        "description": "Old-world, terroir-driven, and made with minimal intervention.",
+        "typical_person": "Someone who values heritage and authenticity."
+      },
+      "example_contrast": {
+        "low_option": "New World Cabernet Sauvignon",
+        "high_option": "Barolo or Priorat"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the wine's adherence to traditional winemaking and terroir expression.",
+      "subsumed_reasons": [
+        6,
+        15
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Value for Money",
+      "low_pole": {
+        "label": "Premium price",
+        "description": "High cost relative to perceived quality or enjoyment.",
+        "typical_person": "Someone who prioritizes quality over cost."
+      },
+      "high_pole": {
+        "label": "Good value",
+        "description": "High quality relative to price; approachable and satisfying.",
+        "typical_person": "Someone who prioritizes affordability and enjoyment."
+      },
+      "example_contrast": {
+        "low_option": "Ch\u00e2teau Margaux",
+        "high_option": "Cloudy Bay Sauvignon Blanc or Kim Crawford Chardonnay"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the perceived quality-to-price ratio.",
+      "subsumed_reasons": [
+        8
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Effervescence",
+      "low_pole": {
+        "label": "Still wine",
+        "description": "No bubbles or carbonation; smooth and still.",
+        "typical_person": "Someone who prefers traditional reds or whites."
+      },
+      "high_pole": {
+        "label": "Sparkling",
+        "description": "Perfected bubbles with a lively, effervescent mouthfeel.",
+        "typical_person": "Someone who enjoys celebratory or refreshing sparkling wines."
+      },
+      "example_contrast": {
+        "low_option": "Bordeaux Red",
+        "high_option": "Champagne or Prosecco"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the presence and quality of bubbles.",
+      "subsumed_reasons": [
+        14
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Playfulness",
+      "low_pole": {
+        "label": "Serious style",
+        "description": "Formal, traditional, and conventional in presentation and branding.",
+        "typical_person": "Someone who values classic, elegant wines."
+      },
+      "high_pole": {
+        "label": "Playful style",
+        "description": "Unconventional, whimsical, or experimental in branding or presentation.",
+        "typical_person": "Someone who enjoys novelty or quirky wines."
+      },
+      "example_contrast": {
+        "low_option": "Ch\u00e2teau Margaux",
+        "high_option": "Cloudy Bay or Yellow Tail"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the wine's branding, label, or unconventional presentation.",
+      "subsumed_reasons": [
+        16
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Tropical Aroma Intensity",
+      "low_pole": {
+        "label": "Non-tropical",
+        "description": "No detectable tropical fruit aromas; more citrus or stone fruit.",
+        "typical_person": "Someone who prefers traditional or European-style whites."
+      },
+      "high_pole": {
+        "label": "Tropical",
+        "description": "Prominent aromas of pineapple, mango, or passionfruit.",
+        "typical_person": "Someone who enjoys New World or warm-climate whites."
+      },
+      "example_contrast": {
+        "low_option": "Sancerre",
+        "high_option": "Chardonnay from Napa or Fronsac"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the presence and intensity of tropical fruit aromas.",
+      "subsumed_reasons": [
+        20
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Sessionability",
+      "low_pole": {
+        "label": "High alcohol",
+        "description": "Full-bodied, high ABV, and less suited for drinking in quantity.",
+        "typical_person": "Someone who enjoys bold, intense wines."
+      },
+      "high_pole": {
+        "label": "Low alcohol",
+        "description": "Light-bodied, low ABV, and easy to drink in quantity.",
+        "typical_person": "Someone who enjoys casual, everyday wines."
+      },
+      "example_contrast": {
+        "low_option": "Barolo or Zinfandel",
+        "high_option": "Pinot Grigio or Beaujolais"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the wine's alcohol content and perceived drinkability in quantity.",
+      "subsumed_reasons": [
+        19
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Floral Aroma Intensity",
+      "low_pole": {
+        "label": "Non-floral",
+        "description": "No detectable floral notes; more fruit or earthy character.",
+        "typical_person": "Someone who prefers bold or savory wines."
+      },
+      "high_pole": {
+        "label": "Floral",
+        "description": "Prominent aromas of rose, lavender, or jasmine.",
+        "typical_person": "Someone who enjoys aromatic whites or ros\u00e9s."
+      },
+      "example_contrast": {
+        "low_option": "Barolo",
+        "high_option": "Riesling from Alsace or Gew\u00fcrztraminer"
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the presence and intensity of floral aromas.",
+      "subsumed_reasons": [
+        4
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        13
+      ],
+      "correlation_note": "Both relate to fruit character, but Fruit Intensity is broader and includes all fruit types, while Tropical Aroma Intensity is a subset focused on tropical notes.",
+      "resolution": "Tropical Aroma Intensity is a specific flavor profile within the broader Fruit Intensity dimension and is kept as a separate feature to capture distinct preferences."
+    },
+    {
+      "dimension_ids": [
+        2,
+        8
+      ],
+      "correlation_note": "Both relate to structure, but Body and Structure is about immediate sensory experience, while Aging Potential is about future development.",
+      "resolution": "They are distinct because one is about current perception and the other about potential evolution over time."
+    },
+    {
+      "dimension_ids": [
+        3,
+        17
+      ],
+      "correlation_note": "Both relate to acidity, but Balanced Acidity and Richness is about harmony between acidity and other elements, while Acidity is about the raw intensity of acidity.",
+      "resolution": "They are distinct because one is about balance and the other is about a single attribute."
+    }
+  ]
+}

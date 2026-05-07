@@ -1,0 +1,523 @@
+{
+  "domain": "Medical Advice Responses",
+  "choice_context": "Characterizing variation in medical advice responses across 92 pairs",
+  "reasoning": "The 20 dimensions were selected to ensure comprehensive coverage of the 21 observed themes, while maintaining independence and descriptive neutrality. Each dimension captures a distinct and observable property of medical advice responses, grounded in the domain of healthcare communication and advice delivery.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Advice Specificity",
+      "low_pole": {
+        "label": "General",
+        "description": "Advice is broad, flexible, and not tailored to specific conditions or contexts.",
+        "typical_person": "A general practitioner or public health communicator"
+      },
+      "high_pole": {
+        "label": "Specific",
+        "description": "Advice is detailed, actionable, and tailored to specific symptoms, conditions, or scenarios.",
+        "typical_person": "A specialist or clinical advisor"
+      },
+      "example_contrast": {
+        "low_option": "Stay hydrated and rest.",
+        "high_option": "Drink at least 2 liters of water and rest for 48 hours if experiencing mild dehydration."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on how detailed and actionable the advice is, from 0 (very general) to 5 (very specific).",
+      "subsumed_reasons": [
+        1,
+        9
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Format Structure",
+      "low_pole": {
+        "label": "Free-flowing",
+        "description": "Advice is presented in a narrative or conversational style without clear organization.",
+        "typical_person": "A patient or informal advisor"
+      },
+      "high_pole": {
+        "label": "Structured",
+        "description": "Advice is organized using templates, lists, or numbered steps.",
+        "typical_person": "A clinical or institutional communicator"
+      },
+      "example_contrast": {
+        "low_option": "You should probably see a doctor if it doesn't get better soon.",
+        "high_option": "1. Monitor symptoms for 48 hours. 2. Contact a healthcare provider if symptoms persist."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the presence of clear formatting or structure, from 0 (free-flowing) to 5 (highly structured).",
+      "subsumed_reasons": [
+        3,
+        12
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Risk Orientation",
+      "low_pole": {
+        "label": "Risk-averse",
+        "description": "Emphasizes caution, safety, and minimizing harm.",
+        "typical_person": "A conservative clinician or public health official"
+      },
+      "high_pole": {
+        "label": "Risk-acceptant",
+        "description": "Acknowledges or even encourages calculated risk-taking in treatment or behavior.",
+        "typical_person": "A progressive or experimental clinician"
+      },
+      "example_contrast": {
+        "low_option": "Avoid all over-the-counter medications until you consult a doctor.",
+        "high_option": "Some over-the-counter pain relievers may be safe to use in the short term."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on caution versus risk-taking, from 0 (very risk-averse) to 5 (very risk-acceptant).",
+      "subsumed_reasons": [
+        5,
+        8
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Temporal Orientation",
+      "low_pole": {
+        "label": "Present-focused",
+        "description": "Advice is centered on immediate actions or current symptoms.",
+        "typical_person": "A primary care provider"
+      },
+      "high_pole": {
+        "label": "Future-oriented",
+        "description": "Advice emphasizes long-term planning, prevention, or future outcomes.",
+        "typical_person": "A public health or wellness advisor"
+      },
+      "example_contrast": {
+        "low_option": "Take this medication now to relieve your symptoms.",
+        "high_option": "Adopting a healthy lifestyle now can reduce your risk of chronic disease in the future."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the focus on immediate actions versus long-term planning, from 0 (present-focused) to 5 (future-oriented).",
+      "subsumed_reasons": [
+        4,
+        22
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Tone Engagement",
+      "low_pole": {
+        "label": "Emotionally neutral",
+        "description": "Advice is delivered in a detached, clinical, or impersonal tone.",
+        "typical_person": "A clinical or institutional communicator"
+      },
+      "high_pole": {
+        "label": "Emotionally engaged",
+        "description": "Advice is delivered with empathy, warmth, or emotional support.",
+        "typical_person": "A patient-centered or community health worker"
+      },
+      "example_contrast": {
+        "low_option": "The symptoms are consistent with a viral infection.",
+        "high_option": "I understand this is concerning, but it's likely a mild infection that will resolve on its own."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emotional tone of the advice, from 0 (neutral) to 5 (highly engaged).",
+      "subsumed_reasons": [
+        13,
+        14
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Audience Focus",
+      "low_pole": {
+        "label": "Institutional",
+        "description": "Advice is directed at healthcare systems, professionals, or organizations.",
+        "typical_person": "A policy advisor or hospital administrator"
+      },
+      "high_pole": {
+        "label": "Individual",
+        "description": "Advice is directed at patients, individuals, or families.",
+        "typical_person": "A primary care provider or patient educator"
+      },
+      "example_contrast": {
+        "low_option": "Health systems should invest in telemedicine infrastructure.",
+        "high_option": "You can use telemedicine to consult with a doctor from home."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on whether the advice is directed at individuals or institutions, from 0 (institutional) to 5 (individual).",
+      "subsumed_reasons": [
+        11,
+        18
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Ethical Orientation",
+      "low_pole": {
+        "label": "Utilitarian",
+        "description": "Advice emphasizes efficiency, cost, or broader societal benefit.",
+        "typical_person": "A public health or policy advisor"
+      },
+      "high_pole": {
+        "label": "Patient-centered",
+        "description": "Advice emphasizes individual autonomy, values, and well-being.",
+        "typical_person": "A patient advocate or holistic care provider"
+      },
+      "example_contrast": {
+        "low_option": "Cost-effective treatments should be prioritized in public health programs.",
+        "high_option": "Your preferences and comfort are important in deciding the best treatment for you."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on societal benefit versus individual well-being, from 0 (utilitarian) to 5 (patient-centered).",
+      "subsumed_reasons": [
+        6,
+        10
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Innovation Emphasis",
+      "low_pole": {
+        "label": "Traditional",
+        "description": "Advice relies on established practices, conventional wisdom, or standard care.",
+        "typical_person": "A conservative or traditional clinician"
+      },
+      "high_pole": {
+        "label": "Innovative",
+        "description": "Advice highlights new technologies, experimental approaches, or future trends.",
+        "typical_person": "A researcher or early adopter in healthcare"
+      },
+      "example_contrast": {
+        "low_option": "This is a standard treatment for the condition.",
+        "high_option": "Emerging therapies using AI and genomics may offer new treatment options."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the emphasis on traditional versus innovative approaches, from 0 (traditional) to 5 (innovative).",
+      "subsumed_reasons": [
+        15
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Diversity Consideration",
+      "low_pole": {
+        "label": "Generalized",
+        "description": "Advice assumes a one-size-fits-all approach with little attention to diversity.",
+        "typical_person": "A generalist or non-specialist provider"
+      },
+      "high_pole": {
+        "label": "Diverse",
+        "description": "Advice acknowledges and addresses differences in gender, culture, or identity.",
+        "typical_person": "A culturally competent or gender-sensitive provider"
+      },
+      "example_contrast": {
+        "low_option": "Everyone should follow the same guidelines.",
+        "high_option": "Treatment may vary based on gender, age, and cultural background."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the inclusion of diversity considerations, from 0 (generalized) to 5 (highly diverse).",
+      "subsumed_reasons": [
+        7
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Language Accessibility",
+      "low_pole": {
+        "label": "Technical",
+        "description": "Advice uses medical jargon, complex terms, or assumes clinical knowledge.",
+        "typical_person": "A healthcare professional"
+      },
+      "high_pole": {
+        "label": "Layperson-friendly",
+        "description": "Advice is simplified, avoids jargon, and is accessible to non-experts.",
+        "typical_person": "A patient educator or health communicator"
+      },
+      "example_contrast": {
+        "low_option": "The patient exhibits tachycardia and hypotension.",
+        "high_option": "The patient has a fast heart rate and low blood pressure."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the use of technical versus accessible language, from 0 (technical) to 5 (layperson-friendly).",
+      "subsumed_reasons": [
+        19
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Advisory Approach",
+      "low_pole": {
+        "label": "Supportive",
+        "description": "Advice is framed as encouragement, reassurance, or empowerment.",
+        "typical_person": "A patient advocate or wellness coach"
+      },
+      "high_pole": {
+        "label": "Directive",
+        "description": "Advice is framed as instructions, mandates, or clear expectations.",
+        "typical_person": "A clinical or regulatory authority"
+      },
+      "example_contrast": {
+        "low_option": "You can try this approach if it feels right for you.",
+        "high_option": "You must follow this protocol to ensure safety."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the supportive versus directive tone, from 0 (supportive) to 5 (directive).",
+      "subsumed_reasons": [
+        16
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Advisory Scope",
+      "low_pole": {
+        "label": "Narrow",
+        "description": "Advice is limited to a single condition, symptom, or treatment.",
+        "typical_person": "A specialist or focused advisor"
+      },
+      "high_pole": {
+        "label": "Broad",
+        "description": "Advice addresses multiple conditions, systems, or broader health issues.",
+        "typical_person": "A public health or systems-level advisor"
+      },
+      "example_contrast": {
+        "low_option": "This medication is effective for treating high blood pressure.",
+        "high_option": "Managing chronic conditions requires attention to diet, exercise, and mental health."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the breadth of the advice, from 0 (narrow) to 5 (broad).",
+      "subsumed_reasons": [
+        2,
+        10
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Advisory Authority",
+      "low_pole": {
+        "label": "Anecdotal",
+        "description": "Advice is based on personal experience, informal knowledge, or quick fixes.",
+        "typical_person": "A layperson or informal advisor"
+      },
+      "high_pole": {
+        "label": "Evidence-based",
+        "description": "Advice is grounded in clinical research, guidelines, or expert consensus.",
+        "typical_person": "A healthcare professional or academic"
+      },
+      "example_contrast": {
+        "low_option": "I took this and it worked for me.",
+        "high_option": "This treatment is supported by clinical trials and is recommended by the CDC."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the basis of the advice, from 0 (anecdotal) to 5 (evidence-based).",
+      "subsumed_reasons": [
+        17
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Advisory Tone",
+      "low_pole": {
+        "label": "Dismissive",
+        "description": "Advice is delivered with little emotional engagement or urgency.",
+        "typical_person": "A detached or overburdened provider"
+      },
+      "high_pole": {
+        "label": "Engaged",
+        "description": "Advice is delivered with attention, concern, or active listening.",
+        "typical_person": "A patient-centered or empathetic provider"
+      },
+      "example_contrast": {
+        "low_option": "It's not a big deal. Just wait and see.",
+        "high_option": "I understand this is worrying. Let's work together to find the best solution."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the level of engagement in the tone, from 0 (dismissive) to 5 (engaged).",
+      "subsumed_reasons": [
+        13,
+        14
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Advisory Complexity",
+      "low_pole": {
+        "label": "Simplified",
+        "description": "Advice is straightforward, easy to follow, and avoids complexity.",
+        "typical_person": "A patient educator or layperson"
+      },
+      "high_pole": {
+        "label": "Complex",
+        "description": "Advice includes multiple steps, conditions, or nuanced considerations.",
+        "typical_person": "A specialist or clinical researcher"
+      },
+      "example_contrast": {
+        "low_option": "Take this pill once a day.",
+        "high_option": "Take this pill once daily with food, unless contraindicated by other medications."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_option",
+      "scoring_guidance": "Rate based on the complexity of the advice, from 0 (simplified) to 5 (complex).",
+      "subsumed_reasons": [
+        1,
+        9
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Advisory Duration",
+      "low_pole": {
+        "label": "Short-term",
+        "description": "Advice is intended for immediate or temporary use.",
+        "typical_person": "A triage nurse or urgent care provider"
+      },
+      "high_pole": {
+        "label": "Long-term",
+        "description": "Advice is intended for ongoing or lifelong management.",
+        "typical_person": "A chronic care or wellness provider"
+      },
+      "example_contrast": {
+        "low_option": "Rest for a few days and you should feel better.",
+        "high_option": "This condition requires ongoing monitoring and lifestyle adjustments."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the intended duration of the advice, from 0 (short-term) to 5 (long-term).",
+      "subsumed_reasons": [
+        4
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Advisory Flexibility",
+      "low_pole": {
+        "label": "Rigid",
+        "description": "Advice is prescriptive, with little room for adaptation or choice.",
+        "typical_person": "A regulatory or compliance-focused provider"
+      },
+      "high_pole": {
+        "label": "Flexible",
+        "description": "Advice allows for personalization, choice, or adaptation.",
+        "typical person": "A patient-centered or holistic provider"
+      },
+      "example_contrast": {
+        "low_option": "You must follow this exact regimen.",
+        "high_option": "You can adjust the regimen based on your lifestyle and preferences."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the flexibility of the advice, from 0 (rigid) to 5 (flexible).",
+      "subsumed_reasons": [
+        9
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Advisory Source",
+      "low_pole": {
+        "label": "Individual",
+        "description": "Advice is attributed to a single person or provider.",
+        "typical_person": "A private practitioner or individual clinician"
+      },
+      "high_pole": {
+        "label": "Institutional",
+        "description": "Advice is attributed to an organization, system, or guideline body.",
+        "typical person": "A public health or hospital communicator"
+      },
+      "example_contrast": {
+        "low_option": "I recommend this treatment based on my experience.",
+        "high_option": "This treatment is recommended by the American Heart Association."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the source of the advice, from 0 (individual) to 5 (institutional).",
+      "subsumed_reasons": [
+        18
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Advisory Ethical Transparency",
+      "low_pole": {
+        "label": "Implicit",
+        "description": "Ethical considerations are not explicitly addressed or acknowledged.",
+        "typical person": "A provider focused on clinical outcomes"
+      },
+      "high_pole": {
+        "label": "Explicit",
+        "description": "Ethical considerations are clearly addressed, including trade-offs or conflicts.",
+        "typical person": "An ethics consultant or patient advocate"
+      },
+      "example_contrast": {
+        "low_option": "This is the best treatment available.",
+        "high_option": "This treatment is effective but may involve a conflict of interest with the manufacturer."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the explicitness of ethical considerations, from 0 (implicit) to 5 (explicit).",
+      "subsumed_reasons": [
+        20
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Advisory Optimism",
+      "low_pole": {
+        "label": "Cautious",
+        "description": "Advice is delivered with a realistic or conservative outlook.",
+        "typical person": "A risk-averse provider or public health official"
+      },
+      "high_pole": {
+        "label": "Optimistic",
+        "description": "Advice is delivered with a positive, aspirational, or hopeful outlook.",
+        "typical person": "A wellness or motivational provider"
+      },
+      "example_contrast": {
+        "low_option": "There is a chance this may not work.",
+        "high_option": "This is a promising approach with great potential for success."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "mostly_between_person",
+      "scoring_guidance": "Rate based on the tone of optimism or caution, from 0 (cautious) to 5 (optimistic).",
+      "subsumed_reasons": [
+        21
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        15
+      ],
+      "correlation_note": "Both dimensions relate to the clarity and detail of advice, but they differ in focus: Advice Specificity focuses on tailoring to conditions, while Advisory Complexity focuses on the number of steps or conditions included.",
+      "resolution": "They are kept as separate dimensions because they measure different aspects of advice detail."
+    },
+    {
+      "dimension_ids": [
+        5,
+        14
+      ],
+      "correlation_note": "Both dimensions relate to the emotional tone of the advice, but they differ in focus: Tone Engagement measures warmth and empathy, while Advisory Tone measures dismissiveness or engagement.",
+      "resolution": "They are kept as separate dimensions because they capture different emotional aspects of the advice."
+    },
+    {
+      "dimension_ids": [
+        7,
+        11
+      ],
+      "correlation_note": "Both dimensions relate to the approach of the advice, but they differ in focus: Ethical Orientation focuses on societal vs. individual values, while Advisory Approach focuses on supportive vs. directive tone.",
+      "resolution": "They are kept as separate dimensions because they capture different aspects of the advisory style."
+    }
+  ]
+}

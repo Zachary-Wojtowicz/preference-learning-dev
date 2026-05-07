@@ -1,0 +1,695 @@
+{
+  "domain": "Code Completion Preferences",
+  "choice_context": "Users are selecting between code completions based on their personal and professional coding values and priorities.",
+  "reasoning": "The 25 most important unipolar features were selected based on their frequency, distinctiveness, and ability to subsume multiple related themes. Each feature represents a single quality that can be present to varying degrees in a code completion, and they are designed to be distinct and preference-relevant.",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "Code Simplicity",
+      "low_pole": {
+        "label": "Complex",
+        "description": "Code is verbose, includes unnecessary abstractions, or is difficult to understand at a glance.",
+        "typical_person": "A developer who prioritizes completeness over brevity."
+      },
+      "high_pole": {
+        "label": "Simple",
+        "description": "Code is concise, avoids unnecessary complexity, and is easy to read and understand.",
+        "typical_person": "A developer who values minimalism and clarity."
+      },
+      "example_contrast": {
+        "low_option": "A solution with nested loops and multiple helper functions.",
+        "high_option": "A one-liner using built-in functions."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how concise and readable the code is, with 5 being minimal and immediately understandable.",
+      "subsumed_reasons": [
+        1,
+        2,
+        33,
+        42
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Modularity",
+      "low_pole": {
+        "label": "Monolithic",
+        "description": "Code is tightly coupled, lacks reusable components, and is not easily testable or maintainable.",
+        "typical_person": "A developer focused on quick, one-off solutions."
+      },
+      "high_pole": {
+        "label": "Modular",
+        "description": "Code is broken into reusable, testable components and follows separation of concerns.",
+        "typical_person": "A developer who values long-term maintainability and reusability."
+      },
+      "example_contrast": {
+        "low_option": "A single function that handles all logic in one place.",
+        "high_option": "A set of small, focused functions with clear responsibilities."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how well the code is broken into reusable, independent parts.",
+      "subsumed_reasons": [
+        7,
+        12,
+        17,
+        13,
+        37
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Functionality Clarity",
+      "low_pole": {
+        "label": "Ambiguous",
+        "description": "Code is unclear in its purpose or how it works, requiring additional context or documentation.",
+        "typical_person": "A developer who is indifferent to readability."
+      },
+      "high_pole": {
+        "label": "Clear",
+        "description": "Code is immediately understandable in its purpose and behavior, with minimal need for external explanation.",
+        "typical_person": "A developer who values readability and maintainability."
+      },
+      "example_contrast": {
+        "low_option": "A function with unclear variable names and no comments.",
+        "high_option": "A function with descriptive names and inline comments."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how immediately clear the code's purpose and behavior are.",
+      "subsumed_reasons": [
+        3,
+        16,
+        42,
+        50
+      ]
+    },
+    {
+      "id": 4,
+      "name": "System-Level Control",
+      "low_pole": {
+        "label": "High-level",
+        "description": "Code abstracts away system-level details and uses high-level libraries or frameworks.",
+        "typical_person": "A developer who prefers working with abstractions."
+      },
+      "high_pole": {
+        "label": "Low-level",
+        "description": "Code interacts directly with system resources, files, or hardware, offering fine-grained control.",
+        "typical_person": "A developer who values direct system access and performance."
+      },
+      "example_contrast": {
+        "low_option": "Using a high-level file API like `fs.readFileSync()`.",
+        "high_option": "Using system calls or direct memory manipulation."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how directly the code interacts with system resources or hardware.",
+      "subsumed_reasons": [
+        4,
+        18,
+        28,
+        57
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Automation Focus",
+      "low_pole": {
+        "label": "Manual",
+        "description": "Code is written for one-time use or requires manual intervention to complete tasks.",
+        "typical_person": "A developer who works on ad-hoc tasks."
+      },
+      "high_pole": {
+        "label": "Automated",
+        "description": "Code is designed to be run repeatedly, with minimal or no user intervention.",
+        "typical_person": "A developer who values efficiency and repeatability."
+      },
+      "example_contrast": {
+        "low_option": "A script that requires user input at each step.",
+        "high_option": "A script that runs unattended and logs results."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code is designed for repeatable, unattended execution.",
+      "subsumed_reasons": [
+        6,
+        14,
+        30,
+        48
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Web Integration",
+      "low_pole": {
+        "label": "Standalone",
+        "description": "Code does not interact with web services, APIs, or HTTP-based systems.",
+        "typical_person": "A developer who works on local or backend-only systems."
+      },
+      "high_pole": {
+        "label": "Web-focused",
+        "description": "Code is designed to interact with web APIs, endpoints, or HTTP-based systems.",
+        "typical_person": "A developer who works with web services and RESTful APIs."
+      },
+      "example_contrast": {
+        "low_option": "A script that reads from a local file.",
+        "high_option": "A script that fetches data from a REST API."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code interacts with web-based systems or APIs.",
+      "subsumed_reasons": [
+        8,
+        19,
+        23,
+        24
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Security Focus",
+      "low_pole": {
+        "label": "Unsecured",
+        "description": "Code does not include security measures like input validation, access control, or encryption.",
+        "typical_person": "A developer who prioritizes speed over security."
+      },
+      "high_pole": {
+        "label": "Secure",
+        "description": "Code includes robust security practices such as input validation, access control, and encryption.",
+        "typical_person": "A developer who prioritizes data integrity and user safety."
+      },
+      "example_contrast": {
+        "low_option": "A function that accepts user input without validation.",
+        "high_option": "A function that sanitizes and validates all inputs."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how many security practices are included in the code.",
+      "subsumed_reasons": [
+        9,
+        21,
+        31,
+        55
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Error Handling",
+      "low_pole": {
+        "label": "Unreliable",
+        "description": "Code lacks error handling, making it prone to crashes or undefined behavior.",
+        "typical_person": "A developer who prioritizes speed over robustness."
+      },
+      "high_pole": {
+        "label": "Robust",
+        "description": "Code includes comprehensive error handling and defensive programming techniques.",
+        "typical_person": "A developer who values reliability and stability."
+      },
+      "example_contrast": {
+        "low_option": "A function that does not handle exceptions.",
+        "high_option": "A function with try-catch blocks and fallback logic."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how thoroughly the code handles potential errors and edge cases.",
+      "subsumed_reasons": [
+        15,
+        22,
+        44,
+        55
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Testability",
+      "low_pole": {
+        "label": "Untestable",
+        "description": "Code is difficult to test due to tight coupling, lack of modularity, or unclear interfaces.",
+        "typical_person": "A developer who does not prioritize testing."
+      },
+      "high_pole": {
+        "label": "Testable",
+        "description": "Code is designed with testing in mind, using modular components and clear interfaces.",
+        "typical_person": "A developer who values automated testing and CI/CD."
+      },
+      "example_contrast": {
+        "low_option": "A monolithic function with no clear entry points for testing.",
+        "high_option": "A function with clear inputs and outputs, suitable for unit testing."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how easy it is to write tests for the code.",
+      "subsumed_reasons": [
+        22,
+        44,
+        49
+      ]
+    },
+    {
+      "id": 10,
+      "name": "User Interaction",
+      "low_pole": {
+        "label": "Passive",
+        "description": "Code does not include user interaction or feedback mechanisms.",
+        "typical_person": "A developer who works on backend or batch systems."
+      },
+      "high_pole": {
+        "label": "Interactive",
+        "description": "Code includes user input, feedback, or real-time interaction.",
+        "typical_person": "A developer who builds user-facing or real-time systems."
+      },
+      "example_contrast": {
+        "low_option": "A script that runs silently in the background.",
+        "high_option": "A script that prompts the user for input and provides progress updates."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code includes user interaction or feedback.",
+      "subsumed_reasons": [
+        25,
+        32,
+        39,
+        46
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Data Processing",
+      "low_pole": {
+        "label": "Minimal",
+        "description": "Code does not process or transform data in any meaningful way.",
+        "typical_person": "A developer who works with simple data structures."
+      },
+      "high_pole": {
+        "label": "Data-rich",
+        "description": "Code includes complex data transformations, pipelines, or modeling.",
+        "typical_person": "A developer who works with large datasets or analytics."
+      },
+      "example_contrast": {
+        "low_option": "A script that reads a file and prints its contents.",
+        "high_option": "A script that parses, filters, and aggregates data from multiple sources."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the complexity and volume of data being processed.",
+      "subsumed_reasons": [
+        20,
+        40,
+        42,
+        52
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Dependency Use",
+      "low_pole": {
+        "label": "No dependencies",
+        "description": "Code is self-contained and does not rely on external libraries or frameworks.",
+        "typical_person": "A developer who values lightweight and portable code."
+      },
+      "high_pole": {
+        "label": "Heavy dependencies",
+        "description": "Code relies on multiple external libraries or frameworks to achieve its goals.",
+        "typical_person": "A developer who prefers using existing tools over writing from scratch."
+      },
+      "example_contrast": {
+        "low_option": "A script using only built-in language features.",
+        "high_option": "A script using multiple third-party libraries."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on the number and importance of external dependencies used.",
+      "subsumed_reasons": [
+        10,
+        35,
+        41,
+        53
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Immediate Results",
+      "low_pole": {
+        "label": "Delayed",
+        "description": "Code requires setup, configuration, or long-running processes before results are visible.",
+        "typical_person": "A developer who is comfortable with long-term projects."
+      },
+      "high_pole": {
+        "label": "Immediate",
+        "description": "Code produces visible results quickly, with minimal setup or configuration.",
+        "typical_person": "A developer who values rapid prototyping and feedback."
+      },
+      "example_contrast": {
+        "low_option": "A script that requires installing dependencies and running a server.",
+        "high_option": "A script that runs immediately and shows output in the console."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how quickly the code produces visible results.",
+      "subsumed_reasons": [
+        5,
+        16,
+        32,
+        53
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Educational Value",
+      "low_pole": {
+        "label": "Practical only",
+        "description": "Code is focused on solving the problem with no additional explanation or learning value.",
+        "typical_person": "A developer who is only interested in the solution."
+      },
+      "high_pole": {
+        "label": "Educational",
+        "description": "Code includes comments, explanations, or examples that help the user learn or understand the solution.",
+        "typical_person": "A developer who values learning and teaching."
+      },
+      "example_contrast": {
+        "low_option": "A function with no comments or documentation.",
+        "high_option": "A function with inline comments and a README explaining the approach."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code includes educational elements or explanations.",
+      "subsumed_reasons": [
+        60
+      ]
+    },
+    {
+      "id": 15,
+      "name": "RESTful Design",
+      "low_pole": {
+        "label": "Non-REST",
+        "description": "Code does not follow RESTful principles or conventions for API design.",
+        "typical_person": "A developer who is not focused on API design."
+      },
+      "high_pole": {
+        "label": "RESTful",
+        "description": "Code follows RESTful conventions for API design, including proper HTTP methods and resource naming.",
+        "typical_person": "A developer who works with web APIs and backend systems."
+      },
+      "example_contrast": {
+        "low_option": "An API endpoint that uses POST for all operations.",
+        "high_option": "An API endpoint that uses GET, POST, PUT, and DELETE appropriately."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how well the code follows RESTful API design principles.",
+      "subsumed_reasons": [
+        23,
+        29
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Database Integration",
+      "low_pole": {
+        "label": "No database",
+        "description": "Code does not interact with a database or persist data in any way.",
+        "typical_person": "A developer who works with in-memory or temporary data."
+      },
+      "high_pole": {
+        "label": "Database-focused",
+        "description": "Code includes database operations such as querying, inserting, or modeling data.",
+        "typical_person": "A developer who works with persistent data and relational systems."
+      },
+      "example_contrast": {
+        "low_option": "A script that stores data in memory.",
+        "high_option": "A script that connects to a database and performs CRUD operations."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code interacts with a database or persists data.",
+      "subsumed_reasons": [
+        27,
+        34,
+        38
+      ]
+    },
+    {
+      "id": 17,
+      "name": "File System Interaction",
+      "low_pole": {
+        "label": "No file access",
+        "description": "Code does not interact with the file system or handle file operations.",
+        "typical_person": "A developer who works with in-memory or cloud-based systems."
+      },
+      "high_pole": {
+        "label": "File-focused",
+        "description": "Code includes file operations such as reading, writing, or manipulating files and directories.",
+        "typical_person": "A developer who works with local or file-based systems."
+      },
+      "example_contrast": {
+        "low_option": "A script that uses in-memory data structures.",
+        "high_option": "A script that reads from and writes to multiple files."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code interacts with the file system.",
+      "subsumed_reasons": [
+        11,
+        28
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Command-Line Focus",
+      "low_pole": {
+        "label": "GUI-based",
+        "description": "Code is designed for use in a graphical user interface or web application.",
+        "typical_person": "A developer who works with frontend or GUI-based systems."
+      },
+      "high_pole": {
+        "label": "CLI-focused",
+        "description": "Code is designed for use in a command-line interface, with no GUI dependencies.",
+        "typical_person": "A developer who works with scripts, automation, or DevOps tools."
+      },
+      "example_contrast": {
+        "low_option": "A web-based form submission handler.",
+        "high_option": "A command-line script that accepts arguments and prints output."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code is designed for command-line use.",
+      "subsumed_reasons": [
+        28
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Real-Time Interaction",
+      "low_pole": {
+        "label": "Batch",
+        "description": "Code is designed to run in the background or as a batch process, with no real-time interaction.",
+        "typical_person": "A developer who works with long-running or scheduled tasks."
+      },
+      "high_pole": {
+        "label": "Real-time",
+        "description": "Code is designed to respond to user input or system events in real time.",
+        "typical_person": "A developer who works with interactive or event-driven systems."
+      },
+      "example_contrast": {
+        "low_option": "A script that runs once and exits.",
+        "high_option": "A script that listens for events and responds immediately."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code is designed for real-time interaction.",
+      "subsumed_reasons": [
+        46
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Scalability",
+      "low_pole": {
+        "label": "Limited",
+        "description": "Code is not designed to scale and may break or become inefficient with larger inputs or workloads.",
+        "typical_person": "A developer who works on small-scale or one-off projects."
+      },
+      "high_pole": {
+        "label": "Scalable",
+        "description": "Code is designed to handle large inputs, high traffic, or distributed systems efficiently.",
+        "typical_person": "A developer who works on large-scale or enterprise systems."
+      },
+      "example_contrast": {
+        "low_option": "A script that processes one file at a time.",
+        "high_option": "A script that processes files in parallel or uses a queue system."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how well the code is designed to scale with larger inputs or workloads.",
+      "subsumed_reasons": [
+        49
+      ]
+    },
+    {
+      "id": 21,
+      "name": "Convention-Driven",
+      "low_pole": {
+        "label": "Ad-hoc",
+        "description": "Code does not follow any specific conventions or patterns and is written in a freeform way.",
+        "typical_person": "A developer who prefers flexibility over structure."
+      },
+      "high_pole": {
+        "label": "Conventional",
+        "description": "Code follows established conventions, patterns, or frameworks for the language or domain.",
+        "typical_person": "A developer who values consistency and team collaboration."
+      },
+      "example_contrast": {
+        "low_option": "A function with inconsistent naming and structure.",
+        "high_option": "A function that follows PEP8 or other style guides."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how well the code follows established conventions or patterns.",
+      "subsumed_reasons": [
+        36
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Declarative Style",
+      "low_pole": {
+        "label": "Imperative",
+        "description": "Code is written in an imperative style, with explicit step-by-step instructions.",
+        "typical_person": "A developer who prefers control over execution flow."
+      },
+      "high_pole": {
+        "label": "Declarative",
+        "description": "Code is written in a declarative style, focusing on what to do rather than how to do it.",
+        "typical_person": "A developer who values abstraction and readability."
+      },
+      "example_contrast": {
+        "low_option": "A loop that manually iterates and modifies a list.",
+        "high_option": "A list comprehension or functional-style transformation."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code uses declarative or functional programming patterns.",
+      "subsumed_reasons": [
+        44,
+        45
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Object-Oriented Design",
+      "low_pole": {
+        "label": "Procedural",
+        "description": "Code is written in a procedural style, with no use of classes or objects.",
+        "typical_person": "A developer who prefers functional or script-based approaches."
+      },
+      "high_pole": {
+        "label": "Object-oriented",
+        "description": "Code is written using object-oriented principles, with classes, inheritance, and encapsulation.",
+        "typical_person": "A developer who works with large-scale applications or frameworks."
+      },
+      "example_contrast": {
+        "low_option": "A script with functions and global variables.",
+        "high_option": "A script with classes and encapsulated behavior."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how much the code uses object-oriented design patterns.",
+      "subsumed_reasons": [
+        47
+      ]
+    },
+    {
+      "id": 24,
+      "name": "Integration Readiness",
+      "low_pole": {
+        "label": "Isolated",
+        "description": "Code is not designed to integrate with other systems, tools, or services.",
+        "typical_person": "A developer who works in isolation or on standalone projects."
+      },
+      "high_pole": {
+        "label": "Integrated",
+        "description": "Code is designed to work with external tools, APIs, or services and includes integration points.",
+        "typical_person": "A developer who works in a connected or modular ecosystem."
+      },
+      "example_contrast": {
+        "low_option": "A script that does not expose any API or hook.",
+        "high_option": "A script that includes hooks for external tools or plugins."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how well the code is designed to integrate with external systems.",
+      "subsumed_reasons": [
+        26,
+        58
+      ]
+    },
+    {
+      "id": 25,
+      "name": "User Experience",
+      "low_pole": {
+        "label": "Basic",
+        "description": "Code provides minimal user experience, with no attention to interface or feedback.",
+        "typical_person": "A developer who is not focused on user-facing systems."
+      },
+      "high_pole": {
+        "label": "Polished",
+        "description": "Code includes user-friendly interfaces, feedback, and clear communication with the user.",
+        "typical_person": "A developer who works on user-facing or interactive systems."
+      },
+      "example_contrast": {
+        "low_option": "A script that prints raw data to the console.",
+        "high_option": "A script that formats output and provides clear user prompts."
+      },
+      "articulability": "explicit",
+      "estimated_variance": "both",
+      "scoring_guidance": "Rate based on how user-friendly and polished the code's interface is.",
+      "subsumed_reasons": [
+        33,
+        43
+      ]
+    }
+  ],
+  "redundancy_check": [
+    {
+      "dimension_ids": [
+        1,
+        3
+      ],
+      "correlation_note": "Code simplicity and functionality clarity are closely related, as simple code is often clearer.",
+      "resolution": "They are kept separate because they can vary independently \u2014 a function can be clear but complex, or simple but unclear."
+    },
+    {
+      "dimension_ids": [
+        2,
+        9
+      ],
+      "correlation_note": "Modular code is often more testable, but not always.",
+      "resolution": "They are kept separate because modularity is about structure, while testability is about design for testing."
+    },
+    {
+      "dimension_ids": [
+        5,
+        14
+      ],
+      "correlation_note": "Automation and immediate results can be at odds \u2014 automation often requires setup.",
+      "resolution": "They are kept separate because they represent different goals \u2014 automation for efficiency, immediate results for feedback."
+    },
+    {
+      "dimension_ids": [
+        10,
+        25
+      ],
+      "correlation_note": "User interaction and user experience are related, but not the same.",
+      "resolution": "User interaction is about input/output, while user experience is about the quality of that interaction."
+    },
+    {
+      "dimension_ids": [
+        12,
+        16
+      ],
+      "correlation_note": "Both deal with external systems, but one is about libraries and the other about databases.",
+      "resolution": "They are kept separate because they represent different types of external dependencies."
+    }
+  ]
+}

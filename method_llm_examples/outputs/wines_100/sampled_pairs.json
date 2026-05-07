@@ -1,0 +1,702 @@
+[
+  {
+    "pair_id": 0,
+    "option_a_id": "wine_38837",
+    "option_b_id": "wine_92806",
+    "distance_stratum": "near",
+    "cosine_distance": 0.925548
+  },
+  {
+    "pair_id": 1,
+    "option_a_id": "wine_43649",
+    "option_b_id": "wine_64404",
+    "distance_stratum": "near",
+    "cosine_distance": 0.863417
+  },
+  {
+    "pair_id": 2,
+    "option_a_id": "wine_121958",
+    "option_b_id": "wine_62508",
+    "distance_stratum": "near",
+    "cosine_distance": 0.956659
+  },
+  {
+    "pair_id": 3,
+    "option_a_id": "wine_106425",
+    "option_b_id": "wine_59282",
+    "distance_stratum": "near",
+    "cosine_distance": 0.925498
+  },
+  {
+    "pair_id": 4,
+    "option_a_id": "wine_58429",
+    "option_b_id": "wine_65799",
+    "distance_stratum": "near",
+    "cosine_distance": 0.838388
+  },
+  {
+    "pair_id": 5,
+    "option_a_id": "wine_114833",
+    "option_b_id": "wine_88501",
+    "distance_stratum": "near",
+    "cosine_distance": 0.965061
+  },
+  {
+    "pair_id": 6,
+    "option_a_id": "wine_55878",
+    "option_b_id": "wine_96415",
+    "distance_stratum": "near",
+    "cosine_distance": 0.932702
+  },
+  {
+    "pair_id": 7,
+    "option_a_id": "wine_108962",
+    "option_b_id": "wine_30973",
+    "distance_stratum": "near",
+    "cosine_distance": 0.901998
+  },
+  {
+    "pair_id": 8,
+    "option_a_id": "wine_114833",
+    "option_b_id": "wine_54106",
+    "distance_stratum": "near",
+    "cosine_distance": 0.973844
+  },
+  {
+    "pair_id": 9,
+    "option_a_id": "wine_129413",
+    "option_b_id": "wine_55796",
+    "distance_stratum": "near",
+    "cosine_distance": 0.877117
+  },
+  {
+    "pair_id": 10,
+    "option_a_id": "wine_25285",
+    "option_b_id": "wine_30987",
+    "distance_stratum": "near",
+    "cosine_distance": 0.961045
+  },
+  {
+    "pair_id": 11,
+    "option_a_id": "wine_42052",
+    "option_b_id": "wine_70070",
+    "distance_stratum": "near",
+    "cosine_distance": 0.985423
+  },
+  {
+    "pair_id": 12,
+    "option_a_id": "wine_15254",
+    "option_b_id": "wine_23135",
+    "distance_stratum": "near",
+    "cosine_distance": 0.916375
+  },
+  {
+    "pair_id": 13,
+    "option_a_id": "wine_102959",
+    "option_b_id": "wine_121620",
+    "distance_stratum": "near",
+    "cosine_distance": 0.985982
+  },
+  {
+    "pair_id": 14,
+    "option_a_id": "wine_84294",
+    "option_b_id": "wine_96415",
+    "distance_stratum": "near",
+    "cosine_distance": 0.955345
+  },
+  {
+    "pair_id": 15,
+    "option_a_id": "wine_22750",
+    "option_b_id": "wine_65799",
+    "distance_stratum": "near",
+    "cosine_distance": 0.982721
+  },
+  {
+    "pair_id": 16,
+    "option_a_id": "wine_100999",
+    "option_b_id": "wine_5071",
+    "distance_stratum": "near",
+    "cosine_distance": 0.925844
+  },
+  {
+    "pair_id": 17,
+    "option_a_id": "wine_15254",
+    "option_b_id": "wine_87298",
+    "distance_stratum": "near",
+    "cosine_distance": 0.913603
+  },
+  {
+    "pair_id": 18,
+    "option_a_id": "wine_39220",
+    "option_b_id": "wine_41914",
+    "distance_stratum": "near",
+    "cosine_distance": 0.97439
+  },
+  {
+    "pair_id": 19,
+    "option_a_id": "wine_3437",
+    "option_b_id": "wine_47643",
+    "distance_stratum": "near",
+    "cosine_distance": 0.961952
+  },
+  {
+    "pair_id": 20,
+    "option_a_id": "wine_19530",
+    "option_b_id": "wine_83535",
+    "distance_stratum": "near",
+    "cosine_distance": 0.960849
+  },
+  {
+    "pair_id": 21,
+    "option_a_id": "wine_45457",
+    "option_b_id": "wine_70070",
+    "distance_stratum": "near",
+    "cosine_distance": 0.964805
+  },
+  {
+    "pair_id": 22,
+    "option_a_id": "wine_108962",
+    "option_b_id": "wine_64404",
+    "distance_stratum": "near",
+    "cosine_distance": 0.985636
+  },
+  {
+    "pair_id": 23,
+    "option_a_id": "wine_102959",
+    "option_b_id": "wine_108962",
+    "distance_stratum": "near",
+    "cosine_distance": 0.965719
+  },
+  {
+    "pair_id": 24,
+    "option_a_id": "wine_19530",
+    "option_b_id": "wine_54106",
+    "distance_stratum": "near",
+    "cosine_distance": 0.936791
+  },
+  {
+    "pair_id": 25,
+    "option_a_id": "wine_100999",
+    "option_b_id": "wine_113264",
+    "distance_stratum": "near",
+    "cosine_distance": 0.907323
+  },
+  {
+    "pair_id": 26,
+    "option_a_id": "wine_128748",
+    "option_b_id": "wine_22560",
+    "distance_stratum": "near",
+    "cosine_distance": 0.967665
+  },
+  {
+    "pair_id": 27,
+    "option_a_id": "wine_101359",
+    "option_b_id": "wine_30951",
+    "distance_stratum": "near",
+    "cosine_distance": 0.97181
+  },
+  {
+    "pair_id": 28,
+    "option_a_id": "wine_16969",
+    "option_b_id": "wine_42655",
+    "distance_stratum": "near",
+    "cosine_distance": 0.97999
+  },
+  {
+    "pair_id": 29,
+    "option_a_id": "wine_100376",
+    "option_b_id": "wine_107437",
+    "distance_stratum": "near",
+    "cosine_distance": 0.886884
+  },
+  {
+    "pair_id": 30,
+    "option_a_id": "wine_70042",
+    "option_b_id": "wine_97446",
+    "distance_stratum": "near",
+    "cosine_distance": 0.975089
+  },
+  {
+    "pair_id": 31,
+    "option_a_id": "wine_39220",
+    "option_b_id": "wine_56115",
+    "distance_stratum": "near",
+    "cosine_distance": 0.962328
+  },
+  {
+    "pair_id": 32,
+    "option_a_id": "wine_128748",
+    "option_b_id": "wine_81957",
+    "distance_stratum": "near",
+    "cosine_distance": 0.926003
+  },
+  {
+    "pair_id": 33,
+    "option_a_id": "wine_79706",
+    "option_b_id": "wine_84294",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.039412
+  },
+  {
+    "pair_id": 34,
+    "option_a_id": "wine_11150",
+    "option_b_id": "wine_70042",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.99193
+  },
+  {
+    "pair_id": 35,
+    "option_a_id": "wine_105847",
+    "option_b_id": "wine_121620",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.001065
+  },
+  {
+    "pair_id": 36,
+    "option_a_id": "wine_129413",
+    "option_b_id": "wine_70070",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.994434
+  },
+  {
+    "pair_id": 37,
+    "option_a_id": "wine_106425",
+    "option_b_id": "wine_23135",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.0248
+  },
+  {
+    "pair_id": 38,
+    "option_a_id": "wine_47643",
+    "option_b_id": "wine_65799",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.03137
+  },
+  {
+    "pair_id": 39,
+    "option_a_id": "wine_10590",
+    "option_b_id": "wine_75164",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.030733
+  },
+  {
+    "pair_id": 40,
+    "option_a_id": "wine_41914",
+    "option_b_id": "wine_91327",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.033311
+  },
+  {
+    "pair_id": 41,
+    "option_a_id": "wine_18600",
+    "option_b_id": "wine_64349",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.002688
+  },
+  {
+    "pair_id": 42,
+    "option_a_id": "wine_57268",
+    "option_b_id": "wine_73213",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.997153
+  },
+  {
+    "pair_id": 43,
+    "option_a_id": "wine_27537",
+    "option_b_id": "wine_55796",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.011039
+  },
+  {
+    "pair_id": 44,
+    "option_a_id": "wine_102959",
+    "option_b_id": "wine_92806",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.036213
+  },
+  {
+    "pair_id": 45,
+    "option_a_id": "wine_109564",
+    "option_b_id": "wine_128748",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.021215
+  },
+  {
+    "pair_id": 46,
+    "option_a_id": "wine_121620",
+    "option_b_id": "wine_38887",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.031204
+  },
+  {
+    "pair_id": 47,
+    "option_a_id": "wine_41914",
+    "option_b_id": "wine_88501",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.018265
+  },
+  {
+    "pair_id": 48,
+    "option_a_id": "wine_129413",
+    "option_b_id": "wine_84294",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.014385
+  },
+  {
+    "pair_id": 49,
+    "option_a_id": "wine_129413",
+    "option_b_id": "wine_22750",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.010104
+  },
+  {
+    "pair_id": 50,
+    "option_a_id": "wine_30951",
+    "option_b_id": "wine_92806",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.024876
+  },
+  {
+    "pair_id": 51,
+    "option_a_id": "wine_73213",
+    "option_b_id": "wine_76761",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.000418
+  },
+  {
+    "pair_id": 52,
+    "option_a_id": "wine_128350",
+    "option_b_id": "wine_89336",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.996306
+  },
+  {
+    "pair_id": 53,
+    "option_a_id": "wine_102959",
+    "option_b_id": "wine_70070",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.032089
+  },
+  {
+    "pair_id": 54,
+    "option_a_id": "wine_108962",
+    "option_b_id": "wine_123027",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.000323
+  },
+  {
+    "pair_id": 55,
+    "option_a_id": "wine_110969",
+    "option_b_id": "wine_54106",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.992067
+  },
+  {
+    "pair_id": 56,
+    "option_a_id": "wine_121958",
+    "option_b_id": "wine_73213",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.029913
+  },
+  {
+    "pair_id": 57,
+    "option_a_id": "wine_55613",
+    "option_b_id": "wine_64404",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.009052
+  },
+  {
+    "pair_id": 58,
+    "option_a_id": "wine_122645",
+    "option_b_id": "wine_44826",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.03681
+  },
+  {
+    "pair_id": 59,
+    "option_a_id": "wine_128748",
+    "option_b_id": "wine_19530",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.004955
+  },
+  {
+    "pair_id": 60,
+    "option_a_id": "wine_122645",
+    "option_b_id": "wine_38496",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.009571
+  },
+  {
+    "pair_id": 61,
+    "option_a_id": "wine_113264",
+    "option_b_id": "wine_18600",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.021967
+  },
+  {
+    "pair_id": 62,
+    "option_a_id": "wine_41914",
+    "option_b_id": "wine_55613",
+    "distance_stratum": "medium",
+    "cosine_distance": 0.990392
+  },
+  {
+    "pair_id": 63,
+    "option_a_id": "wine_42655",
+    "option_b_id": "wine_54106",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.021538
+  },
+  {
+    "pair_id": 64,
+    "option_a_id": "wine_30951",
+    "option_b_id": "wine_62508",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.032583
+  },
+  {
+    "pair_id": 65,
+    "option_a_id": "wine_30227",
+    "option_b_id": "wine_79706",
+    "distance_stratum": "medium",
+    "cosine_distance": 1.037313
+  },
+  {
+    "pair_id": 66,
+    "option_a_id": "wine_3437",
+    "option_b_id": "wine_65799",
+    "distance_stratum": "far",
+    "cosine_distance": 1.073763
+  },
+  {
+    "pair_id": 67,
+    "option_a_id": "wine_3437",
+    "option_b_id": "wine_87298",
+    "distance_stratum": "far",
+    "cosine_distance": 1.059362
+  },
+  {
+    "pair_id": 68,
+    "option_a_id": "wine_105630",
+    "option_b_id": "wine_62508",
+    "distance_stratum": "far",
+    "cosine_distance": 1.063336
+  },
+  {
+    "pair_id": 69,
+    "option_a_id": "wine_88501",
+    "option_b_id": "wine_97446",
+    "distance_stratum": "far",
+    "cosine_distance": 1.064578
+  },
+  {
+    "pair_id": 70,
+    "option_a_id": "wine_30973",
+    "option_b_id": "wine_38887",
+    "distance_stratum": "far",
+    "cosine_distance": 1.075419
+  },
+  {
+    "pair_id": 71,
+    "option_a_id": "wine_30951",
+    "option_b_id": "wine_91327",
+    "distance_stratum": "far",
+    "cosine_distance": 1.041837
+  },
+  {
+    "pair_id": 72,
+    "option_a_id": "wine_30973",
+    "option_b_id": "wine_48295",
+    "distance_stratum": "far",
+    "cosine_distance": 1.047216
+  },
+  {
+    "pair_id": 73,
+    "option_a_id": "wine_22560",
+    "option_b_id": "wine_84294",
+    "distance_stratum": "far",
+    "cosine_distance": 1.041458
+  },
+  {
+    "pair_id": 74,
+    "option_a_id": "wine_100376",
+    "option_b_id": "wine_64404",
+    "distance_stratum": "far",
+    "cosine_distance": 1.08215
+  },
+  {
+    "pair_id": 75,
+    "option_a_id": "wine_18600",
+    "option_b_id": "wine_19530",
+    "distance_stratum": "far",
+    "cosine_distance": 1.095002
+  },
+  {
+    "pair_id": 76,
+    "option_a_id": "wine_38496",
+    "option_b_id": "wine_99400",
+    "distance_stratum": "far",
+    "cosine_distance": 1.055595
+  },
+  {
+    "pair_id": 77,
+    "option_a_id": "wine_18349",
+    "option_b_id": "wine_38887",
+    "distance_stratum": "far",
+    "cosine_distance": 1.070064
+  },
+  {
+    "pair_id": 78,
+    "option_a_id": "wine_30987",
+    "option_b_id": "wine_38112",
+    "distance_stratum": "far",
+    "cosine_distance": 1.115382
+  },
+  {
+    "pair_id": 79,
+    "option_a_id": "wine_48295",
+    "option_b_id": "wine_64404",
+    "distance_stratum": "far",
+    "cosine_distance": 1.0776
+  },
+  {
+    "pair_id": 80,
+    "option_a_id": "wine_18349",
+    "option_b_id": "wine_38112",
+    "distance_stratum": "far",
+    "cosine_distance": 1.091403
+  },
+  {
+    "pair_id": 81,
+    "option_a_id": "wine_41914",
+    "option_b_id": "wine_44826",
+    "distance_stratum": "far",
+    "cosine_distance": 1.062701
+  },
+  {
+    "pair_id": 82,
+    "option_a_id": "wine_100376",
+    "option_b_id": "wine_75164",
+    "distance_stratum": "far",
+    "cosine_distance": 1.102981
+  },
+  {
+    "pair_id": 83,
+    "option_a_id": "wine_39220",
+    "option_b_id": "wine_65799",
+    "distance_stratum": "far",
+    "cosine_distance": 1.050018
+  },
+  {
+    "pair_id": 84,
+    "option_a_id": "wine_113264",
+    "option_b_id": "wine_96415",
+    "distance_stratum": "far",
+    "cosine_distance": 1.068758
+  },
+  {
+    "pair_id": 85,
+    "option_a_id": "wine_43649",
+    "option_b_id": "wine_83535",
+    "distance_stratum": "far",
+    "cosine_distance": 1.04876
+  },
+  {
+    "pair_id": 86,
+    "option_a_id": "wine_27537",
+    "option_b_id": "wine_87298",
+    "distance_stratum": "far",
+    "cosine_distance": 1.054951
+  },
+  {
+    "pair_id": 87,
+    "option_a_id": "wine_5071",
+    "option_b_id": "wine_56115",
+    "distance_stratum": "far",
+    "cosine_distance": 1.092734
+  },
+  {
+    "pair_id": 88,
+    "option_a_id": "wine_38887",
+    "option_b_id": "wine_42052",
+    "distance_stratum": "far",
+    "cosine_distance": 1.054175
+  },
+  {
+    "pair_id": 89,
+    "option_a_id": "wine_28345",
+    "option_b_id": "wine_70042",
+    "distance_stratum": "far",
+    "cosine_distance": 1.088873
+  },
+  {
+    "pair_id": 90,
+    "option_a_id": "wine_112289",
+    "option_b_id": "wine_15254",
+    "distance_stratum": "far",
+    "cosine_distance": 1.062361
+  },
+  {
+    "pair_id": 91,
+    "option_a_id": "wine_39994",
+    "option_b_id": "wine_41914",
+    "distance_stratum": "far",
+    "cosine_distance": 1.125372
+  },
+  {
+    "pair_id": 92,
+    "option_a_id": "wine_101359",
+    "option_b_id": "wine_22560",
+    "distance_stratum": "far",
+    "cosine_distance": 1.06501
+  },
+  {
+    "pair_id": 93,
+    "option_a_id": "wine_22750",
+    "option_b_id": "wine_3437",
+    "distance_stratum": "far",
+    "cosine_distance": 1.047176
+  },
+  {
+    "pair_id": 94,
+    "option_a_id": "wine_108962",
+    "option_b_id": "wine_45706",
+    "distance_stratum": "far",
+    "cosine_distance": 1.061052
+  },
+  {
+    "pair_id": 95,
+    "option_a_id": "wine_28345",
+    "option_b_id": "wine_38496",
+    "distance_stratum": "far",
+    "cosine_distance": 1.075043
+  },
+  {
+    "pair_id": 96,
+    "option_a_id": "wine_23135",
+    "option_b_id": "wine_79706",
+    "distance_stratum": "far",
+    "cosine_distance": 1.08883
+  },
+  {
+    "pair_id": 97,
+    "option_a_id": "wine_128350",
+    "option_b_id": "wine_43649",
+    "distance_stratum": "far",
+    "cosine_distance": 1.075773
+  },
+  {
+    "pair_id": 98,
+    "option_a_id": "wine_122645",
+    "option_b_id": "wine_79706",
+    "distance_stratum": "far",
+    "cosine_distance": 1.052743
+  },
+  {
+    "pair_id": 99,
+    "option_a_id": "wine_107437",
+    "option_b_id": "wine_114833",
+    "distance_stratum": "far",
+    "cosine_distance": 1.064064
+  }
+]
