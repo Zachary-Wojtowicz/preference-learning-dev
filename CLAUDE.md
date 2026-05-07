@@ -158,28 +158,33 @@ V ∈ ℝᴷˣᵈ (K direction vectors, not orthogonal). Gram matrix G = VVᵀ (
 | Projected | K-dim primal on U, zero prior | 1 bit, restricted to K-dim subspace |
 | Feedback-adjusted | K-dim primal on Ũ = Λ ⊙ U, zero prior | 1 bit + K multipliers (category feedback scales the design matrix) |
 
-### Feedback-Adjusted Design Matrix (Our Method)
-Participant feedback scales the design matrix per-trial, per-dimension before fitting:
+### Feedback-Adjusted Gradient (Our Method)
+Participant feedback re-weights the *gradient* per-trial per-dimension, while
+predictions always use raw (unscaled) projections — matching test-time conditions:
 
 ```
-Ũ[t,k] = λ_tk · U[t,k]    if dim k was visible on trial t
-Ũ[t,k] = U[t,k]           if dim k was NOT visible on trial t
+Prediction:  p_t = σ(β⊤ U_t)               ← raw U, same scale as test time
+Gradient:    ∂L/∂β_k = Σ_t (p_t − y_t) · λ_tk · U_tk  +  λ(Gβ)_k
+Hessian:     H = U⊤ W U + λG               ← raw U, matches prediction
 ```
 
-where λ_tk is the multiplier from the participant's selected category (e.g., "love" = 1.5, "indifferent" = 0.0, "prefer to skip" = −1.5). Then fit standard K-dim logistic regression on Ũ:
+where λ_tk is the multiplier from the participant's selected category (e.g., "love" = 1.5,
+"indifferent" = 0.0, "prefer to skip" = −1.5) for visible dims, and 1.0 for invisible dims.
 
-```
-minimize  −Σ_t log-likelihood(β; Ũ_t, y_t)  +  (λ/2) βᵀ G β
-```
+This is the batch analogue of per-trial SGD: each trial's gradient contribution to
+dimension k is scaled by the participant's feedback, exactly as if we took T separate
+SGD steps with per-dimension re-weighting.
 
-The gradient ∂L/∂β_k = Σ_t (p_t − y_t) · λ_tk · U_tk + λ(Gβ)_k is exactly the sum of the per-trial per-dimension SGD updates — this is the batch analogue of the original online SGD idea.
+Critical: the *prediction* p_t = σ(β⊤ U_t) uses raw U during training, not the
+feedback-scaled Ũ. This means β is calibrated to the same input scale it sees at
+test time — no train/test mismatch.
 
 Key properties:
 - Negative multipliers flip the gradient direction ("I chose A despite its action, not because of it")
-- Zero multipliers silence a dimension's contribution from that trial
+- Zero multipliers silence a dimension's gradient contribution from that trial
 - Invisible dimensions pass through unmodified (λ_tk = 1.0)
-- No β₀ prior needed — feedback information is in the data itself
-- Preserves per-trial variation (unlike the old β₀ = G⁻¹·mean(λ_t) which averaged across trials)
+- No β₀ prior needed — feedback information is in the gradients themselves
+- No train/test scale mismatch — β is calibrated to raw U at both train and test time
 
 ### Inference Multipliers
 When using inference conditions, the user assigns each visible dimension a category. The category multiplier scales the gradient component for that dimension:
@@ -286,7 +291,7 @@ The safety demonstration: decompose the fine-tuning gradient g = mean(φ(bad)) �
 
 4. **Categories are domain-specific**: The 5-level scale (e.g., "prefer to skip" → "love") is stored in `experiment_config.json → inference_categories`. Different domains need different language (movies vs. moral dilemmas).
 
-5. **Feedback-adjusted design matrix (not prior-based)**: Participant feedback scales the design matrix Ũ = Λ ⊙ U per-trial per-dimension, rather than informing a prior β₀. This preserves trial-level variation and allows sign-flipping (negative multipliers). The previous approach (β₀ = G⁻¹·mean(λ_t)) averaged feedback across trials and only used it as a soft prior nudge.
+5. **Feedback-adjusted gradient (not design-matrix scaling)**: Participant feedback re-weights the *gradient* per-trial per-dimension, while predictions always use raw projections U (matching test time). The earlier Ũ = Λ ⊙ U formulation put feedback inside the prediction function, creating a train/test scale mismatch: β calibrated to scaled inputs was systematically attenuated on unscaled test data. The corrected version (`fitFeedbackGradient` / `fit_feedback_gradient`) keeps prediction on raw U and only modifies the gradient, which is the true batch analogue of per-trial SGD with per-dimension re-weighting.
 
 6. **Inference conditions replace sliders for the experiment**: The slider UI was confusing for participants. Two inference conditions replace it: `inference_affirm` (Remove/Affirm) and `inference_categories` (5-level category picker). The slider conditions remain for internal testing/comparison.
 

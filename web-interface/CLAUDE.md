@@ -396,12 +396,13 @@ Qualtrics interprets `${` as piped text. In any QuestionJS code, use `\x24{` or 
 | `inference_categories` | `inference_values` (action: `modify` / `none`, category from picker) |
 
 **Multiplier computation and model fitting:**
-- Multipliers from category feedback are used to build a **feedback-adjusted design matrix** Ũ = Λ ⊙ U
-- Ũ[t,k] = multiplier × U[t,k] for visible dimensions, U[t,k] for invisible (passthrough)
-- The K-dim model β is then fit on Ũ via Newton logistic regression with zero-centered G-shaped prior
-- This means participant feedback directly scales how each trial's evidence contributes per-dimension
-- `action: "affirm"` applies a 1.5× bonus to the category multiplier before scaling
-- `action: "remove"` forces multiplier to 0.0 (silences that dimension for that trial)
+- Multipliers from category feedback re-weight the **gradient** per-trial per-dimension
+- Predictions always use raw projections U (matching test-time scale): p_t = σ(β⊤ U_t)
+- Gradients use feedback-scaled projections: ∂L/∂β_k = Σ_t (p_t - y_t) · λ_tk · U_tk + λ(Gβ)_k
+- This avoids the train/test scale mismatch that occurred when feedback was inside the prediction
+- Implemented as `fitFeedbackGradient(U, U_adj, y, G, lam)` in the JS
+- `action: "affirm"` applies a 1.5× bonus to the category multiplier
+- `action: "remove"` forces multiplier to 0.0 (silences that dimension's gradient for that trial)
 - Negative multipliers (e.g., "prefer to skip" = −1.5) flip the gradient direction
 
 ## Generating Trials

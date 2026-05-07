@@ -47,6 +47,15 @@
   .inference-row.removed{opacity:.3;background:#f0f0f0}.inference-row.removed .inference-text{text-decoration:line-through;text-decoration-color:#aaa}
   .inference-row.affirmed{background:#f0f7ff;border-color:#bfdbfe}
   .inference-text{font-size:.95rem;font-weight:500;margin-bottom:.55rem;color:#1a1a1a}.inference-text .cat-word{color:#3b82f6;font-weight:600}
+  .dim-info{display:inline-flex;align-items:center;justify-content:center;position:relative;width:15px;height:15px;border-radius:50%;background:#cbd5e1;color:#fff;font-size:.7rem;font-weight:700;font-style:italic;font-family:Georgia,'Times New Roman',serif;line-height:1;cursor:help;margin-left:.25rem;vertical-align:1px;transition:background .15s;outline:none;user-select:none}
+  .dim-info:hover,.dim-info:focus{background:#3b82f6}
+  .dim-tooltip{visibility:hidden;opacity:0;position:absolute;left:50%;top:calc(100% + 6px);transform:translateX(-50%);width:280px;max-width:90vw;background:#1f2937;color:#fff;padding:.7rem .85rem;border-radius:6px;font-size:.78rem;font-weight:400;font-style:normal;line-height:1.45;box-shadow:0 4px 14px rgba(0,0,0,.2);z-index:1000;pointer-events:none;text-align:left;font-family:inherit;transition:opacity .15s}
+  .dim-tooltip::before{content:'';position:absolute;left:50%;top:-5px;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:5px solid #1f2937}
+  .dim-info:hover .dim-tooltip,.dim-info:focus .dim-tooltip,.dim-info:focus-within .dim-tooltip{visibility:visible;opacity:1}
+  .dim-tooltip-title{display:block;font-weight:600;margin-bottom:.35rem;font-size:.82rem;color:#fff}
+  .dim-tooltip-poles{display:block;color:#cbd5e1;font-size:.72rem;margin-bottom:.45rem}
+  .dim-tooltip-poles strong{color:#fff;font-weight:500}
+  .dim-tooltip-guidance{display:block;color:#e5e7eb}
   .inference-actions{display:flex;gap:.4rem;align-items:center}
   .inference-actions button{padding:.3rem .75rem;font-size:.8rem;border:1px solid #d1d5db;border-radius:5px;background:#fff;color:#555;cursor:pointer;transition:all .15s}
   .inference-actions button:hover{border-color:#999;background:#f9fafb}
@@ -55,6 +64,7 @@
   .category-picker{margin-top:.5rem;display:flex;gap:.35rem;flex-wrap:wrap}
   .category-picker button{padding:.3rem .65rem;font-size:.8rem;border:1px solid #d1d5db;border-radius:5px;background:#fff;color:#555;cursor:pointer;transition:all .12s}
   .category-picker button:hover{border-color:#888}.category-picker button.selected{background:#3b82f6;color:#fff;border-color:#3b82f6}
+  .category-picker button.suggested{background:#dbeafe;color:#1e40af;border-color:#93c5fd}
   .submit-row{text-align:center;margin-top:1.5rem}
   .affirm-hint{display:block;color:#6b7280;font-size:.9rem;margin-bottom:.5rem;min-height:1.1em}
   .btn{background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:.6rem 2rem;font-size:.95rem;cursor:pointer;transition:background .15s}
@@ -112,6 +122,17 @@
   .pred-badge{font-size:.78rem;font-weight:600;color:#3b82f6;text-align:center;margin-bottom:.4rem;letter-spacing:.02em;text-transform:uppercase}
   .pred-badge.pred-badge-empty{color:transparent}
   .accuracy-row{max-width:820px}
+  .pred-blocks-container{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.25rem}
+  .pred-block{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:1rem 1.1rem}
+  .pred-block-header{font-size:.92rem;font-weight:500;margin-bottom:.85rem;color:#1a1a1a;line-height:1.45}
+  .pred-block-header strong{font-weight:600;color:#3b82f6}
+  .pred-block-rating{margin-top:.5rem}
+  .pred-block-rating .likert-prompt-inline{text-align:center;font-size:.82rem;color:#444;margin-bottom:.5rem;font-weight:500}
+  .pred-block-rating .pred-likert-row{display:grid;grid-template-columns:repeat(6,1fr);gap:.3rem;margin:0}
+  .pred-block-rating .pred-likert-btn{padding:.55rem .15rem;font-size:.7rem;border:1px solid #d1d5db;border-radius:5px;background:#fff;color:#333;cursor:pointer;transition:all .15s;text-align:center;line-height:1.2;font-family:inherit}
+  .pred-block-rating .pred-likert-btn:hover{border-color:#888;background:#f9fafb}
+  .pred-block-rating .pred-likert-btn.selected{background:#3b82f6;color:#fff;border-color:#3b82f6}
+  @media(max-width:700px){.pred-blocks-container{grid-template-columns:1fr}.pred-block-rating .pred-likert-row{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:700px){.eval-grid{grid-template-columns:1fr}.likert-row{grid-template-columns:repeat(3,1fr)}.likert-btn{font-size:.72rem;padding:.55rem .25rem}}
   @media(max-width:600px){.options{flex-direction:column}.slider-row{grid-template-columns:120px 1fr 36px}}
 </style>
@@ -150,9 +171,10 @@ if(window.parent!==window){
 }
 var app=document.getElementById('app');
 var trials=[],experimentConfig=null,gramMatrix=null,condition=null,conditionKey='',participantId='',domainKey='';
-var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,firstChoiceTime=null,topKSliders=5,visibleSliderIndices=[],postUrl=null;
+var assignedTrialIndices=[],currentStep=0,responses=[],chosen=null,startTime=null,firstChoiceTime=null,topKSliders=3,visibleSliderIndices=[],postUrl=null;
 var trainingPlan=[],trainingStep=0,inTraining=false,trainingResponses=[],numFeedback=20,numTraining=5;
-var dimQuantiles=null;  // {dimension_id -> [b1, b2, ..., b_{n-1}]} per-dim quantile boundaries
+var dimQuantiles=null;
+var dimMidpoints=null;  // {dimension_id -> [b1, b2, ..., b_{n-1}]} per-dim quantile boundaries
 var deltaGram=null,deltaGramN=0,trialProjections=null,evalState=null;
 var optionProjections=null,predictionState=null;
 var optionGram=null,optionGramN=0,optionIdToIdx=null;
@@ -235,6 +257,30 @@ function catFromEff(v,dimensionId){
 }
 function catPhrase(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.phrase:k;}
 function catMult(k){var c=CATEGORIES.find(function(x){return x.key===k});return c?c.mult:0;}
+// Look up the full dimension definition (name, low/high labels, scoring guidance)
+// from experimentConfig.dimensions. Accepts either the string id ("dim_1") or
+// the numeric dimension_id (1).
+function getDimDef(idOrDimId){
+  if(!experimentConfig||!Array.isArray(experimentConfig.dimensions))return null;
+  for(var i=0;i<experimentConfig.dimensions.length;i++){
+    var d=experimentConfig.dimensions[i];
+    if(d.id===idOrDimId||d.dimension_id===idOrDimId)return d;
+  }
+  return null;
+}
+// Build the small ‘i’ info icon + hover tooltip showing the dim definition.
+// Returns '' if the dim has no associated definition (so renders cleanly).
+function dimTooltipHtml(dim){
+  if(!dim)return '';
+  var hasPoles=dim.low_label||dim.high_label;
+  var hasGuidance=dim.scoring_guidance;
+  if(!hasPoles&&!hasGuidance&&!dim.name)return '';
+  var parts='<span class="dim-tooltip-title">'+esc(dim.name||'')+'</span>';
+  if(hasPoles)
+    parts+='<span class="dim-tooltip-poles"><strong>Low:</strong> '+esc(dim.low_label||'\u2014')+' \u00b7 <strong>High:</strong> '+esc(dim.high_label||'\u2014')+'</span>';
+  if(hasGuidance)parts+='<span class="dim-tooltip-guidance">'+esc(dim.scoring_guidance)+'</span>';
+  return ' <span class="dim-info" role="button" tabindex="0" aria-label="Definition of '+esc(dim.name||'this dimension')+'">i<span class="dim-tooltip">'+parts+'</span></span>';
+}
 function infMode(){return condition?condition.show_inferences:false;}
 // Fields that, when identical on both options of a pair, should render once above
 // the cards as shared context (e.g., a dilemma's situation) rather than twice.
@@ -300,6 +346,11 @@ Promise.all([
   if(arr[1]&&arr[1].top_k_sliders)topKSliders=arr[1].top_k_sliders;
   loadCategories();
   dimQuantiles=computeDimQuantiles();
+  // dimMidpoints is computed lazily by buildEvalInputs() using the correct
+  // raw_projection-based version defined later. Don't pre-compute here with
+  // a stale slider-value version (used to be a duplicate function with
+  // numeric keys that broke the categories feedback path).
+  dimMidpoints=null;
   if(urlParams.pid&&urlParams.condition){
     participantId=urlParams.pid;conditionKey=urlParams.condition;
     var cm=arr[1]?arr[1].conditions:buildFC();condition=cm[conditionKey];
@@ -473,8 +524,12 @@ function renderTrial(){
     h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header" id="dimPanelHeader"></div><div id="sliderContainer"></div></div></div>';
   if(condition.show_checkboxes&&trial.sliders&&trial.sliders.length>0)
     h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Which of these dimensions were relevant?</div><div id="checkboxContainer"></div></div></div>';
-  if(infMode()&&trial.sliders&&trial.sliders.length>0)
-    h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">Based on your choice in this context, an algorithm would infer:</div><div id="inferenceContainer"></div></div></div>';
+  if(infMode()&&trial.sliders&&trial.sliders.length>0){
+    var infHeader=(infMode()==='categories')
+      ?'Please click to confirm or correct each algorithmic inference about your preferences.'
+      :'Based on your choice in this context, an algorithm would infer:';
+    h+='<div class="dim-panel" id="dimPanel"><div class="dim-panel-inner"><div class="dim-panel-header">'+infHeader+'</div><div id="inferenceContainer"></div></div></div>';
+  }
   h+='<div class="submit-row"><span id="affirmHint" class="affirm-hint"></span><button class="btn" id="submitBtn" disabled>Submit</button></div>';
   app.innerHTML=h;
   app.querySelectorAll('.option-card').forEach(function(el){el.addEventListener('click',function(){selectOption(el.dataset.option)});});
@@ -503,6 +558,7 @@ function selectOption(key){
   if(infMode())populateInferences(trial,key);
   var p=document.getElementById('dimPanel');if(p)p.classList.add('visible');
   if(infMode()==='affirm')updateAffirmSubmitState();
+  else if(infMode()==='categories')updateCategorySubmitState();
   else document.getElementById('submitBtn').disabled=false;
 }
 function updateAffirmSubmitState(){
@@ -511,7 +567,15 @@ function updateAffirmSubmitState(){
   rows.forEach(function(r){if((r.dataset.action||'none')==='none')pending++;});
   btn.disabled=(pending>0);
   var hint=document.getElementById('affirmHint');
-  if(hint)hint.textContent=pending>0?('Respond to '+pending+' more inference'+(pending===1?'':'s')+' to continue.'):'';
+  if(hint)hint.textContent=pending>0?('Respond to '+pending+' more inference'+(pending===1?'':'s')+' to continue.'):'';  
+}
+function updateCategorySubmitState(){
+  var btn=document.getElementById('submitBtn');if(!btn)return;
+  var rows=document.querySelectorAll('.inference-row'),pending=0;
+  rows.forEach(function(r){if(r.dataset.confirmed!=='true')pending++;});
+  btn.disabled=(pending>0);
+  var hint=document.getElementById('affirmHint');
+  if(hint)hint.textContent=pending>0?('Confirm '+pending+' more inference'+(pending===1?'':'s')+' to continue.'):'';
 }
 function populateSliders(trial,key){
   var c=document.getElementById('sliderContainer'),hd=document.getElementById('dimPanelHeader');if(!c||!hd)return;
@@ -548,15 +612,16 @@ function populateCheckboxes(trial,key){
 }
 function updateInfText(row){
   var dim=row.dataset.dimLabel,cat=row.dataset.cat;
-  row.querySelector('.inference-text').innerHTML='\u201cYou <span class="cat-word">'+esc(catPhrase(cat))+'</span> '+esc(dim)+'.\u201d';
+  var did=row.dataset.id;  // "dim_1" etc.
+  row.querySelector('.inference-text').innerHTML='\u201cYou <span class="cat-word">'+esc(catPhrase(cat))+'</span> '+esc(dim)+'.\u201d'+dimTooltipHtml(getDimDef(did));
 }
 function populateInferences(trial,key){
   var c=document.getElementById('inferenceContainer');if(!c)return;
   var mode=infMode(),h='';
   visibleSliderIndices.forEach(function(si){
     var s=trial.sliders[si],eff=key==='a'?s.value_if_a:s.value_if_b,defCat=catFromEff(eff,s.dimension_id);
-    h+='<div class="inference-row" data-id="'+s.id+'" data-dim-label="'+esc(s.label)+'" data-cat="'+defCat+'" data-original-cat="'+defCat+'" data-action="none">';
-    h+='<div class="inference-text">\u201cYou <span class="cat-word">'+esc(catPhrase(defCat))+'</span> '+esc(s.label)+'.\u201d</div>';
+    h+='<div class="inference-row" data-id="'+s.id+'" data-dim-label="'+esc(s.label)+'" data-cat="'+defCat+'" data-original-cat="'+defCat+'" data-action="none" data-confirmed="false">';
+    h+='<div class="inference-text">\u201cYou <span class="cat-word">'+esc(catPhrase(defCat))+'</span> '+esc(s.label)+'.\u201d'+dimTooltipHtml(getDimDef(s.dimension_id))+'</div>';
     if(mode==='affirm'){
       h+='<div class="inference-actions">';
       h+='<button class="btn-remove">\u2715 Remove</button>';
@@ -564,7 +629,7 @@ function populateInferences(trial,key){
       h+='</div>';
     }else{
       h+='<div class="category-picker">';
-      CATEGORIES.forEach(function(cat){h+='<button data-cat="'+cat.key+'"'+(cat.key===defCat?' class="selected"':'')+'>'+esc(cat.label)+'</button>';});
+      CATEGORIES.forEach(function(cat){h+='<button data-cat="'+cat.key+'"'+(cat.key===defCat?' class="suggested"':'')+'>'+esc(cat.label)+'</button>';});
       h+='</div>';
     }
     h+='</div>';
@@ -592,8 +657,12 @@ function populateInferences(trial,key){
     c.querySelectorAll('.inference-row').forEach(function(row){
       row.querySelectorAll('.category-picker button').forEach(function(btn){
         btn.addEventListener('click',function(){
-          row.querySelectorAll('.category-picker button').forEach(function(b){b.classList.remove('selected')});
-          btn.classList.add('selected');row.dataset.cat=btn.dataset.cat;row.dataset.action='modify';updateInfText(row);
+          row.querySelectorAll('.category-picker button').forEach(function(b){b.classList.remove('selected','suggested')});
+          btn.classList.add('selected');row.dataset.cat=btn.dataset.cat;
+          row.dataset.action=(btn.dataset.cat===row.dataset.originalCat)?'none':'modify';
+          row.dataset.confirmed='true';
+          updateInfText(row);
+          updateCategorySubmitState();
         });
       });
     });
@@ -604,22 +673,25 @@ function submitTrial(){
   var now=Date.now();
   var time_to_submit_ms=now-startTime;
   var time_to_first_choice_ms=firstChoiceTime!=null?firstChoiceTime-startTime:null;
-  var response={trial_id:trial.trial_id,option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:chosen,time_to_first_choice_ms:time_to_first_choice_ms,time_to_submit_ms:time_to_submit_ms,response_time_ms:time_to_submit_ms,visible_dimensions:visibleSliderIndices.map(function(i){return trial.sliders[i].id})};
+  var response={trial_id:trial.trial_id,pair_index:assignedTrialIndices[currentStep],option_a_id:trial.option_a_id||null,option_b_id:trial.option_b_id||null,chosen:chosen,time_to_first_choice_ms:time_to_first_choice_ms,time_to_submit_ms:time_to_submit_ms,response_time_ms:time_to_submit_ms,visible_dimensions:visibleSliderIndices.map(function(i){return trial.sliders[i].id})};
   if(condition.show_sliders&&trial.sliders){var sv={};visibleSliderIndices.forEach(function(si){var s=trial.sliders[si],inp=app.querySelector('input[data-id="'+s.id+'"]');sv[s.id]=inp?parseInt(inp.value,10):0;});response.slider_values=sv;response.sliders_adjusted=condition.sliders_adjustable;}
   if(condition.show_checkboxes&&trial.sliders){var cv={};visibleSliderIndices.forEach(function(si){var s=trial.sliders[si],cb=document.getElementById('cb_'+s.id);cv[s.id]=cb?(cb.checked?1:0):0;});response.checkbox_values=cv;}
   if(infMode()){
     var iv={};
     document.querySelectorAll('.inference-row').forEach(function(row){
       var id=row.dataset.id,cat=row.dataset.cat,origCat=row.dataset.originalCat,action=row.dataset.action||'none';
-      var mult=catMult(cat);
-      if(action==='affirm')mult=mult*1.5;
-      if(action==='remove')mult=0.0;
+      // Multiplier stored for record-keeping. The actual prior value used in
+      // model fitting is computed from action + category in buildEvalInputs:
+      //   affirm  -> raw U_t,k
+      //   remove  -> 0.0
+      //   modify  -> midpoint(category)
+      //   none    -> midpoint(confirmed default category)
       iv[id]={
         original_category:origCat,
         original_multiplier:catMult(origCat),
         category:cat,
         action:action,
-        multiplier:Math.round(mult*100)/100
+        multiplier:catMult(cat)
       };
     });
     response.inference_values=iv;
@@ -628,7 +700,13 @@ function submitTrial(){
   if(currentStep<assignedTrialIndices.length){renderTrial();window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();}else if(!evalState){startEvaluation();}else if(!predictionState){startPrediction();}else finishExperiment();
 }
 function finishExperiment(){
-  if(evalState&&'_alpha' in evalState)delete evalState._alpha;
+  // Strip internal-only fields before exporting
+  if(evalState){
+    delete evalState._betaProj;
+    delete evalState._betaAlpha;
+    delete evalState._betaRand;
+    if('_alpha' in evalState)delete evalState._alpha;  // legacy
+  }
   var output={participant_id:participantId,condition:conditionKey,domain:domainKey||(experimentConfig?experimentConfig.domain:''),num_trials:responses.length,num_training:trainingResponses.length,training_responses:trainingResponses,timestamp:new Date().toISOString(),responses:responses,evaluation:evalState||null,prediction_check:predictionState||null};
   if(postUrl)fetch(postUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(output)}).catch(function(){});
   if(window.parent!==window){try{window.parent.postMessage({type:'experiment_complete',payload:output},'*');}catch(e){}}
@@ -648,8 +726,14 @@ function renderResults(output){
   document.getElementById('copyBtn').addEventListener('click',function(){navigator.clipboard.writeText(s).then(function(){var b=document.getElementById('copyBtn');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy to Clipboard'},1500)})});
   document.getElementById('downloadBtn').addEventListener('click',function(){var blob=new Blob([s],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='responses_'+participantId+'_'+conditionKey+'.json';a.click();URL.revokeObjectURL(u);});
 }
-// ===== Newton+L2 fitters for post-experiment evaluation =====
+// ===== Newton+L2 fitter for post-experiment evaluation =====
+// Unified BTL fit with optional Gaussian prior on beta.
+//   min_beta  -LL(U beta, y) + (lam/2)||beta||^2 + (mu/2)||beta - betaPrior||^2
+// Use mu=0, betaPrior=null for plain L2 (projection_only / random_projection).
+// Use mu>0, betaPrior!=null for feedback-as-prior (projection_alpha).
+// Penalty is P=I (uniform regularization), matching the Python pipeline.
 function _matVec(M,v){var n=M.length,r=new Array(n);for(var i=0;i<n;i++){var row=M[i],s=0;for(var j=0;j<v.length;j++)s+=row[j]*v[j];r[i]=s;}return r;}
+function _matVec2(M,v){var n=M.length,r=new Array(n);for(var i=0;i<n;i++){var s=0;for(var j=0;j<v.length;j++)s+=M[i][j]*v[j];r[i]=s;}return r;}
 function _solveLinear(A,b){
   var n=b.length,M=[],rhs=b.slice();
   for(var i=0;i<n;i++)M.push(A[i].slice());
@@ -665,49 +749,120 @@ function _solveLinear(A,b){
   return x;
 }
 function _sigm(x){if(x>20)return 1-1e-9;if(x<-20)return 1e-9;return 1/(1+Math.exp(-x));}
-// Standard fit: kernel logistic regression. Returns alpha s.t. theta = sum_t alpha_t * delta_t.
-function fitNewtonStandard(D,y,lam,maxIter){
-  var T=D.length,alpha=new Array(T).fill(0);
-  for(var iter=0;iter<(maxIter||12);iter++){
-    var u=_matVec(D,alpha);
+
+// Unified BTL fit. Returns beta (K-vector).
+//   U: T x K design matrix
+//   y: T-vector of {0,1} labels (1 = chose option a)
+//   lam: L2 penalty
+//   betaPrior: K-vector or null (no prior)
+//   muPrior: prior strength (mu_prior in the Python code)
+//   maxIter: max Newton iterations (default 15)
+function fitBTL(U,y,lam,betaPrior,muPrior,maxIter){
+  var T=U.length;if(T===0)return [];
+  var K=U[0].length,beta=new Array(K).fill(0);
+  var bp=betaPrior||new Array(K).fill(0);
+  var mu=muPrior||0.0;
+  for(var iter=0;iter<(maxIter||15);iter++){
+    var u=_matVec2(U,beta);
     var p=u.map(_sigm),w=p.map(function(pi){return pi*(1-pi);});
-    var rhs=new Array(T);for(var i=0;i<T;i++)rhs[i]=-(p[i]-y[i]+lam*alpha[i]);
-    var A=[];for(var i2=0;i2<T;i2++){var row=new Array(T);for(var j=0;j<T;j++)row[j]=w[i2]*D[i2][j]+(i2===j?lam:0);A.push(row);}
-    var dA=_solveLinear(A,rhs);if(!dA)break;
-    var step=0;for(var i3=0;i3<T;i3++){alpha[i3]+=dA[i3];if(Math.abs(dA[i3])>step)step=Math.abs(dA[i3]);}
-    if(step<1e-7)break;
-  }
-  return alpha;
-}
-// Partial fit: K-dim primal logistic with G-shaped prior centered at beta_0.
-function fitNewtonPartial(U,y,G,beta0,lam,maxIter){
-  var T=U.length,K=U[0].length,beta=beta0.slice();
-  for(var iter=0;iter<(maxIter||12);iter++){
-    var u=new Array(T);for(var t=0;t<T;t++){var s=0;for(var k=0;k<K;k++)s+=U[t][k]*beta[k];u[t]=s;}
-    var p=u.map(_sigm),w=p.map(function(pi){return pi*(1-pi);});
-    var diff=new Array(K);for(var k2=0;k2<K;k2++)diff[k2]=beta[k2]-beta0[k2];
-    var Gd=_matVec(G,diff);
+    // Gradient: U^T (p - y) + lam*beta + mu*(beta - betaPrior)
     var grad=new Array(K).fill(0);
-    for(var k=0;k<K;k++){var s2=0;for(var t2=0;t2<T;t2++)s2+=U[t2][k]*(p[t2]-y[t2]);grad[k]=s2+lam*Gd[k];}
-    var H=[];for(var k=0;k<K;k++){var row=new Array(K).fill(0);for(var k3=0;k3<K;k3++){var s3=0;for(var t3=0;t3<T;t3++)s3+=U[t3][k]*w[t3]*U[t3][k3];row[k3]=s3+lam*G[k][k3];}H.push(row);}
+    for(var k=0;k<K;k++){
+      var s=0;for(var t=0;t<T;t++)s+=U[t][k]*(p[t]-y[t]);
+      grad[k]=s+lam*beta[k]+mu*(beta[k]-bp[k]);
+    }
+    // Hessian: U^T W U + (lam + mu) * I
+    var H=[];
+    for(var k2=0;k2<K;k2++){
+      var row=new Array(K).fill(0);
+      for(var k3=0;k3<K;k3++){
+        var s3=0;for(var t3=0;t3<T;t3++)s3+=U[t3][k2]*w[t3]*U[t3][k3];
+        row[k3]=s3+(k2===k3?(lam+mu):0);
+      }
+      H.push(row);
+    }
     var rhs=grad.map(function(g){return -g;});
     var dB=_solveLinear(H,rhs);if(!dB)break;
-    var step=0;for(var k4=0;k4<K;k4++){beta[k4]+=dB[k4];if(Math.abs(dB[k4])>step)step=Math.abs(dB[k4]);}
+    var step=0;
+    for(var k4=0;k4<K;k4++){beta[k4]+=dB[k4];if(Math.abs(dB[k4])>step)step=Math.abs(dB[k4]);}
     if(step<1e-7)break;
   }
   return beta;
 }
-function scoresFromAlpha(alpha,Vd){var T=Vd.length,K=Vd[0].length,s=new Array(K).fill(0);for(var k=0;k<K;k++){var v=0;for(var t=0;t<T;t++)v+=alpha[t]*Vd[t][k];s[k]=v;}return s;}
-function scoresFromBeta(beta,G){return _matVec(G,beta);}
+
+// Rescale a feedback-derived prior to match the data-only fit's β magnitude.
+// Without this, betaPrior lives on raw_projection (delta) scale (~0.1) while
+// β lives on BTL-logit scale (~10), and mu_prior=2 effectively shrinks β to
+// ~0. After rescaling, the prior is a unit vector in β-space pointing in the
+// feedback direction, with magnitude inherited from the data fit. Then
+// mu_prior parameterizes "trust in feedback direction" cleanly.
+// See experiments/dilemmas/diagnose_scale.py for the diagnostic.
+function rescalePriorToBetaScale(bpRaw,betaData){
+  if(!Array.isArray(bpRaw)||!Array.isArray(betaData))return bpRaw;
+  var rawSq=0;for(var i=0;i<bpRaw.length;i++)rawSq+=bpRaw[i]*bpRaw[i];
+  var rawNorm=Math.sqrt(rawSq);
+  if(rawNorm<1e-12)return bpRaw.slice();
+  var dataSq=0;for(var j=0;j<betaData.length;j++)dataSq+=betaData[j]*betaData[j];
+  var s=Math.sqrt(dataSq)/rawNorm;
+  return bpRaw.map(function(v){return s*v;});
+}
+// Compute per-dim bin midpoints from raw_projection values in trialProjections.
+// These are delta-level projections (same scale as U_tk), NOT the slider values.
+// Returns {dimension_id: [m0, m1, ..., m_{nCats-1}]} for each dimension.
+function computeDimMidpoints(){
+  if(!trialProjections||!experimentConfig||!experimentConfig.dimensions)return null;
+  var nCats=CATEGORIES.length;if(nCats<2)return null;
+  var dims=experimentConfig.dimensions,K=dims.length;
+  // Collect all raw_projection values per dimension across all trials
+  var byDim=new Array(K);
+  for(var k=0;k<K;k++)byDim[k]=[];
+  for(var pi=0;pi<trialProjections.length;pi++){
+    var tp=trialProjections[pi];
+    if(!tp||!Array.isArray(tp.raw_projection))continue;
+    for(var k2=0;k2<K&&k2<tp.raw_projection.length;k2++){
+      var v=tp.raw_projection[k2];
+      if(Number.isFinite(v)){byDim[k2].push(v);byDim[k2].push(-v);}
+    }
+  }
+  var out={};
+  for(var k3=0;k3<K;k3++){
+    var did=dims[k3].id||('dim_'+dims[k3].dimension_id);
+    var arr=byDim[k3].slice().sort(function(a,b){return a-b;});
+    if(arr.length<nCats){out[did]=null;continue;}
+    var mids=[];
+    for(var i=0;i<nCats;i++){
+      var q=(2*i+1)/(2*nCats);
+      var idx=Math.min(Math.floor(q*(arr.length-1)),arr.length-1);
+      mids.push(arr[idx]);
+    }
+    out[did]=mids;
+  }
+  return out;
+}
+var dimMidpoints=null;
 
 // Build participant-trial-indexed data structures from responses.
+// Returns:
+//   U      (T x K): LLM projection of each trial's delta
+//   U_rand (T x K): random projection of each trial's delta (precomputed)
+//   y      (T):     1 if chose option a, 0 if b
+//   betaPrior (K):  per-dim mean of feedback values (see below)
+//   hasPrior (bool): whether any beta_prior values are nonzero
+//
+// Feedback storage semantics (matching the Python pipeline):
+//   action='affirm'/'moderate' -> store U[t][idx] (raw delta projection)
+//   action='remove'            -> store 0.0
+//   action='modify'            -> store midpoint(category)
+//   action='none' (categories) -> store midpoint(confirmed default category)
+// Then beta_prior[k] = mean of stored values for dim k across visible trials.
 function buildEvalInputs(){
   if(!trialProjections||!Array.isArray(trialProjections))return null;
   if(!experimentConfig||!Array.isArray(experimentConfig.dimensions))return null;
   var T=responses.length;if(T===0)return null;
   var dims=experimentConfig.dimensions,K=dims.length;
   var dimIds=dims.map(function(d){return d.id||('dim_'+d.dimension_id);});
-  // Build U (T x K) from raw_projection of each chosen trial
+
+  // U: LLM projection of each trial's delta (T x K)
   var U=[],y=[],poolIdx=[];
   for(var i=0;i<T;i++){
     var pi=assignedTrialIndices[i];poolIdx.push(pi);
@@ -716,42 +871,69 @@ function buildEvalInputs(){
     U.push(tp.raw_projection.slice());
     y.push(responses[i].chosen==='a'?1:0);
   }
-  // Build D sub-matrix (T x T). delta_gram.bin is keyed on trials.json indices.
-  var D=null;
-  if(deltaGram&&deltaGramN===trials.length){
-    D=[];for(var ii=0;ii<T;ii++){var row=new Array(T);var pi_i=poolIdx[ii];for(var jj=0;jj<T;jj++){var pi_j=poolIdx[jj];row[jj]=deltaGram[pi_i*deltaGramN+pi_j];}D.push(row);}
+
+  // U_rand: random projection of each trial's delta (T x K).
+  // Precomputed by select_top_dims.py and stored in trial_projections.json.
+  var U_rand=null;
+  var allHaveRand=true;
+  for(var i2=0;i2<T;i2++){
+    var tp2=trialProjections[poolIdx[i2]];
+    if(!tp2||!Array.isArray(tp2.random_projection)||tp2.random_projection.length!==K){
+      allHaveRand=false;break;
+    }
   }
-  // Per-trial multipliers (only for inference conditions). Sums + counts per dim across visible-trials.
+  if(allHaveRand){
+    U_rand=[];
+    for(var i3=0;i3<T;i3++){
+      U_rand.push(trialProjections[poolIdx[i3]].random_projection.slice());
+    }
+  }
+
+  // Compute beta_prior from feedback (one value per visible dim per trial).
+  if(!dimMidpoints) dimMidpoints=computeDimMidpoints();
   var sums=new Array(K).fill(0),counts=new Array(K).fill(0);
-  // Build per-trial feedback matrix for the adjusted design matrix.
-  // U_adj[t][k] = ((1-α) + α·m) · U[t][k] for visible dims, U[t][k] for invisible.
-  // α (feedback_alpha) is the feedback-strength blend: α=0 ⇒ projection only
-  // (ignore multipliers entirely); α=1 ⇒ full multiplier as in the original
-  // design; α∈(0,1) ⇒ partial blend. Reads from
-  // experiment_config.comparison.feedback_alpha; defaults to 1.0 if absent
-  // (preserves prior behavior on configs that haven't been migrated).
-  var feedbackAlpha = 1.0;
-  if (experimentConfig && experimentConfig.comparison
-      && typeof experimentConfig.comparison.feedback_alpha === 'number'
-      && isFinite(experimentConfig.comparison.feedback_alpha)) {
-    feedbackAlpha = experimentConfig.comparison.feedback_alpha;
-  }
-  var U_adj=[];
-  for(var t=0;t<T;t++) U_adj.push(U[t].slice()); // start as copy of U
   responses.forEach(function(r,t){
     if(!r.inference_values)return;
     Object.keys(r.inference_values).forEach(function(did){
       var idx=dimIds.indexOf(did);if(idx<0)return;
-      var m=r.inference_values[did].multiplier;
-      if(typeof m!=='number'||!isFinite(m))return;
-      var meff = (1 - feedbackAlpha) + feedbackAlpha * m;
-      U_adj[t][idx] = meff * U[t][idx]; // α-blended weighted projection
-      sums[idx]+=m;counts[idx]+=1;
+      var info=r.inference_values[did];
+      var action=info.action||'none';
+      var value=null;
+      if(action==='remove'){
+        value=0.0;  // dimension is irrelevant
+      }else{
+        // affirm / moderate / modify / none — all contribute the midpoint of
+        // the (current or unchanged) category. For affirm/moderate/none the
+        // category equals the algorithm's pre-selected default; for modify
+        // it's the user's chosen replacement. Storing the category midpoint
+        // (rather than U[t,k]) keeps the prior at a stable, calibrated
+        // magnitude regardless of which trial it came from.
+        var cat=info.category;
+        var catIdx=-1;
+        for(var ci=0;ci<CATEGORIES.length;ci++){
+          if(CATEGORIES[ci].key===cat){catIdx=ci;break;}
+        }
+        if(catIdx>=0&&dimMidpoints&&dimMidpoints[did]&&dimMidpoints[did][catIdx]!=null){
+          value=dimMidpoints[did][catIdx];
+        }
+      }
+      if(value!==null&&isFinite(value)){
+        sums[idx]+=value;
+        counts[idx]+=1;
+      }
     });
   });
-  var hasMultipliers=counts.some(function(c){return c>0;});
-  var mean=new Array(K).fill(0);for(var k=0;k<K;k++)mean[k]=counts[k]>0?sums[k]/counts[k]:0;
-  return {U:U,U_adj:U_adj,y:y,D:D,K:K,T:T,dims:dims,dimIds:dimIds,mean:mean,hasMultipliers:hasMultipliers};
+  var betaPrior=new Array(K).fill(0);
+  var hasPrior=false;
+  for(var k=0;k<K;k++){
+    if(counts[k]>0){
+      betaPrior[k]=sums[k]/counts[k];
+      if(betaPrior[k]!==0)hasPrior=true;
+    }
+  }
+
+  return {U:U,U_rand:U_rand,y:y,K:K,T:T,dims:dims,dimIds:dimIds,
+          betaPrior:betaPrior,hasPrior:hasPrior};
 }
 
 // Top-N most-positive and N most-negative dimensions for the bar-chart variant.
@@ -793,6 +975,9 @@ function buildInferences(scores,dims,nShow){
 }
 
 function makeRandomScores(K,seedSalt){
+  // Fallback random scores when precomputed random projections are unavailable.
+  // Used only as a degraded path; the primary mechanism is U_rand from
+  // trial_projections.json (precomputed by select_top_dims.py).
   var rng=seedRandom(hashStr(participantId+(seedSalt||'_random')));
   var s=new Array(K);
   for(var k=0;k<K;k++){
@@ -805,42 +990,58 @@ function startEvaluation(){
   var comp=experimentConfig&&experimentConfig.comparison;
   var allowed=comp&&Array.isArray(comp.show_for_conditions)?comp.show_for_conditions:null;
   var isChoiceOnly=(conditionKey==='choice_only');
-  // choice_only is shown even though it's not in show_for_conditions — it gets a real-vs-random baseline check.
+  // choice_only is shown even though it's not in show_for_conditions — it gets random vs LLM proj.
   if(allowed&&allowed.indexOf(conditionKey)<0&&!isChoiceOnly){evalState={skipped:'condition_excluded'};proceedAfterEval();return;}
   var inputs=buildEvalInputs();
   if(!inputs){evalState={skipped:'no_eval_data'};proceedAfterEval();return;}
-  if(!inputs.D){evalState={skipped:'missing_delta_gram'};proceedAfterEval();return;}
-  if(!isChoiceOnly&&!gramMatrix){evalState={skipped:'missing_gram_matrix'};proceedAfterEval();return;}
-  var lamS=(comp&&comp.lambda_standard)||10.0;
-  var lamP=(comp&&comp.lambda_partial)||1.0;
+
+  var lamP=(comp&&typeof comp.lambda_partial==='number')?comp.lambda_partial:0.01;
+  var muPrior=(comp&&typeof comp.feedback_alpha==='number')?comp.feedback_alpha:2.0;
   var nShow=(comp&&comp.n_dimensions_shown)||10;
   var format=(comp&&comp.eval_format)||'inference_list';
-  // Standard fit (kernel logistic regression in dual form) — used by both flows
+
   var t0=performance.now();
-  var alpha=fitNewtonStandard(inputs.D,inputs.y,lamS,15);
-  var scoresStd=scoresFromAlpha(alpha,inputs.U);
+  // Always fit projection_only (for both conditions and as fallback).
+  var betaProj=fitBTL(inputs.U,inputs.y,lamP,null,0,15);
+  var betaRand=null,betaAlpha=null;
+  if(isChoiceOnly){
+    if(inputs.U_rand){
+      betaRand=fitBTL(inputs.U_rand,inputs.y,lamP,null,0,15);
+    }else{
+      // Fallback: synthesize random scores directly. Skip evaluation rather
+      // than show a misleading comparison.
+      evalState={skipped:'missing_random_projections'};proceedAfterEval();return;
+    }
+  }else{
+    if(inputs.hasPrior){
+      // Rescale the feedback-derived prior to match betaProj's magnitude
+      // before fitting. Without this, the prior lives on raw_projection scale
+      // (~0.1) while β lives on BTL-logit scale (~10), so muPrior acts as
+      // near-zero shrinkage. After rescaling, the prior is a unit vector in
+      // β-space pointing in the feedback direction.
+      var bpRescaled=rescalePriorToBetaScale(inputs.betaPrior,betaProj);
+      betaAlpha=fitBTL(inputs.U,inputs.y,lamP,bpRescaled,muPrior,15);
+    }
+  }
+  var fitMs=Math.round(performance.now()-t0);
+
   var scoresLeft,scoresRight,leftModel,rightModel;
   var stdOnLeft=(hashStr(participantId)%2)===0;
   if(isChoiceOnly){
-    // Real-vs-random baseline check.
-    var scoresRand=makeRandomScores(inputs.K,'_eval_random');
-    scoresLeft=stdOnLeft?scoresStd:scoresRand;
-    scoresRight=stdOnLeft?scoresRand:scoresStd;
-    leftModel=stdOnLeft?'standard':'random';
-    rightModel=stdOnLeft?'random':'standard';
+    // Compare random projection vs LLM projection (both fit on choices only)
+    scoresLeft  = stdOnLeft ? betaRand : betaProj;
+    scoresRight = stdOnLeft ? betaProj : betaRand;
+    leftModel   = stdOnLeft ? 'random_projection' : 'projection_only';
+    rightModel  = stdOnLeft ? 'projection_only'   : 'random_projection';
   }else{
-    // Standard-vs-feedback-adjusted check.
-    // Feedback-adjusted fit: use Ũ = Λ ⊙ U (design matrix scaled by
-    // per-trial per-dimension feedback multipliers). Zero-centered prior.
-    var beta0=new Array(inputs.K).fill(0);
-    var beta=fitNewtonPartial(inputs.U_adj,inputs.y,gramMatrix,beta0,lamP,15);
-    var scoresPart=scoresFromBeta(beta,gramMatrix);
-    scoresLeft=stdOnLeft?scoresStd:scoresPart;
-    scoresRight=stdOnLeft?scoresPart:scoresStd;
-    leftModel=stdOnLeft?'standard':'feedback_adjusted';
-    rightModel=stdOnLeft?'feedback_adjusted':'standard';
+    // Compare LLM projection vs LLM projection + feedback prior
+    var fbScores = betaAlpha || betaProj;  // fallback if no feedback received
+    scoresLeft  = stdOnLeft ? betaProj  : fbScores;
+    scoresRight = stdOnLeft ? fbScores  : betaProj;
+    leftModel   = stdOnLeft ? 'projection_only'   : 'projection_alpha';
+    rightModel  = stdOnLeft ? 'projection_alpha'  : 'projection_only';
   }
-  var fitMs=Math.round(performance.now()-t0);
+
   // Build presentation payload depending on format
   var leftPayload,rightPayload;
   if(format==='top_bottom_bars'){
@@ -856,11 +1057,11 @@ function startEvaluation(){
   evalState={
     eval_format: format,
     fit_duration_ms: fitMs,
-    lambda_standard: lamS,
-    lambda_partial: isChoiceOnly?null:lamP,
+    lambda_partial: lamP,
+    feedback_alpha: isChoiceOnly?null:muPrior,
     is_baseline_check: isChoiceOnly,
     n_dimensions_shown: format==='top_bottom_bars'?(2*((comp&&comp.n_per_side)||5)):Math.min(nShow,inputs.K),
-    has_multipliers: inputs.hasMultipliers,
+    has_prior: inputs.hasPrior,
     left_model: leftModel,
     right_model: rightModel,
     left_payload:  leftPayload,
@@ -869,8 +1070,20 @@ function startEvaluation(){
     rating_numeric: null,
     response_time_ms: null,
     started_at: Date.now(),
-    _alpha: isChoiceOnly?alpha:null,
+    _betaProj: betaProj,
+    _betaAlpha: betaAlpha,
+    _betaRand: betaRand,
   };
+  // Expose to window for parity verification with test_eval_parity.py.
+  // Will be cleared on finishExperiment.
+  try{
+    window.__lastEvalResult={
+      betaProj:betaProj,betaAlpha:betaAlpha,betaRand:betaRand,
+      leftModel:leftModel,rightModel:rightModel,
+      hasPrior:inputs.hasPrior,isChoiceOnly:isChoiceOnly,
+      betaPrior:inputs.betaPrior
+    };
+  }catch(e){}
   renderEvaluation();
 }
 
@@ -961,123 +1174,125 @@ function proceedAfterEval(){
   startPrediction();
 }
 
-// ===== Prediction-check screen =====
-//   Fits a feedback-adjusted model (Ũ = Λ ⊙ U, zero-centered G-shape prior).
-//   Computes utility u(option) = β · V·φ(option) for every option in
-//   the candidate pool, picks argmax / argmin, and asks the participant to rate
-//   on a 6-point Likert how strongly they'd choose one over the other.
-function fitPredictionBeta(){
-  var inputs=buildEvalInputs();
-  if(!inputs||!inputs.U_adj||!gramMatrix)return null;
-  var lamP=(experimentConfig&&experimentConfig.comparison&&experimentConfig.comparison.lambda_partial)||1.0;
-  // Feedback-adjusted fit: use Ũ = Λ ⊙ U with zero-centered prior
-  var beta0=new Array(inputs.K).fill(0);
-  var beta=fitNewtonPartial(inputs.U_adj,inputs.y,gramMatrix,beta0,lamP,15);
-  return {beta:beta,K:inputs.K,hasMultipliers:inputs.hasMultipliers};
-}
-// Pick the trial pair (from trials.json) whose model-predicted preference is strongest.
-// Returns {trial, predTopKey:'a'|'b', predBottomKey, diff}. Excludes pairs the
-// participant already saw so the prediction screen tests generalization rather than
-// surfacing a familiar pair.
-function rankBestPairPartial(beta){
-  if(!trialProjections||!Array.isArray(trialProjections))return null;
-  if(!Array.isArray(beta)||beta.length===0)return null;
+// ===== Prediction-comparison screen (two-trial, single-model-per-trial) =====
+//   Picks TWO different held-out pairs (where baseline and augmented disagree
+//   when possible). On each screen the user chooses an option, then sees ONE
+//   model's prediction + a 6-point Likert. Order of which model is rated
+//   first is randomized per participant. This avoids the awkwardness of
+//   rating two predictions on the same problem and gives a clean within-
+//   subject paired comparison across two distinct pairs.
+//
+//   Models per condition:
+//     choice_only           -> baseline=random_projection, augmented=projection_only
+//     inference_affirm/cat. -> baseline=projection_only,   augmented=projection_alpha
+//
+//   Pair selection priority (top-2 picked by joint criterion):
+//     1. unseen + disagreement
+//     2. seen   + disagreement
+//     3. unseen + (any)
+//     4. seen   + (any)
+//   Within each tier, sort by max(|baseline_diff|, |augmented_diff|) so
+//   both models are confident on the chosen pairs.
+
+function findTwoComparisonPairs(betaB,betaA,projKeyB,projKeyA){
+  if(!trialProjections||!Array.isArray(trialProjections))return [];
+  if(!Array.isArray(betaB)||!Array.isArray(betaA))return [];
+  if(betaB.length===0||betaA.length===0)return [];
   var seen={};assignedTrialIndices.forEach(function(pi){seen[pi]=true;});
-  function scan(skipSeen){
-    var bestPi=-1,bestAbs=-Infinity,bestDiff=0;
-    for(var pi=0;pi<trialProjections.length;pi++){
-      if(skipSeen&&seen[pi])continue;
-      var tp=trialProjections[pi];
-      if(!tp||!Array.isArray(tp.raw_projection))continue;
-      if(tp.raw_projection.length!==beta.length)continue;
-      if(!trials[pi]||!trials[pi].option_a||!trials[pi].option_b)continue;
-      var diff=0;for(var k=0;k<beta.length;k++)diff+=beta[k]*tp.raw_projection[k];
-      var ad=Math.abs(diff);
-      if(ad>bestAbs){bestAbs=ad;bestPi=pi;bestDiff=diff;}
-    }
-    return bestPi>=0?{pi:bestPi,diff:bestDiff}:null;
+  var all=[];
+  for(var pi=0;pi<trialProjections.length;pi++){
+    var tp=trialProjections[pi];if(!tp)continue;
+    var bp=tp[projKeyB],ap=tp[projKeyA];
+    if(!Array.isArray(bp)||!Array.isArray(ap))continue;
+    if(bp.length!==betaB.length||ap.length!==betaA.length)continue;
+    if(!trials[pi]||!trials[pi].option_a||!trials[pi].option_b)continue;
+    var bd=0;for(var k=0;k<betaB.length;k++)bd+=betaB[k]*bp[k];
+    var ad=0;for(var k2=0;k2<betaA.length;k2++)ad+=betaA[k2]*ap[k2];
+    all.push({pi:pi,baselineDiff:bd,augmentedDiff:ad,
+              disagree:(bd>=0)!==(ad>=0),unseen:!seen[pi]});
   }
-  var pick=scan(true)||scan(false);
-  if(!pick)return null;
-  var trial=trials[pick.pi];
-  var topKey=pick.diff>=0?'a':'b';
-  return {trial:trial,trialIdx:pick.pi,predTopKey:topKey,predBottomKey:topKey==='a'?'b':'a',diff:pick.diff};
+  // Sort: unseen > seen, then disagree > agree, then max(|base|,|aug|) desc.
+  all.sort(function(a,b){
+    if(a.unseen!==b.unseen)return a.unseen?-1:1;
+    if(a.disagree!==b.disagree)return a.disagree?-1:1;
+    var ma=Math.max(Math.abs(a.baselineDiff),Math.abs(a.augmentedDiff));
+    var mb=Math.max(Math.abs(b.baselineDiff),Math.abs(b.augmentedDiff));
+    return mb-ma;
+  });
+  return all.slice(0,2);
 }
-// Standard-fit prediction over real trial pairs:
-//   u(δ_t) = θ · δ_t = Σ α_t' (δ_t' · δ_t) = (D α_padded)_t
-// where δ_t' is participant's t'-th seen trial (mapped via assignedTrialIndices)
-// and D = deltaGram (T_pool × T_pool). Picks pair with max |u|, excluding seen.
-function rankBestPairStandard(alpha){
-  if(!deltaGram||deltaGramN<=0)return null;
-  if(!Array.isArray(alpha)||alpha.length===0)return null;
-  var seen={};assignedTrialIndices.forEach(function(pi){seen[pi]=true;});
-  function scan(skipSeen){
-    var bestPi=-1,bestAbs=-Infinity,bestDiff=0;
-    for(var pi=0;pi<deltaGramN;pi++){
-      if(skipSeen&&seen[pi])continue;
-      if(!trials[pi]||!trials[pi].option_a||!trials[pi].option_b)continue;
-      var diff=0;
-      for(var t=0;t<alpha.length;t++){
-        var partIdx=assignedTrialIndices[t];
-        diff+=alpha[t]*deltaGram[partIdx*deltaGramN+pi];
-      }
-      var ad=Math.abs(diff);
-      if(ad>bestAbs){bestAbs=ad;bestPi=pi;bestDiff=diff;}
-    }
-    return bestPi>=0?{pi:bestPi,diff:bestDiff}:null;
-  }
-  var pick=scan(true)||scan(false);
-  if(!pick)return null;
-  var trial=trials[pick.pi];
-  var topKey=pick.diff>=0?'a':'b';
-  return {trial:trial,trialIdx:pick.pi,predTopKey:topKey,predBottomKey:topKey==='a'?'b':'a',diff:pick.diff};
-}
-function setupPredictionState(ranked,modelName){
-  var topOnLeft=(hashStr(participantId)%2)===0;
-  var topOpt=ranked.trial['option_'+ranked.predTopKey];
-  var bottomOpt=ranked.trial['option_'+ranked.predBottomKey];
-  var topId=ranked.trial['option_'+ranked.predTopKey+'_id'];
-  var bottomId=ranked.trial['option_'+ranked.predBottomKey+'_id'];
-  predictionState={
-    model: modelName,
-    trial_id: ranked.trial.trial_id||null,
-    pair_signed_diff: Math.round(ranked.diff*1e4)/1e4,
-    top_option_id:    topId!=null?String(topId):null,
-    top_option_label: topOpt&&topOpt.label||(topId!=null?String(topId):null),
-    bottom_option_id:    bottomId!=null?String(bottomId):null,
-    bottom_option_label: bottomOpt&&bottomOpt.label||(bottomId!=null?String(bottomId):null),
-    top_on_side: topOnLeft?'A':'B',
-    rating: null,
-    rating_numeric: null,
-    rating_label: null,
-    response_time_ms: null,
-    started_at: Date.now(),
-    _leftOption:  topOnLeft?topOpt:bottomOpt,
-    _rightOption: topOnLeft?bottomOpt:topOpt,
-    _trial: ranked.trial,
-  };
-}
+
 function startPrediction(){
-  var isChoiceOnly=(conditionKey==='choice_only');
-  if(isChoiceOnly){
-    if(!evalState||!evalState._alpha){predictionState={skipped:'missing_alpha'};finishExperiment();return;}
-    if(!deltaGram){predictionState={skipped:'missing_delta_gram'};finishExperiment();return;}
-    var rankedStd=rankBestPairStandard(evalState._alpha);
-    if(!rankedStd){predictionState={skipped:'no_pair_ranked'};finishExperiment();return;}
-    setupPredictionState(rankedStd,'standard');
-    renderPrediction();
-    return;
-  }
-  // Partial / projected fit (inference + slider/checkbox conditions)
-  if(!gramMatrix){predictionState={skipped:'missing_gram_matrix'};finishExperiment();return;}
+  if(!evalState){predictionState={skipped:'no_eval_state'};finishExperiment();return;}
   if(!trialProjections){predictionState={skipped:'missing_trial_projections'};finishExperiment();return;}
-  var fit=fitPredictionBeta();
-  if(!fit){predictionState={skipped:'cannot_fit'};finishExperiment();return;}
-  var ranked=rankBestPairPartial(fit.beta);
-  if(!ranked){predictionState={skipped:'no_pair_ranked'};finishExperiment();return;}
-  setupPredictionState(ranked,fit.hasMultipliers?'feedback_adjusted':'projected');
-  renderPrediction();
+  var isChoiceOnly=(evalState.is_baseline_check===true);
+  var betaB=null,betaA=null,projKeyB,projKeyA,baselineModel,augmentedModel;
+  if(isChoiceOnly){
+    betaB=evalState._betaRand;betaA=evalState._betaProj;
+    projKeyB='random_projection';projKeyA='raw_projection';
+    baselineModel='random_projection';augmentedModel='projection_only';
+  }else if(evalState._betaAlpha){
+    betaB=evalState._betaProj;betaA=evalState._betaAlpha;
+    projKeyB='raw_projection';projKeyA='raw_projection';
+    baselineModel='projection_only';augmentedModel='projection_alpha';
+  }else{
+    // Inference condition with no feedback received -> nothing to compare against.
+    predictionState={skipped:'no_augmented_model'};finishExperiment();return;
+  }
+  if(!Array.isArray(betaB)||!Array.isArray(betaA)||betaB.length===0||betaA.length===0){
+    predictionState={skipped:'no_beta'};finishExperiment();return;
+  }
+  var pairs=findTwoComparisonPairs(betaB,betaA,projKeyB,projKeyA);
+  if(pairs.length<2){
+    predictionState={skipped:'insufficient_pairs',n_pairs:pairs.length};finishExperiment();return;
+  }
+
+  // Randomize role order: which model's prediction is shown FIRST.
+  // Hash on participantId so the assignment is deterministic per participant
+  // but balanced across the cohort.
+  var augFirst=(hashStr(participantId+'_predorder')%2)===0;
+  var roles=augFirst?['augmented','baseline']:['baseline','augmented'];
+
+  // Build the two trial entries. Each is associated with one model role.
+  var ptrials=[];
+  for(var i=0;i<2;i++){
+    var pair=pairs[i];
+    var role=roles[i];
+    var modelName=role==='augmented'?augmentedModel:baselineModel;
+    var basePred=pair.baselineDiff>=0?'a':'b';
+    var augPred =pair.augmentedDiff>=0?'a':'b';
+    var modelPred=role==='augmented'?augPred:basePred;
+    ptrials.push({
+      role:role,
+      model:modelName,
+      pair_index:pair.pi,
+      trial_id:trials[pair.pi].trial_id||null,
+      baseline_diff:Math.round(pair.baselineDiff*1e4)/1e4,
+      augmented_diff:Math.round(pair.augmentedDiff*1e4)/1e4,
+      disagreement:pair.disagree,
+      baseline_predicts:basePred,
+      augmented_predicts:augPred,
+      model_predicts:modelPred,
+      rating:null,
+      rating_numeric:null,
+      rating_label:null,
+      response_time_ms:null,
+      started_at:null,
+    });
+  }
+
+  predictionState={
+    baseline_model:baselineModel,
+    augmented_model:augmentedModel,
+    role_order:roles,
+    n_trials:2,
+    current_index:0,
+    started_at:Date.now(),
+    trials:ptrials,
+  };
+  renderPredictionTrial();
 }
+
 var ACCURACY_LEVELS=[
   {key:'not_at_all',     label:'Not at all accurate',  value:1},
   {key:'mostly_inacc',   label:'Mostly inaccurate',    value:2},
@@ -1086,9 +1301,23 @@ var ACCURACY_LEVELS=[
   {key:'mostly_acc',     label:'Mostly accurate',      value:5},
   {key:'very_acc',       label:'Very accurate',        value:6},
 ];
-function renderPrediction(){
+
+function renderPredictionTrial(){
   var st=predictionState;
-  var topOnLeft=(st.top_on_side==='A');
+  var idx=st.current_index;
+  var pt=st.trials[idx];
+  if(!pt.started_at)pt.started_at=Date.now();
+  var trial=trials[pt.pair_index];
+  var stepLabel='Final question '+(idx+1)+' of '+st.n_trials;
+  var h='<div class="eval-intro"><h1>'+esc(stepLabel)+'</h1>';
+  if(idx===0){
+    h+='<p>For these final pairs, we\u2019ve predicted which option you would choose. The option highlighted in blue is <strong>our prediction</strong>. Rate how accurate it is.</p>';
+  }else{
+    h+='<p>One more. The option highlighted in blue is <strong>our prediction</strong>. Rate how accurate it is.</p>';
+  }
+  h+='</div>';
+  if(trial.situation)h+='<div class="situation">'+esc(trial.situation)+'</div>';
+
   function predictionCard(key,opt,isPrediction){
     var card=buildCard(key,opt);
     var cls=isPrediction?'option-card pred-selected':'option-card pred-other';
@@ -1097,40 +1326,47 @@ function renderPrediction(){
     else card='<div class="pred-badge pred-badge-empty">&nbsp;</div>'+card;
     return '<div class="pred-card-wrap">'+card+'</div>';
   }
-  var leftKey=topOnLeft?'a':'b',rightKey=topOnLeft?'b':'a';
-  var leftIsPred=topOnLeft,rightIsPred=!topOnLeft;
-  var promptText=(experimentConfig&&experimentConfig.choice_context)||'Which would you choose?';
-  var h='<div class="eval-intro"><h1>One last question</h1>';
-  h+='<p>Below is one more pair, like the ones you saw earlier. Based on your previous responses, we’ve predicted how you would answer this one. The option highlighted in blue is <strong>our prediction</strong>. How accurate is it?</p></div>';
-  h+='<div class="prompt">'+esc(promptText)+'</div>';
-  h+='<div class="options pred-options">'+predictionCard(leftKey,st._leftOption,leftIsPred)+predictionCard(rightKey,st._rightOption,rightIsPred)+'</div>';
+  var aIsPred=(pt.model_predicts==='a');
+  h+='<div class="options pred-options">'+predictionCard('a',trial.option_a,aIsPred)+predictionCard('b',trial.option_b,!aIsPred)+'</div>';
+
   h+='<div class="likert-prompt">How accurate is our prediction?</div>';
   h+='<div class="likert-row accuracy-row">';
   ACCURACY_LEVELS.forEach(function(lv){
     h+='<button class="likert-btn" data-key="'+lv.key+'" data-value="'+lv.value+'">'+esc(lv.label)+'</button>';
   });
   h+='</div>';
-  h+='<div class="submit-row"><button class="btn" id="predSubmit" disabled>Submit</button></div>';
+  h+='<div class="submit-row"><button class="btn" id="predSubmit" disabled>'+(idx<st.n_trials-1?'Continue':'Submit')+'</button></div>';
   app.innerHTML=h;
   window.scrollTo({top:0,behavior:'smooth'});window.__scrollParentToTop&&window.__scrollParentToTop();
-  var selected=null;
+
   app.querySelectorAll('.likert-btn').forEach(function(btn){
     btn.addEventListener('click',function(){
       app.querySelectorAll('.likert-btn').forEach(function(b){b.classList.remove('selected');});
       btn.classList.add('selected');
-      selected={key:btn.dataset.key,value:parseInt(btn.dataset.value,10),label:btn.textContent.trim()};
+      pt._rating_key=btn.dataset.key;
+      pt._rating_value=parseInt(btn.dataset.value,10);
+      pt._rating_label=btn.textContent.trim();
       document.getElementById('predSubmit').disabled=false;
     });
   });
-  document.getElementById('predSubmit').addEventListener('click',function(){
-    if(!selected)return;
-    predictionState.rating=selected.key;
-    predictionState.rating_numeric=selected.value;
-    predictionState.rating_label=selected.label;
-    predictionState.response_time_ms=Date.now()-predictionState.started_at;
-    delete predictionState._leftOption;delete predictionState._rightOption;delete predictionState._trial;
+  document.getElementById('predSubmit').addEventListener('click',submitPredictionTrial);
+}
+
+function submitPredictionTrial(){
+  var st=predictionState;
+  var pt=st.trials[st.current_index];
+  if(!pt._rating_key)return;
+  pt.rating=pt._rating_key;
+  pt.rating_numeric=pt._rating_value;
+  pt.rating_label=pt._rating_label;
+  pt.response_time_ms=Date.now()-pt.started_at;
+  delete pt._rating_key;delete pt._rating_value;delete pt._rating_label;
+  st.current_index++;
+  if(st.current_index<st.n_trials){
+    renderPredictionTrial();
+  }else{
     finishExperiment();
-  });
+  }
 }
 
 function esc(s){if(s==null)return'';var d=document.createElement('div');d.textContent=String(s);return d.innerHTML}
